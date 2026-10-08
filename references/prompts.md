@@ -1,156 +1,105 @@
-# Resume Tribunal — Prompt Library
+# Resume Tribunal: Prompt Library (v2)
 
-Fill every `{{PLACEHOLDER}}` before use. Hand each prompt over as its own code block.
+Eight prompts. Each one is self-contained: the inputs come first in XML tags and the task comes last. Before handing a prompt over, replace every `{{PLACEHOLDER}}`.
 
-**`{{BANNED_TOKENS}}`** always expands to:
+| Prompt | Stage | Run by |
+|---|---|---|
+| P1 Draft | 1 | Every seat, new chat |
+| P2 Audit | 2 and 4 | Every seat, new chat |
+| P3 Merge | 3 | Presiding, clean context |
+| P4 Consensus Refactor | 4 | Presiding, clean context (audits come from Seats B and C) |
+| P5 Role Research | 5 | Seats B and C, deep-research or web mode |
+| P6 Handbook | 5 | Presiding |
+| P7 Compile | 6 | Presiding |
+| P8 Final Review | 6 | Seat B or C (never the presiding seat), new chat |
 
-> spearheaded, leveraged, fostered, testament, driven, dynamic, synergy, utilized, passionately, proven track record, streamlined, orchestrated, transformative, revolutionized, catalyzed, pioneered, harness, paradigm-shifting, innovative, cutting-edge, state-of-the-art, highly scalable, revolutionary, robust, sophisticated, highly tailored, extremely efficient, self-starter, team player
+## Shared values
 
-**`{{TRACKS}}`**: the career tracks the user wants blended (e.g. "hands-on data science execution" and "fellowship leadership and strategic communication"). If there are none, use "the candidate's full career history".
+**`{{HOUSE_RULES}}`** always expands to the block below. Every writing prompt uses this one rule set, so the seats never get conflicting instructions.
+
+```
+<house_rules>
+These rules exist because recruiters skim a resume in seconds and set aside resumes that read as unedited AI output or marketing copy.
+
+1. Write in a grounded, specific, human voice. Prefer plain verbs such as Built, Cut, Shipped, Designed, Led, Ran, Migrated, Negotiated, Reduced, Launched.
+2. Leave out these words and their variants. They are the most common tells of AI or marketing copy: {{BANNED_TOKENS}}.
+3. Shape every bullet as action → method or tools → result against a baseline (for example "from 9% to 4%"). Put tools inside the bullet instead of only listing them in a skills block.
+4. Each bullet fills either exactly one line or 1.5 to 1.7 lines. A second line holding only one to four words looks like an error, and three-line bullets don't get read.
+5. Start each bullet with a different verb from the one before it.
+6. Use only facts the candidate provided. Where a number, tool, or skill is unconfirmed, write a placeholder such as [X%], [p95 latency baseline], or [dbt, only if used], so the candidate can fill it in honestly.
+7. Match the role's domain and seniority without copying distinctive phrases from the job description, so the resume reads as an earned career story rather than a mirror of the posting.
+8. Write metrics as plain text (Recall@10, p95 latency, MAPE), not LaTeX, so they survive Word export and ATS parsing.
+9. Use a single column, standard headings (Summary, Experience, Projects, Skills, Education), and one date style throughout, for example "2021 – Present". Parsers in common applicant tracking systems read this layout reliably.
+</house_rules>
+```
+
+**`{{BANNED_TOKENS}}`:** spearheaded, leveraged, fostered, testament, driven, dynamic, synergy, utilized, passionately, proven track record, streamlined, orchestrated, transformative, revolutionized, catalyzed, pioneered, harness, paradigm-shifting, innovative, cutting-edge, state-of-the-art, highly scalable, revolutionary, robust, sophisticated, highly tailored, extremely efficient, self-starter, team player, results-oriented, detail-oriented, go-getter, delve, seamless
+
+**`{{HANDBOOK}}`:** the Stage 5 handbook. If Stage 5 was skipped, use the `{{HOUSE_RULES}}` block instead.
+
+**`{{TRACKS}}`:** the career threads to blend (for example "hands-on data science execution, and fellowship leadership and executive communication"). If the user doesn't name any, use "the candidate's full career history".
+
+**`{{RESUME_SCHEMA}}`:**
+
+```
+# [Name]
+[Email] | [Phone] | [LinkedIn] | [GitHub or Portfolio] | [City or Remote]
+
+## Summary
+3–4 sentences: the problems you solve, the scale you work at, and the impact you deliver.
+
+## Experience
+### [Company] — [City or Remote]
+**[Title]** | [Start] – [End]
+- 3–5 bullets per recent role, 1–3 for older roles
+
+## Projects
+### [Project]
+- 2 bullets: the problem, what you built, the outcome
+
+## Skills
+**[Category]:** grouped tools and methods, without filler such as "Microsoft Office" or "communication skills"
+
+## Education & Certifications
+- **[Degree]**, [Institution], [Year]
+```
 
 ---
 
-## Stage 1 — Independent Drafts (P1–P4, same chat, in order)
-
-### P1 · Job Description Decode
+## P1 · Draft
 
 ```
-[ROLE]
-You are an elite, metrics-driven Head of Talent Acquisition in competitive tech and corporate hiring. Your objective is to minimise hiring risk by aggressively filtering out misaligned or generic applicants.
-
-[TASK]
-Analyse the data inside the <job_description> tags. Before giving your final output, run an internal diagnostic to uncover what the hiring manager needs but did not write down (hidden team bottlenecks, unstated technical debt, scaling pains).
-
-[CRITICAL CONSTRAINTS]
-1. Do not ask for, look at, or speculate on my resume yet.
-2. No corporate filler or pleasantries. Start immediately with the analysis.
-
 <job_description>
 {{JOB_DESCRIPTION}}
 </job_description>
 
-[OUTPUT FORMAT]
-### 1. The Core Objective
-(2 sentences: the exact macro-problem this role is hired to solve.)
-### 2. The Unwritten Demands
-* [Hidden Constraint 1]: (what they need but didn't write)
-* [Hidden Constraint 2]:
-### 3. High-Priority Keyword Stack
-* Hard Skills / Tools:
-* Methodologies / Frameworks:
-### 4. The Past-Hire Pedigree
-(Background, professional scale, and the metrics tracked by the person who previously succeeded in this exact role at a competitor.)
-```
-
-### P2 · Adversarial Screen
-
-```
-[ROLE]
-You are now an independent, adversarial ATS algorithm and a cynical hiring manager.
-
-[TASK]
-Evaluate the resume inside the <resume> tags against the target-candidate blueprint you produced in the previous step. You are actively looking for reasons to reject this candidate to save the hiring team time.
-
-[CRITICAL CONSTRAINTS]
-1. ZERO TOXIC POSITIVITY. No phrases like "strong baseline" or "with a few tweaks".
-2. If the candidate is overqualified, do NOT lower the standard. Show how to turn that seniority into an advantage instead of diluting it.
-3. Classify any missing or weak skill as a "Critical Vulnerability".
-
-<resume>
+<candidate_resume>
 {{RESUME}}
-</resume>
+</candidate_resume>
 
-[OUTPUT FORMAT]
-### 1. Hard Mathematical Match Score
-[Score: X/100]
-(Strict semantic matching of hard skills and scope of scale. Deduct 5 points per major keyword gap.)
-### 2. Immediate Rejection Triggers (5-Second Skim Test)
-* [Trigger 1]: (formatting, visual clutter, or generic summaries that lose attention immediately)
-### 3. The Upgrade List (Underqualified Gaps)
-* [Gap 1]: (requirements from the previous step this resume fails to address)
-### 4. The Jargon & AI-Footprint Audit
-* [Flag 1]: (empty buzzwords, passive language, or structures that read as generic AI generation)
+{{HOUSE_RULES}}
+
+<resume_schema>
+{{RESUME_SCHEMA}}
+</resume_schema>
+
+You are a senior talent partner who has hired for this kind of role many times. Work in two parts.
+
+Part 1: Diagnose. Be blunt and specific. The candidate gains more from an accurate critique than from encouragement.
+- Core objective: in two sentences, the business problem this hire is meant to solve.
+- Unwritten demands: what the hiring manager needs but did not write down (team bottlenecks, technical debt, scaling pressure).
+- Keyword stack: the hard skills, tools, and methods that matter most.
+- Benchmark hire: the background, scale, and metrics of someone who has succeeded in this role elsewhere.
+- Screen result: a 0–100 match score with a one-line rationale based on hard-skill overlap and scope, the reasons a skimming recruiter would reject the resume, the requirements it misses, and any phrasing that reads as AI-generated. If the candidate is overqualified, show how to present that seniority as an asset.
+
+Part 2: Rewrite. Write the complete resume following the house rules and the schema. Blend {{TRACKS}} into one upward trajectory. Rebuild the weakest bullets first.
+
+Format: Part 1 as short headed sections. Part 2 as a single Markdown code block containing only the resume.
 ```
 
-### P3 · Bullet Re-engineering
+## P2 · Audit
 
 ```
-[ROLE]
-You are an expert Executive Resume Writer.
-
-[TASK]
-Select the 3 weakest, most passive, or most misaligned bullet points identified in the previous step. Rewrite them to close the gaps found in the job-description analysis, so they read as natural, authentic, and human-written.
-
-[BANNED TOKENS]
-Do not use these words or their variants: {{BANNED_TOKENS}}.
-
-[CRITICAL WRITING CONSTRAINTS]
-1. Every rewrite follows STAR (Situation, Task, Action, Result).
-2. Lead with specific, natural business verbs (Built, Scaled, Cut, Executed, Managed, Designed).
-3. Do not invent data. Use [X%] or [Quantifiable Metric] placeholders where I must insert real numbers.
-4. Each bullet should address both the current execution needs and the future state of the role.
-
-[OUTPUT FORMAT]
-For each of the 3 bullets:
-**Original:** (paste original)
-**The Vulnerability:** (why it fails)
-**The Re-Engineered Bullet:** (the clean, high-impact rewrite)
-```
-
-### P4 · Full Draft
-
-```
-[ROLE]
-You are an expert Executive Biographer and Career Strategist. Write a resume that reads like an organically earned, high-impact career story, not an algorithmic mirror of a job posting.
-
-[TASK]
-Compile my entire professional profile into one cohesive resume in clean Markdown. Synthesise {{TRACKS}} into one upward trajectory. Work the 3 re-engineered bullets from the previous step into the timeline.
-
-[CRITICAL ANTI-AI-FOOTPRINT & ANTI-OVERTAILORING CONSTRAINTS]
-1. No keyword stuffing. Do not copy distinctive phrases or sentences from the job description. Match the domain and seniority of the role in general, while keeping it MY story.
-2. Narrative continuity. Transitions between roles and tracks must read as a logical upward progression: deep execution plus growing strategic influence.
-3. Earned identity. Don't make it look conveniently manufactured for this role. Keep my core strengths, including areas where I am overqualified.
-4. Language. Grounded, human, no hyperbole. Never use: {{BANNED_TOKENS}}. Start every bullet with a distinct, varied, active industry verb.
-5. Output ONLY the Markdown code block. No pleasantries.
-
-[REQUIRED MARKDOWN SCHEMA]
-# [Name]
-[Contact | LinkedIn | GitHub | Portfolio]
-
-## PROFESSIONAL SUMMARY
-(3–4 sentence thesis: what you solve, the scale you work at, the organisational impact. No buzzwords.)
-
-## CORE COMPETENCIES
-* **Technical / Domain:** …
-* **Tools & Platforms:** …
-* **Strategy & Leadership:** …
-
-## PROFESSIONAL EXPERIENCE
-### [Company] — [City, State or Remote]
-**[Title]** | [Start] – [End]
-* [3–5 quantified STAR bullets]
-
-## SELECTED PROJECTS
-### [Project]
-* (2 dense, metric-backed bullets: problem, your execution, outcome)
-
-## EDUCATION & CERTIFICATIONS
-* **[Degree]** – [Institution], [Year]
-```
-
----
-
-## Stage 2 & 4 — Blind Audit
-
-### P5 · External Audit Committee (always a fresh chat)
-
-```
-[ROLE]
-You are an independent, adversarial External Audit Committee: a cynical Corporate Recruiter hiring for this specific company, and a Global Talent Strategist who tracks cross-industry hiring trends. You have zero context on how this resume was produced and zero emotional investment in the candidate. Give only cold, clinical, actionable evaluations.
-
-[TASK]
-Perform an edge-to-edge structural audit of the resume inside <resume_under_review>. Judge it against the <job_description> and against broader market expectations for this job title.
-
 <job_description>
 {{JOB_DESCRIPTION}}
 </job_description>
@@ -159,282 +108,188 @@ Perform an edge-to-edge structural audit of the resume inside <resume_under_revi
 {{RESUME_TO_AUDIT}}
 </resume_under_review>
 
-[EVALUATION MATRICES]
-### 1. Micro-Target Audit (Company Alignment)
-How well does it solve this company's explicit problems, stack demands, and unwritten bottlenecks? Flag missed context, gaps, and scale mismatches.
-### 2. Macro-Market Audit (Portability)
-Is it over-optimised for this one JD, to the point of looking artificial? Could it go to competitors or other industries for the same title and still read as a premium candidate with a naturally earned trajectory?
-### 3. Line Dynamics & Skimmability
-Inspect every bullet and flag:
-* Multi-line bloat: any bullet of 3+ lines.
-* Hanging words: a bullet whose second line holds only 1–4 words. (Ideal: exactly 1 full line, or 1.5–1.7 lines.)
-* Skim value: do the first 3 words lead with a distinct, high-impact verb?
-### 4. Narrative Integrity
-Are the different career tracks synthesised into one upward story, or does it read like two people glued together?
-### 5. AI-Footprint & Jargon Sweep
-Call out predictable sentence structures, artificial cadence, and hidden buzzwords. Give a hard PASS/FAIL: would a trained human recruiter detect AI assistance?
+You are an independent audit panel made up of a recruiter hiring for this exact role and a talent strategist who tracks hiring across the industry. You don't know how this resume was produced and have no stake in the candidate. Your critique is only useful if it is specific and unsentimental. Praise a line only where you can point to evidence.
 
-[OUTPUT FORMAT]
-No pleasantries. Use exactly the 5 headers above, then finish with "### The Last Mile Polish": the exact structural changes or deletions that would make the document bulletproof.
+Assess the resume in five areas:
+1. Company fit: does it address this employer's explicit requirements, stack, and likely unwritten bottlenecks? Name the gaps and scale mismatches.
+2. Market portability: would the same resume still read as a strong candidate at competitors, or is it so tuned to this posting that it looks artificial?
+3. Skimmability: list every bullet that runs to 3 or more lines, has a second line of only one to four words, or doesn't open with a strong, distinct verb.
+4. Narrative: do the career threads read as one coherent upward story, or as separate profiles stitched together?
+5. AI footprint: point to predictable sentence patterns, artificial rhythm, and buzzwords. Give a verdict of PASS or FAIL on whether an experienced recruiter would suspect unedited AI writing.
+
+Use exactly those five headings. Then add a final heading, "Last-mile fixes": an ordered list of the specific edits that would make the resume hold up, quoting each line you would change.
 ```
 
----
-
-## Stage 3 — Merge (Presiding, clean context, P6a→P6c in one session)
-
-### P6a
+## P3 · Merge
 
 ```
-[ROLE]
-You are an expert Executive Biographer acting as an Iterative Synthesis Engine. We will merge three independent resume drafts, each with an independent audit, into one human-authentic Master Resume. To protect context and avoid dropping data we go step by step. Do NOT write the full resume yet.
-
-[INSTRUCTIONS]
-1. Read the target job description, Version 1, and Feedback 1.
-2. Initialise a "Master Working Draft". Extract the strongest bullets, metrics, and alignment hooks from this set.
-3. Output a short summary of what you saved, then state: "READY FOR VERSION 2." Nothing else.
-
-[BANNED TOKENS]
-{{BANNED_TOKENS}}
-
-<target_job_description>
+<job_description>
 {{JOB_DESCRIPTION}}
-</target_job_description>
+</job_description>
 
-<resume_version_1>
-{{VERSION_1}}
-</resume_version_1>
+<drafts>
+<draft label="Version 1">{{VERSION_1}}</draft>
+<draft label="Version 2">{{VERSION_2}}</draft>
+<draft label="Version 3">{{VERSION_3}}</draft>
+</drafts>
 
-<audit_feedback_1>
-{{FEEDBACK_1}}
-</audit_feedback_1>
+<audits>
+<audit of="Version 1">{{FEEDBACK_1}}</audit>
+<audit of="Version 2">{{FEEDBACK_2}}</audit>
+<audit of="Version 3">{{FEEDBACK_3}}</audit>
+</audits>
+
+{{HOUSE_RULES}}
+
+<resume_schema>
+{{RESUME_SCHEMA}}
+</resume_schema>
+
+You are an executive resume editor merging three independent drafts into one master resume. The drafts are anonymous and their order is random. Judge every line on merit alone and give no draft priority because of its position.
+
+For each section, keep the strongest bullets, metrics, and framing from any draft, and apply every audit point that holds up. Where the drafts conflict on a fact, keep the version that matches the original resume. If none of them does, use a placeholder.
+
+Output:
+1. Merge log: 5–10 bullets, each naming what you took from which version and which audit points you applied or rejected, with the reason.
+2. The master resume, in one Markdown code block.
 ```
 
-### P6b
+## P4 · Consensus Refactor
+
+Include one `<feedback>` element per review received (two in a full tribunal, one in two-seat mode).
 
 ```
-[TASK]
-Analyse Version 2 and Feedback 2 against the Master Working Draft. Integrate any stronger metrics, leadership framing, or structural fixes. Do not lower any standard. Output a brief summary of the upgrades, then state: "READY FOR VERSION 3." Do not output the resume.
-
-<resume_version_2>
-{{VERSION_2}}
-</resume_version_2>
-
-<audit_feedback_2>
-{{FEEDBACK_2}}
-</audit_feedback_2>
-```
-
-### P6c
-
-```
-[TASK]
-Final phase. Integrate Version 3 and Feedback 3 into the Master Working Draft, then run a rigorous typographic and linguistic refactor of the whole document.
-
-[LINE-LENGTH CONSTRAINTS]
-1. No bullet may exceed 2 lines.
-2. No hanging words: never spill onto a second line with only 1–4 words.
-3. Target ratio: exactly 1 full line, or 1.5–1.7 lines.
-4. Start every bullet with a distinct, non-AI action verb.
-
-[OUTPUT FORMAT]
-Output ONLY the final Master Resume in Markdown. No notes.
-
-<resume_version_3>
-{{VERSION_3}}
-</resume_version_3>
-
-<audit_feedback_3>
-{{FEEDBACK_3}}
-</audit_feedback_3>
-```
-
----
-
-## Stage 4 — Council Consensus (Presiding, new session, P7a→P7d)
-
-First get three fresh P5 audits of the merged resume (one per seat), shuffled into Feedback A/B/C.
-
-### P7a
-
-```
-[ROLE]
-You are an expert Executive Biographer and lead judge of an independent review panel. Your goal is to synthesise three independent critiques of my resume into one human-authentic final application. We will do this in 4 steps. Do NOT write the resume yet. This turn only builds the first layer of a "Panel Comparison Log".
-
-[TASK]
-Analyse the job description, my current resume, and Feedback A. Log the core technical, linguistic, and visual flaws it raises. Reply with a brief bullet acknowledgment of the vulnerabilities logged, then state verbatim: "READY FOR FEEDBACK B." Nothing else.
-
-<target_job_description>
+<job_description>
 {{JOB_DESCRIPTION}}
-</target_job_description>
+</job_description>
 
 <current_resume>
 {{MERGED_RESUME}}
 </current_resume>
 
-<feedback_a>
-{{FEEDBACK_A}}
-</feedback_a>
+<reviews>
+<feedback label="A">{{FEEDBACK_A}}</feedback>
+<feedback label="B">{{FEEDBACK_B}}</feedback>
+</reviews>
+
+{{HOUSE_RULES}}
+
+You are the lead editor on a panel that has received independent reviews of the same resume. The feedback labels are random.
+
+First, build the consensus:
+- Overlaps: issues raised by more than one reviewer. Fix all of them.
+- Contradictions: where the reviewers disagree. Rule on each one and give your reason in one line.
+- Unique finds: valid issues raised by only one reviewer.
+
+Then write a master checklist in three groups: (1) technical, metric, and scope upgrades, (2) wording to cut or rewrite, (3) bullets that break the line-length rules.
+
+Finally, rewrite the resume so that every checklist item is done.
+
+Output: the consensus, then the checklist, then the final resume in one Markdown code block.
 ```
 
-### P7b
-
-```
-[TASK]
-Do not rewrite the resume. Cross-reference Feedback B with the log and record:
-1. Overlaps: flaws both A and B flagged (non-negotiable).
-2. Contradictions: where B disagrees with A's framing.
-3. New discoveries: gaps or formatting flaws B found that A missed.
-Output this as a clean bulleted log, then state verbatim: "READY FOR FEEDBACK C."
-
-<feedback_b>
-{{FEEDBACK_B}}
-</feedback_b>
-```
-
-### P7c
-
-```
-[TASK]
-Blend Feedback C into the log to finalise a "Panel Consensus Report". Before any writing, give a prioritised Master Checklist in three buckets:
-1. Hard technical & metric upgrades (keywords, frameworks, scale, scope).
-2. Linguistic deletions (passive language, robotic cadence, AI footprints).
-3. Typographic violations (bullets breaking line-length rules, bloat, hanging words).
-Output ONLY the checklist, then state verbatim: "PROCEED TO REFACTOR."
-
-<feedback_c>
-{{FEEDBACK_C}}
-</feedback_c>
-```
-
-### P7d
-
-```
-[TASK]
-Execute the final rewrite in clean Markdown, implementing 100% of the Master Checklist.
-
-[TYPOGRAPHIC CONSTRAINTS — every Experience and Projects bullet]
-1. Max 2 lines; 3-line blocks are prohibited.
-2. No hanging words (second line of only 1–4 words).
-3. Exactly 1 full line, or 1.5–1.7 lines.
-4. Start with a distinct action verb; no two adjacent bullets share a verb.
-
-[WRITING PROTOCOL]
-- Grounded, authoritative tone.
-- Never use: {{BANNED_TOKENS}}.
-- Don't mirror the JD so closely it looks artificial. It must read as an earned progression across {{TRACKS}}.
-
-[OUTPUT FORMAT]
-Output ONLY the completed Markdown code block.
-```
-
----
-
-## Stage 5 — Role Handbook
-
-### P8 · Deep Research (Seats B and C, deep-research or web mode)
+## P5 · Role Research
 
 ```
 <target_role>
-{{TARGET_ROLE}}
+{{TARGET_ROLE}} ({{SENIORITY}})
 </target_role>
 
-CONTEXT
-Hiring for this role is flooded with near-identical, synthetically tailored resumes. Hiring managers and technical screeners now filter out keyword-stuffed templates and experience that looks like copied tutorial work.
+Many applications for this role now arrive as near-identical, AI-tailored resumes, and screeners have grown skeptical of keyword-stuffed templates and of experience that looks like tutorial work. I need evidence on what makes a resume for this role credible.
 
-Act as an Elite Technical Recruiter and Sourcing Specialist. Research practitioner communities (career and resume forums, domain-specific communities, anonymous professional forums) and current job postings from strong employers. Gather specific intelligence on what separates a credible, production-grade, organically written resume from a low-fidelity, simulated one for this role.
+Research practitioner communities (career and resume forums, domain communities, anonymous professional forums) and current job postings at respected employers. Cover:
+1. Trust and screening: why reviewers doubt applicants for this role, the signs of an inflated resume, and how a recruiter, a hiring manager, and a senior practitioner each read a resume differently.
+2. Clichés: this role's equivalent of "built a basic API wrapper", meaning the projects, tools, and claims that signal classroom-only experience.
+3. Production signals: the decisions and trade-offs that prove real shipped work, and the metrics that matter for this role. Give formulas in LaTeX where the metric is quantitative, for example $F_1$, $MAPE$, $Recall@k$.
+4. Skills section: how to group skills, and what counts as filler to leave out.
+5. Language: the words that read as AI-generated or marketing copy, and the plain verbs senior practitioners use instead.
+6. Layout: what gets through applicant tracking system parsers and a quick human scan (page budget, section order, date format, links).
 
-RESEARCH PILLARS
-1. Trust deficit & screening: why reviewers distrust applicants for this role; tell-tale signs of a faked or inflated resume; how recruiter, hiring manager, and senior practitioner read differently.
-2. Clichés & tutorial traps: this role's version of "built a basic API wrapper"; projects, tools, and choices that signal classroom-only experience.
-3. Production signals: the under-the-hood decisions that prove real shipped work; the critical metrics for this role (latency, cost, throughput, drift, accuracy, revenue, retention, etc.) with formulas in LaTeX where quantitative (e.g. $F_1$, $MAPE$, $Recall@k$).
-4. Skills grid taxonomy: how to group the skills section, and which items are filler to omit.
-5. Linguistic bans: verbs and adjectives that read as AI-generated or marketing fluff, versus the plain, specific verbs senior practitioners use.
-6. Layout standards: what clears mechanical ATS parsers and a 6-second human scan (margins, page budget, section order, date-dash usage, URLs).
-
-OUTPUT
-A detailed, structured, clinically precise Markdown document. Don't summarise away detail. Anchor every claim in real hiring feedback or constraints.
+Write a structured Markdown report. Keep the specifics and tie each claim to an observed hiring practice or a cited source.
 ```
 
-### P9 · Handbook Synthesis (Presiding)
+## P6 · Handbook
 
 ```
-Target role: {{TARGET_ROLE}}
-
-<transcript_source_a>
+<research source="A">
 {{RESEARCH_A}}
-</transcript_source_a>
+</research>
 
-<transcript_source_b>
+<research source="B">
 {{RESEARCH_B}}
-</transcript_source_b>
+</research>
 
-SYSTEM ROLE: Principal Document Architect & Lead Recruiter for this field.
+You are a senior recruiter for {{TARGET_ROLE}} who also writes your team's screening guidelines. Synthesize the two research reports into one authoritative handbook. Merge what overlaps, resolve contradictions (and note how you resolved each), and drop anything you can't support. A downstream assistant will use this handbook as its rulebook for rewriting resumes, so make each rule concrete and testable.
 
-OBJECTIVE
-Synthesise the transcripts: combine, de-duplicate, resolve contradictions, and elevate them into one authoritative document titled:
-"The Unified {{TARGET_ROLE}} Resume Handbook: Standards & Anti-Fraud Screening Guidelines"
-It must work as a context payload / system prompt for any AI assistant rewriting a resume line by line, and read as a clinical, direct, human-authored standards document.
+Title: "The {{TARGET_ROLE}} Resume Handbook"
 
-REQUIRED SECTIONS
-1. The Trust Deficit & the Three Gatekeepers (Recruiter, Hiring Manager, Technical Lead) and how each reads.
-2. Visual Layout & ATS Rules: single column; no charts, progress bars, or design-tool exports; page budget; section order by seniority.
-3. Anti-Pattern Blacklist: at least 3–4 cliché statements for this role, why each fails, and the fix that makes it credible.
-4. Linguistic Guardrails: a blacklist of buzzwords and bloated verbs, and a whitelist of plain, specific verbs.
-5. The 5-Level Bullet System: Task → Technique → Tools → Method → Metric, with a worked before/after.
-6. Quantitative Rigor: the metrics, scale dimensions, and cost factors for this role, with formulas in clean LaTeX.
-7. Self-Audit & Interview-Defence Checklist: the probing questions screeners use to test authenticity.
-8. System Prompt Playbook: a copy-pasteable system prompt binding all rules for a downstream drafting assistant.
+Sections:
+1. The three gatekeepers: how the recruiter, the hiring manager, and the technical lead each read a resume.
+2. Layout and ATS rules: single column, page budget, and section order by seniority.
+3. Cliché blacklist: 3–6 statements that are clichés for this role, why each fails, and a credible rewrite of each.
+4. Language: words to avoid and plain verbs to use instead.
+5. Bullet formula: Task → Technique → Tools → Method → Metric, with one worked before/after example.
+6. Metrics: what to measure for this role, the scale dimensions and costs involved, and their formulas (LaTeX is fine here, since the handbook is not a resume).
+7. Interview defense: the questions screeners use to test whether claims are real.
+8. Drafting system prompt: a copy-ready prompt that applies every rule above.
 
-CONSTRAINT
-Never use these in the handbook itself: {{BANNED_TOKENS}}. Output the handbook as one Markdown document.
+Write the handbook in the same plain, specific voice it prescribes. Output it as one Markdown document.
 ```
 
----
-
-## Stage 6 — Final Compile & Grill (Presiding, same session as the handbook)
-
-### P10 · Panel Compiler
+## P7 · Compile
 
 ```
-SYSTEM ROLE: Consolidated Review Panel: a Senior Recruiter, the Hiring Manager, and a Principal practitioner for {{TARGET_ROLE}}. Compile raw career data into a single-column, production-grade resume that follows the Handbook above.
+<job_description>
+{{JOB_DESCRIPTION}}
+</job_description>
 
-PROCESSING RULES
-1. Internal evaluation loop, run before every bullet:
-   - Pass 1 Defensibility: strip tutorial-level patterns; break abstractions into real system or process components.
-   - Pass 2 Handbook compliance: Task → Technique → Tools → Method → Baseline-anchored Metric.
-   - Pass 3 Lexical scrub: delete banned tokens.
-2. Absolute blacklist (fail and rewrite if any appear): {{BANNED_TOKENS}}.
-3. Every bullet ends in a baseline-anchored metric relevant to the role. Never invent data; use placeholders like [Metric % / Baseline] or [Tool Variant].
-4. Single-column Markdown only. No sidebars, progress bars, or soft-skill blocks.
-5. Inputs: build Projects from this conversation and the current resume below; choose the highest-impact domains yourself; build Experience from the raw details I'll provide.
+<handbook>
+{{HANDBOOK}}
+</handbook>
 
 <current_resume>
-{{COUNCIL_RESUME}}
+{{PANEL_RESUME}}
 </current_resume>
 
-Do not draft yet. Confirm you will follow the loop, blacklist, and data mapping. Then ask me for exactly two things:
-1. Target seniority level.
-2. Raw, unedited work-experience details: roles, responsibilities, outcomes.
-Ask follow-up questions about my companies and responsibilities if needed. Once I answer, output <resume-v1>; label later revisions v2, v3, and so on.
+{{HOUSE_RULES}}
+
+Acting as a hiring panel for a {{SENIORITY}} {{TARGET_ROLE}} (a senior recruiter, the hiring manager, and a principal practitioner), compile a final resume that follows the handbook and the house rules.
+
+Check every bullet three ways before you keep it:
+1. Defensible: it describes real components, decisions, and trade-offs rather than tutorial-level patterns.
+2. Handbook-compliant: it follows the bullet formula and ends with a metric anchored to a baseline, or with a placeholder.
+3. Clean: it uses no avoided words.
+
+Sources: start from the current resume. Choose the technical areas to emphasize yourself.
+
+Before drafting, ask me for any raw work-history details that the current resume leaves out (responsibilities, outcomes, numbers), along with specific follow-up questions about my companies and roles. Then output the resume as `resume-v1`, and number later revisions v2, v3, and so on.
 ```
 
-> **Tell the user:** the richer the reply, the better the output. Dictating with voice-to-text is faster than typing. If the experience is already in the resume, say so. Answer the follow-up questions accurately.
+> **Tell the user:** a fuller answer gives a better result. Dictating is faster than typing. If the details are already in the resume, just say so, and answer the follow-up questions precisely.
 
-### P11 · Surgical Evaluation & Grill List
+## P8 · Final Review
+
+Run this in Seat B or C, not the presiding seat, because models rate their own writing more highly.
 
 ```
+<handbook>
+{{HANDBOOK}}
+</handbook>
+
+<job_description>
+{{JOB_DESCRIPTION}}
+</job_description>
+
 <resume_under_review>
 {{RESUME_V1}}
 </resume_under_review>
 
-SYSTEM ROLE: Senior Director, Hiring Manager, and Expert Lead for {{TARGET_ROLE}}.
+You are a hiring director and the senior technical lead for {{TARGET_ROLE}}. Review this resume against the handbook as if the candidate will have to defend every line in a live interview. Be precise and direct. Flag any metric that has no baseline.
 
-Review this resume against the Handbook above. Be brutally honest and precise. Do not validate unanchored metrics. Treat the candidate as someone who must defend every word under pressure.
-
-1. Verdict & Gatekeeper Scores (0.0–10.0 each): ATS parseability & keyword indexing; recruiter readability (6-second scan, density); hiring-manager business-value fit (impact, scale, cost ownership); technical-lead interrogation (reproducibility, trade-offs, rigour).
-2. AI-Generation & Inflation Assessment: phrases that read as unedited AI output or exaggeration; metrics with no baseline; descriptions too vague to believe.
-3. Red Flags & Gaps: omissions that cause a quiet rejection at the technical screen; listing AI assistants as primary skills; title inflation.
-4. Line-by-Line Flaw-Finder: for every bullet, fix spacing/date-dash inconsistencies, apply the 5-Level Bullet System (1.5–2 lines), weave tools into context instead of skill-dumping, and format metrics in clean LaTeX where quantitative.
-5. The Grill List: 3–5 aggressive questions a senior interviewer would ask about these claims, the trap in each, and how to defend it.
-6. Final Resume: the fully rewritten resume in one Markdown code block, ready for export to Word, Google Docs, or LaTeX.
+1. Scores from 0.0 to 10.0, with one line of justification each: ATS parseability and keyword coverage; quick-scan recruiter readability; hiring-manager business value (impact, scale, cost ownership); technical-lead scrutiny (reproducibility, trade-offs, rigor).
+2. Credibility: lines that read as unedited AI output or inflation, metrics with no baseline, and claims too vague to believe.
+3. Red flags: omissions that would lead to a quiet rejection at the technical screen, AI assistants listed as core skills, and inflated titles.
+4. Line-by-line edits: for each bullet, give the issue and a rewrite that follows the handbook's bullet formula. Keep metrics in plain text.
+5. Interview stress test: 3–5 hard questions a senior interviewer would ask about these claims. For each, explain what the question is really probing and how to answer it well.
+6. The final resume, in one Markdown code block, ready to export to Word, Google Docs, or LaTeX.
 ```
