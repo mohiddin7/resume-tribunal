@@ -4,11 +4,11 @@
 
 > Think of it as a manual "model council" for your resume: three independent seats, blind cross-audits, and one presiding judge.
 
-## Why
+## Why it works
 
-- **One model grading its own draft is biased.** Each AI has a house style and tends to prefer its own phrasing.
-- **AI-written resumes are easy to spot.** Recruiters filter on phrasing like "spearheaded", "leveraged", and "cutting-edge".
-- **Blind review fixes both.** Drafts are anonymised and shuffled, and each auditor sees only the text, so the strongest line wins on merit.
+- **Language models favor their own writing.** A 2025 hiring study tested 2,245 resumes. Models preferred resumes they had rewritten themselves **68–88%** of the time. Candidates whose resume came from the same model as the screener were shortlisted **23–60% more often** ([Laurito et al.](https://arxiv.org/abs/2509.00462)). One model drafting and grading your resume inherits that bias.
+- **AI-written text is caught by people, not software.** No major ATS detects AI authorship. Recruiters reject *unedited* AI text: generic openings, metrics with no baseline, and words like "leveraged" and "spearheaded".
+- **The tribunal handles both.** Drafts are anonymized and shuffled, every audit is blind, the final review goes to a different seat than the one that compiled the resume, and a script checks the mechanical rules.
 
 ## What you get
 
@@ -18,7 +18,8 @@
 - AI-footprint and buzzword detection with a banned-token list
 - Line-length rules (no 3-line bullets, no hanging words)
 - A role-specific **Resume Handbook** built from deep research
-- An **interview grill list** with the questions a senior interviewer will use to test your claims
+- An **interview stress test** (a "grill list") with the questions a senior interviewer will use to test your claims
+- `check_resume.py`, a dependency-free linter for banned words, bullet length, short second lines, repeated verbs, and placeholders you haven't filled in
 
 ## Install
 
@@ -57,15 +58,23 @@ It will collect your job description and resume, then walk you through each stag
 | 3. Merge | The presiding seat merges the three drafts and three audits |
 | 4. Council review | All seats audit the merged resume; the presiding seat builds a consensus checklist and refactors |
 | 5. Role handbook | Deep research on what credible resumes look like for your role |
-| 6. Final compile and grill | Handbook-compliant final resume plus interview stress questions |
+| 6. Compile and final review | The presiding seat compiles a resume that follows the handbook; a *different* seat reviews it and writes the interview stress test |
 
 ## Files
 
 ```
 resume-tribunal/
-├── SKILL.md              # agent instructions and the blind-seat protocol
-└── references/
-    └── prompts.md        # all 11 prompt templates
+├── SKILL.md                # agent instructions and the blind-seat protocol
+├── references/
+│   └── prompts.md          # 8 prompt templates plus the shared house rules
+└── scripts/
+    └── check_resume.py     # resume linter (Python 3, standard library only)
+```
+
+Lint any Markdown resume yourself:
+
+```bash
+python3 scripts/check_resume.py my-resume.md --line-chars 105
 ```
 
 ## License
