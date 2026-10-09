@@ -5,11 +5,12 @@ Usage:
   python3 seats.py detect [--exclude VENDOR]         # list usable seats as JSON
   python3 seats.py run SEAT prompt.txt reply.md      # send one prompt, save the reply
   python3 seats.py run --cmd "mytool --print" prompt.txt reply.md   # any other tool that reads stdin
+  python3 seats.py run --cmd "mytool -p {prompt}" prompt.txt reply.md # or takes the prompt as an argument
 
 Each seat runs with the user's existing login for that tool. This script sends the prompt
 file to that tool and nothing else: no API keys, no other network calls. Standard library only.
-Only the first entry below has been tested by the maintainers; the others follow each tool's
-documented non-interactive mode. If one fails, pass --cmd or fall back to manual mode.
+Tested by the maintainers: codex. The others follow each tool's documented non-interactive
+mode. If one fails, pass --cmd or fall back to manual mode.
 """
 import argparse
 import json
@@ -19,12 +20,14 @@ import subprocess
 import sys
 import tempfile
 
-# name: (vendor, command that reads the prompt on stdin and prints the reply)
+# name: (vendor, command). The prompt goes in on stdin, or in place of {prompt} when present.
+# Earlier entries win when one company has two tools installed.
 SEATS = {
     "claude": ("anthropic", ["claude", "-p"]),
     "codex": ("openai", ["codex", "exec", "--skip-git-repo-check", "-"]),
-    # -p text is appended after stdin; plan mode keeps the seat read-only.
-    "gemini": ("google", ["gemini", "--approval-mode", "plan", "-p", "Reply to the material above."]),
+    "agy": ("google", ["agy", "--print-timeout", "10m", "-p", "{prompt}"]),
+    # Gemini CLI now needs a paid API key; personal Google logins moved to agy.
+    "gemini": ("google", ["gemini", "--skip-trust", "--approval-mode", "plan", "-p", "{prompt}"]),
 }
 
 
@@ -45,9 +48,11 @@ def run(cmd, prompt_path, reply_path, timeout):
     open(reply_path, "a", encoding="utf-8").close()
     # These tools are agents that can read files. Run each one in an empty folder so it
     # cannot see the other drafts, the label log or anything else in the project.
+    stdin = None if "{prompt}" in cmd else prompt
+    cmd = [prompt if part == "{prompt}" else part for part in cmd]
     with tempfile.TemporaryDirectory() as empty:
         try:
-            r = subprocess.run(cmd, input=prompt, capture_output=True, text=True, encoding="utf-8",
+            r = subprocess.run(cmd, input=stdin, capture_output=True, text=True, encoding="utf-8",
                                timeout=timeout, cwd=empty)
         except (OSError, subprocess.TimeoutExpired) as e:
             sys.exit(f"seat failed: {e}")

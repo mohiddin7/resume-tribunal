@@ -156,4 +156,4 @@ The checker flags these. Use this list to check by hand when you cannot run code
 - A seat that is much weaker than the others lowers the merge. Ask for comparable assistants.
 - With two seats, P2 has one draft and P3 has two. Drop the "which draft is better" line from P2.
 - Keep the full council to one draft round, one critique round and one merge. Extra rounds cost more and flatten the wording.
-- `scripts/seats.py` has been tested with the `codex` tool. The `claude` and `gemini` entries follow each tool's documented non-interactive mode and may need `--cmd`.
+- `scripts/seats.py` has been tested with the `codex` tool. The `claude`, `agy` and `gemini` entries follow each tool's documented non-interactive mode and may need `--cmd`. Each tool needs one interactive login first.
