@@ -17,11 +17,12 @@ import shlex
 import shutil
 import subprocess
 import sys
+import tempfile
 
 # name: (vendor, command that reads the prompt on stdin and prints the reply)
 SEATS = {
     "claude": ("anthropic", ["claude", "-p"]),
-    "codex": ("openai", ["codex", "exec", "-"]),
+    "codex": ("openai", ["codex", "exec", "--skip-git-repo-check", "-"]),
     "gemini": ("google", ["gemini", "-p", ""]),
 }
 
@@ -39,10 +40,16 @@ def detect(exclude):
 def run(cmd, prompt_path, reply_path, timeout):
     with open(prompt_path, encoding="utf-8") as f:
         prompt = f.read()
-    try:
-        r = subprocess.run(cmd, input=prompt, capture_output=True, text=True, timeout=timeout)
-    except (OSError, subprocess.TimeoutExpired) as e:
-        sys.exit(f"seat failed: {e}")
+    # Fail early if the reply cannot be saved, before the seat is called.
+    open(reply_path, "a", encoding="utf-8").close()
+    # These tools are agents that can read files. Run each one in an empty folder so it
+    # cannot see the other drafts, the label log or anything else in the project.
+    with tempfile.TemporaryDirectory() as empty:
+        try:
+            r = subprocess.run(cmd, input=prompt, capture_output=True, text=True, encoding="utf-8",
+                               timeout=timeout, cwd=empty)
+        except (OSError, subprocess.TimeoutExpired) as e:
+            sys.exit(f"seat failed: {e}")
     if r.returncode != 0 or not r.stdout.strip():
         sys.exit(f"seat failed (exit {r.returncode}): {r.stderr.strip()[:500] or 'empty reply'}")
     with open(reply_path, "w", encoding="utf-8") as f:
@@ -54,7 +61,8 @@ def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="action", required=True)
     d = sub.add_parser("detect")
-    d.add_argument("--exclude", action="append", default=[], help="the host's own vendor: anthropic, openai or google")
+    d.add_argument("--exclude", action="append", default=[], type=str.lower,
+                   choices=sorted({v for v, _ in SEATS.values()}), help="the host's own vendor")
     r = sub.add_parser("run")
     r.add_argument("seat", nargs="?", choices=sorted(SEATS))
     r.add_argument("--cmd", help="custom command that reads the prompt on stdin")
