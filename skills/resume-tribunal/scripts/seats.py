@@ -5,7 +5,7 @@ Usage:
   python3 seats.py detect [--exclude VENDOR]         # list usable seats as JSON
   python3 seats.py run SEAT prompt.txt reply.md      # send one prompt, save the reply
   python3 seats.py run --cmd "mytool --print" prompt.txt reply.md   # any other tool that reads stdin
-  python3 seats.py run --cmd "mytool -p {prompt}" prompt.txt reply.md # or takes the prompt as an argument
+  python3 seats.py run --cmd "mytool -p 'Read {prompt_file}'" prompt.txt reply.md  # or reads a file
 
 Each seat runs with the user's existing login for that tool. This script sends the prompt
 file to that tool and nothing else: no API keys, no other network calls. Standard library only.
@@ -14,20 +14,25 @@ mode. If one fails, pass --cmd or fall back to manual mode.
 """
 import argparse
 import json
+import os
 import shlex
 import shutil
 import subprocess
 import sys
 import tempfile
 
-# name: (vendor, command). The prompt goes in on stdin, or in place of {prompt} when present.
+# name: (vendor, command). Every seat runs read-only with its tools off or sandboxed, because
+# the prompt carries text from outside (a job posting) that could contain instructions.
+# The prompt goes in on stdin, or as a private file in the seat's folder where {prompt_file}
+# appears. It never goes on the command line, where other local users could see it.
 # Earlier entries win when one company has two tools installed.
 SEATS = {
-    "claude": ("anthropic", ["claude", "-p"]),
-    "codex": ("openai", ["codex", "exec", "--skip-git-repo-check", "-"]),
-    "agy": ("google", ["agy", "--print-timeout", "10m", "-p", "{prompt}"]),
-    # Gemini CLI now needs a paid API key; personal Google logins moved to agy.
-    "gemini": ("google", ["gemini", "--skip-trust", "--approval-mode", "plan", "-p", "{prompt}"]),
+    "claude": ("anthropic", ["claude", "-p", "--tools", "", "--no-session-persistence"]),
+    "codex": ("openai", ["codex", "exec", "--sandbox", "read-only", "--ephemeral", "--skip-git-repo-check", "-"]),
+    "agy": ("google", ["agy", "--sandbox", "--mode", "plan", "--print-timeout", "10m",
+                       "-p", "Read the file {prompt_file} in this folder and reply to it exactly as it asks."]),
+    # Gemini CLI now needs a paid API key; personal Google logins moved to agy. -p is appended to stdin.
+    "gemini": ("google", ["gemini", "--skip-trust", "--approval-mode", "plan", "-p", "Reply to the material above."]),
 }
 
 
@@ -48,9 +53,14 @@ def run(cmd, prompt_path, reply_path, timeout):
     open(reply_path, "a", encoding="utf-8").close()
     # These tools are agents that can read files. Run each one in an empty folder so it
     # cannot see the other drafts, the label log or anything else in the project.
-    stdin = None if "{prompt}" in cmd else prompt
-    cmd = [prompt if part == "{prompt}" else part for part in cmd]
-    with tempfile.TemporaryDirectory() as empty:
+    uses_file = any("{prompt_file}" in part for part in cmd)
+    with tempfile.TemporaryDirectory() as empty:  # created readable by this user only
+        if uses_file:
+            fd = os.open(os.path.join(empty, "prompt.md"), os.O_WRONLY | os.O_CREAT, 0o600)
+            with os.fdopen(fd, "w", encoding="utf-8") as f:
+                f.write(prompt)
+        cmd = [part.replace("{prompt_file}", "prompt.md") for part in cmd]
+        stdin = None if uses_file else prompt
         try:
             r = subprocess.run(cmd, input=stdin, capture_output=True, text=True, encoding="utf-8",
                                timeout=timeout, cwd=empty)

@@ -40,7 +40,7 @@ Ask once, in one short message.
 
 **Protect their data and get consent before anything leaves this conversation:**
 - Replace the name, email, phone, street address and links with stand-ins such as `<<NAME>>`, along with the names of referees, colleagues and clients wherever they appear, including in their own words. Tell the user: "I've hidden your name and contact details. They come back at the end."
-- Show what will be sent and say where it goes: "This text, including your employers and job history, will go to [the two tools or apps, named where you know them] under their own terms and your account settings there. It can still identify you. Leave out anything confidential to an employer. Check whether this employer allows AI help with applications. Shall I go ahead?"
+- Show what will be sent and say where it goes: "This text, including your employers and job history, will go to [the two tools or apps, named where you know them] under their own terms and your account settings there, and some of those tools keep their own history. It can still identify you. Leave out anything confidential to an employer. Check whether this employer allows AI help with applications. Shall I go ahead?"
 - Wait for a yes. Ask again if a seat changes.
 
 If you have file access, keep the work in a `tribunal/` folder (`job.md`, `candidate.md`, `own_words.md`, drafts, critiques, `resume.md`, `log.md`). Tell the user where it is, and offer to delete it at the end.
@@ -101,7 +101,7 @@ Run P3 in a clean context (a subagent or new session) when you can, with the dra
 | Critique (P2) | One council call | Same command | One card per seat |
 | Review (P4) | One model that is not you | Same command | One card |
 
-The script runs each tool in an empty folder, so a seat cannot read the other drafts or the log.
+The script runs each tool read-only in an empty folder, so a seat cannot read the other drafts or the log, or act on instructions hidden in a job posting.
 
 **Choosing apps (manual mode).** When the user needs to pick, list these in alphabetical order, leaving out your own maker's: ChatGPT, Claude, Copilot, DeepSeek, Gemini, Grok, Le Chat, Perplexity. Then say: "Any of these works for this, and none is preferred, including me. Pick ones from different companies than me and from each other, and use their strongest model if you have the choice."
 
