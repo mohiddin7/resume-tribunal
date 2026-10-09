@@ -18,6 +18,7 @@ Limits: this checks the Markdown text only. It cannot see formatting added later
 processor, and a pass is not proof that every claim is true. The user's sign-off still matters.
 """
 import argparse
+import datetime
 import json
 import re
 import statistics
@@ -53,6 +54,7 @@ ING_TAIL_RE = re.compile(
     re.IGNORECASE,
 )
 VAGUE_RE = re.compile(r"\b(various|numerous|significant(?:ly)?|substantial(?:ly)?)\b", re.IGNORECASE)
+TEMPLATE_RE = re.compile(r"\bby \d[\d,.]*\s?%.*\bby\b", re.IGNORECASE)  # "cut X by 20% by doing Y"
 TRIPLET_RE = re.compile(r"\b[\w-]+, [\w-]+,? and [\w-]+\b")
 BOLD_LEAD_RE = re.compile(r"^\s*[-*•]\s+\*\*[^*\n]{1,40}(?::\*\*|\*\*:)")
 ABBREV_RE = re.compile(r"\b(Sr|Jr|Mgr|Eng|Dir|Assoc|Asst|Exec)\.")
@@ -161,6 +163,17 @@ def check(md, line_chars=105, source=None, final=False, vocab=""):
         add(0, "error", "mixed-date-separators", f"use one style: found {sorted(separators)}")
     if triplets >= 3:
         add(0, "warn", "lists-of-three", f"{triplets} three-item lists; vary them")
+    templated = [n for n, text in bullets if TEMPLATE_RE.search(text)]
+    if len(templated) >= 3:
+        add(0, "warn", "template-bullets", f"{len(templated)} bullets follow 'by X% by doing Y'; vary the shape")
+    if vocab:
+        # Six or more words in a row copied from the job description read as pasted.
+        jd = " ".join(re.findall(r"[a-z0-9+#]+", vocab.lower())).split()
+        shingles = {" ".join(jd[i:i + 6]) for i in range(len(jd) - 5)}
+        for n, text in bullets + prose:
+            w = re.findall(r"[a-z0-9+#]+", text.lower())
+            if any(" ".join(w[i:i + 6]) in shingles for i in range(len(w) - 5)):
+                add(n, "warn", "copied-from-job-description", "six or more words match the posting; reword in the candidate's terms")
     if len(bullets) >= 6:
         lengths = [len(t) for _, t in bullets]
         if statistics.pstdev(lengths) / statistics.mean(lengths) < 0.15:
@@ -170,11 +183,18 @@ def check(md, line_chars=105, source=None, final=False, vocab=""):
 
     if source is not None:
         src_numbers, known = numbers(source), words(source) | words(vocab)
+        # Years of experience worked out from the dates in the source are allowed.
+        this_year = datetime.date.today().year
+        src_numbers |= {str(this_year - int(y) + d) for y in re.findall(r"\b(?:19|20)\d{2}\b", source)
+                        for d in (-1, 0) if 0 < this_year - int(y) + d < 60}
+        stems = {w[:7] for w in known}
         for n, text in bullets + prose:
             for num in sorted(numbers(PLACEHOLDER_RE.sub("", text)) - src_numbers):
                 add(n, "error", "number-not-in-source", f"{num} does not appear in the user's own text")
             # Longer words only: short connectives and plain verbs are not what drifts.
-            new = sorted(w for w in words(text) - known if len(w) >= 9 and n not in headings)
+            # Compare on the first seven letters, so "recommended" matches "recommendation".
+            new = sorted(w for w in words(text) - known
+                         if len(w) >= 9 and n not in headings and n > 3 and w[:7] not in stems)
             if new:
                 add(n, "warn", "words-not-in-source", "words the user never used: " + ", ".join(new))
     return out
@@ -199,8 +219,15 @@ def self_test():
     assert kinds("See [LinkedIn](https://x.com)") == set()
     assert kinds("- Cut returns by 40%", source="I cut returns by 12 percent") == {"number-not-in-source"}
     assert kinds("- Cut returns by 12%", source="I cut returns by 12 percent") == set()
-    assert "words-not-in-source" in kinds("- Architected a lakehouse", source="I built a database")
+    assert "words-not-in-source" in kinds("x\ny\nz\n- Architected a lakehouse", source="I built a database")
     assert kinds("- Traced those returns after analysis", source="returns") == set()
+    assert kinds("x\ny\nz\n- Recommended the change", source="it was my recommendation") == set()
+    years = datetime.date.today().year - 2019
+    assert kinds(f"## Summary\nData analyst with {years} years in analytics.", source="Analyst, Jun 2019") == set()
+    jd = "You will partner with the Risk team on rule changes and present findings to executives."
+    assert kinds("- Partner with the Risk team on rule changes weekly", vocab=jd) == {"copied-from-job-description"}
+    assert kinds("- Worked with Risk on two rule changes", vocab=jd) == set()
+    assert "template-bullets" in kinds("\n".join(f"- Cut cost {i} by 2{i}% by automating step {i}" for i in range(3)))
     # Number formats and punctuation must not cause false alarms.
     src = "around 3000 disputes a month, took two days. Worked Jan 2021, then left. Every day."
     assert kinds("- Around 3,000 disputes in 2 days in 2021, every day.", source=src) == set()
