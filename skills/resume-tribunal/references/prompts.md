@@ -14,7 +14,7 @@ Every prompt is complete on its own, so a seat needs nothing but the prompt. Mat
 
 ## Shared blocks
 
-**`{{TARGET}}`** is one line built at setup: `Target: Senior Data Analyst, senior level, United States`.
+**`{{TARGET}}`** is one line built at setup: `Target: Senior Data Analyst, senior level, United States. Today is 9 October 2026.`
 
 **`{{CANDIDATE}}`** is everything the user gave at setup, with personal details already replaced by stand-ins:
 
@@ -34,9 +34,9 @@ Every prompt is complete on its own, so a seat needs nothing but the prompt. Mat
 ```
 <rules>
 1. Facts. Every employer, job title, date, degree, certification, tool, number and scope claim must come from the candidate's material. Where the candidate gave no number, write the line without one and add the question to "Open questions". Keep claims at their true size: "contributed to" stays "contributed to", a team result stays a team result, and numbers stay unrounded. Say what the candidate personally did.
-2. Voice. Keep the candidate's own nouns, tools and specifics from <own_words>. Write in resume style: start each bullet with a plain past-tense verb, leave out "I" and "we", and drop filler such as "basically" or "helped with". Use commas and full stops for punctuation.
+2. Voice. Keep the candidate's own nouns, tools and specifics from <own_words>. Write in resume style: start each bullet with a plain verb, in the present tense for the current role and the past tense for earlier ones, leave out "I" and "we", and drop filler such as "basically" or "helped with". Use commas and full stops for punctuation.
 3. Bullets. One sentence each, two lines at most, with the result or most important fact first. Let lengths vary. Give a number where the candidate has one, and leave the other bullets as plain statements. Give recent roles more bullets than old ones.
-4. Coverage. Use the job description's exact names for skills, tools, certifications and the role wherever they are true of the candidate. Show each must-have requirement in the most recent role where it applies and again in Skills. Write everything else in the candidate's words.
+4. Coverage. Use the job description's exact names for skills, tools, certifications and the role wherever they are true of the candidate. Show each requirement the job description marks as required in the most recent role where it applies and again in Skills. Write everything else in the candidate's words.
 5. Layout. One column, standard headings, job titles written in full, and one date style throughout (for example "Jan 2021 - Present"). One page for under about ten years of experience, two at most. Put Skills near the top for technical roles and Education first for new graduates. Show promotions as separate titles under one employer. No spelling or grammar errors.
 6. Summary. Optional. If used, two lines giving the candidate's current function, years of experience and field. Use only job titles the candidate has held.
 7. Follow the conventions of the target country for length and personal details.
@@ -51,6 +51,8 @@ Every prompt is complete on its own, so a seat needs nothing but the prompt. Mat
 <layout>
 # <<NAME>>
 contact line, using only the details given
+
+(section order follows rule 5)
 
 ## Summary (optional)
 
@@ -259,5 +261,5 @@ Rewrite the flagged resume lines below.
 {{FLAGGED_LINES_WITH_REASONS}}
 </flagged_lines>
 
-Using the material above, rewrite each flagged line so the flagged pattern is gone. Use the candidate's own nouns and specifics. Keep the resume style: a plain past-tense verb first, the result or main fact first, no "I" or "we". Keep every fact, number and name exactly as it is, and keep any job-description term that is true of the candidate. Return each original line followed by its replacement, and leave all other lines untouched.
+Using the material above, rewrite each flagged line so the flagged pattern is gone. Use the candidate's own nouns and specifics. Keep the resume style: a plain verb first, the result or main fact first, no "I" or "we". Keep every fact, number and name exactly as it is, and keep any job-description term that is true of the candidate. Return each original line followed by its replacement, and leave all other lines untouched.
 ```

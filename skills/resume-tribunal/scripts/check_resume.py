@@ -146,7 +146,8 @@ def check(md, line_chars=105, source=None, final=False, vocab=""):
         for n, text in bullets:
             for num in sorted(numbers(PLACEHOLDER_RE.sub("", text)) - src_numbers):
                 add(n, "error", "number-not-in-source", f"{num} does not appear in the user's own text")
-            new = sorted(words(text) - known)
+            # Longer words only: short connectives and plain verbs are not what drifts.
+            new = sorted(w for w in words(text) - known if len(w) >= 9)
             if new:
                 add(n, "warn", "words-not-in-source", "words the user never used: " + ", ".join(new))
     return out
@@ -172,6 +173,7 @@ def self_test():
     assert kinds("- Cut returns by 40%", source="I cut returns by 12 percent") == {"number-not-in-source"}
     assert kinds("- Cut returns by 12%", source="I cut returns by 12 percent") == set()
     assert "words-not-in-source" in kinds("- Architected a lakehouse", source="I built a database")
+    assert kinds("- Traced those returns after analysis", source="returns") == set()
     # Number formats and punctuation must not cause false alarms.
     src = "around 3000 disputes a month, took two days. Worked Jan 2021, then left. Every day."
     assert kinds("- Around 3,000 disputes in 2 days in 2021, every day.", source=src) == set()
