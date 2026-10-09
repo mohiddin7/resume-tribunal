@@ -1,86 +1,97 @@
-# Resume Tribunal: a blind multi-AI resume council skill
+# Resume Tribunal
 
-**Resume Tribunal** is an open [Agent Skill](https://agentskills.io) (`SKILL.md`) that tailors, audits, and rewrites your resume or CV for a specific job description. Three independent AI assistants each draft and cross-examine the resume **blind**, and your main assistant judges and merges the results. You get a de-biased, ATS-ready resume that doesn't read as AI-written.
+**A free, open skill that has three different AI assistants draft your tailored resume independently, critique each other blind, and hand you one merged resume in your own voice, plus the interview questions it will invite.** No app, no API keys, no account.
 
-> Think of it as a manual "model council" for your resume: three independent seats, blind cross-audits, and one presiding judge.
+Resume Tribunal is an [Agent Skill](https://agentskills.io) (`SKILL.md`). Install it on the AI assistant you already use and say "tailor my resume to this job".
 
-## Why it works
+## What it does
 
-- **Language models favor their own writing.** A 2025 hiring study tested 2,245 resumes. Models preferred resumes they had rewritten themselves **68–88%** of the time. Candidates whose resume came from the same model as the screener were shortlisted **23–60% more often** ([Laurito et al.](https://arxiv.org/abs/2509.00462)). One model drafting and grading your resume inherits that bias.
-- **AI-written text is caught by people, not software.** No major ATS detects AI authorship. Recruiters reject *unedited* AI text: generic openings, metrics with no baseline, and words like "leveraged" and "spearheaded".
-- **The tribunal handles both.** Drafts are anonymized and shuffled, every audit is blind, the final review goes to a different seat than the one that compiled the resume, and a script checks the mechanical rules.
+1. **Setup.** You give the job description, your resume, and a few plain sentences about what you did in your recent roles. You answer every question here, once.
+2. **Drafts.** Three assistants from three different companies each write a resume from your material.
+3. **Blind critique.** Each assistant reviews the drafts it did not write, without knowing who wrote them. Every criticism has to quote the line it is about.
+4. **Merge.** Your main assistant takes the strongest draft and brings in the best lines from the others.
+5. **Review and voice.** A different assistant reviews the result, a script checks it for common AI-writing patterns, and the text is edited back toward your own wording. You confirm every claim is true.
 
-## What you get
+You get a Markdown resume, a list of anything you still need to fill in, and three to five questions an interviewer is likely to ask about your claims.
 
-- A tailored Markdown resume (exports to Word, Google Docs, PDF, or LaTeX)
-- Decoded "unwritten demands" from the job description
-- Adversarial ATS scoring and rejection triggers
-- AI-footprint and buzzword detection with a banned-token list
-- Line-length rules (no 3-line bullets, no hanging words)
-- A role-specific **Resume Handbook** built from deep research
-- An **interview stress test** (a "grill list") with the questions a senior interviewer will use to test your claims
-- `check_resume.py`, a dependency-free linter for banned words, bullet length, short second lines, repeated verbs, and placeholders you haven't filled in
+## Why three assistants
+
+A language model tends to be lenient toward its own writing. In a 2025 study of resume screening, models preferred resumes they had rewritten over human-written ones 67–82% of the time ([Xu, Li and Jiang](https://arxiv.org/abs/2509.00462)). So in this skill no draft is reviewed by the assistant that wrote it.
+
+**What this does not prove:** no study shows that a multi-AI council writes a better resume than one strong assistant. The process gives you independent review and a resume you can defend line by line. It does not guarantee interviews.
+
+## How much work is it for you
+
+The skill uses the least manual route available:
+
+| Where you run it | What happens |
+|---|---|
+| A platform that can run one prompt across several companies' models | The drafts and critiques run automatically |
+| A terminal with other AI command-line tools installed | The skill runs them for you with your existing logins |
+| Anything else | The skill gives you ready-made prompts to paste into two other assistants |
+
+It asks before sending your resume anywhere.
 
 ## Install
 
-The skill follows the open Agent Skills standard, so it works in any agent that reads `SKILL.md`.
-
-**Any supported agent (Claude Code, Codex, Gemini CLI, Cursor, GitHub Copilot, OpenCode, and others):**
+**Most coding agents** (Claude Code, Codex, Gemini CLI, Cursor, GitHub Copilot, OpenCode and others):
 
 ```bash
 npx skills add mohiddin7/resume-tribunal
 ```
 
-**Manual install:** copy the `resume-tribunal/` folder into one of these directories:
+**GitHub CLI:**
 
-| Agent | Path |
+```bash
+gh skill install mohiddin7/resume-tribunal
+```
+
+**By hand:** copy `skills/resume-tribunal/` into `~/.claude/skills/` (Claude Code) or `~/.agents/skills/` (most other agents).
+
+**Chat apps that accept skill uploads:** download `resume-tribunal.zip` from the latest release and upload it in the app's skills settings.
+
+## Private chats for the other two assistants
+
+The critique is only blind if the other assistants start with no memory of you. Checked October 2026; menus change.
+
+| App | Use |
 |---|---|
-| Claude Code | `~/.claude/skills/resume-tribunal/` |
-| Codex CLI, Gemini CLI, Copilot CLI (shared path) | `~/.agents/skills/resume-tribunal/` |
-| Project-local (any agent) | `.agents/skills/resume-tribunal/` |
+| ChatGPT | Temporary Chat |
+| Claude | Incognito chat |
+| Gemini | Temporary chat |
+| Perplexity | Incognito |
 
-**Claude.ai / Claude Desktop:** zip the folder and upload it under *Settings → Capabilities → Skills*.
+Keep these chats outside any project or shared workspace, and copy each reply before you close the chat.
 
-**Chat apps without skill support** (custom GPTs, Gems, Projects, Spaces): paste `SKILL.md` into the instructions field and upload `references/prompts.md` as a knowledge file.
+## The checker
 
-## Use
+`scripts/check_resume.py` reads the files you name, writes nothing, and makes no network calls. It needs only Python 3.
 
-Ask your assistant something like:
+```bash
+python3 skills/resume-tribunal/scripts/check_resume.py resume.md --source my-own-notes.md
+```
 
-> "Tailor my resume to this job description with Resume Tribunal."
+It flags em dashes, "not X but Y" phrasing, trailing "-ing" clauses, repeated three-item lists, bullets that all look alike, stock openers, hidden text, mixed date styles, numbers that do not appear in your own material, and words you never used.
 
-It will collect your job description and resume, then walk you through each stage. The assistant you installed the skill on presides. It gives you copy-ready prompts to paste into two other independent AI assistants (Seats B and C), and you paste their replies back. If you only have one or zero other assistants, it runs in two-seat or solo mode.
+## Please read
 
-| Stage | What happens |
-|---|---|
-| 1. Independent drafts | Each seat decodes the JD, screens the resume adversarially, and drafts its own version |
-| 2. Blind cross-audit | Each seat audits another seat's draft without knowing who wrote it |
-| 3. Merge | The presiding seat merges the three drafts and three audits |
-| 4. Council review | All seats audit the merged resume; the presiding seat builds a consensus checklist and refactors |
-| 5. Role handbook | Deep research on what credible resumes look like for your role |
-| 6. Compile and final review | The presiding seat compiles a resume that follows the handbook; a *different* seat reviews it and writes the interview stress test |
+- You are responsible for everything you submit. Check each employer's policy on AI use in applications.
+- This project runs no server and never receives your resume. The assistants you choose do, under their own terms. Remove personal identifiers and confidential employer figures, and turn off model training in each app.
+- No tool can promise interviews, an ATS outcome, or how a reader or an AI detector will judge your text.
+- The skill will not invent facts, add hidden text, or help with assessments or live interviews.
+- This is general information, not career or legal advice.
 
 ## Files
 
 ```
-resume-tribunal/
-├── SKILL.md                # agent instructions and the blind-seat protocol
-├── references/
-│   └── prompts.md          # 8 prompt templates plus the shared house rules
+skills/resume-tribunal/
+├── SKILL.md                 # instructions for the assistant
+├── references/prompts.md    # seven prompts
 └── scripts/
-    └── check_resume.py     # resume linter (Python 3, standard library only)
-```
-
-Lint any Markdown resume yourself:
-
-```bash
-python3 scripts/check_resume.py my-resume.md --line-chars 105
+    ├── check_resume.py      # resume checker
+    └── seats.py             # finds and runs other AI command-line tools
 ```
 
 ## License
 
 MIT
-
----
-
-*Keywords: AI resume skill, multi-model resume review, model council resume, ATS resume optimizer, CV tailoring, job description analysis, anti-AI-detection resume, resume handbook, interview preparation, Agent Skills, SKILL.md, Claude skill, Codex skill, Gemini CLI skill.*
