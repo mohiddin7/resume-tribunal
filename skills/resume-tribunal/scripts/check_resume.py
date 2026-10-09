@@ -57,6 +57,8 @@ TRIPLET_RE = re.compile(r"\b[\w-]+, [\w-]+,? and [\w-]+\b")
 BOLD_LEAD_RE = re.compile(r"^\s*[-*•]\s+\*\*[^*\n]{1,40}(?::\*\*|\*\*:)")
 ABBREV_RE = re.compile(r"\b(Sr|Jr|Mgr|Eng|Dir|Assoc|Asst|Exec)\.")
 HTML_RE = re.compile(r"(?<!<)<(?!<)[A-Za-z/!][^>]*>?|-->")  # any HTML; a Markdown resume needs none
+# Links must show their text and point to a web or mail address; images are not allowed.
+BAD_LINK_RE = re.compile(r"!\[|\[\s*\]\(|\]\((?!\s*(?:https?://|mailto:)[^\s)]+\s*\))")
 PHONE_RE = re.compile(r"\+?\d[\d\s().-]{6,}\d")
 
 
@@ -112,6 +114,8 @@ def check(md, line_chars=105, source=None, final=False, vocab=""):
             m = rx.search(raw)
             if m:
                 add(n, "error", "hidden-or-injected-text", f'"{m.group(0)}"')
+        if BAD_LINK_RE.search(raw):
+            add(n, "error", "hidden-or-injected-text", "link with no visible text, an image, or a target that is not a plain web address")
         m = HTML_RE.search(raw)
         if m:
             add(n, "error", "hidden-or-injected-text", f'HTML is not allowed in the resume: "{m.group(0)[:40]}"')
@@ -146,7 +150,7 @@ def check(md, line_chars=105, source=None, final=False, vocab=""):
             if raw.lstrip().startswith("#"):
                 headings.add(n)
             if raw.strip():
-                prose.append((n, PHONE_RE.sub(" ", plain(raw)) if "|" in raw or "@" in raw else plain(raw)))
+                prose.append((n, PHONE_RE.sub(" ", plain(raw)) if "@" in raw or n <= 3 else plain(raw)))
             continue
         text = plain(bullet.group(1))
         bullets.append((n, text))
@@ -212,6 +216,9 @@ def self_test():
     assert kinds("# <<NAME>>\n<<EMAIL>> | 555-0142 | Austin, TX", source="x") == {"placeholder"}
     assert kinds("**Senior Analyst** | Mar 2015 - Present", source="Analyst, Mar 2021 - present") == {"number-not-in-source"}
     assert kinds("### Managed 40 people", source="team of 4") == {"number-not-in-source"}
+    assert kinds("x\ny\nz\n**Analyst** | Budget 5000000 | 2021", source="2021") == {"number-not-in-source"}
+    assert kinds("[](https://x.com)") == kinds("[site](python sql aws)") == kinds("![a](https://x.com/a.png)") == {"hidden-or-injected-text"}
+    assert kinds('[site](https://x.com "python sql")') == {"hidden-or-injected-text"}
     assert kinds("## Summary\nAnalyst with 12 years in payments.", source="I have 4 years") == {"number-not-in-source"}
     assert [lv for _, lv, _, _ in check("<<NAME>>", final=True)] == ["error"]
     assert kinds("With 8 years of experience, moved to Postgres instead of MySQL for several teams") == set()
