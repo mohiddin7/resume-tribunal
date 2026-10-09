@@ -27,8 +27,8 @@ Prompts are in [references/prompts.md](references/prompts.md). Read it before St
 Ask once, in one short message.
 
 **Ask for three things:**
-1. The job description.
-2. Their current resume or career history.
+1. The job description, pasted or as a link. For a link, fetch the page and keep only the posting. If the page needs a login or won't load, ask them to paste the text.
+2. Their current resume or career history, pasted or as a file (PDF, Word or Markdown). If you can't read the file, ask them to paste the text.
 3. Their own words: "In a few plain sentences each, what did you actually do in your last two roles? Include any numbers you remember. Dictating is fine."
 
 **State the defaults and let them change any:**

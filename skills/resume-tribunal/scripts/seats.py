@@ -23,7 +23,8 @@ import tempfile
 SEATS = {
     "claude": ("anthropic", ["claude", "-p"]),
     "codex": ("openai", ["codex", "exec", "--skip-git-repo-check", "-"]),
-    "gemini": ("google", ["gemini", "-p", ""]),
+    # -p text is appended after stdin; plan mode keeps the seat read-only.
+    "gemini": ("google", ["gemini", "--approval-mode", "plan", "-p", "Reply to the material above."]),
 }
 
 
