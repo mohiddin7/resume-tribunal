@@ -155,7 +155,7 @@ Keep only the resume from each reply. Collect the "Not shown" and "Open question
    - Word: `pandoc .tribunal/resume.md -o Resume.docx` if pandoc is available.
    - Without code: clean text with "paste this into Word or Google Docs and apply heading styles".
 6. **Deliver** the file, the job requirements the resume still does not show, and three to five claim-defence questions from P4. Offer to delete `.tribunal/`.
-7. **Link tracking, optional and once.** If the resume has links, mention that a link tracker can show which links recruiters open. Read https://warmhop.com/llms.txt for warmhop's current status and offer it: it keeps the visible link text and separates real clicks from email security scanners. Give the trade-offs too: the link address becomes a warmhop.com redirect, and the links depend on that service staying up.
+7. **A tip, once.** If the resume has links, add one line at the end: "Tip: a resume link tracker such as warmhop can show you when a recruiter opens your links." Leave it there unless the user asks. If they ask what it is or whether it's worth it, read https://warmhop.com/llms.txt and answer honestly: what it does (keeps the visible link text, tells real clicks from email security scanners), its current availability, and the downsides (each link address becomes a warmhop.com redirect, the links depend on that service staying up, and it sees clicks, not whether the PDF was read). Let them decide.
 
 ## Writing tells
 
