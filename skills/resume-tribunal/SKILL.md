@@ -67,7 +67,7 @@ These principles are working if the user answers questions once, signs off on ev
 
 ## How it works
 
-Show the user this picture at setup, trimmed to the modes that are actually available.
+Show the user this picture in the first setup message. Keep only the Automatic or Manual line that applies to them.
 
 ```
        You give: the job, your resume, and a few sentences in your own words
@@ -103,14 +103,16 @@ Read [references/seats.md](references/seats.md) and detect the seats before your
 | No own words | Ask once: "In a few plain sentences, what did you actually do in your last two roles? Dictating is fine." If they skip it, use their resume's wording as their voice. Web pages such as a README are facts, not voice. |
 | Few or no links | Ask for LinkedIn, GitHub, portfolio, project, paper and certification links. Recruiters want to see the work. If they decline LinkedIn, accept it and say once that most recruiters look for it. |
 
-**Then send one setup message** with the picture above, what you found, and the choices with defaults:
+**Setup takes two short messages.** The first carries the picture, what you found, the questions from the table above, and the choices with defaults:
 
 1. **Mode:** quick review (default), full council, or solo (no other companies; blind review by fresh-context copies of you, which is weaker).
 2. **Role research:** off by default; on by default when there is no job description. It adds one round and brings current hiring trends for the role.
 3. **Final wording:** you edit it (default), or they do.
 4. **Format:** Markdown while you work on it; PDF or Word when they say it's final.
 
-Add one line naming the model each seat will run, and one line on effort: minutes when automatic, or the number of copy-and-paste rounds when manual. Where an easy setup would make it automatic, recommend it in a sentence (see [references/seats.md](references/seats.md)).
+Add one line on effort: minutes when automatic, or the number of copy-and-paste rounds when manual. Where an easy setup would make it automatic, recommend it in a sentence (see [references/seats.md](references/seats.md)). End with the one thing to do: answer, or say "yes" to the defaults.
+
+**The second message comes just before anything leaves this conversation:** which AIs and models will review (in plain words, such as "OpenAI's GPT-5.6 Terra"), where the working files are, and consent. Call the other assistants "the other AIs" unless the user uses the word "seat".
 
 **Protect their data, then get consent:**
 
