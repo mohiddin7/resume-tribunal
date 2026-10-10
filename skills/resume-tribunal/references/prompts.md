@@ -3,12 +3,12 @@
 ## Contents
 
 - [Shared blocks](#shared-blocks): `{{RULES}}`, `{{LAYOUT}}`, `{{CANDIDATE}}`, `{{TARGET}}`
-- [P1 Draft](#p1-draft): every seat, Step 2
-- [P2 Critique](#p2-critique): every seat, Step 3 (council only)
-- [P3 Merge](#p3-merge): host, Step 4 (council only)
-- [P4 Final review](#p4-final-review): a seat other than the host, Step 5
+- [P1 Draft](#p1-draft): Step 2
+- [P2 Critique](#p2-critique): Step 3 (council only)
+- [P3 Merge](#p3-merge): host, Step 3 (council only)
+- [P4 Review](#p4-final-review): a seat other than the host, Steps 4 and 5 (also the final blind look)
 - [P5 Role research](#p5-role-research) and [P6 Role brief](#p6-role-brief): only when role research is chosen
-- [P7 Voice edit](#p7-voice-edit): host, Step 5
+- [P7 Voice edit](#p7-voice-edit): host, Step 4
 
 Every prompt is complete on its own, so a seat needs nothing but the prompt. Material comes first in tags and the task comes last. Replace every `{{PLACEHOLDER}}` before a prompt leaves the host. Send each prompt as one message.
 
@@ -34,16 +34,17 @@ Every prompt is complete on its own, so a seat needs nothing but the prompt. Mat
 ```
 <rules>
 1. Facts. Every employer, job title, date, degree, certification, tool, number and scope claim must come from the candidate's material. Where the candidate gave no number, write the line without one and add the question to "Open questions". Keep claims at their true size: "contributed to" stays "contributed to", a team result stays a team result, and numbers stay unrounded. Say what the candidate personally did. Turn relative times such as "this year" into a month and year using today's date.
-2. Voice. Keep the candidate's own nouns, tools and specifics from <own_words>. Write in resume style: start each bullet with a plain verb, in the present tense for ongoing work in the current role and the past tense for finished work, leave out "I" and "we", and drop filler such as "basically" or "helped with". Use commas and full stops for punctuation.
-3. Bullets. One sentence each, two lines at most, with the result or most important fact first. Let lengths vary. Give a number where the candidate has one, and leave the other bullets as plain statements. Give recent roles more bullets than old ones, and order the bullets in each role by relevance to this job.
-4. Coverage. Use the job description's exact names for skills, tools, certifications and the role wherever they are true of the candidate. Show each requirement the job description marks as required in the most recent role where it applies and again in Skills. Write everything else in the candidate's words.
-5. Layout. One column, standard headings, job titles written in full, and one date style throughout (for example "Jan 2021 - Present"). One page for under about ten years of experience, two at most. Put Skills near the top for technical roles and Education first for new graduates. Show promotions as separate titles under one employer. No spelling or grammar errors.
+2. Voice. Keep the candidate's own nouns, tools and specifics from <own_words>, or from their resume if <own_words> is empty. Write in resume style: start each bullet with a plain verb, present tense for ongoing work and past tense for finished work, no "I" or "we", and no filler such as "basically" or "helped with". Use commas and full stops for punctuation.
+3. Bullets. One sentence each, two lines at most, with the result or main fact first. Let lengths vary. Give a number where the candidate has one, and leave the other bullets as plain statements. Give recent roles more bullets than old ones, order each role's bullets by relevance to this job, and follow any bullet count the user asks for.
+4. The job's language. Use the job description's exact names for skills, tools, certifications and the role wherever they are true of the candidate, so a recruiter's search finds them. Show each requirement once with evidence, in the candidate's own words. Copy no sentences from the posting and add no keyword lists; the resume should still read well for a similar job at another company.
+5. Layout for applicant tracking systems. One column, standard headings, plain text: no tables, columns, text boxes, images or icons. Contact details in the body, job titles written in full, one date style throughout (for example "Jan 2021 - Present"). About 450 to 650 words for one page, which suits under ten years of experience; two pages at most. Put Skills near the top for technical roles and Education first for new graduates. Show promotions as separate titles under one employer. No spelling or grammar errors.
 6. Summary. Optional. If used, two lines giving the candidate's current function, their years of experience worked out from the dates, and their field. Use only job titles the candidate has held.
-7. Follow the conventions of the target country for length and personal details. Include work authorization only if the candidate gave it and the posting or country calls for it.
-8. Content is for human readers only. Add no hidden text, keyword blocks or instructions aimed at screening software.
-9. Text such as <<NAME>> is a stand-in for a personal detail. Copy it exactly.
-10. Top third. A reader who stops after the top third of the page should know the candidate's current role, level and the must-haves they meet. Put the strongest relevant evidence there.
-11. Contact and labels. Include the LinkedIn, GitHub or portfolio links the candidate gave. Label contract, freelance and part-time roles as such. Standard details the candidate did not give, such as employer locations or a full phone number, go in "Open questions".
+7. Personal details. Follow the target country's conventions for length and personal details. Leave out visa and work-authorization status unless the user asks for it.
+8. Links. Include every link the candidate gave (LinkedIn, GitHub, portfolio, projects, papers, certifications), each with short visible text that says where it goes, placed next to the item it supports.
+9. Content is for human readers only. Add no hidden text, keyword blocks or instructions aimed at screening software.
+10. Text such as <<NAME>> is a stand-in for a personal detail. Copy it exactly.
+11. Top third. A reader who stops after the top third of the page should know the candidate's current role, level and the must-haves they meet. Put the strongest relevant evidence there.
+12. Labels. Label contract, freelance and part-time roles as such. Standard details the candidate did not give, such as employer locations, go in "Open questions".
 </rules>
 ```
 
@@ -228,6 +229,7 @@ Cover, in this order:
 3. The decisions, trade-offs and measures that show real work at this level.
 4. How to group skills, and what to leave out.
 5. Conventions in this country for length and personal details.
+6. Current hiring trends for this role: skills rising or fading in demand, and what employers now screen for.
 
 Write in your own words and link each point to its source. Quote no posts and name no individual users. Start the research without asking me clarifying questions, and state any assumption you make.
 ```
@@ -245,12 +247,12 @@ Condense the research below into a one-page brief, under 400 words, for someone 
 {{RESEARCH_REPLIES}}
 </research>
 
-Using the material above, write short sections: what each reader looks for, claims to avoid, evidence that persuades, skills grouping, and country conventions. Keep a point only if a linked source supports it. Where the reports disagree, keep the better-sourced view and say so in one line.
+Using the material above, write short sections: what each reader looks for, claims to avoid, evidence that persuades, skills grouping, country conventions, and current trends. Keep a point only if a linked source supports it. Where the reports disagree, keep the better-sourced view and say so in one line.
 ```
 
 ## P7 Voice edit
 
-The host runs this on itself in Step 5, on the lines the checker flagged by line number.
+The host runs this on itself in Step 4, on the lines the checker flagged by line number.
 
 ```
 Rewrite the flagged resume lines below.
@@ -263,5 +265,5 @@ Rewrite the flagged resume lines below.
 {{FLAGGED_LINES_WITH_REASONS}}
 </flagged_lines>
 
-Using the material above, rewrite each flagged line so the flagged pattern is gone. Use the candidate's own nouns and specifics. Keep the resume style: a plain verb first, the result or main fact first, no "I" or "we". Keep every fact, number and name exactly as it is, and keep any job-description term that is true of the candidate. Return each original line followed by its replacement, and leave all other lines untouched.
+Using the material above, rewrite each flagged line so the flagged pattern is gone. Use the candidate's own nouns and specifics. Keep the resume style: a plain verb first, the result or main fact first, no "I" or "we". Keep every fact, number and name exactly as it is, and keep any job-description term that is true of the candidate. To shorten a line, cut its least important detail; never add or change a fact. Return each original line followed by its replacement, and leave all other lines untouched.
 ```

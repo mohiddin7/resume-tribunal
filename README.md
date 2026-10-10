@@ -1,68 +1,71 @@
 # Resume Tribunal
 
-**A free, open skill that tailors your resume to a job using AI assistants from different companies that review each other's work blind, so no assistant checks its own writing. You get one resume built from your own facts and wording, plus the interview questions it will invite.** No API keys and no new subscription. You use the AI assistants you already have.
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Agent Skill](https://img.shields.io/badge/Agent%20Skill-SKILL.md-black.svg)](https://agentskills.io)
 
-Resume Tribunal is an [Agent Skill](https://agentskills.io) (`SKILL.md`). Install it on the AI assistant you already use and say "tailor my resume to this job".
-
-> **Status:** version 1.0 is in testing. The install commands below work once the repository is public.
-
-**Using a chat app such as Claude?** Download the `resume-tribunal` folder as a zip, upload it in the app's skills settings, then type "tailor my resume to this job". That's all the setup there is.
-
-## What it does
-
-You give the job description, your resume, and a few plain sentences about what you did in your recent roles. You answer every question here, once. Then you pick a mode:
-
-| | Quick review (default) | Full council |
-|---|---|---|
-| Drafts | Your main assistant writes one | Three assistants from three companies each write one |
-| Blind review | One other assistant reviews it | Each critiques the others' drafts, then your main assistant merges the best lines and another assistant reviews the result |
-| Manual copy and paste | 1 round, about 5 minutes | About 5 rounds, 20 to 30 minutes |
-
-Either mode can research the role first. Both finish the same way: a script checks for common AI-writing patterns, flagged lines are rewritten closer to your own wording, and you confirm every claim is true.
-
-You get the resume, a list of what the job asks for that your resume still does not show, and three to five questions an interviewer is likely to ask about your claims.
-
-## Why three assistants
-
-Language models tend to favor their own writing. In a 2025 study of resume screening, models preferred resumes they had rewritten over human-written ones 67–82% of the time ([Xu, Li and Jiang](https://arxiv.org/abs/2509.00462)). That study is about screening, so it supports this design by analogy only. The skill has each draft reviewed by an assistant that did not write it.
-
-**What this does not prove:** no study shows that a multi-AI council writes a better resume than one strong assistant. The process gives you independent review and aims for a resume you can defend line by line. It does not guarantee interviews.
-
-**On AI use:** this skill edits out common AI phrasing. It does not make the resume your unaided work. If an employer asks about AI use or forbids it, answer truthfully or do not use this skill for that application.
-
-## How much work is it for you
-
-The skill uses the least manual route available:
-
-| Where you run it | What happens |
-|---|---|
-| A platform that can run one prompt across several companies' models | The drafts and critiques run automatically |
-| A terminal with other AI command-line tools installed (tested with Codex) | The skill runs them for you with your existing logins |
-| Anything else | The skill gives you ready-made prompts to paste into other assistants, such as ChatGPT, Claude, Copilot, DeepSeek, Gemini, Grok, Le Chat or Perplexity. Any of them works, and none is preferred. |
-
-Before sending your resume to any other assistant, it hides your name and contact details, shows you the text, and asks. The assistant you run the skill on sees everything you give it.
-
-## Install
-
-**Most coding agents** (Claude Code, Codex, Gemini CLI, Cursor, GitHub Copilot, OpenCode and others):
+**Tailor your resume to a job, with every draft reviewed blind by an AI from a different company.** You get one ATS-safe resume built from your own facts and wording, plus the interview questions its claims will invite. Free and open source. No API keys, no new subscription.
 
 ```bash
 npx skills add mohiddin7/resume-tribunal
 ```
 
-**GitHub CLI:**
+Then tell your assistant: *"Tailor my resume to this job: \<link\>"*.
 
-```bash
-gh skill install mohiddin7/resume-tribunal
+> **Status:** version 1.0, in testing. The install command works once the repository is public.
+
+## Why
+
+AI models favour their own writing. In a 2025 study of resume screening, models preferred resumes they had rewritten over human-written ones 67–82% of the time ([Xu, Li and Jiang](https://arxiv.org/abs/2509.00462)). That study measured screening, so it supports this design by analogy: if one AI writes your resume and also judges it, its blind spots go unchecked.
+
+Resume Tribunal splits the work. Your assistant drafts, and an assistant from another company reviews without knowing who wrote what. In full council mode, three assistants draft and critique each other.
+
+**What it does not promise:** no study shows that a multi-AI council writes a better resume than one strong assistant, and no tool can promise interviews or an ATS result. What you get is independent review, and a resume you can defend line by line.
+
+## How it works
+
+```
+       You give: the job, your resume, and a few sentences in your own words
+                                       |
+            QUICK REVIEW               |               FULL COUNCIL
+   drafts -> 1 other AI reviews        |   3 AIs draft -> critique each other blind
+                                       |   -> merge -> another AI reviews
+                                       |
+              checks -> you confirm every claim -> resume.md
+                                       |
+           final blind look -> PDF or Word file when you say it's final
 ```
 
-**By hand:** copy `skills/resume-tribunal/` into `~/.claude/skills/` (Claude Code) or `~/.agents/skills/` (most other agents).
+| How you run it | What happens | Your effort |
+|---|---|---|
+| **Automatic**, in a terminal with other AI tools installed ([Claude Code](https://www.npmjs.com/package/@anthropic-ai/claude-code), [Codex](https://www.npmjs.com/package/@openai/codex), [Antigravity CLI](https://antigravity.google)) | The other AIs run by themselves on your existing logins, each read-only in an empty folder | A few minutes |
+| **Automatic**, on a platform that runs several companies' models | The drafts and reviews run in one place | A few minutes |
+| **Manual**, anywhere else | You paste a prompt into another AI app (ChatGPT, Claude, Copilot, DeepSeek, Gemini, Grok, Le Chat or Perplexity, none preferred) and paste the reply back | 1 round for quick review, about 5 for full council |
+| **Solo**, if you want only one company involved | Fresh copies of your assistant review blind | A few minutes, weaker review |
 
-**Chat apps that accept skill uploads:** zip the `skills/resume-tribunal/` folder and upload it in the app's skills settings.
+Each seat runs its own company's model at the same tier as your main assistant, so no reviewer is much weaker than the writer.
 
-## Private chats for the other two assistants
+## What makes it different
 
-The critique is only blind if the other assistants start with no memory of you. Checked October 2026; menus change.
+- **Truth first.** Every claim comes from you. Unknown numbers become questions, never guesses, and you confirm every changed line before it ships.
+- **ATS-safe.** One column, standard headings, plain selectable text, visible links. The PDF is checked for page count and line breaks.
+- **Speaks the job's language without copying it.** It uses the posting's names for skills, tools and the role where they are true of you, and keeps your own wording for the rest.
+- **Reads like you.** A checker flags common AI writing habits (em dashes, "not X but Y", trailing "-ing" clauses, repeated three-item lists, copied phrases) and words you never use.
+- **Asks once.** One setup round with defaults, then only the final sign-off.
+
+## Install
+
+| Where | How |
+|---|---|
+| Most coding agents (Claude Code, Codex, Gemini CLI, Cursor, GitHub Copilot, OpenCode and others) | `npx skills add mohiddin7/resume-tribunal` |
+| GitHub CLI | `gh skill install mohiddin7/resume-tribunal` |
+| By hand | Copy `skills/resume-tribunal/` into `~/.claude/skills/` (Claude Code) or `~/.agents/skills/` (most other agents) |
+| Chat apps that accept skill uploads | Zip the `skills/resume-tribunal/` folder and upload it in the app's skills settings |
+
+Optional: Python 3 enables the checker and automatic seats; `pip install reportlab` enables PDF output.
+
+## Private chats for manual mode
+
+The review is only blind if the other assistant starts with no memory of you. Checked October 2026; menus change.
 
 | App | Use |
 |---|---|
@@ -71,36 +74,42 @@ The critique is only blind if the other assistants start with no memory of you. 
 | Gemini | Temporary chat |
 | Perplexity | Incognito |
 
-Keep these chats outside any project or shared workspace, and copy each reply before you close the chat. A private chat stops the app remembering you. The provider may still keep the text for a period.
+Keep these chats outside any project, and copy each reply before closing the chat. A private chat stops the app remembering you; the provider may still keep the text for a period.
 
-## The checker
+## The scripts
 
-`scripts/check_resume.py` reads the files you name, writes nothing, and makes no network calls. It needs only Python 3.
+All three read only the files you name, make no network calls of their own, and write only their output.
 
 ```bash
-python3 skills/resume-tribunal/scripts/check_resume.py resume.md --source my-own-notes.md --vocab job.md
+python3 skills/resume-tribunal/scripts/check_resume.py resume.md --source my-notes.md --vocab job.md
+python3 skills/resume-tribunal/scripts/make_pdf.py resume.md Resume.pdf
+python3 skills/resume-tribunal/scripts/seats.py detect
 ```
 
-It flags em dashes, "not X but Y" phrasing, trailing "-ing" clauses, repeated three-item lists, bullets that all look alike, stock phrases, lines copied from the job posting, hidden text, mixed date styles, numbers that do not appear in your own material, and words you never used.
+- `check_resume.py` flags AI writing habits, ATS layout problems, hidden text, page length, and numbers that do not appear in your own material. Standard library only.
+- `make_pdf.py` builds a one-column, text-based PDF with real links and reports every line whose second line holds only a few words. Needs reportlab.
+- `seats.py` finds other AI command-line tools and runs each one read-only in an empty folder, with your existing login.
 
 ## Please read
 
-- You are responsible for everything you submit. Check each employer's policy on AI use in applications.
+- You are responsible for everything you submit. Check each employer's policy on AI use in applications. This skill edits out common AI phrasing; it does not make the resume your unaided work.
 - This project runs no server and never receives your resume. The assistants you choose do, under their own terms. Leave out anything confidential to an employer, and turn off model training in each app.
-- If you run it in a terminal, the working files are saved in a `tribunal/` folder. Delete it when you are done and do not commit or sync it.
-- No tool can promise interviews, an ATS outcome, or how a reader or an AI detector will judge your text.
+- In a terminal, working files are kept in a `.tribunal/` folder. Delete it when you are done, and do not commit or sync it.
 - The skill will not invent facts, add hidden text, or help with assessments or live interviews.
 - This is general information, not career or legal advice.
 
-## Files
+## Layout
 
 ```
 skills/resume-tribunal/
 ├── SKILL.md                 # instructions for the assistant
-├── references/prompts.md    # the prompts
+├── references/
+│   ├── seats.md             # modes, model matching, manual cards
+│   └── prompts.md           # the prompts and shared rules
 └── scripts/
     ├── check_resume.py      # resume checker
-    └── seats.py             # finds and runs other AI command-line tools
+    ├── make_pdf.py          # PDF builder
+    └── seats.py             # runs other AI command-line tools
 ```
 
 ## License

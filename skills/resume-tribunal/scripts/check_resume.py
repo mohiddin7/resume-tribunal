@@ -11,7 +11,8 @@ Usage:
   python3 check_resume.py --self-test
 
 Reads the files you name, writes nothing, makes no network calls, standard library only.
-Line length is estimated from --line-chars (default 105 characters per printed line).
+Line length is estimated from --line-chars (default 115 characters per printed line, about
+10.5 pt type on letter paper). make_pdf.py measures the real line breaks.
 Exit code: 0 = no errors (warnings allowed unless --strict), 1 = errors found.
 
 Limits: this checks the Markdown text only. It cannot see formatting added later in a word
@@ -60,7 +61,7 @@ BOLD_LEAD_RE = re.compile(r"^\s*[-*•]\s+\*\*[^*\n]{1,40}(?::\*\*|\*\*:)")
 ABBREV_RE = re.compile(r"\b(Sr|Jr|Mgr|Eng|Dir|Assoc|Asst|Exec)\.")
 HTML_RE = re.compile(r"(?<!<)<(?!<)[A-Za-z/!][^>]*>?|-->")  # any HTML; a Markdown resume needs none
 # Links must show their text and point to a web or mail address; images are not allowed.
-BAD_LINK_RE = re.compile(r"!\[|\[\s*\]\(|\]\((?!\s*(?:https?://|mailto:)[^\s)]+\s*\))")
+BAD_LINK_RE = re.compile(r"!\[|\[\s*\]\(|\]\((?!\s*(?:(?:https?://|mailto:)[^\s)]+|<<[A-Z0-9_]+>>)\s*\))")
 PHONE_RE = re.compile(r"\+?\d[\d\s().-]{6,}\d")
 
 
@@ -101,7 +102,7 @@ def plain(text):
     return MD_STRIP_RE.sub(lambda m: m.group(1) or "", text).strip()
 
 
-def check(md, line_chars=105, source=None, final=False, vocab=""):
+def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650):
     """Return a list of (line_number, level, kind, detail). level is 'error', 'warn' or 'todo'."""
     out = []
     add = lambda n, level, kind, detail: out.append((n, level, kind, detail))
@@ -156,9 +157,15 @@ def check(md, line_chars=105, source=None, final=False, vocab=""):
             continue
         text = plain(bullet.group(1))
         bullets.append((n, text))
-        if len(text) / line_chars > 2:
-            add(n, "error", "too-long", f"about {len(text) / line_chars:.1f} lines; keep bullets to two lines")
+        lines = len(text) / line_chars
+        if lines > 2:
+            add(n, "error", "too-long", f"about {lines:.1f} lines; keep bullets to two lines")
+        elif 1 < lines < 1.4:
+            add(n, "warn", "short-second-line", f"about {lines:.2f} lines; tighten it to one line if you can")
 
+    word_count = len(re.findall(r"[A-Za-z0-9][\w'+#./-]*", plain(MD_STRIP_RE.sub(lambda m: m.group(1) or "", md))))
+    if word_count > max_words:
+        add(0, "warn", "over-length", f"{word_count} words; about {max_words} fit one page at 10.5 pt, so check with make_pdf.py")
     if len(separators) > 1:
         add(0, "error", "mixed-date-separators", f"use one style: found {sorted(separators)}")
     if triplets >= 3:
@@ -244,6 +251,9 @@ def self_test():
     assert kinds("**Senior Analyst** | Mar 2015 - Present", source="Analyst, Mar 2021 - present") == {"number-not-in-source"}
     assert kinds("### Managed 40 people", source="team of 4") == {"number-not-in-source"}
     assert kinds("x\ny\nz\n**Analyst** | Budget 5000000 | 2021", source="2021") == {"number-not-in-source"}
+    assert kinds("See [GitHub](<<LINK_GITHUB>>)") == {"placeholder"}
+    assert kinds("- Cut " + "word " * 25) == {"short-second-line"}
+    assert "over-length" in kinds("Plain words here. " * 250)
     assert kinds("[](https://x.com)") == kinds("[site](python sql aws)") == kinds("![a](https://x.com/a.png)") == {"hidden-or-injected-text"}
     assert kinds('[site](https://x.com "python sql")') == {"hidden-or-injected-text"}
     assert kinds("## Summary\nAnalyst with 12 years in payments.", source="I have 4 years") == {"number-not-in-source"}
@@ -261,7 +271,8 @@ def main():
     p.add_argument("--final", action="store_true", help="leftover placeholders are errors")
     p.add_argument("--strict", action="store_true", help="warnings also fail")
     p.add_argument("--json", action="store_true")
-    p.add_argument("--line-chars", type=int, default=105)
+    p.add_argument("--line-chars", type=int, default=115)
+    p.add_argument("--max-words", type=int, default=650, help="word budget; 650 is about one page, 1250 two")
     p.add_argument("--self-test", action="store_true")
     a = p.parse_args()
     if a.self_test:
@@ -277,7 +288,7 @@ def main():
 
     md = sys.stdin.read() if a.resume == "-" else read(a.resume)
     source = "\n".join(read(f) for f in a.source) if a.source else None
-    found = check(md, a.line_chars, source, a.final, "\n".join(read(f) for f in a.vocab))
+    found = check(md, a.line_chars, source, a.final, "\n".join(read(f) for f in a.vocab), a.max_words)
     errors = sum(1 for f in found if f[1] == "error")
     warns = sum(1 for f in found if f[1] == "warn")
     if a.json:
