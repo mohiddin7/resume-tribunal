@@ -57,6 +57,7 @@ Each seat runs its own company's model at the same tier as your main assistant, 
 | Where | How |
 |---|---|
 | Most coding agents (Claude Code, Codex, Gemini CLI, Cursor, GitHub Copilot, OpenCode and others) | `npx skills add mohiddin7/resume-tribunal` |
+| Claude Code, as a plugin | `claude plugin marketplace add mohiddin7/resume-tribunal`, then `claude plugin install resume-tribunal@resume-tribunal` |
 | GitHub CLI | `gh skill install mohiddin7/resume-tribunal` |
 | By hand | Copy `skills/resume-tribunal/` into `~/.claude/skills/` (Claude Code) or `~/.agents/skills/` (most other agents) |
 | Chat apps that accept skill uploads | Zip the `skills/resume-tribunal/` folder and upload it in the app's skills settings |

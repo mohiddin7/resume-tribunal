@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "resume-tribunal",
+  "version": "1.0.0",
+  "description": "Tailor a resume or CV to a job with blind review by AI assistants from different companies. ATS-safe output built from your own facts and wording."
+}

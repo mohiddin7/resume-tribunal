@@ -1,0 +1,17 @@
+{
+  "name": "resume-tribunal",
+  "owner": {
+    "name": "mohiddin7"
+  },
+  "metadata": {
+    "description": "Resume Tribunal: tailor a resume to a job with blind multi-AI review.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "resume-tribunal",
+      "source": "./",
+      "description": "Tailor a resume or CV to a job with blind review by AI assistants from different companies. ATS-safe output built from your own facts and wording."
+    }
+  ]
+}
