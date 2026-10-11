@@ -70,7 +70,7 @@ def invisible(text):
     return any(unicodedata.category(c) in ("Cf", "Co", "Cn") or (unicodedata.category(c) == "Cc" and c != "\t")
                for c in text)
 INJECTION_RE = re.compile(r"(ignore (?:all |any )?(?:previous|prior|above) instructions|disregard (?:the )?(?:previous|above)|"
-                          r"as an ai|rank this (?:candidate|resume)|you must (?:select|hire|recommend))", re.IGNORECASE)
+                          r"as an ai (?:language model|assistant|model)\b|rank this (?:candidate|resume)|you must (?:select|hire|recommend))", re.IGNORECASE)
 HIDDEN_HTML_RE = re.compile(r"(color\s*[:=]\s*[\"']?(?:#fff\w*|white|rgb\(\s*255\s*,\s*255\s*,\s*255)|"
                             r"font-size\s*:\s*[01](?:px|pt)?\b|display\s*:\s*none)", re.IGNORECASE)
 # [bracketed text] that is not a Markdown link or a checkbox, and <<TOKENS>> left from redaction
@@ -192,11 +192,27 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650)
         src_numbers, known = numbers(source), words(source) | words(vocab)
         # Years of experience worked out from the dates in the source are allowed.
         this_year = datetime.date.today().year
-        src_numbers |= {str(this_year - int(y) + d) for y in re.findall(r"\b(?:19|20)\d{2}\b", source)
-                        for d in (-1, 0) if 0 < this_year - int(y) + d < 60}
+        derived = {str(this_year - int(y) + d) for y in re.findall(r"\b(?:19|20)\d{2}\b", source)
+                   for d in (-1, 0) if 0 < this_year - int(y) + d < 60}
         stems = {w[:7] for w in known}
+        # Names (tools, employers, titles, places) must come from the candidate, never from the posting alone.
+        src_names = {t.lower() for t in re.findall(r"[A-Za-z][A-Za-z0-9+#]*", source)}
+        src_names |= {t + "s" for t in src_names} | {t[:-1] for t in src_names if t.endswith("s")}
         for n, text in bullets + prose:
-            for num in sorted(numbers(PLACEHOLDER_RE.sub("", text)) - src_numbers):
+            if n > 3 and n not in headings:
+                body = PLACEHOLDER_RE.sub(" ", LINK_TARGET_RE.sub(" ", text))
+                # ponytail: a capital letter marks a name. The first word of a sentence is skipped,
+                # except on title and date lines ("Senior Analyst | 2021"), where every word is a claim.
+                start = r"\b" if "|" in body else r"(?<![.:]\s)(?<!^)\b"
+                names = [m.group(1) for m in re.finditer(start + r"([A-Z][A-Za-z0-9+#]+)", body.strip())]
+                missing = sorted({w for w in names if w.lower() not in src_names and not re.fullmatch(MONTH + "|present|current", w.lower())})
+                if missing:
+                    add(n, "error", "name-not-in-source", ", ".join(missing) + ": named here but not in the user's own text; confirm with the user or remove")
+            # A derived number counts only as a span of years ("7 years"), never as a headcount or a percent.
+            spans = {d for d in derived if re.search(rf"\b{d}\+?\s+years?\b", text)}
+            # A number inside a product name the posting uses ("Dynamics 365") is a name, not a claim.
+            spans |= {num for name, num in re.findall(r"\b([A-Z]\w+) (\d+)\b", text) if f"{name} {num}" in (vocab or "")}
+            for num in sorted(numbers(PLACEHOLDER_RE.sub("", text)) - src_numbers - spans):
                 add(n, "error", "number-not-in-source", f"{num} does not appear in the user's own text")
             # Longer words only: short connectives and plain verbs are not what drifts.
             # Compare on the first seven letters, so "recommended" matches "recommendation".
@@ -250,7 +266,19 @@ def self_test():
     assert kinds("# <<NAME>>\n<<EMAIL>> | 555-0142 | Austin, TX", source="x") == {"placeholder"}
     assert kinds("**Senior Analyst** | Mar 2015 - Present", source="Analyst, Mar 2021 - present") == {"number-not-in-source"}
     assert kinds("### Managed 40 people", source="team of 4") == {"number-not-in-source"}
-    assert kinds("x\ny\nz\n**Analyst** | Budget 5000000 | 2021", source="2021") == {"number-not-in-source"}
+    # Numbers worked out from source dates pass only as a span of years.
+    years_ago = datetime.date.today().year - 2019
+    assert kinds(f"- Ran payroll for {years_ago} years", source="Started 2019") == set()
+    assert kinds(f"- Managed {years_ago} people", source="Started 2019") == {"number-not-in-source"}
+    assert kinds("- Kept the ledger in Dynamics 365", source="I kept the ledger in Dynamics", vocab="Dynamics 365 experience") == set()
+    assert kinds("- Led a team of 5", source="I led a team", vocab="minimum of 5 years") == {"number-not-in-source"}
+    assert kinds("- Hired as an AI engineer for an airline client") == set()
+    # A tool the posting names but the candidate never mentioned is an error until the candidate confirms it.
+    four = "x\ny\nz\n"
+    assert kinds(four + "- Built dashboards in Tableau", source="I built dashboards", vocab="Tableau required") == {"name-not-in-source"}
+    assert kinds(four + "- Built dashboards in Tableau. Shipped weekly.", source="built dashboards, shipped weekly. Yes, I used Tableau") == set()
+    assert kinds(four + "**Senior Manager** | Jan 2022 - Present", source="Manager, Jan 2022 - present") == {"name-not-in-source"}
+    assert kinds("x\ny\nz\n**Analyst** | Budget 5000000 | 2021", source="Analyst, budget, 2021") == {"number-not-in-source"}
     assert kinds("See [GitHub](<<LINK_GITHUB>>)") == {"placeholder"}
     assert kinds("- Cut " + "word " * 25) == {"short-second-line"}
     assert "over-length" in kinds("Plain words here. " * 250)

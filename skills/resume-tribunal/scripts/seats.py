@@ -7,15 +7,17 @@ Usage:
   python3 seats.py run SEAT prompt.txt reply.md [--model NAME] [--effort LEVEL]
   python3 seats.py run custom --cmd "mytool --print" prompt.txt reply.md   # any tool that reads stdin
   python3 seats.py run custom --cmd "mytool -p 'Read {prompt_file}'" prompt.txt reply.md  # or a file
+  python3 seats.py --self-test
 
 Each seat runs with the user's existing login for that tool. This script sends the prompt
 file to that tool and nothing else: no API keys, no other network calls. Standard library only.
-Tested by the maintainers: codex and agy. The claude and gemini entries follow each tool's
-documented non-interactive mode. If one fails, use `run custom --cmd` or fall back to manual mode.
+The built-in seats run read-only in an empty folder. `run custom` runs
+the command exactly as given, so keeping that tool read-only is up to whoever writes it.
 """
 import argparse
 import json
 import os
+import re
 import shlex
 import shutil
 import subprocess
@@ -32,18 +34,16 @@ MODEL_FLAGS = {
     "claude": (1, ["--model", "{m}"], ["--effort", "{e}"]),
     "codex": (2, ["-m", "{m}"], ["-c", "model_reasoning_effort={e}"]),
     "agy": (1, ["--model", "{m}"], ["--effort", "{e}"]),
-    "gemini": (1, ["-m", "{m}"], []),
 }
 LIST_MODELS = {"agy": ["agy", "models"]}
 CODEX_MODELS = os.path.expanduser("~/.codex/models_cache.json")  # the models this account can use
 SEATS = {
-    "claude": ("anthropic", ["claude", "-p", "--tools", "", "--no-session-persistence"]),
+    # --safe-mode keeps the user's own memory, hooks, plugins and MCP servers out of the seat's context.
+    "claude": ("anthropic", ["claude", "-p", "--safe-mode", "--tools", "", "--no-session-persistence"]),
     "codex": ("openai", ["codex", "exec", "--sandbox", "read-only", "--ephemeral", "--skip-git-repo-check", "-"]),
     "agy": ("google", ["agy", "--sandbox", "--mode", "plan", "--print-timeout", "10m",
                        "-p", "Open the file {prompt_file} in this folder with your file-reading tool. Run no shell "
                              "commands. Then reply to it exactly as it asks."]),
-    # Gemini CLI now needs a paid API key; personal Google logins moved to agy. -p is appended to stdin.
-    "gemini": ("google", ["gemini", "--skip-trust", "--approval-mode", "plan", "-p", "Reply to the material above."]),
 }
 
 
@@ -63,11 +63,22 @@ def blocked(reply):
     return text.startswith("jetski: no output produced") and "\n" not in text
 
 
-def run(cmd, prompt_path, reply_path, timeout):
+def contact_details(prompt):
+    """Emails, profile links and phone numbers that should have been swapped for stand-ins."""
+    found = re.findall(r"[\w.+-]+@[\w-]+\.[\w.-]+|linkedin\.com/in/[\w-]+", prompt)
+    found += [m for m in re.findall(r"\+?\d[\d ().-]{8,}\d", prompt) if sum(c.isdigit() for c in m) >= 10]
+    return found
+
+
+def run(cmd, prompt_path, reply_path, timeout, allow_contact=False):
     with open(prompt_path, encoding="utf-8") as f:
         prompt = f.read()
-    # Fail early if the reply cannot be saved, before the seat is called.
-    open(reply_path, "a", encoding="utf-8").close()
+    found = contact_details(prompt)
+    if found and not allow_contact:
+        sys.exit(f"not sent: the prompt still holds contact details ({', '.join(found[:3])}). Replace them with "
+                 "stand-ins, or pass --allow-contact if the user agreed to send them.")
+    # Fail early if the reply cannot be saved, and clear any earlier reply so a failed run leaves nothing stale.
+    open(reply_path, "w", encoding="utf-8").close()
     # These tools are agents that can read files. Run each one in an empty folder so it
     # cannot see the other drafts, the label log or anything else in the project.
     uses_file = any("{prompt_file}" in part for part in cmd)
@@ -100,7 +111,19 @@ def with_model(seat, cmd, model, effort):
     return cmd[:at] + extra + cmd[at:]
 
 
+def self_test():
+    assert blocked("jetski: no output produced\n") and not blocked("# Resume\njetski: no output produced")
+    assert with_model("codex", SEATS["codex"][1], "m1", "high")[:6] == ["codex", "exec", "-m", "m1", "-c", "model_reasoning_effort=high"]
+    assert with_model("claude", SEATS["claude"][1], None, None) == SEATS["claude"][1]
+    assert all(d["vendor"] != "openai" for d in detect(["openai"]))
+    assert contact_details("Mail sam@example.com or call +1 (555) 010-2030") == ["sam@example.com", "+1 (555) 010-2030"]
+    assert contact_details("<<EMAIL>> | <<PHONE>> | Jan 2019 - Mar 2021 | 2019 - 2021 | cut 1200 to 300") == []
+    print("self-test passed")
+
+
 def main():
+    if sys.argv[1:] == ["--self-test"]:
+        return self_test()
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="action", required=True)
     d = sub.add_parser("detect")
@@ -113,9 +136,10 @@ def main():
     r.add_argument("--cmd", help="custom command that reads the prompt on stdin")
     r.add_argument("prompt")
     r.add_argument("reply")
-    r.add_argument("--timeout", type=int, default=600)
+    r.add_argument("--timeout", type=int, default=540, help="seconds; kept under a ten-minute shell limit")
     r.add_argument("--model", help="the seat company's own model, matched to the host's tier")
     r.add_argument("--effort", help="reasoning effort, such as low, medium or high")
+    r.add_argument("--allow-contact", action="store_true", help="send even if the prompt holds an email, phone or profile link")
     a = p.parse_args()
     if a.action == "detect":
         print(json.dumps(detect(a.exclude)))
@@ -131,9 +155,9 @@ def main():
     elif a.seat == "custom":
         if not a.cmd:
             p.error("custom needs --cmd")
-        run(shlex.split(a.cmd), a.prompt, a.reply, a.timeout)
+        run(shlex.split(a.cmd), a.prompt, a.reply, a.timeout, a.allow_contact)
     else:
-        run(with_model(a.seat, SEATS[a.seat][1], a.model, a.effort), a.prompt, a.reply, a.timeout)
+        run(with_model(a.seat, SEATS[a.seat][1], a.model, a.effort), a.prompt, a.reply, a.timeout, a.allow_contact)
 
 
 if __name__ == "__main__":

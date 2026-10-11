@@ -22,6 +22,7 @@ This repository holds one Agent Skill, `resume-tribunal`, in `skills/resume-trib
 
 ```bash
 python3 skills/resume-tribunal/scripts/check_resume.py --self-test
+python3 skills/resume-tribunal/scripts/seats.py --self-test
 python3 -m py_compile skills/resume-tribunal/scripts/*.py
 pip install skills-ref && agentskills validate skills/resume-tribunal
 claude plugin validate --strict .

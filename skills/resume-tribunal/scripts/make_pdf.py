@@ -13,6 +13,7 @@ The report lists the page count, then every paragraph that wraps:
   OK       the second line is about half full or more; leave it
 """
 import argparse
+import html
 import re
 import sys
 
@@ -29,8 +30,7 @@ LINK = "#1a4fa0"
 MIN_FONT = 10
 
 
-def esc(text):
-    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+esc = html.escape
 
 
 def inline(text):
@@ -38,8 +38,12 @@ def inline(text):
     out, pos = [], 0
     for m in re.finditer(r"\[([^\]]+)\]\(([^)\s]+)\)|\*\*([^*]+)\*\*", text):
         out.append(esc(text[pos:m.start()]))
-        out.append(f'<a href="{esc(m.group(2))}" color="{LINK}">{esc(m.group(1))}</a>' if m.group(1)
-                   else f"<b>{esc(m.group(3))}</b>")
+        if m.group(3):
+            out.append(f"<b>{esc(m.group(3))}</b>")
+        elif m.group(2).startswith(("https://", "http://", "mailto:")):
+            out.append(f'<a href="{esc(m.group(2))}" color="{LINK}">{esc(m.group(1))}</a>')
+        else:  # any other scheme stays visible as plain text
+            out.append(esc(m.group(0)))
         pos = m.end()
     out.append(esc(text[pos:]))
     return "".join(out)
@@ -110,6 +114,10 @@ def main():
         md = open(a.resume, encoding="utf-8-sig").read()
     except (OSError, UnicodeDecodeError) as e:
         sys.exit(f"cannot read {a.resume}: {e}")
+    # ponytail: built-in Helvetica covers Western European text only; register a TTF font if this warning bites.
+    odd = sorted({c for c in md if not c.encode("cp1252", "ignore")})
+    if odd:
+        print(f"warning: these characters will not print in the built-in font: {' '.join(odd[:20])}", file=sys.stderr)
 
     paper = letter if a.paper == "letter" else A4
     margin_x, margin_y = 0.5 * inch, 0.45 * inch

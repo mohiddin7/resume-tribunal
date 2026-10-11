@@ -1,5 +1,7 @@
-# Original manual prompts (private reference, not published)
+# Local-only folders
 old-prompts/
-
-# Private research notes
 research/
+
+# Generated
+__pycache__/
+.tribunal/
