@@ -53,10 +53,14 @@ With file access, keep everything in a `.tribunal/` folder and tell the user the
 |---|---|
 | `state.md` | Step reached, mode, each seat with its company and model, consent given (yes or no, and for which seats), which seat wrote which draft label, what the user has confirmed |
 | `standins.md` | The stand-in map (`<<NAME>>` and so on). Never sent to a seat. |
+| `target.md` | One line: role, level, country |
 | `candidate.md`, `own_words.md`, `job.md` | The user's material with stand-ins, and the posting |
+| `draft_<LABEL>.md`, `critique_<seat>.md` | Each draft under its neutral label, and each critique |
 | `resume.md` | The working resume, **always with stand-ins**. Every edit goes here. |
 | `signoff.md` | The user's sign-off answers |
 | `final.md` | The resume with personal details restored. Rebuilt from `resume.md` after every edit, never edited directly, never sent to a seat. |
+
+**Build every prompt with `scripts/prompt.py build`, and take the resume out of every reply with `scripts/prompt.py extract`.** The script fills the templates, shuffles drafts, and defuses text that could break the prompt, so the blind rules hold without you copying text by hand. Fill a prompt by hand only when you cannot run code.
 
 **Update `state.md` after every step, and read it again before every step.** A long run can outlast your memory of it; the file is the record. Without file access, keep the same notes as a short block in the conversation.
 
@@ -139,7 +143,7 @@ Script paths below are relative to this skill's folder; write them in full when 
 4. **Fit the page.** Run `python3 scripts/make_pdf.py .tribunal/final.md Resume.pdf`. It needs reportlab; if that is missing, ask before installing it into a virtual environment, or deliver Markdown or Word instead. It reports the page count and every wrapped line; where it disagrees with the checker's estimate, it wins. A line marked SHORTEN has only a few words on its last line: tighten it by a line, in `resume.md`. A last line half full or more is fine. Two rounds at most; if tightening would remove a fact, ask.
 5. **Final check.** `python3 scripts/check_resume.py .tribunal/final.md --final --source .tribunal/candidate.md --source .tribunal/own_words.md --source .tribunal/signoff.md --source .tribunal/standins.md --vocab .tribunal/job.md`.
 6. **Output in the format they asked for:**
-   - PDF: rebuild it with `make_pdf.py` after the last edit. If `pdftotext` is installed, run it on the PDF and confirm the text comes out complete and in order; if it is not, say the PDF text was not machine-checked.
+   - PDF: rebuild it with `make_pdf.py` after the last edit. Its last line reads the text back out of the PDF the way screening software would. If it says PROBLEM, fix the cause before delivering. If it says skipped, offer to install pypdf, or say the PDF text was not machine-checked.
    - Word: `pandoc .tribunal/final.md -o Resume.docx` if pandoc is available.
    - Without code: clean text with "paste this into Word or Google Docs and apply heading styles".
 7. **Deliver** the file, the job requirements the resume still does not show, and three to five claim-defence questions from P4. Offer to delete `.tribunal/`.
@@ -161,7 +165,8 @@ All of these appear in human writing too. They become tells when they repeat, so
 
 ## Talking to the user
 
-- Plain words at the user's level: "the second AI", not "seat"; no "CLI", "stdin" or "token" unless they used the word first.
+- Assume the user knows only that an AI app answers questions. The first time something new comes up, explain it in one plain sentence: why a second AI checks the work, what "copy and paste this into another app" means step by step, what screening software is. Never assume they know what a skill, terminal, Markdown or a model is.
+- Plain words at the user's level: "the second AI", not "seat"; "a plain-text copy", not "Markdown"; no "CLI", "stdin" or "token" unless they used the word first.
 - Never paste a long prompt unless they are about to copy it into another app.
 - When something fails, say what happened and what you'll do next, in one or two lines.
 
@@ -180,5 +185,6 @@ All of these appear in human writing too. They become tells when they repeat, so
 - [references/seats.md](references/seats.md): ways to reach a seat, model matching, manual cards, the app list, blind rules. Read at setup.
 - [references/prompts.md](references/prompts.md): prompts P1 to P7 and the shared rules. Read before drafting.
 - `scripts/check_resume.py`: writing tells, ATS layout, numbers and words not in the candidate's material. Standard library only.
+- `scripts/prompt.py`: fills prompts P1 to P7 from `.tribunal/` and extracts the resume from a reply. Standard library only.
 - `scripts/seats.py`: finds and runs other assistants' command-line tools, read-only, in an empty folder.
-- `scripts/make_pdf.py`: one-column, text-based PDF with real links and a line-wrap report. Needs reportlab.
+- `scripts/make_pdf.py`: one-column, text-based PDF with real links, a line-wrap report, and a read-back check of its text layer. Needs reportlab; the check uses pypdf or pdftotext when present.

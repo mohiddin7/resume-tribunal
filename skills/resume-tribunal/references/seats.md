@@ -55,7 +55,7 @@ In platform mode, choose comparable models in the platform's picker the same way
 
 | | Platform | Terminal | Manual |
 |---|---|---|---|
-| Drafts (P1) | One call; save each model's answer as its own draft | Write each prompt to a file in `.tribunal/`, then `python3 scripts/seats.py run <seat> --model <m> --effort <e> prompt.txt reply.md`. Run seats in parallel. | One card per seat |
+| Drafts (P1) | One call; save each model's answer as its own draft | `python3 scripts/prompt.py build P1 --out .tribunal/p1.txt`, then `python3 scripts/seats.py run <seat> --model <m> --effort <e> .tribunal/p1.txt .tribunal/p1_reply_<seat>.md`, then `prompt.py extract` into `draft_<LABEL>.md`. Run seats in parallel. | One card per seat |
 | Critique (P2) | One call | Same command | One card per seat |
 | Review (P4) | One model that is not you | Same command | One card |
 

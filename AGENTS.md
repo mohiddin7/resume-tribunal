@@ -6,7 +6,7 @@ This repository holds one Agent Skill, `resume-tribunal`, in `skills/resume-trib
 
 - `skills/resume-tribunal/SKILL.md`: the skill's instructions. Keep it under 500 lines.
 - `skills/resume-tribunal/references/`: prompts and seat handling, loaded on demand.
-- `skills/resume-tribunal/scripts/`: Python scripts. `check_resume.py` and `seats.py` use the standard library only; `make_pdf.py` needs reportlab.
+- `skills/resume-tribunal/scripts/`: Python scripts. `check_resume.py`, `prompt.py` and `seats.py` use the standard library only; `make_pdf.py` needs reportlab, and pypdf for its text check.
 - `manual-prompts/`: the original hand-run prompts, kept unedited for the record.
 - `examples/`: a full run on a fictional candidate.
 - `docs/`: the project website (GitHub Pages).
@@ -23,6 +23,7 @@ This repository holds one Agent Skill, `resume-tribunal`, in `skills/resume-trib
 ```bash
 python3 skills/resume-tribunal/scripts/check_resume.py --self-test
 python3 skills/resume-tribunal/scripts/seats.py --self-test
+python3 skills/resume-tribunal/scripts/prompt.py --self-test
 (cd examples/operations-analyst && python3 ../../skills/resume-tribunal/scripts/check_resume.py after.md --final --source before.md --source own-words.md --source signoff.md --vocab job.md)
 python3 -m py_compile skills/resume-tribunal/scripts/*.py
 pip install skills-ref && agentskills validate skills/resume-tribunal

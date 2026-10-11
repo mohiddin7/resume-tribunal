@@ -10,7 +10,7 @@
 - [P5 Role research](#p5-role-research) and [P6 Role brief](#p6-role-brief): only when role research is chosen
 - [P7 Voice edit](#p7-voice-edit): host, Step 4
 
-Every prompt is complete on its own, so a seat needs nothing but the prompt. Material comes first in tags and the task comes last. Replace every `{{PLACEHOLDER}}` before a prompt leaves the host. Send each prompt as one message.
+Every prompt is complete on its own, so a seat needs nothing but the prompt. Material comes first in tags and the task comes last. `scripts/prompt.py build` fills them from `.tribunal/`; by hand, replace every `{{PLACEHOLDER}}` before a prompt leaves the host. Send each prompt as one message.
 
 ## Shared blocks
 

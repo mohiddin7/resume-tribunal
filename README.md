@@ -104,7 +104,7 @@ Allow about 20 minutes. Your name and contact details are hidden before anything
 | By hand | Copy `skills/resume-tribunal/` into `~/.claude/skills/` (Claude Code) or `~/.agents/skills/` (most other agents) |
 | Chat apps that accept skill uploads | See [Start here](#new-to-this-start-here) |
 
-Optional: Python 3 enables the checker and automatic seats; `pip install reportlab` enables PDF output.
+Optional: Python 3 enables the checker and automatic seats; `pip install reportlab pypdf` enables PDF output and its text check.
 
 ## Private chats for copy and paste
 
@@ -121,7 +121,7 @@ Keep these chats outside any project, and copy each reply before closing the cha
 
 ## The scripts
 
-None of the three makes a network call of its own. `seats.py` starts the AI tools you chose, and those connect to their own services.
+None of the four makes a network call of its own. `seats.py` starts the AI tools you chose, and those connect to their own services.
 
 ```bash
 python3 skills/resume-tribunal/scripts/check_resume.py resume.md --source my-notes.md --vocab job.md
@@ -130,7 +130,8 @@ python3 skills/resume-tribunal/scripts/seats.py detect
 ```
 
 - `check_resume.py` flags AI writing habits, ATS layout problems, hidden text, page length, and numbers that do not appear in your own material. Standard library only.
-- `make_pdf.py` builds a one-column, text-based PDF with real links and reports every line whose second line holds only a few words. Needs reportlab.
+- `make_pdf.py` builds a one-column, text-based PDF with real links, reports every line whose second line holds only a few words, and reads the text back out of the PDF the way screening software would. Needs reportlab; the read-back uses pypdf if installed.
+- `prompt.py` fills the review prompts from your working files, shuffles the drafts, and pulls the resume out of each reply. Standard library only.
 - `seats.py` finds other AI command-line tools and runs each one read-only in an empty folder, with your existing login. It refuses to send a prompt that still holds an email address or phone number.
 
 ## Please read
@@ -153,6 +154,7 @@ skills/resume-tribunal/
 └── scripts/
     ├── check_resume.py      # resume checker
     ├── make_pdf.py          # PDF builder
+    ├── prompt.py            # fills the prompts, extracts replies
     └── seats.py             # runs other AI command-line tools
 examples/operations-analyst/ # a full run on a fictional candidate
 manual-prompts/              # the original hand-run prompts
