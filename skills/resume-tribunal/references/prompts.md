@@ -1,4 +1,4 @@
-# Resume Tribunal: Prompt Library (v3)
+# Resume Tribunal: Prompt Library
 
 ## Contents
 
@@ -109,7 +109,7 @@ If something is missing, state your assumption and continue. Ask me no questions
 
 ## P2 Critique
 
-Send each seat the drafts it did not write, under the labels assigned in Step 3. Change the order of the drafts for each seat. With two seats there is one `<draft>` block. In council mode every model receives all the drafts.
+Send each seat the drafts it did not write, under the labels assigned in Step 3. Change the order of the drafts for each seat. With two seats there is one `<draft>` block. In platform mode one prompt goes to every model, so each also sees its own draft; that is a weaker review, and the user is told so once at setup.
 
 ```
 Review the resume drafts below for the same candidate and job. You are reading as the recruiter and the hiring manager for this role. Report what you find and leave the rewriting to the author.

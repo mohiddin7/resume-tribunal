@@ -44,7 +44,7 @@ After:
 ## What the blind review was for
 
 - **Each seat caught something the others missed.** One noticed a draft had rounded one year and ten months up to "2 years". Another noticed the summary and the bullets used different verb forms. The host caught a draft crediting the candidate alone for a decision the team made.
-- **Nine enlarged or invented claims were rejected.** One reviewer suggested "from 4 hours to 40 minutes"; the candidate had said "half a day". Another suggested "operational reporting adopted by leadership" for a spreadsheet one supervisor used.
+- **Enlarged or invented claims were rejected.** One reviewer suggested "from 4 hours to 40 minutes"; the candidate had said "half a day". Another suggested "operational reporting adopted by leadership" for a spreadsheet one supervisor used.
 - **The resume stayed honest about gaps.** The job asks for Power BI or Tableau. The candidate has used neither, so neither appears, and the gap is listed in [not-shown.md](not-shown.md) for the candidate to address.
 
 Both outside reviewers, reading blind, said they would phone-screen this candidate, and read them as a coordinator moving into a junior to mid-level analyst role.
