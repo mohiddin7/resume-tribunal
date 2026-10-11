@@ -259,17 +259,17 @@ FAQ = [
     ("Do I need to know how to code?",
      "No. If you use the Claude app, you upload the skill once and then chat as usual. The steps are under Start here. The terminal route is quicker, but you can skip it."),
     ("Is it free?",
-     "The skill is. It runs on the AI apps you already use, and free plans work. A long run can hit a free plan's daily limit, so a full council goes smoother on a paid one."),
+     "The skill is. It runs on the AI apps you already use, and free plans work. Free plans have daily limits, and a long run can reach them, so the thorough version goes more smoothly on a paid plan."),
     ("Why not just ask ChatGPT to fix my resume?",
      "You can, and for a quick tidy-up that's fine. The trouble starts when the same AI writes your resume and then tells you it's good. It tends to like its own work, and it will happily turn \"half a day\" into \"4 hours\". A second AI from another company catches more of that, and a script checks every number against what you actually said."),
     ("Will it make things up?",
-     "It's built so it can't sneak anything past you. Every number, tool and job title has to come from you. If something's missing, it asks. Before you get the final file, you say yes or no to each changed line, and anything you don't confirm comes out."),
+     "It's designed not to, and it checks. Every number, tool and job title has to come from you. If something's missing, it asks. Before you get the final file, you say yes or no to each changed line, and anything you don't confirm comes out."),
     ("Will this get me past the ATS?",
-     "Nobody can promise that, so be wary of anyone who does. ATS is the software many employers use to collect and sort applications. This skill avoids the things known to confuse it: columns, tables, text in headers, images, hidden text. Then it checks that the PDF's text reads back correctly. In the end a person usually reads your resume, and it's written for them."),
+     "No one can promise that. ATS is the software many employers use to collect and sort applications. This skill avoids the things known to confuse it: columns, tables, text in headers, images, hidden text. Then it checks that the PDF's text reads back correctly. In the end a person usually reads your resume, and it's written for them."),
     ("Can recruiters tell an AI helped?",
      "Maybe. It removes the habits people spot most, like long dashes and words such as \"spearheaded\". It won't make the resume your unaided work, though. If an employer asks about AI use, tell the truth."),
     ("Is my resume safe?",
-     "This project never sees it. Your name, email, phone number and links are swapped for placeholders before anything goes to a second AI, and you're asked before anything is sent. The AI companies you use do see the text, under their own terms, so leave out anything confidential."),
+     "This project never sees it. Your name, email, phone number and links are swapped for stand-in text such as <<NAME>> before anything goes to a second AI, and you're asked before anything is sent. The AI companies you use do see the text, under their own terms, so leave out anything confidential."),
     ("How long does it take?",
      "About 5 minutes for a quick review when the other AI runs by itself, and about 15 for a full council. If you're copying and pasting by hand, allow 20 minutes or so."),
     ("What's a \"full council\"?",
@@ -296,7 +296,8 @@ def build_home(items):
     body = f"""<main id="main" class="wide">
 <h1>Tailor your resume to a job, <span class="accent">with a second AI checking the first.</span></h1>
 <p class="lede">Resume Tribunal is a free add-on for AI assistants such as Claude, ChatGPT and Gemini. It rewrites your resume for one job using only facts you gave it. Then an AI from a different company checks the draft without being told who wrote it, so nothing gets exaggerated and no AI grades its own work.</p>
-<div class="cta"><a class="btn primary" href="#start">New to this? Start here</a><a class="btn ghost" href="#install">I use a coding agent</a></div>
+<p>New to this? You'll run it in the free Claude app, and use ChatGPT or Gemini for the second check.</p>
+<div class="cta"><a class="btn primary" href="#start">New to this? Start here</a><a class="btn ghost" href="#install">I'm a developer</a></div>
 <p class="meta">Free and open source. No sign-up. Your resume never comes to us.</p>
 
 <h2>Before and after</h2>
@@ -314,6 +315,23 @@ def build_home(items):
 <p><strong>Quick review</strong> is one writer and one checker. <strong>Full council</strong> has three AIs from three companies each write a draft and critique each other under shuffled labels, and the best parts are merged before the check. Why three? It is the smallest group where two can outvote one that is wrong, the same reason aircraft flight computers vote two out of three.</p>
 <p>The second AI can be reached two ways. If you have other AI tools installed on a computer, it runs by itself. If not, you get one block of text to paste into another AI app, such as ChatGPT or Gemini, and you paste the reply back.</p>
 
+<h2 id="start">Start here: no coding needed</h2>
+<p>You need the Claude app, which is free. Get it at <a href="https://claude.ai">claude.ai</a> or from your phone's app store. Skills need one setting called "code execution" switched on; it's an on/off switch in the app's settings. (Checked October 2026.)</p>
+<ol class="steps">
+  <li><a href="https://github.com/mohiddin7/resume-tribunal/releases/latest/download/resume-tribunal.zip">Download resume-tribunal.zip</a>. Keep it zipped.</li>
+  <li>In the Claude app, open Customize, then Skills. Click "+", then "Create skill", then "Upload a skill", and choose the zip.</li>
+  <li>Start a new chat. Attach your resume, paste the job link, and type: "Tailor my resume to this job."</li>
+  <li>Answer its questions, or say "yes" to its suggestions.</li>
+  <li>When it shows you a block of text, paste it into a different company's AI app, such as ChatGPT or Gemini, in a private or temporary chat. Copy the reply and paste it back.</li>
+  <li>Check that every changed line is true, and say so.</li>
+</ol>
+<p>Allow about 20 minutes. Your name and contact details are hidden before anything goes to the second AI, and you're asked first.</p>
+<ul>
+  <li><strong>Word files?</strong> Yes. Attach your .docx resume as it is, or paste the text.</li>
+  <li><strong>On a phone?</strong> It works, but copying text between two apps is fiddly. A laptop is easier.</li>
+  <li><strong>What do I get?</strong> The finished resume as text you can paste into Word or Google Docs. When the app can make files, you also get a PDF or Word file.</li>
+</ul>
+
 <h2>Why a second AI?</h2>
 <p>Hiring managers have grown wary of AI-written resumes. In a vendor survey of 1,000 US hiring managers, 76% said AI-written resumes make it harder to tell what a candidate actually did (<a href="https://resumegenius.com/blog/job-hunting/hiring-insights-report">Resume Genius, 2026</a>). In a test on 25 synthetic resumes, AI rewriting with no safeguards added 2.5 to 5.4 false details per resume (<a href="https://arxiv.org/abs/2607.01457">preprint</a>).</p>
 <ul>
@@ -322,19 +340,7 @@ def build_home(items):
   <li><strong>Names and order sway AI judges</strong> (<a href="https://www.science.org/doi/10.1126/sciadv.adz2924">source</a>, <a href="https://arxiv.org/abs/2410.02736">order</a>), so the reviewer sees no names and the drafts arrive shuffled.</li>
   <li><strong>Different AIs still share mistakes</strong> (<a href="https://arxiv.org/abs/2506.07962">study</a>), so the last checks are a script and you.</li>
 </ul>
-<p class="note">No study shows that several AIs write a better resume than one strong assistant, and no tool can promise interviews. You get independent review, and a resume you can defend line by line.</p>
-
-<h2 id="start">Start here: no coding needed</h2>
-<p>You need an AI app that accepts skill uploads. The Claude app is one, including its free plan (checked October 2026; switch on "code execution" in its settings).</p>
-<ol class="steps">
-  <li>Download <code>resume-tribunal.zip</code> from the <a href="{REPO}/releases">Releases page</a>.</li>
-  <li>In the Claude app, open Customize, then Skills. Click "+", then "Create skill", then "Upload a skill", and choose the zip.</li>
-  <li>Start a new chat. Attach your resume, paste the job link, and type: "Tailor my resume to this job."</li>
-  <li>Answer its questions, or say "yes" to its suggestions.</li>
-  <li>When it shows you a block of text, paste it into a different company's AI app, such as ChatGPT or Gemini, in a private or temporary chat. Copy the reply and paste it back.</li>
-  <li>Check that every changed line is true, and say so.</li>
-</ol>
-<p>Allow about 20 minutes. Your name and contact details are hidden before anything goes to the second AI, and you're asked first.</p>
+<p class="note">No study shows that several AIs write a better resume than one strong assistant, and no tool can promise interviews. What you get is an independent check, and a resume where every line is true.</p>
 
 <h2 id="install">For developers</h2>
 <p>Run this in a terminal, then tell your coding agent: "Tailor my resume to this job: &lt;link&gt;".</p>

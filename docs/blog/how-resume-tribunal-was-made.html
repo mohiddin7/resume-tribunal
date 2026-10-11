@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="../assets/site.css">
 <script src="../assets/site.js"></script>
 <meta property="article:published_time" content="2026-10-11">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How I built Resume Tribunal: three AIs, one resume, and no made-up numbers", "description": "It started as sixteen prompts I copied between three AI chats by hand. Here is how it became a free tool, what the research said, and what testing it taught me.", "datePublished": "2026-10-11", "dateModified": "2026-10-11", "author": {"@type": "Person", "name": "mohiddin7", "url": "https://github.com/mohiddin7"}, "image": "https://mohiddin7.github.io/resume-tribunal/assets/og.png", "mainEntityOfPage": "https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html", "wordCount": 1276}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How I built Resume Tribunal: three AIs, one resume, and no made-up numbers", "description": "It started as sixteen prompts I copied between three AI chats by hand. Here is how it became a free tool, what the research said, and what testing it taught me.", "datePublished": "2026-10-11", "dateModified": "2026-10-11", "author": {"@type": "Person", "name": "mohiddin7", "url": "https://github.com/mohiddin7"}, "image": "https://mohiddin7.github.io/resume-tribunal/assets/og.png", "mainEntityOfPage": "https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html", "wordCount": 1297}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -36,9 +36,9 @@
 <h1>How I built Resume Tribunal: three AIs, one resume, and no made-up numbers</h1>
 <p class="lede">It started as sixteen prompts I copied between three AI chats by hand. Here is how it became a free tool, what the research said, and what testing it taught me.</p>
 <p>Earlier this year I was applying for jobs and doing what most people do now. I pasted my resume and a job posting into an AI and asked it to make me look good.</p>
-<p>It did. A little too good.</p>
+<p>The results looked polished, but they had problems.</p>
 <p>The rewrites read well, but they didn't read like me. They used words I never use, like "spearheaded" and "leveraged". They echoed the job posting a bit too neatly. And now and then a claim came out bigger than what I had actually done.</p>
-<p>When I asked the same AI to check its own draft, it liked it. Of course it did. It had written it.</p>
+<p>When I asked the same AI to check its draft, it told me the draft was strong. Looking back, that's what you'd expect from the thing that wrote it.</p>
 <p>So I started pasting the draft into a different company's AI, in a fresh chat with no history, and asking it to read like a skeptical hiring manager. It was far more willing to point out problems. That was the start of this project.</p>
 <h2>The manual version</h2>
 <p>Over the next few months I wrote a set of prompts and ran them by hand. They are all still in the repository, unedited, in a folder called <a href="https://github.com/mohiddin7/resume-tribunal/tree/main/manual-prompts">manual-prompts</a>.</p>
@@ -46,13 +46,13 @@
 <p>In June and July I added a second round. All three assistants reviewed the merged resume and I reconciled what they said. Then I had two of them research the role itself: what hiring managers for this job look for, what reads as inflated, and what is changing in the field. That became a short handbook the final rewrite had to follow.</p>
 <p>It worked. The resume I ended up with was the best I'd had, and I could explain every line of it in an interview.</p>
 <p>It also took hours. Sixteen prompts, three browser tabs, and a lot of copy and paste. I kept a notes file just to remember which reply came from which AI, so I wouldn't favour one without meaning to.</p>
-<p>Nobody else was going to do all that.</p>
+<p>I couldn't imagine anyone else putting up with that.</p>
 <h2>Turning it into a skill</h2>
 <p>In October I turned the prompts into an Agent Skill. If you haven't come across these, a skill is a folder of instructions that an AI assistant loads when it needs them. You install it once. After that you say "tailor my resume to this job" and the assistant already knows the whole process.</p>
 <p>Before writing anything, I went looking for evidence. Two findings shaped the design.</p>
 <p>First, AI models really do go easy on their own work. In one study, AI judges were <a href="https://arxiv.org/abs/2604.06996">up to 50% more likely</a> to pass a failed check when the output was their own. Another, on resume screening, found models <a href="https://arxiv.org/abs/2509.00462">favoured summaries they had written</a> over the human originals. My hunch had a name: self-preference bias. A third study helped too. Across 37 models, a checker from a <a href="https://arxiv.org/abs/2512.02304">different model family</a> did better than self-checking.</p>
-<p>Second, and this one was humbling, nobody has shown that a group of AIs writes a better resume than one strong AI. The evidence for an outside reviewer comes from maths and logic tasks, so for writing it is an analogy. "Three AIs beat one" is a design choice. The README says so in plain words.</p>
-<p>I built the skill itself with an AI coding agent, and I had other AIs review it. That felt right for a project about not trusting one AI.</p>
+<p>The second finding was less flattering to my idea. Nobody has shown that a group of AIs writes a better resume than one strong AI. The evidence for an outside reviewer comes from maths and logic tasks, so for writing it is an analogy. "Three AIs beat one" is a design choice. The README says so in plain words.</p>
+<p>I built the skill itself with an AI coding agent, and had AIs from other companies review the work. Same rule as the resumes: no AI checks its own work.</p>
 <h2>What I kept, and what I changed</h2>
 <p>The core idea stayed. The AI that writes a line never gets to be the one that approves it. A second AI, from a different company, reviews the draft without being told who wrote it. In the full version, three AIs each write a draft and then critique each other under shuffled labels like "Draft K" and "Draft M".</p>
 <p>Almost everything around that changed.</p>
@@ -64,7 +64,7 @@
 <p>I ran it on my own resume first, for a real job. It took under half an hour. A blind reviewer said no to a phone screen for the original and yes for the new version.</p>
 <p>Then I asked AI reviewers to pull the project apart, each one playing a different kind of expert who writes and critiques these tools. The most useful reviewer was the simplest one: a person whose whole experience of AI is typing a question into ChatGPT, the way most of us did in 2023.</p>
 <p>That reviewer closed the tab in about 30 seconds. The first thing on the page was a terminal command, and they had no idea what a terminal was.</p>
-<p>That stung, and it was right. The page now starts with what the tool does in plain words, shows a before and after, and has a "never used a terminal?" route near the top.</p>
+<p>They had a point. The page now starts with what the tool does in plain words, shows a before and after, and has a "never used a terminal?" route near the top.</p>
 <p>Last, I had a fresh AI agent run the whole skill from its files alone, with a made-up candidate whose answers were scripted in advance. It finished in about 12 minutes, with eight calls to other AIs and no failures. It also wrote down 32 places where my instructions were vague or contradicted each other. I fixed them.</p>
 <p>That run is published as the <a href="https://github.com/mohiddin7/resume-tribunal/tree/main/examples/operations-analyst">worked example</a>, with the candidate's own words included, so anyone can check every number with one command.</p>
 <h2>What it caught</h2>
@@ -78,8 +78,8 @@
 <h2>What I learned</h2>
 <ol>
 <li><strong>AI is generous with itself.</strong> If you use AI for anything that matters, get a second opinion from a different one.</li>
-<li><strong>Rules that matter belong in code.</strong> "Please don't make things up" is a wish. A script that fails on a made-up number is a rule.</li>
-<li><strong>Write for the least technical reader.</strong> If they can follow it, everyone can.</li>
+<li><strong>Rules that matter belong in code.</strong> Asking an AI not to make things up helps a little. A script that rejects any number you never gave helps a lot more.</li>
+<li><strong>Write for the least technical reader.</strong> Developers can skip ahead. Beginners can't fill in the gaps.</li>
 </ol>
 <h2>Try it</h2>
 <p>Resume Tribunal is free and open source: <a href="https://github.com/mohiddin7/resume-tribunal">github.com/mohiddin7/resume-tribunal</a>. If you've never used a terminal, start with the "New to this?" section. If you try it, I'd like to hear what broke.</p>

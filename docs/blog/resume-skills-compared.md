@@ -111,4 +111,4 @@ Part of [jezweb/claude-skills](https://github.com/jezweb/claude-skills), a colle
 - Never keep a number you didn't give the AI yourself.
 - Check whether the employer has a policy on AI help with applications.
 
-No tool can promise an interview. A resume you can stand behind line by line is the part you control.
+No tool can promise you an interview. What you can control is whether every line is true, and whether you can talk about it.

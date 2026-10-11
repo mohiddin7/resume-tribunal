@@ -6,11 +6,11 @@ date: 2026-10-11
 
 Earlier this year I was applying for jobs and doing what most people do now. I pasted my resume and a job posting into an AI and asked it to make me look good.
 
-It did. A little too good.
+The results looked polished, but they had problems.
 
 The rewrites read well, but they didn't read like me. They used words I never use, like "spearheaded" and "leveraged". They echoed the job posting a bit too neatly. And now and then a claim came out bigger than what I had actually done.
 
-When I asked the same AI to check its own draft, it liked it. Of course it did. It had written it.
+When I asked the same AI to check its draft, it told me the draft was strong. Looking back, that's what you'd expect from the thing that wrote it.
 
 So I started pasting the draft into a different company's AI, in a fresh chat with no history, and asking it to read like a skeptical hiring manager. It was far more willing to point out problems. That was the start of this project.
 
@@ -26,7 +26,7 @@ It worked. The resume I ended up with was the best I'd had, and I could explain 
 
 It also took hours. Sixteen prompts, three browser tabs, and a lot of copy and paste. I kept a notes file just to remember which reply came from which AI, so I wouldn't favour one without meaning to.
 
-Nobody else was going to do all that.
+I couldn't imagine anyone else putting up with that.
 
 ## Turning it into a skill
 
@@ -36,9 +36,9 @@ Before writing anything, I went looking for evidence. Two findings shaped the de
 
 First, AI models really do go easy on their own work. In one study, AI judges were [up to 50% more likely](https://arxiv.org/abs/2604.06996) to pass a failed check when the output was their own. Another, on resume screening, found models [favoured summaries they had written](https://arxiv.org/abs/2509.00462) over the human originals. My hunch had a name: self-preference bias. A third study helped too. Across 37 models, a checker from a [different model family](https://arxiv.org/abs/2512.02304) did better than self-checking.
 
-Second, and this one was humbling, nobody has shown that a group of AIs writes a better resume than one strong AI. The evidence for an outside reviewer comes from maths and logic tasks, so for writing it is an analogy. "Three AIs beat one" is a design choice. The README says so in plain words.
+The second finding was less flattering to my idea. Nobody has shown that a group of AIs writes a better resume than one strong AI. The evidence for an outside reviewer comes from maths and logic tasks, so for writing it is an analogy. "Three AIs beat one" is a design choice. The README says so in plain words.
 
-I built the skill itself with an AI coding agent, and I had other AIs review it. That felt right for a project about not trusting one AI.
+I built the skill itself with an AI coding agent, and had AIs from other companies review the work. Same rule as the resumes: no AI checks its own work.
 
 ## What I kept, and what I changed
 
@@ -62,7 +62,7 @@ Then I asked AI reviewers to pull the project apart, each one playing a differen
 
 That reviewer closed the tab in about 30 seconds. The first thing on the page was a terminal command, and they had no idea what a terminal was.
 
-That stung, and it was right. The page now starts with what the tool does in plain words, shows a before and after, and has a "never used a terminal?" route near the top.
+They had a point. The page now starts with what the tool does in plain words, shows a before and after, and has a "never used a terminal?" route near the top.
 
 Last, I had a fresh AI agent run the whole skill from its files alone, with a made-up candidate whose answers were scripted in advance. It finished in about 12 minutes, with eight calls to other AIs and no failures. It also wrote down 32 places where my instructions were vague or contradicted each other. I fixed them.
 
@@ -81,8 +81,8 @@ All of them were rejected. The candidate's own words decide.
 ## What I learned
 
 1. **AI is generous with itself.** If you use AI for anything that matters, get a second opinion from a different one.
-2. **Rules that matter belong in code.** "Please don't make things up" is a wish. A script that fails on a made-up number is a rule.
-3. **Write for the least technical reader.** If they can follow it, everyone can.
+2. **Rules that matter belong in code.** Asking an AI not to make things up helps a little. A script that rejects any number you never gave helps a lot more.
+3. **Write for the least technical reader.** Developers can skip ahead. Beginners can't fill in the gaps.
 
 ## Try it
 

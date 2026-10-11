@@ -5,7 +5,7 @@
 
 **Tailor your resume to a job, with a second AI checking the first.**
 
-Resume Tribunal is a free add-on (an Agent Skill) for AI assistants such as Claude, ChatGPT and Gemini. One AI rewrites your resume for a specific job using only facts you gave it. An AI made by a different company then checks the draft without being told who wrote it, so nothing gets exaggerated and no AI grades its own work.
+Resume Tribunal is a free add-on for AI apps (an "Agent Skill"). New to this? You'll run it in the free Claude app, and use ChatGPT or Gemini for the second check. One AI rewrites your resume for a specific job using only facts you gave it. An AI made by a different company then checks the draft without being told who wrote it, so nothing gets exaggerated and no AI grades its own work.
 
 One role from the [worked example](examples/operations-analyst/), before and after:
 
@@ -74,22 +74,22 @@ The assistant that wrote a line is badly placed to catch it.
 No. If you use the Claude app, you upload the skill once and then chat as usual. The steps are in [Start here](#new-to-this-start-here). The terminal route is quicker, but you can skip it.
 
 **Is it free?**
-The skill is. It runs on the AI apps you already use, and free plans work. A long run can hit a free plan's daily limit, so a full council goes smoother on a paid one.
+The skill is. It runs on the AI apps you already use, and free plans work. Free plans have daily limits, and a long run can reach them, so the thorough version goes more smoothly on a paid plan.
 
 **Why not just ask ChatGPT to fix my resume?**
 You can, and for a quick tidy-up that's fine. The trouble starts when the same AI writes your resume and then tells you it's good. It tends to like its own work, and it will happily turn "half a day" into "4 hours". A second AI from another company catches more of that, and a script checks every number against what you actually said.
 
 **Will it make things up?**
-It's built so it can't sneak anything past you. Every number, tool and job title has to come from you. If something's missing, it asks. Before you get the final file, you say yes or no to each changed line, and anything you don't confirm comes out.
+It's designed not to, and it checks. Every number, tool and job title has to come from you. If something's missing, it asks. Before you get the final file, you say yes or no to each changed line, and anything you don't confirm comes out.
 
 **Will this get me past the ATS?**
-Nobody can promise that, so be wary of anyone who does. ATS is the software many employers use to collect and sort applications. This skill avoids the things known to confuse it: columns, tables, text in headers, images, hidden text. Then it checks that the PDF's text reads back correctly. In the end a person usually reads your resume, and it's written for them.
+No one can promise that. ATS is the software many employers use to collect and sort applications. This skill avoids the things known to confuse it: columns, tables, text in headers, images, hidden text. Then it checks that the PDF's text reads back correctly. In the end a person usually reads your resume, and it's written for them.
 
 **Can recruiters tell an AI helped?**
 Maybe. It removes the habits people spot most, like long dashes and words such as "spearheaded". It won't make the resume your unaided work, though. If an employer asks about AI use, tell the truth.
 
 **Is my resume safe?**
-This project never sees it. Your name, email, phone number and links are swapped for placeholders before anything goes to a second AI, and you're asked before anything is sent. The AI companies you use do see the text, under their own terms, so leave out anything confidential.
+This project never sees it. Your name, email, phone number and links are swapped for stand-in text such as <<NAME>> before anything goes to a second AI, and you're asked before anything is sent. The AI companies you use do see the text, under their own terms, so leave out anything confidential.
 
 **How long does it take?**
 About 5 minutes for a quick review when the other AI runs by itself, and about 15 for a full council. If you're copying and pasting by hand, allow 20 minutes or so.
@@ -121,9 +121,9 @@ A fresh agent ran the skill from its files alone: 8 calls, about 12 minutes, no 
 
 ## New to this? Start here
 
-You do not need to be a programmer or run any commands. You need an AI app that accepts skill uploads. The Claude app is one, including on its free plan (checked October 2026; it needs "code execution" switched on in settings).
+You do not need to be a programmer or run any commands. You need the Claude app, which is free: get it at [claude.ai](https://claude.ai) or from your phone's app store. Skills need one setting called "code execution" switched on, an on/off switch in the app's settings (checked October 2026).
 
-1. Download `resume-tribunal.zip` from this project's [Releases](https://github.com/mohiddin7/resume-tribunal/releases) page.
+1. [Download resume-tribunal.zip](https://github.com/mohiddin7/resume-tribunal/releases/latest/download/resume-tribunal.zip). Keep it zipped.
 2. In the Claude app, open Customize, then Skills. Click "+", then "Create skill", then "Upload a skill", and choose the zip.
 3. Start a new chat. Attach your resume, paste the job link, and type: "Tailor my resume to this job."
 4. Answer its questions, or say "yes" to the suggestions.
@@ -131,6 +131,10 @@ You do not need to be a programmer or run any commands. You need an AI app that 
 6. Confirm that every changed line is true.
 
 Allow about 20 minutes. Your name and contact details are hidden before anything goes to the second AI, and you are asked before anything is sent.
+
+- **Word files?** Yes. Attach your .docx resume as it is, or paste the text.
+- **On a phone?** It works, but copying text between two apps is fiddly. A laptop is easier.
+- **What do I get?** The finished resume as text you can paste into Word or Google Docs. When the app can make files, you also get a PDF or Word file.
 
 ## Install
 
