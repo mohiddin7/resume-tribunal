@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 910" width="680" height="910" role="img" aria-labelledby="t d">
+<title id="t">How Resume Tribunal works</title>
+<desc id="d">You give your resume, the job posting and a few sentences in your own words. Your assistant writes a draft from your facts only. An AI from a different company checks the draft without being told who wrote it. A script flags AI writing habits, layout problems and numbers you never gave. You approve every changed line. You get one resume you can defend, the requirements you do not meet yet, and the interview questions to expect.</desc>
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+.h{font-size:22px;font-weight:700}.tag{font-size:12px;font-weight:700;letter-spacing:.08em}
+.title{font-size:19px;font-weight:700}.body{font-size:15px}
+</style>
+<rect width="680" height="910" rx="16" fill="#f7f4ef"/>
+<text x="40" y="46" class="h" fill="#221e19">How Resume Tribunal works</text>
+<rect x="40" y="76" width="600" height="92" rx="12" fill="#fffdf9" stroke="#ddd5c8"/>
+<rect x="40" y="90" width="5" height="64" rx="2.5" fill="#2f6c36"/>
+<text x="64" y="103" class="tag" fill="#2f6c36">YOU</text>
+<text x="64" y="128" class="title" fill="#221e19">You give three things</text>
+<text x="64" y="152" class="body" fill="#5f574d">Your resume, the job posting, and a few sentences in your own words.</text>
+<path d="M340 174 V194 m-6 -7 l6 8 l6 -8" fill="none" stroke="#5f574d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="40" y="204" width="600" height="92" rx="12" fill="#fffdf9" stroke="#ddd5c8"/>
+<rect x="40" y="218" width="5" height="64" rx="2.5" fill="#35619a"/>
+<text x="64" y="231" class="tag" fill="#35619a">AI 1 · YOUR ASSISTANT</text>
+<text x="64" y="256" class="title" fill="#221e19">Writes a draft for the job</text>
+<text x="64" y="280" class="body" fill="#5f574d">Only your facts. A missing number becomes a question, never a guess.</text>
+<path d="M340 302 V322 m-6 -7 l6 8 l6 -8" fill="none" stroke="#5f574d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="40" y="332" width="600" height="136" rx="12" fill="#a8515c" stroke="#a8515c"/>
+<text x="64" y="359" class="tag" fill="#ffffff">AI 2 · FROM A DIFFERENT COMPANY</text>
+<text x="64" y="384" class="title" fill="#ffffff">Checks the draft blind</text>
+<text x="64" y="408" class="body" fill="#ffffff">It is not told who wrote it, so no AI grades its own work.</text>
+<text x="64" y="430" class="body" fill="#ffffff">Full council: three AIs each write a draft and critique each other</text>
+<text x="64" y="452" class="body" fill="#ffffff">blind. The best parts are merged before this check.</text>
+<path d="M340 474 V494 m-6 -7 l6 8 l6 -8" fill="none" stroke="#5f574d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="40" y="504" width="600" height="92" rx="12" fill="#fffdf9" stroke="#ddd5c8"/>
+<rect x="40" y="518" width="5" height="64" rx="2.5" fill="#685497"/>
+<text x="64" y="531" class="tag" fill="#685497">AUTOMATIC CHECK</text>
+<text x="64" y="556" class="title" fill="#221e19">A script tests the text</text>
+<text x="64" y="580" class="body" fill="#5f574d">Flags AI writing habits, layout problems, and numbers you never gave.</text>
+<path d="M340 602 V622 m-6 -7 l6 8 l6 -8" fill="none" stroke="#5f574d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="40" y="632" width="600" height="92" rx="12" fill="#fffdf9" stroke="#ddd5c8"/>
+<rect x="40" y="646" width="5" height="64" rx="2.5" fill="#2f6c36"/>
+<text x="64" y="659" class="tag" fill="#2f6c36">YOU</text>
+<text x="64" y="684" class="title" fill="#221e19">You approve every changed line</text>
+<text x="64" y="708" class="body" fill="#5f574d">Is it true? Could you explain it in an interview?</text>
+<path d="M340 730 V750 m-6 -7 l6 8 l6 -8" fill="none" stroke="#5f574d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="40" y="760" width="600" height="114" rx="12" fill="#fffdf9" stroke="#ddd5c8"/>
+<rect x="40" y="774" width="5" height="86" rx="2.5" fill="#a8515c"/>
+<text x="64" y="787" class="tag" fill="#a8515c">RESULT</text>
+<text x="64" y="812" class="title" fill="#221e19">One resume you can defend</text>
+<text x="64" y="836" class="body" fill="#5f574d">A plain layout that screening software can read, the requirements</text>
+<text x="64" y="858" class="body" fill="#5f574d">you do not meet yet, and the interview questions to expect.</text>
+</svg>
