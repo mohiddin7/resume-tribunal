@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resume skills for AI assistants, compared honestly | Resume Tribunal</title>
+<meta name="description" content="Six free skills that tailor your resume to a job, including the one I made. What each one does well, where each falls short, and how to pick.">
+<link rel="canonical" href="https://mohiddin7.github.io/resume-tribunal/blog/resume-skills-compared.html">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Resume Tribunal blog" href="https://mohiddin7.github.io/resume-tribunal/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Resume Tribunal">
+<meta property="og:title" content="Resume skills for AI assistants, compared honestly | Resume Tribunal">
+<meta property="og:description" content="Six free skills that tailor your resume to a job, including the one I made. What each one does well, where each falls short, and how to pick.">
+<meta property="og:url" content="https://mohiddin7.github.io/resume-tribunal/blog/resume-skills-compared.html">
+<meta property="og:image" content="https://mohiddin7.github.io/resume-tribunal/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#a8515c">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js"></script>
+<meta property="article:published_time" content="2026-10-11">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Resume skills for AI assistants, compared honestly", "description": "Six free skills that tailor your resume to a job, including the one I made. What each one does well, where each falls short, and how to pick.", "datePublished": "2026-10-11", "dateModified": "2026-10-11", "author": {"@type": "Person", "name": "mohiddin7", "url": "https://github.com/mohiddin7"}, "image": "https://mohiddin7.github.io/resume-tribunal/assets/og.png", "mainEntityOfPage": "https://mohiddin7.github.io/resume-tribunal/blog/resume-skills-compared.html", "wordCount": 1454}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="in">
+  <a class="logo" href="../"><img src="../assets/favicon.svg" alt="" width="28" height="28">Resume Tribunal</a>
+  <nav class="top" aria-label="Main">
+    <a href="../#how">How it works</a><a href="../#start">Start here</a><a href="../#faq">Questions</a>
+    <a href="../blog/">Blog</a><a href="https://github.com/mohiddin7/resume-tribunal">GitHub</a>
+    <button class="theme" type="button">Dark mode</button>
+  </nav>
+</div></header>
+<main id="main"><article>
+<p class="meta"><a href="./">Blog</a> · 11 October 2026 · 6 min read</p>
+<h1>Resume skills for AI assistants, compared honestly</h1>
+<p class="lede">Six free skills that tailor your resume to a job, including the one I made. What each one does well, where each falls short, and how to pick.</p>
+<p><strong>Disclosure first:</strong> I made one of the six, Resume Tribunal. I've tried to be fair, and I've said where mine loses. Everything below comes from reading each skill's own files on 11 October 2026, and the star counts are from GitHub on that day. Skills change quickly, so check before you rely on any detail.</p>
+<h2>First, what is a "skill"?</h2>
+<p>If your experience of AI is typing a question into ChatGPT and getting an answer, a skill is a small addition to that. It is a folder of written instructions that an AI assistant loads when your request matches. Instead of pasting a long prompt every time, you install the skill once and say "tailor my resume to this job".</p>
+<p>Skills work in coding tools such as Claude Code, Codex and Cursor, and some chat apps, including the Claude app, let you upload them.</p>
+<p><strong>Do you need one?</strong> Not always. If you want one bullet point reworded, a plain prompt is fine. A skill earns its place when you'll apply to many jobs and want the AI to follow the same careful process each time.</p>
+<h2>What a good resume skill should do</h2>
+<p>Here's what I looked for, and why.</p>
+<ol>
+<li><strong>Never invent.</strong> A number you can't explain in an interview does more harm than a line with no number at all.</li>
+<li><strong>Keep the layout readable by screening software.</strong> Applicant tracking systems (ATS) are the software employers use to collect applications. Columns, tables, text in headers and images can scramble what they read.</li>
+<li><strong>Skip the ATS myths.</strong> You'll often see "75% of resumes are rejected by ATS". That figure <a href="https://hrtact.com/2020/10/05/your-job-application-was-rejected-by-a-human-not-a-computer/">traces back to a vendor that closed in 2013</a>, and no study supports it. <a href="https://support.greenhouse.io/hc/en-us/articles/41131886674075-Talent-Matching-FAQ">Greenhouse</a>, a widely used ATS, describes its matching as a way to sort applicants. It does not reject them automatically. Most resumes are rejected by people.</li>
+<li><strong>Use the job's words where they're true, and don't stuff keywords.</strong> A recruiter searching for "Power Query" should find it if you've used it. A list of keywords you don't have helps no one.</li>
+<li><strong>Get an independent check.</strong> AI models are <a href="https://arxiv.org/abs/2604.06996">noticeably more lenient with their own output</a>. Self-review catches less.</li>
+<li><strong>Protect personal details, and be upfront about time and cost.</strong></li>
+</ol>
+<h2>The six skills</h2>
+<h3>ResumeSkills</h3>
+<p><a href="https://github.com/Paramchoudhary/ResumeSkills">Paramchoudhary/ResumeSkills</a>, about 2,650 stars, MIT license.</p>
+<p><strong>What it is:</strong> a collection of 22 skills covering the whole job search: tailoring, an ATS optimizer, bullet writing, cover letters, interview prep, cold emails and filling in application forms.</p>
+<p><strong>Good at:</strong> breadth. One install covers most of a job search, and it installs with a single <code>npx skills add</code> command.</p>
+<p><strong>Watch out for:</strong> I read two of the 22 closely. The tailoring skill asks the AI to add missing keywords from the posting, with a principle of staying truthful. The ATS optimizer repeats the 75% figure and computes a keyword match score against the job posting. Neither one checks the new resume against what you originally said.</p>
+<h3>Resume Tailoring Skill</h3>
+<p><a href="https://github.com/varunr89/resume-tailoring-skill">varunr89/resume-tailoring-skill</a>, about 770 stars, MIT license.</p>
+<p><strong>What it is:</strong> the most thorough of the group. It builds a library from your past resumes and researches the company and role. It matches content with confidence scores and asks branching questions to surface experience you forgot to write down. It also has a batch mode for three to five similar jobs, and gives you Word and PDF files plus interview prep.</p>
+<p><strong>Good at:</strong> finding experience that isn't on your resume yet, and reusing your history across many applications. It stops at checkpoints for your approval.</p>
+<p><strong>Watch out for:</strong> it works best with a library of past resumes; the README suggests ten or more for best results. At about 4,600 words, it is also the longest skill here, which means more for the AI to read on every run. The same AI researches, writes and judges.</p>
+<h3>resume-cover-letter</h3>
+<p>Part of <a href="https://github.com/jezweb/claude-skills">jezweb/claude-skills</a>, a collection with about 1,060 stars, MIT license.</p>
+<p><strong>What it is:</strong> a single skill for a resume or CV and a cover letter, with regional formats for Australia and New Zealand, the US and the UK.</p>
+<p><strong>Good at:</strong> cover letters and country conventions, with clear, practical advice on structure and tone.</p>
+<p><strong>Watch out for:</strong> it tells the AI to mirror the listing's language and aim for at least 60% of bullets with a measurable result. That's reasonable advice for a person. For an AI, pressure to add numbers is where invention starts if you didn't supply any. There's no independent check.</p>
+<h3>Proficiently tailor-resume</h3>
+<p><a href="https://github.com/proficientlyjobs/proficiently-claude-skills">proficientlyjobs/proficiently-claude-skills</a>, about 420 stars, no license file.</p>
+<p><strong>What it is:</strong> resume tailoring as one part of a job-search product that also finds jobs and applies for you.</p>
+<p><strong>Good at:</strong> the strictest anti-invention rules I read. Never infer scope, never add responsibilities, never assume partnerships that aren't listed. It bans long dashes, reviews the draft sentence by sentence for AI-sounding writing, and saves your corrections so you don't have to repeat them.</p>
+<p><strong>Watch out for:</strong> with no license file, the terms for reusing it are unclear, and it belongs to a larger commercial product. Review is done by the same AI that wrote the draft.</p>
+<h3>Claude Code Job Tailor</h3>
+<p><a href="https://github.com/javiera-vasquez/claude-code-job-tailor">javiera-vasquez/claude-code-job-tailor</a>, about 170 stars, CC BY-NC 4.0 license.</p>
+<p><strong>What it is:</strong> closer to an app than a skill. You write your experience once in a structured file. Three agents analyse the posting, weight the requirements, and produce a tailored PDF in about a minute, with a live preview in your browser.</p>
+<p><strong>Good at:</strong> speed and polished PDFs, once it's set up.</p>
+<p><strong>Watch out for:</strong> it needs Claude Code plus a JavaScript runtime and some setup, it only works with Claude, and the license forbids commercial use.</p>
+<h3>Resume Tribunal (mine)</h3>
+<p><a href="https://github.com/mohiddin7/resume-tribunal">mohiddin7/resume-tribunal</a>, new, MIT license.</p>
+<p><strong>What it is:</strong> tailors your resume to one job. Your assistant writes the draft, and an AI from a different company reviews it without being told who wrote it. A "full council" option has three AIs from three companies draft and critique each other first. A script checks that every number and name in the resume appears in your own words, and you approve each changed line.</p>
+<p><strong>Good at:</strong> independent review, a check on invented facts that runs as code instead of a request in a prompt, and privacy. Personal details are replaced with placeholders before anything goes to another AI. It is also plain about what no tool can promise.</p>
+<p><strong>Watch out for:</strong> it's slower and uses more AI time than the others. A quick review takes about 5 minutes, and a full council about 15 minutes with roughly five times the AI usage. It works best if you have accounts with two or three AI companies. It doesn't write cover letters or keep a library of your history between jobs. It's new, and so far it has one worked example and few users.</p>
+<h2>Side by side</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Independent reviewer from another AI company</th>
+<th>Script checks claims against your own words</th>
+<th>Asks you to approve changes</th>
+<th>Cover letters</th>
+<th>Reuses your history across jobs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ResumeSkills</td>
+<td>No</td>
+<td>No</td>
+<td>Not built in</td>
+<td>Yes, separate skill</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Resume Tailoring Skill</td>
+<td>No</td>
+<td>No</td>
+<td>Yes, at checkpoints</td>
+<td>Suggestions only</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>resume-cover-letter</td>
+<td>No</td>
+<td>No</td>
+<td>Not built in</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Proficiently</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes, separate skill</td>
+<td>Yes, saved corrections</td>
+</tr>
+<tr>
+<td>Claude Code Job Tailor</td>
+<td>No</td>
+<td>No</td>
+<td>Yes, live preview</td>
+<td>Yes</td>
+<td>Yes, one data file</td>
+</tr>
+<tr>
+<td>Resume Tribunal</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes, every changed line</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h2>Which one should you use?</h2>
+<ul>
+<li><strong>You want help with the whole job search</strong>, cover letters and interview prep included: ResumeSkills, or resume-cover-letter if you also need UK or Australian conventions.</li>
+<li><strong>You're applying to lots of similar jobs and have plenty of old resumes:</strong> Resume Tailoring Skill.</li>
+<li><strong>You live in Claude Code and want a fast, polished PDF:</strong> Claude Code Job Tailor.</li>
+<li><strong>You're worried about an AI inventing things, or you want a second opinion you can trust:</strong> Resume Tribunal. You can also use it to review a resume another skill wrote. Just say "get a second opinion on my resume".</li>
+</ul>
+<h2>Whatever you use</h2>
+<ul>
+<li>Read every line before you send it, and ask yourself whether you could explain it in an interview.</li>
+<li>Never keep a number you didn't give the AI yourself.</li>
+<li>Check whether the employer has a policy on AI help with applications.</li>
+</ul>
+<p>No tool can promise an interview. A resume you can stand behind line by line is the part you control.</p>
+<div class="card"><strong>Try Resume Tribunal.</strong> It is free and open source. <a href="../#start">Start here</a> if you have never used a terminal, or see the <a href="https://github.com/mohiddin7/resume-tribunal">code on GitHub</a>.</div>
+</article></main>
+<footer class="site"><div class="in">
+  <span>Resume Tribunal is free and open source, MIT license.</span>
+  <a href="https://github.com/mohiddin7/resume-tribunal">Source code</a><a href="../blog/">Blog</a><a href="https://mohiddin7.github.io/resume-tribunal/feed.xml">RSS</a><a href="../llms.txt">llms.txt</a>
+</div></footer>
+</body>
+</html>

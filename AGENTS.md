@@ -9,7 +9,7 @@ This repository holds one Agent Skill, `resume-tribunal`, in `skills/resume-trib
 - `skills/resume-tribunal/scripts/`: Python scripts. `check_resume.py`, `prompt.py` and `seats.py` use the standard library only; `make_pdf.py` needs reportlab, and pypdf for its text check.
 - `manual-prompts/`: the original hand-run prompts, kept unedited for the record.
 - `examples/`: a full run on a fictional candidate.
-- `docs/`: the project website (GitHub Pages).
+- `docs/`: the project website (GitHub Pages). `python3 docs/build.py` regenerates the images, the blog pages from `docs/blog/*.md`, the homepage, `feed.xml` and `sitemap.xml`; edit the sources, not the generated HTML. `docs/llms.txt` is written by hand.
 
 ## Rules
 

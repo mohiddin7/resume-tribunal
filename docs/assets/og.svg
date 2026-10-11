@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+<style>text{font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}</style>
+<rect width="1200" height="630" fill="#f7f4ef"/>
+<rect x="0" y="0" width="16" height="630" fill="#a8515c"/>
+<g transform="translate(80 92)"><rect width="56" height="56" rx="14" fill="#a8515c"/>
+<circle cx="28" cy="16" r="7" fill="#fff"/><circle cx="16" cy="38" r="7" fill="none" stroke="#fff" stroke-width="3.6"/>
+<circle cx="40" cy="38" r="7" fill="none" stroke="#fff" stroke-width="3.6"/></g>
+<text x="156" y="134" font-size="40" font-weight="700" fill="#221e19">Resume Tribunal</text>
+<text x="80" y="250" font-size="60" font-weight="800" fill="#221e19">Tailor your resume to a job,</text>
+<text x="80" y="326" font-size="60" font-weight="800" fill="#a8515c">with a second AI checking the first.</text>
+<text x="80" y="410" font-size="28" fill="#5f574d">Built only from your own facts. Reviewed blind by an AI from a different</text>
+<text x="80" y="450" font-size="28" fill="#5f574d">company. Readable by screening software. Free and open source.</text>
+<rect x="80" y="510" width="460" height="56" rx="12" fill="#fffdf9" stroke="#ddd5c8" stroke-width="2"/>
+<text x="104" y="546" font-size="24" font-family="ui-monospace,Menlo,Consolas,monospace" fill="#221e19">npx skills add mohiddin7/resume-tribunal</text>
+</svg>

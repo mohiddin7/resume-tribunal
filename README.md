@@ -30,10 +30,16 @@ npx skills add mohiddin7/resume-tribunal
 
 **Never used a terminal?** [Start here](#new-to-this-start-here). No commands needed.
 
+[Website](https://mohiddin7.github.io/resume-tribunal/) · [How it was made](https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html) · [Resume skills compared](https://mohiddin7.github.io/resume-tribunal/blog/resume-skills-compared.html)
+
 ## How it works
 
 <p align="center">
-  <img src="docs/assets/how-it-works.svg" width="620" alt="How Resume Tribunal works. You give your resume, the job posting and a few sentences in your own words. Your assistant writes a draft from your facts only. An AI from a different company checks the draft without being told who wrote it. A script flags AI writing habits, layout problems and numbers you never gave. You approve every changed line. You get one resume you can defend, the requirements you do not meet yet, and the interview questions to expect.">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/how-it-works-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/how-it-works-light.svg">
+    <img src="docs/assets/how-it-works.svg" width="620" alt="How Resume Tribunal works. You give your resume, the job posting and a few sentences in your own words. Your assistant writes a draft from your facts only. An AI from a different company checks it without being told who wrote it. A script flags AI writing habits, layout problems and numbers you never gave. You approve every changed line. You get a resume you can defend.">
+  </picture>
 </p>
 
 The second AI can be reached in four ways. The skill picks the first one that works for you and tells you which.
@@ -61,6 +67,38 @@ The assistant that wrote a line is badly placed to catch it.
 - **AIs from different companies still share mistakes.** On one benchmark, two models that were both wrong [gave the same wrong answer 60% of the time](https://arxiv.org/abs/2506.07962). So the last two checks do not depend on a model: a script flags every number that is missing from your own material, and you confirm each changed line.
 
 **What it does not promise.** No study shows that several AIs write a better resume than one strong assistant, and no tool can promise interviews or a result from screening software. You get independent review, and a resume you can defend line by line.
+
+## Questions people ask
+
+**Do I need to know how to code?**
+No. If you use the Claude app, you upload the skill once and then chat as usual. The steps are in [Start here](#new-to-this-start-here). The terminal route is quicker, but you can skip it.
+
+**Is it free?**
+The skill is. It runs on the AI apps you already use, and free plans work. A long run can hit a free plan's daily limit, so a full council goes smoother on a paid one.
+
+**Why not just ask ChatGPT to fix my resume?**
+You can, and for a quick tidy-up that's fine. The trouble starts when the same AI writes your resume and then tells you it's good. It tends to like its own work, and it will happily turn "half a day" into "4 hours". A second AI from another company catches more of that, and a script checks every number against what you actually said.
+
+**Will it make things up?**
+It's built so it can't sneak anything past you. Every number, tool and job title has to come from you. If something's missing, it asks. Before you get the final file, you say yes or no to each changed line, and anything you don't confirm comes out.
+
+**Will this get me past the ATS?**
+Nobody can promise that, so be wary of anyone who does. ATS is the software many employers use to collect and sort applications. This skill avoids the things known to confuse it: columns, tables, text in headers, images, hidden text. Then it checks that the PDF's text reads back correctly. In the end a person usually reads your resume, and it's written for them.
+
+**Can recruiters tell an AI helped?**
+Maybe. It removes the habits people spot most, like long dashes and words such as "spearheaded". It won't make the resume your unaided work, though. If an employer asks about AI use, tell the truth.
+
+**Is my resume safe?**
+This project never sees it. Your name, email, phone number and links are swapped for placeholders before anything goes to a second AI, and you're asked before anything is sent. The AI companies you use do see the text, under their own terms, so leave out anything confidential.
+
+**How long does it take?**
+About 5 minutes for a quick review when the other AI runs by itself, and about 15 for a full council. If you're copying and pasting by hand, allow 20 minutes or so.
+
+**What's a "full council"?**
+Three AIs from three companies each write a draft. Then they point out problems in each other's drafts without knowing who wrote which. The best parts are merged and checked again. It uses about five times as much AI time as a quick review.
+
+**What's warmhop™?**
+A resume link tracker made by the same person who made this skill. If your resume has links, you'll see one optional tip about it at the end. You don't need it, and nothing is sent to it.
 
 ## What makes it different
 
@@ -158,7 +196,7 @@ skills/resume-tribunal/
     └── seats.py             # runs other AI command-line tools
 examples/operations-analyst/ # a full run on a fictional candidate
 manual-prompts/              # the original hand-run prompts
-docs/                        # project website
+docs/                        # website and blog; build.py regenerates it
 ```
 
 ## License
