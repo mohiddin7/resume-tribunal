@@ -52,6 +52,14 @@ Each seat runs its own company's model at the same tier as your main assistant, 
 - **Reads like you.** A checker flags common AI writing habits (em dashes, "not X but Y", trailing "-ing" clauses, repeated three-item lists, copied phrases) and words you never use.
 - **Asks once.** One setup round with defaults, then only the final sign-off.
 
+## A real run
+
+A fictional operations coordinator applying for an operations analyst job, in full council mode with three assistants from three companies. See [examples/operations-analyst](examples/operations-analyst/).
+
+- Each seat caught something the others missed, such as a draft that rounded one year and ten months up to "2 years".
+- Nine enlarged or invented claims were rejected, including "from 4 hours to 40 minutes" where the candidate had said "half a day".
+- The result is one page at 10.5 pt, with the job's unmet requirements listed for the candidate instead of papered over.
+
 ## Install
 
 | Where | How |
@@ -111,6 +119,9 @@ skills/resume-tribunal/
     ├── check_resume.py      # resume checker
     ├── make_pdf.py          # PDF builder
     └── seats.py             # runs other AI command-line tools
+examples/operations-analyst/ # a full run on a fictional candidate
+manual-prompts/              # the original hand-run prompts
+docs/                        # project website
 ```
 
 ## License

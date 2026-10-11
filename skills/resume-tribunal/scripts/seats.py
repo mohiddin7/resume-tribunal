@@ -57,6 +57,12 @@ def detect(exclude):
     return found
 
 
+def blocked(reply):
+    """True only for the tool's own one-line error, never for a reply that merely quotes it."""
+    text = reply.strip()
+    return text.startswith("jetski: no output produced") and "\n" not in text
+
+
 def run(cmd, prompt_path, reply_path, timeout):
     with open(prompt_path, encoding="utf-8") as f:
         prompt = f.read()
@@ -78,9 +84,9 @@ def run(cmd, prompt_path, reply_path, timeout):
                                    timeout=timeout, cwd=empty)
             except (OSError, subprocess.TimeoutExpired) as e:
                 sys.exit(f"seat failed: {e}")
-            if r.returncode == 0 and r.stdout.strip() and "no output produced" not in r.stdout:
+            if r.returncode == 0 and r.stdout.strip() and not blocked(r.stdout):
                 break
-    if r.returncode != 0 or not r.stdout.strip() or "no output produced" in r.stdout:
+    if r.returncode != 0 or not r.stdout.strip() or blocked(r.stdout):
         sys.exit(f"seat failed (exit {r.returncode}): {(r.stderr.strip() or r.stdout.strip())[:500] or 'empty reply'}")
     with open(reply_path, "w", encoding="utf-8") as f:
         f.write(r.stdout)

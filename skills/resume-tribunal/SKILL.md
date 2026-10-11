@@ -116,7 +116,7 @@ Add one line on effort: minutes when automatic, or the number of copy-and-paste 
 
 **Protect their data, then get consent:**
 
-- Replace the name, email, phone, street address and links with stand-ins such as `<<NAME>>` and `<<LINK_GITHUB>>`, along with the names of referees, colleagues, co-authors and clients wherever they appear. Say: "I've hidden your name and contact details. They come back at the end."
+- Replace the name, email, phone, street address (the city can stay) and links with stand-ins such as `<<NAME>>` and `<<LINK_GITHUB>>`, along with the names of referees, colleagues, co-authors and clients wherever they appear. Say: "I've hidden your name and contact details. They come back at the end."
 - Say where the text goes and ask: "This text, including your employers and job history, will go to [the tools or apps you found] under their terms and your account settings there. Some keep their own history, and the text can still identify you. Leave out anything confidential to an employer, and check whether this employer allows AI help with applications. Shall I go ahead?"
 - Wait for a yes. Ask again if a seat changes.
 
@@ -140,7 +140,7 @@ If a seat's critique still fails after one retry, carry on with the critiques yo
 
 ### 4. Review and sign-off
 
-1. **Blind review.** Send P4 to a seat other than you: in full council, the seat whose draft was not the base of the merge (see seat choice in [references/seats.md](references/seats.md)). Apply the fixes that quote a real line and agree with the candidate's material. Hold any fix that needs a fact from the user.
+1. **Blind review.** Send P4 to a seat other than you (see seat choice in [references/seats.md](references/seats.md)). Apply the fixes that quote a real line and agree with the candidate's material. Hold any fix that needs a fact from the user.
 2. **Check.** Run `python3 scripts/check_resume.py .tribunal/resume.md --source .tribunal/candidate.md --source .tribunal/own_words.md --vocab .tribunal/job.md`. Fix every error. Without code, check by hand against "Writing tells" below.
 3. **Fit.** Aim for one page under about ten years of experience and two at most: roughly 450 to 650 words a page. Cut the least relevant bullets first, and tell the user what you cut.
 4. **Voice.** Rewrite flagged lines with P7. Two passes at most, then show the user what is still flagged.
@@ -148,7 +148,7 @@ If a seat's critique still fails after one retry, carry on with the critiques yo
 
 ### 5. Finalise
 
-1. **Work in Markdown.** Restore the personal details into `resume.md` and show the user its path. After every later edit, show the path again and what changed.
+1. **Work in Markdown.** Keep the stand-in version as `resume-standins.md` for later seat calls, restore the personal details into `resume.md`, and show the user its path. After every later edit, show the path again and what changed.
 2. **Changes.** Make edits the user asks for in the Markdown. Run the checker after each round, and add any new claim to the sign-off.
 3. **Fit the page.** When the user says it's final, run `python3 scripts/make_pdf.py .tribunal/resume.md Resume.pdf` (needs `pip install reportlab`). It reports the page count and every wrapped line. A line marked SHORTEN has only a few words on its last line: tighten it by a line. A last line half full or more is fine; leave it. If tightening would remove a fact, ask the user first.
 4. **Final blind look.** Send P4 to the other seats (or fresh-context copies of you in solo mode) for a report-only pass. Send the version with stand-ins, and add the sign-off answers to the candidate block so confirmed facts are not flagged. Show the quoted fixes and apply only the ones the user accepts.

@@ -45,6 +45,7 @@ In council mode, choose comparable models in the platform's picker the same way.
 
 ## Choosing a seat
 
+- **Review in full council:** any seat other than you; prefer one whose draft was not the base of the merge.
 - **Quick review:** one seat. Choose the closest tier match; between equals, alternate rather than favouring one company by habit.
 - **Final blind look:** every other seat.
 - **Solo:** fresh-context subagents of your own model, each seeing only its prompt. Tell the user once that same-model review is weaker, though still useful for catching errors.
