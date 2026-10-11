@@ -66,7 +66,9 @@ def blocked(reply):
 def contact_details(prompt):
     """Emails, profile links and phone numbers that should have been swapped for stand-ins."""
     found = re.findall(r"[\w.+-]+@[\w-]+\.[\w.-]+|linkedin\.com/in/[\w-]+", prompt)
-    found += [m for m in re.findall(r"\+?\d[\d ().-]{8,}\d", prompt) if sum(c.isdigit() for c in m) >= 10]
+    found += [m for m in re.findall(r"\+?\d[\d ().-]{5,}\d", prompt)
+              if sum(c.isdigit() for c in m) >= (7 if re.search(r"\D", m) else 10)
+              and not re.fullmatch(r"(?:19|20)\d\d\s*-\s*(?:19|20)\d\d", m)]
     return found
 
 
@@ -117,7 +119,9 @@ def self_test():
     assert with_model("claude", SEATS["claude"][1], None, None) == SEATS["claude"][1]
     assert all(d["vendor"] != "openai" for d in detect(["openai"]))
     assert contact_details("Mail sam@example.com or call +1 (555) 010-2030") == ["sam@example.com", "+1 (555) 010-2030"]
-    assert contact_details("<<EMAIL>> | <<PHONE>> | Jan 2019 - Mar 2021 | 2019 - 2021 | cut 1200 to 300") == []
+    assert contact_details("<<EMAIL>> | <<PHONE>> | Jan 2019 - Mar 2021 | 2019 - 2021 | cut 1200 to 300 | 5000000") == []
+    assert contact_details("call 555-0117") == ["555-0117"]
+    assert contact_details("call 5551234567") == ["5551234567"]
     print("self-test passed")
 
 

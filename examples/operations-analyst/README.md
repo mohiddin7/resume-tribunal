@@ -1,6 +1,6 @@
 # Worked example: operations coordinator to operations analyst
 
-A complete run of Resume Tribunal in full council mode, on a fictional candidate. Three AI assistants from three different companies took part: the host and two outside seats. The outside seats ran automatically through their command-line tools. Nothing was edited by hand afterwards.
+A complete run of Resume Tribunal in full council mode, on a fictional candidate. Three AI assistants from three different companies took part: the host and two outside seats, which ran automatically through their command-line tools. A fresh agent ran the skill from its files alone, with the candidate's replies scripted in advance. Nothing was edited by hand afterwards.
 
 The candidate and employers are invented. Employers are described by type, and there are no links.
 
@@ -8,14 +8,23 @@ The candidate and employers are invented. Employers are described by type, and t
 |---|---|
 | [job.md](job.md) | The job description |
 | [before.md](before.md) | The resume the candidate started with |
+| [own-words.md](own-words.md) | What the candidate said about their work, in their own words |
+| [signoff.md](signoff.md) | What the candidate confirmed at the sign-off |
 | [after.md](after.md) | The resume the skill produced ([PDF](Resume.pdf), one page at 10.5 pt) |
-| [findings.md](findings.md) | What each seat caught that the others missed, and what was rejected as invented |
-| [review.md](review.md) | The final blind review, fix by fix, with the interview questions |
+| [findings.md](findings.md) | What each seat caught, what was rejected as invented, and what the run cost |
+| [review.md](review.md) | The final blind look, fix by fix, with the interview questions |
 | [not-shown.md](not-shown.md) | Job requirements the resume still does not show |
 
-## What the candidate gave
+## Check it yourself
 
-The old resume, the job description, and one paragraph in their own words about what they actually did. That paragraph is where every number in the new resume comes from.
+Every number and name in the new resume traces to the candidate's material. From this folder:
+
+```bash
+python3 ../../skills/resume-tribunal/scripts/check_resume.py after.md --final \
+  --source before.md --source own-words.md --source signoff.md --vocab job.md
+```
+
+It prints `0 error(s), 0 warning(s), 0 placeholder(s) to fill`. Add "Tableau" to a bullet and run it again to see the check fail.
 
 ## Before and after, one role
 
@@ -32,26 +41,18 @@ Before:
 After:
 
 ```
-- Traced one carrier's late loads out of the Dayton terminal to its Friday pickups using six months of data in Excel, and presented the finding to the operations manager and the terminal manager.
-- Raised on-time delivery at that terminal from 81 percent to 93 percent over about three months, as part of the team that moved those Friday loads to a different carrier.
-- Built the weekly report on late deliveries for the operations manager with pivot tables and Power Query, which reduced report preparation time from half a day to about 40 minutes.
-- Track about 400 shipments a day across 12 carriers.
+- Track about 400 shipments a day across 12 carriers and work with carriers and customers to resolve issues.
+- Helped raise Dayton terminal on-time delivery from 81 to 93 percent over about three months, after the team moved one carrier's Friday pickups to another carrier.
+- Showed in six months of Excel data that the carrier, late on almost a third of its Dayton loads, was late on its Friday pickups, and presented the finding to the operations manager and the terminal manager.
+- Cut the Monday report on late deliveries for the operations manager from half a day's work to about 40 minutes by building it with Excel pivot tables and Power Query.
 - Write simple SQL queries against the shipment database a few times a week.
-- Work with carriers and customers to resolve shipment issues.
 - Trained four new coordinators.
 ```
 
 ## What the blind review was for
 
-- **Each seat caught something the others missed.** One noticed a draft had rounded one year and ten months up to "2 years". Another noticed the summary and the bullets used different verb forms. The host caught a draft crediting the candidate alone for a decision the team made.
-- **Enlarged or invented claims were rejected.** One reviewer suggested "from 4 hours to 40 minutes"; the candidate had said "half a day". Another suggested "operational reporting adopted by leadership" for a spreadsheet one supervisor used.
+- **Each participant caught something the others missed.** One noticed a draft crediting the candidate alone for a decision the team made. Another noticed that "freight and logistics" stretched four years over a customer service job.
+- **Enlarged or invented claims were rejected.** Two reviewers suggested "from 4 hours to 40 minutes"; the candidate had said "half a day". Another suggested "root-cause tracking framework adopted by leadership" for a spreadsheet one supervisor used. [findings.md](findings.md) lists them all.
 - **The resume stayed honest about gaps.** The job asks for Power BI or Tableau. The candidate has used neither, so neither appears, and the gap is listed in [not-shown.md](not-shown.md) for the candidate to address.
 
-Both outside reviewers, reading blind, said they would phone-screen this candidate, and read them as a coordinator moving into a junior to mid-level analyst role.
-
-## Limits of this run
-
-- One fictional candidate. It shows how the process works, not how it performs across many resumes.
-- The host's own critique and the merge ran in the host's working context, and the host's draft became the base of the merge.
-- One outside seat ran a tier below the host, the closest its plan offered.
-- The simulated user accepted only wording changes at the final review, so some sound suggestions, such as moving the strongest bullet higher, were left for a real user to decide.
+Both outside reviewers, reading blind, said they would phone-screen this candidate. The limits of this run are listed at the end of [findings.md](findings.md).

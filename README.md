@@ -13,12 +13,13 @@ One role from the [worked example](examples/operations-analyst/), before and aft
 Before   - Helped improve on-time delivery
          - Utilized Excel for various reports
 
-After    - Raised on-time delivery at that terminal from 81 percent to 93 percent over about
-           three months, as part of the team that moved those Friday loads to a different carrier.
-         - Built the weekly report on late deliveries with pivot tables and Power Query, which
-           reduced report preparation time from half a day to about 40 minutes.
+After    - Helped raise Dayton terminal on-time delivery from 81 to 93 percent over about three
+           months, after the team moved one carrier's Friday pickups to another carrier.
+         - Cut the Monday report on late deliveries for the operations manager from half a day's
+           work to about 40 minutes by building it with Excel pivot tables and Power Query.
 
 Rejected "from 4 hours to 40 minutes". The candidate had said "half a day", so that is what it says.
+Rejected "Raised ...". The team made the change, so it says "Helped raise".
 ```
 
 **Use a coding agent?** Run this in a terminal, then say *"Tailor my resume to this job: \<link\>"*.
@@ -44,7 +45,7 @@ The second AI can be reached in four ways. The skill picks the first one that wo
 | **One platform**, where an app can ask several companies' AIs at once | The drafts and reviews run in one place | A few minutes |
 | **One company only**, if you prefer | New chats of your own assistant review blind | A few minutes, and a weaker check |
 
-**Full council** is the default when the other AIs run automatically: three AIs each write a draft, critique each other blind, and the best parts are merged before the check. **Quick review** is the default when you would be copying and pasting: one writer and one checker. Full council makes about seven calls to the other AIs against two, so it uses roughly three to four times as much of your plans' allowance.
+**Full council** is the default when the other AIs run automatically: three AIs each write a draft, critique each other blind, and the best parts are merged before the check. **Quick review** is the default when you would be copying and pasting: one writer and one checker. Full council makes about eight calls against two and takes 10 to 15 minutes. It sends and receives about five times as much text, spread across your plans: about 30,000 tokens against 6,000 in the worked example, before each model's own reasoning.
 
 Why three? It is the smallest group in which two can outvote one that is wrong. Aircraft flight computers and industrial safety systems run three units with two-out-of-three voting for that reason, and banks and auditors organise risk control as three lines of defence. For AI writing this is a design choice by analogy, and the checks that follow do not rely on it. Each AI runs at a strength similar to your main assistant, so no reviewer is much weaker than the writer.
 
@@ -73,11 +74,12 @@ The assistant that wrote a line is badly placed to catch it.
 
 A fictional operations coordinator applying for an operations analyst job, in full council mode with three assistants from three companies. See [examples/operations-analyst](examples/operations-analyst/).
 
-- Each AI caught something the others missed, such as a draft that rounded one year and ten months up to "2 years".
-- Enlarged or invented claims were rejected, such as "operational reporting adopted by leadership" for a spreadsheet one supervisor used.
+- Each AI caught something the others missed, such as a draft that credited the candidate alone for a decision the team made.
+- More than twenty enlarged or invented phrases were rejected, such as "root-cause tracking framework adopted by leadership" for a spreadsheet one supervisor used.
 - The result is one page at 10.5 pt, with the job's unmet requirements listed for the candidate instead of papered over.
+- You can verify it: the folder includes the candidate's own words, and one command shows that every number and name in the resume traces back to them.
 
-It is one run on one invented candidate. It shows how the process works, not how it performs across many resumes.
+A fresh agent ran the skill from its files alone: 8 calls, about 12 minutes, no failures. It is one run on one invented candidate, so it shows how the process works, not how it performs across many resumes.
 
 ## New to this? Start here
 
