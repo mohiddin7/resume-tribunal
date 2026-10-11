@@ -44,7 +44,9 @@ The second AI can be reached in four ways. The skill picks the first one that wo
 | **One platform**, where an app can ask several companies' AIs at once | The drafts and reviews run in one place | A few minutes |
 | **One company only**, if you prefer | New chats of your own assistant review blind | A few minutes, and a weaker check |
 
-**Quick review** (the default) is one writer and one checker. **Full council** is the thorough version: three AIs each write a draft, critique each other blind, and the best parts are merged before the check. Each AI runs at a strength similar to your main assistant, so no reviewer is much weaker than the writer.
+**Full council** is the default when the other AIs run automatically: three AIs each write a draft, critique each other blind, and the best parts are merged before the check. **Quick review** is the default when you would be copying and pasting: one writer and one checker. Full council makes about seven calls to the other AIs against two, so it uses roughly three to four times as much of your plans' allowance.
+
+Why three? It is the smallest group in which two can outvote one that is wrong. Aircraft flight computers and industrial safety systems run three units with two-out-of-three voting for that reason, and banks and auditors organise risk control as three lines of defence. For AI writing this is a design choice by analogy, and the checks that follow do not rely on it. Each AI runs at a strength similar to your main assistant, so no reviewer is much weaker than the writer.
 
 ## Why a second AI
 
@@ -135,6 +137,7 @@ python3 skills/resume-tribunal/scripts/seats.py detect
 - This project runs no server and never receives your resume. The assistants you choose do, under their own terms. Your name and contact details are replaced with stand-ins before anything goes to another AI, and you are asked first. Leave out anything confidential to an employer, and turn off model training in each app.
 - In a terminal, working files are kept in a `.tribunal/` folder. Delete it when you are done, and do not commit or sync it.
 - The skill will not invent facts, add hidden text, or help with assessments or live interviews.
+- Disclosure: when a resume has links, the skill ends with one optional tip for warmhop™, a resume link tracker made by this project's author. The tip says so when it is shown. Nothing is sent to warmhop™, and the skill works the same without it.
 - This is general information, not career or legal advice.
 
 ## Layout
