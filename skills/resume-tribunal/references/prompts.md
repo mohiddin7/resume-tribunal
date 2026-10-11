@@ -184,7 +184,7 @@ Reply with three parts:
 
 ## P4 Final review
 
-Send to a seat other than the host. The reviewer is told nothing about how the resume was produced. `{{RESUME_UNDER_REVIEW}}` is your draft in quick review and the merged resume in the full council.
+Send to a seat other than the host. The reviewer is told nothing about how the resume was produced. For the final blind look, add the sign-off answers inside the `<candidate>` block as `<confirmed_by_candidate>`, so facts the user has confirmed are not flagged. `{{RESUME_UNDER_REVIEW}}` is your draft in quick review and the merged resume in the full council.
 
 ```
 Review the resume under review as the hiring manager for the job below. Report what you find. The candidate will make the edits.

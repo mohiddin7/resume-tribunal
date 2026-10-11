@@ -36,7 +36,7 @@ A much weaker seat lowers the quality of the review, so match tiers.
 1. Name your own model and its tier: flagship, mid or fast. Judge each model by its company's own description of it (Codex and Antigravity list one), not by its version number.
 2. For each seat, pick **that seat's own company's** model at the same tier, and a similar effort level. Some tools also offer other companies' models (Antigravity lists Claude and GPT models); choosing one would quietly undo the independence.
 3. Find the names with `python3 scripts/seats.py models <seat>`. Where a tool cannot list them, use its documented names; Claude Code accepts `opus`, `sonnet` and `haiku`.
-4. Pass them with `--model` and `--effort` on `seats.py run`.
+4. Pass them with `--model` and `--effort` on `seats.py run`. Where the model name already carries an effort level (such as a name ending in `-high`), leave out `--effort`.
 5. In the second setup message, say in plain words what will run ("OpenAI's GPT-5.6 Terra and Google's Gemini 3.1 Pro"). The user can change it.
 6. If the matching tier is not on the user's plan, use the closest and say so.
 7. When unsure, choose the seat's strongest model. A reviewer stronger than you does no harm; a much weaker one does.

@@ -40,7 +40,8 @@ SEATS = {
     "claude": ("anthropic", ["claude", "-p", "--tools", "", "--no-session-persistence"]),
     "codex": ("openai", ["codex", "exec", "--sandbox", "read-only", "--ephemeral", "--skip-git-repo-check", "-"]),
     "agy": ("google", ["agy", "--sandbox", "--mode", "plan", "--print-timeout", "10m",
-                       "-p", "Read the file {prompt_file} in this folder and reply to it exactly as it asks."]),
+                       "-p", "Open the file {prompt_file} in this folder with your file-reading tool. Run no shell "
+                             "commands. Then reply to it exactly as it asks."]),
     # Gemini CLI now needs a paid API key; personal Google logins moved to agy. -p is appended to stdin.
     "gemini": ("google", ["gemini", "--skip-trust", "--approval-mode", "plan", "-p", "Reply to the material above."]),
 }
@@ -71,13 +72,16 @@ def run(cmd, prompt_path, reply_path, timeout):
                 f.write(prompt)
         cmd = [part.replace("{prompt_file}", "prompt.md") for part in cmd]
         stdin = None if uses_file else prompt
-        try:
-            r = subprocess.run(cmd, input=stdin, capture_output=True, text=True, encoding="utf-8",
-                               timeout=timeout, cwd=empty)
-        except (OSError, subprocess.TimeoutExpired) as e:
-            sys.exit(f"seat failed: {e}")
-    if r.returncode != 0 or not r.stdout.strip():
-        sys.exit(f"seat failed (exit {r.returncode}): {r.stderr.strip()[:500] or 'empty reply'}")
+        for attempt in (1, 2):  # a read-only seat sometimes reaches for a blocked tool; one retry clears it
+            try:
+                r = subprocess.run(cmd, input=stdin, capture_output=True, text=True, encoding="utf-8",
+                                   timeout=timeout, cwd=empty)
+            except (OSError, subprocess.TimeoutExpired) as e:
+                sys.exit(f"seat failed: {e}")
+            if r.returncode == 0 and r.stdout.strip() and "no output produced" not in r.stdout:
+                break
+    if r.returncode != 0 or not r.stdout.strip() or "no output produced" in r.stdout:
+        sys.exit(f"seat failed (exit {r.returncode}): {(r.stderr.strip() or r.stdout.strip())[:500] or 'empty reply'}")
     with open(reply_path, "w", encoding="utf-8") as f:
         f.write(r.stdout)
     print(f"saved {len(r.stdout)} characters to {reply_path}")
