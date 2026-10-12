@@ -10,7 +10,7 @@
 
 **Tailor your resume to any job. Nothing made up.**
 
-Resume Tribunal is a free add-on for AI apps (an "Agent Skill"). New to this? You can run it in the Claude app, free or paid, and use ChatGPT or Gemini for the second check. One AI rewrites your resume for a specific job using only facts you gave it. An AI made by a different company then checks the draft without being told who wrote it, so nothing gets exaggerated and no AI grades its own work.
+Resume Tribunal is a free add-on for AI apps (an "Agent Skill"). It works in any AI chat app, such as ChatGPT, Gemini or Claude, and in coding agents. One AI rewrites your resume for a specific job using only facts you gave it. An AI made by a different company then checks the draft without being told who wrote it, so nothing gets exaggerated and no AI grades its own work.
 
 One role from the [worked example](examples/operations-analyst/), before and after:
 
@@ -33,7 +33,7 @@ Rejected "Raised ...". The team made the change, so it says "Helped raise".
 npx skills add mohiddin7/resume-tribunal
 ```
 
-**Never used a terminal?** [Start here](#new-to-this-start-here). No commands, and on a paid Claude plan, no download.
+**Never used a terminal?** [Start here](#new-to-this-start-here): paste one message into any AI chat app.
 
 [Website](https://mohiddin7.github.io/resume-tribunal/) · [How it was made](https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html) · [Resume skills compared](https://mohiddin7.github.io/resume-tribunal/blog/resume-skills-compared.html)
 
@@ -79,7 +79,7 @@ The assistant that wrote a line is badly placed to catch it.
 Yes. Resume Tribunal costs nothing and there's no sign-up. It runs inside AI apps you may already use, like Claude and ChatGPT. Their free plans are enough for a quick review. The thorough version sends more messages, so it runs more smoothly on a paid plan.
 
 **I'm not a tech person. Can I still use Resume Tribunal?**
-Yes. You add Resume Tribunal to the Claude app once, using the steps above, and then you just chat. There are no commands to type.
+Yes. You paste one message into any AI chat app, like ChatGPT, Gemini or Claude, attach your resume, and answer a couple of questions. There are no commands to type.
 
 **Why can't I just ask ChatGPT to fix my resume?**
 You can, and ChatGPT is fine for a quick tidy-up. The catch is that an AI checking its own writing tends to approve it, made-up numbers included. Resume Tribunal has a second AI, from a different company, check the draft without knowing who wrote it. A script then compares every number to what you actually said.
@@ -97,7 +97,7 @@ Resume Tribunal removes the usual giveaways, like long dashes and words such as 
 Not us. Resume Tribunal has no server. Before anything goes to a second AI, your name, email, phone number and links are swapped for stand-ins like `<<NAME>>`, and you're asked first. The AI apps you use see the rest under their own terms.
 
 **How long does Resume Tribunal take?**
-About 5 minutes for a quick review, and about 15 for the thorough version, which we call the full council. If you copy and paste between apps yourself, plan on 20.
+About 5 minutes for a quick review. If you copy and paste between two apps yourself, add a few minutes.
 
 **What do I get at the end?**
 Your finished resume as a PDF or Word file when your app can make files, and always as text you can paste into Word or Google Docs. You also get a list of what the job asks for that your resume doesn't show yet, plus the interview questions your resume is likely to prompt.
@@ -129,21 +129,29 @@ A fresh agent ran the skill from its files alone: 8 calls, about 12 minutes, no 
 
 ## New to this? Start here
 
-No commands needed. Pick where you use AI; each takes about two minutes to set up.
+Works with any AI app and any model. No commands, no account with us.
 
-**Claude Pro or Max (no download).** In Claude, open Customize, then Plugins. Click Add, then Add marketplace, then Add from a repository, and paste `mohiddin7/resume-tribunal`. Install Resume Tribunal from the list.
+**In an AI chat app** (ChatGPT, Gemini, Claude, Perplexity, Grok, Copilot, DeepSeek, Le Chat): open a new chat, attach your resume, and paste this with your job link at the end.
 
-**Claude free plan.** [Download resume-tribunal.zip](https://github.com/mohiddin7/resume-tribunal/releases/latest/download/resume-tribunal.zip) and keep it zipped. In Claude, open Customize, then Skills. Click +, Create skill, Upload a skill, and choose the zip. If it asks, switch on code execution.
+```
+Read https://mohiddin7.github.io/resume-tribunal/resume-tribunal.md and follow it to tailor my resume to this job: [paste the job link]
+```
 
-**A coding agent** (Claude Code, Codex, Cursor and others). Send it one message; it asks your permission, installs Resume Tribunal, and starts:
+A quick review takes about 5 minutes. If your app can't open links, download [resume-tribunal.md](docs/resume-tribunal.md) and attach it too.
+
+**In a coding agent** (Claude Code, Codex, Antigravity, Gemini CLI, Cursor, GitHub Copilot, Grok Build, OpenCode): send this. It asks your permission, installs Resume Tribunal, and starts.
 
 ```
 Install the Resume Tribunal skill (npx skills add mohiddin7/resume-tribunal), then tailor my resume to this job: [paste the job link]
 ```
 
-**Then:** start a new chat, attach your resume, paste the job link, and say "Tailor my resume to this job." If no second AI is connected, Resume Tribunal gives you one block of text to paste into ChatGPT or Gemini, and you paste the reply back.
+**Save it as a skill** so you never paste the link again. Download [resume-tribunal.zip](https://github.com/mohiddin7/resume-tribunal/releases/latest/download/resume-tribunal.zip) and upload it once:
 
-Checked October 2026 against Claude's help pages; menus change.
+- Gemini: Settings, Skills, Upload (personal accounts, 18 and over).
+- Claude: Customize, Skills, +, Upload a skill. On Pro or Max, skip the download: Customize, Plugins, Add marketplace, `mohiddin7/resume-tribunal`.
+- ChatGPT, Grok, Perplexity: look for Skills in your settings. Which plans have it varies.
+
+Checked October 2026 against each app's help pages; menus change.
 
 ## Install
 

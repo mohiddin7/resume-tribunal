@@ -225,3 +225,8 @@ footer.site a { color: var(--muted); }
   .pane { min-height: 0; }
 }
 .dfix { color: var(--green); font-weight: 700; }
+.apps { color: var(--muted); font-size: 14px; font-weight: 700; text-align: center; margin: 0 0 8px; }
+details.more { margin-top: 16px; }
+details.more ul { color: var(--muted); padding-left: 20px; }
+details.more li { margin: 8px 0; }
+.steps .copybox { margin-top: 8px; }

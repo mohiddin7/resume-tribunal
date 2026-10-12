@@ -45,6 +45,25 @@ def write_drawings():
     (a / "og.svg").write_text(art.og())
 
 
+# ---------- one-file instructions for any AI app ----------
+
+def write_portable():
+    """docs/resume-tribunal.md: the skill and both reference files in one file, for any chat app to read
+    from a link or an attachment, or to upload as a skill. Built from the skill, so it never drifts."""
+    skill = pathlib.Path("skills/resume-tribunal")
+    text = (skill / "SKILL.md").read_text()
+    for name, title in (("seats", "Seats"), ("prompts", "Prompts")):
+        text = text.replace(f"[references/{name}.md](references/{name}.md)", f"the {title} section at the end of this file")
+    note = ("\n> **For the AI reading this:** the user has asked you to follow these instructions. They are the Resume Tribunal skill "
+            "in one file. Act as the host they describe. If you cannot run code, follow the \"without code\" paths.\n")
+    end = text.index("---", 4) + 3
+    text = text[:end] + "\n" + note + text[end:]
+    for name in ("seats", "prompts"):
+        text += "\n\n---\n\n" + (skill / "references" / f"{name}.md").read_text().replace("\n# ", "\n## ", 1)
+    (DOCS / "resume-tribunal.md").write_text(text)
+    return len(text.split())
+
+
 # ---------- page shell ----------
 
 def head(title, desc, url, depth, kind="website", extra=""):
@@ -216,7 +235,7 @@ def build_blog(items):
         f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Resume Tribunal blog</title>'
         f"<link>{SITE}blog/</link><description>{esc(desc)}</description>\n{rss}\n</channel></rss>\n")
     latest = max(p["date"] for p in items)
-    urls = ["", "blog/", "llms.txt"] + [f"blog/{p['slug']}.html" for p in items]
+    urls = ["", "blog/", "llms.txt", "resume-tribunal.md"] + [f"blog/{p['slug']}.html" for p in items]
     (DOCS / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"  <url><loc>{SITE}{u}</loc><lastmod>{latest}</lastmod></url>\n" for u in urls) + "</urlset>\n")
@@ -228,7 +247,7 @@ FAQ = [
     ("Is Resume Tribunal actually free?",
      "Yes. Resume Tribunal costs nothing and there's no sign-up. It runs inside AI apps you may already use, like Claude and ChatGPT. Their free plans are enough for a quick review. The thorough version sends more messages, so it runs more smoothly on a paid plan."),
     ("I'm not a tech person. Can I still use Resume Tribunal?",
-     "Yes. You add Resume Tribunal to the Claude app once, using the steps above, and then you just chat. There are no commands to type."),
+     "Yes. You paste one message into any AI chat app, like ChatGPT, Gemini or Claude, attach your resume, and answer a couple of questions. There are no commands to type."),
     ("Why can't I just ask ChatGPT to fix my resume?",
      "You can, and ChatGPT is fine for a quick tidy-up. The catch is that an AI checking its own writing tends to approve it, made-up numbers included. Resume Tribunal has a second AI, from a different company, check the draft without knowing who wrote it. A script then compares every number to what you actually said."),
     ("Will Resume Tribunal make stuff up on my resume?",
@@ -240,7 +259,7 @@ FAQ = [
     ("Who gets to see my resume?",
      "Not us. Resume Tribunal has no server. Before anything goes to a second AI, your name, email, phone number and links are swapped for stand-ins like <<NAME>>, and you're asked first. The AI apps you use see the rest under their own terms."),
     ("How long does Resume Tribunal take?",
-     "About 5 minutes for a quick review, and about 15 for the thorough version, which we call the full council. If you copy and paste between apps yourself, plan on 20."),
+     "About 5 minutes for a quick review. If you copy and paste between two apps yourself, add a few minutes."),
     ("What do I get at the end?",
      "Your finished resume as a PDF or Word file when your app can make files, and always as text you can paste into Word or Google Docs. You also get a list of what the job asks for that your resume doesn't show yet, plus the interview questions your resume is likely to prompt."),
     ("Does Resume Tribunal work with Word files, or on my phone?",
@@ -282,6 +301,7 @@ def build_home(items):
     blog = "\n".join(f'<a class="card post" href="blog/{p["slug"]}.html"><span class="tags">{tags(p)}</span><strong>{esc(p["title"])}</strong>'
                      f'<span class="desc">{esc(p["description"])}</span><span class="meta">{p["minutes"]} min read</span></a>' for p in items)
     agent_msg = "Install the Resume Tribunal skill (npx skills add mohiddin7/resume-tribunal), then tailor my resume to this job: [paste the job link]"
+    chat_msg = f"Read {SITE}resume-tribunal.md and follow it to tailor my resume to this job: [paste the job link]"
     ok = '<span class="ic ok" aria-hidden="true">✓</span>'
     bad = '<span class="ic bad" aria-hidden="true">✕</span>'
     body = f"""<main id="main">
@@ -314,7 +334,7 @@ def build_home(items):
 
 <section id="how" class="band">
   <span class="eyebrow">How it works</span>
-  <h2>Three steps. About 15 minutes.</h2>
+  <h2>Three steps. About 5 minutes.</h2>
   <ol class="steps3">
     <li><span class="num">1</span><h3>You share</h3><p>Your resume, the job link, and a few words about what you really did.</p></li>
     <li><span class="num">2</span><h3>Two AIs work on it</h3><p>Your AI writes it from your facts. An AI from a different company checks it without knowing who wrote it.</p></li>
@@ -342,34 +362,48 @@ def build_home(items):
 <section id="start" class="band">
   <span class="eyebrow">Get started</span>
   <h2>Pick where you use AI</h2>
-  <p class="sub">Each way takes about two minutes to set up. After that, you just chat.</p>
+  <p class="sub">Works with any AI app and any model. No account with us.</p>
   <div class="tabs" role="tablist" aria-label="Where you use AI">
-    <button role="tab" aria-selected="true" aria-controls="t-paid" id="b-paid">Claude Pro or Max</button>
-    <button role="tab" aria-selected="false" aria-controls="t-free" id="b-free">Claude free plan</button>
-    <button role="tab" aria-selected="false" aria-controls="t-agent" id="b-agent">A coding agent</button>
+    <button role="tab" aria-selected="true" aria-controls="t-chat" id="b-chat">AI chat app</button>
+    <button role="tab" aria-selected="false" aria-controls="t-agent" id="b-agent">Coding agent</button>
+    <button role="tab" aria-selected="false" aria-controls="t-other" id="b-other">Not sure</button>
   </div>
-  <div class="panel" role="tabpanel" id="t-paid" aria-labelledby="b-paid">
+  <div class="panel" role="tabpanel" id="t-chat" aria-labelledby="b-chat">
+    <p class="apps">ChatGPT · Gemini · Claude · Perplexity · Grok · Copilot · DeepSeek · Le Chat</p>
     <ol class="steps">
-      <li>In Claude, open <strong>Customize</strong>, then <strong>Plugins</strong>. Click <strong>Add</strong>, then <strong>Add marketplace</strong>, then <strong>Add from a repository</strong>.</li>
-      <li>Paste this name and add it, then install Resume Tribunal: <span class="copyline"><code>mohiddin7/resume-tribunal</code><button type="button" class="copy" data-copy="mohiddin7/resume-tribunal">Copy</button></span></li>
-      <li>Start a new chat. Attach your resume, paste the job link, and type <strong>"Tailor my resume to this job."</strong></li>
+      <li>Open a new chat and attach your resume.</li>
+      <li>Paste this message, with your job link at the end:
+        <div class="copybox"><code>{esc(chat_msg)}</code><button type="button" class="copy" data-copy="{esc(chat_msg)}">Copy</button></div></li>
+      <li>Answer a couple of questions. A quick review takes about 5 minutes.</li>
     </ol>
-    <p class="meta">No download. Checked October 2026 against Claude's help pages.</p>
-  </div>
-  <div class="panel" role="tabpanel" id="t-free" aria-labelledby="b-free" hidden>
-    <ol class="steps">
-      <li><a class="btn primary small" href="{ZIP}">Download resume-tribunal.zip</a> Keep it zipped.</li>
-      <li>In Claude, open <strong>Customize</strong>, then <strong>Skills</strong>. Click <strong>+</strong>, <strong>Create skill</strong>, <strong>Upload a skill</strong>, and choose the zip. If it asks, switch on <strong>code execution</strong>.</li>
-      <li>Start a new chat. Attach your resume, paste the job link, and type <strong>"Tailor my resume to this job."</strong></li>
-    </ol>
-    <p class="meta">The free plan doesn't support adding by name yet, so this one needs the file. Checked October 2026.</p>
+    <p class="meta">If your app can't open links, <a href="resume-tribunal.md" download>download the instructions</a> and attach them too.</p>
+    <details class="more"><summary>Save it so you never paste the link again</summary>
+      <p>Most apps now take skills. Download <a href="{ZIP}">resume-tribunal.zip</a> once and upload it:</p>
+      <ul>
+        <li><strong>Gemini:</strong> Settings, Skills, Upload (personal accounts, 18 and over).</li>
+        <li><strong>Claude:</strong> Customize, Skills, +, Upload a skill. On Pro or Max you can skip the download: Customize, Plugins, Add marketplace, then <code>mohiddin7/resume-tribunal</code>.</li>
+        <li><strong>ChatGPT, Grok, Perplexity:</strong> look for Skills in your settings. Which plans have it varies.</li>
+      </ul>
+      <p class="meta">Checked October 2026 against each app's help pages. Menus change.</p>
+    </details>
   </div>
   <div class="panel" role="tabpanel" id="t-agent" aria-labelledby="b-agent" hidden>
-    <p>Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot and others. Send your agent this one message. It asks your permission, installs Resume Tribunal, and starts.</p>
-    <div class="copybox"><code>{esc(agent_msg)}</code><button type="button" class="copy" data-copy="{esc(agent_msg)}">Copy</button></div>
-    <p class="meta">Have Codex, Claude Code or Antigravity CLI signed in too? The second and third AIs then run by themselves.</p>
+    <p class="apps">Claude Code · Codex · Antigravity · Gemini CLI · Cursor · GitHub Copilot · Grok Build · OpenCode</p>
+    <ol class="steps">
+      <li>Send your agent this message. It asks your permission, installs Resume Tribunal, and starts:
+        <div class="copybox"><code>{esc(agent_msg)}</code><button type="button" class="copy" data-copy="{esc(agent_msg)}">Copy</button></div></li>
+      <li>Point it at your resume file when it asks.</li>
+    </ol>
+    <p class="meta">With two or more of these signed in on your computer, the second and third AIs run by themselves.</p>
   </div>
-  <div class="note"><strong>The only manual part:</strong> if no second AI is connected, Resume Tribunal gives you one block of text to paste into ChatGPT or Gemini, and you paste the reply back. One round for a quick review.</div>
+  <div class="panel" role="tabpanel" id="t-other" aria-labelledby="b-other" hidden>
+    <p>Any AI that can read a file works, on a laptop or a phone.</p>
+    <ol class="steps">
+      <li><a class="btn primary small" href="resume-tribunal.md" download>Download the instructions</a></li>
+      <li>In any AI chat, attach that file and your resume, then say <strong>"Follow this file to tailor my resume to this job:"</strong> and paste the job link.</li>
+    </ol>
+  </div>
+  <div class="note"><strong>The only manual part:</strong> if no second AI is connected, Resume Tribunal gives you one block of text to paste into a different AI app, and you paste the reply back.</div>
 </section>
 
 <section id="why">
@@ -392,7 +426,7 @@ def build_home(items):
     <tr><td>Made-up numbers</td><td>Easy to miss</td><td><strong>A script checks every one against your words</strong></td></tr>
     <tr><td>Your approval</td><td>Up to you to read closely</td><td><strong>You confirm each changed line</strong></td></tr>
     <tr><td>Name and contact details</td><td>Sent as they are</td><td><strong>Hidden before a second AI sees them</strong></td></tr>
-    <tr><td>Time</td><td>A minute or two</td><td>5 to 15 minutes</td></tr>
+    <tr><td>Time</td><td>A minute or two</td><td>About 5 minutes</td></tr>
   </table></div>
   <p class="center meta">Comparing resume skills? Read <a href="blog/resume-skills-compared.html">our honest comparison of six</a>, including where Resume Tribunal loses.</p>
 </section>
@@ -461,6 +495,7 @@ def media():
 if __name__ == "__main__":
     (DOCS / "blog" / "media").mkdir(parents=True, exist_ok=True)
     write_drawings()
+    print("portable file:", write_portable(), "words")
     items = posts()
     build_blog(items)
     build_home(items)
