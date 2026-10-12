@@ -2,6 +2,7 @@
 title: Resume skills for AI assistants, compared honestly
 description: Six free skills that tailor your resume to a job, including the one I made. What each one does well, where each falls short, and how to pick.
 date: 2026-10-11
+tags: Comparisons, Resume tips, Agent skills
 ---
 
 **Disclosure first:** I made one of the six, Resume Tribunal. I've tried to be fair, and I've said where mine loses. Everything below comes from reading each skill's own files on 11 October 2026, and the star counts are from GitHub on that day. Skills change quickly, so check before you rely on any detail.
@@ -24,6 +25,10 @@ Here's what I looked for, and why.
 4. **Use the job's words where they're true, and don't stuff keywords.** A recruiter searching for "Power Query" should find it if you've used it. A list of keywords you don't have helps no one.
 5. **Get an independent check.** AI models are [noticeably more lenient with their own output](https://arxiv.org/abs/2604.06996). Self-review catches less.
 6. **Protect personal details, and be upfront about time and cost.**
+
+[[figure:ats-myth|The most repeated number in resume advice has no study behind it.]]
+
+[[figure:blind-check|What an independent check looks like: the reviewer is a different AI and isn't told who wrote the draft.]]
 
 ## The six skills
 
@@ -97,6 +102,18 @@ Part of [jezweb/claude-skills](https://github.com/jezweb/claude-skills), a colle
 | Proficiently | No | No | Yes | Yes, separate skill | Yes, saved corrections |
 | Claude Code Job Tailor | No | No | Yes, live preview | Yes | Yes, one data file |
 | Resume Tribunal | Yes | Yes | Yes, every changed line | No | No |
+
+## Why I built Resume Tribunal differently
+
+Every other skill on this list trusts one AI to write and to judge. That's the gap I wanted to close.
+
+- **A second opinion from a different company.** The reviewer isn't told who wrote the draft, so it has no reason to go easy on it.
+- **A check that runs as code.** A script compares every number and name in your resume with what you told it. If "Tableau" appears and you never mentioned Tableau, it fails.
+- **Your say on every line.** You approve each change before you get a file, and your name and contact details are hidden from the second AI.
+
+It costs a few more minutes. For something you'll send to a hiring manager, I think that's worth it.
+
+[[cta]]
 
 ## Which one should you use?
 

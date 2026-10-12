@@ -28,7 +28,9 @@ Quick review takes about 5 minutes; full council about 15 minutes and roughly fi
 
 ## Install
 
-- No coding: upload the release zip in the Claude app (Customize, then Skills, then Upload a skill).
+- Claude Pro or Max, no download: Customize, Plugins, Add, Add marketplace, Add from a repository: `mohiddin7/resume-tribunal`.
+- Claude free plan: upload the release zip (Customize, Skills, +, Create skill, Upload a skill).
+- Any coding agent: ask it to install the Resume Tribunal skill; it runs `npx skills add mohiddin7/resume-tribunal` with your permission.
 - Most coding agents: `npx skills add mohiddin7/resume-tribunal`
 - Claude Code plugin: `claude plugin marketplace add mohiddin7/resume-tribunal`, then `claude plugin install resume-tribunal@resume-tribunal`
 - GitHub CLI: `gh skill install mohiddin7/resume-tribunal`

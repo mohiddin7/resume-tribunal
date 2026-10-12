@@ -2,125 +2,187 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Resume Tribunal: tailor your resume to a job, checked by a second AI</title>
-<meta name="description" content="Free tool that tailors your resume to a job using only your facts, then has an AI from another company check it blind. Works with Claude and ChatGPT.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Resume Tribunal: tailor your resume to any job, nothing made up</title>
+<meta name="description" content="Free tool that tailors your resume to a job from your own facts. A second AI from a different company checks every line. Works with Claude and ChatGPT.">
 <link rel="canonical" href="https://mohiddin7.github.io/resume-tribunal/">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="Resume Tribunal blog" href="https://mohiddin7.github.io/resume-tribunal/feed.xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Resume Tribunal">
-<meta property="og:title" content="Resume Tribunal: tailor your resume to a job, checked by a second AI">
-<meta property="og:description" content="Free tool that tailors your resume to a job using only your facts, then has an AI from another company check it blind. Works with Claude and ChatGPT.">
+<meta property="og:title" content="Resume Tribunal: tailor your resume to any job, nothing made up">
+<meta property="og:description" content="Free tool that tailors your resume to a job from your own facts. A second AI from a different company checks every line. Works with Claude and ChatGPT.">
 <meta property="og:url" content="https://mohiddin7.github.io/resume-tribunal/">
 <meta property="og:image" content="https://mohiddin7.github.io/resume-tribunal/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#a8515c">
+<meta name="theme-color" content="#f7f4ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14120f" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="assets/site.css">
 <script src="assets/site.js"></script>
 <link rel="alternate" type="text/plain" href="llms.txt" title="Summary for AI assistants">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "name": "Resume Tribunal", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "url": "https://mohiddin7.github.io/resume-tribunal/", "codeRepository": "https://github.com/mohiddin7/resume-tribunal", "license": "https://opensource.org/licenses/MIT", "softwareVersion": "1.0.0", "image": "https://mohiddin7.github.io/resume-tribunal/assets/og.png", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "An open-source Agent Skill that tailors a resume or CV to a job description using only the candidate's own facts. An AI assistant from a different company reviews every draft blind, a script checks every number against the candidate's own words, and the candidate approves each changed line."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I need to know how to code?", "acceptedAnswer": {"@type": "Answer", "text": "No. If you use the Claude app, you upload the skill once and then chat as usual. The steps are under Start here. The terminal route is quicker, but you can skip it."}}, {"@type": "Question", "name": "Is it free?", "acceptedAnswer": {"@type": "Answer", "text": "The skill is. It runs on the AI apps you already use, and free plans work. Free plans have daily limits, and a long run can reach them, so the thorough version goes more smoothly on a paid plan."}}, {"@type": "Question", "name": "Why not just ask ChatGPT to fix my resume?", "acceptedAnswer": {"@type": "Answer", "text": "You can, and for a quick tidy-up that's fine. The trouble starts when the same AI writes your resume and then tells you it's good. It tends to like its own work, and it will happily turn \"half a day\" into \"4 hours\". A second AI from another company catches more of that, and a script checks every number against what you actually said."}}, {"@type": "Question", "name": "Will it make things up?", "acceptedAnswer": {"@type": "Answer", "text": "It's designed not to, and it checks. Every number, tool and job title has to come from you. If something's missing, it asks. Before you get the final file, you say yes or no to each changed line, and anything you don't confirm comes out."}}, {"@type": "Question", "name": "Will this get me past the ATS?", "acceptedAnswer": {"@type": "Answer", "text": "No one can promise that. ATS is the software many employers use to collect and sort applications. This skill avoids the things known to confuse it: columns, tables, text in headers, images, hidden text. Then it checks that the PDF's text reads back correctly. In the end a person usually reads your resume, and it's written for them."}}, {"@type": "Question", "name": "Can recruiters tell an AI helped?", "acceptedAnswer": {"@type": "Answer", "text": "Maybe. It removes the habits people spot most, like long dashes and words such as \"spearheaded\". It won't make the resume your unaided work, though. If an employer asks about AI use, tell the truth."}}, {"@type": "Question", "name": "Is my resume safe?", "acceptedAnswer": {"@type": "Answer", "text": "This project never sees it. Your name, email, phone number and links are swapped for stand-in text such as <<NAME>> before anything goes to a second AI, and you're asked before anything is sent. The AI companies you use do see the text, under their own terms, so leave out anything confidential."}}, {"@type": "Question", "name": "How long does it take?", "acceptedAnswer": {"@type": "Answer", "text": "About 5 minutes for a quick review when the other AI runs by itself, and about 15 for a full council. If you're copying and pasting by hand, allow 20 minutes or so."}}, {"@type": "Question", "name": "What's a \"full council\"?", "acceptedAnswer": {"@type": "Answer", "text": "Three AIs from three companies each write a draft. Then they point out problems in each other's drafts without knowing who wrote which. The best parts are merged and checked again. It uses about five times as much AI time as a quick review."}}, {"@type": "Question", "name": "What's warmhop\u2122?", "acceptedAnswer": {"@type": "Answer", "text": "A resume link tracker made by the same person who made this skill. If your resume has links, you'll see one optional tip about it at the end. You don't need it, and nothing is sent to it."}}]}]}</script>
+<style>@keyframes dn1{0.00%{opacity:0;transform:translateY(6px)}10.00%{opacity:0;transform:translateY(6px)}13.33%{opacity:1;transform:translateY(0)}95.00%{opacity:1;transform:translateY(0)}100.00%{opacity:0}}@keyframes dn2{0.00%{opacity:0;transform:translateY(6px)}18.33%{opacity:0;transform:translateY(6px)}21.67%{opacity:1;transform:translateY(0)}95.00%{opacity:1;transform:translateY(0)}100.00%{opacity:0}}@keyframes dc1{0.00%{opacity:0;transform:translateY(6px)}30.00%{opacity:0;transform:translateY(6px)}33.33%{opacity:1;transform:translateY(0)}95.00%{opacity:1;transform:translateY(0)}100.00%{opacity:0}}@keyframes dc2{0.00%{opacity:0;transform:translateY(6px)}38.33%{opacity:0;transform:translateY(6px)}41.67%{opacity:1;transform:translateY(0)}95.00%{opacity:1;transform:translateY(0)}100.00%{opacity:0}}@keyframes dc3{0.00%{opacity:0;transform:translateY(6px)}46.67%{opacity:0;transform:translateY(6px)}50.00%{opacity:1;transform:translateY(0)}95.00%{opacity:1;transform:translateY(0)}100.00%{opacity:0}}@keyframes dok{0.00%{opacity:0;transform:translateY(6px)}60.00%{opacity:0;transform:translateY(6px)}63.33%{opacity:1;transform:translateY(0)}95.00%{opacity:1;transform:translateY(0)}100.00%{opacity:0}}@keyframes dold{0.00%{opacity:1}7.50%{opacity:1}10.00%{opacity:.45;text-decoration:line-through}95.00%{opacity:.45;text-decoration:line-through}100.00%{opacity:1}}@keyframes dfix{0.00%{opacity:0}45.00%{opacity:0}48.33%{opacity:1}95.00%{opacity:1}100.00%{opacity:0}}@keyframes dbad{0.00%{text-decoration:none}41.67%{text-decoration:none}44.17%{text-decoration:line-through}95.00%{text-decoration:line-through}100.00%{text-decoration:none}}.dn1{animation:dn1 12s linear infinite}.dn2{animation:dn2 12s linear infinite}.dc1{animation:dc1 12s linear infinite}.dc2{animation:dc2 12s linear infinite}.dc3{animation:dc3 12s linear infinite}.dok{animation:dok 12s linear infinite}.dold{animation:dold 12s linear infinite}.dfix{animation:dfix 12s linear infinite}.dbad{animation:dbad 12s linear infinite}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "name": "Resume Tribunal", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "url": "https://mohiddin7.github.io/resume-tribunal/", "codeRepository": "https://github.com/mohiddin7/resume-tribunal", "license": "https://opensource.org/licenses/MIT", "softwareVersion": "1.0.0", "image": "https://mohiddin7.github.io/resume-tribunal/assets/og.png", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "A free, open-source Agent Skill that tailors a resume or CV to a job using only the candidate's own facts. A second AI from a different company checks every draft blind, a script checks every number against the candidate's own words, and the candidate approves each change."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Resume Tribunal actually free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Resume Tribunal costs nothing and there's no sign-up. It runs inside AI apps you may already use, like Claude and ChatGPT. Their free plans are enough for a quick review. The thorough version sends more messages, so it runs more smoothly on a paid plan."}}, {"@type": "Question", "name": "I'm not a tech person. Can I still use Resume Tribunal?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You add Resume Tribunal to the Claude app once, using the steps above, and then you just chat. There are no commands to type."}}, {"@type": "Question", "name": "Why can't I just ask ChatGPT to fix my resume?", "acceptedAnswer": {"@type": "Answer", "text": "You can, and ChatGPT is fine for a quick tidy-up. The catch is that an AI checking its own writing tends to approve it, made-up numbers included. Resume Tribunal has a second AI, from a different company, check the draft without knowing who wrote it. A script then compares every number to what you actually said."}}, {"@type": "Question", "name": "Will Resume Tribunal make stuff up on my resume?", "acceptedAnswer": {"@type": "Answer", "text": "No. Every number, tool and job title has to come from you, and a script checks that. If something is missing, Resume Tribunal asks you instead of guessing. You approve each changed line before you get the file."}}, {"@type": "Question", "name": "Will my resume get past the ATS robots?", "acceptedAnswer": {"@type": "Answer", "text": "Nobody can honestly promise that. ATS is the software employers use to collect applications, and most of it sorts candidates. It rarely rejects anyone on its own. Resume Tribunal keeps your layout simple enough for that software to read, and checks the PDF's text before you send it. After that, a person reads it."}}, {"@type": "Question", "name": "Can a recruiter tell that AI wrote my resume?", "acceptedAnswer": {"@type": "Answer", "text": "Resume Tribunal removes the usual giveaways, like long dashes and words such as \"spearheaded\", and keeps your own wording. It can't make the resume your unaided work, though. If an employer asks about AI use, be honest."}}, {"@type": "Question", "name": "Who gets to see my resume?", "acceptedAnswer": {"@type": "Answer", "text": "Not us. Resume Tribunal has no server. Before anything goes to a second AI, your name, email, phone number and links are swapped for stand-ins like <<NAME>>, and you're asked first. The AI apps you use see the rest under their own terms."}}, {"@type": "Question", "name": "How long does Resume Tribunal take?", "acceptedAnswer": {"@type": "Answer", "text": "About 5 minutes for a quick review, and about 15 for the thorough version, which we call the full council. If you copy and paste between apps yourself, plan on 20."}}, {"@type": "Question", "name": "What do I get at the end?", "acceptedAnswer": {"@type": "Answer", "text": "Your finished resume as a PDF or Word file when your app can make files, and always as text you can paste into Word or Google Docs. You also get a list of what the job asks for that your resume doesn't show yet, plus the interview questions your resume is likely to prompt."}}, {"@type": "Question", "name": "Does Resume Tribunal work with Word files, or on my phone?", "acceptedAnswer": {"@type": "Answer", "text": "Word files are fine: attach your .docx as it is. Phones work too, but copying text between two apps is easier on a laptop."}}, {"@type": "Question", "name": "What's warmhop\u2122?", "acceptedAnswer": {"@type": "Answer", "text": "A link tracker for resumes, made by the same person who made Resume Tribunal. If your resume has links, you'll see one optional tip about it at the end. You don't need it, and nothing is sent to it."}}]}]}</script>
 </head>
-<body>
+<body class="home">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="in">
-  <a class="logo" href=""><img src="assets/favicon.svg" alt="" width="28" height="28">Resume Tribunal</a>
+  <a class="logo" href="" aria-label="Resume Tribunal home"><img src="assets/favicon.svg" alt="" width="30" height="30"><span>Resume Tribunal</span></a>
   <nav class="top" aria-label="Main">
-    <a href="#how">How it works</a><a href="#start">Start here</a><a href="#faq">Questions</a>
-    <a href="blog/">Blog</a><a href="https://github.com/mohiddin7/resume-tribunal">GitHub</a>
-    <button class="theme" type="button">Dark mode</button>
+    <a href="#how">How it works</a><a href="#proof">Example</a><a href="#faq">Questions</a><a href="blog/">Blog</a><a href="https://github.com/mohiddin7/resume-tribunal">GitHub</a>
   </nav>
+  <button class="icon theme" type="button" aria-label="Switch to dark mode"><span class="moon"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><span class="sun"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button>
+  <a class="btn primary small" href="#start">Get started</a>
 </div></header>
-<main id="main" class="wide">
-<h1>Tailor your resume to a job, <span class="accent">with a second AI checking the first.</span></h1>
-<p class="lede">Resume Tribunal is a free add-on for AI assistants such as Claude, ChatGPT and Gemini. It rewrites your resume for one job using only facts you gave it. Then an AI from a different company checks the draft without being told who wrote it, so nothing gets exaggerated and no AI grades its own work.</p>
-<p>New to this? You'll run it in the free Claude app, and use ChatGPT or Gemini for the second check.</p>
-<div class="cta"><a class="btn primary" href="#start">New to this? Start here</a><a class="btn ghost" href="#install">I'm a developer</a></div>
-<p class="meta">Free and open source. No sign-up. Your resume never comes to us.</p>
+<main id="main">
+<section class="hero">
+  <span class="eyebrow">Free resume tool for AI apps</span>
+  <h1>Tailor your resume to any job.<br><span class="accent">Nothing made up.</span></h1>
+  <p class="lede">Paste a job link. Resume Tribunal rewrites your resume from your own facts, then an AI from a different company checks every line.</p>
+  <div class="cta"><a class="btn primary big" href="#start">Get started free</a><a class="btn ghost big" href="#proof">See an example</a></div>
+  <ul class="trust"><li>No sign-up</li><li>Open source</li><li>Works with Claude, ChatGPT and Gemini</li></ul>
+</section>
 
-<h2>Before and after</h2>
-<p>One job from the <a href="https://github.com/mohiddin7/resume-tribunal/tree/main/examples/operations-analyst">worked example</a>, a made-up operations coordinator applying for an analyst role.</p>
-<div class="ba">
-  <div class="card"><h3>Before</h3><ul><li>Helped improve on-time delivery</li><li>Utilized Excel for various reports</li></ul></div>
-  <div class="card after"><h3>After</h3><ul>
-    <li>Helped raise Dayton terminal on-time delivery from 81 to 93 percent over about three months, after the team moved one carrier's Friday pickups to another carrier.</li>
-    <li>Cut the Monday report on late deliveries for the operations manager from half a day's work to about 40 minutes by building it with Excel pivot tables and Power Query.</li></ul></div>
-</div>
-<p class="note">A reviewing AI suggested "from 4 hours to 40 minutes". The candidate had said "half a day", so that is what the resume says.</p>
+<section class="demo-wrap" aria-label="Example: what happens to one line of your resume">
+  <div class="demo-head"><span>What happens to one line of your resume</span><button class="icon pause" type="button" aria-label="Pause animation" aria-pressed="false"><span class="ps">❚❚</span><span class="pl">▶</span></button></div>
+  <div class="demo">
+    <div class="pane">
+      <div class="pane-h"><span class="badge blue">AI 1</span>Your assistant rewrites it</div>
+      <p class="line dold">Helped improve on-time delivery</p>
+      <p class="line new dn1">Helped raise on-time delivery at the Dayton terminal from 81 to 93 percent, as part of the team</p>
+      <p class="line new dn2">Cut report prep from <span class="dbad">4 hours</span><span class="dfix"> half a day</span> to about 40 minutes</p>
+    </div>
+    <div class="pane">
+      <div class="pane-h"><span class="badge brand">AI 2</span>A different company's AI checks it, blind</div>
+      <p class="row dc1"><span class="ic ok" aria-hidden="true">✓</span><span><strong>81 to 93 percent</strong><br>Matches what you said</span></p>
+      <p class="row dc2"><span class="ic ok" aria-hidden="true">✓</span><span><strong>as part of the team</strong><br>Credit shared, like you said</span></p>
+      <p class="row dc3 neg"><span class="ic bad" aria-hidden="true">✕</span><span><strong>4 hours</strong><br>You said "half a day". Fixed.</span></p>
+    </div>
+  </div>
+  <p class="approve dok"><span class="ic ok" aria-hidden="true">✓</span>You approve the changes. Your resume is ready.</p>
+</section>
 
-<h2 id="how">How it works</h2>
-<div class="flow"><img src="assets/how-it-works.svg" data-light="assets/how-it-works-light.svg" data-dark="assets/how-it-works-dark.svg" width="620" height="918" alt="How Resume Tribunal works. You give your resume, the job posting and a few sentences in your own words. Your assistant writes a draft from your facts only. An AI from a different company checks it without being told who wrote it. A script flags AI writing habits, layout problems and numbers you never gave. You approve every changed line. You get a resume you can defend."></div>
-<p><strong>Quick review</strong> is one writer and one checker. <strong>Full council</strong> has three AIs from three companies each write a draft and critique each other under shuffled labels, and the best parts are merged before the check. Why three? It is the smallest group where two can outvote one that is wrong, the same reason aircraft flight computers vote two out of three.</p>
-<p>The second AI can be reached two ways. If you have other AI tools installed on a computer, it runs by itself. If not, you get one block of text to paste into another AI app, such as ChatGPT or Gemini, and you paste the reply back.</p>
+<section id="how" class="band">
+  <span class="eyebrow">How it works</span>
+  <h2>Three steps. About 15 minutes.</h2>
+  <ol class="steps3">
+    <li><span class="num">1</span><h3>You share</h3><p>Your resume, the job link, and a few words about what you really did.</p></li>
+    <li><span class="num">2</span><h3>Two AIs work on it</h3><p>Your AI writes it from your facts. An AI from a different company checks it without knowing who wrote it.</p></li>
+    <li><span class="num">3</span><h3>You approve</h3><p>Say yes to each change, then download a resume where every line is true.</p></li>
+  </ol>
+  <p class="center meta">Want more eyes? The <strong>full council</strong> has three AIs from three companies each write a draft and critique each other first.</p>
+</section>
 
-<h2 id="start">Start here: no coding needed</h2>
-<p>You need the Claude app, which is free. Get it at <a href="https://claude.ai">claude.ai</a> or from your phone's app store. Skills need one setting called "code execution" switched on; it's an on/off switch in the app's settings. (Checked October 2026.)</p>
-<ol class="steps">
-  <li><a href="https://github.com/mohiddin7/resume-tribunal/releases/latest/download/resume-tribunal.zip">Download resume-tribunal.zip</a>. Keep it zipped.</li>
-  <li>In the Claude app, open Customize, then Skills. Click "+", then "Create skill", then "Upload a skill", and choose the zip.</li>
-  <li>Start a new chat. Attach your resume, paste the job link, and type: "Tailor my resume to this job."</li>
-  <li>Answer its questions, or say "yes" to its suggestions.</li>
-  <li>When it shows you a block of text, paste it into a different company's AI app, such as ChatGPT or Gemini, in a private or temporary chat. Copy the reply and paste it back.</li>
-  <li>Check that every changed line is true, and say so.</li>
-</ol>
-<p>Allow about 20 minutes. Your name and contact details are hidden before anything goes to the second AI, and you're asked first.</p>
-<ul>
-  <li><strong>Word files?</strong> Yes. Attach your .docx resume as it is, or paste the text.</li>
-  <li><strong>On a phone?</strong> It works, but copying text between two apps is fiddly. A laptop is easier.</li>
-  <li><strong>What do I get?</strong> The finished resume as text you can paste into Word or Google Docs. When the app can make files, you also get a PDF or Word file.</li>
-</ul>
+<section id="proof">
+  <span class="eyebrow">Real example</span>
+  <h2>What the second AI caught</h2>
+  <p class="sub">From a full run on a made-up candidate. <a href="https://github.com/mohiddin7/resume-tribunal/tree/main/examples/operations-analyst">See every step on GitHub</a>.</p>
+  <div class="grid three">
+    <div class="card caught"><span class="was">"from 4 hours to 40 minutes"</span><span class="is">The candidate said "half a day".</span></div>
+    <div class="card caught"><span class="was">"framework adopted by leadership"</span><span class="is">It was a spreadsheet one supervisor used.</span></div>
+    <div class="card caught"><span class="was">"Raised on-time delivery"</span><span class="is">The team made the change. Now: "Helped raise".</span></div>
+  </div>
+  <div class="ba">
+    <div class="card"><span class="label">Before</span><ul><li>Helped improve on-time delivery</li><li>Utilized Excel for various reports</li></ul></div>
+    <div class="card after"><span class="label">After</span><ul><li>Helped raise Dayton terminal on-time delivery from 81 to 93 percent over about three months, after the team moved one carrier's Friday pickups to another carrier.</li>
+      <li>Cut the Monday report on late deliveries from half a day's work to about 40 minutes by building it with Excel pivot tables and Power Query.</li></ul></div>
+  </div>
+</section>
 
-<h2>Why a second AI?</h2>
-<p>Hiring managers have grown wary of AI-written resumes. In a vendor survey of 1,000 US hiring managers, 76% said AI-written resumes make it harder to tell what a candidate actually did (<a href="https://resumegenius.com/blog/job-hunting/hiring-insights-report">Resume Genius, 2026</a>). In a test on 25 synthetic resumes, AI rewriting with no safeguards added 2.5 to 5.4 false details per resume (<a href="https://arxiv.org/abs/2607.01457">preprint</a>).</p>
-<ul>
-  <li><strong>AI goes easy on its own work.</strong> On checks with a right answer, AI judges were up to <a href="https://arxiv.org/abs/2604.06996">50% more likely</a> to pass a failed item when the output was their own.</li>
-  <li><strong>An outside reviewer does better.</strong> Across 37 models, checking by a <a href="https://arxiv.org/abs/2512.02304">different model family</a> beat self-checking. Those were maths and logic tasks, so for writing it is evidence by analogy.</li>
-  <li><strong>Names and order sway AI judges</strong> (<a href="https://www.science.org/doi/10.1126/sciadv.adz2924">source</a>, <a href="https://arxiv.org/abs/2410.02736">order</a>), so the reviewer sees no names and the drafts arrive shuffled.</li>
-  <li><strong>Different AIs still share mistakes</strong> (<a href="https://arxiv.org/abs/2506.07962">study</a>), so the last checks are a script and you.</li>
-</ul>
-<p class="note">No study shows that several AIs write a better resume than one strong assistant, and no tool can promise interviews. What you get is an independent check, and a resume where every line is true.</p>
+<section id="start" class="band">
+  <span class="eyebrow">Get started</span>
+  <h2>Pick where you use AI</h2>
+  <p class="sub">Each way takes about two minutes to set up. After that, you just chat.</p>
+  <div class="tabs" role="tablist" aria-label="Where you use AI">
+    <button role="tab" aria-selected="true" aria-controls="t-paid" id="b-paid">Claude Pro or Max</button>
+    <button role="tab" aria-selected="false" aria-controls="t-free" id="b-free">Claude free plan</button>
+    <button role="tab" aria-selected="false" aria-controls="t-agent" id="b-agent">A coding agent</button>
+  </div>
+  <div class="panel" role="tabpanel" id="t-paid" aria-labelledby="b-paid">
+    <ol class="steps">
+      <li>In Claude, open <strong>Customize</strong>, then <strong>Plugins</strong>. Click <strong>Add</strong>, then <strong>Add marketplace</strong>, then <strong>Add from a repository</strong>.</li>
+      <li>Paste this name and add it, then install Resume Tribunal: <span class="copyline"><code>mohiddin7/resume-tribunal</code><button type="button" class="copy" data-copy="mohiddin7/resume-tribunal">Copy</button></span></li>
+      <li>Start a new chat. Attach your resume, paste the job link, and type <strong>"Tailor my resume to this job."</strong></li>
+    </ol>
+    <p class="meta">No download. Checked October 2026 against Claude's help pages.</p>
+  </div>
+  <div class="panel" role="tabpanel" id="t-free" aria-labelledby="b-free" hidden>
+    <ol class="steps">
+      <li><a class="btn primary small" href="https://github.com/mohiddin7/resume-tribunal/releases/latest/download/resume-tribunal.zip">Download resume-tribunal.zip</a> Keep it zipped.</li>
+      <li>In Claude, open <strong>Customize</strong>, then <strong>Skills</strong>. Click <strong>+</strong>, <strong>Create skill</strong>, <strong>Upload a skill</strong>, and choose the zip. If it asks, switch on <strong>code execution</strong>.</li>
+      <li>Start a new chat. Attach your resume, paste the job link, and type <strong>"Tailor my resume to this job."</strong></li>
+    </ol>
+    <p class="meta">The free plan doesn't support adding by name yet, so this one needs the file. Checked October 2026.</p>
+  </div>
+  <div class="panel" role="tabpanel" id="t-agent" aria-labelledby="b-agent" hidden>
+    <p>Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot and others. Send your agent this one message. It asks your permission, installs Resume Tribunal, and starts.</p>
+    <div class="copybox"><code>Install the Resume Tribunal skill (npx skills add mohiddin7/resume-tribunal), then tailor my resume to this job: [paste the job link]</code><button type="button" class="copy" data-copy="Install the Resume Tribunal skill (npx skills add mohiddin7/resume-tribunal), then tailor my resume to this job: [paste the job link]">Copy</button></div>
+    <p class="meta">Have Codex, Claude Code or Antigravity CLI signed in too? The second and third AIs then run by themselves.</p>
+  </div>
+  <div class="note"><strong>The only manual part:</strong> if no second AI is connected, Resume Tribunal gives you one block of text to paste into ChatGPT or Gemini, and you paste the reply back. One round for a quick review.</div>
+</section>
 
-<h2 id="install">For developers</h2>
-<p>Run this in a terminal, then tell your coding agent: "Tailor my resume to this job: &lt;link&gt;".</p>
-<pre><code>npx skills add mohiddin7/resume-tribunal</code></pre>
-<table>
-<tr><th>Where</th><th>How</th></tr>
-<tr><td>Claude Code, Codex, Gemini CLI, Cursor, GitHub Copilot, OpenCode and other agents</td><td><code>npx skills add mohiddin7/resume-tribunal</code></td></tr>
-<tr><td>Claude Code plugin</td><td><code>claude plugin marketplace add mohiddin7/resume-tribunal</code>, then <code>claude plugin install resume-tribunal@resume-tribunal</code></td></tr>
-<tr><td>GitHub CLI</td><td><code>gh skill install mohiddin7/resume-tribunal</code></td></tr>
-</table>
-<p>With Claude Code, Codex or Antigravity CLI also installed and signed in, the second and third AIs run by themselves, each read-only in an empty folder. Python 3 enables the checker; <code>pip install reportlab pypdf</code> adds PDF output and its text check.</p>
+<section id="why">
+  <span class="eyebrow">Why it works</span>
+  <h2>An AI shouldn't grade its own homework</h2>
+  <div class="grid three stats">
+    <div class="card stat"><span class="big">50%+</span><p>more likely to pass a failed answer when an AI judges its own work.</p><a href="https://arxiv.org/abs/2604.06996">Study, 2026 (preprint)</a></div>
+    <div class="card stat"><span class="big">37</span><p>models tested. A checker from a different model family beat self-checking.</p><a href="https://arxiv.org/abs/2512.02304">Study, 2026</a></div>
+    <div class="card stat"><span class="big">2.5 to 5.4</span><p>false details per resume when AI rewrote resumes with no safeguards.</p><a href="https://arxiv.org/abs/2607.01457">Study, 2026 (preprint)</a></div>
+  </div>
+  <p class="center meta">Honest limits: those studies used maths, logic and test resumes, and no study shows several AIs write a better resume than one. Resume Tribunal adds an independent check, a script, and your approval.</p>
+</section>
 
-<h2 id="faq">Questions people ask</h2>
-<details><summary>Do I need to know how to code?</summary><p>No. If you use the Claude app, you upload the skill once and then chat as usual. The steps are under Start here. The terminal route is quicker, but you can skip it.</p></details>
-<details><summary>Is it free?</summary><p>The skill is. It runs on the AI apps you already use, and free plans work. Free plans have daily limits, and a long run can reach them, so the thorough version goes more smoothly on a paid plan.</p></details>
-<details><summary>Why not just ask ChatGPT to fix my resume?</summary><p>You can, and for a quick tidy-up that&#x27;s fine. The trouble starts when the same AI writes your resume and then tells you it&#x27;s good. It tends to like its own work, and it will happily turn &quot;half a day&quot; into &quot;4 hours&quot;. A second AI from another company catches more of that, and a script checks every number against what you actually said.</p></details>
-<details><summary>Will it make things up?</summary><p>It&#x27;s designed not to, and it checks. Every number, tool and job title has to come from you. If something&#x27;s missing, it asks. Before you get the final file, you say yes or no to each changed line, and anything you don&#x27;t confirm comes out.</p></details>
-<details><summary>Will this get me past the ATS?</summary><p>No one can promise that. ATS is the software many employers use to collect and sort applications. This skill avoids the things known to confuse it: columns, tables, text in headers, images, hidden text. Then it checks that the PDF&#x27;s text reads back correctly. In the end a person usually reads your resume, and it&#x27;s written for them.</p></details>
-<details><summary>Can recruiters tell an AI helped?</summary><p>Maybe. It removes the habits people spot most, like long dashes and words such as &quot;spearheaded&quot;. It won&#x27;t make the resume your unaided work, though. If an employer asks about AI use, tell the truth.</p></details>
-<details><summary>Is my resume safe?</summary><p>This project never sees it. Your name, email, phone number and links are swapped for stand-in text such as &lt;&lt;NAME&gt;&gt; before anything goes to a second AI, and you&#x27;re asked before anything is sent. The AI companies you use do see the text, under their own terms, so leave out anything confidential.</p></details>
-<details><summary>How long does it take?</summary><p>About 5 minutes for a quick review when the other AI runs by itself, and about 15 for a full council. If you&#x27;re copying and pasting by hand, allow 20 minutes or so.</p></details>
-<details><summary>What&#x27;s a &quot;full council&quot;?</summary><p>Three AIs from three companies each write a draft. Then they point out problems in each other&#x27;s drafts without knowing who wrote which. The best parts are merged and checked again. It uses about five times as much AI time as a quick review.</p></details>
-<details><summary>What&#x27;s warmhop™?</summary><p>A resume link tracker made by the same person who made this skill. If your resume has links, you&#x27;ll see one optional tip about it at the end. You don&#x27;t need it, and nothing is sent to it.</p></details>
+<section id="compare" class="band">
+  <span class="eyebrow">Compared</span>
+  <h2>Resume Tribunal vs. one AI chat</h2>
+  <div class="table"><table>
+    <tr><th></th><th>One AI chat</th><th>Resume Tribunal</th></tr>
+    <tr><td>Who checks the draft</td><td>The same AI that wrote it</td><td><strong>An AI from a different company, blind</strong></td></tr>
+    <tr><td>Made-up numbers</td><td>Easy to miss</td><td><strong>A script checks every one against your words</strong></td></tr>
+    <tr><td>Your approval</td><td>Up to you to read closely</td><td><strong>You confirm each changed line</strong></td></tr>
+    <tr><td>Name and contact details</td><td>Sent as they are</td><td><strong>Hidden before a second AI sees them</strong></td></tr>
+    <tr><td>Time</td><td>A minute or two</td><td>5 to 15 minutes</td></tr>
+  </table></div>
+  <p class="center meta">Comparing resume skills? Read <a href="blog/resume-skills-compared.html">our honest comparison of six</a>, including where Resume Tribunal loses.</p>
+</section>
 
-<h2>What it won't do</h2>
-<ul>
-  <li>Invent or enlarge facts, numbers, titles or skills, even if you ask.</li>
-  <li>Add hidden text or keyword lists aimed at screening software.</li>
-  <li>Help with tests, take-home tasks or live interviews.</li>
-  <li>Promise interviews, or claim the resume is your unaided work.</li>
-</ul>
-<p class="meta">Disclosure: when a resume has links, the skill ends with one optional tip for warmhop™, a resume link tracker made by this project's author. The tip says so when it is shown.</p>
+<section id="faq">
+  <span class="eyebrow">Questions</span>
+  <h2>Things people ask</h2>
+  <div class="faq"><details><summary>Is Resume Tribunal actually free?</summary><p>Yes. Resume Tribunal costs nothing and there&#x27;s no sign-up. It runs inside AI apps you may already use, like Claude and ChatGPT. Their free plans are enough for a quick review. The thorough version sends more messages, so it runs more smoothly on a paid plan.</p></details>
+<details><summary>I&#x27;m not a tech person. Can I still use Resume Tribunal?</summary><p>Yes. You add Resume Tribunal to the Claude app once, using the steps above, and then you just chat. There are no commands to type.</p></details>
+<details><summary>Why can&#x27;t I just ask ChatGPT to fix my resume?</summary><p>You can, and ChatGPT is fine for a quick tidy-up. The catch is that an AI checking its own writing tends to approve it, made-up numbers included. Resume Tribunal has a second AI, from a different company, check the draft without knowing who wrote it. A script then compares every number to what you actually said.</p></details>
+<details><summary>Will Resume Tribunal make stuff up on my resume?</summary><p>No. Every number, tool and job title has to come from you, and a script checks that. If something is missing, Resume Tribunal asks you instead of guessing. You approve each changed line before you get the file.</p></details>
+<details><summary>Will my resume get past the ATS robots?</summary><p>Nobody can honestly promise that. ATS is the software employers use to collect applications, and most of it sorts candidates. It rarely rejects anyone on its own. Resume Tribunal keeps your layout simple enough for that software to read, and checks the PDF&#x27;s text before you send it. After that, a person reads it.</p></details>
+<details><summary>Can a recruiter tell that AI wrote my resume?</summary><p>Resume Tribunal removes the usual giveaways, like long dashes and words such as &quot;spearheaded&quot;, and keeps your own wording. It can&#x27;t make the resume your unaided work, though. If an employer asks about AI use, be honest.</p></details>
+<details><summary>Who gets to see my resume?</summary><p>Not us. Resume Tribunal has no server. Before anything goes to a second AI, your name, email, phone number and links are swapped for stand-ins like &lt;&lt;NAME&gt;&gt;, and you&#x27;re asked first. The AI apps you use see the rest under their own terms.</p></details>
+<details><summary>How long does Resume Tribunal take?</summary><p>About 5 minutes for a quick review, and about 15 for the thorough version, which we call the full council. If you copy and paste between apps yourself, plan on 20.</p></details>
+<details><summary>What do I get at the end?</summary><p>Your finished resume as a PDF or Word file when your app can make files, and always as text you can paste into Word or Google Docs. You also get a list of what the job asks for that your resume doesn&#x27;t show yet, plus the interview questions your resume is likely to prompt.</p></details>
+<details><summary>Does Resume Tribunal work with Word files, or on my phone?</summary><p>Word files are fine: attach your .docx as it is. Phones work too, but copying text between two apps is easier on a laptop.</p></details>
+<details><summary>What&#x27;s warmhop™?</summary><p>A link tracker for resumes, made by the same person who made Resume Tribunal. If your resume has links, you&#x27;ll see one optional tip about it at the end. You don&#x27;t need it, and nothing is sent to it.</p></details></div>
+</section>
 
-<h2>From the blog</h2>
-<ul class="posts">
-<li><a href="blog/how-resume-tribunal-was-made.html">How I built Resume Tribunal: three AIs, one resume, and no made-up numbers</a><p class="meta">6 min read</p></li>
-<li><a href="blog/resume-skills-compared.html">Resume skills for AI assistants, compared honestly</a><p class="meta">6 min read</p></li>
-</ul>
+<section id="blog">
+  <span class="eyebrow">From the blog</span>
+  <h2>Read more</h2>
+  <div class="grid two"><a class="card post" href="blog/how-resume-tribunal-was-made.html"><span class="tags"><span class="tag">Behind the scenes</span><span class="tag">AI review</span><span class="tag">Building in public</span></span><strong>How I built Resume Tribunal: three AIs, one resume, and no made-up numbers</strong><span class="desc">It started as sixteen prompts I copied between three AI chats by hand. Here is how it became a free tool, what the research said, and what testing it taught me.</span><span class="meta">6 min read</span></a>
+<a class="card post" href="blog/resume-skills-compared.html"><span class="tags"><span class="tag">Comparisons</span><span class="tag">Resume tips</span><span class="tag">Agent skills</span></span><strong>Resume skills for AI assistants, compared honestly</strong><span class="desc">Six free skills that tailor your resume to a job, including the one I made. What each one does well, where each falls short, and how to pick.</span><span class="meta">7 min read</span></a></div>
+</section>
+
+<section class="final">
+  <h2>Your next application deserves a second opinion</h2>
+  <p>Free, open source, and every line stays true.</p>
+  <a class="btn primary big" href="#start">Get started free</a>
+  <p class="meta disclose">Disclosure: when your resume has links, Resume Tribunal ends with one optional tip for warmhop™, a link tracker made by the same author. The tip says so.</p>
+</section>
 </main>
+<a class="mcta btn primary" href="#start">Get started free</a>
 <footer class="site"><div class="in">
-  <span>Resume Tribunal is free and open source, MIT license.</span>
-  <a href="https://github.com/mohiddin7/resume-tribunal">Source code</a><a href="blog/">Blog</a><a href="https://mohiddin7.github.io/resume-tribunal/feed.xml">RSS</a><a href="llms.txt">llms.txt</a>
+  <div class="fbrand"><img src="assets/favicon.svg" alt="" width="26" height="26"><strong>Resume Tribunal</strong><span>Free and open source. MIT license.</span></div>
+  <nav aria-label="Footer"><a href="#start">Get started</a><a href="#faq">Questions</a><a href="blog/">Blog</a><a href="https://github.com/mohiddin7/resume-tribunal">GitHub</a><a href="https://mohiddin7.github.io/resume-tribunal/feed.xml">RSS</a><a href="llms.txt">llms.txt</a></nav>
 </div></footer>
 </body>
 </html>

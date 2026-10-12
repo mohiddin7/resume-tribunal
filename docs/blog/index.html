@@ -2,41 +2,51 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blog | Resume Tribunal</title>
-<meta name="description" content="Notes on building Resume Tribunal and on using AI for resumes honestly.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Blog: AI, resumes and honest job hunting | Resume Tribunal</title>
+<meta name="description" content="Plain-spoken notes on using AI for your resume without making things up, and how Resume Tribunal was built.">
 <link rel="canonical" href="https://mohiddin7.github.io/resume-tribunal/blog/">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="Resume Tribunal blog" href="https://mohiddin7.github.io/resume-tribunal/feed.xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Resume Tribunal">
-<meta property="og:title" content="Blog | Resume Tribunal">
-<meta property="og:description" content="Notes on building Resume Tribunal and on using AI for resumes honestly.">
+<meta property="og:title" content="Blog: AI, resumes and honest job hunting | Resume Tribunal">
+<meta property="og:description" content="Plain-spoken notes on using AI for your resume without making things up, and how Resume Tribunal was built.">
 <meta property="og:url" content="https://mohiddin7.github.io/resume-tribunal/blog/">
 <meta property="og:image" content="https://mohiddin7.github.io/resume-tribunal/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#a8515c">
+<meta name="theme-color" content="#f7f4ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14120f" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="../assets/site.css">
 <script src="../assets/site.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Blog", "name": "Resume Tribunal blog", "url": "https://mohiddin7.github.io/resume-tribunal/blog/", "blogPost": [{"@type": "BlogPosting", "headline": "How I built Resume Tribunal: three AIs, one resume, and no made-up numbers", "url": "https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html", "datePublished": "2026-10-11"}, {"@type": "BlogPosting", "headline": "Resume skills for AI assistants, compared honestly", "url": "https://mohiddin7.github.io/resume-tribunal/blog/resume-skills-compared.html", "datePublished": "2026-10-11"}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="in">
-  <a class="logo" href="../"><img src="../assets/favicon.svg" alt="" width="28" height="28">Resume Tribunal</a>
+  <a class="logo" href="../" aria-label="Resume Tribunal home"><img src="../assets/favicon.svg" alt="" width="30" height="30"><span>Resume Tribunal</span></a>
   <nav class="top" aria-label="Main">
-    <a href="../#how">How it works</a><a href="../#start">Start here</a><a href="../#faq">Questions</a>
-    <a href="../blog/">Blog</a><a href="https://github.com/mohiddin7/resume-tribunal">GitHub</a>
-    <button class="theme" type="button">Dark mode</button>
+    <a href="../#how">How it works</a><a href="../#proof">Example</a><a href="../#faq">Questions</a><a href="../blog/">Blog</a><a href="https://github.com/mohiddin7/resume-tribunal">GitHub</a>
   </nav>
+  <button class="icon theme" type="button" aria-label="Switch to dark mode"><span class="moon"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><span class="sun"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button>
+  <a class="btn primary small" href="../#start">Get started</a>
 </div></header>
-<main id="main"><h1>Blog</h1><p class="lede">How Resume Tribunal was made, and what we have learned about AI and resumes.</p>
-<ul class="posts">
-<li><a href="how-resume-tribunal-was-made.html">How I built Resume Tribunal: three AIs, one resume, and no made-up numbers</a><p class="meta">11 October 2026 · 6 min read</p><p>It started as sixteen prompts I copied between three AI chats by hand. Here is how it became a free tool, what the research said, and what testing it taught me.</p></li>
-<li><a href="resume-skills-compared.html">Resume skills for AI assistants, compared honestly</a><p class="meta">11 October 2026 · 6 min read</p><p>Six free skills that tailor your resume to a job, including the one I made. What each one does well, where each falls short, and how to pick.</p></li>
-</ul></main>
+<main id="main" class="blog-wrap">
+<section class="blog-hero"><span class="eyebrow">Blog</span><h1>AI, resumes and honest job hunting</h1><p class="lede">Plain-spoken notes on using AI for your resume without making things up, and how Resume Tribunal was built.</p>
+<label class="search"><span class="sr">Search posts</span><input type="search" id="q" placeholder="Search posts" autocomplete="off"></label>
+<div class="chips" role="group" aria-label="Filter by topic"><button type="button" class="chip on" data-tag="">All</button><button type="button" class="chip" data-tag="AI review">AI review</button><button type="button" class="chip" data-tag="Agent skills">Agent skills</button><button type="button" class="chip" data-tag="Behind the scenes">Behind the scenes</button><button type="button" class="chip" data-tag="Building in public">Building in public</button><button type="button" class="chip" data-tag="Comparisons">Comparisons</button><button type="button" class="chip" data-tag="Resume tips">Resume tips</button></div></section>
+<div class="grid posts" id="posts">
+<a class="card post" href="how-resume-tribunal-was-made.html" data-tags="Behind the scenes|AI review|Building in public" data-text="how i built resume tribunal: three ais, one resume, and no made-up numbers it started as sixteen prompts i copied between three ai chats by hand. here is how it became a free tool, what the research said, and what testing it taught me. behind the scenes ai review building in public"><span class="tags"><span class="tag">Behind the scenes</span><span class="tag">AI review</span><span class="tag">Building in public</span></span><strong>How I built Resume Tribunal: three AIs, one resume, and no made-up numbers</strong><span class="desc">It started as sixteen prompts I copied between three AI chats by hand. Here is how it became a free tool, what the research said, and what testing it taught me.</span><span class="meta">11 Oct 2026 · 6 min read</span><span class="more">Read the post →</span></a>
+<a class="card post" href="resume-skills-compared.html" data-tags="Comparisons|Resume tips|Agent skills" data-text="resume skills for ai assistants, compared honestly six free skills that tailor your resume to a job, including the one i made. what each one does well, where each falls short, and how to pick. comparisons resume tips agent skills"><span class="tags"><span class="tag">Comparisons</span><span class="tag">Resume tips</span><span class="tag">Agent skills</span></span><strong>Resume skills for AI assistants, compared honestly</strong><span class="desc">Six free skills that tailor your resume to a job, including the one I made. What each one does well, where each falls short, and how to pick.</span><span class="meta">11 Oct 2026 · 7 min read</span><span class="more">Read the post →</span></a>
+</div>
+<p class="empty" id="empty" hidden>No posts match that search.</p>
+</main>
 <footer class="site"><div class="in">
-  <span>Resume Tribunal is free and open source, MIT license.</span>
-  <a href="https://github.com/mohiddin7/resume-tribunal">Source code</a><a href="../blog/">Blog</a><a href="https://mohiddin7.github.io/resume-tribunal/feed.xml">RSS</a><a href="../llms.txt">llms.txt</a>
+  <div class="fbrand"><img src="../assets/favicon.svg" alt="" width="26" height="26"><strong>Resume Tribunal</strong><span>Free and open source. MIT license.</span></div>
+  <nav aria-label="Footer"><a href="../#start">Get started</a><a href="../#faq">Questions</a><a href="../blog/">Blog</a><a href="https://github.com/mohiddin7/resume-tribunal">GitHub</a><a href="https://mohiddin7.github.io/resume-tribunal/feed.xml">RSS</a><a href="../llms.txt">llms.txt</a></nav>
 </div></footer>
 </body>
 </html>

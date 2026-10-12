@@ -2,6 +2,7 @@
 title: How I built Resume Tribunal: three AIs, one resume, and no made-up numbers
 description: It started as sixteen prompts I copied between three AI chats by hand. Here is how it became a free tool, what the research said, and what testing it taught me.
 date: 2026-10-11
+tags: Behind the scenes, AI review, Building in public
 ---
 
 Earlier this year I was applying for jobs and doing what most people do now. I pasted my resume and a job posting into an AI and asked it to make me look good.
@@ -28,13 +29,19 @@ It also took hours. Sixteen prompts, three browser tabs, and a lot of copy and p
 
 I couldn't imagine anyone else putting up with that.
 
+[[figure:manual-vs-skill|Sixteen prompts by hand, or one message with Resume Tribunal.]]
+
 ## Turning it into a skill
 
 In October I turned the prompts into an Agent Skill. If you haven't come across these, a skill is a folder of instructions that an AI assistant loads when it needs them. You install it once. After that you say "tailor my resume to this job" and the assistant already knows the whole process.
 
 Before writing anything, I went looking for evidence. Two findings shaped the design.
 
-First, AI models really do go easy on their own work. In one study, AI judges were [up to 50% more likely](https://arxiv.org/abs/2604.06996) to pass a failed check when the output was their own. Another, on resume screening, found models [favoured summaries they had written](https://arxiv.org/abs/2509.00462) over the human originals. My hunch had a name: self-preference bias. A third study helped too. Across 37 models, a checker from a [different model family](https://arxiv.org/abs/2512.02304) did better than self-checking.
+First, AI models really do go easy on their own work. In one study, AI judges were [up to 50% more likely](https://arxiv.org/abs/2604.06996) to pass a failed check when the output was their own. Another, on resume screening, found models [favoured summaries they had written](https://arxiv.org/abs/2509.00462) over the human originals. My hunch had a name: self-preference bias.
+
+[[figure:self-preference|AI judges go easier on their own mistakes. Illustration of the reported effect.]]
+
+ A third study helped too. Across 37 models, a checker from a [different model family](https://arxiv.org/abs/2512.02304) did better than self-checking.
 
 The second finding was less flattering to my idea. Nobody has shown that a group of AIs writes a better resume than one strong AI. The evidence for an outside reviewer comes from maths and logic tasks, so for writing it is an analogy. "Three AIs beat one" is a design choice. The README says so in plain words.
 
@@ -54,6 +61,8 @@ Almost everything around that changed.
 
 **The copy and paste is optional.** If you have other AI tools on your computer, the skill runs them itself, each one locked in an empty folder where it can't see your files. If you don't, it hands you one block of text to paste into another AI app, and you paste the reply back. A quick review is one round.
 
+[[cta]]
+
 ## How I tested it
 
 I ran it on my own resume first, for a real job. It took under half an hour. A blind reviewer said no to a phone screen for the original and yes for the new version.
@@ -71,6 +80,8 @@ That run is published as the [worked example](https://github.com/mohiddin7/resum
 ## What it caught
 
 In that example, the other AIs suggested more than twenty things the candidate never said. A few of them:
+
+[[figure:rejected-claims|One of more than twenty suggestions Resume Tribunal turned down in the worked example.]]
 
 - "from 4 hours to 40 minutes", when the candidate had said "half a day"
 - "root-cause tracking framework adopted by leadership", for a spreadsheet one supervisor used in a weekly meeting

@@ -1,11 +1,16 @@
-# Resume Tribunal
+<h1>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/logo-dark.svg">
+    <img src="docs/assets/logo-light.svg" alt="Resume Tribunal" width="236" height="40">
+  </picture>
+</h1>
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-SKILL.md-black.svg)](https://agentskills.io)
 
-**Tailor your resume to a job, with a second AI checking the first.**
+**Tailor your resume to any job. Nothing made up.**
 
-Resume Tribunal is a free add-on for AI apps (an "Agent Skill"). New to this? You'll run it in the free Claude app, and use ChatGPT or Gemini for the second check. One AI rewrites your resume for a specific job using only facts you gave it. An AI made by a different company then checks the draft without being told who wrote it, so nothing gets exaggerated and no AI grades its own work.
+Resume Tribunal is a free add-on for AI apps (an "Agent Skill"). New to this? You can run it in the Claude app, free or paid, and use ChatGPT or Gemini for the second check. One AI rewrites your resume for a specific job using only facts you gave it. An AI made by a different company then checks the draft without being told who wrote it, so nothing gets exaggerated and no AI grades its own work.
 
 One role from the [worked example](examples/operations-analyst/), before and after:
 
@@ -28,7 +33,7 @@ Rejected "Raised ...". The team made the change, so it says "Helped raise".
 npx skills add mohiddin7/resume-tribunal
 ```
 
-**Never used a terminal?** [Start here](#new-to-this-start-here). No commands needed.
+**Never used a terminal?** [Start here](#new-to-this-start-here). No commands, and on a paid Claude plan, no download.
 
 [Website](https://mohiddin7.github.io/resume-tribunal/) · [How it was made](https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html) · [Resume skills compared](https://mohiddin7.github.io/resume-tribunal/blog/resume-skills-compared.html)
 
@@ -38,7 +43,7 @@ npx skills add mohiddin7/resume-tribunal
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/assets/how-it-works-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="docs/assets/how-it-works-light.svg">
-    <img src="docs/assets/how-it-works.svg" width="620" alt="How Resume Tribunal works. You give your resume, the job posting and a few sentences in your own words. Your assistant writes a draft from your facts only. An AI from a different company checks it without being told who wrote it. A script flags AI writing habits, layout problems and numbers you never gave. You approve every changed line. You get a resume you can defend.">
+    <img src="docs/assets/how-it-works.svg" width="560" alt="How Resume Tribunal works. Step 1, you share your resume, the job link and a few words about what you did. Step 2, your AI writes it from your facts only, and a different company's AI checks it without being told who wrote it. Step 3, you approve each change and download a resume where every line is true.">
   </picture>
 </p>
 
@@ -70,35 +75,38 @@ The assistant that wrote a line is badly placed to catch it.
 
 ## Questions people ask
 
-**Do I need to know how to code?**
-No. If you use the Claude app, you upload the skill once and then chat as usual. The steps are in [Start here](#new-to-this-start-here). The terminal route is quicker, but you can skip it.
+**Is Resume Tribunal actually free?**
+Yes. Resume Tribunal costs nothing and there's no sign-up. It runs inside AI apps you may already use, like Claude and ChatGPT. Their free plans are enough for a quick review. The thorough version sends more messages, so it runs more smoothly on a paid plan.
 
-**Is it free?**
-The skill is. It runs on the AI apps you already use, and free plans work. Free plans have daily limits, and a long run can reach them, so the thorough version goes more smoothly on a paid plan.
+**I'm not a tech person. Can I still use Resume Tribunal?**
+Yes. You add Resume Tribunal to the Claude app once, using the steps above, and then you just chat. There are no commands to type.
 
-**Why not just ask ChatGPT to fix my resume?**
-You can, and for a quick tidy-up that's fine. The trouble starts when the same AI writes your resume and then tells you it's good. It tends to like its own work, and it will happily turn "half a day" into "4 hours". A second AI from another company catches more of that, and a script checks every number against what you actually said.
+**Why can't I just ask ChatGPT to fix my resume?**
+You can, and ChatGPT is fine for a quick tidy-up. The catch is that an AI checking its own writing tends to approve it, made-up numbers included. Resume Tribunal has a second AI, from a different company, check the draft without knowing who wrote it. A script then compares every number to what you actually said.
 
-**Will it make things up?**
-It's designed not to, and it checks. Every number, tool and job title has to come from you. If something's missing, it asks. Before you get the final file, you say yes or no to each changed line, and anything you don't confirm comes out.
+**Will Resume Tribunal make stuff up on my resume?**
+No. Every number, tool and job title has to come from you, and a script checks that. If something is missing, Resume Tribunal asks you instead of guessing. You approve each changed line before you get the file.
 
-**Will this get me past the ATS?**
-No one can promise that. ATS is the software many employers use to collect and sort applications. This skill avoids the things known to confuse it: columns, tables, text in headers, images, hidden text. Then it checks that the PDF's text reads back correctly. In the end a person usually reads your resume, and it's written for them.
+**Will my resume get past the ATS robots?**
+Nobody can honestly promise that. ATS is the software employers use to collect applications, and most of it sorts candidates. It rarely rejects anyone on its own. Resume Tribunal keeps your layout simple enough for that software to read, and checks the PDF's text before you send it. After that, a person reads it.
 
-**Can recruiters tell an AI helped?**
-Maybe. It removes the habits people spot most, like long dashes and words such as "spearheaded". It won't make the resume your unaided work, though. If an employer asks about AI use, tell the truth.
+**Can a recruiter tell that AI wrote my resume?**
+Resume Tribunal removes the usual giveaways, like long dashes and words such as "spearheaded", and keeps your own wording. It can't make the resume your unaided work, though. If an employer asks about AI use, be honest.
 
-**Is my resume safe?**
-This project never sees it. Your name, email, phone number and links are swapped for stand-in text such as <<NAME>> before anything goes to a second AI, and you're asked before anything is sent. The AI companies you use do see the text, under their own terms, so leave out anything confidential.
+**Who gets to see my resume?**
+Not us. Resume Tribunal has no server. Before anything goes to a second AI, your name, email, phone number and links are swapped for stand-ins like `<<NAME>>`, and you're asked first. The AI apps you use see the rest under their own terms.
 
-**How long does it take?**
-About 5 minutes for a quick review when the other AI runs by itself, and about 15 for a full council. If you're copying and pasting by hand, allow 20 minutes or so.
+**How long does Resume Tribunal take?**
+About 5 minutes for a quick review, and about 15 for the thorough version, which we call the full council. If you copy and paste between apps yourself, plan on 20.
 
-**What's a "full council"?**
-Three AIs from three companies each write a draft. Then they point out problems in each other's drafts without knowing who wrote which. The best parts are merged and checked again. It uses about five times as much AI time as a quick review.
+**What do I get at the end?**
+Your finished resume as a PDF or Word file when your app can make files, and always as text you can paste into Word or Google Docs. You also get a list of what the job asks for that your resume doesn't show yet, plus the interview questions your resume is likely to prompt.
+
+**Does Resume Tribunal work with Word files, or on my phone?**
+Word files are fine: attach your .docx as it is. Phones work too, but copying text between two apps is easier on a laptop.
 
 **What's warmhop™?**
-A resume link tracker made by the same person who made this skill. If your resume has links, you'll see one optional tip about it at the end. You don't need it, and nothing is sent to it.
+A link tracker for resumes, made by the same person who made Resume Tribunal. If your resume has links, you'll see one optional tip about it at the end. You don't need it, and nothing is sent to it.
 
 ## What makes it different
 
@@ -121,20 +129,21 @@ A fresh agent ran the skill from its files alone: 8 calls, about 12 minutes, no 
 
 ## New to this? Start here
 
-You do not need to be a programmer or run any commands. You need the Claude app, which is free: get it at [claude.ai](https://claude.ai) or from your phone's app store. Skills need one setting called "code execution" switched on, an on/off switch in the app's settings (checked October 2026).
+No commands needed. Pick where you use AI; each takes about two minutes to set up.
 
-1. [Download resume-tribunal.zip](https://github.com/mohiddin7/resume-tribunal/releases/latest/download/resume-tribunal.zip). Keep it zipped.
-2. In the Claude app, open Customize, then Skills. Click "+", then "Create skill", then "Upload a skill", and choose the zip.
-3. Start a new chat. Attach your resume, paste the job link, and type: "Tailor my resume to this job."
-4. Answer its questions, or say "yes" to the suggestions.
-5. When it shows you a block of text, paste it into a different company's AI app, such as ChatGPT or Gemini, in a private or temporary chat. Copy the reply and paste it back.
-6. Confirm that every changed line is true.
+**Claude Pro or Max (no download).** In Claude, open Customize, then Plugins. Click Add, then Add marketplace, then Add from a repository, and paste `mohiddin7/resume-tribunal`. Install Resume Tribunal from the list.
 
-Allow about 20 minutes. Your name and contact details are hidden before anything goes to the second AI, and you are asked before anything is sent.
+**Claude free plan.** [Download resume-tribunal.zip](https://github.com/mohiddin7/resume-tribunal/releases/latest/download/resume-tribunal.zip) and keep it zipped. In Claude, open Customize, then Skills. Click +, Create skill, Upload a skill, and choose the zip. If it asks, switch on code execution.
 
-- **Word files?** Yes. Attach your .docx resume as it is, or paste the text.
-- **On a phone?** It works, but copying text between two apps is fiddly. A laptop is easier.
-- **What do I get?** The finished resume as text you can paste into Word or Google Docs. When the app can make files, you also get a PDF or Word file.
+**A coding agent** (Claude Code, Codex, Cursor and others). Send it one message; it asks your permission, installs Resume Tribunal, and starts:
+
+```
+Install the Resume Tribunal skill (npx skills add mohiddin7/resume-tribunal), then tailor my resume to this job: [paste the job link]
+```
+
+**Then:** start a new chat, attach your resume, paste the job link, and say "Tailor my resume to this job." If no second AI is connected, Resume Tribunal gives you one block of text to paste into ChatGPT or Gemini, and you paste the reply back.
+
+Checked October 2026 against Claude's help pages; menus change.
 
 ## Install
 

@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>How I built Resume Tribunal: three AIs, one resume, and no made-up numbers | Resume Tribunal</title>
 <meta name="description" content="It started as sixteen prompts I copied between three AI chats by hand. Here is how it became a free tool, what the research said, and what testing it taught me.">
 <link rel="canonical" href="https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="Resume Tribunal blog" href="https://mohiddin7.github.io/resume-tribunal/feed.xml">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Resume Tribunal">
@@ -14,28 +15,36 @@
 <meta property="og:description" content="It started as sixteen prompts I copied between three AI chats by hand. Here is how it became a free tool, what the research said, and what testing it taught me.">
 <meta property="og:url" content="https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html">
 <meta property="og:image" content="https://mohiddin7.github.io/resume-tribunal/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#a8515c">
+<meta name="theme-color" content="#f7f4ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14120f" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="../assets/site.css">
 <script src="../assets/site.js"></script>
 <meta property="article:published_time" content="2026-10-11">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How I built Resume Tribunal: three AIs, one resume, and no made-up numbers", "description": "It started as sixteen prompts I copied between three AI chats by hand. Here is how it became a free tool, what the research said, and what testing it taught me.", "datePublished": "2026-10-11", "dateModified": "2026-10-11", "author": {"@type": "Person", "name": "mohiddin7", "url": "https://github.com/mohiddin7"}, "image": "https://mohiddin7.github.io/resume-tribunal/assets/og.png", "mainEntityOfPage": "https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html", "wordCount": 1297}</script>
+<meta property="article:tag" content="Behind the scenes">
+<meta property="article:tag" content="AI review">
+<meta property="article:tag" content="Building in public">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "headline": "How I built Resume Tribunal: three AIs, one resume, and no made-up numbers", "description": "It started as sixteen prompts I copied between three AI chats by hand. Here is how it became a free tool, what the research said, and what testing it taught me.", "datePublished": "2026-10-11", "dateModified": "2026-10-11", "keywords": ["Behind the scenes", "AI review", "Building in public"], "wordCount": 1297, "image": "https://mohiddin7.github.io/resume-tribunal/assets/og.png", "author": {"@type": "Person", "name": "mohiddin7", "url": "https://github.com/mohiddin7"}, "publisher": {"@type": "Organization", "name": "Resume Tribunal", "logo": "https://mohiddin7.github.io/resume-tribunal/assets/apple-touch-icon.png"}, "mainEntityOfPage": "https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mohiddin7.github.io/resume-tribunal/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://mohiddin7.github.io/resume-tribunal/blog/"}, {"@type": "ListItem", "position": 3, "name": "How I built Resume Tribunal: three AIs, one resume, and no made-up numbers", "item": "https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html"}]}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="in">
-  <a class="logo" href="../"><img src="../assets/favicon.svg" alt="" width="28" height="28">Resume Tribunal</a>
+  <a class="logo" href="../" aria-label="Resume Tribunal home"><img src="../assets/favicon.svg" alt="" width="30" height="30"><span>Resume Tribunal</span></a>
   <nav class="top" aria-label="Main">
-    <a href="../#how">How it works</a><a href="../#start">Start here</a><a href="../#faq">Questions</a>
-    <a href="../blog/">Blog</a><a href="https://github.com/mohiddin7/resume-tribunal">GitHub</a>
-    <button class="theme" type="button">Dark mode</button>
+    <a href="../#how">How it works</a><a href="../#proof">Example</a><a href="../#faq">Questions</a><a href="../blog/">Blog</a><a href="https://github.com/mohiddin7/resume-tribunal">GitHub</a>
   </nav>
+  <button class="icon theme" type="button" aria-label="Switch to dark mode"><span class="moon"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><span class="sun"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button>
+  <a class="btn primary small" href="../#start">Get started</a>
 </div></header>
-<main id="main"><article>
-<p class="meta"><a href="./">Blog</a> · 11 October 2026 · 6 min read</p>
-<h1>How I built Resume Tribunal: three AIs, one resume, and no made-up numbers</h1>
-<p class="lede">It started as sixteen prompts I copied between three AI chats by hand. Here is how it became a free tool, what the research said, and what testing it taught me.</p>
-<p>Earlier this year I was applying for jobs and doing what most people do now. I pasted my resume and a job posting into an AI and asked it to make me look good.</p>
+<main id="main" class="post-wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a> / <a href="./">Blog</a></nav>
+<article class="post">
+<header class="post-head"><div class="tags"><span class="tag">Behind the scenes</span><span class="tag">AI review</span><span class="tag">Building in public</span></div>
+<h1>How I built Resume Tribunal: three AIs, one resume, and no made-up numbers</h1><p class="lede">It started as sixteen prompts I copied between three AI chats by hand. Here is how it became a free tool, what the research said, and what testing it taught me.</p>
+<div class="byline"><span class="avatar" aria-hidden="true">M</span><span><strong>mohiddin7</strong><br><span class="meta">11 October 2026 · 6 min read</span></span><div class="share"><span>Share</span><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmohiddin7.github.io%2Fresume-tribunal%2Fblog%2Fhow-resume-tribunal-was-made.html" rel="noopener">LinkedIn</a><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fmohiddin7.github.io%2Fresume-tribunal%2Fblog%2Fhow-resume-tribunal-was-made.html&amp;text=How%20I%20built%20Resume%20Tribunal%3A%20three%20AIs%2C%20one%20resume%2C%20and%20no%20made-up%20numbers" rel="noopener">X</a><button type="button" class="copy" data-copy="https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html">Copy link</button></div></div></header>
+<div class="prose"><p>Earlier this year I was applying for jobs and doing what most people do now. I pasted my resume and a job posting into an AI and asked it to make me look good.</p>
 <p>The results looked polished, but they had problems.</p>
 <p>The rewrites read well, but they didn't read like me. They used words I never use, like "spearheaded" and "leveraged". They echoed the job posting a bit too neatly. And now and then a claim came out bigger than what I had actually done.</p>
 <p>When I asked the same AI to check its draft, it told me the draft was strong. Looking back, that's what you'd expect from the thing that wrote it.</p>
@@ -47,10 +56,13 @@
 <p>It worked. The resume I ended up with was the best I'd had, and I could explain every line of it in an interview.</p>
 <p>It also took hours. Sixteen prompts, three browser tabs, and a lot of copy and paste. I kept a notes file just to remember which reply came from which AI, so I wouldn't favour one without meaning to.</p>
 <p>I couldn't imagine anyone else putting up with that.</p>
+<figure class="fig"><img src="media/manual-vs-skill.svg" data-light="media/manual-vs-skill-light.svg" data-dark="media/manual-vs-skill-dark.svg" width="720" height="405" loading="lazy" alt="Sixteen prompts by hand, or one message with Resume Tribunal."><figcaption>Sixteen prompts by hand, or one message with Resume Tribunal.</figcaption></figure>
 <h2>Turning it into a skill</h2>
 <p>In October I turned the prompts into an Agent Skill. If you haven't come across these, a skill is a folder of instructions that an AI assistant loads when it needs them. You install it once. After that you say "tailor my resume to this job" and the assistant already knows the whole process.</p>
 <p>Before writing anything, I went looking for evidence. Two findings shaped the design.</p>
-<p>First, AI models really do go easy on their own work. In one study, AI judges were <a href="https://arxiv.org/abs/2604.06996">up to 50% more likely</a> to pass a failed check when the output was their own. Another, on resume screening, found models <a href="https://arxiv.org/abs/2509.00462">favoured summaries they had written</a> over the human originals. My hunch had a name: self-preference bias. A third study helped too. Across 37 models, a checker from a <a href="https://arxiv.org/abs/2512.02304">different model family</a> did better than self-checking.</p>
+<p>First, AI models really do go easy on their own work. In one study, AI judges were <a href="https://arxiv.org/abs/2604.06996">up to 50% more likely</a> to pass a failed check when the output was their own. Another, on resume screening, found models <a href="https://arxiv.org/abs/2509.00462">favoured summaries they had written</a> over the human originals. My hunch had a name: self-preference bias.</p>
+<figure class="fig"><img src="media/self-preference.svg" data-light="media/self-preference-light.svg" data-dark="media/self-preference-dark.svg" width="720" height="405" loading="lazy" alt="AI judges go easier on their own mistakes. Illustration of the reported effect."><figcaption>AI judges go easier on their own mistakes. Illustration of the reported effect.</figcaption></figure>
+<p>A third study helped too. Across 37 models, a checker from a <a href="https://arxiv.org/abs/2512.02304">different model family</a> did better than self-checking.</p>
 <p>The second finding was less flattering to my idea. Nobody has shown that a group of AIs writes a better resume than one strong AI. The evidence for an outside reviewer comes from maths and logic tasks, so for writing it is an analogy. "Three AIs beat one" is a design choice. The README says so in plain words.</p>
 <p>I built the skill itself with an AI coding agent, and had AIs from other companies review the work. Same rule as the resumes: no AI checks its own work.</p>
 <h2>What I kept, and what I changed</h2>
@@ -60,6 +72,7 @@
 <p><strong>You sign off on every changed line.</strong> Before you get a file, the assistant lists each claim that differs from your original resume. It asks whether each one is true and whether you could explain it in an interview. Anything you don't confirm comes out.</p>
 <p><strong>Your details stay with you.</strong> Your name, email, phone number and links are swapped for placeholders before anything goes to a second AI. The skill asks before it sends anything.</p>
 <p><strong>The copy and paste is optional.</strong> If you have other AI tools on your computer, the skill runs them itself, each one locked in an empty folder where it can't see your files. If you don't, it hands you one block of text to paste into another AI app, and you paste the reply back. A quick review is one round.</p>
+<aside class="cta-box"><img src="../assets/favicon.svg" alt="" width="40" height="40"><div><strong>Try Resume Tribunal on your own resume.</strong><p>Free, no sign-up. Your AI writes it from your facts, a different AI checks every line, and you approve each change.</p><a class="btn primary" href="../#start">Get started in 2 minutes</a></div></aside>
 <h2>How I tested it</h2>
 <p>I ran it on my own resume first, for a real job. It took under half an hour. A blind reviewer said no to a phone screen for the original and yes for the new version.</p>
 <p>Then I asked AI reviewers to pull the project apart, each one playing a different kind of expert who writes and critiques these tools. The most useful reviewer was the simplest one: a person whose whole experience of AI is typing a question into ChatGPT, the way most of us did in 2023.</p>
@@ -69,6 +82,7 @@
 <p>That run is published as the <a href="https://github.com/mohiddin7/resume-tribunal/tree/main/examples/operations-analyst">worked example</a>, with the candidate's own words included, so anyone can check every number with one command.</p>
 <h2>What it caught</h2>
 <p>In that example, the other AIs suggested more than twenty things the candidate never said. A few of them:</p>
+<figure class="fig"><img src="media/rejected-claims.svg" data-light="media/rejected-claims-light.svg" data-dark="media/rejected-claims-dark.svg" width="720" height="405" loading="lazy" alt="One of more than twenty suggestions Resume Tribunal turned down in the worked example."><figcaption>One of more than twenty suggestions Resume Tribunal turned down in the worked example.</figcaption></figure>
 <ul>
 <li>"from 4 hours to 40 minutes", when the candidate had said "half a day"</li>
 <li>"root-cause tracking framework adopted by leadership", for a spreadsheet one supervisor used in a weekly meeting</li>
@@ -82,12 +96,15 @@
 <li><strong>Write for the least technical reader.</strong> Developers can skip ahead. Beginners can't fill in the gaps.</li>
 </ol>
 <h2>Try it</h2>
-<p>Resume Tribunal is free and open source: <a href="https://github.com/mohiddin7/resume-tribunal">github.com/mohiddin7/resume-tribunal</a>. If you've never used a terminal, start with the "New to this?" section. If you try it, I'd like to hear what broke.</p>
-<div class="card"><strong>Try Resume Tribunal.</strong> It is free and open source. <a href="../#start">Start here</a> if you have never used a terminal, or see the <a href="https://github.com/mohiddin7/resume-tribunal">code on GitHub</a>.</div>
-</article></main>
+<p>Resume Tribunal is free and open source: <a href="https://github.com/mohiddin7/resume-tribunal">github.com/mohiddin7/resume-tribunal</a>. If you've never used a terminal, start with the "New to this?" section. If you try it, I'd like to hear what broke.</p></div>
+<aside class="cta-box"><img src="../assets/favicon.svg" alt="" width="40" height="40"><div><strong>Try Resume Tribunal on your own resume.</strong><p>Free, no sign-up. Your AI writes it from your facts, a different AI checks every line, and you approve each change.</p><a class="btn primary" href="../#start">Get started in 2 minutes</a></div></aside>
+<footer class="post-foot"><div class="share"><span>Share</span><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmohiddin7.github.io%2Fresume-tribunal%2Fblog%2Fhow-resume-tribunal-was-made.html" rel="noopener">LinkedIn</a><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fmohiddin7.github.io%2Fresume-tribunal%2Fblog%2Fhow-resume-tribunal-was-made.html&amp;text=How%20I%20built%20Resume%20Tribunal%3A%20three%20AIs%2C%20one%20resume%2C%20and%20no%20made-up%20numbers" rel="noopener">X</a><button type="button" class="copy" data-copy="https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html">Copy link</button></div></footer>
+</article>
+<section class="related"><h2>Keep reading</h2><div class="grid"><a class="card post" href="resume-skills-compared.html"><span class="tags"><span class="tag">Comparisons</span><span class="tag">Resume tips</span><span class="tag">Agent skills</span></span><strong>Resume skills for AI assistants, compared honestly</strong><span class="meta">7 min read</span></a></div></section>
+</main>
 <footer class="site"><div class="in">
-  <span>Resume Tribunal is free and open source, MIT license.</span>
-  <a href="https://github.com/mohiddin7/resume-tribunal">Source code</a><a href="../blog/">Blog</a><a href="https://mohiddin7.github.io/resume-tribunal/feed.xml">RSS</a><a href="../llms.txt">llms.txt</a>
+  <div class="fbrand"><img src="../assets/favicon.svg" alt="" width="26" height="26"><strong>Resume Tribunal</strong><span>Free and open source. MIT license.</span></div>
+  <nav aria-label="Footer"><a href="../#start">Get started</a><a href="../#faq">Questions</a><a href="../blog/">Blog</a><a href="https://github.com/mohiddin7/resume-tribunal">GitHub</a><a href="https://mohiddin7.github.io/resume-tribunal/feed.xml">RSS</a><a href="../llms.txt">llms.txt</a></nav>
 </div></footer>
 </body>
 </html>
