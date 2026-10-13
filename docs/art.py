@@ -43,17 +43,17 @@ def svg(w, h, variant, title, desc, body, css=""):
             f'<rect width="{w}" height="{h}" rx="18" fill="var(--bg)"/>{body}</svg>\n')
 
 
-# The mark: a resume page with a second page behind it, and a check from the second reader.
+# The mark: a fanned pile of resumes, with yours lifted out of it and on top. Standing out, picked.
 def mark(x=0, y=0, s=1.0, tile=True):
+    c, t = ("var(--onbrand)", "var(--brand)") if tile else ("var(--brand)", "var(--bg)")
+    cards = (f'<rect x="5" y="9" width="14" height="18" rx="2.6" fill="{c}" opacity=".3" transform="rotate(-14 12 18)"/>'
+             f'<rect x="7" y="9" width="14" height="18" rx="2.6" fill="{c}" opacity=".55" transform="rotate(-6 14 18)"/>'
+             f'<rect x="13" y="3.5" width="15" height="20" rx="2.6" fill="{c}" stroke="{t}" stroke-width="1.6"/>'
+             f'<path d="M16.5 9h8M16.5 12.5h8M16.5 16h5" stroke="{t}" stroke-width="1.8" stroke-linecap="round"/>')
     g = f'<g transform="translate({x} {y}) scale({s})">'
     if tile:
-        g += '<rect width="32" height="32" rx="8" fill="var(--brand)"/>'
-    g += ('<rect x="10.5" y="4.5" width="13" height="17" rx="2.2" fill="var(--onbrand)" opacity=".45"/>'
-          '<rect x="6.5" y="8" width="13" height="17.5" rx="2.2" fill="var(--onbrand)"/>'
-          '<path d="M9.5 13h7M9.5 16.5h7M9.5 20h4.5" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round"/>'
-          '<circle cx="22" cy="22.5" r="6.2" fill="var(--green)" stroke="var(--brand)" stroke-width="1.6"/>'
-          '<path d="M19.3 22.6l1.9 1.9 3.6-3.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>')
-    return g + "</g>"
+        return g + f'<rect width="32" height="32" rx="8" fill="var(--brand)"/><g transform="translate(3.5 4.5) scale(.75)">{cards}</g></g>'
+    return g + cards + "</g>"
 
 
 def favicon():
