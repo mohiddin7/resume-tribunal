@@ -376,3 +376,14 @@ h1, h2 { text-wrap: balance; }
 .sc6 .qs { left: auto; right: 8%; bottom: 12%; }
 .sc2 .k2 { right: 20%; }
 .cap { min-height: 4.6em; }
+
+/* phone: bars and caption together on top; no long-press callout */
+.stage { -webkit-touch-callout: none; -webkit-user-select: none; }
+@media (max-width: 859px) {
+  .steps6 { order: 0; } .cap { order: 1; min-height: 3.2em; margin-bottom: 2px; } .stage { order: 2; }
+  .cap strong { font-size: 1.1rem; }
+}
+/* floating phone button appears only after the hero button scrolls away */
+.mcta { transform: translateY(140%); opacity: 0; transition: transform .25s ease, opacity .25s ease; pointer-events: none; }
+body.show-mcta .mcta { transform: none; opacity: 1; pointer-events: auto; }
+@media (prefers-reduced-motion: reduce) { .mcta { transition: none; } }

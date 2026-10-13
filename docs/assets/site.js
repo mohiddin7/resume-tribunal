@@ -74,21 +74,31 @@
         b.querySelector(".bar b").addEventListener("animationend", function () { if (k === i && running) go(i + 1); });
         b.addEventListener("click", function () { go(k); });
       });
-      stage.addEventListener("click", function (e) {
+      // A quick tap moves (left third back, the rest forward); a swipe moves; a press-and-hold pauses until let go.
+      // Hovering, touching to scroll and scrolling never pause it. The pause button is the other way to stop it.
+      var x0 = 0, y0 = 0, timer = null, held = false, moved = false;
+      stage.addEventListener("pointerdown", function (e) {
         if (e.target.closest(".pause")) return;
+        x0 = e.clientX; y0 = e.clientY; held = false; moved = false;
+        timer = setTimeout(function () { held = true; hiw.classList.add("hold"); }, 350);
+      });
+      stage.addEventListener("pointermove", function (e) {
+        if (timer && (Math.abs(e.clientX - x0) > 10 || Math.abs(e.clientY - y0) > 10)) { clearTimeout(timer); timer = null; moved = true; }
+      });
+      var release = function (e) {
+        clearTimeout(timer); timer = null;
+        if (held) { held = false; hiw.classList.remove("hold"); return; }
+        if (!e || e.type !== "pointerup" || e.target.closest(".pause")) return;
+        var dx = e.clientX - x0;
+        if (moved && Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(e.clientY - y0)) { go(dx < 0 ? i + 1 : i - 1); return; }
+        if (moved) return;  // a scroll, not a tap
         var r = stage.getBoundingClientRect();
         go(e.clientX - r.left < r.width * 0.35 ? i - 1 : i + 1);
-      });
-      var x0 = null;
-      stage.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; hiw.classList.add("hold"); }, { passive: true });
-      stage.addEventListener("touchend", function (e) {
-        hiw.classList.remove("hold");
-        if (x0 === null) return;
-        var dx = e.changedTouches[0].clientX - x0; x0 = null;
-        if (Math.abs(dx) > 40) { e.preventDefault(); go(dx < 0 ? i + 1 : i - 1); }
-      });
-      stage.addEventListener("mouseenter", function () { hiw.classList.add("hold"); });
-      stage.addEventListener("mouseleave", function () { hiw.classList.remove("hold"); });
+      };
+      stage.addEventListener("pointerup", release);
+      stage.addEventListener("pointercancel", release);
+      stage.addEventListener("pointerleave", function () { if (held) release(); else { clearTimeout(timer); timer = null; } });
+      stage.addEventListener("contextmenu", function (e) { e.preventDefault(); });
       stage.addEventListener("keydown", function (e) {
         if (e.key === "ArrowRight") go(i + 1);
         if (e.key === "ArrowLeft") go(i - 1);
@@ -105,6 +115,16 @@
         }, { threshold: 0.5 }).observe(stage);
       } else { running = true; hiw.classList.remove("hold"); }
     }
+
+    var heroCta = document.querySelector(".hero .cta"), start = document.getElementById("start"), mcta = document.querySelector(".mcta");
+    if (mcta && heroCta && "IntersectionObserver" in window) {
+      var seen = { hero: true, start: false };
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (en) { seen[en.target === heroCta ? "hero" : "start"] = en.isIntersecting; });
+        document.body.classList.toggle("show-mcta", !seen.hero && !seen.start);
+      });
+      io.observe(heroCta); if (start) io.observe(start);
+    } else if (mcta) { document.body.classList.add("show-mcta"); }
 
     var q = document.getElementById("q");
     if (q) {

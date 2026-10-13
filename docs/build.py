@@ -377,7 +377,7 @@ def build_home(items):
 
 <section id="how" class="band">
   <h2>How it works</h2>
-  <p class="sub">Six quick steps, about 5 minutes. Tap or swipe through.</p>
+  <p class="sub">Six quick steps, about 5 minutes. Tap to skip, hold to pause.</p>
   <div class="hiw" aria-roledescription="carousel" aria-label="How Resume Tribunal works">
     <ol class="steps6" role="tablist">{steps6}</ol>
     <div class="stage" tabindex="0" aria-live="polite">
