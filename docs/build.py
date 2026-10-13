@@ -272,6 +272,26 @@ TITLE = "Free AI Resume Tailoring That Doesn't Make Stuff Up | Resume Tribunal"
 DESC = "Not getting shortlisted? Fix your resume or CV for the job in 5 minutes with ChatGPT, Gemini or any AI, without anything made up. Free, no sign-up."
 
 
+def flow_css():
+    """Website How it works: each step lights up in turn, the drafts swap places, then it loops."""
+    cycle = art.STEP_S * len(art.STEPS) + art.HOLD_S
+    a, rules = art.Anim(round(cycle, 1)), []
+    end = art.STEP_S * len(art.STEPS) + art.HOLD_S * .7
+    for n in range(len(art.STEPS)):
+        t0 = n * art.STEP_S
+        st = a.at(f"fl{n}", [(0, "border-color:var(--line);box-shadow:none"), (t0, "border-color:var(--line);box-shadow:none"),
+                             (t0 + .3, "border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)"),
+                             (end, "border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)"),
+                             (end + .5, "border-color:var(--line);box-shadow:none"), (cycle, "border-color:var(--line);box-shadow:none")])
+        rules.append(f".fs{n}{{{st[7:-1]}}}")
+    t0 = 2 * art.STEP_S
+    for cls, dx in ((".c1", "calc(200% + 16px)"), (".c3", "calc(-200% - 16px)")):
+        st = a.at("sw" + cls[1:], [(0, "transform:translateX(0)"), (t0 + .4, "transform:translateX(0)"), (t0 + 1.2, f"transform:translateX({dx})"),
+                                   (end, f"transform:translateX({dx})"), (end + .6, "transform:translateX(0)"), (cycle, "transform:translateX(0)")])
+        rules.append(f".chips {cls}{{{st[7:-1]}}}")
+    return "".join(a.css) + "".join(rules)
+
+
 def demo_css():
     """The hero demo: a bullet is rewritten, a second AI checks three claims, you approve. 12-second loop."""
     a = art.Anim(12)
@@ -300,6 +320,10 @@ def build_home(items):
     faq = "\n".join(f"<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>" for q, a in FAQ)
     blog = "\n".join(f'<a class="card post" href="blog/{p["slug"]}.html"><span class="tags">{tags(p)}</span><strong>{esc(p["title"])}</strong>'
                      f'<span class="desc">{esc(p["description"])}</span><span class="meta">{p["minutes"]} min read</span></a>' for p in items)
+    flow = "".join(
+        f'<li class="fs fs{n} {col}"><span class="fn">{n + 1}</span><span class="ft">{esc(tag)}</span><h3>{esc(title)}</h3><p>{esc(line)}</p>'
+        + ('<span class="chips"><b class="c1">Draft K</b><b>Draft M</b><b class="c3">Draft R</b></span>' if n == 2 else "") + "</li>"
+        for n, (tag, col, title, line) in enumerate(art.STEPS))
     agent_msg = "Install the Resume Tribunal skill (npx skills add mohiddin7/resume-tribunal), then tailor my resume to this job: [paste the job link]"
     chat_msg = f"Read {SITE}resume-tribunal.md and follow it to tailor my resume to this job: [paste the job link]"
     ok = '<span class="ic ok" aria-hidden="true">✓</span>'
@@ -334,13 +358,10 @@ def build_home(items):
 
 <section id="how" class="band">
   <span class="eyebrow">How it works</span>
-  <h2>Three steps. About 5 minutes.</h2>
-  <ol class="steps3">
-    <li><span class="num">1</span><h3>You share</h3><p>Your resume, the job link, and a few words about what you really did.</p></li>
-    <li><span class="num">2</span><h3>Two AIs work on it</h3><p>Your AI writes it from your facts. An AI from a different company checks it without knowing who wrote it.</p></li>
-    <li><span class="num">3</span><h3>You approve</h3><p>Say yes to each change, then download a resume where every line is true.</p></li>
-  </ol>
-  <p class="center meta">Want more eyes? The <strong>full council</strong> has three AIs from three companies each write a draft and critique each other first.</p>
+  <h2>Six steps. About 5 minutes.</h2>
+  <p class="sub">You do the first and the fifth. The AIs and a script do the rest.</p>
+  <ol class="flow6">{flow}</ol>
+  <p class="center meta">Want more eyes on it? The <strong>full council</strong> has three AIs from three companies each write a draft and critique each other first.</p>
 </section>
 
 <section id="proof">
@@ -453,7 +474,7 @@ def build_home(items):
 <a class="mcta btn primary" href="#start">Get started free</a>
 """
     extra = (f'<link rel="alternate" type="text/plain" href="llms.txt" title="Summary for AI assistants">\n'
-             f'<style>{demo_css()}</style>\n<script type="application/ld+json">{json.dumps(ld)}</script>\n')
+             f'<style>{demo_css()}{flow_css()}</style>\n<script type="application/ld+json">{json.dumps(ld)}</script>\n')
     (DOCS / "index.html").write_text(head(TITLE, DESC, SITE, 0, "website", extra).replace("<body>", '<body class="home">') + body + foot(0))
 
 

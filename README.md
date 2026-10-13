@@ -43,7 +43,7 @@ npx skills add mohiddin7/resume-tribunal
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/assets/how-it-works-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="docs/assets/how-it-works-light.svg">
-    <img src="docs/assets/how-it-works.svg" width="560" alt="How Resume Tribunal works. Step 1, you share your resume, the job link and a few words about what you did. Step 2, your AI writes it from your facts only, and a different company's AI checks it without being told who wrote it. Step 3, you approve each change and download a resume where every line is true.">
+    <img src="docs/assets/how-it-works.svg" width="620" alt="How Resume Tribunal works, in six steps: share the job and your resume; your AI rewrites it for the job; a second AI from a different company reads it like the hiring manager; a script checks the details; you approve the changes; your resume is ready to send.">
   </picture>
 </p>
 

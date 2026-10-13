@@ -233,3 +233,21 @@ details.more li { margin: 8px 0; }
 
 h1, h2 { text-wrap: balance; }
 .hero h1 .accent { display: block; font-size: .82em; margin-top: 6px; }
+
+/* how it works, six steps */
+.flow6 { list-style: none; padding: 0; margin: 28px auto 12px; display: grid; gap: 14px; max-width: 64rem; counter-reset: s; }
+@media (min-width: 760px) { .flow6 { grid-template-columns: repeat(3, 1fr); } }
+.fs { --accent: var(--brand); position: relative; text-align: left; background: var(--bg); border: 2px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; }
+.fs.green { --accent: var(--green); } .fs.blue { --accent: var(--blue); } .fs.purple { --accent: var(--purple, #685497); }
+.fn { position: absolute; top: 14px; right: 16px; width: 28px; height: 28px; border-radius: 999px; display: grid; place-items: center; font-weight: 800; font-size: 14px; color: #fff; background: var(--accent); }
+.ft { display: block; font-size: 11px; font-weight: 800; letter-spacing: .1em; color: var(--accent); margin-bottom: 6px; padding-right: 36px; }
+.fs h3 { font-size: 1.05rem; margin: 0 0 6px; padding-right: 30px; }
+.fs p { margin: 0; color: var(--muted); font-size: 15px; }
+.chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+.chips b { font-size: 11px; text-align: center; padding: 4px 0; border-radius: 999px; background: var(--surf); border: 1px solid var(--line); }
+@media (max-width: 759px) { .fs:not(:last-child)::after { content: "↓"; position: absolute; left: 50%; bottom: -15px; transform: translateX(-50%); color: var(--muted); font-size: 14px; line-height: 1; } }
+.paused .flow6 * , .paused .fs { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) { .fs, .chips b { animation: none !important; } }
+:root { --purple: #685497; }
+:root[data-theme="dark"] { --purple: #9177cf; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --purple: #9177cf; } }
