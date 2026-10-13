@@ -230,3 +230,6 @@ details.more { margin-top: 16px; }
 details.more ul { color: var(--muted); padding-left: 20px; }
 details.more li { margin: 8px 0; }
 .steps .copybox { margin-top: 8px; }
+
+h1, h2 { text-wrap: balance; }
+.hero h1 .accent { display: block; font-size: .82em; margin-top: 6px; }

@@ -8,7 +8,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-SKILL.md-black.svg)](https://agentskills.io)
 
-**Tailor your resume to any job. Nothing made up.**
+**Not getting shortlisted? Fix your resume for the job in 5 minutes, without the AI making anything up.**
 
 Resume Tribunal is a free add-on for AI apps (an "Agent Skill"). It works in any AI chat app, such as ChatGPT, Gemini or Claude, and in coding agents. One AI rewrites your resume for a specific job using only facts you gave it. An AI made by a different company then checks the draft without being told who wrote it, so nothing gets exaggerated and no AI grades its own work.
 

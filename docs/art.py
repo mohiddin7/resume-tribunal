@@ -73,11 +73,12 @@ def og():
 <style>{theme(None)}text{{font-family:{FONT}}}</style>
 <rect width="1200" height="630" fill="{t['bg']}"/>
 {mark(80, 72, 1.9)}<text x="158" y="118" font-size="36" font-weight="800" fill="{t['ink']}">Resume Tribunal</text>
-<text x="80" y="268" font-size="64" font-weight="800" letter-spacing="-2" fill="{t['ink']}">Tailor your resume to any job.</text>
-<text x="80" y="356" font-size="64" font-weight="800" letter-spacing="-2" fill="{t['brand']}">Nothing made up.</text>
-<text x="80" y="436" font-size="28" fill="{t['muted']}">Your AI writes it from your facts. Another company's AI checks every line.</text>
-<rect x="80" y="500" width="330" height="60" rx="30" fill="{t['brand']}"/>
-<text x="245" y="539" text-anchor="middle" font-size="26" font-weight="700" fill="#fff">Free and open source</text>
+<text x="80" y="250" font-size="64" font-weight="800" letter-spacing="-2" fill="{t['ink']}">Not getting shortlisted?</text>
+<text x="80" y="330" font-size="58" font-weight="800" letter-spacing="-2" fill="{t['brand']}">Fix your resume for the job</text>
+<text x="80" y="398" font-size="58" font-weight="800" letter-spacing="-2" fill="{t['brand']}">in 5 minutes.</text>
+<text x="80" y="462" font-size="28" fill="{t['muted']}">Works with ChatGPT, Gemini or any AI. Nothing made up. Free, no sign-up.</text>
+<rect x="80" y="510" width="330" height="60" rx="30" fill="{t['brand']}"/>
+<text x="245" y="549" text-anchor="middle" font-size="26" font-weight="700" fill="#fff">Free and open source</text>
 </svg>
 '''
 

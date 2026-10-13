@@ -268,8 +268,8 @@ FAQ = [
      "A link tracker for resumes, made by the same person who made Resume Tribunal. If your resume has links, you'll see one optional tip about it at the end. You don't need it, and nothing is sent to it."),
 ]
 
-TITLE = "Resume Tribunal: tailor your resume to any job, nothing made up"
-DESC = "Free tool that tailors your resume to a job from your own facts. A second AI from a different company checks every line. Works with Claude and ChatGPT."
+TITLE = "Free AI Resume Tailoring That Doesn't Make Stuff Up | Resume Tribunal"
+DESC = "Not getting shortlisted? Fix your resume or CV for the job in 5 minutes with ChatGPT, Gemini or any AI, without anything made up. Free, no sign-up."
 
 
 def demo_css():
@@ -307,10 +307,10 @@ def build_home(items):
     body = f"""<main id="main">
 <section class="hero">
   <span class="eyebrow">Free resume tool for AI apps</span>
-  <h1>Tailor your resume to any job.<br><span class="accent">Nothing made up.</span></h1>
-  <p class="lede">Paste a job link. Resume Tribunal rewrites your resume from your own facts, then an AI from a different company checks every line.</p>
+  <h1>Not getting shortlisted?<br><span class="accent">Fix your resume for the job in 5 minutes.</span></h1>
+  <p class="lede">Paste the job link into ChatGPT, Gemini or any AI. Your resume gets rewritten for that job, then a second AI checks it the way a hiring manager would, without inventing anything. Free, no sign-up.</p>
   <div class="cta"><a class="btn primary big" href="#start">Get started free</a><a class="btn ghost big" href="#proof">See an example</a></div>
-  <ul class="trust"><li>No sign-up</li><li>Open source</li><li>Works with Claude, ChatGPT and Gemini</li></ul>
+  <ul class="trust"><li>No sign-up</li><li>Open source</li><li>Works with any AI app</li></ul>
 </section>
 
 <section class="demo-wrap" aria-label="Example: what happens to one line of your resume">

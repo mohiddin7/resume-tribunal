@@ -2,9 +2,10 @@
 <style>svg{--bg:#f7f4ef;--surf:#fffdf9;--ink:#221e19;--muted:#5f574d;--line:#ddd5c8;--brand:#a8515c;--onbrand:#ffffff;--blue:#35619a;--green:#2f6c36;--purple:#685497;--danger:#a14126;--tint:#f3e6e6}text{font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}</style>
 <rect width="1200" height="630" fill="#f7f4ef"/>
 <g transform="translate(80 72) scale(1.9)"><rect width="32" height="32" rx="8" fill="var(--brand)"/><rect x="10.5" y="4.5" width="13" height="17" rx="2.2" fill="var(--onbrand)" opacity=".45"/><rect x="6.5" y="8" width="13" height="17.5" rx="2.2" fill="var(--onbrand)"/><path d="M9.5 13h7M9.5 16.5h7M9.5 20h4.5" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round"/><circle cx="22" cy="22.5" r="6.2" fill="var(--green)" stroke="var(--brand)" stroke-width="1.6"/><path d="M19.3 22.6l1.9 1.9 3.6-3.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g><text x="158" y="118" font-size="36" font-weight="800" fill="#221e19">Resume Tribunal</text>
-<text x="80" y="268" font-size="64" font-weight="800" letter-spacing="-2" fill="#221e19">Tailor your resume to any job.</text>
-<text x="80" y="356" font-size="64" font-weight="800" letter-spacing="-2" fill="#a8515c">Nothing made up.</text>
-<text x="80" y="436" font-size="28" fill="#5f574d">Your AI writes it from your facts. Another company's AI checks every line.</text>
-<rect x="80" y="500" width="330" height="60" rx="30" fill="#a8515c"/>
-<text x="245" y="539" text-anchor="middle" font-size="26" font-weight="700" fill="#fff">Free and open source</text>
+<text x="80" y="250" font-size="64" font-weight="800" letter-spacing="-2" fill="#221e19">Not getting shortlisted?</text>
+<text x="80" y="330" font-size="58" font-weight="800" letter-spacing="-2" fill="#a8515c">Fix your resume for the job</text>
+<text x="80" y="398" font-size="58" font-weight="800" letter-spacing="-2" fill="#a8515c">in 5 minutes.</text>
+<text x="80" y="462" font-size="28" fill="#5f574d">Works with ChatGPT, Gemini or any AI. Nothing made up. Free, no sign-up.</text>
+<rect x="80" y="510" width="330" height="60" rx="30" fill="#a8515c"/>
+<text x="245" y="549" text-anchor="middle" font-size="26" font-weight="700" fill="#fff">Free and open source</text>
 </svg>
