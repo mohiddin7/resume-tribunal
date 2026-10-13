@@ -26,7 +26,7 @@
 <meta property="article:tag" content="Behind the scenes">
 <meta property="article:tag" content="AI review">
 <meta property="article:tag" content="Building in public">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "headline": "I let three AIs argue over my resume. Here's what they caught.", "description": "It started as sixteen prompts and three browser tabs. It became a free tool that won't let an AI make up your experience.", "datePublished": "2026-10-11", "dateModified": "2026-10-11", "keywords": ["Behind the scenes", "AI review", "Building in public"], "wordCount": 704, "image": "https://mohiddin7.github.io/resume-tribunal/assets/og.png", "author": {"@type": "Person", "name": "mohiddin7", "url": "https://github.com/mohiddin7"}, "publisher": {"@type": "Organization", "name": "Resume Tribunal", "logo": "https://mohiddin7.github.io/resume-tribunal/assets/apple-touch-icon.png"}, "mainEntityOfPage": "https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mohiddin7.github.io/resume-tribunal/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://mohiddin7.github.io/resume-tribunal/blog/"}, {"@type": "ListItem", "position": 3, "name": "I let three AIs argue over my resume. Here's what they caught.", "item": "https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html"}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "headline": "I let three AIs argue over my resume. Here's what they caught.", "description": "It started as sixteen prompts and three browser tabs. It became a free tool that won't let an AI make up your experience.", "datePublished": "2026-10-11", "dateModified": "2026-10-11", "keywords": ["Behind the scenes", "AI review", "Building in public"], "wordCount": 648, "image": "https://mohiddin7.github.io/resume-tribunal/assets/og.png", "author": {"@type": "Person", "name": "mohiddin7", "url": "https://github.com/mohiddin7"}, "publisher": {"@type": "Organization", "name": "Resume Tribunal", "logo": "https://mohiddin7.github.io/resume-tribunal/assets/apple-touch-icon.png"}, "mainEntityOfPage": "https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mohiddin7.github.io/resume-tribunal/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://mohiddin7.github.io/resume-tribunal/blog/"}, {"@type": "ListItem", "position": 3, "name": "I let three AIs argue over my resume. Here's what they caught.", "item": "https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html"}]}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -59,28 +59,48 @@
 <blockquote>
 <p>Which is a bit like asking a chef to rate their own soup.</p>
 </blockquote>
+<figure class="fig"><img src="media/self-grade.svg" data-light="media/self-grade-light.svg" data-dark="media/self-grade-dark.svg" width="720" height="405" loading="lazy" alt="Same draft, two graders. Guess which one wrote it."><figcaption>Same draft, two graders. Guess which one wrote it.</figcaption></figure>
 <p>It turns out this has a name. AI judges are up to <a href="https://arxiv.org/abs/2604.06996">50% more likely to pass a failed answer</a> when the answer is their own.</p>
 <figure class="fig"><img src="media/self-preference.svg" data-light="media/self-preference-light.svg" data-dark="media/self-preference-dark.svg" width="720" height="405" loading="lazy" alt="AI judges go easier on their own mistakes. Illustration of the reported effect."><figcaption>AI judges go easier on their own mistakes. Illustration of the reported effect.</figcaption></figure>
 <h2>Sixteen prompts and a notes file</h2>
 <p>So I got a second opinion. A different company's AI, a fresh chat, and one instruction: read this like a skeptical hiring manager.</p>
 <p>It was far more willing to point out problems. So I kept going, all summer:</p>
 <ul>
-<li><strong>May:</strong> prompts to decode the job, screen my resume, and rewrite the weak bullets, run in three different AIs.</li>
-<li><strong>June and July:</strong> all three reviewed the merged result, and two of them researched the role itself.</li>
+<li><strong>May 2026:</strong> prompts to decode the job, screen my resume, and rewrite the weak bullets, run in three different AIs.</li>
+<li><strong>June and July 2026:</strong> all three reviewed the merged result, and two of them researched the role itself.</li>
 </ul>
 <p>The resume I ended up with was the best I'd had. It also took hours, three browser tabs, and a notes file just to remember which reply came from which AI.</p>
 <figure class="fig"><img src="media/manual-vs-skill.svg" data-light="media/manual-vs-skill-light.svg" data-dark="media/manual-vs-skill-dark.svg" width="720" height="405" loading="lazy" alt="Sixteen prompts by hand, or one message with Resume Tribunal."><figcaption>Sixteen prompts by hand, or one message with Resume Tribunal.</figcaption></figure>
 <p>Nobody else was ever going to do that. So I turned it into a skill.</p>
 <h2>What Resume Tribunal does now</h2>
-<p>A skill is a set of instructions your AI app loads when it needs them. You paste one message into ChatGPT, Gemini, Claude or any AI, and it knows the whole routine:</p>
-<ul>
-<li><strong>Your AI rewrites</strong> your resume for the job, in the job's own words.</li>
-<li><strong>A second AI checks it</strong>, from a different company, without being told who wrote it.</li>
-<li><strong>A script checks every number and name</strong> against what you actually said. Mention Tableau you've never touched and it fails.</li>
-<li><strong>You say yes</strong> to each change before you get a file.</li>
-<li><strong>Next time, it remembers.</strong> The facts you confirmed are saved on your computer, or handed to you as a block to paste, so your second job takes a few questions instead of an interview.</li>
-</ul>
-<p>A quick review takes about 2 minutes. Your name and contact details are hidden before anything goes to a second AI.</p>
+<p>A skill is a set of instructions your AI app loads when it needs them. You paste one message into ChatGPT, Gemini, Claude or any AI, and it knows the whole routine. Try it: you do two steps, and the AIs do the rest.</p>
+<div class="hiw play" aria-roledescription="carousel" aria-label="How Resume Tribunal works">
+    <ol class="steps6" role="tablist"><li role="presentation"><button role="tab" class="st" data-i="0" aria-selected="true"><span class="bar"><b></b></span><span class="stt">Drop in the job and your resume</span><span class="sts">Paste the link into any AI chat.</span></button></li><li role="presentation"><button role="tab" class="st" data-i="1" aria-selected="false"><span class="bar"><b></b></span><span class="stt">Your AI rewrites it for the job</span><span class="sts">In the job&#x27;s own words.</span></button></li><li role="presentation"><button role="tab" class="st" data-i="2" aria-selected="false"><span class="bar"><b></b></span><span class="stt">A second AI checks it like a hiring manager</span><span class="sts">It catches anything made up.</span></button></li><li role="presentation"><button role="tab" class="st" data-i="3" aria-selected="false"><span class="bar"><b></b></span><span class="stt">A script checks every detail</span><span class="sts">Layout, AI phrases, numbers.</span></button></li><li role="presentation"><button role="tab" class="st" data-i="4" aria-selected="false"><span class="bar"><b></b></span><span class="stt">You check the changes</span><span class="sts">Say yes to the ones you want.</span></button></li><li role="presentation"><button role="tab" class="st" data-i="5" aria-selected="false"><span class="bar"><b></b></span><span class="stt">Ready to send</span><span class="sts">Plus the questions you&#x27;ll be asked.</span></button></li></ol>
+    <div class="stage" tabindex="0" aria-live="polite">
+      <button class="icon pause" type="button" aria-label="Pause" aria-pressed="false"><span class="ps">❚❚</span><span class="pl">▶</span></button><span class="who" aria-hidden="true"></span>
+<div data-t="Drop in the job and your resume" data-d="Paste the link into any AI chat." data-wait class="sc on sc1"><div class="chat"><span class="typed">Tailor my resume to this job</span><span class="send">↑</span></div>
+  <div class="pill job"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Job link</div>
+  <div class="rc rc-in"><span class="rc-name"></span><span class="rc-sub"></span><i></i><i></i><i class="short"></i></div><button type="button" class="btn primary act">Paste the job and your resume</button></div>
+<div data-t="Your AI rewrites it for the job" data-d="In the job&#x27;s own words." class="sc sc2"><div class="rc big"><span class="sctag t-blue">AI 1</span><span class="rc-name"></span><span class="rc-sub"></span>
+  <p class="old">Helped improve on-time delivery</p>
+  <p class="new n1">Helped raise on-time delivery from 81 to 93 percent</p>
+  <p class="new n2">Cut report prep from 4 hours to 40 minutes</p></div>
+  <span class="kw k1">Excel</span><span class="kw k2">Power Query</span><span class="kw k3">Carrier data</span></div>
+<div data-t="A second AI checks it like a hiring manager" data-d="It catches anything made up." class="sc sc3"><div class="rc big"><span class="sctag t-swap"><b>AI 1</b><b>Draft K</b></span><span class="rc-name"></span><span class="rc-sub"></span>
+  <p>Helped raise on-time delivery from 81 to 93 percent</p>
+  <p class="catch">Cut report prep from <span class="bad">4 hours</span><span class="fix">half a day</span> to 40 minutes</p>
+  <span class="lens"></span></div>
+  <span class="note">You said "half a day"</span><span class="verdict">Would shortlist: yes</span></div>
+<div data-t="A script checks every detail" data-d="Layout, AI phrases, numbers." class="sc sc4"><div class="rc"><span class="rc-name"></span><span class="rc-sub"></span><i></i><i></i><i class="short"></i><span class="scan"></span></div>
+  <ul class="checks"><li class="c1"><b>✓</b>Screening software can read it</li><li class="c2"><b>✓</b>No AI-sounding phrases</li><li class="c3"><b>✓</b>Every number matches your words</li></ul></div>
+<div data-t="You check the changes" data-d="Say yes to the ones you want." data-wait class="sc sc5"><div class="chg ch1"><p>"from 81 to 93 percent"</p><button type="button" class="ok">Approve</button></div>
+  <div class="chg ch2"><p>"from half a day to 40 minutes"</p><button type="button" class="ok">Approve</button></div><span class="tap"></span></div>
+<div data-t="Ready to send" data-d="Plus the questions you&#x27;ll be asked." class="sc sc6"><div class="pile"><span class="p1"></span><span class="p2"></span><div class="rc lift"><span class="rc-name"></span><span class="rc-sub"></span><i></i><i></i><i class="short"></i></div></div>
+  <span class="pill pdf">Resume.pdf</span><span class="pill qs">5 interview questions</span><button type="button" class="btn ghost act again">Watch again</button></div>
+    </div>
+    <p class="cap"><strong></strong><span></span></p>
+  </div><p class="center meta hint">Your turn at steps 1 and 5. The AIs do the rest.</p>
+<p>Your name and contact details are hidden before anything goes to a second AI. And next time, it remembers: the facts you confirmed are saved on your computer, or handed to you as a block to paste, so your second job takes a few questions instead of an interview.</p>
 <aside class="cta-box"><img src="../assets/favicon.svg" alt="" width="40" height="40"><div><strong>Try Resume Tribunal on your own resume.</strong><p>Free, no sign-up. Your AI writes it from your facts, a different AI checks every line, and you approve each change.</p><a class="btn primary" href="../#start">Get started in 2 minutes</a></div></aside>
 <h2>The test that hurt</h2>
 <p>I asked AI reviewers to tear the project apart, each playing a different kind of expert. The one that hurt most was the simplest: someone whose whole AI experience is typing a question into ChatGPT.</p>
@@ -103,6 +123,7 @@
 <li><strong>Never keep a number you didn't give it.</strong> If you can't explain it in an interview, it's a liability.</li>
 <li><strong>Keep your own words.</strong> Recruiters can smell "spearheaded" from across the room.</li>
 </ol>
+<figure class="fig"><img src="media/buzzwords.svg" data-light="media/buzzwords-light.svg" data-dark="media/buzzwords-dark.svg" width="720" height="405" loading="lazy" alt="Resume Tribunal flags the words people spot first, and keeps yours."><figcaption>Resume Tribunal flags the words people spot first, and keeps yours.</figcaption></figure>
 <p>Resume Tribunal is free and open source. <a href="../#start">Try it in your AI app</a>, and tell me what broke.</p></div>
 <aside class="cta-box"><img src="../assets/favicon.svg" alt="" width="40" height="40"><div><strong>Try Resume Tribunal on your own resume.</strong><p>Free, no sign-up. Your AI writes it from your facts, a different AI checks every line, and you approve each change.</p><a class="btn primary" href="../#start">Get started in 2 minutes</a></div></aside>
 <footer class="post-foot"><div class="share"><span>Share</span><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmohiddin7.github.io%2Fresume-tribunal%2Fblog%2Fhow-resume-tribunal-was-made.html" rel="noopener">LinkedIn</a><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fmohiddin7.github.io%2Fresume-tribunal%2Fblog%2Fhow-resume-tribunal-was-made.html&amp;text=I%20let%20three%20AIs%20argue%20over%20my%20resume.%20Here%27s%20what%20they%20caught." rel="noopener">X</a><button type="button" class="copy" data-copy="https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html">Copy link</button></div></footer>

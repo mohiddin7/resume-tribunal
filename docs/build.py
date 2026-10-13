@@ -9,6 +9,7 @@ Edit docs/blog/*.md, docs/art.py and the text in this file; never the generated 
 front matter (title, description, date, tags) and two shortcodes on their own line:
   [[figure:name|Caption]]   one of the drawings in art.FIGURES
   [[cta]]                   a box inviting the reader to try Resume Tribunal
+  [[how]]                   the How it works player: waits for the reader at their steps, plays the AI steps itself
 docs/llms.txt is written by hand. The blog needs the markdown package (pip install markdown).
 """
 import datetime
@@ -150,6 +151,7 @@ CTA = ('<aside class="cta-box"><img src="../assets/favicon.svg" alt="" width="40
 def render_post_body(body, p):
     body = re.sub(r"<p>\[\[figure:([\w-]+)\|(.+?)\]\]</p>", lambda m: figure(m.group(1), html.unescape(m.group(2))), body)
     body = body.replace("<p>[[cta]]</p>", CTA)
+    body = body.replace("<p>[[how]]</p>", hiw(play=True) + '<p class="center meta hint">Your turn at steps 1 and 5. The AIs do the rest.</p>')
     body = body.replace("<p>[[tldr]]</p>", '<aside class="tldr"><strong>The short version</strong>').replace("<p>[[/tldr]]</p>", "</aside>")
     body = body.replace("<table>", '<div class="table"><table>').replace("</table>", "</table></div>")
     return body
@@ -209,10 +211,11 @@ def build_blog(items):
     chips = '<button type="button" class="chip on" data-tag="">All</button>' + "".join(
         f'<button type="button" class="chip" data-tag="{esc(t)}">{esc(t)}</button>' for t in all_tags)
     cards = "\n".join(
-        f'<a class="card post" href="{p["slug"]}.html" data-tags="{esc("|".join(p["tags"]))}" '
+        f'<article class="card post" data-tags="{esc("|".join(p["tags"]))}" '
         f'data-text="{esc((p["title"] + " " + p["description"] + " " + " ".join(p["tags"]) + " " + p["plain"]).lower())}">'
-        f'<span class="tags">{tags(p)}</span><strong>{esc(p["title"])}</strong><span class="desc">{esc(p["description"])}</span>'
-        f'<span class="meta">{datetime.date.fromisoformat(p["date"]):%d %b %Y} · {p["minutes"]} min read</span><span class="more">Read the post →</span></a>'
+        f'<span class="tags">{"".join(f'<button type="button" class="tag" data-tag="{esc(t)}" aria-label="Show posts about {esc(t)}">{esc(t)}</button>' for t in p["tags"])}</span>'
+        f'<a class="stretch" href="{p["slug"]}.html"><strong>{esc(p["title"])}</strong></a><span class="desc">{esc(p["description"])}</span>'
+        f'<span class="meta">{datetime.date.fromisoformat(p["date"]):%d %b %Y} · {p["minutes"]} min read</span><span class="more" aria-hidden="true">Read the post →</span></article>'
         for p in items)
     ld = {"@context": "https://schema.org", "@type": "Blog", "name": "Resume Tribunal blog", "url": f"{SITE}blog/",
           "blogPost": [{"@type": "BlogPosting", "headline": p["title"], "url": f"{SITE}blog/{p['slug']}.html", "datePublished": p["date"]} for p in items]}
@@ -291,13 +294,13 @@ SCENES = [
   <div class="pill job"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Job link</div>
   <div class="rc rc-in">''' + RC_HEAD + '''<i></i><i></i><i class="short"></i></div></div>''',
  # 2: AI 1 rewrites two lines, and slips in "4 hours"
- '''<div class="sc sc2"><div class="rc big"><span class="tag t-blue">AI 1</span>''' + RC_HEAD + '''
+ '''<div class="sc sc2"><div class="rc big"><span class="sctag t-blue">AI 1</span>''' + RC_HEAD + '''
   <p class="old">Helped improve on-time delivery</p>
   <p class="new n1">Helped raise on-time delivery from 81 to 93 percent</p>
   <p class="new n2">Cut report prep from 4 hours to 40 minutes</p></div>
   <span class="kw k1">Excel</span><span class="kw k2">Power Query</span><span class="kw k3">Carrier data</span></div>''',
  # 3: AI 2 reads blind, catches "4 hours", says it would shortlist
- '''<div class="sc sc3"><div class="rc big"><span class="tag t-swap"><b>AI 1</b><b>Draft K</b></span>''' + RC_HEAD + '''
+ '''<div class="sc sc3"><div class="rc big"><span class="sctag t-swap"><b>AI 1</b><b>Draft K</b></span>''' + RC_HEAD + '''
   <p>Helped raise on-time delivery from 81 to 93 percent</p>
   <p class="catch">Cut report prep from <span class="bad">4 hours</span><span class="fix">half a day</span> to 40 minutes</p>
   <span class="lens"></span></div>
@@ -312,6 +315,32 @@ SCENES = [
  '''<div class="sc sc6"><div class="pile"><span class="p1"></span><span class="p2"></span><div class="rc lift">''' + RC_HEAD + '''<i></i><i></i><i class="short"></i></div></div>
   <span class="pill pdf">Resume.pdf</span><span class="pill qs">5 interview questions</span></div>''',
 ]
+
+
+def hiw(play=False):
+    """The How it works story player. play=True (the blog) waits for the reader at their two steps
+    and runs the AI steps by itself; the homepage version plays straight through."""
+    steps6 = "".join(f'<li role="presentation"><button role="tab" class="st" data-i="{n}" aria-selected="{"true" if n == 0 else "false"}">'
+                     f'<span class="bar"><b></b></span><span class="stt">{esc(t)}</span><span class="sts">{esc(d)}</span></button></li>'
+                     for n, (t, d) in enumerate(HIW))
+    scenes = [sc.replace('class="sc ', f'data-t="{esc(HIW[n][0])}" data-d="{esc(HIW[n][1])}" class="sc ' + ("on " if n == 0 else ""), 1)
+              for n, sc in enumerate(SCENES)]
+    who = ""
+    if play:  # the reader's turns: scene 1 (send the job and resume) and scene 5 (approve the changes)
+        who = '<span class="who" aria-hidden="true"></span>'
+        scenes[0] = scenes[0].replace('class="sc ', 'data-wait class="sc ', 1).replace(
+            "</div></div>", '</div><button type="button" class="btn primary act">Paste the job and your resume</button></div>', 1)
+        scenes[4] = scenes[4].replace('class="sc ', 'data-wait class="sc ', 1).replace(
+            '<span class="ok">Approve</span>', '<button type="button" class="ok">Approve</button>')
+        scenes[5] = scenes[5].rsplit("</div>", 1)[0] + '<button type="button" class="btn ghost act again">Watch again</button></div>'
+    return f'''<div class="hiw{" play" if play else ""}" aria-roledescription="carousel" aria-label="How Resume Tribunal works">
+    <ol class="steps6" role="tablist">{steps6}</ol>
+    <div class="stage" tabindex="0" aria-live="polite">
+      <button class="icon pause" type="button" aria-label="Pause" aria-pressed="false"><span class="ps">❚❚</span><span class="pl">▶</span></button>{who}
+{chr(10).join(scenes)}
+    </div>
+    <p class="cap"><strong></strong><span></span></p>
+  </div>'''
 
 
 TITLE = "Free AI Resume Tailoring That Doesn't Make Stuff Up | Resume Tribunal"
@@ -330,11 +359,6 @@ def build_home(items):
     faq = "\n".join(f"<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>" for q, a in FAQ)
     blog = "\n".join(f'<a class="card post" href="blog/{p["slug"]}.html"><span class="tags">{tags(p)}</span><strong>{esc(p["title"])}</strong>'
                      f'<span class="desc">{esc(p["description"])}</span><span class="meta">{p["minutes"]} min read</span></a>' for p in items)
-    steps6 = "".join(f'<li role="presentation"><button role="tab" class="st" data-i="{n}" aria-selected="{"true" if n == 0 else "false"}">'
-                     f'<span class="bar"><b></b></span><span class="stt">{esc(t)}</span><span class="sts">{esc(d)}</span></button></li>'
-                     for n, (t, d) in enumerate(HIW))
-    scenes = "\n".join(sc.replace('class="sc ', f'data-t="{esc(HIW[n][0])}" data-d="{esc(HIW[n][1])}" class="sc ' + ("on " if n == 0 else ""), 1)
-                        for n, sc in enumerate(SCENES))
     agent_msg = "Install the Resume Tribunal skill (npx skills add mohiddin7/resume-tribunal), then tailor my resume to this job: [paste the job link]"
     chat_msg = f"Read {SITE}resume-tribunal.md and follow it to tailor my resume to this job: [paste the job link]"
     ok = '<span class="ic ok" aria-hidden="true">✓</span>'
@@ -351,14 +375,7 @@ def build_home(items):
 <section id="how">
   <h2>How it works</h2>
   <p class="sub"><strong>You do two things. The AIs do the rest.</strong><br>Paste the job and your resume, then check the changes. About 5 minutes.</p>
-  <div class="hiw" aria-roledescription="carousel" aria-label="How Resume Tribunal works">
-    <ol class="steps6" role="tablist">{steps6}</ol>
-    <div class="stage" tabindex="0" aria-live="polite">
-      <button class="icon pause" type="button" aria-label="Pause" aria-pressed="false"><span class="ps">❚❚</span><span class="pl">▶</span></button>
-{scenes}
-    </div>
-    <p class="cap"><strong></strong><span></span></p>
-  </div>
+  {hiw()}
   <p class="center meta hint">Tap to skip. Hold to pause.</p>
   <p class="center meta">Want more eyes on it? In a <strong>full council</strong>, three AIs from three companies each write a draft and critique each other first.</p>
 </section>

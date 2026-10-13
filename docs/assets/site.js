@@ -55,7 +55,7 @@
     var hiw = document.querySelector(".hiw");
     if (hiw) {
       var scenes = $$(".hiw .sc"), steps = $$(".hiw .st"), stage = hiw.querySelector(".stage"), cap = hiw.querySelector(".cap");
-      var i = 0, running = false;
+      var i = 0, running = false, play = hiw.classList.contains("play"), who = hiw.querySelector(".who");
       if (matchMedia("(prefers-reduced-motion: reduce)").matches) hiw.classList.add("stopped");
       var go = function (n) {
         i = (n + scenes.length) % scenes.length;
@@ -69,16 +69,32 @@
         });
         cap.querySelector("strong").textContent = scenes[i].dataset.t;
         cap.querySelector("span").textContent = scenes[i].dataset.d;
+        if (play) {  // the blog version waits at the reader's steps and runs the AI steps itself
+          var wait = scenes[i].hasAttribute("data-wait");
+          hiw.classList.toggle("waiting", wait);
+          who.textContent = wait ? "Your turn" : i === scenes.length - 1 ? "Done" : "AI at work";
+          scenes[i].querySelectorAll(".ok").forEach(function (b) { b.classList.remove("yes"); });
+        }
       };
+      if (play) hiw.addEventListener("click", function (e) {
+        var a = e.target.closest(".act, .ok");
+        if (!a) return;
+        if (a.classList.contains("again")) { go(0); return; }
+        if (a.classList.contains("ok")) { a.classList.add("yes"); if (scenes[i].querySelector(".ok:not(.yes)")) return; }
+        hiw.classList.remove("waiting");
+        if (hiw.classList.contains("stopped")) go(i + 1);  // reduced motion: no bar to wait for
+      });
       steps.forEach(function (b, k) {
-        b.querySelector(".bar b").addEventListener("animationend", function () { if (k === i && running) go(i + 1); });
+        b.querySelector(".bar b").addEventListener("animationend", function () {
+          if (k === i && running && !(play && i === scenes.length - 1)) go(i + 1);
+        });
         b.addEventListener("click", function () { go(k); });
       });
       // A quick tap moves (left third back, the rest forward); a swipe moves; a press-and-hold pauses until let go.
       // Hovering, touching to scroll and scrolling never pause it. The pause button is the other way to stop it.
       var x0 = 0, y0 = 0, timer = null, held = false, moved = false;
       stage.addEventListener("pointerdown", function (e) {
-        if (e.target.closest(".pause")) return;
+        if (e.target.closest(".pause, .act, .ok")) return;
         x0 = e.clientX; y0 = e.clientY; held = false; moved = false;
         timer = setTimeout(function () { held = true; hiw.classList.add("hold"); }, 350);
       });
@@ -88,7 +104,7 @@
       var release = function (e) {
         clearTimeout(timer); timer = null;
         if (held) { held = false; hiw.classList.remove("hold"); return; }
-        if (!e || e.type !== "pointerup" || e.target.closest(".pause")) return;
+        if (!e || e.type !== "pointerup" || e.target.closest(".pause, .act, .ok") || hiw.classList.contains("waiting")) return;
         var dx = e.clientX - x0;
         if (moved && Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(e.clientY - y0)) { go(dx < 0 ? i + 1 : i - 1); return; }
         if (moved) return;  // a scroll, not a tap
@@ -152,6 +168,7 @@
       };
       q.addEventListener("input", filter);
       $$(".chip").forEach(function (c) { c.addEventListener("click", function () { tag = c.dataset.tag; filter(); }); });
+      $$("#posts .tag").forEach(function (b) { b.addEventListener("click", function () { tag = b.dataset.tag; filter(); q.scrollIntoView({ block: "center" }); }); });
       document.addEventListener("keydown", function (e) {
         if (e.key === "/" && document.activeElement !== q) { e.preventDefault(); q.focus(); }
       });

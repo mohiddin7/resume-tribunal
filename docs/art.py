@@ -256,5 +256,90 @@ def fig_ats_myth(variant):
                "to a vendor that closed in 2013. Most resumes are turned down by people, not software.", body, a.style())
 
 
+def fig_self_grade(variant):
+    """An AI marks its own homework A+, then a second AI marks the same page."""
+    a = Anim(10)
+    grade = a.at("gr", [(0, "opacity:0;transform:scale(2) rotate(-20deg)"), (1.0, "opacity:0;transform:scale(2) rotate(-20deg)"),
+                        (1.4, "opacity:1;transform:scale(1) rotate(-12deg)"), (9.4, "opacity:1;transform:scale(1) rotate(-12deg)"), (10, "opacity:0")], "transform-origin:250px 120px;")
+    praise = a.at("pr", [(0, "opacity:0"), (1.8, "opacity:0"), (2.2, "opacity:1"), (9.4, "opacity:1"), (10, "opacity:0")])
+    circ1 = a.at("c1", [(0, "stroke-dashoffset:400"), (4.2, "stroke-dashoffset:400"), (4.9, "stroke-dashoffset:0"), (9.4, "stroke-dashoffset:0"), (10, "stroke-dashoffset:400")])
+    circ2 = a.at("c2", [(0, "stroke-dashoffset:400"), (5.2, "stroke-dashoffset:400"), (5.9, "stroke-dashoffset:0"), (9.4, "stroke-dashoffset:0"), (10, "stroke-dashoffset:400")])
+    note = a.at("nt", [(0, "opacity:0;transform:translateY(8px)"), (6.3, "opacity:0;transform:translateY(8px)"), (6.8, "opacity:1;transform:translateY(0)"), (9.4, "opacity:1"), (10, "opacity:0")])
+    body = f'''<text x="40" y="44" font-size="15" font-weight="700" letter-spacing="1.5" fill="var(--muted)">AI 1 MARKS ITS OWN RESUME DRAFT</text>
+<rect x="40" y="64" width="400" height="300" rx="14" fill="var(--surf)" stroke="var(--line)" stroke-width="1.5"/>
+<rect x="64" y="90" width="170" height="12" rx="6" fill="var(--ink)" opacity=".8"/>
+<text x="64" y="146" font-size="17" fill="var(--ink)">Spearheaded synergy across teams</text>
+<text x="64" y="196" font-size="17" fill="var(--ink)">Cut report prep from 4 hours to 40 min</text>
+<text x="64" y="246" font-size="17" fill="var(--ink)">Leveraged data to drive results</text>
+<rect x="64" y="284" width="250" height="9" rx="4.5" fill="var(--muted)" opacity=".3"/><rect x="64" y="306" width="190" height="9" rx="4.5" fill="var(--muted)" opacity=".3"/>
+<g {grade}><circle cx="380" cy="118" r="42" fill="none" stroke="var(--blue)" stroke-width="4"/><text x="380" y="132" text-anchor="middle" font-size="40" font-weight="900" fill="var(--blue)">A+</text></g>
+<g {praise}><text x="330" y="312" font-size="20" font-weight="800" fill="var(--blue)" transform="rotate(-6 330 312)">Flawless!</text></g>
+<rect {circ1} x="56" y="124" width="116" height="30" rx="15" fill="none" stroke="var(--danger)" stroke-width="3" stroke-dasharray="400"/>
+<rect {circ2} x="232" y="174" width="80" height="30" rx="15" fill="none" stroke="var(--danger)" stroke-width="3" stroke-dasharray="400"/>
+<g {note}><rect x="458" y="140" width="232" height="128" rx="14" fill="var(--surf)" stroke="var(--danger)" stroke-width="2"/>
+<text x="476" y="172" font-size="12" font-weight="800" letter-spacing=".6" fill="var(--danger)">AI 2, A DIFFERENT COMPANY</text>
+<text x="476" y="204" font-size="17" fill="var(--ink)">"Spearheaded"? Really?</text>
+<text x="476" y="232" font-size="17" fill="var(--ink)">You said half a day.</text>
+<text x="476" y="258" font-size="17" font-weight="800" fill="var(--danger)">See me after class.</text></g>
+<text x="40" y="392" font-size="14" fill="var(--muted)">Same draft. The AI that wrote it loved it. The one that didn't, didn't.</text>'''
+    return svg(720, 405, variant, "An AI grading its own homework",
+               "An AI marks its own resume draft A+ and writes Flawless. Then a second AI from a different company circles "
+               "'Spearheaded' and '4 hours' and writes: Spearheaded? Really? You said half a day. See me after class.", body, a.style())
+
+
+def fig_buzzwords(variant):
+    """Buzzword bingo: the clichés pop in, get zapped one by one, and a plain true line is left."""
+    words = [("spearheaded", 70, 120), ("synergy", 420, 104), ("results-driven", 250, 176), ("leveraged", 470, 240), ("dynamic", 90, 250)]
+    a, parts = Anim(9), []
+    for i, (w, x, y) in enumerate(words):
+        t_in, t_out = .2 + i * .25, 2.4 + i * .55
+        st = a.at(f"bw{i}", [(0, "opacity:0;transform:scale(.6)"), (t_in, "opacity:0;transform:scale(.6)"), (t_in + .3, "opacity:1;transform:scale(1)"),
+                             (t_out, "opacity:1;transform:scale(1)"), (t_out + .15, "opacity:1;transform:scale(1.25)"), (t_out + .35, "opacity:0;transform:scale(.2)"), (9, "opacity:0")],
+                  f"transform-origin:{x + len(w) * 6}px {y - 6}px;")
+        zap = a.at(f"bz{i}", [(0, "opacity:0"), (t_out, "opacity:0"), (t_out + .05, "opacity:1"), (t_out + .35, "opacity:0"), (9, "opacity:0")])
+        cx, cy = x + len(w) * 6, y - 6
+        parts.append(f'<g {st}><rect x="{x - 14}" y="{y - 30}" width="{len(w) * 12 + 28}" height="44" rx="22" fill="var(--surf)" stroke="var(--line)" stroke-width="1.5"/>'
+                     f'<text x="{x}" y="{y}" font-size="20" font-weight="700" fill="var(--ink)">{w}</text></g>'
+                     f'<g {zap}><path d="M{cx} {cy - 34}l-10 26h12l-8 24 22-32h-12l8-18z" fill="var(--brand)"/></g>')
+    keep = a.at("kp", [(0, "opacity:0;transform:translateY(10px)"), (5.3, "opacity:0;transform:translateY(10px)"), (5.8, "opacity:1;transform:translateY(0)"), (8.4, "opacity:1"), (9, "opacity:0")])
+    body = ('<text x="40" y="52" font-size="15" font-weight="700" letter-spacing="1.5" fill="var(--muted)">BUZZWORD BINGO, CANCELLED</text>'
+            + "".join(parts)
+            + f'<g {keep}><rect x="110" y="300" width="500" height="58" rx="16" fill="var(--surf)" stroke="var(--green)" stroke-width="2.5"/>'
+              '<text x="360" y="337" text-anchor="middle" font-size="20" fill="var(--ink)">Built the weekly report in Excel</text></g>')
+    return svg(720, 405, variant, "Buzzword bingo, cancelled",
+               "The words spearheaded, synergy, results-driven, leveraged and dynamic pop up and get zapped one by one. "
+               "What is left is a plain, true line: Built the weekly report in Excel.", body, a.style())
+
+
+def fig_interview(variant):
+    """The interview question every made-up number has to survive, played twice."""
+    a = Anim(12)
+    def show(n, t0, t1):
+        return a.at(n, [(0, "opacity:0;transform:translateY(8px)"), (t0, "opacity:0;transform:translateY(8px)"), (t0 + .4, "opacity:1;transform:translateY(0)"),
+                        (t1, "opacity:1;transform:translateY(0)"), (t1 + .4, "opacity:0"), (12, "opacity:0")])
+    q1, a1, q2, a2 = show("q1", .3, 5.4), show("a1", 1.4, 5.4), show("q2", 6.2, 11.4), show("a2", 7.3, 11.4)
+    drops = a.at("dr", [(0, "opacity:0"), (2.2, "opacity:0"), (2.5, "opacity:1;transform:translateY(0)"), (4.6, "opacity:1;transform:translateY(6px)"), (5.4, "opacity:0"), (12, "opacity:0")])
+    tag1, tag2 = show("t1", 3.0, 5.4), show("t2", 8.6, 11.4)
+    face = lambda x, y, mouth: (f'<circle cx="{x}" cy="{y}" r="26" fill="var(--surf)" stroke="var(--ink)" stroke-width="2.5"/>'
+                                f'<circle cx="{x - 9}" cy="{y - 5}" r="2.6" fill="var(--ink)"/><circle cx="{x + 9}" cy="{y - 5}" r="2.6" fill="var(--ink)"/>{mouth}')
+    body = f'''<text x="40" y="44" font-size="15" font-weight="700" letter-spacing="1.5" fill="var(--muted)">THE INTERVIEW, TWICE</text>
+<g {q1}><rect x="40" y="70" width="460" height="62" rx="18" fill="var(--surf)" stroke="var(--line)" stroke-width="1.5"/>
+<text x="62" y="108" font-size="18" fill="var(--ink)">"So, how did you save those 4 hours?"</text></g>
+<g {a1}>{face(620, 210, '<path d="M609 222q11-6 22 0" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"/>')}
+<rect x="240" y="180" width="330" height="58" rx="18" fill="var(--tint)"/><text x="262" y="216" font-size="18" fill="var(--ink)">"Uh. Well. It was more of a... vibe."</text></g>
+<g {drops}><path d="M650 180q4 8 0 12q-4-4 0-12zM592 186q4 8 0 12q-4-4 0-12z" fill="var(--blue)"/></g>
+<g {tag1}><rect x="240" y="270" width="196" height="34" rx="17" fill="var(--danger)"/><text x="338" y="292" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">Made-up number</text></g>
+<g {q2}><rect x="40" y="70" width="460" height="62" rx="18" fill="var(--surf)" stroke="var(--line)" stroke-width="1.5"/>
+<text x="62" y="108" font-size="18" fill="var(--ink)">"So, how did you cut that report time?"</text></g>
+<g {a2}>{face(620, 210, '<path d="M607 216q13 12 26 0" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"/>')}
+<rect x="190" y="180" width="380" height="58" rx="18" fill="var(--tint)"/><text x="210" y="216" font-size="18" fill="var(--ink)">"Half a day to 40 minutes. Here's how."</text></g>
+<g {tag2}><rect x="190" y="270" width="226" height="34" rx="17" fill="var(--green)"/><text x="303" y="292" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">Your own words, checked</text></g>
+<text x="40" y="380" font-size="14" fill="var(--muted)">Every line on your resume has to survive this question.</text>'''
+    return svg(720, 405, variant, "The interview question, twice",
+               "An interviewer asks how you saved those 4 hours. With a made-up number the answer is: Uh. Well. It was more of a vibe. "
+               "With your own words, checked: Half a day to 40 minutes. Here's how.", body, a.style())
+
+
 FIGURES = {"rejected-claims": (fig_rejected, 9), "self-preference": (fig_self_preference, 8),
-           "manual-vs-skill": (fig_manual_vs_skill, 10), "blind-check": (fig_blind_check, 9), "ats-myth": (fig_ats_myth, 8)}
+           "manual-vs-skill": (fig_manual_vs_skill, 10), "blind-check": (fig_blind_check, 9), "ats-myth": (fig_ats_myth, 8),
+           "self-grade": (fig_self_grade, 10), "buzzwords": (fig_buzzwords, 9), "interview": (fig_interview, 12)}

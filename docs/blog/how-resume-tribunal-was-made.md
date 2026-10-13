@@ -23,6 +23,8 @@ Then I asked the same AI to check its work. It said the draft was strong.
 
 > Which is a bit like asking a chef to rate their own soup.
 
+[[figure:self-grade|Same draft, two graders. Guess which one wrote it.]]
+
 It turns out this has a name. AI judges are up to [50% more likely to pass a failed answer](https://arxiv.org/abs/2604.06996) when the answer is their own.
 
 [[figure:self-preference|AI judges go easier on their own mistakes. Illustration of the reported effect.]]
@@ -33,8 +35,8 @@ So I got a second opinion. A different company's AI, a fresh chat, and one instr
 
 It was far more willing to point out problems. So I kept going, all summer:
 
-- **May:** prompts to decode the job, screen my resume, and rewrite the weak bullets, run in three different AIs.
-- **June and July:** all three reviewed the merged result, and two of them researched the role itself.
+- **May 2026:** prompts to decode the job, screen my resume, and rewrite the weak bullets, run in three different AIs.
+- **June and July 2026:** all three reviewed the merged result, and two of them researched the role itself.
 
 The resume I ended up with was the best I'd had. It also took hours, three browser tabs, and a notes file just to remember which reply came from which AI.
 
@@ -44,15 +46,11 @@ Nobody else was ever going to do that. So I turned it into a skill.
 
 ## What Resume Tribunal does now
 
-A skill is a set of instructions your AI app loads when it needs them. You paste one message into ChatGPT, Gemini, Claude or any AI, and it knows the whole routine:
+A skill is a set of instructions your AI app loads when it needs them. You paste one message into ChatGPT, Gemini, Claude or any AI, and it knows the whole routine. Try it: you do two steps, and the AIs do the rest.
 
-- **Your AI rewrites** your resume for the job, in the job's own words.
-- **A second AI checks it**, from a different company, without being told who wrote it.
-- **A script checks every number and name** against what you actually said. Mention Tableau you've never touched and it fails.
-- **You say yes** to each change before you get a file.
-- **Next time, it remembers.** The facts you confirmed are saved on your computer, or handed to you as a block to paste, so your second job takes a few questions instead of an interview.
+[[how]]
 
-A quick review takes about 2 minutes. Your name and contact details are hidden before anything goes to a second AI.
+Your name and contact details are hidden before anything goes to a second AI. And next time, it remembers: the facts you confirmed are saved on your computer, or handed to you as a block to paste, so your second job takes a few questions instead of an interview.
 
 [[cta]]
 
@@ -81,5 +79,7 @@ Every one was rejected. The candidate's own words decide. You can [check every l
 1. **Get a second opinion from a different AI.** The one that wrote it is the worst judge of it.
 2. **Never keep a number you didn't give it.** If you can't explain it in an interview, it's a liability.
 3. **Keep your own words.** Recruiters can smell "spearheaded" from across the room.
+
+[[figure:buzzwords|Resume Tribunal flags the words people spot first, and keeps yours.]]
 
 Resume Tribunal is free and open source. [Try it in your AI app](../#start), and tell me what broke.

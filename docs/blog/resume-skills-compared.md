@@ -26,6 +26,8 @@ You don't always need one. Rewording one bullet? A normal prompt is fine. Applyi
 
 **Trap one: making things up.** AI loves a round number. "Half a day" quietly becomes "4 hours". A tool that adds keywords "to match the job" can slip in a skill you've never used, and then the interviewer asks about it.
 
+[[figure:interview|Every line on your resume has to survive this question.]]
+
 **Trap two: believing ATS myths.** You've seen "75% of resumes are rejected by ATS". That figure [traces back to a vendor that closed in 2013](https://hrtact.com/2020/10/05/your-job-application-was-rejected-by-a-human-not-a-computer/). Most rejections come from people.
 
 [[figure:ats-myth|The most repeated number in resume advice has no study behind it.]]
