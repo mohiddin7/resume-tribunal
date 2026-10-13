@@ -382,24 +382,16 @@ def build_home(items):
     <button role="tab" aria-selected="false" aria-controls="t-agent" id="b-agent">Coding agent</button>
     <button role="tab" aria-selected="false" aria-controls="t-other" id="b-other">Not sure</button>
   </div>
+  <div class="panels">
   <div class="panel" role="tabpanel" id="t-chat" aria-labelledby="b-chat">
     <p class="apps">ChatGPT · Gemini · Claude · Perplexity · Grok · Copilot · DeepSeek · Le Chat</p>
     <ol class="steps">
       <li>Open a new chat and attach your resume.</li>
       <li>Paste this message, with your job link at the end:
-        <div class="copybox"><code>{esc(chat_msg)}</code><button type="button" class="copy" data-copy="{esc(chat_msg)}">Copy</button></div></li>
+        <div class="copybox"><code>{esc(chat_msg).replace("/", "/<wbr>").replace(".md", "<wbr>.md")}</code><button type="button" class="copy" data-copy="{esc(chat_msg)}">Copy</button></div></li>
       <li>Answer a couple of questions. A quick review takes about 5 minutes.</li>
     </ol>
     <p class="meta">If your app can't open links, <a href="resume-tribunal.md" download>download the instructions</a> and attach them too.</p>
-    <details class="more"><summary>Save it so you never paste the link again</summary>
-      <p>Most apps now take skills. Download <a href="{ZIP}">resume-tribunal.zip</a> once and upload it:</p>
-      <ul>
-        <li><strong>Gemini:</strong> Settings, Skills, Upload (personal accounts, 18 and over).</li>
-        <li><strong>Claude:</strong> Customize, Skills, +, Upload a skill. On Pro or Max you can skip the download: Customize, Plugins, Add marketplace, then <code>mohiddin7/resume-tribunal</code>.</li>
-        <li><strong>ChatGPT, Grok, Perplexity:</strong> look for Skills in your settings. Which plans have it varies.</li>
-      </ul>
-      <p class="meta">Checked October 2026 against each app's help pages. Menus change.</p>
-    </details>
   </div>
   <div class="panel" role="tabpanel" id="t-agent" aria-labelledby="b-agent" hidden>
     <p class="apps">Claude Code · Codex · Antigravity · Gemini CLI · Cursor · GitHub Copilot · Grok Build · OpenCode</p>
@@ -415,8 +407,19 @@ def build_home(items):
     <ol class="steps">
       <li><a class="btn primary small" href="resume-tribunal.md" download>Download the instructions</a></li>
       <li>In any AI chat, attach that file and your resume, then say <strong>"Follow this file to tailor my resume to this job:"</strong> and paste the job link.</li>
+      <li>Answer a couple of questions. A quick review takes about 5 minutes.</li>
     </ol>
   </div>
+  </div>
+  <details class="more"><summary>Save it as a skill, so you never paste the link again</summary>
+      <p>Most apps now take skills. Download <a href="{ZIP}">resume-tribunal.zip</a> once and upload it:</p>
+      <ul>
+        <li><strong>Gemini:</strong> Settings, Skills, Upload (personal accounts, 18 and over).</li>
+        <li><strong>Claude:</strong> Customize, Skills, +, Upload a skill. On Pro or Max you can skip the download: Customize, Plugins, Add marketplace, then <code>mohiddin7/resume-tribunal</code>.</li>
+        <li><strong>ChatGPT, Grok, Perplexity:</strong> look for Skills in your settings. Which plans have it varies.</li>
+      </ul>
+      <p class="meta">Checked October 2026 against each app's help pages. Menus change.</p>
+    </details>
   <div class="note"><strong>The only manual part:</strong> if no second AI is connected, Resume Tribunal gives you one block of text to paste into a different AI app, and you paste the reply back.</div>
 </section>
 

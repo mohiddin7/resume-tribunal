@@ -434,3 +434,20 @@ body.home .hero .cta { width: auto; }
 @media (max-width: 759px) { #how > .meta:not(.hint) { display: none; } }
 @media (max-width: 759px) { body.home main > section { padding-top: 32px; padding-bottom: 32px; } #how .hint { margin-top: 6px; } }
 @media (min-width: 860px) and (max-height: 880px) { #how h2 { margin-bottom: 4px; } #how .sub { margin-top: 0; margin-bottom: 0; } #how .hiw { margin-top: 12px; } #how .hint { margin-top: 4px; } #how > .meta:not(.hint) { margin-top: 4px; } }
+
+/* Get started: a short pill switcher (also on phones) over panels stacked in one spot,
+   so the section is as tall as the tallest panel and never jumps when switching */
+body.home main > section > .tabs { width: fit-content; max-width: 100%; align-self: center; }
+.tabs { display: flex; flex-wrap: nowrap; border-radius: 999px; }
+.tabs button { border-radius: 999px; }
+@media (max-width: 759px) {
+  .tabs { display: flex; width: fit-content; gap: 2px; padding: 4px; }
+  .tabs button { font-size: 14px; padding: 8px 12px; min-height: 44px; }
+}
+.panels { display: grid; max-width: 44rem; margin: 0 auto; }
+.panels > .panel { grid-area: 1 / 1; margin: 0; }
+.panels > .panel[hidden] { display: block !important; visibility: hidden; pointer-events: none; }
+
+#start > details.more { max-width: 44rem; margin: 16px auto 0; text-align: left; }
+.copybox code { overflow-wrap: break-word; word-break: normal; }
+@media (max-width: 759px) { .copybox code { font-size: 13px; } }
