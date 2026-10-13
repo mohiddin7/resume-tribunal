@@ -201,7 +201,7 @@ def fig_self_preference(variant):
 <text x="40" y="256" font-size="17" font-weight="700" fill="var(--ink)">Its own answer</text>
 <rect x="40" y="270" width="640" height="42" rx="10" fill="var(--surf)" stroke="var(--line)"/>
 <rect {grow("g2", 1.6)} x="40" y="270" width="456" height="42" rx="10" fill="var(--brand)"/>
-<g {label}><text x="680" y="256" text-anchor="end" font-size="18" font-weight="800" fill="var(--brand)">up to 50%+ more</text></g>
+<g {label}><text x="680" y="256" text-anchor="end" font-size="18" font-weight="800" fill="var(--brand)">50%+ more often</text></g>
 <text x="40" y="364" font-size="14" fill="var(--muted)">Illustration. Source: Pombal, Rei and Martins, 2026 (preprint).</text>'''
     return svg(720, 405, variant, "AI judges go easy on their own mistakes",
                "Two bars. An AI judge checking another AI's answers passes some failed answers. Checking its own answers, it passes "
@@ -281,38 +281,44 @@ def fig_ats_myth(variant):
 
 
 def fig_self_grade(variant):
-    """An AI marks its own homework A+, then a second AI marks the same page."""
+    """One draft, two graders: the AI that wrote it gives an A+, a different AI finds three problems."""
     a = Anim(10)
-    grade = a.at("gr", [(0, "opacity:0;transform:scale(2) rotate(-20deg)"), (1.0, "opacity:0;transform:scale(2) rotate(-20deg)"),
-                        (1.4, "opacity:1;transform:scale(1) rotate(-12deg)"), (9.4, "opacity:1;transform:scale(1) rotate(-12deg)"), (10, "opacity:0")], "transform-origin:250px 120px;")
-    praise = a.at("pr", [(0, "opacity:0"), (1.8, "opacity:0"), (2.2, "opacity:1"), (9.4, "opacity:1"), (10, "opacity:0")])
-    circ1 = a.at("c1", [(0, "stroke-dashoffset:400"), (4.2, "stroke-dashoffset:400"), (4.9, "stroke-dashoffset:0"), (9.4, "stroke-dashoffset:0"), (10, "stroke-dashoffset:400")])
-    circ2 = a.at("c2", [(0, "stroke-dashoffset:400"), (5.2, "stroke-dashoffset:400"), (5.9, "stroke-dashoffset:0"), (9.4, "stroke-dashoffset:0"), (10, "stroke-dashoffset:400")])
-    note = a.at("nt", [(0, "opacity:0;transform:translateY(8px)"), (6.3, "opacity:0;transform:translateY(8px)"), (6.8, "opacity:1;transform:translateY(0)"), (9.4, "opacity:1"), (10, "opacity:0")])
-    body = f'''<text x="40" y="44" font-size="15" font-weight="700" letter-spacing="1.5" fill="var(--muted)">AI 1 MARKS ITS OWN RESUME DRAFT</text>
-<rect x="40" y="64" width="400" height="300" rx="14" fill="var(--surf)" stroke="var(--line)" stroke-width="1.5"/>
-<rect x="64" y="90" width="170" height="12" rx="6" fill="var(--ink)" opacity=".8"/>
-<text x="64" y="146" font-size="17" fill="var(--ink)">Spearheaded synergy across teams</text>
-<text x="64" y="196" font-size="17" fill="var(--ink)">Cut report prep from 4 hours to 40 min</text>
-<text x="64" y="246" font-size="17" fill="var(--ink)">Leveraged data to drive results</text>
-<rect x="64" y="284" width="250" height="9" rx="4.5" fill="var(--muted)" opacity=".3"/><rect x="64" y="306" width="190" height="9" rx="4.5" fill="var(--muted)" opacity=".3"/>
-<g {grade}><circle cx="380" cy="118" r="42" fill="none" stroke="var(--blue)" stroke-width="4"/><text x="380" y="132" text-anchor="middle" font-size="40" font-weight="900" fill="var(--blue)">A+</text></g>
-<g {praise}><text x="330" y="312" font-size="20" font-weight="800" fill="var(--blue)" transform="rotate(-6 330 312)">Flawless!</text></g>
-<rect {circ1} x="56" y="124" width="116" height="30" rx="15" fill="none" stroke="var(--danger)" stroke-width="3" stroke-dasharray="400"/>
-<rect {circ2} x="232" y="174" width="80" height="30" rx="15" fill="none" stroke="var(--danger)" stroke-width="3" stroke-dasharray="400"/>
-<g {note}><rect x="458" y="140" width="232" height="128" rx="14" fill="var(--surf)" stroke="var(--danger)" stroke-width="2"/>
-<text x="476" y="172" font-size="12" font-weight="800" letter-spacing=".6" fill="var(--danger)">AI 2, A DIFFERENT COMPANY</text>
-<text x="476" y="204" font-size="17" fill="var(--ink)">"Spearheaded"? Really?</text>
-<text x="476" y="232" font-size="17" fill="var(--ink)">You said half a day.</text>
-<text x="476" y="258" font-size="17" font-weight="800" fill="var(--danger)">See me after class.</text></g>
-<text x="40" y="392" font-size="14" fill="var(--muted)">Same draft. The AI that wrote it loved it. The one that didn't, didn't.</text>'''
-    return svg(720, 405, variant, "An AI grading its own homework",
-               "An AI marks its own resume draft A+ and writes Flawless. Then a second AI from a different company circles "
-               "'Spearheaded' and '4 hours' and writes: Spearheaded? Really? You said half a day. See me after class.", body, a.style())
+    show = lambda n, t0: a.at(n, [(0, "opacity:0;transform:translateY(8px)"), (t0, "opacity:0;transform:translateY(8px)"),
+                                  (t0 + .4, "opacity:1;transform:translateY(0)"), (9.4, "opacity:1;transform:translateY(0)"), (10, "opacity:0")])
+    stamp = a.at("st", [(0, "opacity:0;transform:scale(1.8) rotate(-20deg)"), (1.3, "opacity:0;transform:scale(1.8) rotate(-20deg)"),
+                        (1.6, "opacity:1;transform:scale(1) rotate(-10deg)"), (9.4, "opacity:1;transform:scale(1) rotate(-10deg)"), (10, "opacity:0")],
+                  "transform-origin:448px 128px;")
+    red = lambda n, t0: a.at(n, [(0, "fill:var(--ink)"), (t0, "fill:var(--ink)"), (t0 + .2, "fill:var(--danger)"), (9.4, "fill:var(--danger)"), (10, "fill:var(--ink)")])
+    slip_a, ok, slip_b = show("sa", .8), show("ok", 1.9), show("sb", 3.6)
+    marks = [(show(f"m{i}", 4.3 + i * .9), red(f"r{i}", 4.3 + i * .9)) for i in range(3)]
+    badge = lambda x, y, n, st: (f'<g {st}><circle cx="{x}" cy="{y}" r="11" fill="var(--danger)"/>'
+                                 f'<text x="{x}" y="{y + 5}" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">{n}</text></g>')
+    notes = ["\u201cSpearheaded\u201d? Not your word.", "You said half a day.", "Says nothing. What did you do?"]
+    body = f'''<text x="40" y="44" font-size="15" font-weight="700" letter-spacing="1.5" fill="var(--muted)">ONE DRAFT, TWO GRADERS</text>
+<rect x="40" y="64" width="330" height="290" rx="14" fill="var(--surf)" stroke="var(--line)" stroke-width="1.5"/>
+<rect x="76" y="90" width="150" height="12" rx="6" fill="var(--ink)" opacity=".8"/>
+<text x="76" y="150" font-size="17" fill="var(--ink)"><tspan {marks[0][1]}>Spearheaded</tspan> the sales report</text>
+<text x="76" y="200" font-size="17" fill="var(--ink)">Cut prep from <tspan {marks[1][1]}>4 hours</tspan> to 40 min</text>
+<text x="76" y="250" font-size="17" fill="var(--ink)"><tspan {marks[2][1]}>Leveraged data to drive results</tspan></text>
+<rect x="76" y="286" width="250" height="9" rx="4.5" fill="var(--muted)" opacity=".3"/><rect x="76" y="308" width="190" height="9" rx="4.5" fill="var(--muted)" opacity=".3"/>
+{"".join(badge(58, y, i + 1, m[0]) for i, (y, m) in enumerate(zip((144, 194, 244), marks)))}
+<g {slip_a}><rect x="392" y="64" width="288" height="96" rx="14" fill="var(--surf)" stroke="var(--blue)" stroke-width="2"/>
+<text x="412" y="92" font-size="12" font-weight="800" letter-spacing=".6" fill="var(--blue)">THE AI THAT WROTE IT</text>
+<g {stamp}><text x="448" y="142" text-anchor="middle" font-size="36" font-weight="900" fill="var(--blue)">A+</text></g>
+<g {ok}><text x="496" y="136" font-size="17" fill="var(--ink)">Strong. Send it.</text></g></g>
+<g {slip_b}><rect x="392" y="176" width="288" height="178" rx="14" fill="var(--surf)" stroke="var(--danger)" stroke-width="2"/>
+<text x="412" y="204" font-size="12" font-weight="800" letter-spacing=".6" fill="var(--danger)">A DIFFERENT AI</text>
+{"".join(f'<g {m[0]}><circle cx="422" cy="{232 + i * 38}" r="10" fill="var(--danger)"/><text x="422" y="{237 + i * 38}" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">{i + 1}</text>'
+         f'<text x="442" y="{238 + i * 38}" font-size="15" fill="var(--ink)">{n}</text></g>' for i, (n, m) in enumerate(zip(notes, marks)))}</g>
+<text x="40" y="386" font-size="14" fill="var(--muted)">The AI that wrote it gave it an A+. A different AI found three problems.</text>'''
+    return svg(720, 405, variant, "One draft, two graders",
+               "A resume draft says: Spearheaded the sales report. Cut prep from 4 hours to 40 min. Leveraged data to drive results. "
+               "The AI that wrote it grades it A+ and says: Strong. Send it. A different AI marks three problems: Spearheaded is not your word; "
+               "you said half a day, not 4 hours; the last line says nothing.", body, a.style())
 
 
 def fig_buzzwords(variant):
-    """Buzzword bingo: the clichés pop in, get zapped one by one, and a plain true line is left."""
+    """The words recruiters skim past pop in, get zapped one by one, and a plain true line is left."""
     words = [("spearheaded", 70, 120), ("synergy", 420, 104), ("results-driven", 250, 176), ("leveraged", 470, 240), ("dynamic", 90, 250)]
     a, parts = Anim(9), []
     for i, (w, x, y) in enumerate(words):
@@ -326,11 +332,12 @@ def fig_buzzwords(variant):
                      f'<text x="{x}" y="{y}" font-size="20" font-weight="700" fill="var(--ink)">{w}</text></g>'
                      f'<g {zap}><path d="M{cx} {cy - 34}l-10 26h12l-8 24 22-32h-12l8-18z" fill="var(--brand)"/></g>')
     keep = a.at("kp", [(0, "opacity:0;transform:translateY(10px)"), (5.3, "opacity:0;transform:translateY(10px)"), (5.8, "opacity:1;transform:translateY(0)"), (8.4, "opacity:1"), (9, "opacity:0")])
-    body = ('<text x="40" y="52" font-size="15" font-weight="700" letter-spacing="1.5" fill="var(--muted)">BUZZWORD BINGO, CANCELLED</text>'
+    body = ('<text x="40" y="52" font-size="15" font-weight="700" letter-spacing="1.5" fill="var(--muted)">WORDS RECRUITERS SKIM PAST</text>'
             + "".join(parts)
-            + f'<g {keep}><rect x="110" y="300" width="500" height="58" rx="16" fill="var(--surf)" stroke="var(--green)" stroke-width="2.5"/>'
-              '<text x="360" y="337" text-anchor="middle" font-size="20" fill="var(--ink)">Built the weekly report in Excel</text></g>')
-    return svg(720, 405, variant, "Buzzword bingo, cancelled",
+            + f'<g {keep}><text x="360" y="168" text-anchor="middle" font-size="16" fill="var(--muted)">What’s left is what you actually did:</text>'
+              '<rect x="110" y="186" width="500" height="58" rx="16" fill="var(--surf)" stroke="var(--green)" stroke-width="2.5"/>'
+              '<text x="360" y="223" text-anchor="middle" font-size="20" fill="var(--ink)">Built the weekly report in Excel</text></g>')
+    return svg(720, 405, variant, "Words recruiters skim past",
                "The words spearheaded, synergy, results-driven, leveraged and dynamic pop up and get zapped one by one. "
                "What is left is a plain, true line: Built the weekly report in Excel.", body, a.style())
 
@@ -350,7 +357,7 @@ def fig_interview(variant):
 <g {q1}><rect x="40" y="70" width="460" height="62" rx="18" fill="var(--surf)" stroke="var(--line)" stroke-width="1.5"/>
 <text x="62" y="108" font-size="18" fill="var(--ink)">"So, how did you save those 4 hours?"</text></g>
 <g {a1}>{face(620, 210, '<path d="M609 222q11-6 22 0" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"/>')}
-<rect x="240" y="180" width="330" height="58" rx="18" fill="var(--tint)"/><text x="262" y="216" font-size="18" fill="var(--ink)">"Uh. Well. It was more of a... vibe."</text></g>
+<rect x="240" y="180" width="330" height="58" rx="18" fill="var(--tint)"/><text x="262" y="216" font-size="18" fill="var(--ink)">"Um... I'd have to check that."</text></g>
 <g {drops}><path d="M650 180q4 8 0 12q-4-4 0-12zM592 186q4 8 0 12q-4-4 0-12z" fill="var(--blue)"/></g>
 <g {tag1}><rect x="240" y="270" width="196" height="34" rx="17" fill="var(--danger)"/><text x="338" y="292" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">Made-up number</text></g>
 <g {q2}><rect x="40" y="70" width="460" height="62" rx="18" fill="var(--surf)" stroke="var(--line)" stroke-width="1.5"/>
@@ -360,7 +367,7 @@ def fig_interview(variant):
 <g {tag2}><rect x="190" y="270" width="226" height="34" rx="17" fill="var(--green)"/><text x="303" y="292" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">Your own words, checked</text></g>
 <text x="40" y="380" font-size="14" fill="var(--muted)">Every line on your resume has to survive this question.</text>'''
     return svg(720, 405, variant, "The interview question, twice",
-               "An interviewer asks how you saved those 4 hours. With a made-up number the answer is: Uh. Well. It was more of a vibe. "
+               "An interviewer asks how you saved those 4 hours. With a made-up number the answer is: Um, I'd have to check that. "
                "With your own words, checked: Half a day to 40 minutes. Here's how.", body, a.style())
 
 

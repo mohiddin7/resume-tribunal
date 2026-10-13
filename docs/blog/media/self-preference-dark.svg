@@ -6,5 +6,5 @@
 <text x="40" y="256" font-size="17" font-weight="700" fill="var(--ink)">Its own answer</text>
 <rect x="40" y="270" width="640" height="42" rx="10" fill="var(--surf)" stroke="var(--line)"/>
 <rect style="transform-origin:40px 0;animation:g2 8s linear infinite" x="40" y="270" width="456" height="42" rx="10" fill="var(--brand)"/>
-<g style="animation:lb 8s linear infinite"><text x="680" y="256" text-anchor="end" font-size="18" font-weight="800" fill="var(--brand)">up to 50%+ more</text></g>
+<g style="animation:lb 8s linear infinite"><text x="680" y="256" text-anchor="end" font-size="18" font-weight="800" fill="var(--brand)">50%+ more often</text></g>
 <text x="40" y="364" font-size="14" fill="var(--muted)">Illustration. Source: Pombal, Rei and Martins, 2026 (preprint).</text></svg>

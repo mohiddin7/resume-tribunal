@@ -25,7 +25,7 @@ Then I asked the same AI to check its work. It said the draft was strong.
 
 [[figure:self-grade|Same draft, two graders. Guess which one wrote it.]]
 
-It turns out this has a name. AI judges are up to [50% more likely to pass a failed answer](https://arxiv.org/abs/2604.06996) when the answer is their own.
+It turns out this has a name. In one 2026 study, AI judges were [more than 50% more likely to pass a failed answer](https://arxiv.org/abs/2604.06996) when the answer was their own.
 
 [[figure:self-preference|AI judges go easier on their own mistakes. Illustration of the reported effect.]]
 
