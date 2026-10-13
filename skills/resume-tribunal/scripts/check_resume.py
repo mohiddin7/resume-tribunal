@@ -5,7 +5,8 @@ Usage:
   python3 check_resume.py resume.md                  # errors and warnings
   python3 check_resume.py resume.md --source own.md --vocab job.md
                                                      # also compare against the user's own text;
-                                                     # --vocab allows the job description's terms
+                                                     # --vocab is the job description: its tool names are
+                                                     # allowed, and copying its phrasing is flagged
   python3 check_resume.py resume.md --final          # leftover [placeholders] become errors
   python3 check_resume.py - < resume.md              # read from stdin
   python3 check_resume.py --self-test
@@ -84,6 +85,8 @@ MD_STRIP_RE = re.compile(r"[*_`]|\[([^\]]*)\]\([^)]*\)")
 NUMBER_RE = re.compile(r"\d+(?:,\d{3})*(?:\.\d+)?")
 WORD_RE = re.compile(r"[A-Za-z][A-Za-z+#-]{2,}")
 LINK_TARGET_RE = re.compile(r"\]\([^)]*\)|https?://\S+|\S+@\S+")
+STOPWORDS = set("a an and the of to in on for with at by from or as is are be our we you your will this that their it its "
+                "into over per all any".split())
 NUMBER_WORDS = dict(zip("one two three four five six seven eight nine ten eleven twelve".split(), map(str, range(1, 13))))
 
 
@@ -102,11 +105,33 @@ def plain(text):
     return MD_STRIP_RE.sub(lambda m: m.group(1) or "", text).strip()
 
 
-def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650):
+def count_words(md):
+    return len(re.findall(r"[A-Za-z0-9][\w'+#./-]*", plain(MD_STRIP_RE.sub(lambda m: m.group(1) or "", md))))
+
+
+def skills_part(text):
+    """The Skills section of a resume, Markdown or plain text: where stale and inflated tool claims sit."""
+    out, on = [], False
+    for line in text.splitlines():
+        bare = re.sub(r"[#*_]", "", line).strip()
+        title = bare.split(":")[0].strip()
+        if 0 < len(title) < 40 and "skill" in title.lower():
+            on = True
+            out.append(bare.split(":", 1)[1] if ":" in bare else "")
+        elif bare and (len(bare) < 40 and (line.lstrip().startswith("#") or bare.isupper())
+                       or re.match(r"[A-Z][A-Za-z &/]{2,30}:", bare)):  # a heading, or another "Label: ..." line
+            on = False
+        elif on:
+            out.append(line)
+    return "\n".join(out)
+
+
+def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650, old=""):
     """Return a list of (line_number, level, kind, detail). level is 'error', 'warn' or 'todo'."""
     out = []
     add = lambda n, level, kind, detail: out.append((n, level, kind, detail))
     bullets, prose, headings, separators, triplets, in_code = [], [], set(), set(), 0, False
+    skills, in_skills = set(), False  # the Skills section is where the posting's names belong
     line_chars = max(line_chars, 1)
 
     for n, raw in enumerate(md.splitlines(), 1):
@@ -152,18 +177,23 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650)
             # Phone numbers on a contact line are personal details, not claims.
             if raw.lstrip().startswith("#"):
                 headings.add(n)
+                in_skills = "skill" in raw.lower()
+            elif in_skills:
+                skills.add(n)
             if raw.strip():
                 prose.append((n, PHONE_RE.sub(" ", plain(raw)) if "@" in raw or n <= 3 else plain(raw)))
             continue
         text = plain(bullet.group(1))
         bullets.append((n, text))
+        if in_skills:
+            skills.add(n)
         lines = len(text) / line_chars
         if lines > 2:
             add(n, "error", "too-long", f"about {lines:.1f} lines; keep bullets to two lines")
         elif 1 < lines < 1.4:
             add(n, "warn", "short-second-line", f"about {lines:.2f} lines; tighten it to one line if you can")
 
-    word_count = len(re.findall(r"[A-Za-z0-9][\w'+#./-]*", plain(MD_STRIP_RE.sub(lambda m: m.group(1) or "", md))))
+    word_count = count_words(md)
     if word_count > max_words:
         add(0, "warn", "over-length", f"{word_count} words; about {max_words} fit one page at 10.5 pt, so check with make_pdf.py")
     if len(separators) > 1:
@@ -179,8 +209,20 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650)
         shingles = {" ".join(jd[i:i + 6]) for i in range(len(jd) - 5)}
         for n, text in bullets + prose:
             w = re.findall(r"[a-z0-9+#]+", text.lower())
-            if any(" ".join(w[i:i + 6]) in shingles for i in range(len(w) - 5)):
+            if n not in skills and any(" ".join(w[i:i + 6]) in shingles for i in range(len(w) - 5)):
                 add(n, "warn", "copied-from-job-description", "six or more words match the posting; reword in the candidate's terms")
+        # Shorter lifts in bullet after bullet make the resume read as written to the posting.
+        # Four-word runs with two content words; three-word ones catch true terms such as "on-time delivery".
+        fours = {tuple(jd[i:i + 4]) for i in range(len(jd) - 3) if sum(x not in STOPWORDS for x in jd[i:i + 4]) >= 2}
+        def echoes_posting(text):
+            # Tool names are capitalised ("Power BI"), so a run counts only with two plain lowercase words.
+            t = re.findall(r"[A-Za-z0-9+#]+", text)
+            return any(tuple(x.lower() for x in t[i:i + 4]) in fours
+                       and sum(x.islower() and x not in STOPWORDS for x in t[i:i + 4]) >= 2 for i in range(len(t) - 3))
+        echoes = [n for n, text in bullets if n not in skills and echoes_posting(text)]
+        if len(echoes) >= 3:
+            add(0, "warn", "echoes-job-description", f"lines {', '.join(map(str, echoes))} reuse the posting's phrasing; "
+                "keep its skill and tool names, and say the rest in the candidate's terms")
     if len(bullets) >= 6:
         lengths = [len(t) for _, t in bullets]
         if statistics.pstdev(lengths) / statistics.mean(lengths) < 0.15:
@@ -188,8 +230,11 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650)
         if all(NUMBER_RE.search(t) for _, t in bullets):
             add(0, "warn", "metric-in-every-bullet", "every bullet has a number; leave some as plain statements")
 
+    if old:  # the original resume counts as the user's text, but its names are asked about if nothing newer backs them
+        source = (source or "") + "\n" + old
     if source is not None:
-        src_numbers, known = numbers(source), words(source) | words(vocab)
+        # The posting's words are not the candidate's: they get their own warning, so drift into its voice shows.
+        src_numbers, known, posting = numbers(source), words(source), words(vocab)
         # Years of experience worked out from the dates in the source are allowed.
         this_year = datetime.date.today().year
         derived = {str(this_year - int(y) + d) for y in re.findall(r"\b(?:19|20)\d{2}\b", source)
@@ -198,16 +243,29 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650)
         # Names (tools, employers, titles, places) must come from the candidate, never from the posting alone.
         src_names = {t.lower() for t in re.findall(r"[A-Za-z][A-Za-z0-9+#]*", source)}
         src_names |= {t + "s" for t in src_names} | {t[:-1] for t in src_names if t.endswith("s")}
+        newer = source[:len(source) - len(old) - 1] if old else ""
+        new_names = {t.lower() for t in re.findall(r"[A-Za-z][A-Za-z0-9+#]*", newer)}
+        new_names |= {t + "s" for t in new_names} | {t[:-1] for t in new_names if t.endswith("s")}
+        old_skills = {t.lower() for t in re.findall(r"[A-Za-z][A-Za-z0-9+#]*", skills_part(old))}
         for n, text in bullets + prose:
             if n > 3 and n not in headings:
                 body = PLACEHOLDER_RE.sub(" ", LINK_TARGET_RE.sub(" ", text))
                 # ponytail: a capital letter marks a name. The first word of a sentence is skipped,
                 # except on title and date lines ("Senior Analyst | 2021"), where every word is a claim.
-                start = r"\b" if "|" in body else r"(?<![.:]\s)(?<!^)\b"
+                # Every word counts on title and date lines and in Skills, and after a colon ("Languages: Tableau, SQL").
+                # ponytail: a tool name opening a bullet or sentence elsewhere still passes; checking those would flag every new verb.
+                if n in skills:  # the label of a Skills line ("Languages:") is a heading, not a claim
+                    body = re.sub(r"^\s*[^:]{1,60}:\s", "", body)
+                start = r"\b" if "|" in body or n in skills else r"(?<![.]\s)(?<!^)\b"
                 names = [m.group(1) for m in re.finditer(start + r"([A-Z][A-Za-z0-9+#]+)", body.strip())]
                 missing = sorted({w for w in names if w.lower() not in src_names and not re.fullmatch(MONTH + "|present|current", w.lower())})
                 if missing:
                     add(n, "error", "name-not-in-source", ", ".join(missing) + ": named here but not in the user's own text; confirm with the user or remove")
+                # A name only the old resume backs may be stale or inflated: "TensorFlow" for someone who cleaned the data.
+                stale = sorted({w for w in names if old and newer.strip() and w.lower() in old_skills and w.lower() not in new_names
+                                and not re.fullmatch(MONTH + "|present|current", w.lower())})
+                if stale:
+                    add(n, "warn", "only-in-old-resume", ", ".join(stale) + ": only the original resume says this; ask at the sign-off before keeping it")
             # A derived number counts only as a span of years ("7 years"), never as a headcount or a percent.
             spans = {d for d in derived if re.search(rf"\b{d}\+?\s+years?\b", text)}
             # A number inside a product name the posting uses ("Dynamics 365") is a name, not a claim.
@@ -218,8 +276,13 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650)
             # Compare on the first seven letters, so "recommended" matches "recommendation".
             new = sorted(w for w in words(text) - known
                          if len(w) >= 9 and n not in headings and n > 3 and w[:7] not in stems)
-            if new:
-                add(n, "warn", "words-not-in-source", "words the user never used: " + ", ".join(new))
+            # One borrowed word is usually a true skill name; two or more in a line is the posting's voice.
+            borrowed = [w for w in new if w in posting] if n not in skills else []
+            if len(borrowed) >= 2:
+                add(n, "warn", "words-from-posting", "the posting's words, not the user's: " + ", ".join(borrowed)
+                    + "; keep a skill or tool name that is true, and say the rest in the user's terms")
+            if any(w not in posting for w in new):
+                add(n, "warn", "words-not-in-source", "words the user never used: " + ", ".join(w for w in new if w not in posting))
     return out
 
 
@@ -250,6 +313,23 @@ def self_test():
     jd = "You will partner with the Risk team on rule changes and present findings to executives."
     assert kinds("- Partner with the Risk team on rule changes weekly", vocab=jd) == {"copied-from-job-description"}
     assert kinds("- Worked with Risk on two rule changes", vocab=jd) == set()
+    # The posting's prose is not the candidate's voice, even when the posting is passed in.
+    src = "I track shipments and send a Monday report on late deliveries."
+    post = "Own weekly reporting on order fulfillment and carrier performance. Clear written and spoken communication."
+    assert kinds("x\ny\nz\n- Owned fulfillment reporting", source=src, vocab=post) == {"words-from-posting"}
+    assert kinds("x\ny\nz\n- Owned fulfillment reporting for leadership", source=src, vocab=post) == {"words-from-posting", "words-not-in-source"}
+    # Four-word lifts in three or more bullets read as written to the posting; one or two do not.
+    lifts = ["- Found the causes of late shipments", "- Gave clear written and spoken updates", "- Wrote SQL against the order database"]
+    post = "Find the causes of late and damaged shipments. Clear written and spoken updates. Write SQL against the order database."
+    assert kinds("\n".join(lifts), vocab=post) == {"echoes-job-description"}
+    assert kinds("\n".join(lifts[:2]), vocab=post) == set()
+    # True skill and tool names from the posting are not its voice: in Skills, alone in a line, or capitalised.
+    post = "Needs SQL, Python, Power BI, demand forecasting, inventory reconciliation, Microsoft Dynamics 365 Finance."
+    src = "I predicted demand and matched stock counts in SQL, Python, Power BI and Microsoft Dynamics 365 Finance."
+    tools = "## Experience\n- Ran demand forecasting weekly\n- Kept the ledger in Microsoft Dynamics 365 Finance\n" \
+            "- Built SQL, Python, Power BI reports\n- Closed books in Microsoft Dynamics 365 Finance\n"
+    assert kinds("x\ny\nz\n" + tools + "## Skills\nSQL, Python, Power BI, demand forecasting, inventory reconciliation",
+                 source=src, vocab=post) == set()
     assert "template-bullets" in kinds("\n".join(f"- Cut cost {i} by 2{i}% by automating step {i}" for i in range(3)))
     # Number formats and punctuation must not cause false alarms.
     src = "around 3000 disputes a month, took two days. Worked Jan 2021, then left. Every day."
@@ -288,6 +368,18 @@ def self_test():
     assert [lv for _, lv, _, _ in check("<<NAME>>", final=True)] == ["error"]
     assert kinds("With 8 years of experience, moved to Postgres instead of MySQL for several teams") == set()
     assert "uniform-bullets" in kinds("\n".join(f"- Shipped feature number {i} for the team" for i in range(6)))
+    # A tool listed first after a label, or anywhere in Skills, is checked like any other name.
+    assert kinds(four + "- Skills: Tableau, SQL", source="I use SQL") == {"name-not-in-source"}
+    assert kinds(four + "## Skills\n- Tableau, SQL", source="I use SQL") == {"name-not-in-source"}
+    assert "name-not-in-source" not in kinds(four + "## Skills\n- Frontend, mobile and tools: SQL, Excel", source="I use SQL and Excel")
+    # Names only the original resume backs are asked about; names the user's own words repeat are not.
+    oldr = "Data Analyst, Acme\nSKILLS\nPython, TensorFlow, Excel\nEDUCATION\nBSc Computer Science"
+    assert kinds(four + "- Cleaned data in Python with TensorFlow", source="I did the data cleaning in Python", old=oldr) == {"only-in-old-resume"}
+    assert kinds(four + "- Cleaned data in Python", source="I did the data cleaning in Python", old=oldr) == set()
+    assert kinds(four + "- Built TensorFlow models", old=oldr) == set()  # no newer words to compare with
+    assert kinds(four + "**Data Analyst** | Acme\n- BSc Computer Science", source="I analyse data", old=oldr) == set()  # titles, degrees
+    assert skills_part("## Skills\n- Python, SQL\n## Education\nBSc") .split() == ["-", "Python,", "SQL"]
+    assert skills_part("Technical skills: Java, Go\nInterests: chess").strip() == "Java, Go"
     print("self-test passed")
 
 
@@ -295,7 +387,8 @@ def main():
     p = argparse.ArgumentParser(description="Check a Markdown resume.", usage=__doc__)
     p.add_argument("resume", nargs="?")
     p.add_argument("--source", action="append", default=[], help="file with the user's own text; repeatable")
-    p.add_argument("--vocab", action="append", default=[], help="file whose words are also allowed, such as the job description")
+    p.add_argument("--old", action="append", default=[], help="the original resume: a source, but names only it backs are flagged")
+    p.add_argument("--vocab", action="append", default=[], help="the job description: flags copied phrasing and words taken from it; repeatable")
     p.add_argument("--final", action="store_true", help="leftover placeholders are errors")
     p.add_argument("--strict", action="store_true", help="warnings also fail")
     p.add_argument("--json", action="store_true")
@@ -316,7 +409,8 @@ def main():
 
     md = sys.stdin.read() if a.resume == "-" else read(a.resume)
     source = "\n".join(read(f) for f in a.source) if a.source else None
-    found = check(md, a.line_chars, source, a.final, "\n".join(read(f) for f in a.vocab), a.max_words)
+    found = check(md, a.line_chars, source, a.final, "\n".join(read(f) for f in a.vocab), a.max_words,
+                  "\n".join(read(f) for f in a.old))
     errors = sum(1 for f in found if f[1] == "error")
     warns = sum(1 for f in found if f[1] == "warn")
     if a.json:
@@ -324,7 +418,8 @@ def main():
     else:
         for n, lv, k, d in sorted(found, key=lambda f: ("error", "warn", "todo").index(f[1])):
             print(f"{lv.upper():5} {'line ' + str(n) if n else 'document'}: {k}: {d}")
-        print(f"{errors} error(s), {warns} warning(s), {len(found) - errors - warns} placeholder(s) to fill")
+        print(f"{errors} error(s), {warns} warning(s), {len(found) - errors - warns} placeholder(s) to fill; "
+              f"{count_words(md)} words (about {a.max_words} fit one page)")
     return 1 if errors or (a.strict and warns) else 0
 
 

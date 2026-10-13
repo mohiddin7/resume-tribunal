@@ -39,7 +39,7 @@ A much weaker seat lowers the quality of the review, so match tiers.
 3. Find the names with `python3 scripts/seats.py models <seat>`. Where a tool cannot list them, use its documented names; Claude Code accepts `opus`, `sonnet` and `haiku`.
 4. Pass them with `--model` and `--effort` on `seats.py run`. Where the model name already carries an effort level (such as a name ending in `-high`), leave out `--effort`.
 5. In the consent message, say in plain words what will run: the company and the model name as the tool lists it. The user can change it.
-6. If the matching tier is not on the user's plan, use the closest and say so.
+6. If no seat offers your tier, use the strongest model each seat lists, preferring one its company calls balanced or flagship over one it calls fast, even when the fast one is newer. Say so in the model line and carry on; offer solo only if the user would rather.
 7. When unsure, choose the seat's strongest model. A reviewer stronger than you does no harm; a much weaker one does.
 
 In platform mode, choose comparable models in the platform's picker the same way. In manual mode, suggest the strongest model the user has in each app.
@@ -48,7 +48,7 @@ In platform mode, choose comparable models in the platform's picker the same way
 
 - **Review in full council:** any seat other than you; prefer one whose draft was not the base of the merge, and otherwise the closest tier match.
 - **Quick review:** one seat. Choose the closest tier match; between equals, alternate rather than favouring one company by habit.
-- **Final blind look:** every other seat.
+- **Final blind look:** every other seat in the full council. In quick review and solo, only if the user takes the offer: the seat that reviewed before, or a fresh-context copy of you in solo.
 - **Solo:** fresh-context subagents of your own model, each seeing only its prompt. Tell the user once that same-model review is weaker, though still useful for catching errors.
 
 ## Running a step
@@ -61,7 +61,7 @@ In platform mode, choose comparable models in the platform's picker the same way
 
 `seats.py` runs every built-in seat read-only in an empty temporary folder, so a seat cannot read the other drafts or your files, and has no tools to act with if a job posting hides instructions. Built-in seats: Claude Code, Codex and Antigravity. For any other tool use `run custom --cmd`, which runs the command as you wrote it, so add that tool's own read-only flags.
 
-- **Time.** A seat call can take up to ten minutes. Run it in the background, or with a shell time limit of at least ten minutes, and tell the user it is running.
+- **Time.** A seat call usually takes under two minutes and can take up to ten. Run it in the background, or with a shell time limit of at least ten minutes. Say it is running in the message you are already sending; it needs no message of its own. In a full council, where drafting and critique take a quarter of an hour, one short progress line when the drafts are in is welcome.
 - **Contact details.** `run` refuses a prompt that still holds an email address, phone number or LinkedIn profile link, including one inside the job posting. Replace it with a stand-in and run again.
 - **A user's own global instructions** for a tool, where that tool loads them, are outside this script's control.
 
@@ -69,8 +69,8 @@ In platform mode, choose comparable models in the platform's picker the same way
 
 | | Automatic | Manual |
 |---|---|---|
-| Quick review | About 5 minutes, 2 calls | 1 round, about 5 minutes |
-| Full council | 10 to 15 minutes, about 8 calls | About 5 rounds, 20 to 30 minutes |
+| Quick review | About 6 minutes, 1 call | 1 round, about 10 minutes |
+| Full council | About 15 minutes, about 8 calls | About 5 rounds, 20 to 30 minutes |
 | Role research | Adds a minute or two | Adds 1 round |
 | Final blind look | Adds a minute | Adds 1 round per seat |
 

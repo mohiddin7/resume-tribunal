@@ -68,7 +68,9 @@ def contact_details(prompt):
     found = re.findall(r"[\w.+-]+@[\w-]+\.[\w.-]+|linkedin\.com/in/[\w-]+", prompt)
     found += [m for m in re.findall(r"\+?\d[\d ().-]{5,}\d", prompt)
               if sum(c.isdigit() for c in m) >= (7 if re.search(r"\D", m) else 10)
-              and not re.fullmatch(r"(?:19|20)\d\d\s*-\s*(?:19|20)\d\d", m)]
+              and not re.fullmatch(r"(?:19|20)\d\d\s*-\s*(?:19|20)\d\d", m)
+              # Dates such as 2026-09-15 or 15.09.2026 (a saved profile dates its entries) are not phones.
+              and not re.fullmatch(r"(?:19|20)\d\d-\d\d-\d\d|\d\d?[.-]\d\d?[.-](?:19|20)\d\d", m)]
     return found
 
 
@@ -122,6 +124,8 @@ def self_test():
     assert contact_details("<<EMAIL>> | <<PHONE>> | Jan 2019 - Mar 2021 | 2019 - 2021 | cut 1200 to 300 | 5000000") == []
     assert contact_details("call 555-0117") == ["555-0117"]
     assert contact_details("call 5551234567") == ["5551234567"]
+    assert contact_details("## 2026-09-15\nconfirmed 15.09.2026 and 1-9-2026") == []  # dated profile entries
+    assert contact_details("call 0161-555-0199") == ["0161-555-0199"]
     print("self-test passed")
 
 
