@@ -234,20 +234,145 @@ details.more li { margin: 8px 0; }
 h1, h2 { text-wrap: balance; }
 .hero h1 .accent { display: block; font-size: .82em; margin-top: 6px; }
 
-/* how it works, six steps */
-.flow6 { list-style: none; padding: 0; margin: 28px auto 12px; display: grid; gap: 14px; max-width: 64rem; counter-reset: s; }
-@media (min-width: 760px) { .flow6 { grid-template-columns: repeat(3, 1fr); } }
-.fs { --accent: var(--brand); position: relative; text-align: left; background: var(--bg); border: 2px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; }
-.fs.green { --accent: var(--green); } .fs.blue { --accent: var(--blue); } .fs.purple { --accent: var(--purple, #685497); }
-.fn { position: absolute; top: 14px; right: 16px; width: 28px; height: 28px; border-radius: 999px; display: grid; place-items: center; font-weight: 800; font-size: 14px; color: #fff; background: var(--accent); }
-.ft { display: block; font-size: 11px; font-weight: 800; letter-spacing: .1em; color: var(--accent); margin-bottom: 6px; padding-right: 36px; }
-.fs h3 { font-size: 1.05rem; margin: 0 0 6px; padding-right: 30px; }
-.fs p { margin: 0; color: var(--muted); font-size: 15px; }
-.chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
-.chips b { font-size: 11px; text-align: center; padding: 4px 0; border-radius: 999px; background: var(--surf); border: 1px solid var(--line); }
-@media (max-width: 759px) { .fs:not(:last-child)::after { content: "↓"; position: absolute; left: 50%; bottom: -15px; transform: translateX(-50%); color: var(--muted); font-size: 14px; line-height: 1; } }
-.paused .flow6 * , .paused .fs { animation-play-state: paused !important; }
-@media (prefers-reduced-motion: reduce) { .fs, .chips b { animation: none !important; } }
 :root { --purple: #685497; }
 :root[data-theme="dark"] { --purple: #9177cf; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --purple: #9177cf; } }
+
+/* how it works: story player. One resume card is the main character; motion tells the story. */
+.hiw { display: grid; gap: 14px; max-width: 60rem; margin: 24px auto 8px; text-align: left; }
+.steps6 { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+.st { width: 100%; border: 0; background: none; padding: 6px 0; cursor: pointer; font: inherit; color: inherit; text-align: left; }
+.st .stt, .st .sts { display: none; }
+.bar { display: block; height: 4px; border-radius: 4px; background: color-mix(in srgb, var(--ink) 14%, transparent); overflow: hidden; }
+.bar b { display: block; height: 100%; width: 0; background: var(--brand); border-radius: 4px; }
+.st.done .bar b { width: 100%; }
+.st.now .bar b { animation: fillbar 4.4s linear forwards; }
+.hiw.stopped .st.now .bar b { animation: none; width: 100%; }
+.paused .st.now .bar b, .hiw.hold .st.now .bar b { animation-play-state: paused; }
+@keyframes fillbar { to { width: 100%; } }
+.stage { position: relative; height: 360px; border-radius: 22px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; touch-action: pan-y; user-select: none; cursor: pointer; }
+.stage .pause { position: absolute; right: 12px; top: 12px; z-index: 5; width: 34px; height: 34px; font-size: 11px; }
+.cap { margin: 0; min-height: 3.4em; text-align: center; }
+.cap strong { display: block; font-size: 1.2rem; letter-spacing: -.01em; }
+.cap span { color: var(--muted); }
+@media (min-width: 860px) {
+  .hiw { grid-template-columns: 1.35fr 1fr; align-items: center; gap: 28px; }
+  .stage { grid-column: 1; grid-row: 1; height: 420px; }
+  .steps6 { grid-column: 2; grid-row: 1; grid-template-columns: 1fr; gap: 4px; }
+  .st { padding: 10px 14px 12px; border-radius: 14px; }
+  .st .stt { display: block; font-weight: 750; font-size: 1.02rem; margin-top: 8px; color: var(--muted); }
+  .st .sts { display: none; color: var(--muted); font-size: 14px; }
+  .st.now { background: var(--surf); box-shadow: var(--shadow); }
+  .st.now .stt { color: var(--ink); } .st.now .sts { display: block; }
+  .st:hover .stt { color: var(--ink); }
+  .cap { display: none; }
+}
+.sc { position: absolute; inset: 0; display: grid; place-items: center; opacity: 0; visibility: hidden; transition: opacity .35s; }
+.sc.on { opacity: 1; visibility: visible; }
+
+/* the resume card */
+.rc { position: relative; width: 150px; background: var(--surf); border: 1px solid var(--line); border-radius: 14px; padding: 16px 14px; box-shadow: var(--shadow); display: grid; gap: 7px; }
+.rc .rc-name { height: 10px; width: 62%; border-radius: 5px; background: var(--ink); opacity: .85; }
+.rc .rc-sub { height: 6px; width: 40%; border-radius: 3px; background: var(--muted); opacity: .5; margin-bottom: 4px; }
+.rc i { height: 6px; border-radius: 3px; background: var(--muted); opacity: .3; }
+.rc i.short { width: 60%; }
+.rc.big { width: min(330px, 84%); padding: 20px 18px; gap: 6px; }
+.rc.big p { margin: 0; font-size: 14px; line-height: 1.35; padding: 6px 8px; border-radius: 8px; background: var(--bg); }
+.tag { position: absolute; top: -11px; left: 14px; font-size: 11px; font-weight: 800; color: #fff; padding: 3px 9px; border-radius: 999px; }
+.t-blue { background: var(--blue); }
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; padding: 7px 12px; border-radius: 999px; background: var(--surf); border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--ink); }
+
+/* scene 1: link and resume drop into the chat */
+.sc1 .chat { position: absolute; left: 50%; bottom: 44px; transform: translateX(-50%); width: min(330px, 84%); display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 12px 12px 12px 16px; border-radius: 16px; background: var(--surf); border: 1px solid var(--line); box-shadow: var(--shadow); font-size: 14px; }
+.sc1 .send { width: 28px; height: 28px; border-radius: 999px; background: var(--brand); color: var(--onbrand); display: grid; place-items: center; font-weight: 800; flex: none; }
+.sc1 .job { position: absolute; left: 12%; top: 22%; }
+.sc1 .rc-in { position: absolute; right: 12%; top: 14%; width: 104px; padding: 12px 10px; transform: rotate(4deg); }
+.sc1.on .job { animation: dropL .9s .2s cubic-bezier(.3,1.4,.5,1) both; }
+.sc1.on .rc-in { animation: dropR .9s .5s cubic-bezier(.3,1.4,.5,1) both; }
+.sc1.on .typed { animation: type 1.1s 1.5s steps(28) both; }
+.sc1.on .send { animation: pulse .5s 2.8s both; }
+@keyframes dropL { from { transform: translate(-60px,-40px) rotate(-12deg); opacity: 0; } }
+@keyframes dropR { from { transform: translate(60px,-50px) rotate(16deg); opacity: 0; } }
+
+/* scene 2: AI 1 rewrites */
+.sc2 .old { color: var(--muted); }
+.sc2.on .old { animation: strikeout 2.2s .2s both; }
+.sc2.on .n1 { animation: type 1s .9s steps(40) both; }
+.sc2.on .n2 { animation: type 1s 2s steps(36) both; }
+.sc2 .new { border-left: 3px solid var(--blue); }
+.sc2 .kw { position: absolute; font-size: 12px; font-weight: 800; color: var(--blue); background: var(--surf); border: 1px solid color-mix(in srgb, var(--blue) 40%, var(--line)); padding: 4px 10px; border-radius: 999px; }
+.sc2 .k1 { top: 9%; left: 10%; } .sc2 .k2 { top: 7%; right: 12%; } .sc2 .k3 { bottom: 9%; right: 16%; }
+.sc2.on .kw { animation: floatin .7s both; } .sc2.on .k1 { animation-delay: .5s; } .sc2.on .k2 { animation-delay: .8s; } .sc2.on .k3 { animation-delay: 1.1s; }
+@keyframes strikeout { 0%, 25% { text-decoration: none; opacity: 1; } 45% { text-decoration: line-through; opacity: .7; } 100% { text-decoration: line-through; opacity: .35; } }
+@keyframes floatin { from { transform: translateY(14px) scale(.8); opacity: 0; } }
+
+/* scene 3: AI 2 reads blind, catches the made-up number */
+.t-swap { background: var(--brand); display: grid; }
+.t-swap b { grid-area: 1 / 1; font-weight: 800; }
+.t-swap b:first-child { visibility: hidden; }
+.sc3.on .t-swap { animation: tagcol 1s .2s both; }
+.sc3.on .t-swap b:first-child { visibility: visible; animation: hideb .01s 1s both; }
+.sc3.on .t-swap b:last-child { animation: showb .01s 1s both; }
+@keyframes tagcol { from { background: var(--blue); } 80% { background: var(--blue); } }
+@keyframes hideb { to { visibility: hidden; } } @keyframes showb { from { visibility: hidden; } }
+.sc3 .bad { display: none; } .sc3 .fix { color: var(--green); font-weight: 800; }
+.sc3.on .bad { display: inline; color: var(--danger); font-weight: 800; animation: badgone 3s .3s both; }
+.sc3.on .fix { display: inline-block; animation: fixin .4s 2.4s both; }
+@keyframes badgone { 0%, 40% { text-decoration: none; } 50%, 70% { text-decoration: line-through; opacity: 1; } 71%, 100% { opacity: 0; font-size: 0; } }
+@keyframes fixin { from { opacity: 0; transform: translateY(6px); max-width: 0; } }
+.sc3 .lens { position: absolute; width: 54px; height: 54px; border-radius: 999px; border: 3px solid var(--brand); left: 8%; top: 46%; opacity: 0; }
+.sc3 .lens::after { content: ""; position: absolute; width: 18px; height: 3px; background: var(--brand); right: -15px; bottom: -5px; transform: rotate(45deg); border-radius: 2px; }
+.sc3.on .lens { animation: sweep 2s .4s ease-in-out both; }
+@keyframes sweep { 0% { opacity: 0; transform: translate(0,0); } 15% { opacity: 1; } 55% { transform: translate(150px, 10px); opacity: 1; } 70% { transform: translate(90px, 24px); opacity: 1; } 100% { transform: translate(90px, 24px); opacity: 0; } }
+.sc3 .note, .sc3 .verdict { position: absolute; font-size: 13px; font-weight: 800; padding: 7px 12px; border-radius: 12px; box-shadow: var(--shadow); }
+.sc3 .note { top: 12%; right: 8%; background: var(--surf); color: var(--danger); border: 1px solid color-mix(in srgb, var(--danger) 40%, var(--line)); }
+.sc3 .verdict { bottom: 10%; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; white-space: nowrap; }
+.sc3.on .note { animation: popin .4s 1.5s both; }
+.sc3.on .verdict { animation: popc .5s 3s both; }
+@keyframes popin { from { transform: scale(.6); opacity: 0; } }
+@keyframes popc { from { transform: translateX(-50%) scale(.6); opacity: 0; } }
+
+/* scene 4: the script ticks */
+.sc4 { grid-template-columns: auto auto; gap: 22px; justify-content: center; align-content: center; }
+.sc4 .rc { overflow: hidden; }
+.sc4 .scan { position: absolute; left: 0; right: 0; height: 26px; top: -30px; background: linear-gradient(transparent, color-mix(in srgb, var(--brand) 35%, transparent), transparent); }
+.sc4.on .scan { animation: scan 1.4s .2s ease-in-out 2 both; }
+@keyframes scan { to { top: 110%; } }
+.checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 14px; font-weight: 650; max-width: 190px; }
+.checks li { display: flex; gap: 8px; align-items: flex-start; }
+.checks b { flex: none; width: 22px; height: 22px; border-radius: 999px; background: var(--green); color: #fff; display: grid; place-items: center; font-size: 12px; }
+.sc4.on .c1 { animation: floatin .4s .7s both; } .sc4.on .c2 { animation: floatin .4s 1.4s both; } .sc4.on .c3 { animation: floatin .4s 2.1s both; }
+@media (max-width: 420px) { .sc4 { grid-template-columns: 1fr; justify-items: center; gap: 14px; } .sc4 .rc { width: 120px; } }
+
+/* scene 5: approve */
+.sc5 { align-content: center; gap: 12px; }
+.chg { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: min(330px, 86%); background: var(--surf); border: 1px solid var(--line); border-radius: 14px; padding: 12px 12px 12px 14px; box-shadow: var(--shadow); font-size: 14px; }
+.chg p { margin: 0; }
+.ok { flex: none; font-size: 13px; font-weight: 800; padding: 7px 12px; border-radius: 10px; border: 2px solid var(--green); color: var(--green); }
+.sc5.on .ch1 .ok { animation: approve .3s 1s both; } .sc5.on .ch2 .ok { animation: approve .3s 2.2s both; }
+@keyframes approve { from { background: transparent; color: var(--green); } to { background: var(--green); color: #fff; } }
+.sc5 .tap { position: absolute; width: 26px; height: 26px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 30%, transparent); border: 2px solid var(--surf); opacity: 0; }
+.sc5.on .tap { animation: tap 2.6s .2s both; }
+@keyframes tap { 0% { opacity: 0; left: 50%; top: 80%; } 20% { opacity: 1; } 32% { left: calc(50% + min(130px, 34%)); top: calc(50% - 42px); transform: scale(1); } 36% { transform: scale(.75); } 40% { transform: scale(1); } 70% { left: calc(50% + min(130px, 34%)); top: calc(50% + 22px); transform: scale(1); } 74% { transform: scale(.75); } 78% { transform: scale(1); opacity: 1; } 100% { left: calc(50% + min(130px, 34%)); top: calc(50% + 22px); opacity: 0; } }
+
+/* scene 6: your resume lifts out of the pile, like the logo */
+.pile { position: relative; width: 170px; height: 200px; }
+.pile .p1, .pile .p2 { position: absolute; inset: 20px 30px 0 0; border-radius: 14px; background: var(--brand); }
+.pile .p1 { opacity: .25; transform: rotate(-14deg); } .pile .p2 { opacity: .45; transform: rotate(-6deg); }
+.pile .lift { position: absolute; left: 34px; top: 10px; width: 136px; z-index: 2; }
+.sc6.on .lift { animation: lift 1s .3s cubic-bezier(.3,1.5,.5,1) both; }
+@keyframes lift { from { transform: translate(-28px, 34px) rotate(-6deg); } }
+.sc6 .pdf, .sc6 .qs { position: absolute; }
+.sc6 .pdf { right: 9%; top: 26%; background: var(--brand); color: var(--onbrand); border-color: var(--brand); }
+.sc6 .qs { left: 8%; bottom: 16%; }
+.sc6.on .pdf { animation: popin .4s 1.3s both; } .sc6.on .qs { animation: popin .4s 1.8s both; }
+
+@keyframes type { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes pulse { 50% { transform: scale(1.25); } }
+@media (prefers-reduced-motion: reduce) { .hiw *, .hiw *::after { animation: none !important; } .sc { transition: none; } }
+.paused .hiw *, .paused .hiw *::after, .hiw.hold .sc * { animation-play-state: paused !important; }
+.sc3 .fix { white-space: nowrap; overflow: hidden; vertical-align: bottom; }
+.sc6 .pdf { right: auto; left: 8%; top: 12%; }
+.sc6 .qs { left: auto; right: 8%; bottom: 12%; }
+.sc2 .k2 { right: 20%; }
+.cap { min-height: 4.6em; }

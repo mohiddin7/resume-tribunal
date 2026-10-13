@@ -268,28 +268,46 @@ FAQ = [
      "A link tracker for resumes, made by the same person who made Resume Tribunal. If your resume has links, you'll see one optional tip about it at the end. You don't need it, and nothing is sent to it."),
 ]
 
+HIW = [  # title, one short line
+    ("Drop in the job and your resume", "Paste the link into any AI chat."),
+    ("Your AI rewrites it for the job", "In the job's own words."),
+    ("A second AI checks it like a hiring manager", "It catches anything made up."),
+    ("A script checks every detail", "Layout, AI phrases, numbers."),
+    ("You approve the changes", "Say yes to each one."),
+    ("Ready to send", "Plus the questions you'll be asked."),
+]
+RC_HEAD = '<span class="rc-name"></span><span class="rc-sub"></span>'
+SCENES = [
+ # 1: the job link and the resume drop into a chat box
+ '''<div class="sc sc1"><div class="chat"><span class="typed">Tailor my resume to this job</span><span class="send">↑</span></div>
+  <div class="pill job"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Job link</div>
+  <div class="rc rc-in">''' + RC_HEAD + '''<i></i><i></i><i class="short"></i></div></div>''',
+ # 2: AI 1 rewrites two lines, and slips in "4 hours"
+ '''<div class="sc sc2"><div class="rc big"><span class="tag t-blue">AI 1</span>''' + RC_HEAD + '''
+  <p class="old">Helped improve on-time delivery</p>
+  <p class="new n1">Helped raise on-time delivery from 81 to 93 percent</p>
+  <p class="new n2">Cut report prep from 4 hours to 40 minutes</p></div>
+  <span class="kw k1">Excel</span><span class="kw k2">Power Query</span><span class="kw k3">Carrier data</span></div>''',
+ # 3: AI 2 reads blind, catches "4 hours", says it would shortlist
+ '''<div class="sc sc3"><div class="rc big"><span class="tag t-swap"><b>AI 1</b><b>Draft K</b></span>''' + RC_HEAD + '''
+  <p>Helped raise on-time delivery from 81 to 93 percent</p>
+  <p class="catch">Cut report prep from <span class="bad">4 hours</span><span class="fix">half a day</span> to 40 minutes</p>
+  <span class="lens"></span></div>
+  <span class="note">You said "half a day"</span><span class="verdict">Would shortlist: yes</span></div>''',
+ # 4: a script ticks three checks
+ '''<div class="sc sc4"><div class="rc">''' + RC_HEAD + '''<i></i><i></i><i class="short"></i><span class="scan"></span></div>
+  <ul class="checks"><li class="c1"><b>✓</b>Screening software can read it</li><li class="c2"><b>✓</b>No AI-sounding phrases</li><li class="c3"><b>✓</b>Every number matches your words</li></ul></div>''',
+ # 5: you approve two changes
+ '''<div class="sc sc5"><div class="chg ch1"><p>"from 81 to 93 percent"</p><span class="ok">Approve</span></div>
+  <div class="chg ch2"><p>"from half a day to 40 minutes"</p><span class="ok">Approve</span></div><span class="tap"></span></div>''',
+ # 6: your resume lifts out of the pile, like the logo
+ '''<div class="sc sc6"><div class="pile"><span class="p1"></span><span class="p2"></span><div class="rc lift">''' + RC_HEAD + '''<i></i><i></i><i class="short"></i></div></div>
+  <span class="pill pdf">Resume.pdf</span><span class="pill qs">5 interview questions</span></div>''',
+]
+
+
 TITLE = "Free AI Resume Tailoring That Doesn't Make Stuff Up | Resume Tribunal"
 DESC = "Not getting shortlisted? Fix your resume or CV for the job in 5 minutes with ChatGPT, Gemini or any AI, without anything made up. Free, no sign-up."
-
-
-def flow_css():
-    """Website How it works: each step lights up in turn, the drafts swap places, then it loops."""
-    cycle = art.STEP_S * len(art.STEPS) + art.HOLD_S
-    a, rules = art.Anim(round(cycle, 1)), []
-    end = art.STEP_S * len(art.STEPS) + art.HOLD_S * .7
-    for n in range(len(art.STEPS)):
-        t0 = n * art.STEP_S
-        st = a.at(f"fl{n}", [(0, "border-color:var(--line);box-shadow:none"), (t0, "border-color:var(--line);box-shadow:none"),
-                             (t0 + .3, "border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)"),
-                             (end, "border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)"),
-                             (end + .5, "border-color:var(--line);box-shadow:none"), (cycle, "border-color:var(--line);box-shadow:none")])
-        rules.append(f".fs{n}{{{st[7:-1]}}}")
-    t0 = 2 * art.STEP_S
-    for cls, dx in ((".c1", "calc(200% + 16px)"), (".c3", "calc(-200% - 16px)")):
-        st = a.at("sw" + cls[1:], [(0, "transform:translateX(0)"), (t0 + .4, "transform:translateX(0)"), (t0 + 1.2, f"transform:translateX({dx})"),
-                                   (end, f"transform:translateX({dx})"), (end + .6, "transform:translateX(0)"), (cycle, "transform:translateX(0)")])
-        rules.append(f".chips {cls}{{{st[7:-1]}}}")
-    return "".join(a.css) + "".join(rules)
 
 
 def demo_css():
@@ -320,10 +338,11 @@ def build_home(items):
     faq = "\n".join(f"<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>" for q, a in FAQ)
     blog = "\n".join(f'<a class="card post" href="blog/{p["slug"]}.html"><span class="tags">{tags(p)}</span><strong>{esc(p["title"])}</strong>'
                      f'<span class="desc">{esc(p["description"])}</span><span class="meta">{p["minutes"]} min read</span></a>' for p in items)
-    flow = "".join(
-        f'<li class="fs fs{n} {col}"><span class="fn">{n + 1}</span><span class="ft">{esc(tag)}</span><h3>{esc(title)}</h3><p>{esc(line)}</p>'
-        + ('<span class="chips"><b class="c1">Draft K</b><b>Draft M</b><b class="c3">Draft R</b></span>' if n == 2 else "") + "</li>"
-        for n, (tag, col, title, line) in enumerate(art.STEPS))
+    steps6 = "".join(f'<li role="presentation"><button role="tab" class="st" data-i="{n}" aria-selected="{"true" if n == 0 else "false"}">'
+                     f'<span class="bar"><b></b></span><span class="stt">{esc(t)}</span><span class="sts">{esc(d)}</span></button></li>'
+                     for n, (t, d) in enumerate(HIW))
+    scenes = "\n".join(sc.replace('class="sc ', f'data-t="{esc(HIW[n][0])}" data-d="{esc(HIW[n][1])}" class="sc ' + ("on " if n == 0 else ""), 1)
+                        for n, sc in enumerate(SCENES))
     agent_msg = "Install the Resume Tribunal skill (npx skills add mohiddin7/resume-tribunal), then tailor my resume to this job: [paste the job link]"
     chat_msg = f"Read {SITE}resume-tribunal.md and follow it to tailor my resume to this job: [paste the job link]"
     ok = '<span class="ic ok" aria-hidden="true">✓</span>'
@@ -357,11 +376,17 @@ def build_home(items):
 </section>
 
 <section id="how" class="band">
-  <span class="eyebrow">How it works</span>
-  <h2>Six steps. About 5 minutes.</h2>
-  <p class="sub">You do the first and the fifth. The AIs and a script do the rest.</p>
-  <ol class="flow6">{flow}</ol>
-  <p class="center meta">Want more eyes on it? The <strong>full council</strong> has three AIs from three companies each write a draft and critique each other first.</p>
+  <h2>How it works</h2>
+  <p class="sub">Six quick steps, about 5 minutes. Tap or swipe through.</p>
+  <div class="hiw" aria-roledescription="carousel" aria-label="How Resume Tribunal works">
+    <ol class="steps6" role="tablist">{steps6}</ol>
+    <div class="stage" tabindex="0" aria-live="polite">
+      <button class="icon pause" type="button" aria-label="Pause" aria-pressed="false"><span class="ps">❚❚</span><span class="pl">▶</span></button>
+{scenes}
+    </div>
+    <p class="cap"><strong></strong><span></span></p>
+  </div>
+  <p class="center meta">Want more eyes on it? In a <strong>full council</strong>, three AIs from three companies each write a draft and critique each other first.</p>
 </section>
 
 <section id="proof">
@@ -474,7 +499,7 @@ def build_home(items):
 <a class="mcta btn primary" href="#start">Get started free</a>
 """
     extra = (f'<link rel="alternate" type="text/plain" href="llms.txt" title="Summary for AI assistants">\n'
-             f'<style>{demo_css()}{flow_css()}</style>\n<script type="application/ld+json">{json.dumps(ld)}</script>\n')
+             f'<style>{demo_css()}</style>\n<script type="application/ld+json">{json.dumps(ld)}</script>\n')
     (DOCS / "index.html").write_text(head(TITLE, DESC, SITE, 0, "website", extra).replace("<body>", '<body class="home">') + body + foot(0))
 
 
