@@ -33,9 +33,9 @@
       });
     });
 
-    $$('[role="tab"]').forEach(function (tab) {
+    $$('.tabs [role="tab"]').forEach(function (tab) {
       tab.addEventListener("click", function () {
-        $$('[role="tab"]').forEach(function (t) {
+        $$('.tabs [role="tab"]').forEach(function (t) {
           var on = t === tab;
           t.setAttribute("aria-selected", on);
           document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
@@ -118,12 +118,14 @@
 
     var heroCta = document.querySelector(".hero .cta"), start = document.getElementById("start"), mcta = document.querySelector(".mcta");
     if (mcta && heroCta && "IntersectionObserver" in window) {
-      var seen = { hero: true, start: false };
+      // Hidden while the hero button, the How it works hint or the Get started section is on screen.
+      var hint = document.querySelector("#how .hint"), seen = new Map();
       var io = new IntersectionObserver(function (es) {
-        es.forEach(function (en) { seen[en.target === heroCta ? "hero" : "start"] = en.isIntersecting; });
-        document.body.classList.toggle("show-mcta", !seen.hero && !seen.start);
+        es.forEach(function (en) { seen.set(en.target, en.isIntersecting); });
+        var any = false; seen.forEach(function (v) { any = any || v; });
+        document.body.classList.toggle("show-mcta", !any);
       });
-      io.observe(heroCta); if (start) io.observe(start);
+      [heroCta, hint, start].forEach(function (el) { if (el) { seen.set(el, el === heroCta); io.observe(el); } });
     } else if (mcta) { document.body.classList.add("show-mcta"); }
 
     var q = document.getElementById("q");

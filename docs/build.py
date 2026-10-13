@@ -341,8 +341,8 @@ def build_home(items):
 </section>
 
 <section id="how">
-  <h2>You do two things. The AIs do the rest.</h2>
-  <p class="sub">Paste the job and your resume, then check the changes. About 5 minutes.</p>
+  <h2>How it works</h2>
+  <p class="sub"><strong>You do two things. The AIs do the rest.</strong><br>Paste the job and your resume, then check the changes. About 5 minutes.</p>
   <div class="hiw" aria-roledescription="carousel" aria-label="How Resume Tribunal works">
     <ol class="steps6" role="tablist">{steps6}</ol>
     <div class="stage" tabindex="0" aria-live="polite">

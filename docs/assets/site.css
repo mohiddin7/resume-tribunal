@@ -414,3 +414,23 @@ section + section:not(.band) { border-top: 1px solid color-mix(in srgb, var(--li
   .stat a { grid-column: 2; }
   table { font-size: 14px; } th, td { padding: 10px; }
 }
+
+/* each main section fills the screen it is seen on, content centred; taller content simply grows */
+:root { --head: 65px; }
+body.home main > section { min-height: calc(100vh - var(--head)); min-height: calc(100svh - var(--head)); display: flex; flex-direction: column; justify-content: center; padding-top: 48px; padding-bottom: 48px; }
+body.home main > section > * { width: 100%; }
+body.home main > section > .eyebrow, body.home main > section > .btn { width: auto; align-self: center; }
+body.home .hero > * { margin-left: auto; margin-right: auto; }
+body.home .hero .eyebrow { align-self: center; }
+body.home .hero .cta { width: auto; }
+#how { padding-top: 48px; }
+#how .sub strong { color: var(--ink); }
+/* the player's stage sizes to the screen so How it works fits one screen */
+.stage { height: clamp(290px, calc(100vh - 525px), 420px); height: clamp(290px, calc(100svh - 525px), 420px); }
+@media (min-width: 860px) {
+  .stage { height: clamp(320px, calc(100vh - 470px), 500px); height: clamp(320px, calc(100svh - 470px), 500px); }
+  #how { padding-top: 32px; padding-bottom: 32px; }
+}
+@media (max-width: 759px) { #how > .meta:not(.hint) { display: none; } }
+@media (max-width: 759px) { body.home main > section { padding-top: 32px; padding-bottom: 32px; } #how .hint { margin-top: 6px; } }
+@media (min-width: 860px) and (max-height: 880px) { #how h2 { margin-bottom: 4px; } #how .sub { margin-top: 0; margin-bottom: 0; } #how .hiw { margin-top: 12px; } #how .hint { margin-top: 4px; } #how > .meta:not(.hint) { margin-top: 4px; } }
