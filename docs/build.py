@@ -273,7 +273,7 @@ HIW = [  # title, one short line
     ("Your AI rewrites it for the job", "In the job's own words."),
     ("A second AI checks it like a hiring manager", "It catches anything made up."),
     ("A script checks every detail", "Layout, AI phrases, numbers."),
-    ("You approve the changes", "Say yes to each one."),
+    ("You check the changes", "Say yes to the ones you want."),
     ("Ready to send", "Plus the questions you'll be asked."),
 ]
 RC_HEAD = '<span class="rc-name"></span><span class="rc-sub"></span>'
@@ -310,22 +310,6 @@ TITLE = "Free AI Resume Tailoring That Doesn't Make Stuff Up | Resume Tribunal"
 DESC = "Not getting shortlisted? Fix your resume or CV for the job in 5 minutes with ChatGPT, Gemini or any AI, without anything made up. Free, no sign-up."
 
 
-def demo_css():
-    """The hero demo: a bullet is rewritten, a second AI checks three claims, you approve. 12-second loop."""
-    a = art.Anim(12)
-    rules = []
-    fade = lambda name, t, out=11.4: a.at(name, [(0, "opacity:0;transform:translateY(6px)"), (t, "opacity:0;transform:translateY(6px)"),
-                                                 (t + .4, "opacity:1;transform:translateY(0)"), (out, "opacity:1;transform:translateY(0)"), (12, "opacity:0")])
-    for name, t in (("dn1", 1.2), ("dn2", 2.2), ("dc1", 3.6), ("dc2", 4.6), ("dc3", 5.6), ("dok", 7.2)):
-        rules.append(f".{name}{{{fade(name, t)[7:-1]}}}")
-    rules.append(".dold{" + a.at("dold", [(0, "opacity:1"), (.9, "opacity:1"), (1.2, "opacity:.45;text-decoration:line-through"),
-                                         (11.4, "opacity:.45;text-decoration:line-through"), (12, "opacity:1")])[7:-1] + "}")
-    rules.append(".dfix{" + a.at("dfix", [(0, "opacity:0"), (5.4, "opacity:0"), (5.8, "opacity:1"), (11.4, "opacity:1"), (12, "opacity:0")])[7:-1] + "}")
-    rules.append(".dbad{" + a.at("dbad", [(0, "text-decoration:none"), (5.0, "text-decoration:none"), (5.3, "text-decoration:line-through"),
-                                         (11.4, "text-decoration:line-through"), (12, "text-decoration:none")])[7:-1] + "}")
-    return "".join(a.css) + "".join(rules)
-
-
 def build_home(items):
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "SoftwareApplication", "name": "Resume Tribunal", "applicationCategory": "BusinessApplication",
@@ -356,28 +340,9 @@ def build_home(items):
   <ul class="trust"><li>No sign-up</li><li>Open source</li><li>Works with any AI app</li></ul>
 </section>
 
-<section class="demo-wrap" aria-label="Example: what happens to one line of your resume">
-  <div class="demo-head"><span>What happens to one line of your resume</span><button class="icon pause" type="button" aria-label="Pause animation" aria-pressed="false"><span class="ps">❚❚</span><span class="pl">▶</span></button></div>
-  <div class="demo">
-    <div class="pane">
-      <div class="pane-h"><span class="badge blue">AI 1</span>Your assistant rewrites it</div>
-      <p class="line dold">Helped improve on-time delivery</p>
-      <p class="line new dn1">Helped raise on-time delivery at the Dayton terminal from 81 to 93 percent, as part of the team</p>
-      <p class="line new dn2">Cut report prep from <span class="dbad">4 hours</span><span class="dfix"> half a day</span> to about 40 minutes</p>
-    </div>
-    <div class="pane">
-      <div class="pane-h"><span class="badge brand">AI 2</span>A different company's AI checks it, blind</div>
-      <p class="row dc1">{ok}<span><strong>81 to 93 percent</strong><br>Matches what you said</span></p>
-      <p class="row dc2">{ok}<span><strong>as part of the team</strong><br>Credit shared, like you said</span></p>
-      <p class="row dc3 neg">{bad}<span><strong>4 hours</strong><br>You said "half a day". Fixed.</span></p>
-    </div>
-  </div>
-  <p class="approve dok">{ok}You approve the changes. Your resume is ready.</p>
-</section>
-
-<section id="how" class="band">
-  <h2>How it works</h2>
-  <p class="sub">Six quick steps, about 5 minutes. Tap to skip, hold to pause.</p>
+<section id="how">
+  <h2>You do two things. The AIs do the rest.</h2>
+  <p class="sub">Paste the job and your resume, then check the changes. About 5 minutes.</p>
   <div class="hiw" aria-roledescription="carousel" aria-label="How Resume Tribunal works">
     <ol class="steps6" role="tablist">{steps6}</ol>
     <div class="stage" tabindex="0" aria-live="polite">
@@ -386,18 +351,21 @@ def build_home(items):
     </div>
     <p class="cap"><strong></strong><span></span></p>
   </div>
+  <p class="center meta hint">Tap to skip. Hold to pause.</p>
   <p class="center meta">Want more eyes on it? In a <strong>full council</strong>, three AIs from three companies each write a draft and critique each other first.</p>
 </section>
+
+
 
 <section id="proof">
   <span class="eyebrow">Real example</span>
   <h2>What the second AI caught</h2>
   <p class="sub">From a full run on a made-up candidate. <a href="{REPO}/tree/main/examples/operations-analyst">See every step on GitHub</a>.</p>
-  <div class="grid three">
-    <div class="card caught"><span class="was">"from 4 hours to 40 minutes"</span><span class="is">The candidate said "half a day".</span></div>
-    <div class="card caught"><span class="was">"framework adopted by leadership"</span><span class="is">It was a spreadsheet one supervisor used.</span></div>
-    <div class="card caught"><span class="was">"Raised on-time delivery"</span><span class="is">The team made the change. Now: "Helped raise".</span></div>
-  </div>
+  <ul class="card caughtlist">
+    <li><span class="was">"from 4 hours to 40 minutes"</span><span class="is">The candidate said "half a day".</span></li>
+    <li><span class="was">"framework adopted by leadership"</span><span class="is">It was a spreadsheet one supervisor used.</span></li>
+    <li><span class="was">"Raised on-time delivery"</span><span class="is">The team made the change. Now: "Helped raise".</span></li>
+  </ul>
   <div class="ba">
     <div class="card"><span class="label">Before</span><ul><li>Helped improve on-time delivery</li><li>Utilized Excel for various reports</li></ul></div>
     <div class="card after"><span class="label">After</span><ul><li>Helped raise Dayton terminal on-time delivery from 81 to 93 percent over about three months, after the team moved one carrier's Friday pickups to another carrier.</li>
@@ -460,21 +428,14 @@ def build_home(items):
     <div class="card stat"><span class="big">37</span><p>models tested. A checker from a different model family beat self-checking.</p><a href="https://arxiv.org/abs/2512.02304">Study, 2026</a></div>
     <div class="card stat"><span class="big">2.5 to 5.4</span><p>false details per resume when AI rewrote resumes with no safeguards.</p><a href="https://arxiv.org/abs/2607.01457">Study, 2026 (preprint)</a></div>
   </div>
-  <p class="center meta">Honest limits: those studies used maths, logic and test resumes, and no study shows several AIs write a better resume than one. Resume Tribunal adds an independent check, a script, and your approval.</p>
-</section>
-
-<section id="compare" class="band">
-  <span class="eyebrow">Compared</span>
-  <h2>Resume Tribunal vs. one AI chat</h2>
   <div class="table"><table>
-    <tr><th></th><th>One AI chat</th><th>Resume Tribunal</th></tr>
-    <tr><td>Who checks the draft</td><td>The same AI that wrote it</td><td><strong>An AI from a different company, blind</strong></td></tr>
-    <tr><td>Made-up numbers</td><td>Easy to miss</td><td><strong>A script checks every one against your words</strong></td></tr>
-    <tr><td>Your approval</td><td>Up to you to read closely</td><td><strong>You confirm each changed line</strong></td></tr>
-    <tr><td>Name and contact details</td><td>Sent as they are</td><td><strong>Hidden before a second AI sees them</strong></td></tr>
-    <tr><td>Time</td><td>A minute or two</td><td>About 5 minutes</td></tr>
+    <tr><th></th><th>ChatGPT alone</th><th>Resume Tribunal</th></tr>
+    <tr><td>Who checks it</td><td>The AI that wrote it</td><td><strong>A different company's AI, blind</strong></td></tr>
+    <tr><td>Made-up numbers</td><td>Easy to miss</td><td><strong>Checked against your words</strong></td></tr>
+    <tr><td>Your say</td><td>If you read closely</td><td><strong>You check each change</strong></td></tr>
+    <tr><td>Your name and email</td><td>Sent as they are</td><td><strong>Hidden first</strong></td></tr>
   </table></div>
-  <p class="center meta">Comparing resume skills? Read <a href="blog/resume-skills-compared.html">our honest comparison of six</a>, including where Resume Tribunal loses.</p>
+  <p class="center meta">Honest limits: those studies used maths, logic and test resumes, and no study shows several AIs write a better resume than one. See <a href="blog/resume-skills-compared.html">how six resume skills compare</a>, including where Resume Tribunal loses.</p>
 </section>
 
 <section id="faq">
@@ -499,7 +460,7 @@ def build_home(items):
 <a class="mcta btn primary" href="#start">Get started free</a>
 """
     extra = (f'<link rel="alternate" type="text/plain" href="llms.txt" title="Summary for AI assistants">\n'
-             f'<style>{demo_css()}</style>\n<script type="application/ld+json">{json.dumps(ld)}</script>\n')
+             f'<script type="application/ld+json">{json.dumps(ld)}</script>\n')
     (DOCS / "index.html").write_text(head(TITLE, DESC, SITE, 0, "website", extra).replace("<body>", '<body class="home">') + body + foot(0))
 
 

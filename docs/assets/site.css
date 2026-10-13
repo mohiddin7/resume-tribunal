@@ -387,3 +387,30 @@ h1, h2 { text-wrap: balance; }
 .mcta { transform: translateY(140%); opacity: 0; transition: transform .25s ease, opacity .25s ease; pointer-events: none; }
 body.show-mcta .mcta { transform: none; opacity: 1; pointer-events: auto; }
 @media (prefers-reduced-motion: reduce) { .mcta { transition: none; } }
+
+/* checklist pass: 44px tap targets, calmer section rhythm, the player sits right under the hero */
+.icon { width: 44px; height: 44px; }
+.stage .pause { width: 40px; height: 40px; }
+.copy { min-height: 40px; padding: 8px 14px; }
+.tabs button { min-height: 44px; }
+.chip { min-height: 40px; }
+.share a { min-height: 36px; display: inline-flex; align-items: center; }
+#how { padding-top: 8px; }
+#how h2 { font-size: clamp(1.4rem, 5vw, 2rem); }
+.hint { margin-top: 10px; }
+section + section:not(.band) { border-top: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+
+/* skim pass: compact proof list, stat rows, short comparison */
+.caughtlist { list-style: none; margin: 20px auto; padding: 6px 18px; max-width: 46rem; }
+.caughtlist li { display: grid; gap: 2px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.caughtlist li:last-child { border-bottom: 0; }
+@media (min-width: 720px) { .caughtlist li { grid-template-columns: 1fr 1fr; gap: 16px; align-items: baseline; } }
+.ba li { font-size: 15px; }
+@media (max-width: 719px) {
+  .stats { gap: 10px; }
+  .stat { display: grid; grid-template-columns: 7.2rem 1fr; gap: 4px 12px; align-items: center; padding: 14px 16px; }
+  .stat .big { font-size: 1.7rem; grid-row: span 2; }
+  .stat p { margin: 0; font-size: 15px; }
+  .stat a { grid-column: 2; }
+  table { font-size: 14px; } th, td { padding: 10px; }
+}
