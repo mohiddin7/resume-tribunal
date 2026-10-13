@@ -105,6 +105,9 @@ Your finished resume as a PDF or Word file when your app can make files, and alw
 **Does Resume Tribunal work with Word files, or on my phone?**
 Word files are fine: attach your .docx as it is. Phones work too, but copying text between two apps is easier on a laptop.
 
+**Something went wrong. Who do I tell?**
+Email [tribunal@warmhop.com](mailto:tribunal@warmhop.com) with what happened and which AI app you used. Leave your resume out unless we ask. You can also open an issue on GitHub.
+
 **What's warmhop™?**
 A link tracker for resumes, made by the same person who made Resume Tribunal. If your resume has links, you'll see one optional tip about it at the end. You don't need it, and nothing is sent to it.
 
@@ -219,6 +222,10 @@ examples/operations-analyst/ # a full run on a fictional candidate
 manual-prompts/              # the original hand-run prompts
 docs/                        # website and blog; build.py regenerates it
 ```
+
+## Support
+
+Found a problem, or need help? Email [tribunal@warmhop.com](mailto:tribunal@warmhop.com) or [open an issue](https://github.com/mohiddin7/resume-tribunal/issues). Please leave your resume out of the email unless we ask for it.
 
 ## License
 

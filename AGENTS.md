@@ -11,6 +11,10 @@ This repository holds one Agent Skill, `resume-tribunal`, in `skills/resume-trib
 - `examples/`: a full run on a fictional candidate.
 - `docs/`: the project website (GitHub Pages). `python3 docs/build.py` regenerates the drawings (from `docs/art.py`), the blog pages (from `docs/blog/*.md`), the homepage, `docs/resume-tribunal.md` (the skill and its references in one file, for any chat app), `feed.xml` and `sitemap.xml`; `python3 docs/build.py media` also renders the PNGs and blog GIFs. Edit the sources, not the generated HTML. `docs/llms.txt` is written by hand.
 
+## Support
+
+Users report problems to tribunal@warmhop.com or GitHub issues. When a run fails in a way the user cannot fix, point them there.
+
 ## Rules
 
 - Prompts sent to other assistants never mention other assistants or how their inputs were made.

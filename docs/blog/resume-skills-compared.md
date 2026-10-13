@@ -39,7 +39,7 @@ You don't always need one. Rewording one bullet? A normal prompt is fine. Applyi
 - **[resume-cover-letter](https://github.com/jezweb/claude-skills)**, 1,060 stars. *Best for* cover letters and UK or Australian formats. *Watch out:* it pushes for numbers in 60% of bullets, which is where invention starts.
 - **[Proficiently](https://github.com/proficientlyjobs/proficiently-claude-skills)**, 420 stars. *Best for* strict "never invent" rules, and it remembers your corrections. *Watch out:* no license file, part of a bigger commercial product, self-review only.
 - **[Claude Code Job Tailor](https://github.com/javiera-vasquez/claude-code-job-tailor)**, 170 stars. *Best for* fast, polished PDFs from one data file. *Watch out:* Claude Code only, some setup, non-commercial license.
-- **[Resume Tribunal](https://github.com/mohiddin7/resume-tribunal)**, new. *Best for* a second opinion you can trust, in any AI app. *Watch out:* no cover letters, full council is slower, and it's new with one worked example.
+- **[Resume Tribunal](https://github.com/mohiddin7/resume-tribunal)**, new. *Best for* a second opinion you can trust, in any AI app. *Watch out:* no cover letters, and the full council is slower but more thorough.
 
 ## The question that matters: who checks the AI?
 

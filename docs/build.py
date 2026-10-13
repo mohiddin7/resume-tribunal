@@ -111,7 +111,7 @@ def foot(depth):
     up = "../" * depth
     return f"""<footer class="site"><div class="in">
   <div class="fbrand"><img src="{up}assets/favicon.svg" alt="" width="26" height="26"><strong>Resume Tribunal</strong><span>Free and open source. MIT license.</span></div>
-  <nav aria-label="Footer"><a href="{up}#start">Get started</a><a href="{up}#faq">Questions</a><a href="{up}blog/">Blog</a><a href="{REPO}">GitHub</a><a href="{SITE}feed.xml">RSS</a><a href="{up}llms.txt">llms.txt</a></nav>
+  <nav aria-label="Footer"><a href="mailto:tribunal@warmhop.com">Support: tribunal@warmhop.com</a><a href="{up}#start">Get started</a><a href="{up}#faq">Questions</a><a href="{up}blog/">Blog</a><a href="{REPO}">GitHub</a><a href="{SITE}feed.xml">RSS</a><a href="{up}llms.txt">llms.txt</a></nav>
 </div></footer>
 </body>
 </html>
@@ -275,6 +275,8 @@ FAQ = [
      "Your finished resume as a PDF or Word file when your app can make files, and always as text you can paste into Word or Google Docs. You also get a list of what the job asks for that your resume doesn't show yet, plus the interview questions your resume is likely to prompt."),
     ("Does Resume Tribunal work with Word files, or on my phone?",
      "Word files are fine: attach your .docx as it is. Phones work too, but copying text between two apps is easier on a laptop."),
+    ("Something went wrong. Who do I tell?",
+     "Email tribunal@warmhop.com with what happened and which AI app you used. Leave your resume out unless we ask. You can also open an issue on GitHub."),
     ("What's warmhop™?",
      "A link tracker for resumes, made by the same person who made Resume Tribunal. If your resume has links, you'll see one optional tip about it at the end. You don't need it, and nothing is sent to it."),
 ]
@@ -351,7 +353,7 @@ def build_home(items):
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "SoftwareApplication", "name": "Resume Tribunal", "applicationCategory": "BusinessApplication",
          "operatingSystem": "Any", "url": SITE, "codeRepository": REPO, "license": "https://opensource.org/licenses/MIT",
-         "softwareVersion": "1.0.0", "image": f"{SITE}assets/og.png", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+         "softwareVersion": "1.0.0", "image": f"{SITE}assets/og.png", "publisher": {"@type": "Organization", "name": "Resume Tribunal", "email": "tribunal@warmhop.com", "url": SITE}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
          "description": "A free, open-source Agent Skill that tailors a resume or CV to a job using only the candidate's own facts. "
                         "A second AI from a different company checks every draft blind, a script checks every number against the "
                         "candidate's own words, and the candidate approves each change."},

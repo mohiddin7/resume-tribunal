@@ -5,11 +5,31 @@ False is always dark, None is always light (used for GIF exports and GitHub's th
 Animations use one shared cycle per drawing, with keyframes at absolute times, and stop for viewers
 who ask for reduced motion.
 """
+import base64
+import functools
+import pathlib
+
 LIGHT = dict(bg="#f7f4ef", surf="#fffdf9", ink="#221e19", muted="#5f574d", line="#ddd5c8", brand="#a8515c",
              onbrand="#ffffff", blue="#35619a", green="#2f6c36", purple="#685497", danger="#a14126", tint="#f3e6e6")
 DARK = dict(bg="#14120f", surf="#221e19", ink="#f3ede4", muted="#b5ab9e", line="#3a332b", brand="#d67a84",
             onbrand="#14120f", blue="#4e88d3", green="#479650", purple="#9177cf", danger="#db6141", tint="#3a2326")
-FONT = 'system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif'
+FONT = '"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif'
+
+
+
+FONTS = pathlib.Path(__file__).parent / "assets" / "fonts"
+
+
+@functools.lru_cache(maxsize=1)
+def embedded_font(_markup=""):
+    """@font-face rules carrying IBM Plex Sans (Latin letters only, about 15KB a weight) as data URIs, so a
+    drawing looks the same in <img> tags, on GitHub and in GIF exports. The cut-down files are committed in
+    assets/fonts, so any build, with or without extra tools, gives the same output."""
+    css = ""
+    for weight in (400, 700):
+        data = base64.b64encode((FONTS / f"plex-latin-{weight}.woff2").read_bytes()).decode()
+        css += f'@font-face{{font-family:"IBM Plex Sans";font-weight:{weight};src:url(data:font/woff2;base64,{data}) format("woff2")}}'
+    return css
 
 
 def theme(variant):
@@ -39,7 +59,7 @@ class Anim:
 def svg(w, h, variant, title, desc, body, css=""):
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}" role="img" '
             f'aria-labelledby="t d"><title id="t">{title}</title><desc id="d">{desc}</desc>'
-            f"<style>{theme(variant)}text{{font-family:{FONT}}}{css}</style>"
+            f"<style>{embedded_font(body + title)}{theme(variant)}text{{font-family:{FONT}}}{css}</style>"
             f'<rect width="{w}" height="{h}" rx="18" fill="var(--bg)"/>{body}</svg>\n')
 
 
@@ -64,14 +84,14 @@ def favicon():
 
 def logo(variant):
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 40" width="236" height="40" role="img" aria-label="Resume Tribunal">'
-            f"<style>{theme(variant)}text{{font-family:{FONT}}}</style>{mark(0, 4)}"
+            f"<style>{embedded_font('>Resume Tribunal<')}{theme(variant)}text{{font-family:{FONT}}}</style>{mark(0, 4)}"
             '<text x="42" y="27" font-size="20" font-weight="800" letter-spacing="-.4" fill="var(--ink)">Resume Tribunal</text></svg>\n')
 
 
 def og():
     t = LIGHT
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
-<style>{theme(None)}text{{font-family:{FONT}}}</style>
+<style>{embedded_font(">Resume Tribunal Not getting shortlisted? Fix your resume for the job in 5 minutes. Works with ChatGPT, Gemini or any AI. Nothing made up. Free, no sign-up. Free and open source<")}{theme(None)}text{{font-family:{FONT}}}</style>
 <rect width="1200" height="630" fill="{t['bg']}"/>
 {mark(80, 72, 1.9)}<text x="158" y="118" font-size="36" font-weight="800" fill="{t['ink']}">Resume Tribunal</text>
 <text x="80" y="250" font-size="64" font-weight="800" letter-spacing="-2" fill="{t['ink']}">Not getting shortlisted?</text>
@@ -214,46 +234,50 @@ def fig_manual_vs_skill(variant):
 
 
 def fig_blind_check(variant):
-    a = Anim(9)
-    move = a.at("mv", [(0, "transform:translateX(0)"), (1.2, "transform:translateX(0)"), (2.6, "transform:translateX(342px)"), (8.4, "transform:translateX(342px)"), (9, "transform:translateX(0)")])
-    tag = a.at("tg", [(0, "opacity:1"), (1.1, "opacity:1"), (1.5, "opacity:0"), (8.6, "opacity:0"), (9, "opacity:1")])
-    anon = a.at("an", [(0, "opacity:0"), (2.6, "opacity:0"), (3.0, "opacity:1"), (8.4, "opacity:1"), (9, "opacity:0")])
-    q = a.at("q", [(0, "opacity:0"), (3.4, "opacity:0"), (3.9, "opacity:1"), (8.4, "opacity:1"), (9, "opacity:0")])
-    ok = a.at("ok", [(0, "opacity:0"), (5.0, "opacity:0"), (5.5, "opacity:1"), (8.4, "opacity:1"), (9, "opacity:0")])
-    body = f'''<rect x="40" y="70" width="250" height="250" rx="18" fill="var(--surf)" stroke="var(--blue)" stroke-width="2"/>
-<text x="64" y="106" font-size="15" font-weight="700" letter-spacing="1.5" fill="var(--blue)">AI 1 · WRITES</text>
-<rect x="430" y="70" width="250" height="250" rx="18" fill="var(--surf)" stroke="var(--brand)" stroke-width="2"/>
-<text x="454" y="106" font-size="15" font-weight="700" letter-spacing="1.5" fill="var(--brand)">AI 2 · CHECKS</text>
-<text x="165" y="300" text-anchor="middle" font-size="14" fill="var(--muted)">writes the draft</text>
-<text x="454" y="128" font-size="14" fill="var(--muted)">from a different company</text>
-<g {move}><rect x="96" y="150" width="128" height="150" rx="10" fill="var(--bg)" stroke="var(--line)"/>
-<path d="M114 182h92M114 204h92M114 226h70M114 248h84" stroke="var(--muted)" stroke-width="5" stroke-linecap="round"/>
-<g {tag}><rect x="104" y="270" width="112" height="22" rx="11" fill="var(--blue)"/><text x="160" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="var(--onbrand)">written by AI 1</text></g>
-<g {anon}><rect x="116" y="270" width="88" height="22" rx="11" fill="var(--muted)"/><text x="160" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bg)">Draft K</text></g></g>
-<g {q}><text x="555" y="352" text-anchor="middle" font-size="17" fill="var(--ink)">Who wrote this? <tspan font-weight="800">It isn't told.</tspan></text></g>
-<g {ok}><rect x="40" y="338" width="250" height="34" rx="17" fill="var(--tint)"/><text x="165" y="361" text-anchor="middle" font-size="15" font-weight="700" fill="var(--brand)">No AI grades its own work</text></g>
-<text x="40" y="44" font-size="22" font-weight="800" fill="var(--ink)">The check that makes the difference</text>'''
+    """AI 1 hands the draft to AI 2, who wears a blindfold: it isn't told who wrote it. Then it checks it."""
+    a = Anim(8)
+    move = a.at("mv", [(0, "transform:translateX(0)"), (.8, "transform:translateX(0)"), (2.2, "transform:translateX(250px)"), (7.4, "transform:translateX(250px)"), (8, "transform:translateX(0)")])
+    tick = a.at("tk", [(0, "opacity:0;transform:scale(.4)"), (2.8, "opacity:0;transform:scale(.4)"), (3.2, "opacity:1;transform:scale(1)"), (7.4, "opacity:1;transform:scale(1)"), (8, "opacity:0")], "transform-origin:520px 178px;")
+    cap = a.at("cp", [(0, "opacity:0"), (3.6, "opacity:0"), (4.1, "opacity:1"), (7.4, "opacity:1"), (8, "opacity:0")])
+    face = lambda x, col, eyes: (f'<circle cx="{x}" cy="150" r="54" fill="var(--surf)" stroke="var(--{col})" stroke-width="4"/>{eyes}'
+                                 f'<path d="M{x - 16} 172q16 12 32 0" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>')
+    open_eyes = '<circle cx="128" cy="140" r="5" fill="var(--ink)"/><circle cx="152" cy="140" r="5" fill="var(--ink)"/>'
+    blindfold = ('<rect x="530" y="128" width="120" height="22" rx="6" fill="var(--ink)"/>'
+                 '<path d="M650 136l22-8M650 144l20 10" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>')
+    body = f'''<text x="140" y="62" text-anchor="middle" font-size="18" font-weight="700" fill="var(--blue)">AI 1 writes</text>
+<text x="580" y="62" text-anchor="middle" font-size="18" font-weight="700" fill="var(--brand)">AI 2 checks</text>
+<text x="580" y="84" text-anchor="middle" font-size="14" fill="var(--muted)">from a different company</text>
+{face(140, "blue", open_eyes)}{face(580, "brand", blindfold)}
+<g {move}><rect x="196" y="176" width="74" height="92" rx="10" fill="var(--surf)" stroke="var(--line)" stroke-width="2"/>
+<path d="M210 198h46M210 214h46M210 230h32M210 246h40" stroke="var(--muted)" stroke-width="4" stroke-linecap="round"/></g>
+<g {tick}><circle cx="520" cy="178" r="20" fill="var(--green)"/><path d="M511 178l6 6 12-13" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g {cap}><text x="360" y="330" text-anchor="middle" font-size="22" font-weight="700" fill="var(--ink)">AI 2 isn't told who wrote it,</text>
+<text x="360" y="362" text-anchor="middle" font-size="22" font-weight="700" fill="var(--ink)">so it has no reason to go easy.</text></g>'''
     return svg(720, 405, variant, "A blind check by a different AI",
-               "A draft written by AI 1 moves to AI 2, from a different company. On the way its label changes from written by AI 1 "
-               "to Draft K, so the checker is not told who wrote it. No AI grades its own work.", body, a.style())
+               "AI 1 writes the draft and hands it to AI 2, from a different company, which wears a blindfold because it is "
+               "not told who wrote it. AI 2 checks it. Caption: AI 2 isn't told who wrote it, so it has no reason to go easy.", body, a.style())
 
 
 def fig_ats_myth(variant):
+    """A famous resume statistic, stamped MYTH, then the two facts that replace it."""
     a = Anim(8)
-    stamp = a.at("st", [(0, "opacity:0"), (1.8, "opacity:0;transform:rotate(-8deg) scale(1.6)"), (2.2, "opacity:1;transform:rotate(-8deg) scale(1)"), (7.4, "opacity:1;transform:rotate(-8deg) scale(1)"), (8, "opacity:0")], "transform-origin:550px 200px;")
-    fact = a.at("f", [(0, "opacity:0"), (3.0, "opacity:0"), (3.5, "opacity:1"), (7.4, "opacity:1"), (8, "opacity:0")])
-    body = f'''<text x="40" y="60" font-size="15" font-weight="700" letter-spacing="1.5" fill="var(--muted)">YOU'VE PROBABLY READ THIS</text>
-<text x="40" y="128" font-size="34" font-weight="800" fill="var(--ink)">"75% of resumes are rejected</text>
-<text x="40" y="172" font-size="34" font-weight="800" fill="var(--ink)">by ATS before a human</text>
-<text x="40" y="216" font-size="34" font-weight="800" fill="var(--ink)">sees them"</text>
-<g {stamp}><rect x="440" y="168" width="220" height="64" rx="10" fill="var(--bg)" stroke="var(--danger)" stroke-width="5"/>
-<text x="550" y="211" text-anchor="middle" font-size="28" font-weight="900" letter-spacing="2" fill="var(--danger)">NO SOURCE</text></g>
-<g {fact}><text x="40" y="286" font-size="20" fill="var(--ink)">The figure traces back to a vendor that closed in 2013.</text>
-<text x="40" y="316" font-size="20" fill="var(--ink)">Most resumes are turned down by people, not software.</text></g>
-<text x="40" y="364" font-size="14" fill="var(--muted)">Sources: HRTact (2020); Greenhouse Talent Matching FAQ.</text>'''
+    stamp = a.at("st", [(0, "opacity:0;transform:rotate(-10deg) scale(1.8)"), (1.2, "opacity:0;transform:rotate(-10deg) scale(1.8)"),
+                        (1.5, "opacity:1;transform:rotate(-10deg) scale(1)"), (7.4, "opacity:1;transform:rotate(-10deg) scale(1)"), (8, "opacity:0")], "transform-origin:560px 186px;")
+    f1 = a.at("f1", [(0, "opacity:0;transform:translateY(8px)"), (2.4, "opacity:0;transform:translateY(8px)"), (2.8, "opacity:1;transform:translateY(0)"), (7.4, "opacity:1"), (8, "opacity:0")])
+    f2 = a.at("f2", [(0, "opacity:0;transform:translateY(8px)"), (3.4, "opacity:0;transform:translateY(8px)"), (3.8, "opacity:1;transform:translateY(0)"), (7.4, "opacity:1"), (8, "opacity:0")])
+    body = f'''<rect x="40" y="40" width="640" height="190" rx="18" fill="var(--surf)" stroke="var(--line)" stroke-width="1.5"/>
+<text x="72" y="84" font-size="15" fill="var(--muted)">You've probably read this:</text>
+<text x="72" y="140" font-size="38" font-weight="700" fill="var(--ink)">"75% of resumes are</text>
+<text x="72" y="188" font-size="38" font-weight="700" fill="var(--ink)">rejected by ATS."</text>
+<g {stamp}><rect x="482" y="156" width="156" height="60" rx="10" fill="var(--bg)" stroke="var(--danger)" stroke-width="5"/>
+<text x="560" y="198" text-anchor="middle" font-size="34" font-weight="700" letter-spacing="4" fill="var(--danger)">MYTH</text></g>
+<g {f1}><circle cx="62" cy="282" r="14" fill="var(--danger)"/><path d="M57 277l10 10M67 277l-10 10" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+<text x="90" y="290" font-size="22" fill="var(--ink)">No study behind it. It traces to a vendor gone since 2013.</text></g>
+<g {f2}><circle cx="62" cy="336" r="14" fill="var(--green)"/><path d="M56 336l4 4 8-8" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="90" y="344" font-size="22" fill="var(--ink)">Most resumes are turned down by people, not software.</text></g>'''
     return svg(720, 405, variant, "The 75 percent ATS myth",
-               'A quote, "75% of resumes are rejected by ATS before a human sees them", is stamped NO SOURCE. The figure traces back '
-               "to a vendor that closed in 2013. Most resumes are turned down by people, not software.", body, a.style())
+               'A quote, "75% of resumes are rejected by ATS", is stamped MYTH. Then two lines: No study behind it, it traces to a '
+               "vendor gone since 2013. Most resumes are turned down by people, not software.", body, a.style())
 
 
 def fig_self_grade(variant):

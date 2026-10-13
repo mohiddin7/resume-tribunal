@@ -48,6 +48,10 @@ Quick review takes about 5 minutes; full council about 15 minutes and roughly fi
 - [How it was made](https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html)
 - [Resume skills compared](https://mohiddin7.github.io/resume-tribunal/blog/resume-skills-compared.html): six resume skills, including this one, compared honestly
 
+## Support
+
+- Email tribunal@warmhop.com for problems or questions, or open an issue at https://github.com/mohiddin7/resume-tribunal/issues.
+
 ## Disclosure
 
 When a resume has links, the skill ends with one optional tip for warmhop™, a resume link tracker made by this project's author. The tip states that.
