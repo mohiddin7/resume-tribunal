@@ -127,7 +127,10 @@ def posts():
         meta = dict(line.split(": ", 1) for line in front.strip().splitlines())
         meta["tags"] = [t.strip() for t in meta.get("tags", "").split(",") if t.strip()]
         words = len(re.sub(r"\[\[.*?\]\]", "", body).split())
-        out.append(dict(slug=md.stem, md=body, words=words, minutes=max(1, round(words / 230)), **meta))
+        plain = re.sub(r"\[\[[^\]]*\]\]|[#*>|`_\[\]()-]", " ", body)
+        plain = re.sub(r"https?://\S+", " ", plain)
+        out.append(dict(slug=md.stem, md=body, words=words, minutes=max(1, round(words / 230)),
+                        plain=" ".join(plain.lower().split()), **meta))
     for p in out:
         p["html"] = render_post_body(markdown.markdown(p.pop("md"), extensions=["tables"]), p)
     return sorted(out, key=lambda p: p["date"], reverse=True)
@@ -147,6 +150,7 @@ CTA = ('<aside class="cta-box"><img src="../assets/favicon.svg" alt="" width="40
 def render_post_body(body, p):
     body = re.sub(r"<p>\[\[figure:([\w-]+)\|(.+?)\]\]</p>", lambda m: figure(m.group(1), html.unescape(m.group(2))), body)
     body = body.replace("<p>[[cta]]</p>", CTA)
+    body = body.replace("<p>[[tldr]]</p>", '<aside class="tldr"><strong>The short version</strong>').replace("<p>[[/tldr]]</p>", "</aside>")
     body = body.replace("<table>", '<div class="table"><table>').replace("</table>", "</table></div>")
     return body
 
@@ -185,7 +189,8 @@ def build_blog(items):
         related = "".join(f'<a class="card post" href="{o["slug"]}.html"><span class="tags">{tags(o)}</span><strong>{esc(o["title"])}</strong>'
                           f'<span class="meta">{o["minutes"]} min read</span></a>' for o in others)
         page = (head(f"{p['title']} | Resume Tribunal", p["description"], url, 1, "article", extra)
-                + f'''<main id="main" class="post-wrap">
+                + f'''<div class="readbar" aria-hidden="true"><b></b></div>
+<main id="main" class="post-wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a> / <a href="./">Blog</a></nav>
 <article class="post">
 <header class="post-head"><div class="tags">{tags(p)}</div>
@@ -205,7 +210,7 @@ def build_blog(items):
         f'<button type="button" class="chip" data-tag="{esc(t)}">{esc(t)}</button>' for t in all_tags)
     cards = "\n".join(
         f'<a class="card post" href="{p["slug"]}.html" data-tags="{esc("|".join(p["tags"]))}" '
-        f'data-text="{esc((p["title"] + " " + p["description"] + " " + " ".join(p["tags"])).lower())}">'
+        f'data-text="{esc((p["title"] + " " + p["description"] + " " + " ".join(p["tags"]) + " " + p["plain"]).lower())}">'
         f'<span class="tags">{tags(p)}</span><strong>{esc(p["title"])}</strong><span class="desc">{esc(p["description"])}</span>'
         f'<span class="meta">{datetime.date.fromisoformat(p["date"]):%d %b %Y} · {p["minutes"]} min read</span><span class="more">Read the post →</span></a>'
         for p in items)
@@ -216,9 +221,12 @@ def build_blog(items):
         head("Blog: AI, resumes and honest job hunting | Resume Tribunal", desc, f"{SITE}blog/", 1, "website",
              f'<script type="application/ld+json">{json.dumps(ld)}</script>\n')
         + f'''<main id="main" class="blog-wrap">
-<section class="blog-hero"><span class="eyebrow">Blog</span><h1>AI, resumes and honest job hunting</h1><p class="lede">{desc}</p>
-<label class="search"><span class="sr">Search posts</span><input type="search" id="q" placeholder="Search posts" autocomplete="off"></label>
-<div class="chips" role="group" aria-label="Filter by topic">{chips}</div></section>
+<header class="blog-head"><h1>Blog</h1><p class="meta">{esc(desc)}</p></header>
+<div class="blog-tools">
+<label class="search"><span class="sr">Search posts</span><input type="search" id="q" placeholder="Search posts, e.g. ATS or ChatGPT" autocomplete="off" aria-describedby="count"></label>
+<div class="chips" role="group" aria-label="Filter by topic">{chips}</div>
+<p class="meta" id="count" aria-live="polite"></p>
+</div>
 <div class="grid posts" id="posts">
 {cards}
 </div>

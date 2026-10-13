@@ -451,3 +451,30 @@ body.home main > section > .tabs { width: fit-content; max-width: 100%; align-se
 #start > details.more { max-width: 44rem; margin: 16px auto 0; text-align: left; }
 .copybox code { overflow-wrap: break-word; word-break: normal; }
 @media (max-width: 759px) { .copybox code { font-size: 13px; } }
+
+/* blog index: plain header, tools, cards */
+.blog-head { padding: 40px 0 8px; }
+.blog-head h1 { font-size: clamp(1.8rem, 6vw, 2.4rem); margin: 0 0 4px; }
+.blog-tools { display: grid; gap: 12px; margin: 16px 0 8px; }
+.blog-tools .search input { margin: 0; max-width: none; }
+.blog-tools .chips { justify-content: flex-start; }
+.blog-tools #count { margin: 0; }
+
+/* posts: built to skim */
+.readbar { position: fixed; left: 0; right: 0; top: 0; height: 3px; z-index: 30; }
+.readbar b { display: block; height: 100%; width: 0; background: var(--brand); }
+.post-head h1 { font-size: clamp(1.7rem, 6.5vw, 2.6rem); line-height: 1.12; }
+.tldr { display: block; background: var(--surf); border: 1px solid var(--line); border-left: 5px solid var(--brand); border-radius: 14px; padding: 16px 20px 6px; margin: 24px 0 8px; box-shadow: var(--shadow); }
+.tldr > strong { display: block; font-size: 14px; color: var(--brand); margin-bottom: 2px; }
+.tldr ul { margin: 6px 0 10px; padding-left: 20px; }
+.tldr li { margin: 6px 0; font-size: 17px; }
+.prose h2 { font-size: clamp(1.35rem, 4.6vw, 1.7rem); margin: 44px 0 6px; padding-top: 12px; border-top: 1px solid var(--line); }
+.prose p, .prose li { font-size: 18px; }
+.prose li strong:first-child { color: var(--ink); }
+.prose blockquote { margin: 28px 0; padding: 18px 22px; border: 0; border-radius: 16px; background: var(--tint); font-size: clamp(1.15rem, 4.4vw, 1.45rem); font-weight: 750; line-height: 1.35; letter-spacing: -.01em; }
+.prose blockquote p { margin: 0; font-size: inherit; }
+.prose .table { margin: 22px 0; font-size: 14px; }
+.prose .table td:first-child { font-weight: 700; }
+@media (min-width: 900px) { .fig { margin-left: -60px; margin-right: -60px; } }
+.fig img { box-shadow: var(--shadow); }
+.prose li em { font-style: normal; font-weight: 700; color: var(--brand); }

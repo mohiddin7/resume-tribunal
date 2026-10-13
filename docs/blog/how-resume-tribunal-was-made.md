@@ -1,100 +1,85 @@
 ---
-title: How I built Resume Tribunal: three AIs, one resume, and no made-up numbers
-description: It started as sixteen prompts I copied between three AI chats by hand. Here is how it became a free tool, what the research said, and what testing it taught me.
+title: I let three AIs argue over my resume. Here's what they caught.
+description: It started as sixteen prompts and three browser tabs. It became a free tool that won't let an AI make up your experience.
 date: 2026-10-11
 tags: Behind the scenes, AI review, Building in public
 ---
 
-Earlier this year I was applying for jobs and doing what most people do now. I pasted my resume and a job posting into an AI and asked it to make me look good.
+[[tldr]]
 
-The results looked polished, but they had problems.
+- An AI that writes your resume will also tell you it's great. It's biased, and the research agrees.
+- So I made a second AI, from a different company, check the first one's work without knowing who wrote it.
+- That became Resume Tribunal: free, works in ChatGPT, Gemini, Claude or any AI, and a quick review takes about 2 minutes.
 
-The rewrites read well, but they didn't read like me. They used words I never use, like "spearheaded" and "leveraged". They echoed the job posting a bit too neatly. And now and then a claim came out bigger than what I had actually done.
+[[/tldr]]
 
-When I asked the same AI to check its draft, it told me the draft was strong. Looking back, that's what you'd expect from the thing that wrote it.
+## The AI that loved its own homework
 
-So I started pasting the draft into a different company's AI, in a fresh chat with no history, and asking it to read like a skeptical hiring manager. It was far more willing to point out problems. That was the start of this project.
+Earlier this year I was job hunting and doing what everyone does. Paste resume. Paste job. Ask the AI to make me shine.
 
-## The manual version
+It made me shine a little too brightly. Words I never use, like "spearheaded". Claims a size bigger than what I'd done. Lines that echoed the job post so neatly it felt like cheating on a test.
 
-Over the next few months I wrote a set of prompts and ran them by hand. They are all still in the repository, unedited, in a folder called [manual-prompts](https://github.com/mohiddin7/resume-tribunal/tree/main/manual-prompts).
+Then I asked the same AI to check its work. It said the draft was strong.
 
-The first set, in May, covered the basics. Work out what the job actually wants. Screen my resume against it as a tough hiring manager. Rewrite the weakest bullets. Write the full resume. I ran those in three different assistants, audited each result in a fresh chat, and merged the best of the three.
+> Which is a bit like asking a chef to rate their own soup.
 
-In June and July I added a second round. All three assistants reviewed the merged resume and I reconciled what they said. Then I had two of them research the role itself: what hiring managers for this job look for, what reads as inflated, and what is changing in the field. That became a short handbook the final rewrite had to follow.
-
-It worked. The resume I ended up with was the best I'd had, and I could explain every line of it in an interview.
-
-It also took hours. Sixteen prompts, three browser tabs, and a lot of copy and paste. I kept a notes file just to remember which reply came from which AI, so I wouldn't favour one without meaning to.
-
-I couldn't imagine anyone else putting up with that.
-
-[[figure:manual-vs-skill|Sixteen prompts by hand, or one message with Resume Tribunal.]]
-
-## Turning it into a skill
-
-In October I turned the prompts into an Agent Skill. If you haven't come across these, a skill is a folder of instructions that an AI assistant loads when it needs them. You install it once. After that you say "tailor my resume to this job" and the assistant already knows the whole process.
-
-Before writing anything, I went looking for evidence. Two findings shaped the design.
-
-First, AI models really do go easy on their own work. In one study, AI judges were [up to 50% more likely](https://arxiv.org/abs/2604.06996) to pass a failed check when the output was their own. Another, on resume screening, found models [favoured summaries they had written](https://arxiv.org/abs/2509.00462) over the human originals. My hunch had a name: self-preference bias.
+It turns out this has a name. AI judges are up to [50% more likely to pass a failed answer](https://arxiv.org/abs/2604.06996) when the answer is their own.
 
 [[figure:self-preference|AI judges go easier on their own mistakes. Illustration of the reported effect.]]
 
- A third study helped too. Across 37 models, a checker from a [different model family](https://arxiv.org/abs/2512.02304) did better than self-checking.
+## Sixteen prompts and a notes file
 
-The second finding was less flattering to my idea. Nobody has shown that a group of AIs writes a better resume than one strong AI. The evidence for an outside reviewer comes from maths and logic tasks, so for writing it is an analogy. "Three AIs beat one" is a design choice. The README says so in plain words.
+So I got a second opinion. A different company's AI, a fresh chat, and one instruction: read this like a skeptical hiring manager.
 
-I built the skill itself with an AI coding agent, and had AIs from other companies review the work. Same rule as the resumes: no AI checks its own work.
+It was far more willing to point out problems. So I kept going, all summer:
 
-## What I kept, and what I changed
+- **May:** prompts to decode the job, screen my resume, and rewrite the weak bullets, run in three different AIs.
+- **June and July:** all three reviewed the merged result, and two of them researched the role itself.
 
-The core idea stayed. The AI that writes a line never gets to be the one that approves it. A second AI, from a different company, reviews the draft without being told who wrote it. In the full version, three AIs each write a draft and then critique each other under shuffled labels like "Draft K" and "Draft M".
+The resume I ended up with was the best I'd had. It also took hours, three browser tabs, and a notes file just to remember which reply came from which AI.
 
-Almost everything around that changed.
+[[figure:manual-vs-skill|Sixteen prompts by hand, or one message with Resume Tribunal.]]
 
-**The important rules moved into code.** A prompt can say "don't invent numbers" and the AI can still do it. So there is a small checker script that compares every number and every name in the resume to what you actually wrote. If "Tableau" shows up and you never mentioned Tableau, the check fails.
+Nobody else was ever going to do that. So I turned it into a skill.
 
-**You sign off on every changed line.** Before you get a file, the assistant lists each claim that differs from your original resume. It asks whether each one is true and whether you could explain it in an interview. Anything you don't confirm comes out.
+## What Resume Tribunal does now
 
-**Your details stay with you.** Your name, email, phone number and links are swapped for placeholders before anything goes to a second AI. The skill asks before it sends anything.
+A skill is a set of instructions your AI app loads when it needs them. You paste one message into ChatGPT, Gemini, Claude or any AI, and it knows the whole routine:
 
-**The copy and paste is optional.** If you have other AI tools on your computer, the skill runs them itself, each one locked in an empty folder where it can't see your files. If you don't, it hands you one block of text to paste into another AI app, and you paste the reply back. A quick review is one round.
+- **Your AI rewrites** your resume for the job, in the job's own words.
+- **A second AI checks it**, from a different company, without being told who wrote it.
+- **A script checks every number and name** against what you actually said. Mention Tableau you've never touched and it fails.
+- **You say yes** to each change before you get a file.
+- **Next time, it remembers.** The facts you confirmed are saved on your computer, or handed to you as a block to paste, so your second job takes a few questions instead of an interview.
+
+A quick review takes about 2 minutes. Your name and contact details are hidden before anything goes to a second AI.
 
 [[cta]]
 
-## How I tested it
+## The test that hurt
 
-I ran it on my own resume first, for a real job. It took under half an hour. A blind reviewer said no to a phone screen for the original and yes for the new version.
+I asked AI reviewers to tear the project apart, each playing a different kind of expert. The one that hurt most was the simplest: someone whose whole AI experience is typing a question into ChatGPT.
 
-Then I asked AI reviewers to pull the project apart, each one playing a different kind of expert who writes and critiques these tools. The most useful reviewer was the simplest one: a person whose whole experience of AI is typing a question into ChatGPT, the way most of us did in 2023.
+They closed the tab in 30 seconds. The first thing on my page was a terminal command.
 
-That reviewer closed the tab in about 30 seconds. The first thing on the page was a terminal command, and they had no idea what a terminal was.
+> Fair. I fixed the page, not the reader.
 
-They had a point. The page now starts with what the tool does in plain words, shows a before and after, and has a "never used a terminal?" route near the top.
+## What the second AI caught
 
-Last, I had a fresh AI agent run the whole skill from its files alone, with a made-up candidate whose answers were scripted in advance. It finished in about 12 minutes, with eight calls to other AIs and no failures. It also wrote down 32 places where my instructions were vague or contradicted each other. I fixed them.
+I then had a fresh AI run the whole thing on a made-up candidate. The other AIs suggested more than twenty things the candidate never said. A few:
 
-That run is published as the [worked example](https://github.com/mohiddin7/resume-tribunal/tree/main/examples/operations-analyst), with the candidate's own words included, so anyone can check every number with one command.
+- **"from 4 hours to 40 minutes"**, when the candidate said "half a day"
+- **"framework adopted by leadership"**, for a spreadsheet one supervisor used
+- **dropping "simple"** from "simple SQL queries", four separate times
 
-## What it caught
+[[figure:rejected-claims|One of more than twenty suggestions Resume Tribunal turned down.]]
 
-In that example, the other AIs suggested more than twenty things the candidate never said. A few of them:
+Every one was rejected. The candidate's own words decide. You can [check every line yourself](https://github.com/mohiddin7/resume-tribunal/tree/main/examples/operations-analyst).
 
-[[figure:rejected-claims|One of more than twenty suggestions Resume Tribunal turned down in the worked example.]]
+## Three things I'd tell anyone using AI for a resume
 
-- "from 4 hours to 40 minutes", when the candidate had said "half a day"
-- "root-cause tracking framework adopted by leadership", for a spreadsheet one supervisor used in a weekly meeting
-- dropping the word "simple" from "simple SQL queries", four separate times
+1. **Get a second opinion from a different AI.** The one that wrote it is the worst judge of it.
+2. **Never keep a number you didn't give it.** If you can't explain it in an interview, it's a liability.
+3. **Keep your own words.** Recruiters can smell "spearheaded" from across the room.
 
-All of them were rejected. The candidate's own words decide.
-
-## What I learned
-
-1. **AI is generous with itself.** If you use AI for anything that matters, get a second opinion from a different one.
-2. **Rules that matter belong in code.** Asking an AI not to make things up helps a little. A script that rejects any number you never gave helps a lot more.
-3. **Write for the least technical reader.** Developers can skip ahead. Beginners can't fill in the gaps.
-
-## Try it
-
-Resume Tribunal is free and open source: [github.com/mohiddin7/resume-tribunal](https://github.com/mohiddin7/resume-tribunal). If you've never used a terminal, start with the "New to this?" section. If you try it, I'd like to hear what broke.
+Resume Tribunal is free and open source. [Try it in your AI app](../#start), and tell me what broke.

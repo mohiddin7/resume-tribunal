@@ -207,10 +207,10 @@ def fig_manual_vs_skill(variant):
 <g {done}><rect x="392" y="214" width="250" height="52" rx="16" fill="var(--surf)" stroke="var(--line)"/>
 <circle cx="420" cy="240" r="12" fill="var(--green)"/><path d="M414 240l4 4 8-8" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="442" y="247" font-size="17" fill="var(--ink)">Drafted, checked, ready</text></g>
-<text x="392" y="350" font-size="16" font-weight="700" fill="var(--ink)">1 message · about 5 minutes</text>'''
+<text x="392" y="350" font-size="16" font-weight="700" fill="var(--ink)">1 message · about 2 minutes</text>'''
     return svg(720, 405, variant, "By hand versus with Resume Tribunal",
                "Left, sixteen prompt cards appear one by one: 16 prompts, 3 chat tabs, hours. Right, one message, tailor my resume "
-               "to this job, and a note: drafted, checked, ready. One message, about 5 minutes.", body, a.style())
+               "to this job, and a note: drafted, checked, ready. One message, about 2 minutes.", body, a.style())
 
 
 def fig_blind_check(variant):

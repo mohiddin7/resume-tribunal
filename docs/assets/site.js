@@ -128,25 +128,44 @@
       [heroCta, hint, start].forEach(function (el) { if (el) { seen.set(el, el === heroCta); io.observe(el); } });
     } else if (mcta) { document.body.classList.add("show-mcta"); }
 
+    // Blog search: every word must appear somewhere in a post (title, tags or full text), in any order.
+    // The query and topic live in the address, so a search can be shared and survives the back button.
     var q = document.getElementById("q");
     if (q) {
-      var tag = "";
+      var params = new URLSearchParams(location.search), tag = params.get("tag") || "";
+      var count = document.getElementById("count"), cards = $$("#posts .post");
+      q.value = params.get("q") || "";
       var filter = function () {
-        var text = q.value.trim().toLowerCase(), shown = 0;
-        $$("#posts .post").forEach(function (c) {
-          var ok = (!text || c.dataset.text.indexOf(text) > -1) && (!tag || c.dataset.tags.split("|").indexOf(tag) > -1);
+        var words = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean), shown = 0;
+        cards.forEach(function (c) {
+          var ok = words.every(function (w) { return c.dataset.text.indexOf(w) > -1; }) &&
+                   (!tag || c.dataset.tags.split("|").indexOf(tag) > -1);
           c.hidden = !ok; if (ok) shown++;
         });
         document.getElementById("empty").hidden = shown > 0;
+        count.textContent = (words.length || tag) ? shown + (shown === 1 ? " post" : " posts") : cards.length + " posts";
+        $$(".chip").forEach(function (x) { x.classList.toggle("on", x.dataset.tag === tag); });
+        var u = new URLSearchParams();
+        if (q.value.trim()) u.set("q", q.value.trim());
+        if (tag) u.set("tag", tag);
+        history.replaceState(null, "", location.pathname + (u.toString() ? "?" + u : ""));
       };
       q.addEventListener("input", filter);
-      $$(".chip").forEach(function (c) {
-        c.addEventListener("click", function () {
-          tag = c.dataset.tag;
-          $$(".chip").forEach(function (x) { x.classList.toggle("on", x === c); });
-          filter();
-        });
+      $$(".chip").forEach(function (c) { c.addEventListener("click", function () { tag = c.dataset.tag; filter(); }); });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "/" && document.activeElement !== q) { e.preventDefault(); q.focus(); }
       });
+      filter();
+    }
+
+    // Reading progress on posts.
+    var bar = document.querySelector(".readbar b"), post = document.querySelector(".post");
+    if (bar && post) {
+      var upd = function () {
+        var r = post.getBoundingClientRect(), total = r.height - innerHeight;
+        bar.style.width = Math.max(0, Math.min(100, total > 0 ? -r.top / total * 100 : 100)) + "%";
+      };
+      addEventListener("scroll", upd, { passive: true }); upd();
     }
   });
 })();
