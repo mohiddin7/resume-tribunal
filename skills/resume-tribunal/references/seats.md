@@ -46,7 +46,7 @@ In platform mode, choose comparable models in the platform's picker the same way
 
 ## Choosing a seat
 
-- **Review in full council:** any seat other than you; prefer one whose draft was not the base of the merge, and otherwise the closest tier match.
+- **Review in full council:** any seat other than you; prefer one whose draft was not the base of the merge, and otherwise the closest tier match. The merged resume still holds some of the reviewer's own lines, though it cannot tell which; its claim check, the script and the sign-off cover that.
 - **Quick review:** one seat. Choose the closest tier match; between equals, alternate rather than favouring one company by habit.
 - **Final blind look:** every other seat in the full council. In quick review and solo, only if the user takes the offer: the seat that reviewed before, or a fresh-context copy of you in solo.
 - **Solo:** fresh-context subagents of your own model, each seeing only its prompt. Tell the user once that same-model review is weaker, though still useful for catching errors.
@@ -59,7 +59,7 @@ In platform mode, choose comparable models in the platform's picker the same way
 | Critique (P2) | One call | Same command | One card per seat |
 | Review (P4) | One model that is not you | Same command | One card |
 
-`seats.py` runs every built-in seat read-only in an empty temporary folder, so a seat cannot read the other drafts or your files, and has no tools to act with if a job posting hides instructions. Built-in seats: Claude Code, Codex and Antigravity. For any other tool use `run custom --cmd`, which runs the command as you wrote it, so add that tool's own read-only flags.
+`seats.py` runs every built-in seat read-only in an empty temporary folder, so it finds no drafts or working files around it and cannot change anything if a job posting hides instructions. Claude Code runs with its tools off. Codex and Antigravity can still read a file they are pointed at by path, so the empty folder prevents accidental discovery, not every read: keep `.tribunal/` out of folders a tool's own instructions mention. Built-in seats: Claude Code, Codex and Antigravity. For any other tool use `run custom --cmd`, which runs the command as you wrote it, so add that tool's own read-only flags.
 
 - **Time.** A seat call usually takes under two minutes and can take up to ten. Run it in the background, or with a shell time limit of at least ten minutes. Say it is running in the message you are already sending; it needs no message of its own. In a full council, where drafting and critique take a quarter of an hour, one short progress line when the drafts are in is welcome.
 - **Contact details.** `run` refuses a prompt that still holds an email address, phone number or LinkedIn profile link, including one inside the job posting. Replace it with a stand-in and run again.

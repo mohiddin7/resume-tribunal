@@ -130,8 +130,10 @@ def build(pid, d, labels=(), final=False):
     return out.strip() + "\n", order
 
 
-TLD = r"(?:com|org|net|edu|gov|io|dev|ai|co|me|app|page|site|tech|info|xyz|uk|us|ca|au|de|fr|in|eu|nl|ie|nz|sg)"
-LINK_RE = re.compile(rf"https?://[^\s)<>|,]+|www\.[^\s)<>|,]+|\b[\w-]+(?:\.[\w-]+)*\.{TLD}/[\w./%~#?=&-]+")
+# A bare domain ("linktr.ee/jane") is any lower-case ending except a code file's, so "Node.js/Express" and
+# "ASP.NET/C#" stay skills. ponytail: hiding a lower-case "socket.io/redis" too is the safe side to err on.
+CODE_ENDINGS = r"(?:js|ts|jsx|tsx|py|rb|md|json|ya?ml|txt|csv|cpp|cs|h)"
+LINK_RE = re.compile(rf"https?://[^\s)<>|,]+|www\.[^\s)<>|,]+|\b[\w-]+(?:\.[\w-]+)*\.(?!{CODE_ENDINGS}/)[a-z]{{2,24}}/[\w./%~#?=&-]+")
 
 
 def load_standins(d):
@@ -166,8 +168,8 @@ def hide(text, standins, name, also, drop=()):
     found += [(a, "PERSONAL") for a in also]
     found += [(v, None) for v in standins.values()]  # known values: a referee named at the last job, in this job's notes
     for value, base in sorted(found, key=lambda f: -len(f[0])):  # longest first, so a link wins over its domain
-        if value:  # whole words only, so "Al" stays out of "Also"
-            text = re.sub(rf"(?<!\w){re.escape(value)}(?!\w)", lambda m: token(value, base), text, flags=re.I)
+        if value:  # anywhere, even inside a longer word ("Jane Doe_cv"): hiding too much is the safe side
+            text = re.sub(re.escape(value), lambda m: token(value, base), text, flags=re.I)
     return text
 
 
@@ -303,6 +305,9 @@ def self_test():
         own3 = open(os.path.join(t3, "own_words.md")).read()
         assert "Maria" not in own3 and "Also worked with <<PERSONAL>>" in own3, own3
         assert "Node.js/Express" in own3 and "ASP.NET/C#" in own3  # skills, not links
+        links = "linktr.ee/janedoe bit.ly/jd-cv janedoe.design/work notion.so/jane github.io/x Vue.js/Nuxt d3.js/charts"
+        assert LINK_RE.findall(links) == links.split()[:5], LINK_RE.findall(links)
+        assert "Doe" not in hide("Jane Doe_cv.pdf and JANE DOE", {}, "Jane Doe", [])
         # One run per folder: setup refuses a folder that already holds one.
         try:
             setup(t3, None, os.path.join(src, "j.txt"), None, None, "Jordan Ellis", [], "Target: Z.")
