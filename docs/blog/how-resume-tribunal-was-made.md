@@ -72,7 +72,7 @@ I then had a fresh AI run the whole thing on a made-up candidate. The other AIs 
 
 [[figure:rejected-claims|One of more than twenty suggestions Resume Tribunal turned down.]]
 
-Every one was rejected. The candidate's own words decide. You can [check every line yourself](https://github.com/mohiddin7/resume-tribunal/tree/main/examples/operations-analyst).
+Every one was rejected. The candidate's own words decide. You can [check every line yourself](https://github.com/mohiddin7/resume-tribunal/tree/main/examples/operations-analyst/first-run).
 
 ## Three things I'd tell anyone using AI for a resume
 

@@ -18,13 +18,14 @@ One role from the [worked example](examples/operations-analyst/), before and aft
 Before   - Helped improve on-time delivery
          - Utilized Excel for various reports
 
-After    - Helped raise Dayton terminal on-time delivery from 81 to 93 percent over about three
-           months, after the team moved one carrier's Friday pickups to another carrier.
-         - Cut the Monday report on late deliveries for the operations manager from half a day's
-           work to about 40 minutes by building it with Excel pivot tables and Power Query.
+After    - Traced one carrier's late Dayton terminal loads to its Friday pickups in six months of
+           Excel data; after the team moved them to another carrier, on-time delivery there went
+           from 81% to 93% over about three months.
+         - Built the Monday late-delivery report in pivot tables and Power Query; it took half a
+           day, now about 40 minutes.
 
-Rejected "from 4 hours to 40 minutes". The candidate had said "half a day", so that is what it says.
-Rejected "Raised ...". The team made the change, so it says "Helped raise".
+Rejected "driving the rerouting decision". The candidate wrote "we moved those loads".
+Rejected dropping "simple" from "simple SQL queries". It is the candidate's own word.
 ```
 
 **Use a coding agent?** Run this in a terminal, then say *"Tailor my resume to this job: \<link\>"*.
@@ -123,12 +124,12 @@ A link tracker for resumes, made by the same person who made Resume Tribunal. If
 
 A fictional operations coordinator applying for an operations analyst job, in full council mode with three assistants from three companies. See [examples/operations-analyst](examples/operations-analyst/).
 
-- Each AI caught something the others missed, such as a draft that credited the candidate alone for a decision the team made.
-- More than twenty enlarged or invented phrases were rejected, such as "root-cause tracking framework adopted by leadership" for a spreadsheet one supervisor used.
+- Each AI caught something the others missed, such as "half a day" being the previous person's time, or "Carrier management" borrowed from the posting into a Skills list.
+- Enlarged or invented phrases were rejected, such as "driving the rerouting decision" for a move the team made, and an example of what the candidate's SQL looks up, which they never gave.
 - The result is one page at 10.5 pt, with the job's unmet requirements listed for the candidate instead of papered over.
 - You can verify it: the folder includes the candidate's own words, and one command shows that every number and name in the resume traces back to them.
 
-A fresh agent ran the skill from its files alone: 8 calls, about 12 minutes, no failures. It is one run on one invented candidate, so it shows how the process works, not how it performs across many resumes.
+A fresh agent ran the skill from its files alone: 8 calls, about 19 minutes including the candidate's answers, no failures. It is one run on one invented candidate, so it shows how the process works, not how it performs across many resumes.
 
 ## New to this? Start here
 

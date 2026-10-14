@@ -1,37 +1,32 @@
 # Final blind look
 
-After the candidate's sign-off, the two outside seats each read the resume once more without knowing how it was made, with the candidate's confirmed answers beside it. Both said yes to a phone screen. Between them they made 16 suggestions.
+After the candidate's sign-off, the two outside seats each read the resume once more without knowing how it was made, with the candidate's confirmed answers beside it. Both said yes to a phone screen. Between them they made 9 suggestions.
 
-## Dropped before the candidate saw them (7, plus half of 3 more)
+## Dropped before the candidate saw them (2, plus the enlarging half of 4 more)
 
-The skill drops any suggested fix that adds or enlarges a fact.
+The skill drops any suggested fix that adds or enlarges a fact, or removes a qualifier the candidate asked for.
 
-- Listing "carrier performance analysis", "root-cause analysis", "stakeholder reporting" or "process automation" as skills.
-- Removing "simple" from the SQL lines (suggested twice). It is the candidate's own word.
-- Saying what the SQL queries are about. The candidate never said.
-- "Automated weekly late-delivery reporting ... from 4 hours to 40 minutes". The candidate said "half a day", and did not call it automated.
-- "Root-cause tracking framework adopted by leadership", for a spreadsheet one supervisor used.
-- The enlarging half of three mixed suggestions: "enabled leadership to reassign loads", "cross-functional leadership", and "proactive exception management".
+- Saying what the SQL queries look up. The candidate said they could not.
+- Adding "carrier performance tracking", "logistics operations" and "root-cause analysis" as skills.
+- The enlarging half of four mixed suggestions: an "operations analyst" title in the summary, past tense for ongoing work, "team leadership" for "the supervisor", and "shift scheduling" for the Shift Lead line.
 
-## Shown to the candidate (8)
-
-The candidate's answer: "Accept fixes that only reword or reorder. Decline anything else."
+## Shown to the candidate (6)
 
 | # | Suggestion | Result |
 |---|---|---|
-| 1 | Summary: "freight logistics operations", since the four years are the freight job only | Applied |
-| 2 | Summary: stop repeating "about 400 shipments a day" word for word from the bullet below | Applied |
-| 3 | "Raised ..." reads as if the candidate did it alone (both seats) | Applied: "Helped raise ..." |
-| 4 | "was failing on Friday pickups" is loaded | Applied: "was late on its Friday pickups" |
-| 5 | "the operations manager's Monday report" reads as the manager's own work | Applied |
-| 6 | Move the "400 shipments a day" bullet to the top of the role | Applied |
-| 7 | Grocery role: say the "most common causes" are causes of late or missing orders | Applied |
-| 8 | Fold the two Dayton bullets into one | Not applied: it could not fit without cutting a fact |
+| 1 | Summary: drop "at a regional freight company", which repeats the job heading | Not applied |
+| 2 | Put the tracking bullet first in the freight job | Not applied |
+| 3 | Fold the presentation into the Dayton bullet | Not applied |
+| 4 | "the Monday report" to "a weekly late-delivery report" | Not applied |
+| 5 | "their most common causes" to "the most common causes of late or missing orders" (both seats) | Not applied |
+| 6 | Shift Lead: cut "and handled cash" | Not applied |
 
-## Questions the claims will invite
+The candidate answered "Yes, it's final", which accepts none of them.
 
-1. Walk me through the six-month carrier analysis: what fields did you use, and how did you isolate Friday pickups?
-2. What was your role in moving the loads to another carrier, and who made the decision?
-3. How was the 81 to 93 percent measured over the three months, and how do you know it was the carrier change?
-4. Show me a typical SQL query you write and the question it answers.
-5. How did the Monday report go from half a day to 40 minutes: which steps did pivot tables and Power Query replace?
+## Questions an interviewer is likely to ask
+
+1. How did six months of data point to Friday pickups, and what other causes did you rule out? (Tests whether the cause was real.)
+2. What did you do between finding the pattern and the team changing carriers? (Tests the candidate's own part.)
+3. How was on-time delivery measured, and what else changed in those three months? (Tests whether 81% to 93% holds up.)
+4. Walk me through the Monday report: what did you build in Power Query, and how do you check it? (Tests Excel depth and the half day to 40 minutes.)
+5. Describe a simple SQL query you run each week: what does it answer? (Tests the SQL the job requires.)
