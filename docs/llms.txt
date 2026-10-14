@@ -24,7 +24,7 @@
 4. A script flags numbers and names the candidate never gave, layout problems, hidden text and common AI writing habits.
 5. The candidate approves every changed line. Output is plain text, then PDF or Word. The PDF's text layer is read back to confirm it parses.
 
-Quick review takes about 5 minutes; full council about 15 minutes and roughly five times the AI usage. Other assistants run automatically when their command-line tools are installed, or by copy and paste otherwise. Names, emails, phone numbers and links are replaced with placeholders before any text goes to another assistant.
+Quick review takes about 2 minutes of the user's time and about 6 minutes in all; full council about 15 minutes and roughly five times the AI usage. Other assistants run automatically when their command-line tools are installed, or by copy and paste otherwise. Names, emails, phone numbers and links are replaced with placeholders before any text goes to another assistant.
 
 ## Install
 

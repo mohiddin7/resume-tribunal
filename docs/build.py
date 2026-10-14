@@ -286,7 +286,7 @@ FAQ = [
     ("Who gets to see my resume?",
      "Not us. Resume Tribunal has no server. Before anything goes to a second AI, your name, email, phone number and links are swapped for stand-ins like <<NAME>>, and you're asked first. The AI apps you use see the rest under their own terms."),
     ("How long does Resume Tribunal take?",
-     "About 5 minutes for a quick review. If you copy and paste between two apps yourself, add a few minutes."),
+     "About 2 minutes of your time for a quick review: you answer a few questions and approve the changes. The AIs work for a few more minutes on their own. If you copy and paste between two apps yourself, add a few minutes."),
     ("What do I get at the end?",
      "Your finished resume as a PDF or Word file when your app can make files, and always as text you can paste into Word or Google Docs. You also get a list of what the job asks for that your resume doesn't show yet, plus the interview questions your resume is likely to prompt."),
     ("Does Resume Tribunal work with Word files, or on my phone?",
@@ -365,7 +365,7 @@ def hiw(play=False):
 
 
 TITLE = "Free AI Resume Tailoring That Doesn't Make Stuff Up | Resume Tribunal"
-DESC = "Not getting shortlisted? Fix your resume or CV for the job in 5 minutes with ChatGPT, Gemini or any AI, without anything made up. Free, no sign-up."
+DESC = "Not getting shortlisted? Fix your resume or CV for the job in 2 minutes of your time with ChatGPT, Gemini or any AI, without anything made up. Free, no sign-up."
 
 
 def build_home(items):
@@ -387,7 +387,7 @@ def build_home(items):
     body = f"""<main id="main">
 <section class="hero">
   <span class="eyebrow">Free resume tool for AI apps</span>
-  <h1>Not getting shortlisted?<br><span class="accent">Fix your resume for the job in 5 minutes.</span></h1>
+  <h1>Not getting shortlisted?<br><span class="accent">Fix your resume for the job in 2 minutes of your time.</span></h1>
   <p class="lede">Paste the job link into ChatGPT, Gemini or any AI. Your resume gets rewritten for that job, then a second AI checks it the way a hiring manager would, without inventing anything. Free, no sign-up.</p>
   <div class="cta"><a class="btn primary big" href="#start">Get started free</a><a class="btn ghost big" href="#proof">See an example</a></div>
   <ul class="trust"><li>No sign-up</li><li>Open source</li><li>Works with any AI app</li></ul>
@@ -395,7 +395,7 @@ def build_home(items):
 
 <section id="how">
   <h2>How it works</h2>
-  <p class="sub"><strong>You do two things. The AIs do the rest.</strong><br>Paste the job and your resume, then check the changes. About 5 minutes.</p>
+  <p class="sub"><strong>You do two things. The AIs do the rest.</strong><br>Paste the job and your resume, then check the changes. About 2 minutes of your time.</p>
   {hiw()}
   <p class="center meta hint">Tap to skip. Hold to pause.</p>
   <p class="center meta">Want more eyes on it? In a <strong>full council</strong>, three AIs from three companies each write a draft and critique each other first.</p>
@@ -435,7 +435,7 @@ def build_home(items):
       <li>Open a new chat and attach your resume.</li>
       <li>Paste this message, with your job link at the end:
         <div class="copybox"><code>{esc(chat_msg).replace("/", "/<wbr>").replace(".md", "<wbr>.md")}</code><button type="button" class="copy" data-copy="{esc(chat_msg)}">Copy</button></div></li>
-      <li>Answer a couple of questions. A quick review takes about 5 minutes.</li>
+      <li>Answer a couple of questions. A quick review takes about 2 minutes of your time.</li>
     </ol>
     <p class="meta">If your app can't open links, <a href="resume-tribunal.md" download>download the instructions</a> and attach them too.</p>
   </div>
@@ -453,7 +453,7 @@ def build_home(items):
     <ol class="steps">
       <li><a class="btn primary small" href="resume-tribunal.md" download>Download the instructions</a></li>
       <li>In any AI chat, attach that file and your resume, then say <strong>"Follow this file to tailor my resume to this job:"</strong> and paste the job link.</li>
-      <li>Answer a couple of questions. A quick review takes about 5 minutes.</li>
+      <li>Answer a couple of questions. A quick review takes about 2 minutes of your time.</li>
     </ol>
   </div>
   </div>

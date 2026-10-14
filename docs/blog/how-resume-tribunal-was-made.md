@@ -9,7 +9,7 @@ tags: Behind the scenes, AI review, Building in public
 
 - An AI that writes your resume will also tell you it's great. It's biased, and the research agrees.
 - So I made a second AI, from a different company, check the first one's work without knowing who wrote it.
-- That became Resume Tribunal: free, works in ChatGPT, Gemini, Claude or any AI, and a quick review takes about 2 minutes.
+- That became Resume Tribunal: free, works in ChatGPT, Gemini, Claude or any AI, and a quick review takes about 2 minutes of your time.
 
 [[/tldr]]
 

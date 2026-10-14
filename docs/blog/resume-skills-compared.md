@@ -63,7 +63,7 @@ Every other skill here trusts one AI to write and to grade. AI judges go [notice
 - **A second opinion from another company.** It doesn't know who wrote the draft, so it has no reason to be nice.
 - **A check that's code, not a promise.** A script compares every number and name with what you said.
 - **It remembers.** Facts you confirm are saved for your next job, on your computer or as a block you paste.
-- **It's quick.** A quick review takes about 2 minutes. The full council, three AIs from three companies, takes 10 to 15.
+- **It's quick.** A quick review takes about 2 minutes of your time. The full council, three AIs from three companies, takes about 15 minutes.
 
 > If you can't explain a line in an interview, it shouldn't be on your resume.
 

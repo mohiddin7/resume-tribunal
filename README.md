@@ -8,7 +8,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-SKILL.md-black.svg)](https://agentskills.io)
 
-**Not getting shortlisted? Fix your resume for the job in 5 minutes, without the AI making anything up.**
+**Not getting shortlisted? Fix your resume for the job in 2 minutes of your time, without the AI making anything up.**
 
 Resume Tribunal is a free add-on for AI apps (an "Agent Skill"). It works in any AI chat app, such as ChatGPT, Gemini or Claude, and in coding agents. One AI rewrites your resume for a specific job using only facts you gave it. An AI made by a different company then checks the draft without being told who wrote it, so nothing gets exaggerated and no AI grades its own work.
 
@@ -56,7 +56,7 @@ The second AI can be reached in four ways. The skill picks the first one that wo
 | **One platform**, where an app can ask several companies' AIs at once | The drafts and reviews run in one place | A few minutes |
 | **One company only**, if you prefer | New chats of your own assistant review blind | A few minutes, and a weaker check |
 
-**Full council** is the default when the other AIs run automatically: three AIs each write a draft, critique each other blind, and the best parts are merged before the check. **Quick review** is the default when you would be copying and pasting: one writer and one checker. Full council makes about eight calls against two and takes 10 to 15 minutes. It sends and receives about five times as much text, spread across your plans: about 30,000 tokens against 6,000 in the worked example, before each model's own reasoning.
+**Full council** is the default when the other AIs run automatically: three AIs each write a draft, critique each other blind, and the best parts are merged before the check. **Quick review** is the default when you would be copying and pasting: one writer and one checker. Full council makes about eight calls against two and takes about 15 minutes. It sends and receives about five times as much text, spread across your plans: about 30,000 tokens against 6,000 in the worked example, before each model's own reasoning.
 
 Why three? It is the smallest group in which two can outvote one that is wrong. Aircraft flight computers and industrial safety systems run three units with two-out-of-three voting for that reason, and banks and auditors organise risk control as three lines of defence. For AI writing this is a design choice by analogy, and the checks that follow do not rely on it. Each AI runs at a strength similar to your main assistant, so no reviewer is much weaker than the writer.
 
@@ -97,7 +97,7 @@ Resume Tribunal removes the usual giveaways, like long dashes and words such as 
 Not us. Resume Tribunal has no server. Before anything goes to a second AI, your name, email, phone number and links are swapped for stand-ins like `<<NAME>>`, and you're asked first. The AI apps you use see the rest under their own terms.
 
 **How long does Resume Tribunal take?**
-About 5 minutes for a quick review. If you copy and paste between two apps yourself, add a few minutes.
+About 2 minutes of your time for a quick review; the AIs then work for a few minutes on their own. If you copy and paste between two apps yourself, add a few minutes.
 
 **What do I get at the end?**
 Your finished resume as a PDF or Word file when your app can make files, and always as text you can paste into Word or Google Docs. You also get a list of what the job asks for that your resume doesn't show yet, plus the interview questions your resume is likely to prompt.
@@ -140,7 +140,7 @@ Works with any AI app and any model. No commands, no account with us.
 Read https://tribunal.warmhop.com/resume-tribunal.md and follow it to tailor my resume to this job: [paste the job link]
 ```
 
-A quick review takes about 5 minutes. If your app can't open links, download [resume-tribunal.md](docs/resume-tribunal.md) and attach it too.
+A quick review takes about 2 minutes of your time. If your app can't open links, download [resume-tribunal.md](docs/resume-tribunal.md) and attach it too.
 
 **In a coding agent** (Claude Code, Codex, Antigravity, Gemini CLI, Cursor, GitHub Copilot, Grok Build, OpenCode): send this. It asks your permission, installs Resume Tribunal, and starts.
 
