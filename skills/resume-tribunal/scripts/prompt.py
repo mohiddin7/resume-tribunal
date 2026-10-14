@@ -219,6 +219,18 @@ def sweep(d, also=(), drop=()):
     return standins
 
 
+def loose_first_names(d, standins):
+    """First names of hidden full names that still appear alone ("Ruth" after "Ruth Okonkwo"). They are
+    reported, not hidden: a first name can also be a word ("Will", "May"), so the host decides."""
+    firsts = {v.split()[0] for k, v in standins.items() if k.startswith("<<PERSONAL") and " " in v.strip()}
+    found = set()
+    for f in glob.glob(os.path.join(d, "*.md")):
+        if os.path.basename(f) not in ("standins.md", "final.md"):
+            text = open(f, encoding="utf-8").read()
+            found |= {n for n in firsts if len(n) > 2 and re.search(rf"\b{re.escape(n)}\b", text)}
+    return sorted(found - set(standins.values()))
+
+
 def restore(d):
     text = open(os.path.join(d, "resume.md"), encoding="utf-8").read()
     for key, value in load_standins(d).items():
@@ -319,6 +331,10 @@ def self_test():
         sweep(t3, ["Sam Okafor"])
         sign = open(os.path.join(t3, "signoff.md")).read()
         assert "Okafor" not in sign and "example.com" not in sign and load_standins(t3)["<<PERSONAL_2>>"] == "Sam Okafor", sign
+        open(os.path.join(t3, "signoff.md"), "a").write("\nSam reviewed it.")
+        assert loose_first_names(t3, load_standins(t3)) == ["Sam"]
+        sweep(t3, ["Sam"])
+        assert loose_first_names(t3, load_standins(t3)) == []
         # No own words: the file still exists, empty, so the check commands work as written.
         t4 = os.path.join(d, "t4")
         setup(t4, os.path.join(src, "r.txt"), os.path.join(src, "j.txt"), None, None, "Jordan Ellis", [], "Target: X.")
@@ -374,10 +390,14 @@ def main():
     elif a.action == "setup":
         m = setup(a.dir, a.resume, a.job, a.own, a.profile, a.name, a.also, a.target, a.drop)
         print(f"wrote {a.dir}/ with {len(m)} stand-ins: " + ", ".join(f"{k} = {v}" for k, v in m.items()))
-        print("Check the files for anything personal it missed (other people's names, a street address, a date of birth) and rerun with --also.")
+        print("Check the files for anything personal it missed (other people's names, a street address, a date of birth) and hide it with: prompt.py hide --also \"...\"")
+        for n in loose_first_names(a.dir, m):
+            print(f'"{n}" still appears on its own. If it is the same person, run: prompt.py hide --also "{n}"')
     elif a.action == "hide":
         m = sweep(a.dir, a.also, a.drop)
         print(f"applied {len(m)} stand-ins to {a.dir}/; build any prompt again before sending it")
+        for n in loose_first_names(a.dir, m):
+            print(f'"{n}" still appears on its own. If it is the same person, run: prompt.py hide --also "{n}"')
     elif a.action == "restore":
         open(a.out, "w", encoding="utf-8").write(restore(a.dir))
         left = sorted(set(re.findall(r"<<[A-Z0-9_]+>>", open(a.out, encoding="utf-8").read())))

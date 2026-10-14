@@ -46,7 +46,7 @@ In platform mode, choose comparable models in the platform's picker the same way
 
 ## Choosing a seat
 
-- **Review in full council:** any seat other than you; prefer one whose draft was not the base of the merge, and otherwise the closest tier match. The merged resume still holds some of the reviewer's own lines, though it cannot tell which; its claim check, the script and the sign-off cover that.
+- **Review in full council:** any seat other than you; prefer the closest tier match, and between equals one whose draft was not the base of the merge. The merged resume still holds some of the reviewer's own lines, though it cannot tell which; its claim check, the script and the sign-off cover that.
 - **Quick review:** one seat. Choose the closest tier match; between equals, alternate rather than favouring one company by habit.
 - **Final blind look:** every other seat in the full council. In quick review and solo, only if the user takes the offer: the seat that reviewed before, or a fresh-context copy of you in solo.
 - **Solo:** fresh-context subagents of your own model, each seeing only its prompt. Tell the user once that same-model review is weaker, though still useful for catching errors.

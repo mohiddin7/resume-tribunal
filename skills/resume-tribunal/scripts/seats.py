@@ -65,7 +65,7 @@ def blocked(reply):
 
 def contact_details(prompt):
     """Emails, profile links and phone numbers that should have been swapped for stand-ins."""
-    found = re.findall(r"[\w.+-]+@[\w-]+\.[\w.-]+|linkedin\.com/in/[\w-]+", prompt)
+    found = re.findall(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+|linkedin\.com/in/[\w-]+", prompt)
     # A figure after a currency sign ("$1000000000") is money, not a phone.
     found += [m for m in re.findall(r"(?<![$€£¥₹\d])\+?\d[\d ().-]{5,}\d", prompt)
               if sum(c.isdigit() for c in m) >= (7 if re.search(r"\D", m) else 10)
@@ -125,6 +125,7 @@ def self_test():
     assert contact_details("Mail sam@example.com or call +1 (555) 010-2030") == ["sam@example.com", "+1 (555) 010-2030"]
     assert contact_details("<<EMAIL>> | <<PHONE>> | Jan 2019 - Mar 2021 | 2019 - 2021 | cut 1200 to 300 | 5000000") == []
     assert contact_details("call 555-0117") == ["555-0117"]
+    assert contact_details("Send it to hr@corp.example.") == ["hr@corp.example"]  # not the full stop
     assert contact_details("call 5551234567") == ["5551234567"]
     assert contact_details("## 2026-09-15\nconfirmed 15.09.2026 and 1-9-2026") == []  # dated profile entries
     assert contact_details("call 0161-555-0199") == ["0161-555-0199"]

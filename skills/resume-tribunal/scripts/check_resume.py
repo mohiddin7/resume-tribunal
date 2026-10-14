@@ -305,9 +305,11 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650,
         new_names = {t.lower() for t in re.findall(r"[A-Za-z][A-Za-z0-9+#]*", newer)}
         new_names |= {t + "s" for t in new_names} | {t[:-1] for t in new_names if t.endswith("s")}
         # An old skill counts as backed when every word of it appears in newer text.
+        stem = lambda w: re.sub(r"(?:ing|ed|es|s)$", "", w) if len(w) > 4 else w  # "testing" and "tests" -> "test"
+        new_stems = {stem(w) for w in new_names}
         def backed(entry):  # "Node.js" is backed by "Node"; one- and two-letter parts count only when nothing else does
             parts = re.findall(r"[a-z][a-z0-9+#]*", entry)
-            return all(w in new_names for w in [w for w in parts if len(w) > 2] or parts)
+            return all(stem(w) in new_stems for w in [w for w in parts if len(w) > 2] or parts)
         stale_skills = sorted(e for e in skill_entries(old) if not backed(e))
         for n, text in bullets + prose:
             raw = md_lines[n - 1]
@@ -472,6 +474,7 @@ def self_test():
     assert facts(head + "## Skills\nA/B testing, stakeholder management, SQL", source="I wrote specs in SQL. Columbus, OH", old=oldr) == {"only-in-old-resume"}
     assert "only-in-old-resume" in facts(head + "- Built models in Python", source="I use SQL", old="## Skills\nLanguages: Python, SQL")
     assert "Python" in skills_part("## Skills\nLanguages: Python, SQL\nTools: Tableau")
+    assert facts(head + "## Skills\nA/B testing, SQL", source="I read our A/B tests in SQL. Columbus, OH", old=oldr) == set()
     assert kinds("\n".join(["- **"] * 6)) == {"empty-bullet"}
     # ponytail: a word checker cannot read meaning. These still pass, so the host's line-by-line check and the user's sign-off stay.
     assert facts(head + "- Led a team of 30.", source="I did not lead a team of 30. Columbus, OH") == set()
