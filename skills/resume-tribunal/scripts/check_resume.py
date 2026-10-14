@@ -46,7 +46,7 @@ CLICHE_RE = re.compile(
     re.IGNORECASE,
 )
 CONTRAST_RE = re.compile(
-    r"\b(not (?:only|just|merely|simply)\b|not\b[^.;\n]{0,40}\bbut\b|rather than|"
+    r"\b(not (?:only|just|merely|simply)\b|not\b[^.;\n]{0,40}\bbut\b|rather than|(?<=, )not \w+|"
     r"more than just|isn't just|wasn't just)",
     re.IGNORECASE,
 )
@@ -291,6 +291,8 @@ def self_test():
     assert kinds("- Led the migration — on time") == {"em-dash"}
     assert "em-dash" not in kinds("**Analyst** | 2021 — Present")
     assert kinds("- Cut costs, not by luck but by design") == {"contrast-framing"}
+    assert kinds("- Built the Monday report, now about 40 minutes, not half a day") == {"contrast-framing"}
+    assert kinds("- Whether or not the carrier agreed, moved the loads") == set()
     assert kinds("- Rebuilt the pipeline, enabling faster releases") == {"trailing-ing-clause"}
     assert kinds("- **Leadership:** Ran a team of 5") == {"bold-lead-in"}
     assert kinds("- Spearheading a results-driven rollout") == {"ai-marker-word", "cliche"}
