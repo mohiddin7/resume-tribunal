@@ -3,7 +3,7 @@
 
 Usage:
   python3 prompt.py setup --resume resume.txt --job job.txt [--own notes.txt] [--profile DIR] \
-      --name "Full Name" [--also "Referee Name"] --target "Target: Analyst, mid level, United States."
+      --name "Full Name" [--also "Referee Name"] [--pages linked.md] --target "Target: Analyst, mid level, United States."
   python3 prompt.py build P1 --out .tribunal/p1.txt
   python3 prompt.py build P2 --drafts K,R --out .tribunal/p2_B.txt     # the drafts this seat did not write
   python3 prompt.py build P3 --drafts K,M,R --out .tribunal/p3.txt
@@ -37,7 +37,7 @@ from seats import contact_details
 
 PROMPTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "references", "prompts.md")
 TAGS = ("job_description|candidate|original_resume|own_words|role_brief|rules|layout|draft|critiques|"
-        "resume_under_review|research|flagged_lines|confirmed_by_candidate|not_true")
+        "resume_under_review|research|flagged_lines|confirmed_by_candidate|not_true|linked_pages")
 TAG_RE = re.compile(rf"<(/?\s*(?:{TAGS})\b)", re.IGNORECASE)
 STOP_RE = re.compile(r"^[\s#*\d.):-]*(?:part\s*\d+\s*[:.)-]?\s*)?(not shown|open questions|conflicts|change log|notes?|assumptions|unmet requirements|requirements not shown)\b",
                      re.IGNORECASE)
@@ -95,6 +95,10 @@ def build(pid, d, labels=(), final=False):
     denied = read(d, "not_true.md", required=False).strip() if "</candidate>" in out else ""
     if denied:
         out = out.replace("</candidate>", f"<not_true>\n{denied}\n</not_true>\n</candidate>", 1)
+    # The pages the candidate's links point to, read once by the host: every seat gets the same copy.
+    pages = read(d, "linked_pages.md", required=False).strip() if "</candidate>" in out else ""
+    if pages:
+        out = out.replace("</candidate>", f"<linked_pages>\n{pages}\n</linked_pages>\n</candidate>", 1)
     if "{{JOB_DESCRIPTION}}" in out:
         fill["JOB_DESCRIPTION"] = read(d, "job.md")
     if "{{ROLE_BRIEF}}" in out:
@@ -167,6 +171,8 @@ def hide(text, standins, name, also, drop=(), prefix=""):
     for c in contact_details(text):  # a phone match starts at a digit, so take back an opening bracket: "(614) 555-0182"
         c = "(" + c if "(" + c in text and c.count(")") > c.count("(") else c
         found.append((c, prefix + ("EMAIL" if "@" in c else "LINK_LINKEDIN" if "linkedin" in c else "PHONE")))
+    # A GitHub or GitLab username names the person on its own, inside a README as much as in a link.
+    found += [(u, "PERSONAL") for v, _ in list(found) for u in re.findall(r"(?:github|gitlab)\.com/([\w-]{4,})", v)]
     found = [(v, b) for v, b in found if v.lower() not in keep]
     found += [(name, "NAME")] if name else []
     found += [(a, "PERSONAL") for a in also]
@@ -178,7 +184,20 @@ def hide(text, standins, name, also, drop=(), prefix=""):
     return text
 
 
-def setup(d, resume, job, own, profile, name, also, target, drop=()):
+PAGE_WORDS = 1500  # per linked page: enough for a README or an abstract, short enough for every prompt
+
+
+def trim_pages(text):
+    """Cut each '## address' section of the linked pages to PAGE_WORDS words, saying so."""
+    parts = re.split(r"(?m)^(?=## )", text)
+    out = []
+    for part in parts:
+        words = part.split(" ")
+        out.append(part if len(part.split()) <= PAGE_WORDS else " ".join(words[:PAGE_WORDS]).rstrip() + " [rest of page cut]\n")
+    return "".join(out)
+
+
+def setup(d, resume, job, own, profile, name, also, target, drop=(), pages=None):
     # A new run never inherits another run's facts, drafts or consent; a saved profile is the only way facts carry over.
     if os.path.exists(os.path.join(d, "state.md")):
         sys.exit(f"{d}/ already holds a run. To hide more details in it, use: prompt.py hide --also \"...\". "
@@ -203,6 +222,13 @@ def setup(d, resume, job, own, profile, name, also, target, drop=()):
         put(own, "own_words.md", append=bool(profile))
     elif not os.path.exists(os.path.join(d, "own_words.md")):
         open(os.path.join(d, "own_words.md"), "w", encoding="utf-8").write("")
+    if pages:
+        put(pages, "linked_pages.md")
+        path = os.path.join(d, "linked_pages.md")
+        text = trim_pages(open(path, encoding="utf-8").read())
+        open(path, "w", encoding="utf-8").write(text)
+    else:
+        open(os.path.join(d, "linked_pages.md"), "w", encoding="utf-8").write("")
     target = target.strip() + ("" if "Today is" in target else f" Today is {datetime.date.today():%d %B %Y}.")
     open(os.path.join(d, "target.md"), "w", encoding="utf-8").write(target + "\n")
     if not os.path.exists(os.path.join(d, "state.md")):
@@ -369,6 +395,15 @@ def self_test():
         open(os.path.join(t3, "state.md"), "a").write("Phone 555-010-7777 noted.")
         sweep(t3)
         assert "555-010-7777" in open(os.path.join(t3, "state.md")).read()  # your notes are not swept
+        # Linked pages: hidden like everything else (the username too), trimmed, and in every prompt with the candidate.
+        open(os.path.join(src, "pages.md"), "w").write("## github.com/jellis-dev/route-tool\nBuilt by jellis-dev and Jordan Ellis. "
+                                                       "Clone: git clone https://github.com/jellis-dev/route-tool\n" + "word " * 2000)
+        t5 = os.path.join(d, "t5")
+        setup(t5, os.path.join(src, "r.txt"), os.path.join(src, "j.txt"), None, None, "Jordan Ellis", [], "Target: X.", pages=os.path.join(src, "pages.md"))
+        lp = open(os.path.join(t5, "linked_pages.md")).read()
+        assert "jellis" not in lp.lower() and "Jordan" not in lp and "[rest of page cut]" in lp and len(lp.split()) < 1600, lp[:300]
+        open(os.path.join(t5, "draft_K.md"), "w").write("# <<NAME>>")
+        assert "<linked_pages>" in build("P1", t5)[0] and "<linked_pages>" in build("P2", t5, ["K"])[0]
         # No own words: the file still exists, empty, so the check commands work as written.
         t4 = os.path.join(d, "t4")
         setup(t4, os.path.join(src, "r.txt"), os.path.join(src, "j.txt"), None, None, "Jordan Ellis", [], "Target: X.")
@@ -404,6 +439,7 @@ def main():
     s.add_argument("--name", required=True, help="the candidate's name as it appears")
     s.add_argument("--also", action="append", default=[], help="another personal detail to hide and restore at the end: a referee, a client")
     s.add_argument("--drop", action="append", default=[], help="a detail to delete everywhere: a street address or date of birth the resume should not show")
+    s.add_argument("--pages", help="the text of the pages the candidate's links point to, each under '## <address>'")
     s.add_argument("--target", required=True, help='one line, such as "Target: Analyst, mid level, United States."')
     h = sub.add_parser("hide", help="after setup: hide more details, and reapply every stand-in to every working file")
     h.add_argument("--dir", default=".tribunal")
@@ -423,7 +459,7 @@ def main():
         open(a.out, "w", encoding="utf-8").write(text)
         print(f"wrote {len(text)} characters to {a.out}" + (f"; draft order {', '.join(order)}" if order else ""))
     elif a.action == "setup":
-        m = setup(a.dir, a.resume, a.job, a.own, a.profile, a.name, a.also, a.target, a.drop)
+        m = setup(a.dir, a.resume, a.job, a.own, a.profile, a.name, a.also, a.target, a.drop, a.pages)
         print(f"wrote {a.dir}/ with {len(m)} stand-ins: " + ", ".join(f"{k} = {v}" for k, v in m.items()))
         print("Check the files for anything personal it missed (other people's names, a street address, a date of birth) and hide it with: prompt.py hide --also \"...\"")
         for n in loose_first_names(a.dir, m):
