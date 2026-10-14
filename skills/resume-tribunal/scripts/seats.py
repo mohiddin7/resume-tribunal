@@ -74,10 +74,20 @@ def contact_details(prompt, keep=()):
                 and not re.search(r"(?:19|20)\d\d\s*[-–]\s*(?:19|20)\d\d", s)
                 # Dates such as 2026-09-15 or 15.09.2026 (a saved profile dates its entries) are not phones.
                 and not re.fullmatch(r"(?:19|20)\d\d-\d\d-\d\d|\d\d?[.-]\d\d?[.-](?:19|20)\d\d", s)
-                # A labelled ID ("Req. ID: 1273383451", "Job #4471234") is not a phone.
-                and not re.search(r"(?i)(?:\bid|#|\bno\.?|number|\breq\w*)\W{0,3}$", prompt[max(0, m.start() - 12):m.start()])):
+                and not labelled_id(prompt[max(0, m.start() - 30):m.start()])):
             found.append(s)
-    return [f for f in found if f.lower() not in {k.lower() for k in keep}]
+    # keep only ever excuses a number; an email or a profile link is always caught.
+    keep = {k.lower() for k in keep if not re.search(r"@|linkedin|[a-z]", k.lower())}
+    return [f for f in found if f.lower() not in keep]
+
+
+def labelled_id(before):
+    """True when the text just before a number labels it as a posting or order ID ("Req. ID:", "Job #").
+    Any phone word nearby ("Phone No.", "contact number", "call") means it is a phone, whatever follows."""
+    if re.search(r"(?i)\b(?:phone|mobile|cell|tel|telephone|contact|call|whatsapp|fax)\b", before):
+        return False
+    return bool(re.search(r"(?i)\b(?:req(?:uisition)?|job|ref(?:erence)?|order|invoice|case|ticket)\b[\W]{0,4}(?:id|no|number|#)?\W{0,3}$"
+                          r"|\bid\W{0,3}$", before))
 
 
 def run(cmd, prompt_path, reply_path, timeout, allow_contact=False):
@@ -136,6 +146,10 @@ def self_test():
     assert contact_details("Send it to hr@corp.example.") == ["hr@corp.example"]  # not the full stop
     assert contact_details("GPA: 8.2 / 10 2018 - 2022. Req. ID: 1273383451. Job #4471234567") == []  # dates and IDs
     assert contact_details("call 5551234567", keep=["5551234567"]) == []
+    # Phone words always mean a phone, whatever label follows; keep never excuses an email.
+    assert contact_details("Phone No. 5551234567, contact number: 555-123-4567, Mobile #: 5551234567") == ["5551234567", "555-123-4567", "5551234567"]
+    assert contact_details("Cell no 5551234567") == ["5551234567"] and contact_details("No. 5551234567") == ["5551234567"]
+    assert contact_details("mail a@b.co", keep=["a@b.co"]) == ["a@b.co"]
     assert contact_details("call 5551234567") == ["5551234567"]
     assert contact_details("## 2026-09-15\nconfirmed 15.09.2026 and 1-9-2026") == []  # dated profile entries
     assert contact_details("call 0161-555-0199") == ["0161-555-0199"]

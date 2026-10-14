@@ -165,7 +165,8 @@ def hide(text, standins, name, also, drop=(), prefix=""):
             standins[key] = value
             by_value[value.lower()] = key
         return by_value[value.lower()]
-    keep = {v.lower() for k, v in standins.items() if k.startswith("<<KEEP")}
+    # A <<KEEP>> value only ever excuses a number (a requisition ID); an email or a link is always hidden.
+    keep = {v.lower() for k, v in standins.items() if k.startswith("<<KEEP") and not re.search(r"[A-Za-z@]", v)}
     found = [(m.rstrip(".,;:"), prefix + "LINK_" + ("LINKEDIN" if "linkedin" in m else "GITHUB" if "github" in m else "WEB"))
              for m in LINK_RE.findall(text)]
     for c in contact_details(text):  # a phone match starts at a digit, so take back an opening bracket: "(614) 555-0182"
