@@ -145,7 +145,7 @@ def skills_part(text):
         if 0 < len(title) < 40 and "skill" in title.lower():
             on, inline = True, ":" in bare and bool(bare.split(":", 1)[1].strip())
             out.append(bare.split(":", 1)[1] if ":" in bare else "")
-        elif bare and (len(bare) < 40 and (line.lstrip().startswith("#") or bare.isupper())
+        elif bare and (len(bare) < 40 and (line.lstrip().startswith("#") or bare.isupper() and "," not in bare)
                        or inline and re.match(r"[A-Z][A-Za-z &/]{2,30}:", bare)):
             # A heading ends Skills. So does another "Label: ..." line after an inline "Skills: ..." one;
             # under a Skills heading, "Languages: Python, SQL" is part of it.
@@ -165,9 +165,9 @@ def skill_entries(text):
     for line in skills_part(text).splitlines():
         line = re.sub(r"^\s*[-*•]\s*|^[^:,]{1,40}:\s", "", line)  # a bullet, a "Languages:" label
         for e in re.split(r"[,;()|•·\n]|\band\b", line):
-            e = e.strip(" .-*").lower()
-            if len(e) > 1 and re.search(r"[a-z]", e) and e not in QUALIFIERS:
-                entries.add(e)
+            e = e.strip(" .-*")
+            if (len(e) > 1 or e.isupper()) and re.search(r"[a-z]", e.lower()) and e.lower() not in QUALIFIERS:  # "R" and "C" count
+                entries.add(e.lower())
     return entries
 
 
@@ -335,6 +335,9 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650,
             spans = {d for d in derived if re.search(rf"\b{d}\+?\s+years?\b", text)}
             # A number inside a product name the posting uses ("Dynamics 365") is a name, not a claim.
             spans |= {num for name, num in re.findall(r"\b([A-Z]\w+) (\d+)\b", text) if f"{name} {num}" in (vocab or "")}
+            # A relative time dated from today ("the year to Oct 2026") uses this year, which the user never typed.
+            if re.search(rf"\bto (?:{MONTH}\s+)?{this_year}\b", text, re.I):
+                spans.add(str(this_year))
             for num in sorted(numbers(PLACEHOLDER_RE.sub("", text)) - src_numbers - spans):
                 add(n, "error", "number-not-in-source", f"{num} does not appear in the user's own text")
             # "Cut costs by 25%" from "25 invoices", or "$50M" from "$50": the number is there, its unit is not.
@@ -476,6 +479,9 @@ def self_test():
     assert "Python" in skills_part("## Skills\nLanguages: Python, SQL\nTools: Tableau")
     assert facts(head + "## Skills\nA/B testing, SQL", source="I read our A/B tests in SQL. Columbus, OH", old=oldr) == set()
     assert kinds("\n".join(["- **"] * 6)) == {"empty-bullet"}
+    assert facts(head + "## Skills\nSQL, R", source="I use SQL. Columbus, OH", old="## Skills\nSQL, R") == {"only-in-old-resume"}
+    this = datetime.date.today().year
+    assert facts(head + f"- About 12 tests in the year to Oct {this}", source="about 12 tests in the last year. Columbus, OH") == set()
     # ponytail: a word checker cannot read meaning. These still pass, so the host's line-by-line check and the user's sign-off stay.
     assert facts(head + "- Led a team of 30.", source="I did not lead a team of 30. Columbus, OH") == set()
     print("self-test passed")
