@@ -177,10 +177,11 @@ def hide(text, standins, name, also, drop=(), prefix=""):
     # A profile username, or a personal site's own domain, names the person on its own: inside a README or a page
     # it turns up without the link around it ("see jellis.dev", "by @jellis").
     for v, _ in list(found):
-        found += [(u, "PERSONAL") for u in re.findall(PROFILE_RE, v) if len(u) >= 2]
+        # The posting's links keep the JOB_ prefix all the way down: an employer's site or org is never the candidate's.
+        found += [(u, prefix + "PERSONAL") for u in re.findall(PROFILE_RE, v) if len(u) >= 2]
         host = re.sub(r"^(?:https?://)?(?:www\.)?", "", v).split("/")[0]
         if "." in host and not re.search(PLATFORMS, host):
-            found.append((host, None if host.lower() in by_value else "LINK_WEB"))
+            found.append((host, prefix + "LINK_WEB"))
     found = [(v, b) for v, b in found if v.lower() not in keep]
     found += [(name, "NAME")] if name else []
     found += [(a, "PERSONAL") for a in also]
@@ -412,6 +413,9 @@ def self_test():
         assert "jellis" not in lp.lower() and "Jordan" not in lp and "[rest of page cut]" in lp and len(lp.split()) < 1600, lp[:300]
         m6 = {}
         out = hide("Site jd-ellis.dev/work. Later: see jd-ellis.dev, or kaggle.com/jd and @jd on kaggle.", m6, None, [])
+        m7 = {}
+        hide("Apply at careers.corp.example/jobs/1 or github.com/corpteam/x.", m7, None, [], prefix="JOB_")
+        assert m7 and all(k.startswith("<<JOB_") for k in m7), m7  # nothing of the employer's lands in the candidate's names
         assert "jd-ellis" not in out and "kaggle.com/jd" not in out and " jd " not in out.replace("@", " "), out
         open(os.path.join(t5, "draft_K.md"), "w").write("# <<NAME>>")
         assert "<linked_pages>" in build("P1", t5)[0] and "<linked_pages>" in build("P2", t5, ["K"])[0]
