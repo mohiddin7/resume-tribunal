@@ -160,6 +160,12 @@ def hide(text, standins, name, also, drop=(), prefix=""):
     by_value = {v.lower(): k for k, v in standins.items()}
     def token(value, base):
         if value.lower() not in by_value:
+            # A first name on its own ("Ruth" after "Ruth Okonkwo") is tied to the full name's stand-in
+            # (<<PERSONAL_FIRST>>), so every reviewer can tell it is the same person.
+            full = next((k for k, v in standins.items() if " " in v.strip() and v.split()[0].lower() == value.lower()
+                         and not k.startswith("<<KEEP") and "_FIRST" not in k), None)
+            if full:
+                base = full[2:-2] + "_FIRST"
             n, key = 1, f"<<{base}>>"
             while key in standins:
                 n += 1
@@ -392,6 +398,7 @@ def self_test():
         assert loose_first_names(t3, load_standins(t3)) == ["Sam"]
         sweep(t3, ["Sam"])
         assert loose_first_names(t3, load_standins(t3)) == []
+        assert load_standins(t3)["<<PERSONAL_2_FIRST>>"] == "Sam"  # tied to <<PERSONAL_2>> = Sam Okafor
         # The posting's own contacts get JOB_ names; a wrong stand-in can be undone and stays undone.
         assert "<<JOB_EMAIL>>" in open(os.path.join(t, "job.md")).read() and "<<JOB_EMAIL>>" in load_standins(t)
         open(os.path.join(t3, "notes.md"), "w").write("Code 5551234567 is the posting's number.")

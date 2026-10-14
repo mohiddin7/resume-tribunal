@@ -56,7 +56,9 @@ ING_TAIL_RE = re.compile(
     r"helping|delivering|highlighting|demonstrating|empowering|positioning)\b",
     re.IGNORECASE,
 )
-VAGUE_RE = re.compile(r"\b(various|numerous|significant(?:ly)?|substantial(?:ly)?)\b", re.IGNORECASE)
+# "significant at 95%" and "statistically significant" are a test result, not a vague size.
+VAGUE_RE = re.compile(r"\b(various|numerous|(?<!statistically )significant(?:ly)?(?!\s+(?:at|difference|result))|substantial(?:ly)?)\b",
+                      re.IGNORECASE)
 TEMPLATE_RE = re.compile(r"\bby \d[\d,.]*\s?%.*\bby\b", re.IGNORECASE)  # "cut X by 20% by doing Y"
 TRIPLET_RE = re.compile(r"\b[\w-]+, [\w-]+,? and [\w-]+\b")
 BOLD_LEAD_RE = re.compile(r"^\s*[-*•]\s+\*\*[^*\n]{1,40}(?::\*\*|\*\*:)")
@@ -499,6 +501,8 @@ def self_test():
     assert "Python" in skills_part("## Skills\nLanguages: Python, SQL\nTools: Tableau")
     assert facts(head + "## Skills\nA/B testing, SQL", source="I read our A/B tests in SQL. Columbus, OH", old=oldr) == set()
     assert kinds("\n".join(["- **"] * 6)) == {"empty-bullet"}
+    assert kinds("- Lift was significant at 95%; statistically significant") == set()
+    assert kinds("- Made significant improvements") == {"vague-quantity"}
     # Plain-text resumes: a lower-case heading ends Skills; with no own words, the resume's own bullets back a skill.
     plain_old = "technical skills\nLanguages: Python, R\nTools: Tableau\nwork experience\nAnalyst, Acme\n- Built Tableau dashboards"
     assert skills_part(plain_old).split() == ["Languages:", "Python,", "R", "Tools:", "Tableau"]
