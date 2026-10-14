@@ -168,25 +168,31 @@ def how_it_works(variant):
 
 # Blog figures, 720 x 405 (16:9, the shape Medium and LinkedIn show best).
 def fig_rejected(variant):
-    a = Anim(9)
-    strike = a.at("s", [(0, "stroke-dashoffset:470"), (1.6, "stroke-dashoffset:470"), (2.4, "stroke-dashoffset:0"), (8.4, "stroke-dashoffset:0"), (9, "stroke-dashoffset:470")])
-    stamp = a.at("p", [(0, "opacity:0"), (2.5, "opacity:0;transform:scale(1.3)"), (2.8, "opacity:1;transform:scale(1)"), (8.4, "opacity:1"), (9, "opacity:0")], "transform-origin:602px 114px;")
-    said = a.at("w", [(0, "opacity:0"), (3.4, "opacity:0"), (3.9, "opacity:1"), (8.4, "opacity:1"), (9, "opacity:0")])
-    kept = a.at("k", [(0, "opacity:0"), (4.8, "opacity:0;transform:translateY(8px)"), (5.4, "opacity:1;transform:translateY(0)"), (8.4, "opacity:1"), (9, "opacity:0")])
-    body = f'''<text x="40" y="52" font-size="15" font-weight="700" letter-spacing="1.5" fill="var(--muted)">A REVIEWING AI SUGGESTED</text>
-<rect x="40" y="72" width="640" height="84" rx="14" fill="var(--surf)" stroke="var(--line)" stroke-width="1.5"/>
-<text x="64" y="122" font-size="20" fill="var(--ink)">Cut report prep from 4 hours to 40 minutes</text>
-<path {strike} d="M60 115 h420" stroke="var(--danger)" stroke-width="3.5" stroke-dasharray="470" stroke-linecap="round"/>
-<g {stamp}><rect x="546" y="96" width="112" height="36" rx="18" fill="var(--danger)"/>
-<text x="602" y="120" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">Rejected</text></g>
-<g {said}><text x="40" y="206" font-size="19" fill="var(--muted)">The candidate actually said: <tspan font-weight="700" fill="var(--ink)">"half a day"</tspan></text></g>
-<g {kept}><rect x="40" y="236" width="640" height="84" rx="14" fill="var(--surf)" stroke="var(--green)" stroke-width="2.5"/>
-<text x="64" y="285" font-size="20" fill="var(--ink)">Cut report prep from half a day to about 40 minutes</text>
-<circle cx="646" cy="278" r="16" fill="var(--green)"/><path d="M638 278l6 6 10-11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
-<text x="40" y="368" font-size="15" fill="var(--muted)">Resume Tribunal: the candidate's own words decide. From the worked example.</text>'''
+    """One made-up number, checked against what the candidate said, and the line that stays."""
+    a = Anim(10)
+    show = lambda n, t0: a.at(n, [(0, "opacity:0;transform:translateY(8px)"), (t0, "opacity:0;transform:translateY(8px)"),
+                                  (t0 + .4, "opacity:1;transform:translateY(0)"), (9.4, "opacity:1;transform:translateY(0)"), (10, "opacity:0")])
+    red = a.at("rd", [(0, "fill:var(--ink)"), (1.6, "fill:var(--ink)"), (1.8, "fill:var(--danger)"), (9.4, "fill:var(--danger)"), (10, "fill:var(--ink)")])
+    stamp = a.at("p", [(0, "opacity:0"), (2.0, "opacity:0;transform:scale(1.3)"), (2.3, "opacity:1;transform:scale(1)"), (9.4, "opacity:1"), (10, "opacity:0")],
+                 "transform-origin:614px 112px;")
+    said, kept = show("w", 3.4), show("k", 5.0)
+    body = f'''<text x="40" y="44" font-size="15" font-weight="700" letter-spacing="1.5" fill="var(--muted)">ONE SUGGESTION, CHECKED</text>
+<rect x="40" y="62" width="640" height="88" rx="14" fill="var(--surf)" stroke="var(--line)" stroke-width="1.5"/>
+<text x="62" y="90" font-size="12" font-weight="800" letter-spacing=".6" fill="var(--muted)">A REVIEWING AI SUGGESTED</text>
+<text x="62" y="126" font-size="20" fill="var(--ink)">Cut report prep from <tspan {red} font-weight="700">4 hours</tspan> to 40 minutes</text>
+<g {stamp}><rect x="558" y="94" width="112" height="36" rx="18" fill="var(--danger)"/>
+<text x="614" y="118" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">Rejected</text></g>
+<g {said}><rect x="40" y="164" width="640" height="88" rx="14" fill="var(--surf)" stroke="var(--blue)" stroke-width="2"/>
+<text x="62" y="192" font-size="12" font-weight="800" letter-spacing=".6" fill="var(--blue)">WHAT THE CANDIDATE SAID</text>
+<text x="62" y="228" font-size="20" fill="var(--ink)">\u201cPrepping it took me about <tspan font-weight="700">half a day</tspan>.\u201d</text></g>
+<g {kept}><rect x="40" y="266" width="640" height="88" rx="14" fill="var(--surf)" stroke="var(--green)" stroke-width="2.5"/>
+<text x="62" y="294" font-size="12" font-weight="800" letter-spacing=".6" fill="var(--green)">WHAT GOES ON THE RESUME</text>
+<text x="62" y="330" font-size="20" fill="var(--ink)">Cut report prep from <tspan font-weight="700" fill="var(--green)">half a day</tspan> to about 40 minutes</text>
+<circle cx="646" cy="310" r="16" fill="var(--green)"/><path d="M638 310l6 6 10-11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="40" y="386" font-size="14" fill="var(--muted)">The candidate\u2019s words win over the AI\u2019s guess. From the worked example in the repo.</text>'''
     return svg(720, 405, variant, "A made-up number, rejected",
-               'A reviewing AI suggested "cut report prep from 4 hours to 40 minutes". It is crossed out and marked rejected, because the '
-               'candidate had said "half a day". The kept line reads "cut report prep from half a day to about 40 minutes".', body, a.style())
+               'A reviewing AI suggested "cut report prep from 4 hours to 40 minutes". 4 hours turns red and the suggestion is rejected, because the '
+               'candidate said "prepping it took me about half a day". The line that goes on the resume reads "cut report prep from half a day to about 40 minutes".', body, a.style())
 
 
 def fig_self_preference(variant):
@@ -318,28 +324,29 @@ def fig_self_grade(variant):
 
 
 def fig_buzzwords(variant):
-    """The words recruiters skim past pop in, get zapped one by one, and a plain true line is left."""
-    words = [("spearheaded", 70, 120), ("synergy", 420, 104), ("results-driven", 250, 176), ("leveraged", 470, 240), ("dynamic", 90, 250)]
-    a, parts = Anim(9), []
-    for i, (w, x, y) in enumerate(words):
-        t_in, t_out = .2 + i * .25, 2.4 + i * .55
-        st = a.at(f"bw{i}", [(0, "opacity:0;transform:scale(.6)"), (t_in, "opacity:0;transform:scale(.6)"), (t_in + .3, "opacity:1;transform:scale(1)"),
-                             (t_out, "opacity:1;transform:scale(1)"), (t_out + .15, "opacity:1;transform:scale(1.25)"), (t_out + .35, "opacity:0;transform:scale(.2)"), (9, "opacity:0")],
-                  f"transform-origin:{x + len(w) * 6}px {y - 6}px;")
-        zap = a.at(f"bz{i}", [(0, "opacity:0"), (t_out, "opacity:0"), (t_out + .05, "opacity:1"), (t_out + .35, "opacity:0"), (9, "opacity:0")])
-        cx, cy = x + len(w) * 6, y - 6
-        parts.append(f'<g {st}><rect x="{x - 14}" y="{y - 30}" width="{len(w) * 12 + 28}" height="44" rx="22" fill="var(--surf)" stroke="var(--line)" stroke-width="1.5"/>'
-                     f'<text x="{x}" y="{y}" font-size="20" font-weight="700" fill="var(--ink)">{w}</text></g>'
-                     f'<g {zap}><path d="M{cx} {cy - 34}l-10 26h12l-8 24 22-32h-12l8-18z" fill="var(--brand)"/></g>')
-    keep = a.at("kp", [(0, "opacity:0;transform:translateY(10px)"), (5.3, "opacity:0;transform:translateY(10px)"), (5.8, "opacity:1;transform:translateY(0)"), (8.4, "opacity:1"), (9, "opacity:0")])
-    body = ('<text x="40" y="52" font-size="15" font-weight="700" letter-spacing="1.5" fill="var(--muted)">WORDS RECRUITERS SKIM PAST</text>'
-            + "".join(parts)
-            + f'<g {keep}><text x="360" y="168" text-anchor="middle" font-size="16" fill="var(--muted)">What’s left is what you actually did:</text>'
-              '<rect x="110" y="186" width="500" height="58" rx="16" fill="var(--surf)" stroke="var(--green)" stroke-width="2.5"/>'
-              '<text x="360" y="223" text-anchor="middle" font-size="20" fill="var(--ink)">Built the weekly report in Excel</text></g>')
+    """An AI-written line full of filler, each buzzword flagged in turn, then the same line in the candidate's words."""
+    a = Anim(10)
+    show = lambda n, t0: a.at(n, [(0, "opacity:0;transform:translateY(8px)"), (t0, "opacity:0;transform:translateY(8px)"),
+                                  (t0 + .4, "opacity:1;transform:translateY(0)"), (9.4, "opacity:1;transform:translateY(0)"), (10, "opacity:0")])
+    red = [a.at(f"bw{i}", [(0, "fill:var(--ink)"), (1.0 + i * .45, "fill:var(--ink)"), (1.2 + i * .45, "fill:var(--danger)"), (9.4, "fill:var(--danger)"), (10, "fill:var(--ink)")])
+           for i in range(5)]
+    count, mine = show("bc", 3.6), show("bm", 4.8)
+    w = lambda i, t: f'<tspan {red[i]} font-weight="700">{t}</tspan>'
+    body = f'''<text x="40" y="44" font-size="15" font-weight="700" letter-spacing="1.5" fill="var(--muted)">WORDS RECRUITERS SKIM PAST</text>
+<rect x="40" y="62" width="640" height="132" rx="14" fill="var(--surf)" stroke="var(--line)" stroke-width="1.5"/>
+<text x="62" y="90" font-size="12" font-weight="800" letter-spacing=".6" fill="var(--muted)">THE AI\u2019S VERSION</text>
+<text x="62" y="134" font-size="21" fill="var(--ink)">{w(0, "Spearheaded")} {w(1, "results-driven")} {w(2, "synergy")} to</text>
+<text x="62" y="170" font-size="21" fill="var(--ink)">{w(3, "leverage")} {w(4, "data-driven")} weekly reporting.</text>
+<g {count}><rect x="470" y="74" width="196" height="32" rx="16" fill="var(--danger)"/>
+<text x="568" y="96" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">5 buzzwords, 0 facts</text></g>
+<g {mine}><rect x="40" y="214" width="640" height="104" rx="14" fill="var(--surf)" stroke="var(--green)" stroke-width="2.5"/>
+<text x="62" y="242" font-size="12" font-weight="800" letter-spacing=".6" fill="var(--green)">IN YOUR WORDS</text>
+<text x="62" y="286" font-size="21" fill="var(--ink)">Built the weekly sales report in Excel.</text>
+<circle cx="646" cy="266" r="16" fill="var(--green)"/><path d="M638 266l6 6 10-11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="40" y="372" font-size="14" fill="var(--muted)">Same job, no filler. Now a recruiter can see what you actually did.</text>'''
     return svg(720, 405, variant, "Words recruiters skim past",
-               "The words spearheaded, synergy, results-driven, leveraged and dynamic pop up and get zapped one by one. "
-               "What is left is a plain, true line: Built the weekly report in Excel.", body, a.style())
+               "An AI-written line reads: Spearheaded results-driven synergy to leverage data-driven weekly reporting. The five buzzwords turn red one by one "
+               "and a label says 5 buzzwords, 0 facts. Below, the same line in the candidate's words: Built the weekly sales report in Excel.", body, a.style())
 
 
 def fig_interview(variant):
@@ -371,6 +378,6 @@ def fig_interview(variant):
                "With your own words, checked: Half a day to 40 minutes. Here's how.", body, a.style())
 
 
-FIGURES = {"rejected-claims": (fig_rejected, 9), "self-preference": (fig_self_preference, 8),
+FIGURES = {"rejected-claims": (fig_rejected, 10), "self-preference": (fig_self_preference, 8),
            "manual-vs-skill": (fig_manual_vs_skill, 10), "blind-check": (fig_blind_check, 9), "ats-myth": (fig_ats_myth, 8),
-           "self-grade": (fig_self_grade, 10), "buzzwords": (fig_buzzwords, 9), "interview": (fig_interview, 12)}
+           "self-grade": (fig_self_grade, 10), "buzzwords": (fig_buzzwords, 10), "interview": (fig_interview, 12)}

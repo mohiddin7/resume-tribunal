@@ -205,7 +205,7 @@ def build_blog(items):
                  + f'<script type="application/ld+json">{json.dumps(ld)}</script>\n')
         others = [o for o in items if o["slug"] != p["slug"]]
         related = "".join(f'<a class="card post" href="{o["slug"]}.html"><span class="tags">{tags(o)}</span><strong>{esc(o["title"])}</strong>'
-                          f'<span class="meta">{o["minutes"]} min read</span></a>' for o in others)
+                          f'<p>{esc(o["description"])}</p><span class="meta">{o["minutes"]} min read</span><span class="more" aria-hidden="true">Read the post →</span></a>' for o in others)
         page = (head(f"{p['title']} | Resume Tribunal", p["description"], url, 1, "article", extra)
                 + f'''<div class="readbar" aria-hidden="true"><b></b></div>
 <main id="main" class="post-wrap">
@@ -351,6 +351,9 @@ def hiw(play=False):
         scenes[4] = scenes[4].replace('class="sc ', 'data-wait class="sc ', 1).replace(
             '<span class="ok">Approve</span>', '<button type="button" class="ok">Approve</button>')
         scenes[5] = scenes[5].rsplit("</div>", 1)[0] + '<button type="button" class="btn ghost act again">Watch again</button></div>'
+        # A pretend pointer that shows where to click. It can't click anything; it loops until the reader does.
+        scenes[-1] += ('\n<svg class="gcur" aria-hidden="true" viewBox="0 0 24 24" width="30" height="30">'
+                       '<path d="M4 2l15 11.5-6.6 1 4 7.6-3 1.5-4-7.7L4 20z" fill="#fff" stroke="#14120f" stroke-width="1.6" stroke-linejoin="round"/></svg>')
     return f'''<div class="hiw{" play" if play else ""}" aria-roledescription="carousel" aria-label="How Resume Tribunal works">
     <ol class="steps6" role="tablist">{steps6}</ol>
     <div class="stage" tabindex="0" aria-live="polite">

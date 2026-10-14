@@ -211,8 +211,12 @@ details p { margin: 0 0 16px; color: var(--muted); }
 .cta-box { display: flex; gap: 16px; align-items: flex-start; background: var(--tint); border: 1px solid color-mix(in srgb, var(--brand) 35%, transparent); border-radius: 18px; padding: 20px; margin: 36px 0; }
 .cta-box p { margin: 4px 0 12px; font-size: 16px; color: var(--muted); }
 .post-foot { border-top: 1px solid var(--line); padding-top: 16px; }
-.related h2 { font-size: 1.4rem; text-align: left; }
-.related { padding: 32px 0; text-align: left; }
+/* Keep reading: its own full-width band, so it doesn't read as part of the post */
+.post-wrap:has(.related) { padding-bottom: 0; }
+.related { margin-top: 56px; padding: 40px 0 56px; text-align: left; background: var(--surf); box-shadow: 0 0 0 100vmax var(--surf); clip-path: inset(0 -100vmax); }
+.related h2 { font-size: 1.4rem; text-align: left; margin: 0 0 20px; }
+.related .card { background: var(--bg); }
+.related .card p { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
 
 /* footer */
 footer.site { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
@@ -496,6 +500,13 @@ body.home main > section > .tabs { width: fit-content; max-width: 100%; align-se
 .hiw.play .sc5 .ok { animation: none !important; font: inherit; font-size: 13px; font-weight: 800; background: none; cursor: pointer; }
 .hiw.play .sc5 .ok.yes { background: var(--green); color: #fff; }
 .hiw.waiting .stage { cursor: default; }
+/* the pretend pointer on the first step: glides to the button and taps it, again and again, until the reader clicks for real */
+.hiw .gcur { display: none; }
+.hiw.waiting .sc1.on ~ .gcur { display: block; position: absolute; left: calc(50% + 40px); top: calc(50% + 6px); z-index: 6; pointer-events: none; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); animation: gcur 3.2s ease-in-out infinite; transform-origin: 4px 2px; }
+.hiw.waiting .sc1.on .act { animation: gpress 3.2s ease-in-out infinite; animation-play-state: running !important; }
+@keyframes gcur { 0% { opacity: 0; transform: translate(120px, 90px); } 14% { opacity: 1; } 44% { transform: translate(0, 0) scale(1); } 50% { transform: translate(0, 0) scale(.8); } 57% { transform: translate(0, 0) scale(1); } 82% { opacity: 1; transform: translate(0, 0); } 100% { opacity: 0; transform: translate(40px, 36px); } }
+@keyframes gpress { 0%, 47% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 0 0 color-mix(in srgb, var(--brand) 55%, transparent); } 51% { transform: translate(-50%, -50%) scale(.95); } 58% { transform: translate(-50%, -50%) scale(1); } 80%, 100% { box-shadow: 0 0 0 16px transparent; } }
+@media (prefers-reduced-motion: reduce) { .hiw.waiting .sc1.on ~ .gcur { animation: none; opacity: 1; } .hiw.waiting .sc1.on .act { animation: none; } }
 .hiw.play .sc6 .qs { bottom: 27%; }
 .hiw.play .sc6 .pdf { top: 19%; }
 
