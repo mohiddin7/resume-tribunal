@@ -11,20 +11,36 @@ front matter (title, description, date, tags) and two shortcodes on their own li
   [[cta]]                   a box inviting the reader to try Resume Tribunal
   [[how]]                   the How it works player: waits for the reader at their steps, plays the AI steps itself
 docs/llms.txt is written by hand. The blog needs the markdown package (pip install markdown).
+The site address is never typed in: set SITE_URL, or put a custom domain in docs/CNAME, or it is the
+GitHub Pages address of the origin remote. Each build writes it into README.md, llms.txt and robots.txt.
 """
 import datetime
 import html
 import json
+import os
 import pathlib
 import re
+import subprocess
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import art  # noqa: E402
 
 DOCS = pathlib.Path("docs")
-SITE = "https://mohiddin7.github.io/resume-tribunal/"
-REPO = "https://github.com/mohiddin7/resume-tribunal"
+
+
+def addresses():
+    """The site and repository addresses, never hard-coded: SITE_URL if set, else the custom domain in
+    docs/CNAME, else the GitHub Pages address of the origin remote."""
+    remote = subprocess.run(["git", "remote", "get-url", "origin"], capture_output=True, text=True).stdout
+    owner, repo = re.search(r"github\.com[:/]([^/]+)/(.+?)(?:\.git)?\s*$", remote).groups()
+    pages = f"https://{owner.lower()}.github.io/{repo}/"
+    cname = (DOCS / "CNAME").read_text().strip() if (DOCS / "CNAME").exists() else ""
+    site = os.environ.get("SITE_URL") or (f"https://{cname}/" if cname else pages)
+    return site.rstrip("/") + "/", f"https://github.com/{owner}/{repo}", pages
+
+
+SITE, REPO, PAGES = addresses()
 ZIP = f"{REPO}/releases/latest/download/resume-tribunal.zip"
 AUTHOR = "mohiddin7"
 esc = html.escape
@@ -529,10 +545,22 @@ def media():
         ab("close")
 
 
+def point_hand_written_files_at_site():
+    """README.md, llms.txt and robots.txt are written by hand: once docs/CNAME names a custom domain, swap the
+    GitHub Pages address in them for it. A SITE_URL override, such as a local preview, leaves them alone."""
+    if os.environ.get("SITE_URL") or SITE == PAGES:
+        return
+    for path in (pathlib.Path("README.md"), DOCS / "llms.txt", DOCS / "robots.txt"):
+        text = path.read_text()
+        if PAGES in text:
+            path.write_text(text.replace(PAGES, SITE))
+
+
 if __name__ == "__main__":
     (DOCS / "blog" / "media").mkdir(parents=True, exist_ok=True)
     write_drawings()
     print("portable file:", write_portable(), "words")
+    point_hand_written_files_at_site()
     items = posts()
     build_blog(items)
     build_home(items)
