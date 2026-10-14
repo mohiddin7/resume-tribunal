@@ -22,6 +22,7 @@ processor, and a pass is not proof that every claim is true. The user's sign-off
 import argparse
 import datetime
 import json
+import os
 import re
 import statistics
 import sys
@@ -136,6 +137,13 @@ def count_words(md):
     return len(re.findall(r"[A-Za-z0-9][\w'+#./-]*", plain(MD_STRIP_RE.sub(lambda m: m.group(1) or "", md))))
 
 
+# Section names a plain-text resume writes in any case ("work experience"): each one ends a Skills section.
+SECTION_RE = re.compile(r"(?i)(?:professional |work |relevant |research )?(?:experience|employment|history)|education|"
+                        r"(?:academic |technical |personal )?projects?(?: work| highlights)?|certifications?(?: & awards?)?|"
+                        r"summary|about|profile|objective|publications?|leadership(?: experience)?|volunteering|awards?|"
+                        r"activities|interests|areas of interest|languages spoken|references")
+
+
 def skills_part(text):
     """The Skills section of a resume, Markdown or plain text: where stale and inflated tool claims sit."""
     out, on, inline = [], False, False
@@ -145,7 +153,8 @@ def skills_part(text):
         if 0 < len(title) < 40 and "skill" in title.lower():
             on, inline = True, ":" in bare and bool(bare.split(":", 1)[1].strip())
             out.append(bare.split(":", 1)[1] if ":" in bare else "")
-        elif bare and (len(bare) < 40 and (line.lstrip().startswith("#") or bare.isupper() and "," not in bare)
+        elif bare and (len(bare) < 40 and (line.lstrip().startswith("#") or bare.isupper() and "," not in bare
+                                           or SECTION_RE.fullmatch(bare))
                        or inline and re.match(r"[A-Z][A-Za-z &/]{2,30}:", bare)):
             # A heading ends Skills. So does another "Label: ..." line after an inline "Skills: ..." one;
             # under a Skills heading, "Languages: Python, SQL" is part of it.
@@ -163,6 +172,8 @@ def skill_entries(text):
     """The entries of a Skills section: "Excel (pivot tables), A/B testing" -> excel, pivot tables, a/b testing."""
     entries = set()
     for line in skills_part(text).splitlines():
+        if re.match(r"\W*certif", line, re.I):  # a certificate is asked about on its own, not as a skill
+            continue
         line = re.sub(r"^\s*[-*•]\s*|^[^:,]{1,40}:\s", "", line)  # a bullet, a "Languages:" label
         for e in re.split(r"[,;()|•·\n]|\band\b", line):
             e = e.strip(" .-*")
@@ -171,10 +182,12 @@ def skill_entries(text):
     return entries
 
 
-def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650, old=""):
+def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650, old="", no_own_words=False):
     """Return a list of (line_number, level, kind, detail). level is 'error', 'warn' or 'todo'."""
     out = []
     add = lambda n, level, kind, detail: out.append((n, level, kind, detail))
+    # Text pasted from a PDF carries ligatures ("eﬃciency"); compare on plain letters.
+    source, vocab, old = (unicodedata.normalize("NFKC", t) if t else t for t in (source, vocab, old))
     bullets, prose, headings, sections, separators, triplets, in_code = [], [], set(), set(), set(), 0, False
     # The name and contact lines at the top hold stand-ins and contact details, not claims.
     contact = lambda n, raw: "@" in raw or "<<" in raw or (n <= 3 and ("|" in raw or "](" in raw))
@@ -211,7 +224,7 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650,
                          ("abbreviated-title", ABBREV_RE)):
             for m in rx.finditer(raw):
                 add(n, "warn", kind, f'"{m.group(0).strip(", ")}"')
-        if BOLD_LEAD_RE.search(raw):
+        if BOLD_LEAD_RE.search(raw) and not in_skills:  # "**Cloud:** AWS, GCP" is a Skills group label
             add(n, "warn", "bold-lead-in", "drop the bold label and start with the action")
         triplets += len(TRIPLET_RE.findall(raw))
         for m in PLACEHOLDER_RE.finditer(raw):
@@ -310,7 +323,13 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650,
         def backed(entry):  # "Node.js" is backed by "Node"; one- and two-letter parts count only when nothing else does
             parts = re.findall(r"[a-z][a-z0-9+#]*", entry)
             return all(stem(w) in new_stems for w in [w for w in parts if len(w) > 2] or parts)
-        stale_skills = sorted(e for e in skill_entries(old) if not backed(e))
+        if no_own_words:  # nothing newer to compare with: a skill is backed when the resume's own jobs or projects show it
+            listed = {l.strip() for l in skills_part(old).splitlines() if l.strip()}
+            body = "\n".join(l for l in old.splitlines() if l.strip() not in listed and "skill" not in l.lower())
+            new_stems |= {stem(t.lower()) for t in re.findall(r"[A-Za-z][A-Za-z0-9+#]*", body)}
+        # The user confirmed the whole original resume at the sign-off: nothing in it is left to ask about.
+        confirmed_all = re.search(r"original resume is true as written", newer, re.I)
+        stale_skills = [] if confirmed_all else sorted(e for e in skill_entries(old) if not backed(e))
         for n, text in bullets + prose:
             raw = md_lines[n - 1]
             if n not in sections and not (n <= 3 and contact(n, raw)):
@@ -333,6 +352,7 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650,
                     add(n, "warn", "only-in-old-resume", ", ".join(stale) + ": only the original resume says this; ask at the sign-off before keeping it")
             # A derived number counts only as a span of years ("7 years"), never as a headcount or a percent.
             spans = {d for d in derived if re.search(rf"\b{d}\+?\s+years?\b", text)}
+            spans |= {d for w, d in NUMBER_WORDS.items() if d in derived and re.search(rf"\b{w}\s+years?\b", text, re.I)}
             # A number inside a product name the posting uses ("Dynamics 365") is a name, not a claim.
             spans |= {num for name, num in re.findall(r"\b([A-Z]\w+) (\d+)\b", text) if f"{name} {num}" in (vocab or "")}
             # A relative time dated from today ("the year to Oct 2026") uses this year, which the user never typed.
@@ -479,6 +499,18 @@ def self_test():
     assert "Python" in skills_part("## Skills\nLanguages: Python, SQL\nTools: Tableau")
     assert facts(head + "## Skills\nA/B testing, SQL", source="I read our A/B tests in SQL. Columbus, OH", old=oldr) == set()
     assert kinds("\n".join(["- **"] * 6)) == {"empty-bullet"}
+    # Plain-text resumes: a lower-case heading ends Skills; with no own words, the resume's own bullets back a skill.
+    plain_old = "technical skills\nLanguages: Python, R\nTools: Tableau\nwork experience\nAnalyst, Acme\n- Built Tableau dashboards"
+    assert skills_part(plain_old).split() == ["Languages:", "Python,", "R", "Tools:", "Tableau"]
+    assert facts(head + "## Skills\nPython, R, Tableau", source="Columbus, OH", old=plain_old, no_own_words=True) == {"only-in-old-resume"}
+    assert "tableau" not in str(check(head + "## Skills\nTableau", source="Columbus, OH", old=plain_old, no_own_words=True))
+    tpm_old = "SKILLS & ABILITIES\nTools: SQL, Marketo, Jira\nCertifications: PMP - PMI\nEDUCATION\nBS\nWORK\n- Tracked work in Jira"
+    assert "marketo, sql" in str(check(head + "## Skills\nSQL, Marketo, Jira, PMP", source="Columbus, OH", old=tpm_old, no_own_words=True))
+    assert facts(head + "## Skills\nPython, R", source="I confirm everything in my original resume is true as written. Columbus, OH",
+                 old=plain_old) == set()
+    assert facts(head + "- Five years in DevOps.", source="DevOps Engineer, 2017 - 2022. Columbus, OH") == set()
+    assert facts(head + "## Skills\n- **Cloud:** AWS", source="AWS. Columbus, OH") == set()
+    assert facts(head + "- Raised efficiency", source="raised eﬃciency. Columbus, OH") == set()
     assert facts(head + "## Skills\nSQL, R", source="I use SQL. Columbus, OH", old="## Skills\nSQL, R") == {"only-in-old-resume"}
     this = datetime.date.today().year
     assert facts(head + f"- About 12 tests in the year to Oct {this}", source="about 12 tests in the last year. Columbus, OH") == set()
@@ -513,8 +545,9 @@ def main():
 
     md = sys.stdin.read() if a.resume == "-" else read(a.resume)
     source = "\n".join(read(f) for f in a.source) if a.source else None
+    own = [f for f in a.source if os.path.basename(f) == "own_words.md"]
     found = check(md, a.line_chars, source, a.final, "\n".join(read(f) for f in a.vocab), a.max_words,
-                  "\n".join(read(f) for f in a.old))
+                  "\n".join(read(f) for f in a.old), no_own_words=bool(own) and not any(read(f).strip() for f in own))
     errors = sum(1 for f in found if f[1] == "error")
     warns = sum(1 for f in found if f[1] == "warn")
     if a.json:

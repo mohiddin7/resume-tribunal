@@ -63,22 +63,30 @@ def blocked(reply):
     return text.startswith("jetski: no output produced") and "\n" not in text
 
 
-def contact_details(prompt):
-    """Emails, profile links and phone numbers that should have been swapped for stand-ins."""
+def contact_details(prompt, keep=()):
+    """Emails, profile links and phone numbers that should have been swapped for stand-ins.
+    keep: values the user checked are not contact details (a requisition number), from standins.md."""
     found = re.findall(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+|linkedin\.com/in/[\w-]+", prompt)
-    # A figure after a currency sign ("$1000000000") is money, not a phone.
-    found += [m for m in re.findall(r"(?<![$€£¥₹\d])\+?\d[\d ().-]{5,}\d", prompt)
-              if sum(c.isdigit() for c in m) >= (7 if re.search(r"\D", m) else 10)
-              and not re.fullmatch(r"(?:19|20)\d\d\s*-\s*(?:19|20)\d\d", m)
-              # Dates such as 2026-09-15 or 15.09.2026 (a saved profile dates its entries) are not phones.
-              and not re.fullmatch(r"(?:19|20)\d\d-\d\d-\d\d|\d\d?[.-]\d\d?[.-](?:19|20)\d\d", m)]
-    return found
+    for m in re.finditer(r"(?<![$€£¥₹\d])\+?\d[\d ().-]{5,}\d", prompt):  # after a currency sign it is money
+        s = m.group(0)
+        if (sum(c.isdigit() for c in s) >= (7 if re.search(r"\D", s) else 10)
+                # A year range inside ("10 2018 - 2022", a GPA scale then dates) means dates, not a phone.
+                and not re.search(r"(?:19|20)\d\d\s*[-–]\s*(?:19|20)\d\d", s)
+                # Dates such as 2026-09-15 or 15.09.2026 (a saved profile dates its entries) are not phones.
+                and not re.fullmatch(r"(?:19|20)\d\d-\d\d-\d\d|\d\d?[.-]\d\d?[.-](?:19|20)\d\d", s)
+                # A labelled ID ("Req. ID: 1273383451", "Job #4471234") is not a phone.
+                and not re.search(r"(?i)(?:\bid|#|\bno\.?|number|\breq\w*)\W{0,3}$", prompt[max(0, m.start() - 12):m.start()])):
+            found.append(s)
+    return [f for f in found if f.lower() not in {k.lower() for k in keep}]
 
 
 def run(cmd, prompt_path, reply_path, timeout, allow_contact=False):
     with open(prompt_path, encoding="utf-8") as f:
         prompt = f.read()
-    found = contact_details(prompt)
+    # Values the user checked are not contact details sit in standins.md as <<KEEP>> lines, next to the prompt.
+    path = os.path.join(os.path.dirname(os.path.abspath(prompt_path)), "standins.md")
+    keep = re.findall(r"^<<KEEP\w*>> = (.+?)\s*$", open(path, encoding="utf-8").read(), re.M) if os.path.exists(path) else []
+    found = contact_details(prompt, keep)
     if found and not allow_contact:
         sys.exit(f"not sent: the prompt still holds contact details ({', '.join(found[:3])}). Replace them with "
                  "stand-ins, or pass --allow-contact if the user agreed to send them. A large figure that is not a phone "
@@ -126,6 +134,8 @@ def self_test():
     assert contact_details("<<EMAIL>> | <<PHONE>> | Jan 2019 - Mar 2021 | 2019 - 2021 | cut 1200 to 300 | 5000000") == []
     assert contact_details("call 555-0117") == ["555-0117"]
     assert contact_details("Send it to hr@corp.example.") == ["hr@corp.example"]  # not the full stop
+    assert contact_details("GPA: 8.2 / 10 2018 - 2022. Req. ID: 1273383451. Job #4471234567") == []  # dates and IDs
+    assert contact_details("call 5551234567", keep=["5551234567"]) == []
     assert contact_details("call 5551234567") == ["5551234567"]
     assert contact_details("## 2026-09-15\nconfirmed 15.09.2026 and 1-9-2026") == []  # dated profile entries
     assert contact_details("call 0161-555-0199") == ["0161-555-0199"]

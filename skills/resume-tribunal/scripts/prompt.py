@@ -9,7 +9,7 @@ Usage:
   python3 prompt.py build P3 --drafts K,M,R --out .tribunal/p3.txt
   python3 prompt.py build P4 [--final] --out .tribunal/p4.txt
   python3 prompt.py extract .tribunal/p1_reply_B.md --out .tribunal/draft_K.md
-  python3 prompt.py hide --also "Referee Name" [--drop "..."]  # later: hide more, in every working file
+  python3 prompt.py hide --also "Referee Name" [--drop "..."] [--keep "..."]  # later: hide more, or undo a wrong stand-in
   python3 prompt.py restore --out .tribunal/final.md        # resume.md with the personal details put back
   python3 prompt.py --self-test
 
@@ -144,9 +144,11 @@ def load_standins(d):
     return dict(re.findall(r"^(<<[A-Z0-9_]+>>) = (.+?)\s*$", open(path, encoding="utf-8").read(), re.M))
 
 
-def hide(text, standins, name, also, drop=()):
+def hide(text, standins, name, also, drop=(), prefix=""):
     """Swap the name, contact details, links and any --also strings for stand-ins, reusing known ones.
-    --drop strings are deleted outright: details the user wants on no resume, such as a date of birth."""
+    --drop strings are deleted outright: details the user wants on no resume, such as a date of birth.
+    prefix names the posting's own contacts (<<JOB_EMAIL>>), so they can never fill the candidate's contact line.
+    <<KEEP>> values in the map were checked as not personal (a requisition number) and stay as they are."""
     for value in drop:
         text = re.sub(re.escape(value), "", text, flags=re.I)
     by_value = {v.lower(): k for k, v in standins.items()}
@@ -159,14 +161,17 @@ def hide(text, standins, name, also, drop=()):
             standins[key] = value
             by_value[value.lower()] = key
         return by_value[value.lower()]
-    found = [(m.rstrip(".,;:"), "LINK_" + ("LINKEDIN" if "linkedin" in m else "GITHUB" if "github" in m else "WEB"))
+    keep = {v.lower() for k, v in standins.items() if k.startswith("<<KEEP")}
+    found = [(m.rstrip(".,;:"), prefix + "LINK_" + ("LINKEDIN" if "linkedin" in m else "GITHUB" if "github" in m else "WEB"))
              for m in LINK_RE.findall(text)]
     for c in contact_details(text):  # a phone match starts at a digit, so take back an opening bracket: "(614) 555-0182"
         c = "(" + c if "(" + c in text and c.count(")") > c.count("(") else c
-        found.append((c, "EMAIL" if "@" in c else "LINK_LINKEDIN" if "linkedin" in c else "PHONE"))
+        found.append((c, prefix + ("EMAIL" if "@" in c else "LINK_LINKEDIN" if "linkedin" in c else "PHONE")))
+    found = [(v, b) for v, b in found if v.lower() not in keep]
     found += [(name, "NAME")] if name else []
     found += [(a, "PERSONAL") for a in also]
-    found += [(v, None) for v in standins.values()]  # known values: a referee named at the last job, in this job's notes
+    # Known values: a referee named at the last job, in this job's notes.
+    found += [(v, None) for k, v in standins.items() if not k.startswith("<<KEEP")]
     for value, base in sorted(found, key=lambda f: -len(f[0])):  # longest first, so a link wins over its domain
         if value:  # anywhere, even inside a longer word ("Jane Doe_cv"): hiding too much is the safe side
             text = re.sub(re.escape(value), lambda m: token(value, base), text, flags=re.I)
@@ -184,8 +189,8 @@ def setup(d, resume, job, own, profile, name, also, target, drop=()):
             if os.path.exists(os.path.join(profile, f)):
                 shutil.copy(os.path.join(profile, f), os.path.join(d, f))
     standins = load_standins(d)
-    def put(src, dest, append=False):
-        text = hide(open(src, encoding="utf-8-sig").read(), standins, name, also, drop)
+    def put(src, dest, append=False, prefix=""):
+        text = hide(open(src, encoding="utf-8-sig").read(), standins, name, also, drop, prefix)
         if append and os.path.exists(os.path.join(d, dest)):
             text = open(os.path.join(d, dest), encoding="utf-8").read().rstrip() + f"\n\n## {datetime.date.today()}\n{text}"
         open(os.path.join(d, dest), "w", encoding="utf-8").write(text.strip() + "\n")
@@ -193,7 +198,7 @@ def setup(d, resume, job, own, profile, name, also, target, drop=()):
         put(resume, "candidate.md")
     elif not os.path.exists(os.path.join(d, "candidate.md")):
         sys.exit("give --resume, or --profile with a saved candidate.md")
-    put(job, "job.md")
+    put(job, "job.md", prefix="JOB_")  # the employer's own email and site are not the candidate's
     if own:
         put(own, "own_words.md", append=bool(profile))
     elif not os.path.exists(os.path.join(d, "own_words.md")):
@@ -206,15 +211,30 @@ def setup(d, resume, job, own, profile, name, also, target, drop=()):
     return standins
 
 
-def sweep(d, also=(), drop=()):
+WORKING_SKIP = ("standins.md", "final.md", "state.md", "messages_to_user.md")  # your own notes never go to a seat
+
+
+def sweep(d, also=(), drop=(), keep=()):
     """Hide new details in a run already set up: add --also values to the map, and apply the whole map
     (and --drop) to every working file, so text added since setup, such as sign-off answers, is covered.
+    --keep undoes a wrong stand-in (a requisition number taken for a phone) and stops it coming back.
     Prompts built before this must be built again."""
     standins = load_standins(d)
-    for f in sorted(glob.glob(os.path.join(d, "*.md"))):
-        if os.path.basename(f) not in ("standins.md", "final.md"):
-            text = open(f, encoding="utf-8").read()
-            open(f, "w", encoding="utf-8").write(hide(text, standins, None, also, drop))
+    files = [f for f in sorted(glob.glob(os.path.join(d, "*.md"))) if os.path.basename(f) not in WORKING_SKIP]
+    for value in keep:
+        for key in [k for k, v in standins.items() if v.lower() == value.lower() and not k.startswith("<<KEEP")]:
+            del standins[key]
+            for f in files:
+                text = open(f, encoding="utf-8").read()
+                open(f, "w", encoding="utf-8").write(text.replace(key, value))
+        n, key = 1, "<<KEEP>>"
+        while key in standins:
+            n += 1
+            key = f"<<KEEP_{n}>>"
+        standins[key] = value
+    for f in files:
+        text = open(f, encoding="utf-8").read()
+        open(f, "w", encoding="utf-8").write(hide(text, standins, None, also, drop))
     open(os.path.join(d, "standins.md"), "w", encoding="utf-8").write("".join(f"{k} = {v}\n" for k, v in standins.items()))
     return standins
 
@@ -225,7 +245,7 @@ def loose_first_names(d, standins):
     firsts = {v.split()[0] for k, v in standins.items() if k.startswith("<<PERSONAL") and " " in v.strip()}
     found = set()
     for f in glob.glob(os.path.join(d, "*.md")):
-        if os.path.basename(f) not in ("standins.md", "final.md"):
+        if os.path.basename(f) not in WORKING_SKIP:
             text = open(f, encoding="utf-8").read()
             found |= {n for n in firsts if len(n) > 2 and re.search(rf"\b{re.escape(n)}\b", text)}
     return sorted(found - set(standins.values()))
@@ -234,6 +254,8 @@ def loose_first_names(d, standins):
 def restore(d):
     text = open(os.path.join(d, "resume.md"), encoding="utf-8").read()
     for key, value in load_standins(d).items():
+        if key.startswith("<<KEEP"):
+            continue
         # A link target needs its scheme ("github.com/x" alone is a relative link); the visible text keeps it as given.
         target = value if re.match(r"(?:https?|mailto):", value) else ("mailto:" if "@" in value else "https://") + value
         text = text.replace(f"]({key})", f"]({target})").replace(key, value)
@@ -335,6 +357,18 @@ def self_test():
         assert loose_first_names(t3, load_standins(t3)) == ["Sam"]
         sweep(t3, ["Sam"])
         assert loose_first_names(t3, load_standins(t3)) == []
+        # The posting's own contacts get JOB_ names; a wrong stand-in can be undone and stays undone.
+        assert "<<JOB_EMAIL>>" in open(os.path.join(t, "job.md")).read() and "<<JOB_EMAIL>>" in load_standins(t)
+        open(os.path.join(t3, "notes.md"), "w").write("Code 5551234567 is the posting's number.")
+        sweep(t3)
+        tok = next(k for k, v in load_standins(t3).items() if v == "5551234567")
+        sweep(t3, keep=["5551234567"])
+        assert "5551234567" in open(os.path.join(t3, "notes.md")).read() and tok not in load_standins(t3)
+        sweep(t3)
+        assert "5551234567" in open(os.path.join(t3, "notes.md")).read()  # not hidden again
+        open(os.path.join(t3, "state.md"), "a").write("Phone 555-010-7777 noted.")
+        sweep(t3)
+        assert "555-010-7777" in open(os.path.join(t3, "state.md")).read()  # your notes are not swept
         # No own words: the file still exists, empty, so the check commands work as written.
         t4 = os.path.join(d, "t4")
         setup(t4, os.path.join(src, "r.txt"), os.path.join(src, "j.txt"), None, None, "Jordan Ellis", [], "Target: X.")
@@ -375,6 +409,7 @@ def main():
     h.add_argument("--dir", default=".tribunal")
     h.add_argument("--also", action="append", default=[])
     h.add_argument("--drop", action="append", default=[])
+    h.add_argument("--keep", action="append", default=[], help="a value wrongly taken for a contact detail, such as a requisition number")
     r = sub.add_parser("restore", help="write resume.md with the personal details put back")
     r.add_argument("--dir", default=".tribunal")
     r.add_argument("--out", required=True)
@@ -394,7 +429,7 @@ def main():
         for n in loose_first_names(a.dir, m):
             print(f'"{n}" still appears on its own. If it is the same person, run: prompt.py hide --also "{n}"')
     elif a.action == "hide":
-        m = sweep(a.dir, a.also, a.drop)
+        m = sweep(a.dir, a.also, a.drop, a.keep)
         print(f"applied {len(m)} stand-ins to {a.dir}/; build any prompt again before sending it")
         for n in loose_first_names(a.dir, m):
             print(f'"{n}" still appears on its own. If it is the same person, run: prompt.py hide --also "{n}"')

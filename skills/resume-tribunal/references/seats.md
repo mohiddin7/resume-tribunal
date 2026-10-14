@@ -39,7 +39,7 @@ A much weaker seat lowers the quality of the review, so match tiers.
 3. Find the names with `python3 scripts/seats.py models <seat>`. Where a tool cannot list them, use its documented names; Claude Code accepts `opus`, `sonnet` and `haiku`.
 4. Pass them with `--model` and `--effort` on `seats.py run`. Where the model name already carries an effort level (such as a name ending in `-high`), leave out `--effort`.
 5. In the consent message, say in plain words what will run: the company and the model name as the tool lists it. The user can change it.
-6. If no seat offers your tier, use the strongest model each seat lists, preferring one its company calls balanced or flagship over one it calls fast, even when the fast one is newer. Say so in the model line and carry on; offer solo only if the user would rather.
+6. If no seat offers your tier, use the strongest model each seat lists (and make quick review the default, see SKILL.md Stop 1), preferring one its company calls balanced or flagship over one it calls fast, even when the fast one is newer. Say so in the model line and carry on; offer solo only if the user would rather.
 7. When unsure, choose the seat's strongest model. A reviewer stronger than you does no harm; a much weaker one does.
 
 In platform mode, choose comparable models in the platform's picker the same way. In manual mode, suggest the strongest model the user has in each app.
