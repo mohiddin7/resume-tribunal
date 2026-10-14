@@ -28,10 +28,10 @@ Quick review takes about 5 minutes; full council about 15 minutes and roughly fi
 
 ## Install
 
-- Any AI chat app, any model: attach the resume and say "Read https://mohiddin7.github.io/resume-tribunal/resume-tribunal.md and follow it to tailor my resume to this job: [paste the job link]"
+- Any AI chat app, any model: attach the resume and say "Read https://tribunal.warmhop.com/resume-tribunal.md and follow it to tailor my resume to this job: [paste the job link]"
 - Save as a skill: upload resume-tribunal.zip (Gemini: Settings, Skills, Upload; Claude: Customize, Skills; Claude Pro or Max can add the marketplace `mohiddin7/resume-tribunal`).
 - Coding agents: `npx skills add mohiddin7/resume-tribunal`
-- All instructions in one file: https://mohiddin7.github.io/resume-tribunal/resume-tribunal.md
+- All instructions in one file: https://tribunal.warmhop.com/resume-tribunal.md
 
 ## What it will not do
 
@@ -45,8 +45,8 @@ Quick review takes about 5 minutes; full council about 15 minutes and roughly fi
 - [Skill instructions](https://github.com/mohiddin7/resume-tribunal/blob/main/skills/resume-tribunal/SKILL.md)
 - [Prompts](https://github.com/mohiddin7/resume-tribunal/blob/main/skills/resume-tribunal/references/prompts.md)
 - [Worked example](https://github.com/mohiddin7/resume-tribunal/tree/main/examples/operations-analyst): a full run on a fictional candidate, checkable with one command
-- [How it was made](https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html)
-- [Resume skills compared](https://mohiddin7.github.io/resume-tribunal/blog/resume-skills-compared.html): six resume skills, including this one, compared honestly
+- [How it was made](https://tribunal.warmhop.com/blog/how-resume-tribunal-was-made.html)
+- [Resume skills compared](https://tribunal.warmhop.com/blog/resume-skills-compared.html): six resume skills, including this one, compared honestly
 
 ## Support
 

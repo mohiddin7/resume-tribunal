@@ -35,7 +35,7 @@ npx skills add mohiddin7/resume-tribunal
 
 **Never used a terminal?** [Start here](#new-to-this-start-here): paste one message into any AI chat app.
 
-[Website](https://mohiddin7.github.io/resume-tribunal/) · [How it was made](https://mohiddin7.github.io/resume-tribunal/blog/how-resume-tribunal-was-made.html) · [Resume skills compared](https://mohiddin7.github.io/resume-tribunal/blog/resume-skills-compared.html)
+[Website](https://tribunal.warmhop.com/) · [How it was made](https://tribunal.warmhop.com/blog/how-resume-tribunal-was-made.html) · [Resume skills compared](https://tribunal.warmhop.com/blog/resume-skills-compared.html)
 
 ## How it works
 
@@ -137,7 +137,7 @@ Works with any AI app and any model. No commands, no account with us.
 **In an AI chat app** (ChatGPT, Gemini, Claude, Perplexity, Grok, Copilot, DeepSeek, Le Chat): open a new chat, attach your resume, and paste this with your job link at the end.
 
 ```
-Read https://mohiddin7.github.io/resume-tribunal/resume-tribunal.md and follow it to tailor my resume to this job: [paste the job link]
+Read https://tribunal.warmhop.com/resume-tribunal.md and follow it to tailor my resume to this job: [paste the job link]
 ```
 
 A quick review takes about 5 minutes. If your app can't open links, download [resume-tribunal.md](docs/resume-tribunal.md) and attach it too.
