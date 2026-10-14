@@ -97,9 +97,13 @@ def run(cmd, prompt_path, reply_path, timeout, allow_contact=False):
     path = os.path.join(os.path.dirname(os.path.abspath(prompt_path)), "standins.md")
     keep = re.findall(r"^<<KEEP\w*>> = (.+?)\s*$", open(path, encoding="utf-8").read(), re.M) if os.path.exists(path) else []
     found = contact_details(prompt, keep)
+    # Backstop for every pattern above: any value already hidden at setup, found again anywhere, stops the send.
+    if os.path.exists(path):
+        hidden = re.findall(r"^<<(?!KEEP)\w+>> = (.+?)\s*$", open(path, encoding="utf-8").read(), re.M)
+        found += [v for v in hidden if len(v) >= 3 and re.search(rf"(?<![\w-]){re.escape(v)}(?![\w-])", prompt, re.I)]
     if found and not allow_contact:
-        sys.exit(f"not sent: the prompt still holds contact details ({', '.join(found[:3])}). Replace them with "
-                 "stand-ins, or pass --allow-contact if the user agreed to send them. A large figure that is not a phone "
+        sys.exit(f"not sent: the prompt still holds personal details ({', '.join(found[:3])}). Run prompt.py hide and build "
+                 "the prompt again, or pass --allow-contact if the user agreed to send them. A large figure that is not a phone "
                  "passes once written with commas: 1,000,000,000.")
     # Fail early if the reply cannot be saved, and clear any earlier reply so a failed run leaves nothing stale.
     open(reply_path, "w", encoding="utf-8").close()
@@ -150,6 +154,16 @@ def self_test():
     assert contact_details("Phone No. 5551234567, contact number: 555-123-4567, Mobile #: 5551234567") == ["5551234567", "555-123-4567", "5551234567"]
     assert contact_details("Cell no 5551234567") == ["5551234567"] and contact_details("No. 5551234567") == ["5551234567"]
     assert contact_details("mail a@b.co", keep=["a@b.co"]) == ["a@b.co"]
+    # Backstop: a value hidden at setup that turns up again stops the send; a word that merely contains it does not.
+    with tempfile.TemporaryDirectory() as d:
+        open(os.path.join(d, "standins.md"), "w").write("<<NAME>> = Jordan Ellis\n<<PERSONAL>> = Ruth\n")
+        for text, refused in (("Jordan Ellis wrote it.", True), ("The truth is ruthless.", False)):
+            open(os.path.join(d, "p.txt"), "w").write(text)
+            try:
+                run(["echo", "ok"], os.path.join(d, "p.txt"), os.path.join(d, "r.md"), 5)
+                assert not refused, text
+            except SystemExit as e:
+                assert refused and "not sent" in str(e), (text, e)
     assert contact_details("call 5551234567") == ["5551234567"]
     assert contact_details("## 2026-09-15\nconfirmed 15.09.2026 and 1-9-2026") == []  # dated profile entries
     assert contact_details("call 0161-555-0199") == ["0161-555-0199"]

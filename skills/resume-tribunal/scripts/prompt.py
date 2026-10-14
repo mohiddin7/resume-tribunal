@@ -137,6 +137,8 @@ def build(pid, d, labels=(), final=False):
 # A bare domain ("linktr.ee/jane") is any lower-case ending except a code file's, so "Node.js/Express" and
 # "ASP.NET/C#" stay skills. ponytail: hiding a lower-case "socket.io/redis" too is the safe side to err on.
 CODE_ENDINGS = r"(?:js|ts|jsx|tsx|py|rb|md|json|ya?ml|txt|csv|cpp|cs|h)"
+PLATFORMS = r"(?i)(?:^|\.)(?:github|gitlab|linkedin|medium|kaggle|huggingface|behance|dribbble|twitter|x|youtube|substack|notion|linktr|bitbucket|orcid|scholar\.google|researchgate|credly)\.\w+$"
+PROFILE_RE = r"(?i)(?:github|gitlab|medium|kaggle|huggingface|behance|dribbble|twitter|x|bitbucket|linktr)\.(?:com|co|net|ee|org)/@?([\w.-]+)"
 LINK_RE = re.compile(rf"https?://[^\s)<>|,]+|www\.[^\s)<>|,]+|\b[\w-]+(?:\.[\w-]+)*\.(?!{CODE_ENDINGS}/)[a-z]{{2,24}}/[\w./%~#?=&-]+")
 
 
@@ -172,8 +174,13 @@ def hide(text, standins, name, also, drop=(), prefix=""):
     for c in contact_details(text):  # a phone match starts at a digit, so take back an opening bracket: "(614) 555-0182"
         c = "(" + c if "(" + c in text and c.count(")") > c.count("(") else c
         found.append((c, prefix + ("EMAIL" if "@" in c else "LINK_LINKEDIN" if "linkedin" in c else "PHONE")))
-    # A GitHub or GitLab username names the person on its own, inside a README as much as in a link.
-    found += [(u, "PERSONAL") for v, _ in list(found) for u in re.findall(r"(?:github|gitlab)\.com/([\w-]{4,})", v)]
+    # A profile username, or a personal site's own domain, names the person on its own: inside a README or a page
+    # it turns up without the link around it ("see jellis.dev", "by @jellis").
+    for v, _ in list(found):
+        found += [(u, "PERSONAL") for u in re.findall(PROFILE_RE, v) if len(u) >= 2]
+        host = re.sub(r"^(?:https?://)?(?:www\.)?", "", v).split("/")[0]
+        if "." in host and not re.search(PLATFORMS, host):
+            found.append((host, None if host.lower() in by_value else "LINK_WEB"))
     found = [(v, b) for v, b in found if v.lower() not in keep]
     found += [(name, "NAME")] if name else []
     found += [(a, "PERSONAL") for a in also]
@@ -403,6 +410,9 @@ def self_test():
         setup(t5, os.path.join(src, "r.txt"), os.path.join(src, "j.txt"), None, None, "Jordan Ellis", [], "Target: X.", pages=os.path.join(src, "pages.md"))
         lp = open(os.path.join(t5, "linked_pages.md")).read()
         assert "jellis" not in lp.lower() and "Jordan" not in lp and "[rest of page cut]" in lp and len(lp.split()) < 1600, lp[:300]
+        m6 = {}
+        out = hide("Site jd-ellis.dev/work. Later: see jd-ellis.dev, or kaggle.com/jd and @jd on kaggle.", m6, None, [])
+        assert "jd-ellis" not in out and "kaggle.com/jd" not in out and " jd " not in out.replace("@", " "), out
         open(os.path.join(t5, "draft_K.md"), "w").write("# <<NAME>>")
         assert "<linked_pages>" in build("P1", t5)[0] and "<linked_pages>" in build("P2", t5, ["K"])[0]
         # No own words: the file still exists, empty, so the check commands work as written.
