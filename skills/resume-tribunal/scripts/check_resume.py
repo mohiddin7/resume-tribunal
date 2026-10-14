@@ -97,6 +97,33 @@ def numbers(text):
     return found | {NUMBER_WORDS[w] for w in re.findall(r"[a-z]+", text.lower()) if w in NUMBER_WORDS}
 
 
+UNIT_RE = re.compile(r"(\d+(?:,\d{3})*(?:\.\d+)?)\s*(%|percent\b|per cent\b|k\b|thousand\b|m\b|mn\b|million\b|bn?\b|billion\b)",
+                     re.IGNORECASE)
+UNITS = {"percent": "%", "per cent": "%", "thousand": "k", "mn": "m", "million": "m", "b": "bn", "billion": "bn"}
+
+
+def quantities(text):
+    """Numbers with their unit or scale: "25%" -> ("25", "%"), "$1.2 million" -> ("1.2", "m")."""
+    text = LINK_TARGET_RE.sub(" ", text)
+    return {(n.replace(",", ""), UNITS.get(u.lower(), u.lower())) for n, u in UNIT_RE.findall(text)}
+
+
+def worked_years(source, this_year):
+    """Spans of years the source's date ranges support: each range, and from each start to the latest end."""
+    spans = []
+    for m in DATE_RANGE_RE.finditer(source):
+        years = re.findall(r"(?:19|20)\d{2}", m.group(0))
+        start = int(years[0])
+        end = int(years[1]) if len(years) > 1 else this_year
+        spans.append((start, end))
+    latest = max((e for _, e in spans), default=0)
+    out = set()
+    for start, end in spans:
+        for y in (end - start, latest - start):
+            out |= {str(y + d) for d in (-1, 0) if 0 < y + d < 60}
+    return out
+
+
 def words(text):
     return {w.lower() for w in WORD_RE.findall(LINK_TARGET_RE.sub(" ", text))}
 
@@ -111,30 +138,51 @@ def count_words(md):
 
 def skills_part(text):
     """The Skills section of a resume, Markdown or plain text: where stale and inflated tool claims sit."""
-    out, on = [], False
+    out, on, inline = [], False, False
     for line in text.splitlines():
         bare = re.sub(r"[#*_]", "", line).strip()
         title = bare.split(":")[0].strip()
         if 0 < len(title) < 40 and "skill" in title.lower():
-            on = True
+            on, inline = True, ":" in bare and bool(bare.split(":", 1)[1].strip())
             out.append(bare.split(":", 1)[1] if ":" in bare else "")
         elif bare and (len(bare) < 40 and (line.lstrip().startswith("#") or bare.isupper())
-                       or re.match(r"[A-Z][A-Za-z &/]{2,30}:", bare)):  # a heading, or another "Label: ..." line
+                       or inline and re.match(r"[A-Z][A-Za-z &/]{2,30}:", bare)):
+            # A heading ends Skills. So does another "Label: ..." line after an inline "Skills: ..." one;
+            # under a Skills heading, "Languages: Python, SQL" is part of it.
             on = False
         elif on:
             out.append(line)
     return "\n".join(out)
 
 
+QUALIFIERS = set("basic intermediate advanced proficient fluent native expert beginner familiar strong excellent "
+                 "working knowledge".split()) | {"working knowledge"}
+
+
+def skill_entries(text):
+    """The entries of a Skills section: "Excel (pivot tables), A/B testing" -> excel, pivot tables, a/b testing."""
+    entries = set()
+    for line in skills_part(text).splitlines():
+        line = re.sub(r"^\s*[-*•]\s*|^[^:,]{1,40}:\s", "", line)  # a bullet, a "Languages:" label
+        for e in re.split(r"[,;()|•·\n]|\band\b", line):
+            e = e.strip(" .-*").lower()
+            if len(e) > 1 and re.search(r"[a-z]", e) and e not in QUALIFIERS:
+                entries.add(e)
+    return entries
+
+
 def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650, old=""):
     """Return a list of (line_number, level, kind, detail). level is 'error', 'warn' or 'todo'."""
     out = []
     add = lambda n, level, kind, detail: out.append((n, level, kind, detail))
-    bullets, prose, headings, separators, triplets, in_code = [], [], set(), set(), 0, False
+    bullets, prose, headings, sections, separators, triplets, in_code = [], [], set(), set(), set(), 0, False
+    # The name and contact lines at the top hold stand-ins and contact details, not claims.
+    contact = lambda n, raw: "@" in raw or "<<" in raw or (n <= 3 and ("|" in raw or "](" in raw))
     skills, in_skills = set(), False  # the Skills section is where the posting's names belong
     line_chars = max(line_chars, 1)
 
-    for n, raw in enumerate(md.splitlines(), 1):
+    md_lines = md.splitlines()
+    for n, raw in enumerate(md_lines, 1):
         # Hidden-text checks run on every line, including inside code fences and comments.
         if invisible(raw):
             add(n, "error", "invisible-character", "remove zero-width or hidden characters")
@@ -177,13 +225,18 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650,
             # Phone numbers on a contact line are personal details, not claims.
             if raw.lstrip().startswith("#"):
                 headings.add(n)
+                if re.match(r"\s*#{1,2}\s", raw):  # "## Experience": a section name, not a claim
+                    sections.add(n)
                 in_skills = "skill" in raw.lower()
             elif in_skills:
                 skills.add(n)
             if raw.strip():
-                prose.append((n, PHONE_RE.sub(" ", plain(raw)) if "@" in raw or n <= 3 else plain(raw)))
+                prose.append((n, PHONE_RE.sub(" ", plain(raw)) if contact(n, raw) else plain(raw)))
             continue
         text = plain(bullet.group(1))
+        if not text.strip(" *_"):
+            add(n, "error", "empty-bullet", "a bullet with no text; remove it")
+            continue
         bullets.append((n, text))
         if in_skills:
             skills.add(n)
@@ -225,7 +278,7 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650,
                 "keep its skill and tool names, and say the rest in the candidate's terms")
     if len(bullets) >= 6:
         lengths = [len(t) for _, t in bullets]
-        if statistics.pstdev(lengths) / statistics.mean(lengths) < 0.15:
+        if statistics.pstdev(lengths) / max(statistics.mean(lengths), 1) < 0.15:
             add(0, "warn", "uniform-bullets", "bullets are nearly the same length; vary them")
         if all(NUMBER_RE.search(t) for _, t in bullets):
             add(0, "warn", "metric-in-every-bullet", "every bullet has a number; leave some as plain statements")
@@ -237,8 +290,13 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650,
         src_numbers, known, posting = numbers(source), words(source), words(vocab)
         # Years of experience worked out from the dates in the source are allowed.
         this_year = datetime.date.today().year
-        derived = {str(this_year - int(y) + d) for y in re.findall(r"\b(?:19|20)\d{2}\b", source)
-                   for d in (-1, 0) if 0 < this_year - int(y) + d < 60}
+        derived = worked_years(source, this_year)  # never from a graduation year or a role that ended
+        src_quantities = quantities(source)
+        # Names the posting uses (capitalised mid-sentence): checked even first in a line, where "Tableau dashboards" hides.
+        posting_names = {m.group(1).lower() for line in (vocab or "").splitlines()
+                         for m in re.finditer(r"(?<![.:]\s)(?<!^)\b([A-Z][A-Za-z0-9+#]+)", re.sub(r"^[\s#*>\d.)•-]+", "", line))}
+        norm = lambda t: " " + " ".join(re.findall(r"[a-z0-9+#]+", t.lower())) + " "
+        source_flat = norm(source)
         stems = {w[:7] for w in known}
         # Names (tools, employers, titles, places) must come from the candidate, never from the posting alone.
         src_names = {t.lower() for t in re.findall(r"[A-Za-z][A-Za-z0-9+#]*", source)}
@@ -246,9 +304,14 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650,
         newer = source[:len(source) - len(old) - 1] if old else ""
         new_names = {t.lower() for t in re.findall(r"[A-Za-z][A-Za-z0-9+#]*", newer)}
         new_names |= {t + "s" for t in new_names} | {t[:-1] for t in new_names if t.endswith("s")}
-        old_skills = {t.lower() for t in re.findall(r"[A-Za-z][A-Za-z0-9+#]*", skills_part(old))}
+        # An old skill counts as backed when every word of it appears in newer text.
+        def backed(entry):  # "Node.js" is backed by "Node"; one- and two-letter parts count only when nothing else does
+            parts = re.findall(r"[a-z][a-z0-9+#]*", entry)
+            return all(w in new_names for w in [w for w in parts if len(w) > 2] or parts)
+        stale_skills = sorted(e for e in skill_entries(old) if not backed(e))
         for n, text in bullets + prose:
-            if n > 3 and n not in headings:
+            raw = md_lines[n - 1]
+            if n not in sections and not (n <= 3 and contact(n, raw)):
                 body = PLACEHOLDER_RE.sub(" ", LINK_TARGET_RE.sub(" ", text))
                 # ponytail: a capital letter marks a name. The first word of a sentence is skipped,
                 # except on title and date lines ("Senior Analyst | 2021"), where every word is a claim.
@@ -256,14 +319,14 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650,
                 # ponytail: a tool name opening a bullet or sentence elsewhere still passes; checking those would flag every new verb.
                 if n in skills:  # the label of a Skills line ("Languages:") is a heading, not a claim
                     body = re.sub(r"^\s*[^:]{1,60}:\s", "", body)
-                start = r"\b" if "|" in body or n in skills else r"(?<![.]\s)(?<!^)\b"
+                start = r"\b" if "|" in body or n in skills or n in headings or (n <= 3 and not re.match(r"\s*(?:[-*•]|\d+[.)])\s", raw)) else r"(?<![.]\s)(?<!^)\b"
                 names = [m.group(1) for m in re.finditer(start + r"([A-Z][A-Za-z0-9+#]+)", body.strip())]
+                names += [w for w in re.findall(r"\b[A-Z][A-Za-z0-9+#]+", body) if w.lower() in posting_names]
                 missing = sorted({w for w in names if w.lower() not in src_names and not re.fullmatch(MONTH + "|present|current", w.lower())})
                 if missing:
                     add(n, "error", "name-not-in-source", ", ".join(missing) + ": named here but not in the user's own text; confirm with the user or remove")
                 # A name only the old resume backs may be stale or inflated: "TensorFlow" for someone who cleaned the data.
-                stale = sorted({w for w in names if old and newer.strip() and w.lower() in old_skills and w.lower() not in new_names
-                                and not re.fullmatch(MONTH + "|present|current", w.lower())})
+                stale = [e for e in stale_skills if re.search(rf"(?<![\w/]){re.escape(e)}(?![\w/])", text.lower())]
                 if stale:
                     add(n, "warn", "only-in-old-resume", ", ".join(stale) + ": only the original resume says this; ask at the sign-off before keeping it")
             # A derived number counts only as a span of years ("7 years"), never as a headcount or a percent.
@@ -272,6 +335,16 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650,
             spans |= {num for name, num in re.findall(r"\b([A-Z]\w+) (\d+)\b", text) if f"{name} {num}" in (vocab or "")}
             for num in sorted(numbers(PLACEHOLDER_RE.sub("", text)) - src_numbers - spans):
                 add(n, "error", "number-not-in-source", f"{num} does not appear in the user's own text")
+            # "Cut costs by 25%" from "25 invoices", or "$50M" from "$50": the number is there, its unit is not.
+            for num, unit in sorted(quantities(text) - src_quantities):
+                if num in src_numbers and num not in spans:
+                    add(n, "error", "number-not-in-source", f"{num}{unit}: the user's text has {num}, but not as {unit}")
+            # A job title is the candidate's exact title; "Senior Analyst" built from "Analyst" and "Senior staff" is not.
+            title = re.match(r"\s*(?:#+\s*)?\*\*([^*]+)\*\*", raw)
+            # Each part of a combined title ("Audit Trainee, then Audit Semi-Senior") must be the user's, punctuation aside.
+            if title and DATE_RANGE_RE.search(raw) and any(
+                    norm(part).strip() and norm(part) not in source_flat for part in re.split(r"[,;()/]|\bthen\b", title.group(1))):
+                add(n, "warn", "title-not-in-source", f'"{title.group(1)}" is not written this way in the user\'s text; use their exact title')
             # Longer words only: short connectives and plain verbs are not what drifts.
             # Compare on the first seven letters, so "recommended" matches "recommendation".
             new = sorted(w for w in words(text) - known
@@ -311,7 +384,7 @@ def self_test():
     assert kinds("- Traced those returns after analysis", source="returns") == set()
     assert kinds("x\ny\nz\n- Recommended the change", source="it was my recommendation") == set()
     years = datetime.date.today().year - 2019
-    assert kinds(f"## Summary\nData analyst with {years} years in analytics.", source="Analyst, Jun 2019") == set()
+    assert kinds(f"x\ny\nz\n## Summary\nData analyst with {years} years in the role.", source="Data Analyst, Jun 2019 - Present") == set()
     jd = "You will partner with the Risk team on rule changes and present findings to executives."
     assert kinds("- Partner with the Risk team on rule changes weekly", vocab=jd) == {"copied-from-job-description"}
     assert kinds("- Worked with Risk on two rule changes", vocab=jd) == set()
@@ -346,12 +419,12 @@ def self_test():
     assert kinds('<span style="opacity:0">python</span>') == {"hidden-or-injected-text"}
     assert kinds("- Led\u202e team") == {"invisible-character"} and kinds("- Led\U000e0041 team") == {"invisible-character"}
     assert kinds("# <<NAME>>\n<<EMAIL>> | 555-0142 | Austin, TX", source="x") == {"placeholder"}
-    assert kinds("**Senior Analyst** | Mar 2015 - Present", source="Analyst, Mar 2021 - present") == {"number-not-in-source"}
-    assert kinds("### Managed 40 people", source="team of 4") == {"number-not-in-source"}
+    assert kinds("**Senior Analyst** | Mar 2015 - Present", source="Analyst, Mar 2021 - present") == {"number-not-in-source", "title-not-in-source"}
+    assert kinds("### Managed 40 people", source="team of 4") == {"number-not-in-source", "name-not-in-source"}
     # Numbers worked out from source dates pass only as a span of years.
     years_ago = datetime.date.today().year - 2019
-    assert kinds(f"- Ran payroll for {years_ago} years", source="Started 2019") == set()
-    assert kinds(f"- Managed {years_ago} people", source="Started 2019") == {"number-not-in-source"}
+    assert kinds(f"- Ran payroll for {years_ago} years", source="Payroll, 2019 - present") == set()
+    assert kinds(f"- Managed {years_ago} people", source="Payroll, 2019 - present") == {"number-not-in-source"}
     assert kinds("- Kept the ledger in Dynamics 365", source="I kept the ledger in Dynamics", vocab="Dynamics 365 experience") == set()
     assert kinds("- Led a team of 5", source="I led a team", vocab="minimum of 5 years") == {"number-not-in-source"}
     assert kinds("- Hired as an AI engineer for an airline client") == set()
@@ -359,14 +432,14 @@ def self_test():
     four = "x\ny\nz\n"
     assert kinds(four + "- Built dashboards in Tableau", source="I built dashboards", vocab="Tableau required") == {"name-not-in-source"}
     assert kinds(four + "- Built dashboards in Tableau. Shipped weekly.", source="built dashboards, shipped weekly. Yes, I used Tableau") == set()
-    assert kinds(four + "**Senior Manager** | Jan 2022 - Present", source="Manager, Jan 2022 - present") == {"name-not-in-source"}
+    assert kinds(four + "**Senior Manager** | Jan 2022 - Present", source="Manager, Jan 2022 - present") == {"name-not-in-source", "title-not-in-source"}
     assert kinds("x\ny\nz\n**Analyst** | Budget 5000000 | 2021", source="Analyst, budget, 2021") == {"number-not-in-source"}
     assert kinds("See [GitHub](<<LINK_GITHUB>>)") == {"placeholder"}
     assert kinds("- Cut " + "word " * 25) == {"short-second-line"}
     assert "over-length" in kinds("Plain words here. " * 250)
     assert kinds("[](https://x.com)") == kinds("[site](python sql aws)") == kinds("![a](https://x.com/a.png)") == {"hidden-or-injected-text"}
     assert kinds('[site](https://x.com "python sql")') == {"hidden-or-injected-text"}
-    assert kinds("## Summary\nAnalyst with 12 years in payments.", source="I have 4 years") == {"number-not-in-source"}
+    assert kinds(four + "## Summary\nAnalyst with 12 years in payments.", source="Analyst, I have 4 years in payments") == {"number-not-in-source"}
     assert [lv for _, lv, _, _ in check("<<NAME>>", final=True)] == ["error"]
     assert kinds("With 8 years of experience, moved to Postgres instead of MySQL for several teams") == set()
     assert "uniform-bullets" in kinds("\n".join(f"- Shipped feature number {i} for the team" for i in range(6)))
@@ -378,10 +451,30 @@ def self_test():
     oldr = "Data Analyst, Acme\nSKILLS\nPython, TensorFlow, Excel\nEDUCATION\nBSc Computer Science"
     assert kinds(four + "- Cleaned data in Python with TensorFlow", source="I did the data cleaning in Python", old=oldr) == {"only-in-old-resume"}
     assert kinds(four + "- Cleaned data in Python", source="I did the data cleaning in Python", old=oldr) == set()
-    assert kinds(four + "- Built TensorFlow models", old=oldr) == set()  # no newer words to compare with
+    assert kinds(four + "- Built TensorFlow models", old=oldr) == {"only-in-old-resume"}  # nothing newer backs it
     assert kinds(four + "**Data Analyst** | Acme\n- BSc Computer Science", source="I analyse data", old=oldr) == set()  # titles, degrees
     assert skills_part("## Skills\n- Python, SQL\n## Education\nBSc") .split() == ["-", "Python,", "SQL"]
     assert skills_part("Technical skills: Java, Go\nInterests: chess").strip() == "Java, Go"
+    # Cases from an independent audit: each passed silently before.
+    facts = lambda md, **kw: kinds(md, **kw) - {"placeholder"}  # the stand-ins in the header
+    head = "# <<NAME>>\n<<EMAIL>> | <<PHONE>> | Columbus, OH\n\n## Experience\n"
+    assert facts(head + "- Cut costs by 25%.", source="I handled 25 invoices. Columbus, OH") == {"number-not-in-source"}
+    assert facts(head + "- Ran a $50M budget.", source="I approved a $50 budget. Columbus, OH") == {"number-not-in-source"}
+    assert facts(head + "- Ran a $1.2M budget, 12% under.", source="a $1.2 million budget, 12 percent under. Columbus, OH") == set()
+    assert facts(head + "### Google\n**Analyst** | 2022 - Present", source="Analyst, Acme, 2022 - Present. Columbus, OH") == {"name-not-in-source"}
+    assert facts("# <<NAME>>\nChief Executive Officer\n<<EMAIL>>\n## Experience\n- Ran reports", source="I ran reports") == {"name-not-in-source"}
+    assert facts("# <<NAME>>\nBudget 50000000\n<<EMAIL>>\n## Experience\n- Ran reports", source="I ran reports budget") == {"number-not-in-source"}
+    assert facts(head + "- Tableau dashboards for the team.", source="I made dashboards for the team. Columbus, OH",
+                 vocab="Build dashboards in Tableau.") == {"name-not-in-source"}
+    assert facts(head + "- Ran payroll for 15 years.", source="Graduated in 2011. Payroll clerk, 2020 - 2021. Columbus, OH") == {"number-not-in-source"}
+    assert facts(head + "**Senior Analyst** | 2022 - Present", source="Analyst, 2022 - Present. Reported to Senior staff. Columbus, OH") == {"title-not-in-source"}
+    oldr = "## Skills\nA/B testing, stakeholder management, SQL"
+    assert facts(head + "## Skills\nA/B testing, stakeholder management, SQL", source="I wrote specs in SQL. Columbus, OH", old=oldr) == {"only-in-old-resume"}
+    assert "only-in-old-resume" in facts(head + "- Built models in Python", source="I use SQL", old="## Skills\nLanguages: Python, SQL")
+    assert "Python" in skills_part("## Skills\nLanguages: Python, SQL\nTools: Tableau")
+    assert kinds("\n".join(["- **"] * 6)) == {"empty-bullet"}
+    # ponytail: a word checker cannot read meaning. These still pass, so the host's line-by-line check and the user's sign-off stay.
+    assert facts(head + "- Led a team of 30.", source="I did not lead a team of 30. Columbus, OH") == set()
     print("self-test passed")
 
 

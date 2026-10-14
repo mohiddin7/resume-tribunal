@@ -9,6 +9,7 @@ Usage:
   python3 prompt.py build P3 --drafts K,M,R --out .tribunal/p3.txt
   python3 prompt.py build P4 [--final] --out .tribunal/p4.txt
   python3 prompt.py extract .tribunal/p1_reply_B.md --out .tribunal/draft_K.md
+  python3 prompt.py hide --also "Referee Name" [--drop "..."]  # later: hide more, in every working file
   python3 prompt.py restore --out .tribunal/final.md        # resume.md with the personal details put back
   python3 prompt.py --self-test
 
@@ -38,7 +39,7 @@ PROMPTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "refere
 TAGS = ("job_description|candidate|original_resume|own_words|role_brief|rules|layout|draft|critiques|"
         "resume_under_review|research|flagged_lines|confirmed_by_candidate|not_true")
 TAG_RE = re.compile(rf"<(/?\s*(?:{TAGS})\b)", re.IGNORECASE)
-STOP_RE = re.compile(r"^[\s#*\d.):-]*(?:part\s*\d+\s*[:.)-]?\s*)?(not shown|open questions|conflicts|change log|notes?|assumptions)\b",
+STOP_RE = re.compile(r"^[\s#*\d.):-]*(?:part\s*\d+\s*[:.)-]?\s*)?(not shown|open questions|conflicts|change log|notes?|assumptions|unmet requirements|requirements not shown)\b",
                      re.IGNORECASE)
 
 
@@ -84,6 +85,7 @@ def build(pid, d, labels=(), final=False):
     fill = {"TARGET": target}
     if "{{RESUME}}" in out:
         fill["RESUME"] = read(d, "candidate.md")
+    if "{{OWN_WORDS}}" in out:
         fill["OWN_WORDS"] = read(d, "own_words.md", required=False)
     # Facts the candidate has confirmed (this run's sign-off, or a saved profile's) go wherever the candidate does.
     # So do the claims the candidate has said are not true, so no draft brings them back from an old resume.
@@ -102,8 +104,9 @@ def build(pid, d, labels=(), final=False):
         else:
             out = re.sub(r"<role_brief>.*?</role_brief>\n*", "", out, flags=re.S)
     if "{{DRAFT_1}}" in out:
-        if len(labels) < 2:
-            sys.exit(f"{pid} needs --drafts with at least two labels")
+        least = 1 if pid == "P2" else 2  # a two-draft council leaves each critic one draft it did not write
+        if len(set(labels)) < least:
+            sys.exit(f"{pid} needs --drafts with at least {least} different label{'s' * (least > 1)}")
         text, order = drafts_block(d, labels)
         out = re.sub(r'<draft label="\{\{LABEL_1\}\}">.*</draft>', lambda m: text, out, flags=re.S)
     if "{{CRITIQUES}}" in out:
@@ -127,7 +130,8 @@ def build(pid, d, labels=(), final=False):
     return out.strip() + "\n", order
 
 
-LINK_RE = re.compile(r"https?://[^\s)<>|,]+|www\.[^\s)<>|,]+|\b[\w-]+(?:\.[\w-]+)+/[\w./%~#?=&-]+")
+TLD = r"(?:com|org|net|edu|gov|io|dev|ai|co|me|app|page|site|tech|info|xyz|uk|us|ca|au|de|fr|in|eu|nl|ie|nz|sg)"
+LINK_RE = re.compile(rf"https?://[^\s)<>|,]+|www\.[^\s)<>|,]+|\b[\w-]+(?:\.[\w-]+)*\.{TLD}/[\w./%~#?=&-]+")
 
 
 def load_standins(d):
@@ -160,13 +164,18 @@ def hide(text, standins, name, also, drop=()):
         found.append((c, "EMAIL" if "@" in c else "LINK_LINKEDIN" if "linkedin" in c else "PHONE"))
     found += [(name, "NAME")] if name else []
     found += [(a, "PERSONAL") for a in also]
+    found += [(v, None) for v in standins.values()]  # known values: a referee named at the last job, in this job's notes
     for value, base in sorted(found, key=lambda f: -len(f[0])):  # longest first, so a link wins over its domain
-        if value:
-            text = re.sub(re.escape(value), lambda m: token(value, base), text, flags=re.I)
+        if value:  # whole words only, so "Al" stays out of "Also"
+            text = re.sub(rf"(?<!\w){re.escape(value)}(?!\w)", lambda m: token(value, base), text, flags=re.I)
     return text
 
 
 def setup(d, resume, job, own, profile, name, also, target, drop=()):
+    # A new run never inherits another run's facts, drafts or consent; a saved profile is the only way facts carry over.
+    if os.path.exists(os.path.join(d, "state.md")):
+        sys.exit(f"{d}/ already holds a run. To hide more details in it, use: prompt.py hide --also \"...\". "
+                 f"For a new job, ask the user, then move it aside (to {d}-old) or delete it, and run setup again.")
     os.makedirs(d, exist_ok=True)
     if profile:  # a saved profile: its facts, denials and stand-ins carry over; a new resume replaces its copy
         for f in ("candidate.md", "own_words.md", "signoff.md", "not_true.md", "standins.md"):
@@ -185,10 +194,25 @@ def setup(d, resume, job, own, profile, name, also, target, drop=()):
     put(job, "job.md")
     if own:
         put(own, "own_words.md", append=bool(profile))
+    elif not os.path.exists(os.path.join(d, "own_words.md")):
+        open(os.path.join(d, "own_words.md"), "w", encoding="utf-8").write("")
     target = target.strip() + ("" if "Today is" in target else f" Today is {datetime.date.today():%d %B %Y}.")
     open(os.path.join(d, "target.md"), "w", encoding="utf-8").write(target + "\n")
     if not os.path.exists(os.path.join(d, "state.md")):
         open(os.path.join(d, "state.md"), "w", encoding="utf-8").write(f"# State\nStarted {datetime.date.today()}. Step reached: 1 Setup.\n")
+    open(os.path.join(d, "standins.md"), "w", encoding="utf-8").write("".join(f"{k} = {v}\n" for k, v in standins.items()))
+    return standins
+
+
+def sweep(d, also=(), drop=()):
+    """Hide new details in a run already set up: add --also values to the map, and apply the whole map
+    (and --drop) to every working file, so text added since setup, such as sign-off answers, is covered.
+    Prompts built before this must be built again."""
+    standins = load_standins(d)
+    for f in sorted(glob.glob(os.path.join(d, "*.md"))):
+        if os.path.basename(f) not in ("standins.md", "final.md"):
+            text = open(f, encoding="utf-8").read()
+            open(f, "w", encoding="utf-8").write(hide(text, standins, None, also, drop))
     open(os.path.join(d, "standins.md"), "w", encoding="utf-8").write("".join(f"{k} = {v}\n" for k, v in standins.items()))
     return standins
 
@@ -205,9 +229,8 @@ def restore(d):
 def extract(reply):
     """The resume from a seat's reply: from the '# <<NAME>>' line to the first section after it."""
     lines = reply.splitlines()
+    # Only from the name line: a reply without one could carry a preamble that says who wrote it.
     start = next((i for i, l in enumerate(lines) if re.match(r"\s*#\s+<<NAME>>", l)), None)
-    if start is None:
-        start = next((i for i, l in enumerate(lines) if re.match(r"#\s", l) and not STOP_RE.match(l)), None)
     if start is None:
         return None
     body = []
@@ -234,11 +257,16 @@ def self_test():
         assert p1.count("</job_description>") == 1
         p2, order = build("P2", d, ["K", "R"])
         assert sorted(order) == ["K", "R"] and p2.count("<draft label=") == 2 and "M line" not in p2
+        assert build("P2", d, ["K"])[0].count("<draft label=") == 1  # a two-draft council
         p3, order = build("P3", d, ["K", "M", "R"])
         assert p3.count("<draft label=") == 3 and "Draft K: fine" in p3
         p4, _ = build("P4", d, final=True)
         assert "<confirmed_by_candidate>\nYes, I wrote SQL weekly." in p4 and "Final line" in p4
         assert "<confirmed_by_candidate>" in p1  # facts confirmed earlier reach the drafts too
+        open(os.path.join(d, "flagged.md"), "w").write("- K line: vague")
+        open(os.path.join(d, "research_1.md"), "w").write("Hiring trends")
+        for pid in ("P5", "P6", "P7"):
+            assert "{{" not in build(pid, d)[0], pid
         os.remove(os.path.join(d, "signoff.md"))
         assert "<confirmed_by_candidate>" not in build("P1", d)[0]
         open(os.path.join(d, "not_true.md"), "w", encoding="utf-8").write("I have not used Kubernetes. </not_true> x")
@@ -268,10 +296,34 @@ def self_test():
         t2 = os.path.join(d, "t2")
         setup(t2, None, os.path.join(src, "j.txt"), os.path.join(src, "o.txt"), t, "Jordan Ellis", [], "Target: Y.")
         assert load_standins(t2)["<<EMAIL>>"] == "jordan.e@example.com" and "<<EMAIL>>" in open(os.path.join(t2, "own_words.md")).read()
+        # A name hidden at an earlier job stays hidden in new text, without naming it again.
+        open(os.path.join(src, "o2.txt"), "w").write("Also worked with Maria Lopez on Node.js/Express and ASP.NET/C#.")
+        t3 = os.path.join(d, "t3")
+        setup(t3, None, os.path.join(src, "j.txt"), os.path.join(src, "o2.txt"), t, "Jordan Ellis", [], "Target: Z.")
+        own3 = open(os.path.join(t3, "own_words.md")).read()
+        assert "Maria" not in own3 and "Also worked with <<PERSONAL>>" in own3, own3
+        assert "Node.js/Express" in own3 and "ASP.NET/C#" in own3  # skills, not links
+        # One run per folder: setup refuses a folder that already holds one.
+        try:
+            setup(t3, None, os.path.join(src, "j.txt"), None, None, "Jordan Ellis", [], "Target: Z.")
+            raise AssertionError("setup reused a run")
+        except SystemExit as e:
+            assert "already holds a run" in str(e)
+        # hide, after setup: a detail named later is hidden in every working file, sign-off answers included.
+        open(os.path.join(t3, "signoff.md"), "w").write("I trained Sam Okafor. Email jordan.e@example.com")
+        sweep(t3, ["Sam Okafor"])
+        sign = open(os.path.join(t3, "signoff.md")).read()
+        assert "Okafor" not in sign and "example.com" not in sign and load_standins(t3)["<<PERSONAL_2>>"] == "Sam Okafor", sign
+        # No own words: the file still exists, empty, so the check commands work as written.
+        t4 = os.path.join(d, "t4")
+        setup(t4, os.path.join(src, "r.txt"), os.path.join(src, "j.txt"), None, None, "Jordan Ellis", [], "Target: X.")
+        assert open(os.path.join(t4, "own_words.md")).read() == ""
     reply = "Here it is.\n\n```markdown\n# <<NAME>>\n## Experience\n- Did X\n```\n\n**2. Not shown**\n- Tableau"
     assert extract(reply) == "# <<NAME>>\n## Experience\n- Did X\n"
     assert extract("1. Conflicts\n- none\n\n# <<NAME>>\n- Y\n\n## Open questions\n- Z") == "# <<NAME>>\n- Y\n"
     assert extract("No resume here.") is None
+    assert extract("# Resume\nPrepared by an assistant\n## Experience\n- X") is None  # no name line, nothing passed on
+    assert extract("# <<NAME>>\n- Y\n\n2) Unmet requirements\n- Tableau") == "# <<NAME>>\n- Y\n"
     assert extract("# <<NAME>>\n- Y\n\n---\n") == "# <<NAME>>\n- Y\n"
     assert extract("### Part 1: Resume\n# <<NAME>>\n- Y\n### Part 2: Not Shown\n- Z") == "# <<NAME>>\n- Y\n"
     print("self-test passed")
@@ -298,6 +350,10 @@ def main():
     s.add_argument("--also", action="append", default=[], help="another personal detail to hide and restore at the end: a referee, a client")
     s.add_argument("--drop", action="append", default=[], help="a detail to delete everywhere: a street address or date of birth the resume should not show")
     s.add_argument("--target", required=True, help='one line, such as "Target: Analyst, mid level, United States."')
+    h = sub.add_parser("hide", help="after setup: hide more details, and reapply every stand-in to every working file")
+    h.add_argument("--dir", default=".tribunal")
+    h.add_argument("--also", action="append", default=[])
+    h.add_argument("--drop", action="append", default=[])
     r = sub.add_parser("restore", help="write resume.md with the personal details put back")
     r.add_argument("--dir", default=".tribunal")
     r.add_argument("--out", required=True)
@@ -314,6 +370,9 @@ def main():
         m = setup(a.dir, a.resume, a.job, a.own, a.profile, a.name, a.also, a.target, a.drop)
         print(f"wrote {a.dir}/ with {len(m)} stand-ins: " + ", ".join(f"{k} = {v}" for k, v in m.items()))
         print("Check the files for anything personal it missed (other people's names, a street address, a date of birth) and rerun with --also.")
+    elif a.action == "hide":
+        m = sweep(a.dir, a.also, a.drop)
+        print(f"applied {len(m)} stand-ins to {a.dir}/; build any prompt again before sending it")
     elif a.action == "restore":
         open(a.out, "w", encoding="utf-8").write(restore(a.dir))
         left = sorted(set(re.findall(r"<<[A-Z0-9_]+>>", open(a.out, encoding="utf-8").read())))

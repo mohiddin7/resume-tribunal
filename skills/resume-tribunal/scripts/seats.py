@@ -66,7 +66,8 @@ def blocked(reply):
 def contact_details(prompt):
     """Emails, profile links and phone numbers that should have been swapped for stand-ins."""
     found = re.findall(r"[\w.+-]+@[\w-]+\.[\w.-]+|linkedin\.com/in/[\w-]+", prompt)
-    found += [m for m in re.findall(r"\+?\d[\d ().-]{5,}\d", prompt)
+    # A figure after a currency sign ("$1000000000") is money, not a phone.
+    found += [m for m in re.findall(r"(?<![$€£¥₹\d])\+?\d[\d ().-]{5,}\d", prompt)
               if sum(c.isdigit() for c in m) >= (7 if re.search(r"\D", m) else 10)
               and not re.fullmatch(r"(?:19|20)\d\d\s*-\s*(?:19|20)\d\d", m)
               # Dates such as 2026-09-15 or 15.09.2026 (a saved profile dates its entries) are not phones.
@@ -80,7 +81,8 @@ def run(cmd, prompt_path, reply_path, timeout, allow_contact=False):
     found = contact_details(prompt)
     if found and not allow_contact:
         sys.exit(f"not sent: the prompt still holds contact details ({', '.join(found[:3])}). Replace them with "
-                 "stand-ins, or pass --allow-contact if the user agreed to send them.")
+                 "stand-ins, or pass --allow-contact if the user agreed to send them. A large figure that is not a phone "
+                 "passes once written with commas: 1,000,000,000.")
     # Fail early if the reply cannot be saved, and clear any earlier reply so a failed run leaves nothing stale.
     open(reply_path, "w", encoding="utf-8").close()
     # These tools are agents that can read files. Run each one in an empty folder so it
@@ -126,6 +128,8 @@ def self_test():
     assert contact_details("call 5551234567") == ["5551234567"]
     assert contact_details("## 2026-09-15\nconfirmed 15.09.2026 and 1-9-2026") == []  # dated profile entries
     assert contact_details("call 0161-555-0199") == ["0161-555-0199"]
+    assert contact_details("Annual budget $1000000000, £25000000 and €4000000.") == []  # money, not phones
+    assert contact_details("call +44 7700 900123") == ["+44 7700 900123"]
     print("self-test passed")
 
 
