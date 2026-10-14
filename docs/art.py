@@ -12,7 +12,7 @@ import pathlib
 LIGHT = dict(bg="#f7f4ef", surf="#fffdf9", ink="#221e19", muted="#5f574d", line="#ddd5c8", brand="#a8515c",
              onbrand="#ffffff", blue="#35619a", green="#2f6c36", purple="#685497", danger="#a14126", tint="#f3e6e6")
 DARK = dict(bg="#14120f", surf="#221e19", ink="#f3ede4", muted="#b5ab9e", line="#3a332b", brand="#d67a84",
-            onbrand="#14120f", blue="#4e88d3", green="#479650", purple="#9177cf", danger="#db6141", tint="#3a2326")
+            onbrand="#14120f", blue="#4e88d3", green="#479650", purple="#9177cf", danger="#db6141", tint="#2b1e1d")
 FONT = '"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif'
 
 
