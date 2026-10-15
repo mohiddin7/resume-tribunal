@@ -1,0 +1,65 @@
+## 1. Resume
+
+# <<NAME>>
+Pittsburgh, PA | <<EMAIL>> | <<PHONE>> | [<<LINK_WEB_2>>](<<LINK_WEB_2>>) | [<<LINK_WEB>>](<<LINK_WEB>>)
+
+## Skills
+- **Languages:** SQL, Python, R
+- **Tools & Platforms:** Looker, Tableau, BigQuery, dbt, Google Analytics, Excel, pandas
+- **Core Competencies:** A/B testing, customer segmentation, data storytelling, stakeholder management, cross-functional leadership
+
+## Experience
+
+### Online Home-Goods Retailer
+**Marketing Coordinator, then Marketing Analyst** | Mar 2019 - Present
+- Analyze A/B tests across email and landing pages by checking traffic requirements, evaluating results, and writing up findings; completed about 12 tests in the year to Oct 2026, with write-ups of two tests published in portfolio at [<<LINK_WEB>>](<<LINK_WEB>>).
+- Write SQL in BigQuery daily as the sole analyst on a nine-person marketing team to support analytics and reporting.
+- Built Looker dashboards for email and paid social channels that the marketing director reviews every Monday, and built Tableau dashboards for executive stakeholders.
+- Increased win-back email conversion rate from 2.1% to 2.5% over the following quarter by writing SQL to segment customers inactive for a year by purchase history and spend, with email manager <<PERSONAL>> drafting distinct copy for each segment.
+- Clean up data exports in notebooks using Python and pandas a few times a month.
+- Managed $2.4M email marketing budget, coordinated the social media calendar, and handled weekly reporting in Google Analytics.
+
+### Regional Sporting-Goods Chain
+**Store Manager** | 2014 - 2019
+- Built scheduling and inventory spreadsheets in Excel.
+- Consistently exceeded sales targets.
+- Managed a retail store team of 15 associates (about 12 part-time staff) over five years.
+
+## Education
+
+### Large Public State University
+**BA Communications** | 2014
+
+### Google
+**Google Data Analytics Certificate** | 2020
+
+---
+
+## 2. Not Shown
+
+The following requirements from the job description are not evidenced in the candidate's material:
+
+- **Strategic & Pricing Analytics Experience:** 2–5 years of experience specifically in strategic pricing analytics, developing pricing models, or analyzing pricing initiatives.
+- **Pricing Experimentation:** Proactively proposing, designing, or evaluating pricing-specific A/B tests and experimentation structures.
+- **Product & Finance Cross-Functional Partnership:** Direct collaboration with Product and Finance teams to measure financial performance and retention impact.
+- **Pricing KPI Reporting:** Designing and maintaining in-depth reporting structures specifically measuring pricing performance against core financial results.
+- **Ad Hoc Schema & Table Creation in SQL:** Evidence of creating new production tables, data models, or schemas on an ad hoc basis.
+- **AI Tooling & Automation:** Practical experience utilizing AI tools (e.g., ChatGPT/Claude, Cursor, Looker AI) to accelerate analysis, QA queries, or build lightweight automations.
+- **Executive Presentation of Strategic Recommendations:** Delivering live presentations of experimental findings and strategic insights directly to senior executive leadership.
+- **D2C Subscription Experience (Nice to Have):** Direct experience in a direct-to-consumer (D2C) subscription-based business model.
+
+---
+
+## 3. Open Questions
+
+Providing details on the following items would strengthen the resume:
+
+- **Promotion Date:** What was the month and year of the promotion from Marketing Coordinator to Marketing Analyst at the online home-goods retailer?
+- **Employer Names & Locations:** What are the official company names and locations (city, state) for the online home-goods retailer and the regional sporting-goods chain?
+- **Link Destination:** What platform or profile does `<<LINK_WEB_2>>` lead to (e.g., LinkedIn, GitHub)?
+- **Sales Performance Numbers:** By what specific percentage or dollar amount did you exceed sales targets as Store Manager, and what was the store's annual revenue?
+- **Pricing / Commercial Exposure:** Have you conducted any promotional elasticity analyses, discount impact analyses, or pricing-related queries at the home-goods retailer?
+- **Data Modeling & Schema Experience:** Have you built or managed schemas, views, or tables in BigQuery or dbt?
+- **AI & Automation Usage:** Have you used any AI assistants (such as Claude, ChatGPT, Cursor, or Looker AI) to generate SQL, debug scripts, or automate reporting?
+- **Business Model Details:** Did the online home-goods retailer offer subscription services, recurring replenishment programs, or membership plans?
+- **University Name:** What is the specific name of the public state university where you earned your BA in Communications?

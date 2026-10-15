@@ -1,6 +1,6 @@
 """Builds the website. Run from the repo root.
 
-  python3 docs/build.py         drawings, blog pages, blog index, homepage, feed.xml, sitemap.xml
+  python3 docs/build.py         drawings, blog pages, blog index, homepage, example run pages, feed.xml, sitemap.xml
   python3 docs/build.py media   also renders og.png, apple-touch-icon.png and a GIF of every blog figure
                                 (for Medium and LinkedIn, which take GIFs but not SVGs); needs Chrome,
                                 agent-browser and Pillow
@@ -10,7 +10,7 @@ front matter (title, description, date, tags) and two shortcodes on their own li
   [[figure:name|Caption]]   one of the drawings in art.FIGURES
   [[cta]]                   a box inviting the reader to try Resume Tribunal
   [[how]]                   the How it works player: waits for the reader at their steps, plays the AI steps itself
-docs/llms.txt is written by hand. The blog needs the markdown package (pip install markdown).
+Example run pages come from examples/*/run.json (see examples/tools/README.md). docs/llms.txt is written by hand. The blog needs the markdown package (pip install markdown).
 The site address is never typed in: set SITE_URL, or put a custom domain in docs/CNAME, or it is the
 GitHub Pages address of the origin remote. Each build writes it into README.md, llms.txt and robots.txt.
 """
@@ -83,8 +83,9 @@ def write_portable():
 
 # ---------- page shell ----------
 
-def head(title, desc, url, depth, kind="website", extra=""):
+def head(title, desc, url, depth, kind="website", extra="", page=""):
     up = "../" * depth
+    cur = lambda name: ' aria-current="page"' if name == page else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -115,7 +116,7 @@ def head(title, desc, url, depth, kind="website", extra=""):
 <header class="site"><div class="in">
   <a class="logo" href="{up}" aria-label="Resume Tribunal home"><img src="{up}assets/favicon.svg" alt="" width="30" height="30"><span>Resume Tribunal</span></a>
   <nav class="top" aria-label="Main">
-    <a href="{up}#how">How it works</a><a href="{up}#proof">Example</a><a href="{up}#faq">Questions</a><a href="{up}blog/">Blog</a><a href="{REPO}">GitHub</a>
+    <a href="{up}#how">How it works</a><a href="{up}examples/"{cur("examples")}>Examples</a><a href="{up}#faq">Questions</a><a href="{up}blog/"{cur("blog")}>Blog</a><a href="{REPO}">GitHub</a>
   </nav>
   <button class="icon theme" type="button" aria-label="Switch to dark mode"><span class="moon">{MOON}</span><span class="sun">{SUN}</span></button>
   <a class="btn primary small" href="{up}#start">Get started</a>
@@ -127,7 +128,7 @@ def foot(depth):
     up = "../" * depth
     return f"""<footer class="site"><div class="in">
   <div class="fbrand"><img src="{up}assets/favicon.svg" alt="" width="26" height="26"><strong>Resume Tribunal</strong><span>Free and open source. MIT license.</span></div>
-  <nav aria-label="Footer"><a href="mailto:tribunal@warmhop.com">Support: tribunal@warmhop.com</a><a href="{up}#start">Get started</a><a href="{up}#faq">Questions</a><a href="{up}blog/">Blog</a><a href="{REPO}">GitHub</a><a href="{SITE}feed.xml">RSS</a><a href="{up}llms.txt">llms.txt</a></nav>
+  <nav aria-label="Footer"><a href="mailto:tribunal@warmhop.com">Support: tribunal@warmhop.com</a><a href="{up}#start">Get started</a><a href="{up}#faq">Questions</a><a href="{up}examples/">Examples</a><a href="{up}blog/">Blog</a><a href="{REPO}">GitHub</a><a href="{SITE}feed.xml">RSS</a><a href="{up}llms.txt">llms.txt</a></nav>
 </div></footer>
 </body>
 </html>
@@ -206,7 +207,7 @@ def build_blog(items):
         others = [o for o in items if o["slug"] != p["slug"]]
         related = "".join(f'<a class="card post" href="{o["slug"]}.html"><span class="tags">{tags(o)}</span><strong>{esc(o["title"])}</strong>'
                           f'<p>{esc(o["description"])}</p><span class="meta">{o["minutes"]} min read</span><span class="more" aria-hidden="true">Read the post →</span></a>' for o in others)
-        page = (head(f"{p['title']} | Resume Tribunal", p["description"], url, 1, "article", extra)
+        page = (head(f"{p['title']} | Resume Tribunal", p["description"], url, 1, "article", extra, page="blog")
                 + f'''<div class="readbar" aria-hidden="true"><b></b></div>
 <main id="main" class="post-wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a> / <a href="./">Blog</a></nav>
@@ -238,7 +239,7 @@ def build_blog(items):
     desc = "Plain-spoken notes on using AI for your resume without making things up, and how Resume Tribunal was built."
     (DOCS / "blog" / "index.html").write_text(
         head("Blog: AI, resumes and honest job hunting | Resume Tribunal", desc, f"{SITE}blog/", 1, "website",
-             f'<script type="application/ld+json">{json.dumps(ld)}</script>\n')
+             f'<script type="application/ld+json">{json.dumps(ld)}</script>\n', page="blog")
         + f'''<main id="main" class="blog-wrap">
 <header class="blog-head"><h1>Blog</h1><p class="meta">{esc(desc)}</p></header>
 <div class="blog-tools">
@@ -262,10 +263,123 @@ def build_blog(items):
         f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Resume Tribunal blog</title>'
         f"<link>{SITE}blog/</link><description>{esc(desc)}</description>\n{rss}\n</channel></rss>\n")
     latest = max(p["date"] for p in items)
-    urls = ["", "blog/", "llms.txt", "resume-tribunal.md"] + [f"blog/{p['slug']}.html" for p in items]
+    urls = (["", "blog/", "llms.txt", "resume-tribunal.md"] + [f"blog/{p['slug']}.html" for p in items]
+            + (["examples/"] + [f"examples/{r['slug']}/" for r in example_runs()] if example_runs() else []))
     (DOCS / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"  <url><loc>{SITE}{u}</loc><lastmod>{latest}</lastmod></url>\n" for u in urls) + "</urlset>\n")
+
+
+# ---------- example runs ----------
+
+EXAMPLES = pathlib.Path("examples")
+
+
+def example_runs():
+    """Every recorded example (examples/<slug>/run.json, written by examples/tools/export.py), council runs first."""
+    runs = [json.loads(p.read_text()) for p in sorted(EXAMPLES.glob("*/run.json"))]
+    return sorted(runs, key=lambda r: (r["mode"] != "Full council", r["title"]))
+
+
+def json_script(id_, data):
+    """Data for a page's script, safe inside <script>: '</' can never close the tag."""
+    body = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+    return f'<script type="application/json" id="{id_}">{body}</script>'
+
+
+VIEWER = """<main id="main" class="rv">
+<div class="rv-app">
+  <div class="rv-bar"><div class="in">
+    <div class="rv-title">
+      <div class="rv-crumb"><a href="../">Examples</a> / {mode}</div>
+      <h1>{title}</h1>
+      <div class="rv-facts">{facts}</div>{note}
+    </div>
+    <div class="rv-pick">
+      <label for="example">Watch another example</label>
+      <select id="example"></select>
+    </div>
+  </div></div>
+  <div class="rv-time" id="timeline" aria-label="Who worked when"><div>
+    <div class="rv-ctrl">
+      <button type="button" class="rv-play" id="play"><svg viewBox="0 0 16 16" aria-hidden="true" id="play-icon"><path d="M3 1.5v13l11-6.5z"/></svg><span id="play-label">Play the run</span></button>
+      <span class="tl"><span id="clock"></span> / {length}</span>
+      <input type="range" class="rv-scrub" id="scrub" min="0" step="1" aria-label="Time in the run">
+      <label class="rv-small">Speed <select id="speed"><option value="0.5">Slow</option><option value="1" selected>Normal</option><option value="2">Fast</option><option value="4">Fastest</option></select></label>
+      <button type="button" class="rv-ghost" id="lanes-toggle" aria-expanded="true">Hide timeline</button>
+      <span class="rv-keys">Space bar plays and pauses. Arrow keys step through messages.</span>
+    </div>
+    <div class="rv-lanes-wrap"><div class="rv-lanes" id="lanes"></div></div>
+  </div></div>
+  <div class="rv-panes" id="panes" data-show="chat">
+    <div class="rv-pane rv-pane-resume" role="region" aria-label="Resume">
+      <div class="rv-pane-h">
+        <h2>Resume</h2>
+        <div class="seg mob-tabs" role="group" aria-label="Show"><button type="button" data-show="resume" aria-pressed="true">Resume</button><button type="button" data-show="chat" aria-pressed="false">Chat</button></div>
+        <div class="seg" role="group" aria-label="Version"><button type="button" data-v="before" aria-pressed="false">Before</button><button type="button" data-v="after" aria-pressed="true">After</button></div>
+        <label class="rv-check"><input type="checkbox" id="diff"> Show changes</label>
+        <div class="seg zoom" role="group" aria-label="Page size"><button type="button" data-z="width" aria-pressed="true">Fit width</button><button type="button" data-z="page" aria-pressed="false">Whole page</button></div>
+      </div>
+      <div class="rv-scroll desk" id="resume-scroll">
+        <div class="cutbar" id="cutbar" hidden></div>
+        <div class="paper" id="paper"><div class="sheet" id="sheet"></div></div>
+        <div class="key" id="key"></div>
+      </div>
+    </div>
+    <button type="button" class="rv-divider" id="divider" role="separator" aria-orientation="vertical" aria-label="Resize the two panes" aria-valuemin="25" aria-valuemax="75" aria-valuenow="50"></button>
+    <div class="rv-pane rv-pane-chat" role="region" aria-label="The run">
+      <div class="rv-pane-h">
+        <h2>The run</h2>
+        <div class="seg mob-tabs" role="group" aria-label="Show"><button type="button" data-show="resume" aria-pressed="false">Resume</button><button type="button" data-show="chat" aria-pressed="true">Chat</button></div>
+        <label class="rv-check follow" title="While the run plays, open the tab where each new message lands"><input type="checkbox" id="follow" checked> Follow along</label>
+      </div>
+      <div class="ctabs" role="tablist" aria-label="Conversations" id="ctabs"></div>
+      <div class="rv-scroll" id="chat-scroll" role="tabpanel"><div class="feed" id="feed" aria-live="polite"></div></div>
+    </div>
+  </div>
+</div>
+</main>
+"""
+
+
+def build_examples():
+    """docs/examples/: one page per recorded run, with its prompts and replies, and an index of them all."""
+    runs = example_runs()
+    out = DOCS / "examples"
+    if out.exists():
+        import shutil
+        shutil.rmtree(out)
+    if not runs:
+        return []
+    css = '<link rel="stylesheet" href="{up}assets/viewer.css">\n'
+    listing = [{"slug": r["slug"], "title": r["title"], "mode": r["mode"]} for r in runs]
+    for r in runs:
+        page = out / r["slug"]
+        (page / "files").mkdir(parents=True)
+        for f in (EXAMPLES / r["slug"] / "files").glob("*"):
+            (page / "files" / f.name).write_text(f.read_text())
+        desc = f"A recorded Resume Tribunal run on a fictional candidate: every message, every prompt and reply, and the resume before and after. {r['mode']}, {round(r['end'] / 60)} minutes."
+        facts = "".join(f'<span class="rv-fact">{esc(f)}</span>' for f in r["facts"])
+        (page / "index.html").write_text(
+            head(f"Example run: {r['title']} | Resume Tribunal", desc, f"{SITE}examples/{r['slug']}/", 2, "website", css.format(up="../../"), page="examples")
+            + VIEWER.format(mode=esc(r["mode"]), title=esc(r["title"]), facts=facts, note=f'<details class="rv-note"><summary>How this run was recorded</summary>{esc(r["note"])}</details>' if r.get("note") else "", length=f"{r['end'] // 60:02d}:{r['end'] % 60:02d}")
+            + json_script("run-data", r) + "\n" + json_script("examples-data", listing)
+            + '\n<script src="../../assets/viewer.js"></script>\n' + foot(2))
+    cards = "\n".join(
+        f'<a class="card post" href="{r["slug"]}/"><span class="tags"><span class="tag">{esc(r["mode"])}</span></span>'
+        f'<strong>{esc(r["title"])}</strong><span class="facts">{"".join(f"<span>{esc(f)}</span>" for f in r["facts"])}</span>'
+        f'<span class="more" aria-hidden="true">Watch the run →</span></a>' for r in runs)
+    desc = "Watch Resume Tribunal work on a fictional candidate's resume, message by message: what each AI was asked, what it said back, and how every line of the resume changed."
+    (out / "index.html").write_text(
+        head("Example runs | Resume Tribunal", desc, f"{SITE}examples/", 1, "website", css.format(up="../"), page="examples")
+        + f'''<main id="main" class="blog-wrap ex-wrap">
+<header class="ex-head"><h1>Example runs</h1><p class="meta">{esc(desc)} Each page is built straight from the run's own files.</p></header>
+<div class="grid posts">
+{cards}
+</div>
+</main>
+''' + foot(1))
+    return [r["slug"] for r in runs]
 
 
 # ---------- homepage ----------
@@ -567,6 +681,7 @@ if __name__ == "__main__":
     items = posts()
     build_blog(items)
     build_home(items)
-    print("built: drawings, blog (" + ", ".join(p["slug"] for p in items) + "), homepage, feed, sitemap")
+    shown = build_examples()
+    print("built: drawings, blog (" + ", ".join(p["slug"] for p in items) + "), homepage, examples (" + ", ".join(shown) + "), feed, sitemap")
     if sys.argv[1:] == ["media"]:
         media()

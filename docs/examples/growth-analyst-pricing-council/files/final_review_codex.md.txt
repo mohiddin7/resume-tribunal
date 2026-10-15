@@ -1,0 +1,71 @@
+1. **Screen decision**
+
+**No.** The deciding reason is the absence of pricing experience: the candidate explicitly confirms they have never worked on pricing or built a pricing model, which is central to this role.
+
+The resume reads as a **midlevel marketing analytics individual contributor**, with about four years as a Marketing Analyst as of 14 October 2026. Being the marketing team’s only analyst shows responsibility, but the evidence does not establish senior pricing expertise.
+
+2. **First impression**
+
+Assuming the top third includes the summary, skills and opening Analyst bullets, I know this candidate works regularly in BigQuery, supports marketing experimentation, segments customers and builds Looker dashboards. They distinguish their contribution from the email manager’s contribution, which makes the win-back example credible.
+
+The following must-haves are still not evidenced there:
+
+- Pricing models, pricing experiments and analysis of pricing’s financial and retention effects.
+- Advanced SQL complexity and creation of tables or schemas; regular querying alone does not establish this.
+- Experimentation depth beyond checking traffic and analyzing results.
+- Presentations to the most senior executives.
+- Substantive use of AI to accelerate and QA analysis or build lightweight automation.
+
+Later bullets establish director-level dashboard use, saved BigQuery views and occasional ChatGPT debugging, but do not close those gaps. The degree requirement is met later. Looker experience is clear; ownership of broader business KPI datasets and reporting is not.
+
+3. **Claim check**
+
+No factual line warrants **MORE THAN THE MATERIAL**. The resume preserves the approximate test count and period, uses the corrected employment history and tools, and removes the disconfirmed budget claim.
+
+| Line beginning | Supporting words from the candidate’s material |
+|---|---|
+| “Marketing Analyst and the only analyst…” | “I was promoted from Marketing Coordinator to Marketing Analyst in July 2022”; “I'm the only analyst on the marketing team, there are nine of us”; “Most days I'm in BigQuery writing SQL”; “I also do the analysis on our A/B tests”; “I built our Looker dashboards.” |
+| “SQL (BigQuery), Looker…” | “BigQuery writing SQL”; “our Looker dashboards”; “analysis on our A/B tests”; “data-driven customer segmentation”; “I use Google Analytics, GA4, most days”; “notebooks with pandas”; “I used Excel at the store.” |
+| “Online home-goods retailer…” | “Online home-goods retailer (about 400 employees).” |
+| “Marketing Analyst \| Jul 2022…” | “I was promoted from Marketing Coordinator to Marketing Analyst in July 2022”; original employment dates: “Mar 2019 - Present.” |
+| “Analyze the marketing team's…” | “I check whether we have enough traffic, then I read the results and write up what we found”; “About 12 A/B tests in roughly the year to Oct 2026 is right”; “My portfolio is at <<LINK_WEB>>, it has write-ups of two of the tests.” |
+| “Wrote BigQuery SQL to split…” | “Most days I'm in BigQuery writing SQL”; “Customers who hadn't bought anything in a year”; “I wrote the SQL to split them by what they'd bought before and how much they'd spent.” |
+| “Win-back email conversion rose…” | “Conversion on those emails went from 2.1% to 2.5% over the next quarter”; “our email manager <<PERSONAL>> wrote a different email for each group.” |
+| “Built the Looker dashboards…” | “I built our Looker dashboards for the email and paid social channels, and the marketing director goes through them every Monday.” |
+| “Made a few saved views…” | “I've made a few saved views in BigQuery”; “I sometimes ask ChatGPT to help me fix a SQL query.” |
+| “Clean up data exports…” | “Python I use for cleaning up exports in notebooks with pandas, maybe a few times a month.” |
+| “Marketing Coordinator \| Mar 2019…” | Original: “Marketing Coordinator, then Marketing Analyst \| Mar 2019 - Present”; confirmed: “promoted … in July 2022.” |
+| “Worked mostly on social posting…” | “As Marketing Coordinator, my work was mostly social posting, plus the weekly reporting in Google Analytics.” |
+| “Regional sporting-goods chain” | “Regional sporting-goods chain.” |
+| “Store Manager \| 2014…” | “Store Manager \| 2014 - 2019”; “I managed a sporting goods store for five years.” |
+| “Managed about 12…” | “I managed a sporting goods store for five years, about 12 part-time staff.” |
+| “Built the store's scheduling…” | “I built our scheduling and inventory sheets”; “I used Excel at the store for the scheduling and inventory sheets.” |
+| “BA Communications, large…” | “BA Communications, large public state university, 2014.” |
+| “Google Data Analytics Certificate…” | “Google Data Analytics Certificate, 2020.” |
+
+4. **Fixes**
+
+There are no material factual corrections, materially understated claims or obvious job-description echoes. These three presentation changes would help:
+
+- **“Wrote BigQuery SQL to split customers with no purchase in a year by what they had bought and how much they spent.”** Combine this with the following result bullet so the analytical contribution and observed outcome form one complete example.
+- **“Win-back email conversion rose from 2.1% to 2.5% the next quarter; the email manager wrote a different email per group.”** In the combined example, retain the email manager’s contribution and describe the increase as an observed result, since the material does not establish that a controlled experiment proved causation.
+- **“Made a few saved views in BigQuery; sometimes ask ChatGPT to help fix a SQL query.”** Separate the saved-view experience from the AI use, preserving “a few” and “sometimes,” so two distinct capabilities are easier to assess.
+
+These edits can improve clarity, but the missing pricing experience is a substantive qualification gap that wording cannot resolve.
+
+5. **Claim-defence questions**
+
+- **For one of the roughly 12 tests, what did you personally decide, how did you determine sufficient traffic, and how did you reach your recommendation?**  
+  Tests analytical ownership and understanding of sample size, uncertainty and experiment interpretation.
+
+- **How was win-back conversion defined, what were the underlying customer counts, and what else changed between the 2.1% and 2.5% measurements?**  
+  Tests measurement quality and whether the candidate distinguishes an observed increase from a causal effect.
+
+- **Walk me through your most complex BigQuery query and one saved view: what data did you join, at what grain, and how did you validate the output?**  
+  Tests SQL depth and reliability beyond frequency of use.
+
+- **Which decisions did the marketing director make using your Looker dashboards, and how did you investigate unexpected KPI movements?**  
+  Tests whether dashboard work led to business analysis and decisions.
+
+- **Describe a SQL problem ChatGPT helped you fix and how you checked its proposed solution.**  
+  Tests the actual scope of AI use and the candidate’s ability to verify generated code.

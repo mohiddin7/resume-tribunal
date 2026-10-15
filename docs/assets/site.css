@@ -10,6 +10,8 @@
   --brand: #a8515c; --onbrand: #fff; --blue: #35619a; --green: #2f6c36; --danger: #a14126;
   --shadow: 0 1px 2px rgba(34,30,25,.06), 0 8px 24px rgba(34,30,25,.07);
   color-scheme: light;
+  /* header and footer span the wide column, so they line up with the full-width example viewer */
+  --wide: 120rem; --gutter: clamp(16px, 2.5vw, 32px);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -57,11 +59,12 @@ h3 { font-size: 1.15rem; margin: 0 0 6px; }
 
 /* header */
 header.site { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-header.site .in { max-width: 72rem; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 10px; }
+header.site .in { max-width: var(--wide); margin: 0 auto; padding: 10px var(--gutter); display: flex; align-items: center; gap: 10px; }
 .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; color: var(--ink); text-decoration: none; font-size: 18px; margin-right: auto; }
 nav.top { display: none; gap: 24px; font-size: 15px; margin-right: 8px; }
 nav.top a { color: var(--muted); text-decoration: none; }
-nav.top a:hover { color: var(--ink); }
+nav.top a:hover, nav.top a[aria-current="page"] { color: var(--ink); }
+nav.top a[aria-current="page"] { font-weight: 700; }
 @media (min-width: 880px) { nav.top { display: flex; } }
 @media (max-width: 380px) { .logo span { display: none; } }
 
@@ -220,7 +223,7 @@ details p { margin: 0 0 16px; color: var(--muted); }
 
 /* footer */
 footer.site { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
-footer.site .in { max-width: 72rem; margin: 0 auto; padding: 28px 16px 40px; display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; align-items: center; }
+footer.site .in { max-width: var(--wide); margin: 0 auto; padding: 28px var(--gutter) 40px; display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; align-items: center; }
 .fbrand { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .fbrand strong { color: var(--ink); }
 footer.site nav { display: flex; flex-wrap: wrap; gap: 8px 18px; }

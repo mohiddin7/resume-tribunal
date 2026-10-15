@@ -1,0 +1,97 @@
+**1. Screen decision**
+
+**No.** The deciding reason is the lack of hands-on Storyline experience, an explicit qualification: the candidate says, “I've never used Storyline, only watched demos.”
+
+The resume reads as an **entry-level instructional designer transitioning from an experienced teaching career**, rather than a mid-level instructional designer. The science background, master’s degree, Camtasia work and adult workshop are relevant strengths.
+
+**2. First impression**
+
+I’m treating the top third as the summary, skills and opening teaching bullets; actual pagination was not supplied.
+
+I know the candidate is a Charlotte-based biology teacher with seven years of experience, substantial Canvas use, about 60 instructional videos, recent instructional design coursework and one Rise portfolio module. The positioning is credible, but still primarily that of a teacher moving into instructional design.
+
+At that point, these must-haves are not yet evidenced:
+
+- **Storyline experience:** absent throughout, and explicitly absent in the source material.
+- **A reviewable portfolio:** a module is mentioned, but no link is provided.
+- **SME collaboration:** not yet shown; later, teacher collaboration and requesting a nurse’s review provide limited evidence.
+- **The qualifying degree:** established later by the B.S. and M.Ed.
+
+The requirement for two years designing instruction is supported by the teaching work; this job explicitly accepts student instruction. Rise experience is supported, though limited to one course. Across the full resume, Cornerstone, accessibility work and applied Kirkpatrick evaluation remain unevidenced; ADDIE and Kirkpatrick are accurately presented as coursework.
+
+**3. Claim check**
+
+Quotes below come from the original resume or the candidate’s own words. Employer and project titles are included because they contain factual claims; the name placeholder and contact line are excluded.
+
+**No line warrants MORE THAN THE MATERIAL.** In particular, the resume preserves “about,” credits the two collaborating teachers and says the nurse was asked to check the content without claiming that review was completed.
+
+| Resume line, opening words | Supporting words from the candidate’s material |
+|---|---|
+| “Seven years teaching biology…” | “I've taught biology for seven years”; “I build all my courses in Canvas”; “I've made about 60 of them”; “finished in June 2026”; “I built a Rise course for my portfolio: a 20 minute module on hand hygiene.” |
+| “Instructional design: ADDIE and…” | “We learned ADDIE and Kirkpatrick”; “we mapped every lesson to a learning objective”; original skills: “Lesson planning, classroom management, differentiated instruction.” |
+| “Tools: Articulate Rise 360…” | Original skills: “Canvas, Google Workspace, Camtasia, Articulate Rise.” |
+| “Public High School” | “Biology Teacher \| Public High School \| August 2019 – Present.” |
+| “Biology Teacher \| Aug 2019…” | “Biology Teacher \| Public High School \| August 2019 – Present.” |
+| “Teach Biology and AP Biology…” | “Taught Biology and AP Biology to grades 9-12”; “the last four including AP Biology.” |
+| “Build all courses in Canvas…” | “I build all my courses in Canvas: modules, quizzes, rubrics, for about 150 students a year.” |
+| “Made about 60 short…” | “During remote teaching in 2020 I started recording short video lessons in Camtasia”; “I've made about 60 of them, five to ten minutes each, and I still use them for flipped lessons.” |
+| “Moved AP Biology review…” | “weekly practice questions in Canvas quizzes with feedback, instead of one big review at the end”; “My AP Biology pass rate went from 58 percent in 2022 to 71 percent in 2025.” |
+| “Rewrote the 9th grade…” | “On the curriculum committee I rewrote our 9th grade biology unit on cells with two other teachers, we mapped every lesson to a learning objective and a quiz item.” |
+| “Ran the district's two-hour…” | “In 2023 I ran the district's lab safety training for new science teachers, a two hour workshop, about 40 teachers came.” |
+| “Develop lesson plans aligned…” | “Developed engaging lesson plans aligned with state standards.” |
+| “Sponsor the Science Olympiad…” | “Sponsored the Science Olympiad club.” |
+| “Public Middle School” | “Student Teacher \| Public Middle School \| Jan 2019 – May 2019.” |
+| “Student Teacher \| Jan 2019…” | “Student Teacher \| Public Middle School \| Jan 2019 – May 2019.” |
+| “Taught 7th grade life…” | “Taught 7th grade life science under a mentor teacher.” |
+| “Hand Hygiene Module, Articulate…” | “Articulate Rise”; “The instructional design certificate…finished in June 2026”; “I built a Rise course for my portfolio: a 20 minute module on hand hygiene.” |
+| “Built a 20-minute module…” | “I built a Rise course for my portfolio: a 20 minute module on hand hygiene, I asked a nurse friend to check the content.” |
+| “M.Ed. Curriculum and Instruction…” | “M.Ed. Curriculum and Instruction, public state university, 2022.” |
+| “B.S. Biology, public state…” | “B.S. Biology, public state university, 2018.” |
+| “Certificate in Instructional Design…” | “Certificate in Instructional Design, university continuing education program, 2026”; “six courses”; “online”; “We learned ADDIE and Kirkpatrick.” |
+| “North Carolina Professional Educator…” | “North Carolina Professional Educator License, Biology 9-12.” |
+
+The AP result is a **13-percentage-point increase**; the existing wording accurately reports the two rates without asserting that the review change alone caused the increase.
+
+**4. Fixes**
+
+The material fixes concern emphasis and access to evidence, not inflated claims. I found no misleading job-description copying or company-specific wording that would read oddly elsewhere.
+
+1. **“Seven years teaching biology, building every course in Canvas and about 60 Camtasia video lessons. Finished an Instructional Design certificate in 2026 and built a hand hygiene module in Articulate Rise 360 for a portfolio.”**  
+   Rework the summary to foreground the M.Ed., instructional design transition and adult lab-safety workshop, while retaining accurate limits on Rise experience.
+
+2. **“Hand Hygiene Module, Articulate Rise 360 | 2026”**  
+   Add a working link to the module or portfolio so the hiring manager can assess the required work sample.
+
+3. **“Built a 20-minute module on hand hygiene for an instructional design portfolio and asked a nurse to check the content”**  
+   Add the intended audience, learning objective and assessment approach only if verifiable, while preserving “asked a nurse to check” unless a completed review can be substantiated.
+
+4. **“Ran the district's two-hour lab safety training for new science teachers in 2023, attended by about 40 teachers”**  
+   Move this near the top of the experience section because it is the clearest evidence of adult instructor-led training.
+
+5. **“Instructional design: ADDIE and the Kirkpatrick model (certificate courses), learning objectives, lesson planning, differentiated instruction, classroom management”**  
+   Remove “classroom management” to give relevant design skills more prominence, keeping the coursework qualifier on ADDIE and Kirkpatrick.
+
+6. **“Develop lesson plans aligned with state standards”**  
+   Cut this generic bullet because the cells-unit example already supplies stronger evidence of instructional alignment.
+
+7. **“Sponsor the Science Olympiad club”**  
+   Cut this bullet to give more space to the portfolio and relevant training work.
+
+The Storyline gap requires actual experience to resolve; adding a keyword would not fix it.
+
+**5. Claim-defence questions**
+
+- **What did you personally build in the hand-hygiene module, and what feedback, if any, did the nurse provide?**  
+  Tests authorship, depth of Rise use and whether the requested content review occurred.
+
+- **How many students took the AP exam in 2022 and 2025, and what else changed between those cohorts?**  
+  Tests the reliability of the pass-rate comparison and the limits of attributing it to weekly practice.
+
+- **For the lab-safety workshop, which materials and activities did you design, which did you deliver, and how did you check learning?**  
+  Tests whether “ran” includes instructional design, facilitation, coordination or some combination.
+
+- **What was your individual contribution to the cells-unit rewrite, and can you walk through one objective, lesson and corresponding quiz item?**  
+  Tests ownership within the team and the quality of instructional alignment.
+
+- **Where did you apply ADDIE in your portfolio project, and what would a Kirkpatrick evaluation plan for that module measure?**  
+  Tests whether coursework knowledge translates into practical design and evaluation decisions.
