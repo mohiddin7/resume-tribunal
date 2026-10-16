@@ -1,9 +1,9 @@
-You are the host of a recorded example run of the Agent Skill `resume-tribunal`, on a FICTIONAL candidate. Act exactly as the skill's host would with a real user, following {SKILL}/SKILL.md and the reference files it tells you to read. Read SKILL.md first, in full.
+You are the host of a recorded example run of the Agent Skill `resume-tribunal`, on {CANDIDATE}. Act exactly as the skill's host would with a real user, following {SKILL}/SKILL.md and the reference files it tells you to read. Read SKILL.md first, in full.
 
 Run folder (your working directory for everything): {RUN}
 - Put `.tribunal/` inside the run folder. Write nothing anywhere else, and do not edit any file of the skill.
 - Read nothing outside the skill folder, the tools folder ({TOOLS}) and the run folder. Folders next to the run folder may hold the scripted answers, so never open them.
-- Other assistants (seats) are available through `scripts/seats.py`. Detect them as the skill says. Call them with a shell time limit of at least 10 minutes.
+- {SEATS}
 - If Python's reportlab is not installed, the user wants Markdown, so skip the PDF.
 
 ## Recording
@@ -21,6 +21,11 @@ The run becomes a public example, so record it as you go with `python3 {TOOLS}/r
 
 Prompt and reply files must sit inside `.tribunal/`.
 
+In manual mode, where the user pastes each prompt into another AI app:
+- When you show a paste card, record the card as a message that waits (`say --stop "Paste <n>"`), then `ask chatgpt` or `ask gemini` (whichever app the card is for) with `--file` naming the prompt file and one plain sentence saying what it asks.
+- Then END YOUR TURN with the card as your final reply, starting with the line `PASTE CARD <n> FOR <app>: <prompt file>`. The user's pasted reply arrives in a follow-up message.
+- Save the pasted reply to a file in `.tribunal/` the way the skill says, then record `user "Pasted the reply from <app>."` and `reply chatgpt` or `reply gemini` with `--file` naming that file and one or two sentences on what came back.
+
 When the run is finished, write `.tribunal/changes.json`, the reasons for each changed line, for readers of the example:
 
 ```json
@@ -31,7 +36,7 @@ When the run is finished, write `.tribunal/changes.json`, the reasons for each c
 ]}
 ```
 
-Cover every line that was cut, added or reworded, the skills line and job titles included; leave out lines that stayed the same. `source` says where the new line's facts came from: "own words", "sign-off", "old resume" or "linked page". Write each `why` for a stranger reading the example, in the third person with the candidate's first name or "she"/"he"/"they" as the candidate's own words do; plain words, no em dashes. Then run `python3 {TOOLS}/export.py {RUN} --check` and fix whatever it reports.
+Cover every line that was cut, added or reworded, the skills line and job titles included; leave out section headings and lines that stayed the same. `source` says where the new line's facts came from: "own words", "sign-off", "old resume" or "linked page". Write each `why` for a stranger reading the example, in the third person with the candidate's first name or "she"/"he"/"they" as the candidate's own words do; plain words, no em dashes. Then run `python3 {TOOLS}/export.py {RUN} --check{CHECK}` and fix whatever it reports.
 
 ## The user
 

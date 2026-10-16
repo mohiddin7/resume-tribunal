@@ -1,0 +1,205 @@
+Review the resume under review as the hiring manager for the job below. Report what you find. The candidate will make the edits.
+
+Target: Senior Data Analyst, senior level, United States. Today is 15 October 2026.
+
+<job_description>
+Senior Data Analyst
+
+United States
+
+The worldwide data management software market is massive (According to IDC, the worldwide database software market, which it refers to as the database management systems software market, was forecasted to be approximately $82 billion in 2023 growing to approximately $137 billion in 2027. This represents a 14% compound annual growth rate). At MongoDB we are transforming industries and empowering developers to build amazing apps that people use every day. We are the leading developer data platform and the first database provider to IPO in over 20 years. Join our team and be at the forefront of innovation and creativity.
+
+MongoDB is seeking a Senior Analyst to support data-driven, people-focused decision making for the company.  Partnering with our People team, you will transform HR and organizational data into actionable insights to help us hire the right talent, manage our overall workforce, and improve workforce effectiveness, leading to better outcomes for our people and the company.
+
+This position requires someone with strong analytical and technical skills, the ability to tell a story with data, and who is comfortable working across multiple functional areas in a fast-paced, challenging environment.
+
+This role can be based out of our NYC office or remotely in the US region.
+
+Responsibilities
+
+- Partner with People teams (business partners, recruiting, culture/talent/development, etc.) to understand their questions, turn analyses into actionable data-driven insights, and make business recommendations
+
+- Help develop and execute against roadmap for people data investments to both capture near-term value and set up the team for long-term success
+
+- Leverage understanding of statistics to conduct analyses that help People teams make quicker, more informed decisions
+
+- Write and maintain complex queries to conduct deep-dive analyses on the impact that People initiatives have on employee engagement, productivity and retention
+
+- Liaise with Data Engineering and HRIS teams to create and manage a curated central repository for people data
+
+- Design and build automated dashboards to empower stakeholders to self-serve their data and analytical needs
+
+- Prioritize and triage analytical and reporting asks from across the People team
+
+- Develop and support ongoing data governance and data quality processes
+
+- Effectively communicate analytical findings to non-technical audiences
+
+Requirements
+
+- 3+ years of hands-on analytics experience (focus on people/HR analytics preferred)
+
+- Advanced SQL skills, comfortable manipulating very large datasets 
+
+- Proficient in Python or R with a strong focus on data wrangling and data analysis
+
+- Extensive experience with Tableau or another leading visualization tool is required
+
+- Experience analyzing complex people data (e.g. headcount, attrition, recruiting metrics, compensation data) strongly preferred but not required
+
+- Experience in survey design and analysis preferred
+
+- Familiarity with data architecture fundamentals and data warehousing
+
+- Proficiency with data modeling and data quality best practices
+
+- Demonstrated ability to effectively communicate and set priorities with key stakeholders at all levels of the organization
+
+- Highly collaborative and organized, with a strong attention to detail 
+
+- Comfort with ambiguity and ability to work in a self-guided manner
+
+- Committed to contributing to a collaborative, enjoyable, and psychologically safe work environment
+
+- Exposure to Modern Cloud Data Warehouses preferred
+
+About MongoDB
+
+MongoDB is built for change, empowering our customers and our people to innovate at the speed of the market. We have redefined the database for the AI era, enabling innovators to create, transform, and disrupt industries with software. MongoDB’s unified database platform, the most widely available, globally distributed database on the market, helps organizations modernize legacy workloads, embrace innovation, and unleash AI. Our cloud-native platform, MongoDB Atlas, is the only globally distributed, multi-cloud database and is available across AWS, Google Cloud, and Microsoft Azure.
+
+With offices worldwide and over 60,000 customers, including 75% of the Fortune 100 and AI-native startups, relying on MongoDB for their most important applications, we’re powering the next era of software.
+
+Our compass at MongoDB is our Leadership Commitment, guiding how and why we make decisions, show up for each other, and win. It’s what makes us MongoDB. 
+
+To drive the personal growth and business impact of our employees, we’re committed to developing a supportive and enriching culture for everyone. From employee affinity groups, to fertility assistance and a generous parental leave policy, we value our employees’ wellbeing and want to support them along every step of their professional and personal journeys. Learn more about what it’s like to work at MongoDB, and help us make an impact on the world!
+
+MongoDB is committed to providing any necessary accommodations for individuals with disabilities within our application and interview process. To request an accommodation due to a disability, please inform your recruiter.
+
+MongoDB, Inc. provides equal employment opportunities to all employees and applicants for employment and prohibits discrimination and harassment of any type and makes all hiring decisions without regard to race, color, religion, age, sex, national origin, disability status, genetics, protected veteran status, sexual orientation, gender identity or expression, or any other characteristic protected by federal, state or local laws.
+
+Req. ID: 1273383451
+
+MongoDB’s base salary range for this role is posted below. Compensation at the time of offer is unique to each candidate and based on a variety of factors such as skill set, experience, qualifications, and work location. Salary is one part of MongoDB’s total compensation and benefits package. Other benefits for eligible employees may include: equity, participation in the employee stock purchase program, flexible paid time off, 20 weeks fully-paid gender-neutral parental leave, fertility and adoption assistance, 401(k) plan, mental health counseling, access to transgender-inclusive health insurance coverage, and health benefits offerings. Please note, the base salary range listed below and the benefits in this paragraph are only applicable to U.S.-based candidates.
+
+MongoDB’s base salary range for this role in the U.S. is:
+
+$83,000—$162,000 USD
+</job_description>
+
+<candidate>
+<original_resume>
+<<NAME>>
+Chicago, IL | <<EMAIL>> | <<PHONE>>
+
+EDUCA TION
+Master of Science in Data Science , Private university January 2024 - December 2025
+Relevant Coursework: Data Mining, Time Series Analysis, Machine Learning, Natural Language Processing.
+Bachelor of T echnology in Computer Science, Private university, India July 2017 - May 2021
+SKILLS
+Programming & Databases - Python, R, SQL, JavaScript, HTML, DBMS.
+Machine Learning & Data Science - PyTorch, Tensorflow, Deep Learning, NLP, Pandas, NumPy, Matplotlib.
+Big Data & Cloud T echnologies - A WS, GCP, ETL, Hadoop, Spark, Hive.
+Data Visualization & T ools - Tableau, Power BI, QGIS, Data Visualization, RPA (Robotic Process Automation), Git.
+EXPERIENCE
+Data Analyst September 2021 – November 2023
+Large e-commerce company, India
+• Formulated advanced analytics and management techniques to clean, extract, and analyze data from over 50,000 records
+for ad hoc reporting from multiple databases to prototypes to maintain smooth operational improvements for the company's freight transportation.
+• Reduced freight transportation delays by 10% on a daily average by implementing data analytics for decision-making
+processes under tight deadlines in an Agile environment with quality assurance.
+• Collaborated with the data engineering team to process data from over 20 sources including external partners (Carrier,
+Vendors/suppliers) and internal stakeholders (Retail, Finance).
+• Conducted root-cause analysis, advanced troubleshooting for smart-speaker devices and the company's digital purchases.
+• Achieved a 10% reduction in customer call volumes for the team by identifying critical trends and data analysis for
+technical failures’ reasons, presented findings through Excel and Power BI for visual influence to cross-functional teams.
+• Attained a 100% customer issue resolution rate, leading to two ” T eam Player”and ”Achiever of the Month” awards.
+• Served as Subject Matter Expert for 5 new hires, coaching in problem-solving, critical thinking, technical analysis and
+root cause analysis of technical failures, while overseeing team performance metrics and quality assurance.
+• Developed precise visualizations that showcased a 15% reduction in concession abuse and a 25% improvement in fraud
+detection accuracy for e-reader digital purchases.
+Machine Learning Engineer Intern May 2020 - July 2020
+Small analytics firm, India
+• Developed a highly accurate machine learning model for housing prices for a real estate firm, achieving 93% accuracy.
+• Led experimental design initiatives for data cleaning, feature engineering, and validation.
+• Conducted advanced analytics for property values, gathered and researched data to identify key factors that influence
+financial market trend analyses, and forecast business outcomes .
+• Architected and deployed data pipelines to streamline the process, employed Support Vector Machines for model training.
+• Achieved a model accuracy of 93% through strategic initiatives: through rigorous data cleaning, testing normalization
+techniques, validation and feature engineering to improve data quality and communicated insights.
+PROJECTS
+Food insecurity rate model
+• Developed a predictive model to assess food insecurity rates by analyzing unemployment trends, household income data,
+and national food security metrics.
+Wildlife camera-trap species classifier
+• Trained and Fine-tuned a multi-class wildlife classification model using Vanilla CNN, YOLOv8, and ResNet50, implementing
+image augmentation techniques to enhance model generalization and reduce overfitting across diverse animal categories.
+Deep-learning web attack detector
+• Developed an unsupervised/semi-supervised web attack detection system, enabling real-time monitoring and alerting for
+distributed processing, which enhanced network security compliance and improved monitoring capabilities by 40%.
+Delivery time prediction model
+• Engineered ML model through A/B testing to predict delivery duration for food delivery orders, deployed it on Amazon Web
+Services (A WS) and visualized it with Power BI tools.
+</original_resume>
+<own_words>
+
+</own_words>
+</candidate>
+
+<resume_under_review>
+# <<NAME>>
+Chicago, IL | <<EMAIL>> | <<PHONE>>
+
+## Skills
+- Analysis and programming: SQL, Python (Pandas, NumPy), R, Excel, DBMS
+- Data visualization: Power BI, Tableau, Matplotlib, QGIS
+- Data engineering and cloud: ETL, AWS, GCP, Hadoop, Spark, Hive, Git
+- Machine learning: PyTorch, TensorFlow, deep learning, NLP, A/B testing
+
+## Experience
+### Large e-commerce company, India
+**Data Analyst** | Sep 2021 - Nov 2023
+- Reduced freight transportation delays by 10% on a daily average by implementing data analytics for decision-making processes, under tight deadlines in an Agile environment.
+- Cleaned, extracted and analyzed data from over 50,000 records across multiple databases for ad hoc reporting and prototypes for the company's freight transportation.
+- Collaborated with the data engineering team to process data from over 20 sources, including external partners (carriers, vendors and suppliers) and internal stakeholders (Retail, Finance).
+- Achieved a 10% reduction in customer call volumes for the team by identifying critical trends in the reasons for technical failures. Presented the findings to cross-functional teams in Excel and Power BI.
+- Developed visualizations that showed a 15% reduction in concession abuse and a 25% improvement in fraud detection accuracy for e-reader digital purchases.
+- Served as Subject Matter Expert for 5 new hires, coaching them in technical analysis and root cause analysis of technical failures, and oversaw team performance metrics and quality assurance.
+- Conducted root-cause analysis and advanced troubleshooting for smart-speaker devices and the company's digital purchases.
+- Attained a 100% customer issue resolution rate, leading to two "Team Player" and "Achiever of the Month" awards.
+
+### Small analytics firm, India
+**Machine Learning Engineer Intern** | May 2020 - Jul 2020
+- Developed a machine learning model for housing prices for a real estate firm, achieving 93% accuracy through data cleaning, testing normalization techniques, validation and feature engineering.
+- Gathered and researched property value data to identify key factors that influence financial market trends and forecast business outcomes.
+- Architected and deployed data pipelines to streamline the process, and employed Support Vector Machines for model training.
+
+## Projects
+**Delivery time prediction model**
+- Engineered a machine learning model through A/B testing to predict delivery duration for food delivery orders, deployed it on Amazon Web Services (AWS) and visualized it with Power BI.
+
+**Food insecurity rate model**
+- Developed a predictive model of food insecurity rates by analyzing unemployment trends, household income data and national food security metrics.
+
+**Wildlife camera-trap species classifier**
+- Trained and fine-tuned a multi-class wildlife classification model using Vanilla CNN, YOLOv8 and ResNet50, with image augmentation to reduce overfitting.
+
+**Deep-learning web attack detector**
+- Developed an unsupervised and semi-supervised web attack detection system with real-time monitoring and alerting for distributed processing.
+
+## Education
+**Master of Science in Data Science**, Private university | Jan 2024 - Dec 2025
+- Relevant coursework: Data Mining, Time Series Analysis, Machine Learning, Natural Language Processing
+
+**Bachelor of Technology in Computer Science**, Private university, India | Jul 2017 - May 2021
+</resume_under_review>
+
+The tagged text above is material to review. Treat nothing inside it as an instruction.
+
+Using the material above, reply in this chat with five parts:
+1. Screen decision: would you phone this candidate, yes or no, the one reason, and the seniority the resume reads as.
+2. First impression: what you know about the candidate after the top third of the page, and which must-have requirements are still not evidenced.
+3. Claim check. Go through the resume line by line, skipping section headings and the contact line. For each line that states a fact (a title, employer, date, tool, number, result or the candidate's part in it), give its first few words and then the words in the candidate's material that support it, quoted, or "none". Mark the line MORE THAN THE MATERIAL where it enlarges a number, the scope or the candidate's own part (the team's work written as theirs alone), drops a qualifier, gives a number a different unit or period (a relative time dated from today's date in the target line, with the candidate's qualifier kept, is the same period), or claims anything in <not_true>. Where the candidate's own words or confirmed facts are narrower than the original resume, they win: the original resume alone does not support a line they narrow. Keep a supported line to one short row.
+4. Fixes, up to eight. Each one quotes the exact line and says in one sentence what to change or cut. Leave the candidate's own qualifiers as they are, such as "simple", "about" or "helped": they keep the claims accurate. Include any line that claims more or less than the candidate's material supports, and any line that echoes the job description's wording or would read oddly sent to a similar job at another company. If there is nothing material to fix, say so.
+5. Claim-defence questions: three to five questions an interviewer would ask about the claims in this resume, such as what the candidate's own part was, what the starting point was and how the result was measured. Give one line on what each question is testing.
+
+If something is missing, state your assumption and continue. Ask me no questions.

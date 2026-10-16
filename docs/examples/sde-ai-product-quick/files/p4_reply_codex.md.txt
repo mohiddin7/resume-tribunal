@@ -1,0 +1,110 @@
+**1. Screen decision**
+
+**No—for this senior AI Product role.** The deciding reason is the absence of demonstrated generative AI product development: the role requires at least one year, and the resume shows computer vision, analytics and database work instead.
+
+The resume reads as **an early-career to mid-level ML/software engineer**, with insufficient evidence of senior ownership. The computer vision experience and CS master’s are relevant foundations, but they do not establish the required product experience.
+
+**2. First impression**
+
+After the top third, I know the candidate has a CS master’s, generative AI training, and hands-on experience with object detection, tracking, annotation and Python ML frameworks. The strongest apparent experience is applied computer vision for an autonomous-driving platform.
+
+I do not yet see evidence of these must-haves—and the remainder does not resolve them:
+
+- **One or more years building generative AI products.** Skills and certifications establish exposure, not product delivery.
+- **Five or more years of software engineering at the required scope.** The dates could support substantial experience, but the nonprofit role’s employment basis and engineering responsibilities are unclear, and the university appointments overlap. I would not automatically count these as five-plus years of comparable engineering experience.
+- **Successful 0→1 product work.** Building tools and models is evident; identifying an opportunity, validating it with users and delivering an adopted product is not.
+- **An early-phase AI system’s full lifecycle.** Model development is described, but model-selection decisions, deployment, production evaluation, monitoring and maintenance are not.
+- **Deep product and business understanding.** Efficiency claims suggest potential value, but the connection between technical decisions, user needs and measured outcomes is thin.
+- **AI-assisted software development.** No use of Copilot, ChatGPT, Claude or equivalent tools for coding is described.
+
+For seniority, I also need evidence of technical direction, cross-functional decisions, mentoring and ownership beyond individual implementation. Database training is a useful signal, but does not establish that broader scope.
+
+**3. Claim check**
+
+I treat the original resume as the factual source. The candidate’s own-words section is empty, and no `<not_true>` material was supplied. “Supported” below means supported by that source, not independently verified. I include substantive employer, role and project headings because they contain factual claims.
+
+| Resume line beginning | Supporting words from the candidate’s material | Finding |
+|---|---|---|
+| “Deep learning engineer who built…” | “Developed a MOT model with Faster R-CNN and Graph Neural Networks”; “Developed and optimized object detection algorithms… achieving a 95% precision and recall rate.” | **MORE THAN THE MATERIAL:** the sentence attaches the 95% result to detection and tracking together; the source attaches it only to object detection. |
+| “MS in Computer Science…” | “Master of Science in Computer Science, GPA: 4.00/4.00”; “Oracle Cloud Infrastructure Generative AI Certified Professional.” | Supported. |
+| “Machine learning and AI…” | “Deep Learning (CNN, RNN, LSTM, GRU), Machine Learning (Supervised, Unsupervised), Generative AI - LLMs, Prompt Engineering, NLP”; “MLOps” | Supported. |
+| “Libraries: PyTorch…” | “TensorFlow, PyTorch, Sci-Kit Learn, Pandas, Numpy”; “OpenCV, YOLO”; “Python and Selenium”; “BeautifulSoup” | Supported. |
+| “Languages: Python…” | “Python, Java, C, C++, C#”; “SQL”; “HTML, CSS, JavaScript” | Supported. |
+| “Cloud and data…” | “AWS, Azure, EC2, S3”; “SageMaker”; “MySQL, Oracle, SQL Server, PostgreSQL, MongoDB”; “GIT” | Supported. |
+| “Tools: Tableau…” | “PowerBI, Tableau”; “Tableau and Matplotlib”; “Jupyter Notebook and Colab”; “Visual Studio Code”; “IntelliJ”; “Supervisely” | Supported. |
+| “Large IT services company” | “LARGE IT SERVICES COMPANY” | Supported. |
+| “System Engineer - Deep Learning Engineer…” | “May 2022 – Aug 2023 System Engineer – Deep Learning Engineer” | Supported. |
+| “Developed and optimized object detection…” | “Developed and optimized object detection algorithms using OpenCV, YOLO, Faster R-CNN, achieving a 95% precision and recall rate.” | Supported. |
+| “Developed a MOT model…” | “Developed a MOT model with Faster R-CNN and Graph Neural Networks, improving self-driving application accuracy and automating quality checks” | Supported. |
+| “Created an image clustering method…” | “Pioneered an image clustering method for segmentation with TensorFlow and Pytorch, reducing labeling time by 50% and minimizing costs through SageMaker.” | Supported. |
+| “Streamlined ground truth data annotation…” | “Streamlined ground truth data annotation by 50% using AWS Sagemaker and Supervisely, leveraging semi/self-supervised learning for accuracy in data curation.” | Supported; clarify whether “semi/self” meant both approaches. |
+| “Applied PyTorch and TensorFlow…” | “including Pytorch and TensorFlow, for dynamic AI model selection… in detection and segmentation tasks.” | Supported. |
+| “Upgraded database structures…” | “Upgraded database structures for the company's autonomous-driving platform using SQL, achieving efficient data processing” | Supported. |
+| “Software Engineer Intern…” | “Jan 2022 – May 2022 Software Engineer Intern” | Supported. |
+| “Optimized data processing algorithms…” | “Optimized data processing algorithms… lowering execution time by 30%” | Supported. |
+| “Built a real-time monitoring system…” | “Built a real-time monitoring system using Java… enabling proactive issue detection and resolution” | Supported. |
+| “Designed and deployed web application…” | “Designed and deployed… features in a web application with JavaScript, HTML, and CSS”; “Executed comprehensive unit testing and bug fixing” | Supported. |
+| “Public university, USA” | “PUBLIC UNIVERSITY, USA” | Supported. |
+| “Graduate Research Assistant…” | “Jan 2024 – May 2025 Graduate Research Assistant” | Supported. |
+| “Built a universal data extraction…” | “Crafted a universal data extraction tool” using “Python and Selenium,” “reducing extraction time by 66% for 1,00,000 records.” | Supported. |
+| “Optimized web scraping…” | “Optimized web scraping efficiency with BeautifulSoup… reducing data extraction time from 3 hours to 1 hour”; “Incorporated JavaScript techniques… enabling dynamic data extraction” | Supported. |
+| “Built data storage…” | “Engineered scalable data solutions using MongoDB and SQL”; “Utilized Jupyter Notebook and Colab for data analysis and visualization” | Supported. |
+| “Graduate Student Assistant…” | “Graduate Student Assistant Sep 2023 – May 2025” | Supported. |
+| “Delivered database solutions…” | “Delivered robust database solutions using SQL and MySQL”; “Documented critical database procedures… streamlined troubleshooting processes.” | Supported. |
+| “Gave technical support…” | “comprehensive technical support and training sessions” on “database proficiency” | Supported. |
+| “Nonprofit” | “NONPROFIT” | Supported. |
+| “Analytics Software Developer…” | “June 2019 – Dec 2021 Analytics Software Developer” | Supported. |
+| “Developed predictive models…” | “Developed predictive models with Scikit-learn to forecast volunteer engagement and retention, improving resource planning.” | Supported. |
+| “Analyzed children's progress…” | “Analyzed children's progress using regression models and clustering techniques… informing program strategies.” | Supported. |
+| “Raised program effectiveness…” | “Collected, organized, and analyzed data related to children and volunteers using Python and SQL, enhancing program effectiveness and operational efficiency by 20%.” | Supported. |
+| “Created reports and visualizations…” | “Created detailed reports and visualizations using Tableau and Matplotlib, which increased stakeholder engagement by 25%.” | Supported. |
+| “Triplet-loss face matching model” | “Triplet-loss face matching model” | Supported. |
+| “Developed a face recognition system…” | “Developed a face recognition system using triplet loss”; “distinguish between similar and dissimilar faces”; “data preprocessing, model training, and evaluation on a large dataset” | Supported. |
+| “Web exam builder with instant scoring” | “Web exam builder with instant scoring” | Supported. |
+| “Created an online examination platform…” | “utilizing PHP, HTML, CSS, Bootstrap, and SQL”; “educators to construct exams”; “immediate scoring”; “recognized as the premier project in its category” | Supported. |
+| “Position paper on a data-cleaning tool” | “Position paper on a data-cleaning tool” | Supported. |
+| “Published a position paper…” | “Published a Positional paper with a team of 6 at a 2022 workshop on data-centric AI at a major machine-learning conference… recognized among its top 100 accepted papers.” | Supported; the nature of the recognition remains unclear. |
+| “Master of Science in Computer Science…” | “Public university, USA Aug 2023 – May 2025 Master of Science in Computer Science, GPA: 4.00/4.00” | Supported. |
+| “Bachelor of Technology…” | “Engineering college, India Jul 2018 – May 2022 Bachelor of Technology in Information Technology, GPA: 3.78/4.00” | Supported. |
+| “Coursera: Machine Learning…” | “Coursera: Machine Learning, Deep Learning, TensorFlow Specialist, Generative AI with LLMs.” | Supported. |
+| “Oracle: Oracle Cloud Infrastructure…” | “Oracle: Oracle Cloud Infrastructure Generative AI Certified Professional.” | Supported. |
+| “National online course: Python…” | “National online course: Python. IT services company: Technology Training Diploma.” | Supported. |
+
+The main factual expansion is in the summary. Several other claims are faithfully carried over from the original but still need clearer measurement or context to be persuasive.
+
+**4. Fixes, up to eight**
+
+1. **“Deep learning engineer who built object detection and tracking models for an autonomous-driving platform, reaching 95% precision and recall.”** Separate tracking from the metric and attach 95% precision and recall only to object detection.
+
+2. **“Machine learning and AI: Deep Learning (CNN, RNN, LSTM, GRU), Machine Learning (Supervised, Unsupervised), Generative AI, LLMs, Prompt Engineering, NLP, MLOps”** Trim this to defensible skills and, if genuine experience exists, substantiate generative AI and MLOps with a concrete project describing the candidate’s implementation, evaluation and deployment work.
+
+3. **“Developed and optimized object detection algorithms with OpenCV, YOLO and Faster R-CNN, achieving 95% precision and recall.”** Specify which model achieved the result, the evaluation dataset and conditions, and whether precision and recall were each 95%.
+
+4. **“Created an image clustering method for segmentation with TensorFlow and PyTorch that cut labeling time by 50% and lowered costs through SageMaker.”** Clarify how this differs from the adjacent 50% annotation claim, identify the measured time baseline, and merge the bullets if they describe the same improvement.
+
+5. **“Built a universal data extraction tool with Python and Selenium that reduced extraction time by 66% for 1,00,000 records.”** Use US number formatting, define the scope of “universal,” and merge with the adjacent three-hours-to-one-hour bullet if it describes the same result.
+
+6. **“System Engineer - Deep Learning Engineer | May 2022 - Aug 2023”** Place the university appointments above this older role, clarify overlapping appointments and the nonprofit role’s employment basis, and add any actual activity since May 2025 because the current timeline ends about 17 months before the review date.
+
+7. **“Published a position paper with a team of 6 at a 2022 workshop on data-centric AI at a major machine-learning conference; recognized among its top 100 accepted papers.”** Provide the paper title, workshop, conference, link and personal contribution, and retain “top 100” only with a precise explanation of whether it was ranked recognition or simply acceptance.
+
+8. **“Created an online examination platform with PHP, HTML, CSS, Bootstrap and SQL where educators build exams and students get immediate scores; recognized as the premier project in its category.”** Name the awarding body and exact recognition or cut the “premier project” clause.
+
+No line conspicuously copies Figma-specific job language or would sound misplaced solely because it was sent to another employer. These edits would improve credibility and readability; they would not, by themselves, establish the missing senior generative AI product experience.
+
+**5. Claim-defence questions**
+
+- **Which object detector achieved 95% precision and recall, on what held-out data and threshold, and what did you personally change?**  
+  Tests metric literacy, evaluation validity and individual contribution.
+
+- **Are the two 50% labeling and annotation improvements the same result, and how were time savings and annotation quality measured?**  
+  Tests whether the achievements are distinct and whether efficiency preserved quality.
+
+- **What did “dynamic AI model selection” do, which alternatives did you compare, and what happened after the chosen model entered production?**  
+  Tests technical depth, experimental judgment and lifecycle ownership.
+
+- **What made the extraction tool “universal,” and were the three-hour and one-hour runs performed on the same 100,000 records under comparable conditions?**  
+  Tests scope accuracy, benchmark comparability and robustness.
+
+- **How were the nonprofit’s 20% operational improvement and 25% stakeholder-engagement increase defined, and what evidence connects them to your work?**  
+  Tests business measurement, attribution and the candidate’s actual ownership.

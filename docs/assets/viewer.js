@@ -13,6 +13,7 @@
   var pad = function (n) { return String(n).padStart(2, "0"); };
   var clock = function (s) { s = Math.floor(s); return pad(Math.floor(s / 60)) + ":" + pad(s % 60); };
   var dur = function (s) { return s >= 60 ? Math.floor(s / 60) + " min " + (s % 60) + " s" : s + " s"; };
+  var long = function (s) { return s >= 5400 ? Math.round(s / 3600) + " hours" : Math.round(s / 60) + " minutes"; };
   var pct = function (s) { return (s / END * 100).toFixed(3) + "%"; };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var narrow = function () { return matchMedia("(max-width: 859px)").matches; };
@@ -31,7 +32,8 @@
       if (/^\s*```/.test(l)) {
         flush(); var code = []; i++;
         while (i < lines.length && !/^\s*```/.test(lines[i])) code.push(lines[i++]);
-        out.push("<pre>" + esc(code.join("\n")) + "</pre>"); i++; continue;
+        var pre = "<pre>" + esc(code.join("\n")) + "</pre>";  // a long block, such as a whole prompt on a paste card, starts folded
+        out.push(code.length > 25 ? '<details class="longcode"><summary>Show the full text (' + code.length + " lines)</summary>" + pre + "</details>" : pre); i++; continue;
       }
       if (/^\s*\|/.test(l)) {
         flush(); var rows = [];
@@ -58,10 +60,14 @@
 
   // ---------- tabs ----------
   var TABS = [{ id: "chat", who: "host", n: CAND + " and the host", about: "What " + CAND + " saw: every message from the host, and " + CAND + "'s answers." }];
+  var PASTED = { chatgpt: 1, gemini: 1 }; // apps the candidate pasted prompts into, in manual mode
   Object.keys(WHO).forEach(function (k) {
     var w = WHO[k];
-    if (k === "codex" || k === "agy") TABS.push({ id: k, who: k, n: w.n, about: "What the host sent " + w.n + " and what came back. " + w.n + " never sees " + CAND + "'s name or who wrote each draft." });
-    if (k === "claude") TABS.push({ id: k, who: k, n: w.n, about: "A new Claude session that knows nothing about the host's own draft. Its only job is to merge the drafts." });
+    if (k === "user" || k === "host" || k === "check") return;
+    var about = k === "claude" ? "A new Claude session that knows nothing about the host's own draft. Its only job is to merge the drafts."
+      : PASTED[k] ? "The cards the host gave " + CAND + " to paste into " + w.n + ", and the replies " + CAND + " pasted back. " + w.n + " never sees " + CAND + "'s name or who wrote each draft."
+      : "What the host sent " + w.n + " and what came back. " + w.n + " never sees " + CAND + "'s name or who wrote each draft.";
+    TABS.push({ id: k, who: k, n: w.n, about: about });
   });
   if (WHO.check) TABS.push({ id: "check", who: "check", n: "Checks", about: "The script that checks every number, name and title against " + CAND + "'s own material." });
   TABS.push({ id: "all", who: "all", n: "Everything", about: "Every message, in the order it happened." });
@@ -167,7 +173,8 @@
     if (e.kind === "step") return '<div class="step-div">Step ' + e.step + ": " + esc(e.text) + "</div>";
     if (e.kind === "note") return '<div class="act' + cls + '" data-i="' + i + '" tabindex="0"><b>' + esc(w.n) + "</b><span>" + esc(e.text) + '</span><span class="tl">' + clock(e.t) + "</span></div>";
     var name = e.to ? w.n + " to " + WHO[e.to].n : w.n;
-    var pills = (e.stop ? '<span class="mpill stop">' + esc(e.stop) + ": " + esc(CAND) + "'s turn</span>" : "") + (e.d ? '<span class="mpill">took ' + dur(e.d) + "</span>" : "");
+    var pills = (e.stop ? '<span class="mpill stop">' + esc(e.stop) + ": " + esc(CAND) + "'s turn</span>" : "") + (e.d ? '<span class="mpill">' + (PASTED[e.who] ? "pasted back after " : "took ") + dur(e.d) + "</span>" : "")
+      + (e.waited ? '<span class="mpill" title="The timeline shows this wait as 5 minutes">answered after ' + long(e.waited) + ", shortened on the timeline</span>" : "");
     var files = (e.files || []).map(function (f) {
       return '<a href="files/' + encodeURIComponent(f) + '" target="_blank" rel="noopener">' + (e.kind === "ask" ? "Read the full prompt" : e.kind === "reply" ? "Read the full reply" : esc(f)) + "</a>";
     }).join("");
@@ -258,6 +265,20 @@
   // Picking a moment by hand pauses the run, so it stays on what was picked.
   function jumpTo(i) { if (i < 0) return; if (playing) pause(); holdUntil = 0; setNow(EV[i].t, false); select(i); }
 
+  // ---------- settings (kept in this browser only) ----------
+  var store = { get: function (k) { try { return localStorage.getItem("rv-" + k); } catch (e) { return null; } },
+                set: function (k, v) { try { localStorage.setItem("rv-" + k, v); } catch (e) {} } };
+  [["autoplay", "checked"], ["follow", "checked"], ["speed", "value"]].forEach(function (x) {
+    var el = $("#" + x[0]), v = store.get(x[0]);
+    if (v !== null) el[x[1]] = x[1] === "checked" ? v === "1" : v;
+    el.addEventListener("change", function () { store.set(x[0], x[1] === "checked" ? (el.checked ? "1" : "0") : el.value); });
+  });
+  var pop = $("#settings"), gear = $("#settings-btn");
+  function showSettings(open) { pop.hidden = !open; gear.setAttribute("aria-expanded", String(open)); }
+  gear.onclick = function () { showSettings(pop.hidden); };
+  document.addEventListener("click", function (e) { if (!pop.hidden && !e.target.closest(".rv-settings")) showSettings(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !pop.hidden) { showSettings(false); gear.focus(); } });
+
   // ---------- wiring ----------
   function showPane(p) { $("#panes").dataset.show = p; $$("button[data-show]").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.show === p); }); fit(); }
   function setVersion(v) {
@@ -332,4 +353,5 @@
   TABS.forEach(function (t) { seen[t.id] = visible(t.id, END); }); // at rest the whole run is on show, so nothing counts as new
   setNow(END, false); renderTabs(); showPane("chat");
   if (narrow()) { $("#timeline").classList.add("closed"); $("#lanes-toggle").textContent = "Show timeline"; $("#lanes-toggle").setAttribute("aria-expanded", "false"); }
+  if ($("#autoplay").checked && !reduce) play(); // starts from the beginning; the page is complete at rest without it
 })();

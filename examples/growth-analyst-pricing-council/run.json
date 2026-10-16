@@ -2,8 +2,10 @@
  "slug": "growth-analyst-pricing-council",
  "title": "Growth analyst applying for a senior pricing analyst job",
  "mode": "Full council",
+ "reach": "Auto",
  "facts": [
   "Fictional candidate",
+  "Auto mode: the other AIs ran by themselves",
   "4 AIs from 3 companies",
   "19 minutes",
   "Real public job posting"
@@ -428,7 +430,7 @@
    51,
    "Setup",
    0,
-   "Host: reading the resume, the job posting and Dana's own words, and hiding her name and contact details"
+   "The host is working"
   ],
   [
    "user",
@@ -452,7 +454,7 @@
    90,
    "Own draft",
    0,
-   "Host: writing its own draft first, before reading anything from the other two"
+   "The host is working"
   ],
   [
    "codex",
@@ -548,7 +550,7 @@
    797,
    "Apply",
    0,
-   "Host: applying the review's wording fixes and checking the resume again"
+   "The host is working"
   ],
   [
    "user",
@@ -637,7 +639,7 @@
   },
   {
    "k": "h2",
-   "tx": "Summary"
+   "tx": "SUMMARY"
   },
   {
    "k": "p",
@@ -648,7 +650,7 @@
   },
   {
    "k": "h2",
-   "tx": "Experience"
+   "tx": "EXPERIENCE"
   },
   {
    "k": "role",
@@ -720,7 +722,7 @@
   },
   {
    "k": "h2",
-   "tx": "Education"
+   "tx": "EDUCATION"
   },
   {
    "k": "p",
@@ -734,7 +736,7 @@
   },
   {
    "k": "h2",
-   "tx": "Skills"
+   "tx": "SKILLS"
   },
   {
    "k": "p",

@@ -1,6 +1,6 @@
 # Biology teacher applying for an instructional designer job
 
-Fictional candidate · 2 AIs from 2 companies · 7 minutes · Invented job posting
+Fictional candidate · Auto mode: the other AIs ran by themselves · 2 AIs from 2 companies · 7 minutes · Invented job posting
 
 Every message of the run in order. Times are minutes and seconds from the start. Prompts and replies are in [files/](files/).
 

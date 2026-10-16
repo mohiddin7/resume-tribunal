@@ -1,6 +1,6 @@
 # Growth analyst applying for a senior pricing analyst job
 
-Fictional candidate · 4 AIs from 3 companies · 19 minutes · Real public job posting
+Fictional candidate · Auto mode: the other AIs ran by themselves · 4 AIs from 3 companies · 19 minutes · Real public job posting
 
 A recorded run of Resume Tribunal on a fictional candidate. This run happened before the recording tool existed, so its record was rebuilt afterwards from the run's own files: the times from its timing log, the messages to Dana word for word, and every prompt and reply as the AIs saw them. Dana's sign-off reply is put together from the answers the run saved.
 

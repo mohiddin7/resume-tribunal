@@ -1,6 +1,6 @@
 # Growth analyst applying for a senior pricing analyst job
 
-Fictional candidate · 4 AIs from 3 companies · 19 minutes · Real public job posting
+Fictional candidate · Auto mode: the other AIs ran by themselves · 4 AIs from 3 companies · 19 minutes · Real public job posting
 
 Every message of the run in order. Times are minutes and seconds from the start. Prompts and replies are in [files/](files/).
 

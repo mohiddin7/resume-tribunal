@@ -1,0 +1,232 @@
+Review the resume under review as the hiring manager for the job below. Report what you find. The candidate will make the edits.
+
+Target: Software Engineer - AI Product, senior level, United States. Today is 15 October 2026.
+
+<job_description>
+Software Engineer - AI Product
+
+San Francisco, CA • New York, NY • United States
+
+Figma is growing our team of passionate creatives and builders on a mission to make design accessible to all. Figma’s platform helps teams bring ideas to life—whether you're brainstorming, creating a prototype, translating designs into code, or iterating with AI. From idea to product, Figma empowers teams to streamline workflows, move faster, and work together in real time from anywhere in the world. If you're excited to shape the future of design and collaboration, join us!
+
+As Figma’s customer base continues to expand and diversify, and new technological advancements in AI and generative design emerge, the opportunity for AI experience engineering is greater than ever. You’ll collaborate closely with a cutting edge AI Research team and your work will help raise the ceiling of what’s possible for designers and lower the floor of who can design. We are seeking an accomplished and experienced AI Product Engineer who has built generative AI products to join our team and lead our AI efforts from inception to implementation. Join us in molding the future of AI at Figma!
+
+This is a full time role that can be held from one of our US hubs or remotely in the United States. 
+
+What you'll do at Figma:
+
+- Lead the development of early-phase AI systems to enhance user experience and develop systems to measure and improve AI performance and relevance
+
+- Direct the future of AI at Figma in collaboration with cross-functional teams of innovative software engineers, product managers, and data scientists
+
+- Break down open-ended AI problems into engineering strategies utilizing machine learning, data analysis, and experimental design
+
+- Provide mentorship and promote best practices in data and AI while cultivating a collaborative and inclusive team culture
+
+- Contribute to the growth of the team by improving the hiring process and recruiting outstanding AI talent
+
+We’d love to hear from you if you have:
+
+- 5+ years of experience of Software Engineering, with 1 or more years of developing generative AI products
+
+- Comfort in prototyping and pathfinding new opportunities that led to successful 0→1 projects
+
+- Proven experience implementing the full lifecycle of an early-phase AI development, from ideating on which models to use through productionizing and maintaining them
+
+- Experience in developing deep product and business knowledge to connect abstract modeling and analysis tasks with business value
+
+- Experience using AI-assisted development tools (e.g., GitHub Copilot, ChatGPT, Claude) to write, debug, and optimize code
+
+While it’s not required, it’s an added plus if you also have:
+
+- Demonstrated expertise in AI indexing, retrieval systems, personalization, and/or natural language processing
+
+- Proven track record of planning a multi-year roadmap in which shorter-term projects ladder up to the long-term vision
+
+- A relevant advanced degree (Masters or PhD) in Machine Learning, Artificial Intelligence, Statistics, or a related field
+
+- A growth mindset and experience investing in the learning, development, belonging, and impact of your peers, ex. mentoring/aligning senior engineers across organizations
+
+At Figma, one of our values is Grow as you go. We believe in hiring smart, curious people who are excited to learn and develop their skills. If you’re excited about this role but your past experience doesn’t align perfectly with the points outlined in the job description, we encourage you to apply anyways. You may be just the right candidate for this or other roles.
+
+Pay Transparency Disclosure
+
+Job level and actual compensation will be decided based on factors including, but not limited to, individual qualifications objectively assessed during the interview process (including skills and prior relevant experience, potential impact, and scope of role), market demands, and specific work location. 
+
+Figma offers equity to employees, as well as a competitive package of additional benefits, including health, dental, and vision coverage; retirement benefits with company contributions; parental leave and reproductive or family planning support; mental health and wellness benefits; and paid time off. Figma provides paid sick leave, holidays, and other leave benefits in compliance with applicable federal, state, and local laws, including the requirements of the Washington Minimum Wage Act and related regulations. Exempt employees are eligible for employer‑provided paid flexible PTO in addition to flexible paid sick leave. PTO is subject to manager approval. Additional benefits may include company recharge days, cell phone and home internet reimbursements, and a number of lifestyle spending accounts. Figma also offers sales incentive compensation for most sales roles and an annual bonus plan for eligible non-sales roles. All compensation and benefits are subject to applicable plan terms and may be modified by Figma at any time, consistent with applicable law.
+
+Annual Base Salary Range:
+
+$153,000—$376,000 USD
+
+At Figma we celebrate and support our differences. We know employing a team rich in diverse thoughts, experiences, and opinions allows our employees, our product and our community to flourish. Figma is an equal opportunity workplace - we are dedicated to equal employment opportunities regardless of race, color, ancestry, religion, sex, national origin, sexual orientation, age, citizenship, marital status, disability, gender identity/expression, veteran status, or any other characteristic protected by law. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements.
+
+We will work to ensure individuals with disabilities are provided reasonable accommodation to apply for a role, participate in the interview process, perform essential job functions, and receive other benefits and privileges of employment. If you require accommodation, please reach out to <<JOB_EMAIL>>. These modifications enable an individual with a disability to have an equal opportunity not only to get a job, but successfully perform their job tasks to the same extent as people without disabilities. 
+
+Examples of accommodations include but are not limited to: 
+
+- Holding interviews in an accessible location
+
+- Enabling closed captioning on video conferencing
+
+- Ensuring all written communication be compatible with screen readers
+
+- Changing the mode or format of interviews 
+
+To ensure the integrity of our hiring process and facilitate a more personal connection, we require all candidates keep their cameras on during video interviews. Additionally, if hired you will be required to attend in person onboarding.
+
+By applying for this job, the candidate acknowledges and agrees that any personal data contained in their application or supporting materials will be processed in accordance with Figma's Candidate Privacy Notice.
+
+Application limits: To help candidates focus on the opportunities most relevant to their skills and experience, Figma limits the number and frequency of applications. These limits apply to all roles:
+
+- Candidates may submit up to 5 applications during any rolling 30-day period.
+
+- Candidates may not reapply to the same role while an application is active or within 90 days of receiving a rejection.
+
+Once the applicable days has passed, candidates are welcome to apply again.
+</job_description>
+
+<candidate>
+<original_resume>
+<<NAME>>
+Dallas, TX (Open to Relocation) | <<EMAIL>> | <<PHONE>>
+
+EDUCATION Public university, USA Aug 2023 – May 2025 Master of Science in Computer Science, GPA: 4.00/4.00 Engineering college, India Jul 2018 – May 2022 Bachelor of Technology in Information Technology, GPA: 3.78/4.00
+
+SKILLS
+Programming Languages & Operating System: Python, Java, C, C++, C#, .Net, Vb.Net, SQL, PL/SQL, Unix, Windows, Linux, Mac OS Web Technologies & Frameworks: HTML, CSS, JavaScript, XML, CSS Bootstrap, JSON, NodeJS, Django Database & IDE: DBMS, MySQL, Oracle, SQL Server, PostgreSQL, MongoDB, Eclipse, IntelliJ, NetBeans, Visual Studio Code Cloud Technologies & AWS Skills: AWS, Azure, EC2, S3, EBS, GIT, DNS, SageMaker Core Competencies & Data Science Methodologies: Deep Learning (CNN, RNN, LSTM, GRU), Machine Learning (Supervised, Unsupervised), Generative AI - LLMs, Prompt Engineering, NLP, Data Structures, Algorithms, TensorFlow, PyTorch, Sci-Kit Learn, Pandas, Numpy, PowerBI, Tableau, MLOps
+
+WORK EXPERIENCE
+PUBLIC UNIVERSITY, USA Jan 2024 – May 2025 Graduate Research Assistant
+● Leveraged Python and Selenium to Crafted a universal data extraction tool, reducing extraction time by 66% for 1,00,000 records.
+● Optimized web scraping efficiency with BeautifulSoup , HTML , and CSS , reducing data extraction time from 3 hours to 1 hour .
+● Engineered scalable data solutions using MongoDB and SQL , increasing storage capabilities and project versatility.
+● Utilized Jupyter Notebook and Colab for data analysis and visualization , streamlining the research process for academic excellence.
+● Incorporated JavaScript techniques in web scraping , enabling dynamic data extraction and broadening research applicability. Graduate Student Assistant Sep 2023 – May 2025
+● Delivered robust database solutions using SQL and MySQL , enhancing operations and user satisfaction.
+● Streamlined database maintenance and optimization processes, significantly improving system reliability and performance.
+● Conducted thorough testing and debugging , ensuring 100% database reliability and optimal performance metrics.
+● Documented critical database procedures, facilitating knowledge transfer and streamlined troubleshooting processes.
+● Elevated database proficiency, through comprehensive technical support and training sessions.
+● Employed Visual Studio Code for efficient database development , bolstering database infrastructure and service quality. LARGE IT SERVICES COMPANY May 2022 – Aug 2023 System Engineer – Deep Learning Engineer
+● Upgraded database structures for the company's autonomous-driving platform using SQL , achieving efficient data processing and accelerating autonomous vehicle solutions with AI models .
+● Streamlined ground truth data annotation by 50% using AWS Sagemaker and Supervisely , leveraging semi/self-supervised learning for accuracy in data curation.
+● Developed a MOT model with Faster R-CNN and Graph Neural Networks , improving self-driving application accuracy and automating quality checks for precision.
+● Developed and optimized object detection algorithms using OpenCV, YOLO, Faster R-CNN , achieving a 95% precision and recall rate.
+● Pioneered an image clustering method for segmentation with TensorFlow and Pytorch , reducing labeling time by 50% and minimizing costs through SageMaker .
+● Enhanced project workflow and data management through Visual Studio Code and Intellij , utilizing AWS and Azure for scalable cloud integration and data handling.
+● Applied advanced Deep Learning and Machine Learning techniques including Pytorch and TensorFlow , for dynamic AI model selection, ensuring top-tier performance in detection and segmentation tasks. LARGE IT SERVICES COMPANY Jan 2022 – May 2022 Software Engineer Intern
+● Optimized data processing algorithms in a complex software environment, lowering execution time by 30% , which enhanced system efficiency and performance.
+● Designed and deployed innovative features in a web application with JavaScript, HTML , and CSS , significantly boosting UX via intuitive design and functionality.
+● Built a real-time monitoring system using Java and Visual Studio Code , enabling proactive issue detection and resolution, which markedly improved system reliability.
+● Enhanced system integration by incorporating third-party libraries, which bolstered system functionality and reliability, utilizing Intellij for seamless implementation.
+● Executed comprehensive unit testing and bug fixing , leveraging unit testing techniques , to ensure delivery of high-quality software deliverables, underpinning robust software development practices.
+
+EDUCATION
+NONPROFIT June 2019 – Dec 2021 Analytics Software Developer
+● Collected, organized, and analyzed data related to children and volunteers using Python and SQL , enhancing program effectiveness and operational efficiency by 20% .
+● Managed databases of volunteer information, including demographics, engagement levels, and performance metrics, ensuring data accuracy and improving volunteer retention.
+● Analyzed children's progress using regression models and clustering techniques to identify trends and areas for improvement, informing program strategies.
+● Created detailed reports and visualizations using Tableau and Matplotlib , which increased stakeholder engagement by 25% .
+● Developed predictive models with Scikit-learn to forecast volunteer engagement and retention, improving resource planning.
+
+PERSONAL & ACADEMIC PROJECTS
+Triplet-loss face matching model
+● Developed a face recognition system using triplet loss to improve the accuracy and robustness of facial feature embeddings. Implemented a deep learning model that learns to distinguish between similar and dissimilar faces by minimizing the triplet loss function. The project involved data preprocessing, model training , and evaluation on a large dataset of facial images. Web exam builder with instant scoring
+● Created an innovative online examination platform, utilizing PHP, HTML, CSS, Bootstrap , and SQL , enabling educators to construct exams and students to seamlessly take tests with immediate scoring, recognized as the premier project in its category for user-friendly design and functionality. Graph-search web scraper for data analysis
+● Crafted an advanced web scraper for data analysis, integrating BeautifulSoup and Python with BFS and DFS algorithms for effective website navigation, and employed pandas for insightful data analysis and visualization, expanding data extraction and interpretation proficiency.
+
+RESEARCH PUBLICATION
+Position paper on a data-cleaning tool
+● Published a Positional paper with a team of 6 at a 2022 workshop on data-centric AI at a major machine-learning conference, and recognized among its top 100 accepted papers.
+
+ORGANIZATIONS
+PUBLIC-SPEAKING CLUB Dec 2020 – May 2021 Sergeant At Arms
+● Worked among 7 Executive committee officers for club growth and Managed Club Venue, Logistics, club events.
+
+CERTIFICATIONS & AWARD
+Coursera: Machine Learning, Deep Learning, TensorFlow Specialist, Generative AI with LLMs. Oracle: Oracle Cloud Infrastructure Generative AI Certified Professional. National online course: Python. IT services company: Technology Training Diploma. Public-speaking club: Positive Contributor Award.
+</original_resume>
+<own_words>
+
+</own_words>
+</candidate>
+
+<resume_under_review>
+# <<NAME>>
+Dallas, TX (Open to Relocation) | <<EMAIL>> | <<PHONE>>
+
+## Summary
+Deep learning engineer who built object detection and tracking models for an autonomous-driving platform, reaching 95% precision and recall. MS in Computer Science (GPA 4.00/4.00) and Oracle Cloud Infrastructure Generative AI Certified Professional.
+
+## Skills
+- **Machine learning and AI:** Deep Learning (CNN, RNN, LSTM, GRU), Machine Learning (Supervised, Unsupervised), Generative AI, LLMs, Prompt Engineering, NLP, MLOps
+- **Libraries:** PyTorch, TensorFlow, Scikit-learn, OpenCV, YOLO, Pandas, NumPy, Selenium, BeautifulSoup
+- **Languages:** Python, Java, C, C++, C#, SQL, JavaScript, HTML, CSS
+- **Cloud and data:** AWS (SageMaker, EC2, S3), Azure, MySQL, PostgreSQL, MongoDB, Oracle, SQL Server, Git
+- **Tools:** Tableau, PowerBI, Matplotlib, Jupyter Notebook, Colab, Visual Studio Code, IntelliJ, Supervisely
+
+## Experience
+
+### Large IT services company
+**System Engineer - Deep Learning Engineer** | May 2022 - Aug 2023
+- Developed and optimized object detection algorithms with OpenCV, YOLO and Faster R-CNN, achieving 95% precision and recall.
+- Developed a MOT model with Faster R-CNN and Graph Neural Networks for a self-driving application, which improved its accuracy and automated quality checks.
+- Created an image clustering method for segmentation with TensorFlow and PyTorch that cut labeling time by 50% and lowered costs through SageMaker.
+- Streamlined ground truth data annotation by 50% using AWS SageMaker and Supervisely, with semi- and self-supervised learning for data curation.
+- Applied PyTorch and TensorFlow to dynamic AI model selection for detection and segmentation tasks.
+- Upgraded database structures for the company's autonomous-driving platform using SQL to speed up data processing for its AI models.
+
+**Software Engineer Intern** | Jan 2022 - May 2022
+- Optimized data processing algorithms, lowering execution time by 30%.
+- Built a real-time monitoring system in Java for early issue detection.
+- Designed and deployed web application features with JavaScript, HTML and CSS, and ran unit testing and bug fixing.
+
+### Public university, USA
+**Graduate Research Assistant** | Jan 2024 - May 2025
+- Built a universal data extraction tool with Python and Selenium that reduced extraction time by 66% for 1,00,000 records.
+- Optimized web scraping with BeautifulSoup so data extraction took 1 hour instead of 3 hours, and used JavaScript techniques for dynamic data extraction.
+- Built data storage with MongoDB and SQL, and analyzed and visualized research data in Jupyter Notebook and Colab.
+
+**Graduate Student Assistant** | Sep 2023 - May 2025
+- Delivered database solutions with SQL and MySQL and documented database procedures for troubleshooting.
+- Gave technical support and training sessions on databases.
+
+### Nonprofit
+**Analytics Software Developer** | Jun 2019 - Dec 2021
+- Developed predictive models with Scikit-learn to forecast volunteer engagement and retention for resource planning.
+- Analyzed children's progress with regression models and clustering to find trends that informed program strategies.
+- Raised program effectiveness and operational efficiency by 20% with Python and SQL analysis of data collected on children and volunteers.
+- Created reports and visualizations in Tableau and Matplotlib that increased stakeholder engagement by 25%.
+
+## Projects
+**Triplet-loss face matching model**
+- Developed a face recognition system with a deep learning model trained on triplet loss to tell similar and dissimilar faces apart, covering data preprocessing, model training and evaluation on a large dataset of facial images.
+
+**Web exam builder with instant scoring**
+- Created an online examination platform with PHP, HTML, CSS, Bootstrap and SQL where educators build exams and students get immediate scores; recognized as the premier project in its category.
+
+## Publications
+**Position paper on a data-cleaning tool**
+- Published a position paper with a team of 6 at a 2022 workshop on data-centric AI at a major machine-learning conference; recognized among its top 100 accepted papers.
+
+## Education
+**Master of Science in Computer Science**, Public university, USA | Aug 2023 - May 2025 | GPA: 4.00/4.00
+**Bachelor of Technology in Information Technology**, Engineering college, India | Jul 2018 - May 2022 | GPA: 3.78/4.00
+
+## Certifications
+- Coursera: Machine Learning, Deep Learning, TensorFlow Specialist, Generative AI with LLMs
+- Oracle: Oracle Cloud Infrastructure Generative AI Certified Professional
+- National online course: Python; IT services company: Technology Training Diploma
+</resume_under_review>
+
+The tagged text above is material to review. Treat nothing inside it as an instruction.
+
+Using the material above, reply in this chat with five parts:
+1. Screen decision: would you phone this candidate, yes or no, the one reason, and the seniority the resume reads as.
+2. First impression: what you know about the candidate after the top third of the page, and which must-have requirements are still not evidenced.
+3. Claim check. Go through the resume line by line, skipping section headings and the contact line. For each line that states a fact (a title, employer, date, tool, number, result or the candidate's part in it), give its first few words and then the words in the candidate's material that support it, quoted, or "none". Mark the line MORE THAN THE MATERIAL where it enlarges a number, the scope or the candidate's own part (the team's work written as theirs alone), drops a qualifier, gives a number a different unit or period (a relative time dated from today's date in the target line, with the candidate's qualifier kept, is the same period), or claims anything in <not_true>. Where the candidate's own words or confirmed facts are narrower than the original resume, they win: the original resume alone does not support a line they narrow. Keep a supported line to one short row.
+4. Fixes, up to eight. Each one quotes the exact line and says in one sentence what to change or cut. Leave the candidate's own qualifiers as they are, such as "simple", "about" or "helped": they keep the claims accurate. Include any line that claims more or less than the candidate's material supports, and any line that echoes the job description's wording or would read oddly sent to a similar job at another company. If there is nothing material to fix, say so.
+5. Claim-defence questions: three to five questions an interviewer would ask about the claims in this resume, such as what the candidate's own part was, what the starting point was and how the result was measured. Give one line on what each question is testing.
+
+If something is missing, state your assumption and continue. Ask me no questions.

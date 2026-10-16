@@ -1,6 +1,6 @@
 # Biology teacher applying for an instructional designer job
 
-Fictional candidate · 2 AIs from 2 companies · 7 minutes · Invented job posting
+Fictional candidate · Auto mode: the other AIs ran by themselves · 2 AIs from 2 companies · 7 minutes · Invented job posting
 
 A recorded run of Resume Tribunal on a fictional candidate. Nothing here was edited by hand: [tools/](../tools/) recorded the run and exported this folder.
 

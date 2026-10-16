@@ -1,0 +1,215 @@
+Review the resume under review as the hiring manager for the job below. Report what you find. The candidate will make the edits.
+
+Target: Forward Deployed Engineer, senior/staff level, United States. Today is 15 October 2026.
+
+<job_description>
+Forward Deployed Engineer
+
+San Francisco, CA • New York, NY • United States
+
+Figma is growing our team of passionate creatives and builders on a mission to make design accessible to all. Figma’s platform helps teams bring ideas to life—whether you're brainstorming, creating a prototype, translating designs into code, or iterating with AI. From idea to product, Figma empowers teams to streamline workflows, move faster, and work together in real time from anywhere in the world. If you're excited to shape the future of design and collaboration, join us!
+
+Figma is building its founding Forward Deployed Engineering team to solve the complex, real-world challenges that emerge when bringing Figma’s products into large-scale enterprise environments and looking for founding Forward Deployed Engineers. As a Forward Deployed Engineer, you’ll embed directly with strategic customers, working across their codebases, design systems, developer environments, and workflows to make Figma’s products successful within their unique technical constraints. You’ll tackle the hardest adoption challenges hands-on, from complex frontend stacks and legacy systems to security and access requirements, while building trusted partnerships with customers’ senior engineering teams.
+
+This is a senior/staff-level engineering role within Product and Engineering, not a sales or services function. You’ll work directly in customer environments when needed, using the minimum access required. Your goal is smooth adoption by the customer’s product and engineering teams, which means making complex workflows work simply in their environment and solving the underlying problems You’ll do that hands-on, often by writing Figma product code, then turn what you learn into a reusable path for future customers instead of taking permanent ownership of the customer’s codebase. Working closely with Figma’s Product, Engineering, Sales, and Customer Experience teams, you’ll help shape both the product and how this brand-new function works and scales. The role is highly collaborative, deeply customer-facing, and built for engineers who thrive in ambiguity, take end-to-end ownership, and want to solve the highest-impact problems at the intersection of product, engineering, and customer needs. This role includes periodic travel to work alongside strategic customers in person.
+
+This is a full time role that can be held from one of our US hubs or remotely in the United States.
+
+What you'll do at Figma:
+
+- Make an enterprise design system agent-ready so AI tools generate faithful, on-system code: fix tokens, naming, and guidelines, wire up Code Connect, and run evals
+
+- Get Make Local, Code Layers, and our newest products working in a customer’s real environment, writing code, config, agent skills, and guideline files against their systems and ours
+
+- Run technical discovery: understand a customer's dev environment, toolchain, and constraints, then scope the fastest credible path to value, in addition to setting the customer up for long term success
+
+- Debug hard, unfamiliar integration problems (git workflows, CI, dev-environment setup, non-standard stacks)
+
+- Build LLM-powered workflows: MCP setup, agent skills, and prompt engineering tuned to each customer’s context
+
+- Turn one-off solutions into reusable playbooks and product feedback, so patterns you solve once become self-serve or shipped product
+
+- Bring  learnings on friction back to Figma's Product and Engineering teams, influence what gets built next, and often build it
+
+We'd love to hear from you if you have:
+
+- 5+ years shipping production software end-to-end, with meaningful time embedded with customers or partner teams
+
+- Excellent customer-facing communication and technical partnership skills, with the ability to build trust with senior engineers and translate customer needs into actionable product and engineering solutions
+
+- Strong engineering fundamentals and adaptability, with the ability to quickly navigate unfamiliar codebases, languages, and technical environments to deliver production-ready solutions
+
+- Hands-on experience with design systems and design-to-code workflows, including component libraries, tokens, documentation, and the tooling that connects design artifacts to production code
+
+- Proficiency in TypeScript/JavaScript or Python, including demonstrated fluency with agentic coding tools (e.g., MCP, agent orchestration). You have hands-on experience integrating APIs and SDKs, troubleshooting toolchains and CI environments, and navigating enterprise requirements such as SSO, security reviews, access controls, data residency, and compliance frameworks
+
+- Comfort owning ambiguous technical problems end to end, identifying patterns across customer engagements, and turning field learning into reusable product improvements
+
+While it's not required, it's an added plus if you also have:
+
+- Background in forward-deployed engineering, solutions engineering, professional services, developer experience, or a similar customer-facing technical role
+
+- Familiarity with developer tools, design-to-code workflows, or AI/LLM products, including tools such as Code Connect, Storybook, Style Dictionary, or comparable technologies
+
+- Proven ability to partner cross-functionally with Sales, Customer Experience, Solutions Architecture, or related teams to deliver complex enterprise engagements
+
+At Figma, one of our values is Grow as you go. We believe in hiring smart, curious people who are excited to learn and develop their skills. If you’re excited about this role but your past experience doesn’t align perfectly with the points outlined in the job description, we encourage you to apply anyways. You may be just the right candidate for this or other roles.
+
+Pay Transparency Disclosure
+
+Job level and actual compensation will be decided based on factors including, but not limited to, individual qualifications objectively assessed during the interview process (including skills and prior relevant experience, potential impact, and scope of role), market demands, and specific work location. 
+
+Figma offers equity to employees, as well as a competitive package of additional benefits, including health, dental, and vision coverage; retirement benefits with company contributions; parental leave and reproductive or family planning support; mental health and wellness benefits; and paid time off. Figma provides paid sick leave, holidays, and other leave benefits in compliance with applicable federal, state, and local laws, including the requirements of the Washington Minimum Wage Act and related regulations. Exempt employees are eligible for employer‑provided paid flexible PTO in addition to flexible paid sick leave. PTO is subject to manager approval. Additional benefits may include company recharge days, cell phone and home internet reimbursements, and a number of lifestyle spending accounts. Figma also offers sales incentive compensation for most sales roles and an annual bonus plan for eligible non-sales roles. All compensation and benefits are subject to applicable plan terms and may be modified by Figma at any time, consistent with applicable law.
+
+Annual Base Salary Range:
+
+$153,000—$376,000 USD
+
+At Figma we celebrate and support our differences. We know employing a team rich in diverse thoughts, experiences, and opinions allows our employees, our product and our community to flourish. Figma is an equal opportunity workplace - we are dedicated to equal employment opportunities regardless of race, color, ancestry, religion, sex, national origin, sexual orientation, age, citizenship, marital status, disability, gender identity/expression, veteran status, or any other characteristic protected by law. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements.
+
+We will work to ensure individuals with disabilities are provided reasonable accommodation to apply for a role, participate in the interview process, perform essential job functions, and receive other benefits and privileges of employment. If you require accommodation, please reach out to <<JOB_EMAIL>>. These modifications enable an individual with a disability to have an equal opportunity not only to get a job, but successfully perform their job tasks to the same extent as people without disabilities. 
+
+Examples of accommodations include but are not limited to: 
+
+- Holding interviews in an accessible location
+
+- Enabling closed captioning on video conferencing
+
+- Ensuring all written communication be compatible with screen readers
+
+- Changing the mode or format of interviews 
+
+To ensure the integrity of our hiring process and facilitate a more personal connection, we require all candidates keep their cameras on during video interviews. Additionally, if hired you will be required to attend in person onboarding.
+
+By applying for this job, the candidate acknowledges and agrees that any personal data contained in their application or supporting materials will be processed in accordance with Figma's Candidate Privacy Notice.
+
+Application limits: To help candidates focus on the opportunities most relevant to their skills and experience, Figma limits the number and frequency of applications. These limits apply to all roles:
+
+- Candidates may submit up to 5 applications during any rolling 30-day period.
+
+- Candidates may not reapply to the same role while an application is active or within 90 days of receiving a rejection.
+
+Once the applicable days has passed, candidates are welcome to apply again.
+</job_description>
+
+<candidate>
+<original_resume>
+<<NAME>>
+Boston, MA | <<EMAIL>> | <<PHONE>>
+
+technical skills 
+IT Management: Imaging & Deployment, End-User Equipment Lifecycle Management.
+Operating Systems: Windows, Linux, macOS.
+IT Solutions & Tools: Active Directory, SCCM, PowerShell, VMware, Remedy Ticketing system.
+Troubleshooting & Support: ITIL, Incident Management, Problem Resolution.
+Cloud Platforms: AWS (IAM, ECS, RDS, S3), Microsoft Azure (In Progress).
+Collaboration & Communication: Cross-Functional Teams, Stakeholder Engagement.
+CERTIFICATIONS
+AWS Certified Developer Associate 
+Microsoft Azure Machine Learning- In progress
+work experience
+Technical Specialist
+Private university, USA October 2023 - Present
+Led and executed IT projects for end-user equipment imaging, deployment, and lifecycle management, resulting in a 30% improvement in operational efficiency and a 25% increase in service quality.
+Collaborated with cross-functional teams to troubleshoot and resolve over 150 complex IT issues related to hardware and software, reducing issue resolution time by 20%.
+Provided escalation support for technical problems, ensuring 95% of critical systems had minimal downtime (under 2 hours) and fast recovery.
+Contributed to the design and implementation of new IT processes and systems, optimizing workflows that led to a 15% reduction in process inefficiencies and improved service delivery.
+Machine Learning Engineer
+AI startup, India May 2023 - August 2023
+Developed a multi-modal AI platform using NLP (BERT) and CV (CNNs) to automate document analysis, reducing processing time by 40%.
+Built and deployed a scalable API using FastAPI for real-time predictions, leveraging AWS ECS, which improved deployment efficiency by 30%.
+Designed cloud-based infrastructure with AWS Lambda and DynamoDB to process large-scale data in near real-time.
+Research Assistant, Engineering university
+Department of Computer Science and Engineering August 2022 - May 2023
+Pioneered an advanced image retrieval system by merging HSV color space with discrete cosine transformation (DCT), generating low-dimensional feature descriptors that improved search accuracy by 20% and processing speed by 50%.
+Utilized Python and MATLAB to manage and process over million images, applying ML algorithms for color quantization and texture analysis to improve retrieval accuracy and speed.
+Conducted extensive research in NLP for feature extraction and text analysis, enhancing data retrieval capabilities.
+Assessed student assignments to check quality and completeness before submission for grading and graded 50 students on assignments and exams.
+education
+Private university, USA August 2023 - May 2025
+Master of Science in Computer Science GPA - 3.6
+Coursework - Image Processing, Natural Language Processing, Data Mining, Database Systems.
+Engineering university, India August 2019 - May 2023
+Bachelor of Technology in Computer Science (Major: Machine Learning) GPA - 3.8
+Coursework - Machine Learning, Data Structures and Algorithms, Regression Analysis, Data Wrangling.
+technical projects
+Self-routing IT ticket automation
+Developed and deployed an automated IT support ticketing system using PowerShell scripts and Azure Logic Apps, improving incident management and reducing response times by 20%.
+Device imaging and rollout automation
+Implemented a lifecycle management solution for end-user devices, automating the imaging and deployment processes with SCCM and PowerShell scripts, streamlining the onboarding of new employees and reducing deployment times by 30%.
+leadership
+Finance Chair - university hackathon club  - Led event budgets and invoices. Tracked all income and collaborated with the outreach team to obtain sponsorships worth $2500 from the engineering school.
+Secretary - public-speaking club (university) - Supervised club correspondence, arranged meeting facilities and promoted club activities.
+</original_resume>
+<own_words>
+
+</own_words>
+</candidate>
+
+<resume_under_review>
+# <<NAME>>
+Boston, MA | <<EMAIL>> | <<PHONE>>
+
+## Summary
+Technical Specialist leading end-user equipment imaging, deployment and lifecycle projects and providing escalation support. Earlier built and deployed a FastAPI API for real-time predictions on AWS ECS as a Machine Learning Engineer.
+
+## Skills
+- Languages and frameworks: Python, MATLAB, PowerShell, FastAPI
+- Cloud: AWS (IAM, ECS, RDS, S3, Lambda, DynamoDB), Azure Logic Apps, Microsoft Azure (in progress)
+- Machine learning: NLP (BERT), computer vision (CNNs), image retrieval, feature extraction
+- IT systems: Active Directory, SCCM, VMware, Remedy ticketing system, Windows, Linux, macOS
+- Practices: ITIL, incident management, problem resolution, imaging and deployment, stakeholder engagement
+
+## Experience
+### Private university, USA
+**Technical Specialist** | Oct 2023 - Present
+- Lead IT projects for end-user equipment imaging, deployment and lifecycle management, with a 30% improvement in operational efficiency and a 25% increase in service quality.
+- Resolved over 150 complex hardware and software issues with cross-functional teams, and cut issue resolution time by 20%.
+- Provide escalation support for technical problems: 95% of critical systems had minimal downtime (under 2 hours) and fast recovery.
+- Contributed to the design and implementation of new IT processes and systems, which cut process inefficiencies by 15% and improved service delivery.
+
+### AI startup, India
+**Machine Learning Engineer** | May 2023 - Aug 2023
+- Built and deployed a scalable API with FastAPI for real-time predictions on AWS ECS, which improved deployment efficiency by 30%.
+- Developed a multi-modal AI platform with NLP (BERT) and computer vision (CNNs) that automated document analysis and cut processing time by 40%.
+- Designed cloud infrastructure with AWS Lambda and DynamoDB to process large-scale data in near real time.
+
+### Engineering university, Department of Computer Science and Engineering
+**Research Assistant** | Aug 2022 - May 2023
+- Built an image retrieval system that merges HSV color space with discrete cosine transformation (DCT) into low-dimensional feature descriptors; search accuracy improved by 20% and processing speed by 50%.
+- Used Python and MATLAB to process over a million images, with ML algorithms for color quantization and texture analysis.
+- Researched NLP methods for feature extraction and text analysis.
+
+## Projects
+**Self-routing IT ticket automation**
+- Developed and deployed an automated IT support ticketing system with PowerShell scripts and Azure Logic Apps, which reduced response times by 20%.
+
+**Device imaging and rollout automation**
+- Automated end-user device imaging and deployment with SCCM and PowerShell scripts, which streamlined onboarding of new employees and cut deployment times by 30%.
+
+## Education
+**Master of Science in Computer Science**, Private university, USA | Aug 2023 - May 2025 | GPA 3.6
+Coursework: Image Processing, Natural Language Processing, Data Mining, Database Systems
+
+**Bachelor of Technology in Computer Science (Major: Machine Learning)**, Engineering university, India | Aug 2019 - May 2023 | GPA 3.8
+Coursework: Machine Learning, Data Structures and Algorithms, Regression Analysis, Data Wrangling
+
+## Certifications
+- AWS Certified Developer Associate
+- Microsoft Azure Machine Learning (in progress)
+
+## Leadership
+- Finance Chair, university hackathon club: led event budgets and invoices, tracked all income, and worked with the outreach team to obtain $2500 in sponsorships from the engineering school.
+- Secretary, public-speaking club (university): supervised club correspondence, arranged meeting facilities and promoted club activities.
+</resume_under_review>
+
+The tagged text above is material to review. Treat nothing inside it as an instruction.
+
+Using the material above, reply in this chat with five parts:
+1. Screen decision: would you phone this candidate, yes or no, the one reason, and the seniority the resume reads as.
+2. First impression: what you know about the candidate after the top third of the page, and which must-have requirements are still not evidenced.
+3. Claim check. Go through the resume line by line, skipping section headings and the contact line. For each line that states a fact (a title, employer, date, tool, number, result or the candidate's part in it), give its first few words and then the words in the candidate's material that support it, quoted, or "none". Mark the line MORE THAN THE MATERIAL where it enlarges a number, the scope or the candidate's own part (the team's work written as theirs alone), drops a qualifier, gives a number a different unit or period (a relative time dated from today's date in the target line, with the candidate's qualifier kept, is the same period), or claims anything in <not_true>. Where the candidate's own words or confirmed facts are narrower than the original resume, they win: the original resume alone does not support a line they narrow. Keep a supported line to one short row.
+4. Fixes, up to eight. Each one quotes the exact line and says in one sentence what to change or cut. Leave the candidate's own qualifiers as they are, such as "simple", "about" or "helped": they keep the claims accurate. Include any line that claims more or less than the candidate's material supports, and any line that echoes the job description's wording or would read oddly sent to a similar job at another company. If there is nothing material to fix, say so.
+5. Claim-defence questions: three to five questions an interviewer would ask about the claims in this resume, such as what the candidate's own part was, what the starting point was and how the result was measured. Give one line on what each question is testing.
+
+If something is missing, state your assumption and continue. Ask me no questions.

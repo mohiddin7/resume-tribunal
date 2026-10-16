@@ -1,0 +1,107 @@
+**1. Screen decision**
+
+**No.** The deciding reason is that the resume does not establish the production software engineering experience this role requires.
+
+It reads as an **early-career data analyst/data scientist with an ML-focused Solutions Architect internship**, rather than a mid-level AI engineer. The Python automation and SA exposure are relevant, but they do not establish four years of shipping production systems.
+
+**2. First impression**
+
+Assuming the top third includes Skills and the graduate research assistant position, I learn that the candidate has broad data and cloud tool exposure, uses Python and SQL for automation, and has improved reporting workflows. The strongest relevant evidence is the PDF-to-Excel automation and collaboration with IT.
+
+The opening emphasizes breadth of tools more than engineering depth. These must-haves remain unevidenced there, and substantially unresolved throughout the resume:
+
+- **Four years shipping production systems:** the listed employment does not establish this experience.
+- **Backend engineering and debugging:** no evidence of tracing failures across services or maintaining backend systems; the candidate explicitly disclaims backend debugging experience.
+- **Two qualifying technologies:** Python is supported; Ruby, Node.js and Next.js are explicitly absent. SQL does not satisfy this requirement.
+- **Cloud deployment, monitoring and DevOps:** cloud training and KPI dashboards are shown, but operating deployed services is not established.
+- **Independent engineering delivery across codebases:** neither minimal-oversight scoping nor simultaneous work across multiple codebases is demonstrated.
+- **AI-assisted development:** explicitly absent.
+
+The role allows **agents, LLM tools, or workflow automation**. The candidate has workflow automation evidence, so lack of agents alone should not be treated as an automatic failure of that particular requirement. Its deployment and operational maturity remain unclear.
+
+There is some communication and collaboration evidence through reports, dashboards and IT work. Customer exposure consists of shadowing, which does not establish ownership of customer engagements.
+
+As of 15 October 2026, the latest listed experience ends approximately two years and ten months earlier. Current activity is unknown. The December 2023 “Master’s Candidate” entry also leaves degree completion unresolved; it must not be interpreted as a completed degree.
+
+**3. Claim check**
+
+I treat employer, role, project and education lines as factual lines even when formatted as headings. Generic section headings and the contact line are excluded. Each row below is supported by the supplied material; **no line warrants MORE THAN THE MATERIAL**. Support here means consistency with the candidate’s account, not independent verification.
+
+| Resume line begins | Supporting words from the candidate’s material |
+|---|---|
+| “Programming languages: Python…” | “Programming languages: Python, SQL, R, SAS, HTML, CSS” |
+| “Cloud and systems: AWS…” | “AWS S3, AWS EC2”; “AWS QuickSight”; “Linux, AWS, Azure, GCP” |
+| “Data platforms and databases…” | “Snowflake”; “Databricks”; “MySQL, MS SQL Server, NoSQL – MongoDB, Hive, Hadoop, HDFS” |
+| “Machine learning: NLP…” | “Natural Language Processing (NLP) algorithms such as DeBERTa, RoBERTa, DistilBERT”; “My CNN and YOLOv7 work (object detection and image classification) is fairly called computer vision”; “Resnet50, VGG16, Densenet121”; “MLP classifier and Random Forest classifier” |
+| “Analytics: Excel…” | “Excel, Tableau, Microsoft Power BI, SPSS”; “Alteryx” |
+| “University school of public health, USA” | “University school of public health – Graduate Research Assistant; USA” |
+| “Graduate Research Assistant…” | “Graduate Research Assistant; USA Nov 2022 – Dec 2023” |
+| “Reduced data entry time…” | “Automated data collection by extracting information from PDF invoices and exporting relevant data to Excel sheets using Python, resulting in an 80% reduction in data entry time” |
+| “Collaborated with the IT team…” | “Collaborated with the IT team to implement secure and reliable data management and reporting systems using SQL Server and Tableau, resulting in a 70% reduction in report generation time” |
+| “Implemented SQL queries…” | “Implemented SQL queries to extract and update research expenditures of departments, exported the results as Excel sheets from SSMS, which reduced analyzing time by 40%” |
+| “Produced monthly expenditure reports…” | “Produced insightful monthly expenditure reports and dashboards using Excel and Tableau, contributing to a 20% improvement in resource allocation and budget forecasting accuracy” |
+| “Large cloud provider, USA” | “Large cloud provider - Solutions Architect Intern – Data Science; USA” |
+| “Solutions Architect Intern…” | “Solutions Architect Intern – Data Science; USA May 2023 – Aug 2023” |
+| “Developed real-time basketball…” | “Developed and implemented real time video analysis of basketball shot to provide shot and posture analysis of the shooter with accuracy of 76% by object detection and image classification using CNN, Yolov7 models” |
+| “Designed and tested over…” | “Designed and tested over 30 ML models using AWS S3, AWS EC2 to find the best model, resulted in increasing the accuracy by 14% and decreasing the runtime by 25%” |
+| “Created AWS QuickSight dashboards…” | “Created AWS QuickSight dashboards to closely monitor KPIs, including performance metrics, runtime and computational resources” |
+| “Shadowed meetings between…” | “Learned the company's sales procedures and tools available to assist customers by shadowing meetings between Solutions Architects and 4 different customers” |
+| “Policy research nonprofit, India” | “Policy research nonprofit - Data Analyst; India” |
+| “Data Analyst…” | “Data Analyst; India Jun 2020 - Jul 2022” |
+| “Saved over 100 hours…” | “Automated web scraping using Python to collect data for monthly and annual reports, resulting in reduction of over 100 hours in manual data collection time” |
+| “Developed and executed 100+…” | “Developed and executed 100+ complex SQL queries to analyze Federal and State budgets data in departments such as Agriculture, Education, Health”; “data-driven reports instrumental in advocating for and facilitating policy change” |
+| “Designed Tableau dashboards…” | “Designed Tableau dashboards to monitor KPIs and track expenditure, resulting in improved budget allocation, annual savings of 800K rupees, and enhanced stakeholder retention” |
+| “News authenticity classifier…” | “News authenticity classifier \| Python Apr 2023” |
+| “Classified news as real…” | “Classified news as real or fake with an f1-score of 0.9916”; “DeBERTa, RoBERTa, DistilBERT, with RoBERTa having highest f1-score” |
+| “Trained the models on…” | “Trained the models using AWS EC2 and GCP compute engines which reduced the runtime by 80%” |
+| “Crop leaf disease detector…” | “Crop leaf disease detector \| Python Dec 2022” |
+| “Predicted diseased plants…” | “Predicted diseased plants with 96.8% accuracy by training 12K images with CNN and pre-trained models (Resnet50, VGG16, Densenet121)” |
+| “Built an interactive web…” | “Built an interactive web application to detect diseased cotton plants” |
+| “Pandemic impact analysis…” | “Pandemic impact analysis \| SQL & Tableau May 2023” |
+| “Analyzed 313k records…” | “Analyzed a 313k records of covid 19 dataset”; “mortality rates, infection rates, vaccination coverage, hospitalization trends and economic indicators across multiple countries using SQL queries”; “Created two interactive Tableau dashboards” |
+| “Private university USA…” | “Private university USA, United States” |
+| “Data Science Master's Candidate…” | “Data Science Masters Candidate (CGPA: 3.95/4) Dec 2023”; confirmed: “My Data Science master's stays as my resume has it” |
+| “Relevant coursework…” | “Relevant Coursework: Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data visualization” |
+| “Engineering institute, India” | “Engineering institute, India” |
+| “Bachelor of Engineering…” | “Bachelor of Engineering, Electronics and Communication (CGPA: 8.66/10) May 2020” |
+
+The revised resume correctly removes the unsupported **20% overall model efficiency** and **100% user interaction** figures. It preserves “collaborated,” “contributing,” “over 100 hours” and the annual period for the 800K-rupee savings. It does not invent agents, additional programming languages, backend debugging, or AI-assisted development.
+
+The 14% accuracy gain and 0.9916 F1-score are supported as reported figures. Their baseline and evaluation method remain unknown; neither should be given a more specific interpretation.
+
+**4. Fixes**
+
+There are no material overclaims to correct. These changes would improve relevance and precision, but would not resolve the qualification gaps:
+
+1. **“Programming languages: Python, SQL, R, SAS, HTML, CSS”** — Shorten this to Python and SQL for this application and move Skills below Experience so the automation evidence appears first.
+
+2. **“Data platforms and databases: Snowflake, Databricks, MySQL, MS SQL Server, MongoDB, Hive, Hadoop, HDFS”** — Prioritize MS SQL Server and trim the remaining inventory to tools the candidate would meaningfully discuss in this interview.
+
+3. **“Analytics: Excel, Tableau, Microsoft Power BI, SPSS, Alteryx”** — Retain Excel and Tableau and cut the other tools to reduce emphasis on an analytics profile.
+
+4. **“Designed and tested over 30 ML models on AWS S3 and AWS EC2 to find the best model, which increased accuracy by 14% and decreased runtime by 25%”** — Change “on AWS S3 and AWS EC2” to “using AWS S3 and AWS EC2” for technical precision, retaining 14% without inventing a baseline or percentage-point interpretation.
+
+5. **“Implemented SQL queries to extract and update departments' research expenditures and exported the results from SSMS as Excel sheets; analyzing time fell by 40%”** — Replace “analyzing time” with “analysis time” for natural phrasing.
+
+6. **“Developed and executed 100+ complex SQL queries on Federal and State budget data for departments such as Agriculture, Education and Health, for data-driven reports used in advocating for policy change”** — This understates the supplied account, so restore “reports instrumental in advocating for and facilitating policy change” if retaining the candidate’s full stated impact.
+
+7. **“Analyzed 313k records of a COVID-19 dataset with SQL queries to assess mortality, infection, vaccination, hospitalization and economic indicators across multiple countries, and built two interactive Tableau dashboards”** — Cut this project to give more space and attention to Python automation, the web application and SA experience.
+
+No line appears to copy Stripe-specific job-description language or would read strangely solely because it was sent to another employer. Keep the confirmed degree status and the candidate’s existing contribution qualifiers intact.
+
+**5. Claim-defence questions**
+
+1. **For the PDF invoice automation, what did your Python code do, and how was the 80% reduction in data entry time calculated?**  
+   Tests implementation depth and measurement; the supplied material does not establish users or broader system scope.
+
+2. **In the SQL Server and Tableau work, what did you personally implement, what did IT implement, and what made the system secure and reliable?**  
+   Tests ownership, technical substance and whether the 70% reporting improvement can be explained.
+
+3. **What did “accuracy” measure in the basketball system, and what comparisons produced the 14% accuracy gain and 25% runtime reduction?**  
+   Tests metric definitions and experimental reasoning; the candidate has already identified the accuracy baseline and percentage interpretation as unknown.
+
+4. **How was the news classifier’s 0.9916 F1-score evaluated, including the data split, averaging method and checks for duplicate or overlapping articles?**  
+   Tests evaluation quality and leakage awareness; the supplied material does not establish these details.
+
+5. **How did the Tableau dashboards contribute to annual savings of 800K rupees, and who calculated or validated that amount?**  
+   Tests the connection between the candidate’s work, stakeholder decisions and the financial result.

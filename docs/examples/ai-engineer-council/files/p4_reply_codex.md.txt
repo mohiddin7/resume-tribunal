@@ -1,0 +1,113 @@
+**1. Screen decision**
+
+**No phone screen for this mid-level role.** The decisive reason is that the resume does not demonstrate the required **four years of engineering experience shipping production systems**.
+
+It reads as an **early-career data analyst / applied ML candidate**, with research experience and a Solutions Architect internship. The automation work is relevant, but the resume does not yet establish mid-level backend engineering ownership.
+
+Assumption: the original resume is the factual source; the candidate’s own-words section is empty, and no `<not_true>` section was supplied. “Supported” below means supported by that source, not independently verified.
+
+**2. First impression**
+
+After the top third, I know the candidate is Seattle-based, lists a broad analytics and ML toolkit, and has used Python and SQL to automate university reporting and invoice processing. The strongest initial evidence is reducing repetitive operational work. The long skills section gives tools more prominence than engineering delivery.
+
+These must-haves remain unevidenced at that point, and the rest of the resume does not resolve them:
+
+- Four or more years shipping production systems.
+- Backend debugging, tracing failures across services, and ownership of data flows.
+- Deployed agents, LLM tools, or sufficiently substantial workflow automation. The Python automation is relevant, but its deployment, complexity, reliability, and adoption are unspecified.
+- Proficiency in two of the named technologies: only **Python** appears; SQL, HTML, and CSS do not satisfy the second requirement.
+- Cloud deployment, operational monitoring, and basic DevOps. Cloud model training is evidenced later, but production operations are not.
+- Independent scoping of ambiguous work, simultaneous work across codebases, and AI-assisted development practices.
+
+Reporting and collaboration provide some communication evidence. However, shadowing four customers is exposure to Solutions Architecture, not evidence of owning customer discovery, demos, or technical engagements. Chicago availability is unstated. As of 15 October 2026, the resume also shows no activity after December 2023; that is an information gap, not proof of unemployment.
+
+**3. Claim check**
+
+Employer, institution, and project headings are included because they contain factual claims. Generic section headings, the name placeholder, and the contact line are excluded.
+
+**No line is marked MORE THAN THE MATERIAL.** The rewrite generally preserves or narrows the original claims. Two explicit outcome omissions are addressed in the fixes.
+
+| Resume line begins | Supporting words from the candidate’s material | Finding |
+|---|---|---|
+| “Programming languages: Python…” | “Programming languages: Python, SQL, R, SAS, HTML, CSS” | Supported |
+| “Cloud: AWS (S3…” | “AWS S3, AWS EC2”; “AWS QuickSight”; “Linux, AWS, Azure, GCP” | Tools supported; Linux is miscategorized |
+| “Data platforms and databases…” | “MySQL, MS SQL Server, NoSQL – MongoDB, Hive, Hadoop, HDFS”; “Snowflake… Databricks” | Supported |
+| “Machine learning: NLP…” | “DeBERTa, RoBERTa, DistilBERT”; “CNN, Yolov7”; “Resnet50, VGG16, Densenet121”; “MLP classifier and Random Forest classifier” | Supported |
+| “Analytics: Excel…” | “Excel, Tableau, Microsoft Power BI, SPSS… Alteryx” | Supported |
+| “University school of public health, USA” | “University school of public health – Graduate Research Assistant; USA” | Supported |
+| “Graduate Research Assistant…” | “Graduate Research Assistant; USA Nov 2022 – Dec 2023” | Supported |
+| “Reduced data entry time…” | “Automated data collection by extracting information from PDF invoices and exporting relevant data to Excel sheets using Python, resulting in an 80% reduction in data entry time” | Supported |
+| “Cut report generation time…” | “Collaborated with the IT team to implement secure and reliable data management and reporting systems using SQL Server and Tableau, resulting in a 70% reduction in report generation time” | Supported; collaborative role retained |
+| “Reduced analysis time…” | “Implemented SQL queries to extract and update research expenditures of departments, exported the results as Excel sheets from SSMS, which reduced analyzing time by 40%” | Supported |
+| “Produced monthly expenditure reports…” | “Produced insightful monthly expenditure reports and dashboards using Excel and Tableau, contributing to a 20% improvement in resource allocation and budget forecasting accuracy” | Supported; “contributing” retained |
+| “Large cloud provider, USA” | “Large cloud provider - Solutions Architect Intern – Data Science; USA” | Supported |
+| “Solutions Architect Intern…” | “Solutions Architect Intern – Data Science; USA May 2023 – Aug 2023” | Supported |
+| “Developed real-time basketball…” | “Developed and implemented real time video analysis of basketball shot to provide shot and posture analysis of the shooter with accuracy of 76% by object detection and image classification using CNN, Yolov7 models” | Supported |
+| “Designed and tested over…” | “Designed and tested over 30 ML models using AWS S3, AWS EC2 to find the best model, resulted in increasing the accuracy by 14% and decreasing the runtime by 25%” | Supported |
+| “Created AWS QuickSight dashboards…” | “Created AWS QuickSight dashboards to closely monitor KPIs, including performance metrics, runtime and computational resources” | Supported; original efficiency result omitted |
+| “Shadowed meetings between…” | “Learned the company's sales procedures and tools available to assist customers by shadowing meetings between Solutions Architects and 4 different customers” | Supported |
+| “Policy research nonprofit, India” | “Policy research nonprofit - Data Analyst; India” | Supported |
+| “Data Analyst…” | “Data Analyst; India Jun 2020 - Jul 2022” | Supported |
+| “Saved over 100 hours…” | “Automated web scraping using Python to collect data for monthly and annual reports, resulting in reduction of over 100 hours in manual data collection time” | Supported; no new savings period asserted |
+| “Developed and executed 100+…” | “Developed and executed 100+ complex SQL queries to analyze Federal and State budgets data in departments such as Agriculture, Education, Health… to create data-driven reports instrumental in advocating for and facilitating policy change” | Supported |
+| “Designed Tableau dashboards…” | “Designed Tableau dashboards to monitor KPIs and track expenditure, resulting in improved budget allocation, annual savings of 800K rupees, and enhanced stakeholder retention” | Supported |
+| “News authenticity classifier…” | “News authenticity classifier \| Python Apr 2023” | Supported |
+| “Classified news as real…” | “Classified news as real or fake with an f1-score of 0.9916… DeBERTa, RoBERTa, DistilBERT, with RoBERTa having highest f1-score” | Supported |
+| “Trained the models on…” | “Trained the models using AWS EC2 and GCP compute engines which reduced the runtime by 80%” | Supported |
+| “Crop leaf disease detector…” | “Crop leaf disease detector \| Python Dec 2022” | Supported |
+| “Predicted diseased plants…” | “Predicted diseased plants with 96.8% accuracy by training 12K images with CNN and pre-trained models (Resnet50, VGG16, Densenet121)” | Supported |
+| “Built an interactive web…” | “Built an interactive web application to detect diseased cotton plants” | Supported; original interaction result omitted |
+| “Pandemic impact analysis…” | “Pandemic impact analysis \| SQL & Tableau May 2023” | Supported |
+| “Analyzed 313k records…” | “Analyzed a 313k records of covid 19 dataset… examining mortality rates, infection rates, vaccination coverage, hospitalization trends and economic indicators across multiple countries using SQL queries”; “Created two interactive Tableau dashboards” | Supported |
+| “Private university USA…” | “Private university USA, United States” | Supported |
+| “Data Science Master's Candidate…” | “Data Science Masters Candidate (CGPA: 3.95/4) Dec 2023” | Supported, but status is stale or unclear |
+| “Relevant coursework: Deep Learning…” | “Relevant Coursework: Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data visualization” | Supported |
+| “Engineering institute, India” | “Engineering institute, India” | Supported |
+| “Bachelor of Engineering…” | “Bachelor of Engineering, Electronics and Communication (CGPA: 8.66/10) May 2020” | Supported |
+
+The original’s publication/donor-funding bullet and basketball shot-selection project were removed entirely. Those are reasonable relevance cuts; their absence does not distort a surviving claim. Likewise, removing the blanket “Advance knowledge” label avoids implying equal proficiency across a large tool list.
+
+**4. Fixes — in priority order**
+
+1. **“Graduate Research Assistant | Nov 2022 - Dec 2023”**  
+   Keep these dates accurate and add any truthful subsequent employment, projects, or other relevant activity so the reader can account for the period through October 2026.
+
+2. **“Data Science Master's Candidate (CGPA: 3.95/4) | Dec 2023”**  
+   Replace “Candidate” with the awarded degree only if completed, or state the accurate current status and clarify what December 2023 represents.
+
+3. **“Cloud: AWS (S3, EC2, QuickSight), GCP, Azure, Linux”**  
+   Move Linux into an operating-systems/tools category and prioritize cloud services the candidate can substantiate through hands-on work.
+
+4. **“Reduced data entry time by 80% by automating extraction of information from PDF invoices into Excel sheets using Python”**  
+   Add the candidate’s actual implementation and operational scope—such as extraction approach, exception handling, users, or recurring volume—where known, so this strongest relevant example shows engineering depth.
+
+5. **“Designed and tested over 30 ML models on AWS S3 and AWS EC2 to find the best one, increasing accuracy by 14% and decreasing runtime by 25%”**  
+   Specify the comparison baseline and whether the accuracy improvement is relative or in percentage points, preserving the original numbers until verified.
+
+6. **“Classified news as real or fake with an F1-score of 0.9916 using NLP models DeBERTa, RoBERTa and DistilBERT, with RoBERTa scoring highest”**  
+   Identify the evaluation dataset or held-out split and F1 averaging method so the unusually high score has interpretable context.
+
+7. **“Created AWS QuickSight dashboards to monitor KPIs, including performance metrics, runtime and computational resources”**  
+   Restore the omitted “20% increase in overall model efficiency” only if the candidate can define that metric and substantiate the dashboards’ contribution; otherwise keep this narrower line.
+
+8. **“Built an interactive web application to detect diseased cotton plants”**  
+   Restore the omitted “100% increase in user interaction” only with a defensible interaction measure, baseline, and comparison period; otherwise keep this narrower line.
+
+No line appears to copy Stripe-specific wording or would read oddly at another company. The central qualification gaps cannot be solved through phrasing: do not relabel analytics work as production engineering or add an unevidenced second programming technology.
+
+**5. Claim-defence questions**
+
+- **For the invoice automation, what did you personally build, how were extraction failures handled, who used it, and how was the 80% time reduction measured?**  
+  Tests implementation ownership, operational reliability, adoption, and the measurement baseline.
+
+- **What did “76% accuracy” measure in the basketball system, and how do the 14% accuracy improvement and 25% runtime reduction relate to it?**  
+  Tests metric definitions, evaluation design, and whether the results form a consistent comparison.
+
+- **For the news classifier, how did you split the data and prevent duplicate articles or source overlap from inflating the 0.9916 F1 score?**  
+  Tests evaluation rigor and whether the result generalizes beyond the dataset.
+
+- **In the SQL Server/Tableau work, what was your contribution versus the IT team’s, and what specifically made the system secure and reliable?**  
+  Tests the boundary of personal ownership and the technical substance behind broad system claims.
+
+- **How did you establish that the nonprofit dashboards produced annual savings of 800K rupees, and what evidence connected their use to those savings?**  
+  Tests business-impact attribution and whether the annual figure was observed, estimated, or projected.

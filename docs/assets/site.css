@@ -222,12 +222,13 @@ details p { margin: 0 0 16px; color: var(--muted); }
 .related .card p { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
 
 /* footer */
-footer.site { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
-footer.site .in { max-width: var(--wide); margin: 0 auto; padding: 28px var(--gutter) 40px; display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; align-items: center; }
+footer.site { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }  /* about as tall as the header */
+footer.site .in { max-width: var(--wide); margin: 0 auto; padding: 14px var(--gutter); display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; align-items: center; }
 .fbrand { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .fbrand strong { color: var(--ink); }
 footer.site nav { display: flex; flex-wrap: wrap; gap: 8px 18px; }
 footer.site a { color: var(--muted); }
+@media (max-width: 759px) { footer.site .in { gap: 8px; font-size: 13px; } footer.site nav { gap: 4px 14px; } .fbrand span { display: none; } }
 
 /* phone fixes */
 .logo, .btn { white-space: nowrap; }

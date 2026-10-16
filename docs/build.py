@@ -291,9 +291,9 @@ VIEWER = """<main id="main" class="rv">
 <div class="rv-app">
   <div class="rv-bar"><div class="in">
     <div class="rv-title">
-      <div class="rv-crumb"><a href="../">Examples</a> / {mode}</div>
-      <h1>{title}</h1>
-      <div class="rv-facts">{facts}</div>{note}
+      <div class="rv-crumb"><a href="../">Examples</a> <span aria-hidden="true">/</span> {mode}, {reach} mode <span aria-hidden="true">/</span> <span class="rv-crumb-here" aria-current="page">{title}</span></div>
+      <h1>{title}{note}</h1>
+      <div class="rv-facts">{facts}</div>
     </div>
     <div class="rv-pick">
       <label for="example">Watch another example</label>
@@ -305,9 +305,16 @@ VIEWER = """<main id="main" class="rv">
       <button type="button" class="rv-play" id="play"><svg viewBox="0 0 16 16" aria-hidden="true" id="play-icon"><path d="M3 1.5v13l11-6.5z"/></svg><span id="play-label">Play the run</span></button>
       <span class="tl"><span id="clock"></span> / {length}</span>
       <input type="range" class="rv-scrub" id="scrub" min="0" step="1" aria-label="Time in the run">
-      <label class="rv-small">Speed <select id="speed"><option value="0.5">Slow</option><option value="1" selected>Normal</option><option value="2">Fast</option><option value="4">Fastest</option></select></label>
       <button type="button" class="rv-ghost" id="lanes-toggle" aria-expanded="true">Hide timeline</button>
-      <span class="rv-keys">Space bar plays and pauses. Arrow keys step through messages.</span>
+      <div class="rv-settings">
+        <button type="button" class="rv-ghost" id="settings-btn" aria-expanded="false" aria-controls="settings">Settings</button>
+        <div class="rv-pop" id="settings" hidden>
+          <label class="rv-check"><input type="checkbox" id="autoplay" checked> Play the run when the page opens</label>
+          <label class="rv-check"><input type="checkbox" id="follow" checked> Follow along: open the tab where each new message lands</label>
+          <label class="rv-small">Speed <select id="speed"><option value="0.5">Slow</option><option value="1" selected>Normal</option><option value="2">Fast</option><option value="4">Fastest</option></select></label>
+          <p class="rv-keys">Space bar plays and pauses. Arrow keys step through messages.</p>
+        </div>
+      </div>
     </div>
     <div class="rv-lanes-wrap"><div class="rv-lanes" id="lanes"></div></div>
   </div></div>
@@ -331,7 +338,6 @@ VIEWER = """<main id="main" class="rv">
       <div class="rv-pane-h">
         <h2>The run</h2>
         <div class="seg mob-tabs" role="group" aria-label="Show"><button type="button" data-show="resume" aria-pressed="false">Resume</button><button type="button" data-show="chat" aria-pressed="true">Chat</button></div>
-        <label class="rv-check follow" title="While the run plays, open the tab where each new message lands"><input type="checkbox" id="follow" checked> Follow along</label>
       </div>
       <div class="ctabs" role="tablist" aria-label="Conversations" id="ctabs"></div>
       <div class="rv-scroll" id="chat-scroll" role="tabpanel"><div class="feed" id="feed" aria-live="polite"></div></div>
@@ -362,22 +368,36 @@ def build_examples():
         facts = "".join(f'<span class="rv-fact">{esc(f)}</span>' for f in r["facts"])
         (page / "index.html").write_text(
             head(f"Example run: {r['title']} | Resume Tribunal", desc, f"{SITE}examples/{r['slug']}/", 2, "website", css.format(up="../../"), page="examples")
-            + VIEWER.format(mode=esc(r["mode"]), title=esc(r["title"]), facts=facts, note=f'<details class="rv-note"><summary>How this run was recorded</summary>{esc(r["note"])}</details>' if r.get("note") else "", length=f"{r['end'] // 60:02d}:{r['end'] % 60:02d}")
+            + VIEWER.format(mode=esc(r["mode"]), title=esc(r["title"]), facts=facts, note=(f' <span class="rv-info" tabindex="0" aria-label="How this run was recorded" aria-describedby="rv-tip">i<span class="rv-tip" role="tooltip" id="rv-tip">'
+                      f'<b>How this run was recorded.</b> {esc(r["note"])}</span></span>') if r.get("note") else "", reach=esc(r.get("reach", "Auto").lower()), length=f"{r['end'] // 60:02d}:{r['end'] % 60:02d}")
             + json_script("run-data", r) + "\n" + json_script("examples-data", listing)
             + '\n<script src="../../assets/viewer.js"></script>\n' + foot(2))
     cards = "\n".join(
-        f'<a class="card post" href="{r["slug"]}/"><span class="tags"><span class="tag">{esc(r["mode"])}</span></span>'
-        f'<strong>{esc(r["title"])}</strong><span class="facts">{"".join(f"<span>{esc(f)}</span>" for f in r["facts"])}</span>'
+        f'<a class="card post" href="{r["slug"]}/" data-kind="{esc(r["mode"])}|{esc(r.get("reach", "Auto"))} mode">'
+        f'<span class="tags"><span class="tag">{esc(r["mode"])}</span><span class="tag">{esc(r.get("reach", "Auto"))} mode</span></span>'
+        f'<strong>{esc(r["title"])}</strong><span class="facts">{"".join(f"<span>{esc(f)}</span>" for f in r["facts"] if not f.startswith(("Auto mode:", "Manual mode:")))}</span>'
         f'<span class="more" aria-hidden="true">Watch the run →</span></a>' for r in runs)
-    desc = "Watch Resume Tribunal work on a fictional candidate's resume, message by message: what each AI was asked, what it said back, and how every line of the resume changed."
+    kinds = ["Quick review", "Full council", "Auto mode", "Manual mode"]
+    chips = '<button type="button" class="chip on" data-kind="" aria-pressed="true">All</button>' + "".join(
+        f'<button type="button" class="chip" data-kind="{k}" aria-pressed="false">{k}</button>' for k in kinds
+        if any(k in (r["mode"], r.get("reach", "Auto") + " mode") for r in runs))
+    desc = "Watch Resume Tribunal work on real and fictional resumes, message by message: what each AI was asked, what it said back, and how every line of the resume changed."
     (out / "index.html").write_text(
         head("Example runs | Resume Tribunal", desc, f"{SITE}examples/", 1, "website", css.format(up="../"), page="examples")
         + f'''<main id="main" class="blog-wrap ex-wrap">
 <header class="ex-head"><h1>Example runs</h1><p class="meta">{esc(desc)} Each page is built straight from the run's own files.</p></header>
-<div class="grid posts">
+<div class="chips ex-chips" role="group" aria-label="Show">{chips}</div>
+<div class="grid posts" id="ex-cards">
 {cards}
 </div>
 </main>
+<script>
+document.querySelector(".ex-chips").addEventListener("click", function (e) {{
+  var b = e.target.closest(".chip"); if (!b) return;
+  document.querySelectorAll(".ex-chips .chip").forEach(function (c) {{ c.classList.toggle("on", c === b); c.setAttribute("aria-pressed", c === b); }});
+  document.querySelectorAll("#ex-cards .card").forEach(function (c) {{ c.hidden = !!b.dataset.kind && c.dataset.kind.split("|").indexOf(b.dataset.kind) < 0; }});
+}});
+</script>
 ''' + foot(1))
     return [r["slug"] for r in runs]
 

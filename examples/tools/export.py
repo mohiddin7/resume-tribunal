@@ -3,13 +3,15 @@
 README for GitHub, the resumes and inputs, and every prompt and reply the seats saw.
 
   export.py RUN SLUG --title "Growth analyst applying for a senior pricing analyst job" --fictional
-  export.py RUN --check        is the record complete? (the host runs this before finishing)
+  export.py RUN --check [--real-with-consent]   is the record complete? (the host runs this before finishing)
   export.py --self-test
 
 RUN is the run folder: before.md, job.md and own-words.md (the inputs), and .tribunal/ with events.jsonl
 (written by record.py), final.md and changes.json (the host's reasons for each changed line, optional).
-Only fictional candidates are exported: every email must be on a reserved example domain, every phone a
-555-01xx number, and no line may come from a real resume in research/real-resumes/. Standard library only.
+Every email must be on a reserved example domain and every phone a 555-01xx number. A fictional candidate
+(--fictional) may share no line with a real resume in research/real-resumes/; a real resume whose owner agreed to
+publish it (--real-with-consent) must be de-identified first: invented name, example contact details, renamed
+projects, consistently shifted dates. Standard library only.
 """
 import argparse
 import difflib
@@ -21,8 +23,13 @@ import sys
 import tempfile
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-SEAT_NAMES = {"codex": ("Codex", "OpenAI"), "agy": ("Gemini", "Google"), "claude": ("Fresh Claude", "Anthropic")}
+sys.path.insert(0, str(ROOT / "skills" / "resume-tribunal" / "scripts"))
+from seats import labelled_id  # noqa: E402  the skill's own rule: "Req. ID: 1273383451" is not a phone
+SEAT_NAMES = {"codex": ("Codex", "OpenAI"), "agy": ("Gemini", "Google"), "claude": ("Fresh Claude", "Anthropic"),
+              "chatgpt": ("ChatGPT", "OpenAI"), "gemini": ("Gemini", "Google")}  # the last two: pasted by hand
+MANUAL = {"chatgpt", "gemini"}
 SOURCES = {"own words", "sign-off", "old resume", "linked page"}
+MAX_WAIT = 300  # seconds of a candidate's wait drawn on the timeline
 EMAIL_RE = re.compile(r"[\w.+-]+@([\w-]+(?:\.[\w-]+)+)")
 SAFE_DOMAIN = re.compile(r"(?:^|\.)(?:example\.(?:com|org|net)|example|test|invalid)$", re.I)
 PHONE_RE = re.compile(r"(?<![\w$])\+?(?:\d[\s().-]*){10,}(?!\w)")
@@ -36,7 +43,7 @@ def strip_md(s):
 
 
 def norm(s):
-    s = strip_md(re.sub(r"^\s*(?:[-*•]|#+)\s*", "", s)).lower()
+    s = strip_md(re.sub(r"^\s*(?:[-*•●○▪◦]|#+)\s*", "", s)).lower()
     s = re.sub(r"\s*[|,•·]\s*", " ", s)  # "University, 2014", "University | 2014" and "University • 2014" are one line
     return re.sub(r"\s+", " ", re.sub(r"[.;:]+$", "", s.strip()))
 
@@ -62,12 +69,18 @@ def parse_resume(text):
     out, i = [], 0
     while i < len(raw):
         s = raw[i].strip()
+        words = s.split()  # "PROFESSIONAL SUMMARY With 4+ years..." pasted from a PDF: the heading, then its text
+        cut = max((k for k in range(1, min(5, len(words))) if " ".join(words[:k]).isupper()
+                   and SECTIONS.fullmatch(" ".join(words[:k])) and len(" ".join(words[k:])) > 20), default=0)
+        if out and cut:
+            out.append({"k": "h2", "tx": " ".join(words[:cut])})
+            s = " ".join(words[cut:])
         if not out:
             out.append({"k": "name", "tx": s.lstrip("# ").strip()})
         elif len(out) == 1 and ("|" in s or "@" in s) and not is_heading(s):
             out.append({"k": "contact", "tx": s})
         elif is_heading(s):
-            out.append({"k": "h2", "tx": s[3:].strip() if s.startswith("#") else s.strip().rstrip(":").title()})
+            out.append({"k": "h2", "tx": s[3:].strip() if s.startswith("#") else s.strip().rstrip(":")})  # printed in capitals anyway
         elif s.startswith("### "):
             nxt = raw[i + 1].strip() if i + 1 < len(raw) else ""
             if nxt.startswith("**") and " | " in nxt:
@@ -76,8 +89,8 @@ def parse_resume(text):
                 i += 1
             else:
                 out.append({"k": "role", "tx": f"**{s[4:]}**"})
-        elif re.match(r"[-*•]\s+", s):
-            out.append({"k": "bul", "tx": re.sub(r"^[-*•]\s+", "", s)})
+        elif re.match(r"[-*•●○▪◦]\s*", s) and not s.startswith("**"):
+            out.append({"k": "bul", "tx": re.sub(r"^[-*•●○▪◦]\s*", "", s)})
         elif markdown and s.startswith("**") and " | " in s:
             out.append({"k": "role", "tx": s})  # a second title under the same company
         elif not markdown and " | " in s and re.search(r"(?:19|20)\d\d|present|current", s.split(" | ")[-1], re.I):
@@ -112,7 +125,10 @@ def compare(before, after, changes):
     content = lambda doc: [l for l in doc if l["k"] in ("contact", "role", "bul", "p")]
     b, a = content(before), content(after)
     pairs, problems = [], []
+    heads = {norm(l["tx"]) for l in before + after if l["k"] in ("h2", "name")}
     for c in changes:
+        if any(norm(c.get(k) or "") in heads for k in ("old", "new") if c.get(k)):
+            continue  # a heading or the name: no facts to explain
         lo = find(b, c["old"]) if c.get("old") else None
         ln = find(a, c["new"]) if c.get("new") else None
         if c.get("old") and not lo:
@@ -165,7 +181,8 @@ def unsafe(text, where):
     """Contact details that could belong to a real person, and paths that name the computer's user."""
     bad = [f"{where}: email {m.group(0)}" for m in EMAIL_RE.finditer(text) if not SAFE_DOMAIN.search(m.group(1))]
     bad += [f"{where}: local path {m.group(0)}" for m in HOME_RE.finditer(text)]
-    bad += [f"{where}: phone {m.group(0).strip()}" for m in PHONE_RE.finditer(text) if not SAFE_PHONE.search(m.group(0))]
+    bad += [f"{where}: phone {m.group(0).strip()}" for m in PHONE_RE.finditer(text)
+            if not SAFE_PHONE.search(m.group(0)) and not labelled_id(text[max(0, m.start() - 40):m.start()])]
     return bad
 
 
@@ -178,7 +195,7 @@ def from_real_resume(text, folder):
 
 # ---------- the run ----------
 
-def build(run, slug, title, extra_facts=(), candidate=None, real=ROOT / "research" / "real-resumes", note=""):
+def build(run, slug, title, extra_facts=(), candidate=None, real=ROOT / "research" / "real-resumes", note="", consented=False):
     tri = run / ".tribunal"
     events = [json.loads(l) for l in (tri / "events.jsonl").read_text().splitlines() if l.strip()]
     if not events:
@@ -189,7 +206,7 @@ def build(run, slug, title, extra_facts=(), candidate=None, real=ROOT / "researc
     problems = [p for name, t in (("before.md", before_md), ("final.md", final_md)) for p in unsafe(t, name)]
     if not EMAIL_RE.search(before_md):
         problems.append("before.md has no email: a fictional candidate carries one on an example domain")
-    copied = [s for s in from_real_resume(before_md, real)]
+    copied = [] if consented else from_real_resume(before_md, real)
     if copied:
         problems.append(f"before.md shares lines with real resumes ({', '.join(copied)})")
     before, after = parse_resume(before_md), parse_resume(final_md)
@@ -203,6 +220,7 @@ def build(run, slug, title, extra_facts=(), candidate=None, real=ROOT / "researc
     events = [e for e in events if e["kind"] != "model"]
     seats = [s for s in dict.fromkeys(e["seat"] for e in events if e["kind"] == "ask")]
     numbered = [s for s in seats if s != "claude"]
+    reach = "Manual" if MANUAL & set(seats) else "Auto"
     who = {"user": {"n": cand, "s": cand[0], "role": "the candidate"},
            "host": {"n": "Host", "s": "H", "role": ", ".join(x for x in ("AI 1", models.get("host", "")) if x)}}
     for s in seats:
@@ -212,10 +230,25 @@ def build(run, slug, title, extra_facts=(), candidate=None, real=ROOT / "researc
     if any(e["kind"] == "check" for e in events):
         who["check"] = {"n": "Checker", "s": "✓", "role": "check_resume.py"}
 
-    files, out_events, outstanding, asked = {}, [], {}, {}
+    # A candidate who takes longer than MAX_WAIT to answer a stop is drawn as MAX_WAIT on the timeline, and the
+    # answer says how long they really took; the AIs' own times are never shortened.
+    times, cut, waiting, prev = [], 0, False, t0
     for e in events:
-        t = e["t"] - t0
-        o = {"t": t, "kind": e["kind"], "text": e.get("text", "")}
+        gap, waited = e["t"] - prev, 0
+        if e["kind"] == "user" and waiting and gap > MAX_WAIT:
+            cut += gap - MAX_WAIT
+            waited = gap
+        times.append((e["t"] - t0 - cut, waited))
+        waiting = (waiting or bool(e.get("stop"))) and e["kind"] != "user"
+        prev = e["t"]
+
+    # The host shows the user where the working files are; on the page that path is relative to the run folder.
+    local = lambda text: text.replace(str(run.resolve()) + "/", "").replace(str(run.resolve()), ".")
+    files, out_events, outstanding, asked = {}, [], {}, {}
+    for e, (t, waited) in zip(events, times):
+        o = {"t": t, "kind": e["kind"], "text": local(e.get("text", ""))}
+        if waited:
+            o["waited"] = waited
         if e["kind"] == "ask":
             o.update(who="host", to=e["seat"]); asked[e["seat"]] = t
         elif e["kind"] == "reply":
@@ -254,10 +287,16 @@ def build(run, slug, title, extra_facts=(), candidate=None, real=ROOT / "researc
     end = out_events[-1]["t"]
     steps = [{"n": e["step"], "name": e["text"].split(".")[0][:40], "t": e["t"]} for e in out_events if e["kind"] == "step"]
     council = len(seats) > 1 or "claude" in seats
-    companies = {"Anthropic"} | {SEAT_NAMES[s][1] for s in seats}
-    facts = ["Fictional candidate", f"{len(seats) + 1} AIs from {len(companies)} companies", f"{round(end / 60)} minutes", *extra_facts]
+    def real_answer(e):  # a seat that only sent back an error (no file, or a few words such as a quota message) does not count
+        f = e.get("file") and ((tri / e["file"]) if (tri / e["file"]).exists() else (run / e["file"]))
+        return bool(f) and f.exists() and len(f.read_text(errors="ignore").split()) >= 100
+    answered = [s for s in seats if any(e["kind"] == "reply" and e.get("seat") == s and real_answer(e) for e in events)]
+    companies = {"Anthropic"} | {SEAT_NAMES[s][1] for s in answered}
+    who_fact = "Real resume, shared with consent" if consented else "Fictional candidate"
+    reach_fact = "Manual mode: pasted into other AI apps" if reach == "Manual" else "Auto mode: the other AIs ran by themselves"
+    facts = [who_fact, reach_fact, f"{len(answered) + 1} AIs from {len(companies)} companies", f"{round(end / 60)} minutes", *extra_facts]
     return {
-        "slug": slug, "title": title, "mode": "Full council" if council else "Quick review", "facts": facts, "note": note,
+        "slug": slug, "title": title, "mode": "Full council" if council else "Quick review", "reach": reach, "facts": facts, "note": note,
         "candidate": cand, "end": end, "who": who, "steps": steps, "events": out_events,
         "lanes": lanes(out_events, who, cand), "before": before, "after": after,
     }, files
@@ -296,7 +335,7 @@ def lanes(events, who, cand):
         if open_asks or nxt <= e["t"]:
             continue  # the host is waiting on a seat, or nothing took time
         label = e.get("label", "")  # the step band already names each step
-        busy = f"Host: {e['text'][0].lower()}{e['text'][1:]}" if e["kind"] == "note" else "The host is working"
+        busy = "The host is working"  # what it is doing is already in the chat, as its note
         if out and out[-1][0] == "host" and out[-1][2] == e["t"] and not label:
             out[-1][2] = nxt
         else:
@@ -321,6 +360,7 @@ def transcript(r):
             continue
         head = names[e["who"]] + (f" to {names[e['to']]}" if e.get("to") else "")
         tags = ", ".join(x for x in (e.get("stop"), f"took {e['d']} s" if "d" in e else "",
+                                     f"answered after {round(e['waited'] / 60)} min" if "waited" in e else "",
                                      "working" if e["kind"] == "note" else "") if x)
         out.append(f"**{clock(e['t'])} {head}**" + (f" ({tags})" if tags else ""))
         out.append("")
@@ -341,8 +381,8 @@ def readme(r, files):
                       "| File | What it is |", "|---|---|", *(f"| {a} | {b} |" for a, b in rows), ""])
 
 
-def export(run, slug, title, out_root, extra_facts=(), candidate=None, replace=False, real=ROOT / "research" / "real-resumes", note=""):
-    r, files = build(run, slug, title, extra_facts, candidate, real, note)
+def export(run, slug, title, out_root, extra_facts=(), candidate=None, replace=False, real=ROOT / "research" / "real-resumes", note="", consented=False):
+    r, files = build(run, slug, title, extra_facts, candidate, real, note, consented)
     out = out_root / slug
     if out.exists():
         if not replace:
@@ -396,9 +436,9 @@ def self_test():
                                       "- Built the weekly reports in Excel\n- Wrote SQL most days\n")
         (tri / "changes.json").write_text(json.dumps({"changes": [
             {"old": "Increased conversion by 18%", "new": "Conversion rose from 2.1% to 2.5%", "why": "Her numbers.", "source": "own words"},
-            {"old": "Managed $2.4M budget", "why": "Not hers."}]}))
+            {"old": "Managed $2.4M budget", "why": "Not hers."}, {"old": "EXPERIENCE", "new": "## Experience", "why": "Heading."}]}))
         (tri / "p1.txt").write_text("Write a resume for <<NAME>>.")
-        (tri / "r.md").write_text("Draft.")
+        (tri / "r.md").write_text("Draft. " * 120)
         ev = [(100, {"kind": "model", "who": "host", "text": "Claude Opus 5.5"}),
               (100, {"kind": "step", "step": 1, "text": "Setup"}),
               (110, {"kind": "say", "stop": "Stop 1", "text": "Go ahead?"}),
@@ -407,7 +447,9 @@ def self_test():
               (140, {"kind": "ask", "seat": "codex", "label": "Draft", "file": "p1.txt", "text": "Write it."}),
               (150, {"kind": "check", "text": "0 errors"}),
               (200, {"kind": "reply", "seat": "codex", "file": "r.md", "text": "It kept the \"Managed $2.4M budget\" line."}),
-              (220, {"kind": "say", "text": "Here it is."})]
+              (220, {"kind": "say", "stop": "Stop 2", "text": f"Here it is, at {run.resolve()}/.tribunal/resume.md. True?"}),
+              (220 + 4000, {"kind": "user", "text": "All true."}),
+              (230 + 4000, {"kind": "say", "text": "Done."})]
         (tri / "events.jsonl").write_text("".join(json.dumps({"t": t, **e}) + "\n" for t, e in ev))
         out, r = export(run, "jo", "Jo", pathlib.Path(d) / "examples", real=pathlib.Path(d) / "none")
         b = {norm(l["tx"]): l for l in r["before"]}
@@ -421,6 +463,8 @@ def self_test():
         assert a["analyst shop 2020 - present"]["k"] == "role" and "**Shop**" in a["analyst shop 2020 - present"]["tx"], "### Company + **Title** | dates merge"
         assert [l["k"] for l in r["before"][:3]] == ["name", "contact", "h2"]
         assert [l["k"] for l in parse_resume("Jo\njo@example.com\nEducation\nBA, 2014\nSkills:\nExcel")] == ["name", "contact", "h2", "p", "h2", "p"]
+        pdf = parse_resume("Jo\njo@example.com\nPROFESSIONAL SUMMARY With 4+ years of backend work in Java.\n● Built the claims API")
+        assert [(l["k"], l["tx"][:12]) for l in pdf[2:]] == [("h2", "PROFESSIONAL"), ("p", "With 4+ year"), ("bul", "Built the cl")]
         assert b["analyst shop 2020 - present"].get("s") is None, "a plain company line + role matches the markdown role"
         assert r["who"]["codex"]["role"].startswith("AI 2, OpenAI") and r["who"]["host"]["role"] == "AI 1, Claude Opus 5.5"
         reply = next(e for e in r["events"] if e["kind"] == "reply")
@@ -430,6 +474,10 @@ def self_test():
         assert ["user", 10, 30, "Stop 1", 1, "Waiting for Jo"] in L
         assert not any(l[0] == "host" and 40 <= l[1] < 100 for l in L), "the host waits while the seat works, even after a check"
         assert ["check", 50, 50, "", 0, ""] in L
+        assert any(e["text"] == "Here it is, at .tribunal/resume.md. True?" for e in r["events"]), "the run folder's path is shown relative"
+        late = next(e for e in r["events"] if e["text"] == "All true.")
+        assert late["waited"] == 4000 and late["t"] == 120 + MAX_WAIT, "a long wait is drawn short and labelled"
+        assert r["end"] == 130 + MAX_WAIT and ["user", 120, 120 + MAX_WAIT, "Stop 2", 1, "Waiting for Jo"] in r["lanes"]
         assert (out / "files" / "p1.txt").exists() and "**00:10 Host** (Stop 1)" in (out / "transcript.md").read_text()
         try:
             export(run, "jo", "Jo", pathlib.Path(d) / "examples", real=pathlib.Path(d) / "none")
@@ -449,6 +497,7 @@ def self_test():
         except SystemExit as e:
             assert "867-5309" in str(e)
         assert unsafe("saved to /home/jo/run/final.md", "x") == ["x: local path /home/jo"]
+        assert unsafe("Req. ID: 1273383451", "x") == [] and unsafe("Phone No. 1273383451", "x") != []
         real = pathlib.Path(d) / "real"
         real.mkdir()
         (run / "before.md").write_text((run / "before.md").read_text().replace("867-5309", "555-0147"))
@@ -459,20 +508,25 @@ def self_test():
             raise AssertionError("a line from a real resume must stop the export")
         except SystemExit as e:
             assert "resume-01.md" in str(e)
+        r2, _ = build(run, "jo", "Jo", real=real, consented=True)
+        assert r2["facts"][0] == "Real resume, shared with consent" and r2["reach"] == "Auto"
     print("export.py self-test passed")
 
 
 def main():
     if sys.argv[1:] == ["--self-test"]:
         return self_test()
-    if len(sys.argv) == 3 and sys.argv[2] == "--check":  # the host checks its record before finishing
-        build(pathlib.Path(sys.argv[1]), "check", "check")
+    if len(sys.argv) in (3, 4) and sys.argv[2] == "--check":  # the host checks its record before finishing
+        build(pathlib.Path(sys.argv[1]), "check", "check", consented=sys.argv[3:] == ["--real-with-consent"])
         return print("the record is complete: export.py can turn it into an example")
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("run", type=pathlib.Path)
     ap.add_argument("slug")
     ap.add_argument("--title", required=True)
-    ap.add_argument("--fictional", action="store_true", required=True, help="confirm the candidate is invented")
+    kind = ap.add_mutually_exclusive_group(required=True)
+    kind.add_argument("--fictional", action="store_true", help="confirm the candidate is invented")
+    kind.add_argument("--real-with-consent", action="store_true",
+                      help="a real resume whose owner agreed to publish it, already de-identified (invented name, example contact details)")
     ap.add_argument("--fact", action="append", default=[], help="an extra fact for the page, such as 'Real public job posting'")
     ap.add_argument("--candidate", help="the candidate's first name, if not the first word of the resume")
     ap.add_argument("--replace", action="store_true", help="export over an existing example")
@@ -481,7 +535,7 @@ def main():
     a = ap.parse_args()
     if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", a.slug):
         sys.exit("the slug is lower-case words joined by hyphens")
-    out, r = export(a.run, a.slug, a.title, a.out, a.fact, a.candidate, a.replace, note=a.note)
+    out, r = export(a.run, a.slug, a.title, a.out, a.fact, a.candidate, a.replace, note=a.note, consented=a.real_with_consent)
     print(f"exported {out}: {len(r['events'])} events, {len(r['lanes'])} timeline bars")
 
 

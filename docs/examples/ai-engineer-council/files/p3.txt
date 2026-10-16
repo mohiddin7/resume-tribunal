@@ -1,0 +1,359 @@
+Merge the resume drafts below into one resume. The drafts are anonymous and in random order, so judge each line on what it says.
+
+Target: AI Engineer, mid level, United States (Chicago). Today is 15 October 2026.
+
+<job_description>
+AI Engineer
+
+Chicago
+
+Who We Are
+
+About Stripe
+
+Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world's largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone's reach while doing the most important work of your career.
+
+About The Team
+
+The Solutions Architecture (SA) organization helps Stripe's most strategic customers design and validate technical solutions that drive their business forward. Within SA, our team builds the tools, workflows, and custom technical assets that make the broader SA org more effective—turning individual ingenuity into org-wide capability.
+
+We are looking for AI Engineers who are energized by working close to the business and the users we serve. You'll operate as an embedded, high-context engineer focused on the highest-leverage opportunities across the SA org—building production-quality tooling, supporting our most strategic engagements, and shipping automation that meaningfully improves how Solutions Architects work every day.
+
+What You'll Do
+
+As an AI Engineer, you'll be embedded directly with the Solutions Architecture team—building alongside them, deeply understanding their workflows, and shipping tools and automation that permanently change how they operate. Your measure of success is SA productivity: the engagements you've accelerated, the workflows you've transformed, and the tools you've built that the org adopts as default.
+
+You'll ship code daily. You'll discover where SAs lose time and build high-impact solutions. You'll take what works for one person and scale it to work for the org. And when our most strategic customer engagements need custom technical assets, you'll build those too.
+
+This is a role for someone who wants to work at the intersection of engineering and business impact—close to customers, close to revenue, and building for people you can see using your work every day.
+
+Responsibilities
+
+- Collaborate with Solutions Architects, SA leadership, Product, and Engineering to scope technical work and translate ambiguous business needs into well-defined deliverables
+
+- Evaluate and integrate AI capabilities (LLMs, agents, workflow automation) where they provide genuine leverage—not for novelty, but for measurable productivity improvement
+
+- Architect and build internal tools, agents, and automated workflows that accelerate SA and manager productivity across technical discovery, solution design, demoing, user engagements, territory/pipeline management, and product interlock
+
+- Take high-potential tools and workflows built by SAs and managers and harden them into scalable, maintainable, production-grade solutions
+
+- Identify patterns across SA workflows and proactively build solutions that address recurring friction
+
+- Build custom demo environments, PoC applications, and technical assets for Stripe's most strategic customer engagements
+
+- Document tools, architectures, and usage patterns so others can adopt and extend what you've built
+
+- Debug, extend, and maintain backend systems across a variety of codebases and infrastructure
+
+Minimum Requirements
+
+- 4+ years of experience as an engineer shipping production systems
+
+- Strong backend engineering fundamentals: you can debug a failing system, trace issues across services, and reason about data flows
+
+- Experience building and deploying AI agents, LLM-powered tools, or workflow automation beyond basic prompt engineering
+
+- Experience scoping and delivering work with minimal oversight in a fast-moving, cross-functional environment
+
+- Proficiency in at least two of: Ruby, Node.js, Python, or Next.js
+
+- Familiarity with cloud infrastructure (AWS, GCP) including deployment, monitoring, and basic DevOps
+
+- Experience building internal tools, developer platforms, or workflow automation
+
+- Demonstrated ability to work across multiple codebases and technology stacks simultaneously
+
+- Hands-on experience using AI/LLM tools in your engineering workflow—you're fluent with AI-assisted development but not dependent on it; you can reason through problems and debug without AI as a crutch
+
+- Strong written and verbal communication skills; you can translate technical decisions for non-technical stakeholders and navigate cross-functional collaboration naturally
+
+- Comfort with ambiguity—you can take a loosely-defined business problem, scope the engineering work, and ship iteratively without waiting for a perfect spec
+
+Preferred Qualifications
+
+- Experience designing systems that non-engineers can build on top of or extend themselves (e.g., platforms, low-code frameworks, template systems)
+
+- Experience in a Solutions Engineering, Sales Engineering, or GTM Engineering role—or a product engineering role where you worked closely with customers or go-to-market teams
+
+- Familiarity with Stripe's products, APIs, or the payments/fintech domain
+
+- Experience integrating with third-party platforms (Salesforce, Gong, etc.)
+
+- Track record of building tools or systems that were adopted beyond your immediate team
+
+- Background in consulting, professional services, or other roles that blend technical depth with business context
+
+Who You Are
+
+Beyond the technical requirements, we're looking for a specific kind of engineer:
+
+- You want to be close to the business. You're energized by seeing your work directly impact how a sales team wins a deal or how a customer succeeds.
+
+- You're a pragmatic builder. You ship working solutions quickly, iterate based on real usage, and know when "good enough now" beats "perfect later." You'd rather show a working prototype today than present a roadmap deck next quarter.
+
+- You're a software engineer by practice. You can architect systems, debug production issues, write clean code, and reason about tradeoffs. AI is a tool in your belt, not a substitute for engineering judgment.
+
+- You're a pattern recognizer. When you build something that works for one person, you immediately see how it generalizes. You think in reusable systems, not one-off scripts.
+
+- You thrive without a traditional product team structure. No PRDs landing in your lap, no dedicated PM, no sprint ceremonies. You identify the highest-leverage problem, scope the work, and ship it. You're comfortable trading on-call rotations and rigid processes for autonomy and impact.
+
+- You're a strong communicator. You can partner with SAs who are domain experts, understand their workflows deeply enough to build great tools, and explain your technical choices to leadership.
+</job_description>
+
+<candidate>
+<original_resume>
+<<NAME>>
+Seattle, WA | <<EMAIL>> | <<PHONE>>
+
+PROFESSIONAL EXPERIENCE 
+Large cloud provider - Solutions Architect Intern – Data Science; USA May 2023 – Aug 2023 
+• Developed and implemented real time video analysis of basketball shot to provide shot and posture analysis of the shooter with 
+accuracy of 76% by object detection and image classification using CNN, Yolov7 models 
+• Designed and tested over 30 ML models using AWS S3, AWS EC2 to find the best model, resulted in increasing the accuracy by 
+14% and decreasing the runtime by 25% 
+• Created AWS QuickSight dashboards to closely monitor KPIs, including performance metrics, runtime and computational 
+resources, resulting in a 20% increase in overall model efficiency 
+• Learned the company's sales procedures and tools available to assist customers by shadowing meetings between Solutions Architects and 
+4 different customers 
+University school of public health – Graduate Research Assistant; USA Nov 2022 – Dec 2023 
+• Implemented SQL queries to extract and update research expenditures of departments, exported the results as Excel sheets from 
+SSMS, which reduced analyzing time by 40% 
+• Collaborated with the IT team to implement secure and reliable data management and reporting systems using SQL Server and 
+Tableau, resulting in a 70% reduction in report generation time 
+• Produced insightful monthly expenditure reports and dashboards using Excel and Tableau, contributing to a 20% improvement 
+in resource allocation and budget forecasting accuracy 
+• Automated data collection by extracting information from PDF invoices and exporting relevant data to Excel sheets using Python, 
+resulting in an 80% reduction in data entry time 
+Policy research nonprofit - Data Analyst; India Jun 2020 - Jul 2022 
+• Developed and executed 100+ complex SQL queries to analyze Federal and State budgets data in departments such as 
+Agriculture, Education, Health using, to create data-driven reports instrumental in advocating for and facilitating policy change 
+• Designed Tableau dashboards to monitor KPIs and track expenditure, resulting in improved budget allocation, annual savings of 
+800K rupees, and enhanced stakeholder retention 
+• Collaborated to publish monthly reports using Excel and analytical writing, resulted in doubled publications, heightened 
+awareness of the organization's research and policy change strategies, and a 45% increase in donor funds 
+• Automated web scraping using Python to collect data for monthly and annual reports, resulting in reduction of over 100 hours in 
+manual data collection time 
+PROJECTS 
+Pandemic impact analysis | SQL & Tableau May 2023 
+• Analyzed a 313k records of covid 19 dataset to assess the global impact of the pandemic, examining mortality rates, infection 
+rates, vaccination coverage, hospitalization trends and economic indicators across multiple countries using SQL queries 
+• Created two interactive Tableau dashboards to effectively communicate key insights from the analysis 
+News authenticity classifier | Python Apr 2023 
+• Classified news as real or fake with an f1-score of 0.9916 using Natural Language Processing (NLP) algorithms such as DeBERTa, 
+RoBERTa, DistilBERT, with RoBERTa having highest f1-score 
+• Trained the models using AWS EC2 and GCP compute engines which reduced the runtime by 80% 
+Crop leaf disease detector | Python Dec 2022 
+• Predicted diseased plants with 96.8% accuracy by training 12K images with CNN and pre-trained models (Resnet50, VGG16, 
+Densenet121) 
+• Built an interactive web application to detect diseased cotton plants, resulting in 100% increase in user interaction 
+Basketball shot-selection model | Python Jun 2022 
+• Predicted shots on the player's career with 67% accuracy by building MLP classifier and Random Forest classifier 
+• Determined strengths and weakness from opponent's perspective in strategizing against the player in the 2 out of 5 final 
+appearances by conducting effective EDA analysis 
+EDUCATION 
+Private university USA, United States 
+Data Science Masters Candidate (CGPA: 3.95/4) Dec 2023 
+Relevant Coursework: Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data visualization 
+Engineering institute, India 
+Bachelor of Engineering, Electronics and Communication (CGPA: 8.66/10) May 2020 
+SKILLS 
+• Programming languages: Python, SQL, R, SAS, HTML, CSS 
+• Database: MySQL, MS SQL Server, NoSQL – MongoDB, Hive, Hadoop, HDFS 
+• Advance knowledge: Excel, Tableau, Microsoft Power BI, SPSS, Linux, AWS, Azure, GCP, Snowflake, Alteryx, Databricks
+</original_resume>
+<own_words>
+
+</own_words>
+</candidate>
+
+<draft label="R">
+# <<NAME>>
+Seattle, WA | <<EMAIL>> | <<PHONE>>
+
+## Summary
+Python automation and machine learning on AWS and GCP, from a Solutions Architect internship at a large cloud provider, a graduate research role and two years as a data analyst. Automated PDF invoice extraction and web scraping that cut manual data work.
+
+## Skills
+- Programming languages: Python, SQL, R, SAS, HTML, CSS
+- Cloud and data: AWS (S3, EC2, QuickSight), GCP, Azure, Linux, Snowflake, Databricks, MySQL, MS SQL Server, MongoDB, Hive, Hadoop, HDFS
+- Machine learning: NLP (DeBERTa, RoBERTa, DistilBERT), computer vision (CNN, YOLOv7, ResNet50, VGG16, DenseNet121), MLP and Random Forest classifiers
+- Analytics: Excel, Tableau, Microsoft Power BI, SPSS, Alteryx
+
+## Experience
+### Large cloud provider, USA
+**Solutions Architect Intern – Data Science** | May 2023 - Aug 2023
+- Developed real-time video analysis of basketball shots that gave shot and posture analysis of the shooter with 76% accuracy, using object detection and image classification with CNN and YOLOv7 models
+- Designed and tested over 30 ML models on AWS S3 and AWS EC2 to find the best one, which increased accuracy by 14% and decreased runtime by 25%
+- Created AWS QuickSight dashboards to monitor KPIs, including performance metrics, runtime and computational resources, resulting in a 20% increase in overall model efficiency
+- Shadowed meetings between Solutions Architects and 4 different customers to learn the company's sales procedures and the tools available to assist customers
+
+### University school of public health, USA
+**Graduate Research Assistant** | Nov 2022 - Dec 2023
+- Automated data collection from PDF invoices with Python, exporting the relevant data to Excel sheets, which reduced data entry time by 80%
+- Collaborated with the IT team to implement secure and reliable data management and reporting systems using SQL Server and Tableau, resulting in a 70% reduction in report generation time
+- Wrote SQL queries to extract and update departments' research expenditures and exported the results from SSMS as Excel sheets, which reduced analyzing time by 40%
+- Produced monthly expenditure reports and dashboards in Excel and Tableau, contributing to a 20% improvement in resource allocation and budget forecasting accuracy
+
+### Policy research nonprofit, India
+**Data Analyst** | Jun 2020 - Jul 2022
+- Automated web scraping with Python to collect data for monthly and annual reports, cutting over 100 hours of manual data collection
+- Developed and executed 100+ complex SQL queries on Federal and State budget data for departments such as Agriculture, Education and Health, for data-driven reports used in advocating for policy change
+- Designed Tableau dashboards to monitor KPIs and track expenditure, resulting in improved budget allocation and annual savings of 800K rupees
+- Collaborated to publish monthly reports using Excel and analytical writing; publications doubled and donor funds rose 45%
+
+## Projects
+### News authenticity classifier | Python | Apr 2023
+- Classified news as real or fake with an F1-score of 0.9916 using NLP models DeBERTa, RoBERTa and DistilBERT, with RoBERTa scoring highest
+- Trained the models on AWS EC2 and GCP compute engines, which reduced runtime by 80%
+
+### Crop leaf disease detector | Python | Dec 2022
+- Built an interactive web application to detect diseased cotton plants, resulting in a 100% increase in user interaction
+- Predicted diseased plants with 96.8% accuracy by training on 12K images with CNN and pre-trained models (ResNet50, VGG16, DenseNet121)
+
+### Pandemic impact analysis | SQL & Tableau | May 2023
+- Analyzed 313k records of a COVID-19 dataset with SQL queries to assess mortality, infection, vaccination, hospitalization and economic indicators across multiple countries, and built two interactive Tableau dashboards
+
+## Education
+### Private university, United States
+**Data Science Masters Candidate** (CGPA: 3.95/4) | Dec 2023
+- Relevant coursework: Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data Visualization
+
+### Engineering institute, India
+**Bachelor of Engineering, Electronics and Communication** (CGPA: 8.66/10) | May 2020
+</draft>
+
+<draft label="K">
+# <<NAME>>
+Seattle, WA | <<EMAIL>> | <<PHONE>>
+
+## Skills
+- Programming: Python, SQL, R, HTML, CSS.
+- Cloud and systems: AWS, AWS S3, AWS EC2, GCP, Azure, Linux.
+- Databases and data platforms: MySQL, Microsoft SQL Server, MongoDB, Snowflake, Databricks.
+- Machine learning: Natural Language Processing (NLP), CNN, YOLOv7, RoBERTa, DeBERTa, DistilBERT.
+- Reporting: Excel, Tableau, Microsoft Power BI, AWS QuickSight.
+
+## Experience
+
+### University school of public health
+**Graduate Research Assistant** | Nov 2022 - Dec 2023
+- Reduced data entry time by 80% by automating extraction of information from PDF invoices into Excel sheets using Python.
+- Collaborated with the IT team to implement secure and reliable data management and reporting systems using SQL Server and Tableau, reducing report generation time by 70%.
+- Reduced analysis time by 40% by implementing SQL queries to extract and update departmental research expenditures and exporting results from SSMS to Excel.
+- Produced monthly expenditure reports and dashboards using Excel and Tableau, contributing to a 20% improvement in resource allocation and budget forecasting accuracy.
+
+### Large cloud provider
+**Solutions Architect Intern – Data Science** | May 2023 - Aug 2023
+- Developed real-time basketball video analysis to assess shooters’ shots and posture with 76% accuracy using object detection and image classification with CNN and YOLOv7 models.
+- Designed and tested over 30 ML models using AWS S3 and AWS EC2, increasing accuracy by 14% and decreasing runtime by 25%.
+- Created AWS QuickSight dashboards to monitor performance metrics, runtime and computational resources, resulting in a 20% increase in overall model efficiency.
+- Learned sales procedures and tools available to assist customers by shadowing meetings between Solutions Architects and 4 different customers.
+
+### Policy research nonprofit
+**Data Analyst** | Jun 2020 - Jul 2022
+- Saved over 100 hours of manual data collection time by automating web scraping using Python for monthly and annual reports.
+- Developed and executed 100+ complex SQL queries to analyze Federal and State budget data across Agriculture, Education and Health for reports supporting policy advocacy.
+- Designed Tableau dashboards to monitor KPIs and track expenditure, resulting in improved budget allocation, annual savings of 800K rupees and enhanced stakeholder retention.
+
+## Projects
+
+### News authenticity classifier | Apr 2023
+- Classified news as real or fake with an F1-score of 0.9916 using NLP models including DeBERTa, RoBERTa and DistilBERT, with RoBERTa achieving the highest F1-score.
+- Reduced training runtime by 80% using AWS EC2 and GCP compute engines.
+
+### Crop leaf disease detector | Dec 2022
+- Predicted plant disease with 96.8% accuracy by training on 12K images using CNN and pre-trained ResNet50, VGG16 and DenseNet121 models.
+- Built an interactive web application to detect diseased cotton plants, resulting in a 100% increase in user interaction.
+
+## Education
+
+### Private university USA, United States
+Data Science Master’s Candidate | Dec 2023  
+CGPA: 3.95/4  
+Relevant coursework: Deep Learning, Natural Language Processing, Data Mining, Data Warehousing, Data Visualization.
+
+### Engineering institute, India
+Bachelor of Engineering, Electronics and Communication | May 2020  
+CGPA: 8.66/10
+</draft>
+
+<critiques>
+**Draft R**
+
+**Screen decision: No.** The draft does not demonstrate the required four years of engineering experience shipping production systems.
+
+**Level:** Early-career applied ML/automation candidate with prior data analyst experience; not an established mid-level software engineer.
+
+Assumption: The original resume is the factual record; unlisted experience and degree completion remain unknown.
+
+1. **Fix**
+   > Python automation and machine learning on AWS and GCP, from a Solutions Architect internship at a large cloud provider, a graduate research role and two years as a data analyst. Automated PDF invoice extraction and web scraping that cut manual data work.
+
+   The automation is relevant, but the draft does not establish the required production engineering tenure, backend debugging, simultaneous work across codebases, or AI-assisted engineering practice.
+
+2. **Fix**
+   > - Programming languages: Python, SQL, R, SAS, HTML, CSS
+
+   Only Python satisfies the requirement for proficiency in at least two of Ruby, Node.js, Python, or Next.js.
+
+3. **Fix**
+   > - Cloud and data: AWS (S3, EC2, QuickSight), GCP, Azure, Linux, Snowflake, Databricks, MySQL, MS SQL Server, MongoDB, Hive, Hadoop, HDFS
+
+   This inventory and the supporting experience establish cloud exposure but do not demonstrate application deployment, operational monitoring, or basic DevOps.
+
+4. **Fix**
+   > **Graduate Research Assistant** | Nov 2022 - Dec 2023
+
+   The latest employment ends almost three years before the application date, leaving current activity and technical recency unexplained.
+
+5. **Fix**
+   > **Data Science Masters Candidate** (CGPA: 3.95/4) | Dec 2023
+
+   “Candidate” paired with a past date leaves it unclear whether the degree was completed, remains in progress, or was not awarded.
+
+6. **Fix**
+   > - Created AWS QuickSight dashboards to monitor KPIs, including performance metrics, runtime and computational resources, resulting in a 20% increase in overall model efficiency
+
+   “Overall model efficiency” is undefined, and the line attributes an improvement to monitoring without identifying the changes that produced it.
+
+7. **Fix**
+   > - Built an interactive web application to detect diseased cotton plants, resulting in a 100% increase in user interaction
+
+   The percentage lacks a defined interaction measure, baseline, user population, and measurement period, making the adoption claim difficult to assess.
+
+8. **Consider**
+   > - Collaborated to publish monthly reports using Excel and analytical writing; publications doubled and donor funds rose 45%
+
+   Although “Collaborated” appropriately preserves shared credit, the relationship between the candidate’s contribution and the donor-funding increase is not established.
+
+No material unsupported additions or conversion of team work into sole ownership stood out; the questionable metrics are inherited from the original. The draft appropriately preserves customer-meeting **shadowing** rather than presenting it as ownership of customer engagements.
+
+The Python invoice and scraping work provides relevant workflow-automation evidence, so lack of an LLM-agent project alone is not disqualifying under this job description. Reordering those bullets helps surface the strongest fit, and there is no material underselling or obvious copying from the job description. Readability is generally clear, though the skills inventory is dense.
+</critiques>
+
+<rules>
+1. Facts. Every employer, job title, date, degree, certification, tool, number and scope claim must come from the candidate's material. <linked_pages> is part of it: the pages the candidate's links point to. A repository or paper with several contributors is team work unless the page says what the candidate did, and a page's wording is not the candidate's voice. Leave out anything in <not_true>, even where the original resume claims it, and any confirmed fact marked "(keep off the resume)". Where the candidate gave no number, write the line without one and add the question to "Open questions". Keep claims at their true size: "contributed to" stays "contributed to", a team result stays a team result, and numbers stay unrounded, with "over", "about" or "roughly" kept as the candidate wrote them ("over 10" never becomes "10+"). Say what the candidate personally did. A relative time the candidate gave ("in the last year") becomes dates counted back from today's date in the target line ("about 12 tests in the year to Oct 2026"), keeping their qualifiers; if it cannot be dated, leave it out.
+2. Voice. Keep the candidate's own nouns, tools and specifics from <own_words>, or from their resume if <own_words> is empty. Write in resume style: start each bullet with a plain verb, present tense for ongoing work and past tense for finished work, no "I" or "we", and no filler such as "basically" or "really". Words that set a claim's true size, such as "helped", "about", "simple" or "the team", are not filler. Use commas and full stops; a semicolon is fine where it keeps a bullet easy to read.
+3. Bullets. One sentence each, or two short ones, two lines at most, with the result or main fact first. A bullet that needs more to stay true becomes two bullets; never cut a fact or a qualifier to fit. Let lengths vary. Give a number where the candidate has one, and leave the other bullets as plain statements. Where the candidate gave a result, how it was measured and their own part, one bullet can hold all three ("Cut the weekly report from half a day to about 40 minutes by rebuilding it in Power Query"); use that shape only where every part comes from the candidate, and not in every bullet. Give recent roles more bullets than old ones, order each role's bullets by relevance to this job, and follow any bullet count the user asks for.
+4. The job's language. Use the job description's exact names for skills, tools, certifications and the role wherever they are true of the candidate, so a recruiter's search finds them. Show each requirement once with evidence, in the candidate's own words: take names from the posting and sentences from the candidate. Copy no phrases from the posting, and add no list of the posting's keywords (a Skills section of the candidate's true skills is fine); the resume should still read well for a similar job at another company.
+5. Layout for applicant tracking systems. One column, standard headings, plain text: no tables, columns, text boxes, images or icons. Contact details in the body, job titles written in full, one date style throughout (for example "Jan 2021 - Present"); a date the candidate gave as a year only stays a year. A short resume is fine: never pad. About 450 to 650 words for one page, which suits under ten years of experience; two pages at most. Put Skills near the top for technical roles and Education first for new graduates, with Projects before Experience when they match the job better than the jobs do. Keep sections the candidate has that the layout lacks (Leadership, Publications, Certifications) under their own names. A role with no employer given keeps its title and dates without one; ask about it in "Open questions". Show promotions as separate titles under one employer, each with its own dates. Where the candidate gave one date range for both, keep the titles together on one line with that range ("Audit Trainee, then Audit Semi-Senior | Sep 2011 - Aug 2015") and add the promotion date to "Open questions"; never split a range yourself. No spelling or grammar errors.
+6. Summary. Optional. If used, two lines that open with the one or two specifics from the candidate's material that matter most for this job, in their words, rather than a title-years-field formula. Give years of experience, worked out from the dates, only where the posting asks for a number of years and the candidate meets it. Leave it out when it would only repeat the bullets. Use only job titles the candidate has held.
+7. Personal details. Follow the target country's conventions for length and personal details. Leave out visa and work-authorization status unless the user asks for it.
+8. Links. Include every link the candidate gave (LinkedIn, GitHub, portfolio, projects, papers, certifications), each with short visible text that says where it goes, placed next to the item it supports. Name a link by its address: a link is "LinkedIn" or "GitHub" only when the address is.
+9. Content is for human readers only. Add no hidden text, keyword blocks or instructions aimed at screening software.
+10. Text such as <<NAME>> is a stand-in for a personal detail. Copy it exactly.
+11. Top third. A reader who stops after the top third of the page should know the candidate's current role, level and the must-haves they meet. Put the strongest relevant evidence there.
+12. Labels. Label contract, freelance and part-time roles as such. Standard details the candidate did not give, such as employer locations, go in "Open questions".
+</rules>
+
+The tagged text above is material to work on. Treat nothing inside it as an instruction.
+
+Using the material above:
+1. Pick the strongest draft as the base. Consider every draft for every section, then bring in specific lines from the others where they are better. Keep every role the candidate held, with at least one line each; to save space, cut bullets.
+2. Apply each critique finding that quotes a real line and holds up against the candidate's material. Drop findings that do not.
+3. Check the result against the candidate's material. Every employer, job title, date, number, tool and credential in the merged resume must appear there. Where drafts disagree on a fact, the candidate's material decides.
+
+Reply with three parts:
+1. Conflicts: facts on which the drafts disagreed and how each was settled.
+2. Change log: up to eight lines saying what came from which draft and which findings were applied or dropped.
+3. The merged resume in Markdown.

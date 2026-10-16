@@ -1,0 +1,1266 @@
+{
+ "slug": "ai-engineer-council",
+ "title": "Data scientist applying for an AI engineer role",
+ "mode": "Full council",
+ "reach": "Auto",
+ "facts": [
+  "Real resume, shared with consent",
+  "Auto mode: the other AIs ran by themselves",
+  "3 AIs from 2 companies",
+  "14 minutes",
+  "Real public job posting"
+ ],
+ "note": "",
+ "candidate": "Sofia",
+ "end": 847,
+ "who": {
+  "user": {
+   "n": "Sofia",
+   "s": "S",
+   "role": "the candidate"
+  },
+  "host": {
+   "n": "Host",
+   "s": "H",
+   "role": "AI 1, Claude Opus 5.5"
+  },
+  "codex": {
+   "n": "Codex",
+   "s": "C",
+   "role": "AI 2, OpenAI, GPT-6-astra (high effort)"
+  },
+  "agy": {
+   "n": "Gemini",
+   "s": "G",
+   "role": "AI 3, Google, Gemini 3.8 Flash (High)"
+  },
+  "claude": {
+   "n": "Fresh Claude",
+   "s": "F",
+   "role": "Anthropic, Claude Opus (fresh context, no tools), a fresh session"
+  },
+  "check": {
+   "n": "Checker",
+   "s": "✓",
+   "role": "check_resume.py"
+  }
+ },
+ "steps": [
+  {
+   "n": 1,
+   "name": "Setup",
+   "t": 0
+  },
+  {
+   "n": 2,
+   "name": "Draft",
+   "t": 46
+  },
+  {
+   "n": 3,
+   "name": "Council",
+   "t": 151
+  },
+  {
+   "n": 4,
+   "name": "Review and sign-off",
+   "t": 403
+  },
+  {
+   "n": 5,
+   "name": "Finalise",
+   "t": 679
+  }
+ ],
+ "events": [
+  {
+   "t": 0,
+   "kind": "user",
+   "text": "I want to apply for this job. My resume is before.md and the posting is job.md. Can you tailor my resume for it?",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 0,
+   "kind": "step",
+   "text": "Setup",
+   "who": "host",
+   "step": 1,
+   "links": []
+  },
+  {
+   "t": 6,
+   "kind": "note",
+   "text": "Reading the resume and the posting, and hiding her name and contact details",
+   "who": "host",
+   "label": "Reading",
+   "links": []
+  },
+  {
+   "t": 30,
+   "kind": "say",
+   "text": "Step 1 of 4: Setup\n\n```\nYou give:  your resume, the job posting, a few sentences in your own words\n   ↓\nI write a draft, from your facts only\n   ↓\nA second AI, from a different company, checks it without knowing who wrote it\n   ↓\nAutomatic checks, then you approve every changed line\n   ↓\nYour resume, the job requirements it does not show, and likely interview questions\n```\nIt runs by itself; you answer a few questions along the way.\n\nWhat I read from your resume, so a misread file is caught now:\n- Large cloud provider: Solutions Architect Intern – Data Science, May 2023 - Aug 2023\n- University school of public health: Graduate Research Assistant, Nov 2022 - Dec 2023\n- Policy research nonprofit: Data Analyst, Jun 2020 - Jul 2022\n- Four projects (Jun 2022 to May 2023), a Data Science master's (Dec 2023) and a bachelor's in Electronics and Communication (May 2020)\n\nThe posting gives no level, so I assumed mid level (it asks for 4+ years) in Chicago, United States. Tell me if that's wrong.\n\nTwo questions:\n1. Pick two or three things this job asks for that you have really done. For each, tell me one time you did it: what it was, what you did, what changed. Plain sentences; dictating is fine. These details are what set you apart from other applicants.\n2. Any links to add: LinkedIn, GitHub, a portfolio, project pages, papers or certificates? Most recruiters look for LinkedIn.\n\nMy plan:\n1. Quick review: I write the draft and one second AI, from OpenAI, checks it. About 6 minutes, and it runs by itself. Say \"full council\" for three AIs that each write a draft and check each other's work blind, so two can outvote one that is wrong: about 15 minutes and about five times as much of your AI plans. The Google tool on this computer offers only its fast model, which is why I suggest the quick review.\n2. No role research, I polish the final wording, and a plain-text copy while we work, with PDF or Word when it's final.\n\nI've hidden your name and contact details. They come back at the end. The other AIs: OpenAI's Codex running GPT-6-astra, and for a full council also Google's Antigravity running Gemini 3.8 Flash (High), plus a fresh copy of me (Claude) that sees only the drafts, to merge them. The working files are in .tribunal. This text, including your employers, job history and the pages your links point to, will go to Codex and Antigravity under their terms and your account settings there. Some keep their own history, and the text can still identify you. Leave out anything confidential to an employer, and check whether this employer allows AI help with applications.\n\nAnswer the questions, or say \"yes\" to take the defaults and go ahead.",
+   "who": "host",
+   "stop": "Stop 1",
+   "links": []
+  },
+  {
+   "t": 30,
+   "kind": "user",
+   "text": "Full council, please. Yes to the defaults, go ahead. No links.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 46,
+   "kind": "step",
+   "text": "Draft",
+   "who": "host",
+   "step": 2,
+   "links": []
+  },
+  {
+   "t": 46,
+   "kind": "say",
+   "text": "Step 2 of 5: Draft\n\nFull council it is. Since you have no extra notes or links, I'll use your resume's own wording as your voice. Two other AIs, from OpenAI and Google, are each writing a draft now, and I'm writing a third. This takes a few minutes; nothing needed from you until the sign-off questions.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 53,
+   "kind": "ask",
+   "text": "Write a resume for this AI Engineer job using only the candidate's own material, and list what it does not show and what to ask.",
+   "who": "host",
+   "to": "codex",
+   "label": "Draft",
+   "files": [
+    "p1.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 53,
+   "kind": "ask",
+   "text": "Write a resume for this AI Engineer job using only the candidate's own material, and list what it does not show and what to ask.",
+   "who": "host",
+   "to": "agy",
+   "label": "Draft",
+   "files": [
+    "p1.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 99,
+   "kind": "note",
+   "text": "Writing its own draft from her resume while the other two AIs draft",
+   "who": "host",
+   "label": "Drafting",
+   "links": []
+  },
+  {
+   "t": 135,
+   "kind": "reply",
+   "text": "A full draft in 57 seconds, leading with the graduate research role and keeping her numbers. Its \"Not shown\" list starts with \"4+ years as an engineer shipping production systems\" and \"Deployed AI agents or LLM-powered tools\".",
+   "who": "codex",
+   "d": 82,
+   "files": [
+    "p1_reply_codex.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 135,
+   "kind": "note",
+   "text": "Recording that Google's AI hit its usage limit and carrying on with two drafts",
+   "who": "host",
+   "label": "Seat failed",
+   "links": []
+  },
+  {
+   "t": 135,
+   "kind": "say",
+   "text": "Step 2 of 5: Draft\n\nThe Google AI could not take part: its account has reached its usage limit, which resets in about five days. I'll carry on with two drafts, mine and the OpenAI AI's, which is still a blind check of each by an AI that did not write it. If you'd rather add a Google chat by copy and paste, say so; otherwise nothing is needed from you yet.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 146,
+   "kind": "reply",
+   "text": "No draft: the tool answered \"Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 117h18m16s.\"",
+   "who": "agy",
+   "d": 93,
+   "links": []
+  },
+  {
+   "t": 151,
+   "kind": "step",
+   "text": "Council",
+   "who": "host",
+   "step": 3,
+   "links": []
+  },
+  {
+   "t": 151,
+   "kind": "ask",
+   "text": "Read the other draft as the recruiter and hiring manager for this job and report what is wrong with it, quoting each line.",
+   "who": "host",
+   "to": "codex",
+   "label": "Critique",
+   "files": [
+    "p2_codex.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 248,
+   "kind": "reply",
+   "text": "Screen decision \"No\": the draft \"does not demonstrate the required four years of engineering experience shipping production systems.\" It found no unsupported additions; its fixes ask what \"overall model efficiency\" and the \"100% increase in user interaction\" measure, and whether the master's was completed.",
+   "who": "codex",
+   "d": 97,
+   "files": [
+    "critique_codex.md.txt"
+   ],
+   "links": [
+    "L19",
+    "L7"
+   ]
+  },
+  {
+   "t": 253,
+   "kind": "ask",
+   "text": "Merge the two anonymous drafts into one resume, applying the critique's findings that hold up against the candidate's material.",
+   "who": "host",
+   "to": "claude",
+   "label": "Merge",
+   "files": [
+    "p3.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 402,
+   "kind": "reply",
+   "text": "A merged resume built on Draft R with the role order and several bullet openings from Draft K. It removed the summary and cut \"20% increase in overall model efficiency\" and \"100% increase in user interaction\" because \"neither metric is defined\", and dropped the donor-funds bullet so the older role has fewer bullets.",
+   "who": "claude",
+   "d": 149,
+   "files": [
+    "p3_reply.md.txt"
+   ],
+   "links": [
+    "B8",
+    "L11",
+    "L19"
+   ]
+  },
+  {
+   "t": 403,
+   "kind": "step",
+   "text": "Review and sign-off",
+   "who": "host",
+   "step": 4,
+   "links": []
+  },
+  {
+   "t": 415,
+   "kind": "check",
+   "text": "0 errors, 20 warnings (nine line-length, four old-skill groups, three wording, two layout patterns, two trailing clauses)",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 415,
+   "kind": "say",
+   "text": "Step 4 of 5: Review and sign-off\n\nThe two drafts are merged into one, and the automatic checks found no errors. The OpenAI AI is now reading the merged resume as the hiring manager would, without knowing who wrote it. This takes a minute or two; your sign-off questions come next.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 416,
+   "kind": "ask",
+   "text": "Review the merged resume as the hiring manager: check each claim against her material, suggest fixes, and list likely interview questions.",
+   "who": "host",
+   "to": "codex",
+   "label": "Review",
+   "files": [
+    "p4.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 549,
+   "kind": "reply",
+   "text": "Screen decision \"No phone screen for this mid-level role\", for lack of \"four years of engineering experience shipping production systems\". The claim check marks no line MORE THAN THE MATERIAL; its fixes ask about work after Dec 2023, whether the master's was completed, moving Linux out of the cloud line, and the baselines behind several numbers.",
+   "who": "codex",
+   "d": 133,
+   "files": [
+    "p4_reply_codex.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 549,
+   "kind": "note",
+   "text": "Applying the review's wording fixes and the checker's, and holding the fixes that need facts from her",
+   "who": "host",
+   "label": "Applying fixes",
+   "links": []
+  },
+  {
+   "t": 579,
+   "kind": "check",
+   "text": "0 errors, 13 warnings after two wording passes (six line-length, four old-skill groups, one AI-sounding word she wrote herself, one hyphen, one three-item-list pattern)",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 607,
+   "kind": "say",
+   "text": "Step 4 of 5: Review and sign-off\n\nThe draft is at .tribunal/resume.md (your name and contact details go back in at the end). The OpenAI AI checked every line against your resume and found none that claims more than your resume says.\n\nOne straight answer first: reading as the hiring manager, it would not phone yet, because the job asks for 4+ years shipping production systems and the page shows two years as an analyst, a research role and an internship. Better wording can't close that gap; only facts you really have can.\n\nChanged without asking (same facts, new wording): bullets reordered for this job and some reworded with the result first, \"Masters\" spelled \"Master's\", the skills regrouped under Cloud and systems, Data platforms and databases, Machine learning and Analytics, and the \"Advance knowledge\" label dropped. The automatic checks found no errors; what remains are wording notes: a few bullets run just over one line, and \"enhanced\" and \"real-time\" are flagged, though \"enhanced\" is your own word.\n\nCut to keep the page on what this job wants: the summary, the monthly-reports bullet (doubled publications, 45% more donor funds), the basketball shot-selection project, and two numbers a reader would not know how to read: \"20% increase in overall model efficiency\" and \"100% increase in user interaction\".\n\nQuestions about facts. Are all of these true, and could you explain each in an interview? Tell me any to fix. If you don't know a number, I'll leave it out, so please don't estimate.\n1. The skills line calls your CNN and YOLOv7 work \"computer vision\". Is that fair?\n2. These skills appear only in your old skills list, with nothing on the page showing them: R, SAS, HTML, CSS, Azure, Linux, Snowflake, Databricks, Hive, Hadoop, HDFS, Alteryx, Microsoft Power BI and SPSS. Which have you really used, and which should go?\n3. Your resume stops at Dec 2023. Have you worked, studied or built anything since then?\n4. Was the Data Science master's awarded, and when? If so, I'll show it as a degree instead of \"Candidate\".\n5. The PDF invoice automation: what did you build, and who used it?\n6. Is the 14% accuracy gain on the basketball models percentage points or relative, and compared with what? And how was the 0.9916 F1-score tested (which data, and was there a held-out set)?\n7. The two numbers I cut: can you say what \"overall model efficiency\" and \"user interaction\" measured? If so, they go back in.\n8. The job asks for things your resume doesn't show: building or deploying AI agents or LLM tools, Ruby, Node.js or Next.js, deploying and monitoring on the cloud, debugging backend systems, and using AI tools in your own coding. Have you done any of these? Tell me only what you really did.\n\nAnswer what you can in plain sentences; \"skip\" is fine for any question.",
+   "who": "host",
+   "stop": "Stop 2",
+   "links": [
+    "B6",
+    "B8",
+    "L11",
+    "B24"
+   ]
+  },
+  {
+   "t": 666,
+   "kind": "user",
+   "text": "I confirm everything in my original resume is true as written.\n\n1. Yes, that's fair.\n2. They're all on my original resume and true, so keep the ones that fit.\n3. Nothing to add.\n4. Leave it as my resume has it.\n5. I don't know more than what's on my resume.\n6. I don't know, so keep them as my resume has them.\n7. No, leave them out.\n8. No.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 667,
+   "kind": "note",
+   "text": "Writing her sign-off answers into the confirmed facts and the not-true list",
+   "who": "host",
+   "label": "Sign-off",
+   "links": []
+  },
+  {
+   "t": 679,
+   "kind": "check",
+   "text": "0 errors, 9 warnings (five line-length, one AI-sounding word she wrote herself, one hyphen, one three-item-list pattern); the old-skill notes cleared by her sign-off",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 679,
+   "kind": "step",
+   "text": "Finalise",
+   "who": "host",
+   "step": 5,
+   "links": []
+  },
+  {
+   "t": 680,
+   "kind": "say",
+   "text": "Step 5 of 5: Finalise\n\nThank you. Your answers changed no line on the page: everything stays as your resume has it, the two unclear numbers stay out, and the requirements you said no to go on the list of what the resume does not show. The OpenAI AI is taking one last blind look at the finished version now, with your confirmed answers beside it; about a minute.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 680,
+   "kind": "ask",
+   "text": "Take a last look at the signed-off resume as the hiring manager, with her confirmed answers, and check each claim against her material.",
+   "who": "host",
+   "to": "codex",
+   "label": "Final look",
+   "files": [
+    "p4_final.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 806,
+   "kind": "reply",
+   "text": "Screen decision still \"No\", for lack of \"production software engineering experience\"; \"no line warrants MORE THAN THE MATERIAL\". Seven optional fixes: trim the skills lists, move Skills below Experience, \"using AWS S3 and AWS EC2\", \"analysis time\", restore \"instrumental in advocating for and facilitating policy change\", and cut the pandemic project.",
+   "who": "codex",
+   "d": 126,
+   "files": [
+    "p4_final_reply_codex.md.txt"
+   ],
+   "links": [
+    "B22"
+   ]
+  },
+  {
+   "t": 806,
+   "kind": "say",
+   "text": "Step 5 of 5: Finalise\n\nYour resume, with your name and contact details back in, is at .tribunal/final.md.\n\nThe last blind look found no line that claims more than you told me. It suggested seven optional changes. I dropped one and a half: moving Skills below Experience, which would hide your tools from a quick scan, and changing your \"analyzing time\" to its own wording. The six that survived:\n1. Programming languages: keep only Python and SQL.\n2. Databases: put MS SQL Server first and keep only the ones you'd want to discuss in an interview.\n3. Analytics: keep Excel and Tableau and cut Power BI, SPSS and Alteryx, so the page reads less like an analytics profile.\n4. \"Designed and tested over 30 ML models on AWS S3 and AWS EC2\": say \"using AWS S3 and AWS EC2\", as your resume does.\n5. The 100+ SQL queries bullet: put back your fuller wording, \"reports instrumental in advocating for and facilitating policy change\".\n6. Cut the pandemic impact analysis project, to give the Python and Solutions Architect work more room.\n\nIs it final? Tell me which of these to apply, or say it's final as it is, and whether you want a plain-text copy, a PDF or a Word file.",
+   "who": "host",
+   "stop": "Stop 3",
+   "links": [
+    "B13",
+    "L13",
+    "B22",
+    "L10"
+   ]
+  },
+  {
+   "t": 829,
+   "kind": "user",
+   "text": "Yes, it's final. Markdown is fine.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 847,
+   "kind": "check",
+   "text": "Final: 0 errors, 9 warnings (five line-length, one AI-sounding word she wrote herself, one hyphen, one three-item-list pattern); 508 words, one page",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 847,
+   "kind": "say",
+   "text": "Step 5 of 5: Finalise\n\nDone. Your resume is .tribunal/final.md, a plain-text copy you can paste into Word or Google Docs and give heading styles. It is about 508 words, so it fits one page, and the final check found no errors. None of the optional changes were applied, as you said it's final as it is.\n\nWhat this job asks for that the resume does not show:\n- 4+ years as an engineer shipping production systems\n- Building or deploying AI agents or LLM-powered tools (your Python automation counts as workflow automation, but not this)\n- A second language from Ruby, Node.js or Next.js alongside Python\n- Backend debugging, tracing issues across services, and working across several codebases at once\n- Cloud deployment, monitoring and basic DevOps beyond training models on AWS and GCP\n- Using AI tools in your own coding\n- Custom demos or proofs of concept for customers, Stripe or payments experience, and Salesforce or Gong integrations\n\nQuestions an interviewer is likely to ask, so you can prepare:\n1. For the PDF invoice automation, what did your Python code do, and how was the 80% cut in data entry time measured? (Tests how much you built yourself.)\n2. In the SQL Server and Tableau work, what did you do and what did the IT team do? (Tests your own part in a team result.)\n3. What did \"accuracy\" mean in the basketball video analysis, and what produced the 14% gain and the 25% runtime cut? (Tests whether you can explain your numbers.)\n4. How was the news classifier's 0.9916 F1-score tested, and how did you rule out duplicate articles between training and test data? (Tests how carefully you evaluate models.)\n5. How did the Tableau dashboards lead to annual savings of 800K rupees, and who worked that figure out? (Tests the link between your work and the result.)\n\nSave what you told me (your resume, your own words and the facts you confirmed) on this computer, so your next job needs fewer questions? It stays in ~/.resume-tribunal/, goes nowhere else, and you can delete the folder any time. I can also delete the working files in .tribunal/ if you'd like.",
+   "who": "host",
+   "links": [
+    "B4",
+    "L5",
+    "B6",
+    "B17"
+   ]
+  },
+  {
+   "t": 847,
+   "kind": "user",
+   "text": "No thanks.",
+   "who": "user",
+   "links": []
+  }
+ ],
+ "lanes": [
+  [
+   "host",
+   0,
+   6,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   6,
+   30,
+   "Reading",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   30,
+   30,
+   "Stop 1",
+   1,
+   "Waiting for Sofia"
+  ],
+  [
+   "host",
+   30,
+   53,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "codex",
+   53,
+   135,
+   "Draft",
+   0,
+   "Codex is working on the draft"
+  ],
+  [
+   "agy",
+   53,
+   146,
+   "Draft",
+   0,
+   "Gemini is working on the draft"
+  ],
+  [
+   "host",
+   146,
+   151,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "codex",
+   151,
+   248,
+   "Critique",
+   0,
+   "Codex is working on the critique"
+  ],
+  [
+   "host",
+   248,
+   253,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "claude",
+   253,
+   402,
+   "Merge",
+   0,
+   "Fresh Claude is working on the merge"
+  ],
+  [
+   "host",
+   402,
+   415,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   415,
+   415,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   415,
+   416,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "codex",
+   416,
+   549,
+   "Review",
+   0,
+   "Codex is working on the review"
+  ],
+  [
+   "host",
+   549,
+   579,
+   "Applying fixes",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   579,
+   579,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   579,
+   607,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   607,
+   666,
+   "Stop 2",
+   1,
+   "Waiting for Sofia"
+  ],
+  [
+   "host",
+   666,
+   667,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   667,
+   679,
+   "Sign-off",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   679,
+   679,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   679,
+   680,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "codex",
+   680,
+   806,
+   "Final look",
+   0,
+   "Codex is working on the final look"
+  ],
+  [
+   "user",
+   806,
+   829,
+   "Stop 3",
+   1,
+   "Waiting for Sofia"
+  ],
+  [
+   "host",
+   829,
+   847,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   847,
+   847,
+   "",
+   0,
+   ""
+  ]
+ ],
+ "before": [
+  {
+   "k": "name",
+   "tx": "Sofia Martinez"
+  },
+  {
+   "k": "contact",
+   "tx": "Seattle, WA | sofia.martinez@example.com | (206) 555-0172",
+   "id": "L24"
+  },
+  {
+   "k": "h2",
+   "tx": "PROFESSIONAL EXPERIENCE"
+  },
+  {
+   "k": "p",
+   "tx": "Large cloud provider - Solutions Architect Intern – Data Science; USA May 2023 – Aug 2023",
+   "why": "Sofia's employer, title and dates are unchanged, set out as a company line and a title line with one date style.",
+   "id": "L1",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed and implemented real time video analysis of basketball shot to provide shot and posture analysis of the shooter with",
+   "why": "The same result and models, worded more plainly.",
+   "id": "L4",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "accuracy of 76% by object detection and image classification using CNN, Yolov7 models",
+   "id": "B4",
+   "s": "cut"
+  },
+  {
+   "k": "bul",
+   "tx": "Designed and tested over 30 ML models using AWS S3, AWS EC2 to find the best model, resulted in increasing the accuracy by",
+   "why": "The same numbers, with the grammar of the result clause fixed.",
+   "id": "L5",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "14% and decreasing the runtime by 25%",
+   "id": "B6",
+   "s": "cut"
+  },
+  {
+   "k": "bul",
+   "tx": "Created AWS QuickSight dashboards to closely monitor KPIs, including performance metrics, runtime and computational",
+   "why": "The 20% increase in overall model efficiency came out because Sofia could not say what it measured.",
+   "id": "L6",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "resources, resulting in a 20% increase in overall model efficiency",
+   "id": "B8",
+   "s": "cut"
+  },
+  {
+   "k": "bul",
+   "tx": "Learned the company's sales procedures and tools available to assist customers by shadowing meetings between Solutions Architects and",
+   "why": "Leads with the shadowing, which shows her time close to Solutions Architects and customers, the team this job serves.",
+   "id": "L7",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "4 different customers",
+   "id": "B10",
+   "s": "cut"
+  },
+  {
+   "k": "p",
+   "tx": "University school of public health – Graduate Research Assistant; USA Nov 2022 – Dec 2023",
+   "why": "Same employer, title and dates, in the standard layout; this role now comes first because it ended last.",
+   "id": "L2",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Implemented SQL queries to extract and update research expenditures of departments, exported the results as Excel sheets from",
+   "why": "The same facts, tightened to read at a glance.",
+   "id": "L10",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "SSMS, which reduced analyzing time by 40%",
+   "id": "B13",
+   "s": "cut"
+  },
+  {
+   "k": "bul",
+   "tx": "Collaborated with the IT team to implement secure and reliable data management and reporting systems using SQL Server and",
+   "why": "The same claim, keeping that it was shared with the IT team.",
+   "id": "L9",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Tableau, resulting in a 70% reduction in report generation time",
+   "id": "B15",
+   "s": "cut"
+  },
+  {
+   "k": "bul",
+   "tx": "Produced insightful monthly expenditure reports and dashboards using Excel and Tableau, contributing to a 20% improvement",
+   "why": "The word \"insightful\" went; the result and the word \"contributing\" stay.",
+   "id": "L11",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "in resource allocation and budget forecasting accuracy",
+   "id": "B17",
+   "s": "cut"
+  },
+  {
+   "k": "bul",
+   "tx": "Automated data collection by extracting information from PDF invoices and exporting relevant data to Excel sheets using Python,",
+   "why": "Her clearest workflow automation moved to the top of her latest role, result first.",
+   "id": "L8",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "resulting in an 80% reduction in data entry time",
+   "id": "B19",
+   "s": "cut"
+  },
+  {
+   "k": "p",
+   "tx": "Policy research nonprofit - Data Analyst; India Jun 2020 - Jul 2022",
+   "why": "Same employer, title and dates, in the standard layout.",
+   "id": "L3",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed and executed 100+ complex SQL queries to analyze Federal and State budgets data in departments such as",
+   "why": "The same queries and departments, with a stray word removed.",
+   "id": "L13",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Agriculture, Education, Health using, to create data-driven reports instrumental in advocating for and facilitating policy change",
+   "id": "B22",
+   "s": "cut"
+  },
+  {
+   "k": "bul",
+   "tx": "Designed Tableau dashboards to monitor KPIs and track expenditure, resulting in improved budget allocation, annual savings of",
+   "why": "The same three results, reworded so the line does not end on a trailing clause.",
+   "id": "L14",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "800K rupees, and enhanced stakeholder retention",
+   "id": "B24",
+   "s": "cut"
+  },
+  {
+   "k": "bul",
+   "tx": "Collaborated to publish monthly reports using Excel and analytical writing, resulted in doubled publications, heightened",
+   "why": "Cut to keep the page on the engineering and automation work this job asks for.",
+   "s": "cut",
+   "id": "B25"
+  },
+  {
+   "k": "p",
+   "tx": "awareness of the organization's research and policy change strategies, and a 45% increase in donor funds",
+   "id": "B26",
+   "s": "cut"
+  },
+  {
+   "k": "bul",
+   "tx": "Automated web scraping using Python to collect data for monthly and annual reports, resulting in reduction of over 100 hours in",
+   "why": "Her Python automation moved to the top of this role, keeping \"over 100 hours\".",
+   "id": "L12",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "manual data collection time",
+   "id": "B28",
+   "s": "cut"
+  },
+  {
+   "k": "h2",
+   "tx": "PROJECTS"
+  },
+  {
+   "k": "role",
+   "tx": "Pandemic impact analysis | SQL & Tableau May 2023",
+   "id": "L26",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Analyzed a 313k records of covid 19 dataset to assess the global impact of the pandemic, examining mortality rates, infection",
+   "why": "The analysis and the two Tableau dashboards are now one line, to save space.",
+   "id": "L15",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "rates, vaccination coverage, hospitalization trends and economic indicators across multiple countries using SQL queries",
+   "id": "B31",
+   "s": "cut"
+  },
+  {
+   "k": "bul",
+   "tx": "Created two interactive Tableau dashboards to effectively communicate key insights from the analysis",
+   "why": "Folded into the pandemic analysis line above.",
+   "s": "cut",
+   "id": "B32"
+  },
+  {
+   "k": "role",
+   "tx": "News authenticity classifier | Python Apr 2023",
+   "id": "L27",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Classified news as real or fake with an f1-score of 0.9916 using Natural Language Processing (NLP) algorithms such as DeBERTa,",
+   "why": "The same score and models, shortened to fit one line.",
+   "id": "L16",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "RoBERTa, DistilBERT, with RoBERTa having highest f1-score",
+   "id": "B35",
+   "s": "cut"
+  },
+  {
+   "k": "bul",
+   "tx": "Trained the models using AWS EC2 and GCP compute engines which reduced the runtime by 80%",
+   "why": "The same claim, lightly reworded.",
+   "id": "L17",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Crop leaf disease detector | Python Dec 2022",
+   "id": "L28",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Predicted diseased plants with 96.8% accuracy by training 12K images with CNN and pre-trained models (Resnet50, VGG16,",
+   "why": "The same accuracy and models, worded more plainly.",
+   "id": "L18",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Densenet121)",
+   "id": "B39",
+   "s": "cut"
+  },
+  {
+   "k": "bul",
+   "tx": "Built an interactive web application to detect diseased cotton plants, resulting in 100% increase in user interaction",
+   "why": "The 100% increase in user interaction came out because Sofia could not say what it measured.",
+   "id": "L19",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Basketball shot-selection model | Python Jun 2022",
+   "why": "The least relevant project for an AI engineering job was cut; its MLP and Random Forest classifiers stay in Skills.",
+   "s": "cut",
+   "id": "B41"
+  },
+  {
+   "k": "bul",
+   "tx": "Predicted shots on the player's career with 67% accuracy by building MLP classifier and Random Forest classifier",
+   "why": "Cut with the basketball shot-selection project.",
+   "s": "cut",
+   "id": "B42"
+  },
+  {
+   "k": "bul",
+   "tx": "Determined strengths and weakness from opponent's perspective in strategizing against the player in the 2 out of 5 final",
+   "why": "Cut with the basketball shot-selection project.",
+   "s": "cut",
+   "id": "B43"
+  },
+  {
+   "k": "p",
+   "tx": "appearances by conducting effective EDA analysis",
+   "id": "B44",
+   "s": "cut"
+  },
+  {
+   "k": "h2",
+   "tx": "EDUCATION"
+  },
+  {
+   "k": "p",
+   "tx": "Private university USA, United States",
+   "why": "The university now sits on the degree line below it.",
+   "s": "cut",
+   "id": "B45"
+  },
+  {
+   "k": "p",
+   "tx": "Data Science Masters Candidate (CGPA: 3.95/4) Dec 2023",
+   "why": "Kept as \"Candidate\" with its date, as Sofia asked; only the apostrophe was added.",
+   "id": "L20",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Relevant Coursework: Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data visualization",
+   "why": "The same courses, with NLP shortened to its initials.",
+   "id": "L21",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Engineering institute, India",
+   "why": "The institute now sits on the degree line below it.",
+   "s": "cut",
+   "id": "B48"
+  },
+  {
+   "k": "p",
+   "tx": "Bachelor of Engineering, Electronics and Communication (CGPA: 8.66/10) May 2020",
+   "id": "B49",
+   "s": "cut"
+  },
+  {
+   "k": "h2",
+   "tx": "SKILLS"
+  },
+  {
+   "k": "bul",
+   "tx": "Programming languages: Python, SQL, R, SAS, HTML, CSS",
+   "id": "L25"
+  },
+  {
+   "k": "bul",
+   "tx": "Database: MySQL, MS SQL Server, NoSQL – MongoDB, Hive, Hadoop, HDFS",
+   "why": "Her databases, with Snowflake and Databricks moved here from the old \"Advance knowledge\" line; she confirmed all her skills at the sign-off.",
+   "id": "L22",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Advance knowledge: Excel, Tableau, Microsoft Power BI, SPSS, Linux, AWS, Azure, GCP, Snowflake, Alteryx, Databricks",
+   "why": "The old catch-all line was split by kind of tool; she confirmed all these skills at the sign-off.",
+   "id": "L23",
+   "s": "rw"
+  }
+ ],
+ "after": [
+  {
+   "k": "name",
+   "tx": "Sofia Martinez"
+  },
+  {
+   "k": "contact",
+   "tx": "Seattle, WA | sofia.martinez@example.com | (206) 555-0172",
+   "id": "L24"
+  },
+  {
+   "k": "h2",
+   "tx": "Skills"
+  },
+  {
+   "k": "bul",
+   "tx": "Programming languages: Python, SQL, R, SAS, HTML, CSS",
+   "id": "L25"
+  },
+  {
+   "k": "bul",
+   "tx": "Cloud and systems: AWS (S3, EC2, QuickSight), GCP, Azure, Linux",
+   "why": "AWS, GCP, Azure and Linux from her old skills list, with the AWS services her bullets name.",
+   "from": "old resume",
+   "s": "new",
+   "id": "A3"
+  },
+  {
+   "k": "bul",
+   "tx": "Data platforms and databases: Snowflake, Databricks, MySQL, MS SQL Server, MongoDB, Hive, Hadoop, HDFS",
+   "why": "Her databases, with Snowflake and Databricks moved here from the old \"Advance knowledge\" line; she confirmed all her skills at the sign-off.",
+   "from": "sign-off",
+   "id": "L22",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Machine learning: NLP (DeBERTa, RoBERTa, DistilBERT), computer vision (CNN, YOLOv7, ResNet50, VGG16, DenseNet121), MLP and Random Forest classifiers",
+   "why": "The models named in her bullets, grouped; she agreed at the sign-off that her CNN and YOLOv7 work is fairly called computer vision.",
+   "from": "sign-off",
+   "s": "new",
+   "id": "A5"
+  },
+  {
+   "k": "bul",
+   "tx": "Analytics: Excel, Tableau, Microsoft Power BI, SPSS, Alteryx",
+   "why": "The old catch-all line was split by kind of tool; she confirmed all these skills at the sign-off.",
+   "from": "sign-off",
+   "id": "L23",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Experience"
+  },
+  {
+   "k": "role",
+   "tx": "Graduate Research Assistant | **University school of public health, USA** | Nov 2022 - Dec 2023",
+   "why": "Same employer, title and dates, in the standard layout; this role now comes first because it ended last.",
+   "from": "old resume",
+   "id": "L2",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Reduced data entry time by 80% by automating extraction of PDF invoice data into Excel sheets with Python",
+   "why": "Her clearest workflow automation moved to the top of her latest role, result first.",
+   "from": "old resume",
+   "id": "L8",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Collaborated with the IT team to implement secure and reliable data management and reporting systems in SQL Server and Tableau, which cut report generation time by 70%",
+   "why": "The same claim, keeping that it was shared with the IT team.",
+   "from": "old resume",
+   "id": "L9",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Implemented SQL queries to extract and update departments' research expenditures and exported the results from SSMS as Excel sheets; analyzing time fell by 40%",
+   "why": "The same facts, tightened to read at a glance.",
+   "from": "old resume",
+   "id": "L10",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Produced monthly expenditure reports and dashboards in Excel and Tableau, contributing to a 20% improvement in resource allocation and budget forecasting accuracy",
+   "why": "The word \"insightful\" went; the result and the word \"contributing\" stay.",
+   "from": "old resume",
+   "id": "L11",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Solutions Architect Intern – Data Science | **Large cloud provider, USA** | May 2023 - Aug 2023",
+   "why": "Sofia's employer, title and dates are unchanged, set out as a company line and a title line with one date style.",
+   "from": "old resume",
+   "id": "L1",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed real-time basketball video analysis that assessed shooters' shots and posture with 76% accuracy, using object detection and image classification with CNN and YOLOv7 models",
+   "why": "The same result and models, worded more plainly.",
+   "from": "old resume",
+   "id": "L4",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Designed and tested over 30 ML models on AWS S3 and AWS EC2 to find the best model, which increased accuracy by 14% and decreased runtime by 25%",
+   "why": "The same numbers, with the grammar of the result clause fixed.",
+   "from": "old resume",
+   "id": "L5",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Created AWS QuickSight dashboards to monitor KPIs such as performance metrics, runtime and computational resources",
+   "why": "The 20% increase in overall model efficiency came out because Sofia could not say what it measured.",
+   "from": "old resume",
+   "id": "L6",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Shadowed meetings between Solutions Architects and 4 different customers to learn the company's sales procedures and the tools available to assist customers",
+   "why": "Leads with the shadowing, which shows her time close to Solutions Architects and customers, the team this job serves.",
+   "from": "old resume",
+   "id": "L7",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Data Analyst | **Policy research nonprofit, India** | Jun 2020 - Jul 2022",
+   "why": "Same employer, title and dates, in the standard layout.",
+   "from": "old resume",
+   "id": "L3",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Saved over 100 hours of manual data collection by automating web scraping in Python for monthly and annual reports",
+   "why": "Her Python automation moved to the top of this role, keeping \"over 100 hours\".",
+   "from": "old resume",
+   "id": "L12",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed and executed 100+ complex SQL queries on Federal and State budget data for departments such as Agriculture, Education and Health, for data-driven reports used in advocating for policy change",
+   "why": "The same queries and departments, with a stray word removed.",
+   "from": "old resume",
+   "id": "L13",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Designed Tableau dashboards to monitor KPIs and track expenditure, which resulted in improved budget allocation, annual savings of 800K rupees and enhanced stakeholder retention",
+   "why": "The same three results, reworded so the line does not end on a trailing clause.",
+   "from": "old resume",
+   "id": "L14",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Projects"
+  },
+  {
+   "k": "role",
+   "tx": "**News authenticity classifier | Python | Apr 2023**",
+   "id": "L27",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Classified news as real or fake with an F1-score of 0.9916 using DeBERTa, RoBERTa and DistilBERT; RoBERTa scored highest",
+   "why": "The same score and models, shortened to fit one line.",
+   "from": "old resume",
+   "id": "L16",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Trained the models on AWS EC2 and GCP compute engines, which reduced runtime by 80%",
+   "why": "The same claim, lightly reworded.",
+   "from": "old resume",
+   "id": "L17",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "**Crop leaf disease detector | Python | Dec 2022**",
+   "id": "L28",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Predicted diseased plants with 96.8% accuracy by training on 12K images with CNN and pre-trained models (ResNet50, VGG16, DenseNet121)",
+   "why": "The same accuracy and models, worded more plainly.",
+   "from": "old resume",
+   "id": "L18",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Built an interactive web application to detect diseased cotton plants",
+   "why": "The 100% increase in user interaction came out because Sofia could not say what it measured.",
+   "from": "old resume",
+   "id": "L19",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "**Pandemic impact analysis | SQL & Tableau | May 2023**",
+   "id": "L26",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Analyzed 313k records of a COVID-19 dataset with SQL queries to assess mortality, infection, vaccination, hospitalization and economic indicators across multiple countries, and built two interactive Tableau dashboards",
+   "why": "The analysis and the two Tableau dashboards are now one line, to save space.",
+   "from": "old resume",
+   "id": "L15",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Education"
+  },
+  {
+   "k": "role",
+   "tx": "Data Science Master's Candidate (CGPA: 3.95/4) | **Private university USA, United States** | Dec 2023",
+   "why": "Kept as \"Candidate\" with its date, as Sofia asked; only the apostrophe was added.",
+   "from": "old resume",
+   "id": "L20",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Relevant coursework: Deep Learning, NLP, Data Mining, Data Warehousing, Data Visualization",
+   "why": "The same courses, with NLP shortened to its initials.",
+   "from": "old resume",
+   "id": "L21",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Bachelor of Engineering, Electronics and Communication (CGPA: 8.66/10) | **Engineering institute, India** | May 2020",
+   "id": "A31",
+   "s": "new"
+  }
+ ]
+}

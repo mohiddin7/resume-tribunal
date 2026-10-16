@@ -9,6 +9,7 @@ this as it works; export.py turns the log into the page and folder for the examp
   record.py DIR ask codex --label Draft --file p1.txt "Write a resume for this job from these files only."
   record.py DIR reply codex --file p1_reply_codex.md "Here's my draft. It kept the $2.4M budget line."
   record.py DIR check "0 errors, 6 warnings"               a check_resume.py result
+  record.py DIR ask chatgpt --file p4.txt "..."            manual mode: a card the user pastes into ChatGPT (or gemini)
   record.py DIR model host "Claude Opus 5.5"               which model a participant ran (once each)
 
 DIR is the .tribunal folder. TEXT "-" reads the text from standard input. Standard library only.
@@ -20,7 +21,7 @@ import sys
 import time
 
 KINDS = ("step", "say", "user", "note", "ask", "reply", "check", "model")
-SEATS = ("codex", "agy", "claude")
+SEATS = ("codex", "agy", "claude", "chatgpt", "gemini")  # chatgpt and gemini: apps the user pastes into, in manual mode
 
 
 def event(a):

@@ -2,8 +2,10 @@
  "slug": "teacher-instructional-designer-quick",
  "title": "Biology teacher applying for an instructional designer job",
  "mode": "Quick review",
+ "reach": "Auto",
  "facts": [
   "Fictional candidate",
+  "Auto mode: the other AIs ran by themselves",
   "2 AIs from 2 companies",
   "7 minutes",
   "Invented job posting"
@@ -271,7 +273,7 @@
    63,
    "Reading",
    0,
-   "Host: reading her resume, the posting and her own words, and looking for other AIs on this computer"
+   "The host is working"
   ],
   [
    "user",
@@ -295,7 +297,7 @@
    159,
    "Drafting",
    0,
-   "Host: writing its own draft from her resume and own words, following the draft rules and layout"
+   "The host is working"
   ],
   [
    "check",
@@ -327,7 +329,7 @@
    312,
    "Applying",
    0,
-   "Host: applying the review's fixes that match her material and holding the two that need facts from her"
+   "The host is working"
   ],
   [
    "host",
@@ -335,7 +337,7 @@
    336,
    "Voice pass",
    0,
-   "Host: tightening the three lines the checker says wrap by a few words, keeping every fact"
+   "The host is working"
   ],
   [
    "check",
@@ -367,7 +369,7 @@
    405,
    "Sign-off",
    0,
-   "Host: writing her answers into the confirmed facts and the not-true list, then working them into the resume"
+   "The host is working"
   ],
   [
    "check",

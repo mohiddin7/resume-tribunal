@@ -1,0 +1,994 @@
+{
+ "slug": "forward-deployed-engineer-quick",
+ "title": "IT specialist and ML engineer applying for a forward deployed engineer role",
+ "mode": "Quick review",
+ "reach": "Auto",
+ "facts": [
+  "Real resume, shared with consent",
+  "Auto mode: the other AIs ran by themselves",
+  "2 AIs from 2 companies",
+  "8 minutes",
+  "Real public job posting"
+ ],
+ "note": "",
+ "candidate": "Daniel",
+ "end": 470,
+ "who": {
+  "user": {
+   "n": "Daniel",
+   "s": "D",
+   "role": "the candidate"
+  },
+  "host": {
+   "n": "Host",
+   "s": "H",
+   "role": "AI 1, Claude Opus 5.5"
+  },
+  "codex": {
+   "n": "Codex",
+   "s": "C",
+   "role": "AI 2, OpenAI, GPT-6 Astra (high effort)"
+  },
+  "check": {
+   "n": "Checker",
+   "s": "✓",
+   "role": "check_resume.py"
+  }
+ },
+ "steps": [
+  {
+   "n": 1,
+   "name": "Setup",
+   "t": 0
+  },
+  {
+   "n": 2,
+   "name": "Draft",
+   "t": 90
+  },
+  {
+   "n": 3,
+   "name": "Review and sign-off",
+   "t": 121
+  },
+  {
+   "n": 4,
+   "name": "Finalise",
+   "t": 444
+  }
+ ],
+ "events": [
+  {
+   "t": 0,
+   "kind": "step",
+   "text": "Setup",
+   "who": "host",
+   "step": 1,
+   "links": []
+  },
+  {
+   "t": 0,
+   "kind": "note",
+   "text": "Reading the resume, the posting and the skill's seat guide",
+   "who": "host",
+   "label": "Reading",
+   "links": []
+  },
+  {
+   "t": 42,
+   "kind": "say",
+   "text": "Step 1 of 4: Setup\n\nHere is how this works:\n\n```\nYou give:  your resume, the job posting, a few sentences in your own words\n   ↓\nI write a draft, from your facts only\n   ↓\nA second AI, from a different company, checks it without knowing who wrote it\n   ↓\nAutomatic checks, then you approve every changed line\n   ↓\nYour resume, the job requirements it does not show, and likely interview questions\n```\n\nIt runs by itself; you answer a few questions along the way.\n\n**What I read from your resume** (tell me if anything is wrong):\n- Technical Specialist, Private university, USA, October 2023 to Present\n- Machine Learning Engineer, AI startup, India, May 2023 to August 2023\n- Research Assistant, Engineering university (Computer Science and Engineering), August 2022 to May 2023\n- Education: MS in Computer Science, Private university, USA (2023 to 2025); BTech in Computer Science, Engineering university, India (2019 to 2023)\n\nThe job is a senior/staff Forward Deployed Engineer at Figma in the United States, asking for 5+ years of shipping production software and hands-on work with design systems. Your resume shows about three years, so I'll make the strongest true case and list plainly what it can't show.\n\n**Two questions:**\n1. Pick two or three things this job asks for that you have really done (for example working with a customer's or another team's engineers, integrating an API, debugging a toolchain, or building with AI tools). For each, tell me one time you did it: what it was, what you did, what changed. Plain sentences; dictating is fine. These details are what set you apart from other applicants. If you skip this, I'll use your resume's wording as your voice.\n2. Do you have links to add: LinkedIn, GitHub, a portfolio, project pages, papers or your AWS certificate page? Most recruiters look for LinkedIn.\n\n**My plan:**\n1. Quick review: I write the draft and one AI from another company checks it, about 6 minutes in all. The alternative is a full council (three AIs each draft and critique each other) for about 15 minutes and five times the AI usage; I'm not suggesting it here because the only Google model available to me is a fast one, a tier below the others.\n2. Role research off, final wording polished by me, a plain-text copy while we work, and a PDF or Word file when it's final.\n\n**Consent.** I've hidden your name and contact details. They come back at the end. The second AI will be OpenAI's Codex running GPT-6 Astra (Google's Antigravity running Gemini 3.8 Flash would join only if you chose the full council). The working files are in `fde-auto-quick/.tribunal/`. This text, including your employers, job history and the pages your links point to, will go to OpenAI's Codex under its terms and your account settings there. Some keep their own history, and the text can still identify you. Leave out anything confidential to an employer, and check whether this employer allows AI help with applications.\n\nAnswer the questions, or say \"yes\" to take the defaults and go ahead.",
+   "who": "host",
+   "stop": "Stop 1",
+   "links": []
+  },
+  {
+   "t": 42,
+   "kind": "user",
+   "text": "Quick review, please. Yes to the defaults, go ahead. No links.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 90,
+   "kind": "step",
+   "text": "Draft",
+   "who": "host",
+   "step": 2,
+   "links": []
+  },
+  {
+   "t": 91,
+   "kind": "say",
+   "text": "Step 2 of 4: Draft\n\nThanks, going ahead with a quick review. You gave no own-words stories, so I'll keep your resume's wording as your voice. I'm writing the draft now from your resume only.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 91,
+   "kind": "note",
+   "text": "Writing its own draft from Daniel's resume, leading with his Python, API and AWS work",
+   "who": "host",
+   "label": "Drafting",
+   "links": []
+  },
+  {
+   "t": 121,
+   "kind": "check",
+   "text": "0 errors, 16 warnings (three old-skill lines, two wording, eight long-line, lists of three)",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 121,
+   "kind": "step",
+   "text": "Review and sign-off",
+   "who": "host",
+   "step": 3,
+   "links": []
+  },
+  {
+   "t": 127,
+   "kind": "say",
+   "text": "Step 3 of 4: Review and sign-off\n\nThe draft is written (491 words, one page) and passed the automatic checks with no errors. The second AI is now reading it as the hiring manager would, without knowing who wrote it. This takes a few minutes.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 127,
+   "kind": "ask",
+   "text": "Review this resume as the hiring manager for the job, check every claim against the candidate's material, and suggest up to eight fixes and some interview questions.",
+   "who": "host",
+   "to": "codex",
+   "label": "Review",
+   "files": [
+    "p4.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 142,
+   "kind": "note",
+   "text": "Listing the job's requirements the resume cannot show while the review runs",
+   "who": "host",
+   "label": "Notes",
+   "links": []
+  },
+  {
+   "t": 236,
+   "kind": "reply",
+   "text": "It would not phone him yet: the resume reads as \"an IT operations/support specialist with earlier junior ML engineering experience\". Its claim check found every line supported and none MORE THAN THE MATERIAL; of its eight fixes, five need facts only he has, such as how the percentages were measured.",
+   "who": "codex",
+   "d": 109,
+   "files": [
+    "p4_reply_codex.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 236,
+   "kind": "note",
+   "text": "Applying the review's wording fixes and holding the five that need facts from Daniel",
+   "who": "host",
+   "label": "Applying",
+   "links": []
+  },
+  {
+   "t": 267,
+   "kind": "check",
+   "text": "0 errors, 12 warnings (three old-skill lines, two of his own words the checker marks, one heading word, six long-line)",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 400,
+   "kind": "say",
+   "text": "Step 3 of 4: Review and sign-off\n\nThe second AI read the draft as the hiring manager. It checked every line against your resume and found nothing that claims more than you wrote. Its honest verdict: it would not phone you yet, because the page reads as IT support with a short early stint of ML engineering, while the job wants 5+ years of shipping software inside customers' teams. Better wording can't close that gap; only facts you have and haven't told me can.\n\n**Wording I changed (no facts changed):**\n- A new two-line summary that opens with your FastAPI API on AWS ECS and your PowerShell automation, then your current role.\n- Shorter bullets: \"Pioneered an advanced\" became \"Built\", \"Conducted extensive research in NLP\" became \"Researched NLP methods\", \"over million images\" became \"over a million images\".\n- Your current-job bullets are in the present tense (\"Lead\", \"Provide\"), which assumes you still do that work.\n- Cut to save space: the grading bullet (50 students), \"improving incident management\" on the ticket project, and \"Microsoft Azure (In Progress)\" from Skills (it stays under Certifications).\n- The draft is in `fde-auto-quick/.tribunal/resume.md` (482 words, one page).\n\n**Please check these facts.** Are all of these true, and could you explain each in an interview? Tell me any to fix. If you don't know a number, I'll leave it out, so please don't estimate.\n1. **Your numbers.** Can you say how each was measured: 30% better operational efficiency and 25% better service quality (imaging projects), 20% faster issue resolution, 95% of critical systems down under 2 hours, 15% fewer process inefficiencies, and 30% better deployment efficiency for the FastAPI API? For any you can't explain, I'll take the number out and keep the rest of the line.\n2. **The API.** It says \"scalable\". Do you know how much traffic it handled or how it scaled? If not, is \"scalable\" still fair?\n3. **The two projects.** Were the ticket automation and the device imaging projects done in your Technical Specialist job? If so, I'll move them under that job.\n4. **Azure certification.** Is Microsoft Azure Machine Learning still in progress as of October 2026?\n5. **Older skills.** Nothing else on the page shows these, so are they still current and could you discuss each: AWS IAM, RDS and S3; Active Directory, VMware, Remedy; Windows, Linux, macOS; ITIL; stakeholder engagement?\n6. **Anything the job asks for that you've done but your resume doesn't say?** For example: git or CI pipelines, TypeScript or JavaScript, AI coding tools, MCP or prompt engineering, design systems or design-to-code work, SSO or security reviews, or working directly with a customer's or another team's engineers. Who were the \"cross-functional teams\" in your current job? One true sentence each is plenty.\n\nAnswer these and I'll finish the resume.",
+   "who": "host",
+   "stop": "Stop 2",
+   "links": [
+    "L4",
+    "B7",
+    "L9",
+    "L10"
+   ]
+  },
+  {
+   "t": 433,
+   "kind": "user",
+   "text": "I confirm everything in my original resume is true as written.\n\n1. They're as my resume says. I can't add more detail on how each was measured, so keep them as my resume has them.\n2. I don't know the traffic. Keep the wording my resume uses.\n3. Leave the projects where my resume has them.\n4. Leave it as my resume has it.\n5. They're all on my original resume and true, so keep the ones that fit.\n6. No, nothing to add.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 433,
+   "kind": "note",
+   "text": "Writing his answers into the sign-off file and finishing the resume",
+   "who": "host",
+   "label": "Sign-off",
+   "links": []
+  },
+  {
+   "t": 444,
+   "kind": "check",
+   "text": "0 errors, 9 warnings (two of his own words the checker marks, seven long-line)",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 444,
+   "kind": "step",
+   "text": "Finalise",
+   "who": "host",
+   "step": 4,
+   "links": []
+  },
+  {
+   "t": 457,
+   "kind": "check",
+   "text": "Final check: 0 errors, 9 warnings (two of his own words the checker marks, seven long-line), 487 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 457,
+   "kind": "say",
+   "text": "Step 4 of 4: Finalise\n\nThanks. I've kept every number, \"scalable\", the projects and the Azure line exactly as your resume has them, and kept all your older skills, since they fit this job. The finished resume, with your name and contact details back in, is at `fde-auto-quick/.tribunal/final.md`. It passes the automatic checks with no errors and is 487 words, one page.\n\nTwo warnings remain, both on your own words: \"cross-functional\" and \"streamlined\" are words screening readers often see in AI-written resumes. I left them because they're yours. Seven lines run just past one line; that only matters for a PDF.\n\nWant one more blind look before it's final? About a minute.\n\nIs it final? Tell me any change, or say it's final and whether you want it as a PDF, a Word file or this plain-text copy.",
+   "who": "host",
+   "stop": "Stop 3",
+   "links": [
+    "B7",
+    "L10",
+    "L15",
+    "L32"
+   ]
+  },
+  {
+   "t": 457,
+   "kind": "user",
+   "text": "No thanks.\n\nYes, it's final. Markdown is fine.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 470,
+   "kind": "say",
+   "text": "Step 4 of 4: Finalise\n\nYour resume is done: `fde-auto-quick/.tribunal/final.md`. It's a plain-text copy; paste it into Word or Google Docs and apply heading styles if you want a formatted file.\n\n**What this job asks for that your resume doesn't show.** If any of these become true later, they are worth adding:\n- 5+ years shipping production software (the page shows about three years in all)\n- Time working inside customers' or partner teams, and building trust with their senior engineers\n- Design systems and design-to-code work: component libraries, tokens, Code Connect, Storybook, Style Dictionary\n- TypeScript or JavaScript\n- AI coding tools, MCP, agent skills, prompt engineering and evals\n- Git workflows, CI and developer-environment setup\n- Enterprise needs such as SSO, security reviews, data residency and compliance (AWS IAM and Active Directory are your nearest evidence)\n- Turning repeated customer problems into playbooks or product changes, and working with Sales or Customer Experience teams\n\n**Questions an interviewer is likely to ask about it:**\n1. For the FastAPI API, what did you build yourself, who used it, and what did you own after it went live? (Tests your own part and how far you took it.)\n2. What changed to give the 30% better deployment efficiency, and what were the before and after figures? (Tests whether you can explain the number.)\n3. Walk me through one of the 150 complex issues: what was unfamiliar, how did you find the cause, and what fixed it for good? (Tests debugging depth.)\n4. How did BERT and the CNNs fit together in the document platform, and how was the 40% faster processing measured while keeping results accurate? (Tests design understanding and measurement.)\n5. Who asked for the ticket automation, how did you handle exceptions and access permissions, and could another team run it without you? (Tests discovery and building something others can reuse.)\n\nYou told me you can't say more about how the percentages were measured, so be ready for questions 2 and 4: an honest \"that was the team's estimate\" beats a guess.\n\nSave what you told me (your resume, your own words and the facts you confirmed) on this computer, so your next job needs fewer questions? It stays in `~/.resume-tribunal/`, goes nowhere else, and you can delete the folder any time. I can also delete the working folder `fde-auto-quick/.tribunal/` now if you'd like.",
+   "who": "host",
+   "links": [
+    "L9",
+    "L16",
+    "L15",
+    "L32"
+   ]
+  },
+  {
+   "t": 470,
+   "kind": "user",
+   "text": "No thanks.",
+   "who": "user",
+   "links": []
+  }
+ ],
+ "lanes": [
+  [
+   "host",
+   0,
+   42,
+   "Reading",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   42,
+   42,
+   "Stop 1",
+   1,
+   "Waiting for Daniel"
+  ],
+  [
+   "host",
+   42,
+   91,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   91,
+   121,
+   "Drafting",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   121,
+   121,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   121,
+   127,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "codex",
+   127,
+   236,
+   "Review",
+   0,
+   "Codex is working on the review"
+  ],
+  [
+   "host",
+   236,
+   267,
+   "Applying",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   267,
+   267,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   267,
+   400,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   400,
+   433,
+   "Stop 2",
+   1,
+   "Waiting for Daniel"
+  ],
+  [
+   "host",
+   433,
+   444,
+   "Sign-off",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   444,
+   444,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   444,
+   457,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   457,
+   457,
+   "",
+   0,
+   ""
+  ],
+  [
+   "user",
+   457,
+   457,
+   "Stop 3",
+   1,
+   "Waiting for Daniel"
+  ],
+  [
+   "host",
+   457,
+   470,
+   "",
+   0,
+   "The host is working"
+  ]
+ ],
+ "before": [
+  {
+   "k": "name",
+   "tx": "Daniel Kim"
+  },
+  {
+   "k": "contact",
+   "tx": "Boston, MA | daniel.kim@example.com | (617) 555-0129",
+   "id": "L35"
+  },
+  {
+   "k": "h2",
+   "tx": "technical skills"
+  },
+  {
+   "k": "p",
+   "tx": "IT Management: Imaging & Deployment, End-User Equipment Lifecycle Management.",
+   "why": "Imaging and deployment moved into the support line, and lifecycle management is shown in his first bullet instead.",
+   "s": "cut",
+   "id": "B2"
+  },
+  {
+   "k": "p",
+   "tx": "Operating Systems: Windows, Linux, macOS.",
+   "why": "His operating systems were grouped with the IT tools he uses.",
+   "id": "L1",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "IT Solutions & Tools: Active Directory, SCCM, PowerShell, VMware, Remedy Ticketing system.",
+   "why": "His IT tools were grouped with the operating systems; PowerShell moved to the languages line.",
+   "id": "L2",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Troubleshooting & Support: ITIL, Incident Management, Problem Resolution.",
+   "why": "Kept his ITIL and support skills, adding imaging and deployment and stakeholder engagement from the lines that were folded in.",
+   "id": "L3",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Cloud Platforms: AWS (IAM, ECS, RDS, S3), Microsoft Azure (In Progress).",
+   "why": "Added the AWS Lambda, DynamoDB and Azure Logic Apps work from his bullets; Microsoft Azure (in progress) stays under Certifications instead of being listed twice.",
+   "id": "L4",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Collaboration & Communication: Cross-Functional Teams, Stakeholder Engagement.",
+   "why": "Stakeholder engagement moved to the support line, and his cross-functional work is shown in a bullet.",
+   "s": "cut",
+   "id": "B7"
+  },
+  {
+   "k": "h2",
+   "tx": "CERTIFICATIONS"
+  },
+  {
+   "k": "p",
+   "tx": "AWS Certified Developer Associate",
+   "why": "Set as a list item; no change to the certification.",
+   "id": "L5"
+  },
+  {
+   "k": "p",
+   "tx": "Microsoft Azure Machine Learning- In progress",
+   "why": "Same certification, with the status written the same way as the rest of the page; Daniel confirmed it is still in progress as his resume has it.",
+   "id": "L6",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "work experience"
+  },
+  {
+   "k": "p",
+   "tx": "Technical Specialist",
+   "why": "His job title now sits on one line with its dates, in one date style for the whole page.",
+   "id": "L7",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Private university, USA October 2023 - Present",
+   "why": "The employer and job title now read as one line with the dates, in one date style for the whole page.",
+   "id": "L8",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Led and executed IT projects for end-user equipment imaging, deployment, and lifecycle management, resulting in a 30% improvement in operational efficiency and a 25% increase in service quality.",
+   "why": "Present tense for the work he still does; the numbers stay exactly as his resume has them, which he confirmed at the sign-off.",
+   "id": "L9",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Collaborated with cross-functional teams to troubleshoot and resolve over 150 complex IT issues related to hardware and software, reducing issue resolution time by 20%.",
+   "why": "Shortened, keeping \"over 150\", the cross-functional teams and the 20% from his resume.",
+   "id": "L10",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Provided escalation support for technical problems, ensuring 95% of critical systems had minimal downtime (under 2 hours) and fast recovery.",
+   "why": "Shortened, keeping the 95%, \"minimal downtime (under 2 hours)\" and \"fast recovery\" exactly.",
+   "id": "L11",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Contributed to the design and implementation of new IT processes and systems, optimizing workflows that led to a 15% reduction in process inefficiencies and improved service delivery.",
+   "why": "Tightened the end of the line; \"Contributed to\" and the 15% stay as he wrote them.",
+   "id": "L12",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Machine Learning Engineer",
+   "why": "Job title now sits on one line with its dates.",
+   "id": "L13",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "AI startup, India May 2023 - August 2023",
+   "why": "The employer and job title now read as one line with the dates, in one date style for the whole page.",
+   "id": "L14",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Developed a multi-modal AI platform using NLP (BERT) and CV (CNNs) to automate document analysis, reducing processing time by 40%.",
+   "why": "Same facts in a shorter sentence without the trailing \"reducing\" clause.",
+   "id": "L16",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Built and deployed a scalable API using FastAPI for real-time predictions, leveraging AWS ECS, which improved deployment efficiency by 30%.",
+   "why": "Moved to the top of the role because a deployed API on AWS ECS is the strongest match for this job; he asked to keep \"scalable\" as his resume has it.",
+   "id": "L15",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Designed cloud-based infrastructure with AWS Lambda and DynamoDB to process large-scale data in near real-time.",
+   "why": "Minor tightening; the tools and \"near real time\" are unchanged.",
+   "id": "L17",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Research Assistant, Engineering university",
+   "why": "The employer and job title now read as one line with the dates, in one date style for the whole page.",
+   "id": "L18",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Department of Computer Science and Engineering August 2022 - May 2023",
+   "why": "Job title on one line with its dates, in the page's date style.",
+   "id": "L19",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Pioneered an advanced image retrieval system by merging HSV color space with discrete cosine transformation (DCT), generating low-dimensional feature descriptors that improved search accuracy by 20% and processing speed by 50%.",
+   "why": "\"Pioneered an advanced\" became \"Built\" so the line states what he did plainly; the 20% and 50% stay.",
+   "id": "L20",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Utilized Python and MATLAB to manage and process over million images, applying ML algorithms for color quantization and texture analysis to improve retrieval accuracy and speed.",
+   "why": "Fixed \"over million\" to \"over a million\" and shortened the end of the line.",
+   "id": "L21",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Conducted extensive research in NLP for feature extraction and text analysis, enhancing data retrieval capabilities.",
+   "why": "Shortened to the plain fact of his NLP research.",
+   "id": "L22",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Assessed student assignments to check quality and completeness before submission for grading and graded 50 students on assignments and exams.",
+   "why": "The grading work was cut to save space, as it is the least related to an engineering job.",
+   "s": "cut",
+   "id": "B26"
+  },
+  {
+   "k": "h2",
+   "tx": "education"
+  },
+  {
+   "k": "p",
+   "tx": "Private university, USA August 2023 - May 2025",
+   "why": "Degree, school, dates and GPA on one line.",
+   "id": "L23",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Master of Science in Computer Science GPA - 3.6",
+   "why": "Degree, school, dates and GPA on one line.",
+   "id": "L24",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Coursework - Image Processing, Natural Language Processing, Data Mining, Database Systems.",
+   "why": "Same coursework, written with a colon.",
+   "id": "L25",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Engineering university, India August 2019 - May 2023",
+   "why": "Degree, school, dates and GPA on one line.",
+   "id": "L26",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Bachelor of Technology in Computer Science (Major: Machine Learning) GPA - 3.8",
+   "why": "Degree, school, dates and GPA on one line.",
+   "id": "L27",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Coursework - Machine Learning, Data Structures and Algorithms, Regression Analysis, Data Wrangling.",
+   "why": "Same coursework, written with a colon.",
+   "id": "L28",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "technical projects",
+   "id": "B33",
+   "s": "cut"
+  },
+  {
+   "k": "p",
+   "tx": "Self-routing IT ticket automation",
+   "why": "Project name set in bold as a sub-heading.",
+   "id": "L29",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Developed and deployed an automated IT support ticketing system using PowerShell scripts and Azure Logic Apps, improving incident management and reducing response times by 20%.",
+   "why": "Shortened; the tools and the 20% stay, and \"improving incident management\" was cut as too vague.",
+   "id": "L30",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Device imaging and rollout automation",
+   "why": "Project name set in bold as a sub-heading.",
+   "id": "L31",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Implemented a lifecycle management solution for end-user devices, automating the imaging and deployment processes with SCCM and PowerShell scripts, streamlining the onboarding of new employees and reducing deployment times by 30%.",
+   "why": "Shortened, keeping SCCM, PowerShell, the onboarding and the 30%.",
+   "id": "L32",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "leadership",
+   "id": "B38",
+   "s": "cut"
+  },
+  {
+   "k": "p",
+   "tx": "Finance Chair - university hackathon club  - Led event budgets and invoices. Tracked all income and collaborated with the outreach team to obtain sponsorships worth $2500 from the engineering school.",
+   "why": "Same facts in one sentence, keeping the $2500 and the outreach team.",
+   "id": "L33",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Secretary - public-speaking club (university) - Supervised club correspondence, arranged meeting facilities and promoted club activities.",
+   "why": "Same duties, with his role and club joined by a colon.",
+   "id": "L34",
+   "s": "rw"
+  }
+ ],
+ "after": [
+  {
+   "k": "name",
+   "tx": "Daniel Kim"
+  },
+  {
+   "k": "contact",
+   "tx": "Boston, MA | daniel.kim@example.com | (617) 555-0129",
+   "id": "L35"
+  },
+  {
+   "k": "h2",
+   "tx": "Summary"
+  },
+  {
+   "k": "p",
+   "tx": "Built and deployed a FastAPI API for real-time predictions on AWS ECS as a Machine Learning Engineer, and automated IT ticketing and device imaging with PowerShell. Now a Technical Specialist leading end-user equipment imaging and deployment projects.",
+   "why": "The new summary opens with Daniel's deployed FastAPI API and his PowerShell automation, the work closest to this engineering job, then names his current role; the second AI suggested leading with the software work.",
+   "from": "old resume",
+   "s": "new",
+   "id": "A2"
+  },
+  {
+   "k": "h2",
+   "tx": "Skills"
+  },
+  {
+   "k": "bul",
+   "tx": "Languages and frameworks: Python, MATLAB, PowerShell, FastAPI",
+   "why": "Python, MATLAB, PowerShell and FastAPI appear in his bullets but not in his skills list, so they now lead the skills.",
+   "from": "old resume",
+   "s": "new",
+   "id": "A3"
+  },
+  {
+   "k": "bul",
+   "tx": "Cloud: AWS (IAM, ECS, RDS, S3, Lambda, DynamoDB), Azure Logic Apps",
+   "why": "Added the AWS Lambda, DynamoDB and Azure Logic Apps work from his bullets; Microsoft Azure (in progress) stays under Certifications instead of being listed twice.",
+   "from": "old resume",
+   "id": "L4",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Machine learning: NLP (BERT), computer vision (CNNs), image retrieval, feature extraction",
+   "why": "His machine learning methods, taken from his startup and research bullets, got their own skills line.",
+   "from": "old resume",
+   "s": "new",
+   "id": "A5"
+  },
+  {
+   "k": "bul",
+   "tx": "IT systems: Active Directory, SCCM, VMware, Remedy ticketing system, Windows, Linux, macOS",
+   "why": "His IT tools were grouped with the operating systems; PowerShell moved to the languages line.",
+   "from": "old resume",
+   "id": "L2",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Troubleshooting and support: ITIL, incident management, problem resolution, imaging and deployment, stakeholder engagement",
+   "why": "Kept his ITIL and support skills, adding imaging and deployment and stakeholder engagement from the lines that were folded in.",
+   "from": "old resume",
+   "id": "L3",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Experience"
+  },
+  {
+   "k": "role",
+   "tx": "Technical Specialist | **Private university, USA** | Oct 2023 - Present",
+   "why": "The employer and job title now read as one line with the dates, in one date style for the whole page.",
+   "from": "old resume",
+   "id": "L8",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Lead IT projects for end-user equipment imaging, deployment and lifecycle management, with a 30% improvement in operational efficiency and a 25% increase in service quality.",
+   "why": "Present tense for the work he still does; the numbers stay exactly as his resume has them, which he confirmed at the sign-off.",
+   "from": "old resume",
+   "id": "L9",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Resolved over 150 complex hardware and software issues with cross-functional teams, cutting resolution time by 20%.",
+   "why": "Shortened, keeping \"over 150\", the cross-functional teams and the 20% from his resume.",
+   "from": "old resume",
+   "id": "L10",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Provide escalation support: 95% of critical systems had minimal downtime (under 2 hours) and fast recovery.",
+   "why": "Shortened, keeping the 95%, \"minimal downtime (under 2 hours)\" and \"fast recovery\" exactly.",
+   "from": "old resume",
+   "id": "L11",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Contributed to the design and implementation of new IT processes and systems, which cut process inefficiencies by 15% and improved service delivery.",
+   "why": "Tightened the end of the line; \"Contributed to\" and the 15% stay as he wrote them.",
+   "from": "old resume",
+   "id": "L12",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Machine Learning Engineer | **AI startup, India** | May 2023 - Aug 2023",
+   "why": "The employer and job title now read as one line with the dates, in one date style for the whole page.",
+   "from": "old resume",
+   "id": "L14",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Built and deployed a scalable FastAPI API for real-time predictions on AWS ECS; deployment efficiency improved by 30%.",
+   "why": "Moved to the top of the role because a deployed API on AWS ECS is the strongest match for this job; he asked to keep \"scalable\" as his resume has it.",
+   "from": "sign-off",
+   "id": "L15",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed a multi-modal AI platform with NLP (BERT) and CV (CNNs) that automated document analysis; processing time fell by 40%.",
+   "why": "Same facts in a shorter sentence without the trailing \"reducing\" clause.",
+   "from": "old resume",
+   "id": "L16",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Designed cloud infrastructure with AWS Lambda and DynamoDB to process large-scale data in near real time.",
+   "why": "Minor tightening; the tools and \"near real time\" are unchanged.",
+   "from": "old resume",
+   "id": "L17",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Research Assistant | **Engineering university, Department of Computer Science and Engineering** | Aug 2022 - May 2023",
+   "why": "Job title on one line with its dates, in the page's date style.",
+   "from": "old resume",
+   "id": "L19",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Built an image retrieval system that merges HSV color space with discrete cosine transformation (DCT) into low-dimensional feature descriptors; search accuracy improved by 20% and processing speed by 50%.",
+   "why": "\"Pioneered an advanced\" became \"Built\" so the line states what he did plainly; the 20% and 50% stay.",
+   "from": "old resume",
+   "id": "L20",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Used Python and MATLAB to process over a million images, with ML algorithms for color quantization and texture analysis.",
+   "why": "Fixed \"over million\" to \"over a million\" and shortened the end of the line.",
+   "from": "old resume",
+   "id": "L21",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Researched NLP methods for feature extraction and text analysis.",
+   "why": "Shortened to the plain fact of his NLP research.",
+   "from": "old resume",
+   "id": "L22",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Projects"
+  },
+  {
+   "k": "p",
+   "tx": "**Self-routing IT ticket automation**",
+   "why": "Project name set in bold as a sub-heading.",
+   "from": "old resume",
+   "id": "L29",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed and deployed an automated IT support ticketing system with PowerShell scripts and Azure Logic Apps. Response times dropped by 20%.",
+   "why": "Shortened; the tools and the 20% stay, and \"improving incident management\" was cut as too vague.",
+   "from": "old resume",
+   "id": "L30",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "**Device imaging and rollout automation**",
+   "why": "Project name set in bold as a sub-heading.",
+   "from": "old resume",
+   "id": "L31",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Automated end-user device imaging and deployment with SCCM and PowerShell scripts, which streamlined onboarding of new employees and cut deployment times by 30%.",
+   "why": "Shortened, keeping SCCM, PowerShell, the onboarding and the 30%.",
+   "from": "old resume",
+   "id": "L32",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Education"
+  },
+  {
+   "k": "role",
+   "tx": "**Master of Science in Computer Science**, Private university, USA | Aug 2023 - May 2025 | GPA 3.6",
+   "why": "Degree, school, dates and GPA on one line.",
+   "from": "old resume",
+   "id": "L24",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Coursework: Image Processing, Natural Language Processing, Data Mining, Database Systems",
+   "why": "Same coursework, written with a colon.",
+   "from": "old resume",
+   "id": "L25",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "**Bachelor of Technology in Computer Science (Major: Machine Learning)**, Engineering university, India | Aug 2019 - May 2023 | GPA 3.8",
+   "why": "Degree, school, dates and GPA on one line.",
+   "from": "old resume",
+   "id": "L27",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Coursework: Machine Learning, Data Structures and Algorithms, Regression Analysis, Data Wrangling",
+   "why": "Same coursework, written with a colon.",
+   "from": "old resume",
+   "id": "L28",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Certifications"
+  },
+  {
+   "k": "bul",
+   "tx": "AWS Certified Developer Associate",
+   "why": "Set as a list item; no change to the certification.",
+   "from": "old resume",
+   "id": "L5"
+  },
+  {
+   "k": "bul",
+   "tx": "Microsoft Azure Machine Learning (in progress)",
+   "why": "Same certification, with the status written the same way as the rest of the page; Daniel confirmed it is still in progress as his resume has it.",
+   "from": "sign-off",
+   "id": "L6",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Leadership"
+  },
+  {
+   "k": "bul",
+   "tx": "Finance Chair, university hackathon club: led event budgets and invoices, tracked all income, and worked with the outreach team to obtain $2500 in sponsorships from the engineering school.",
+   "why": "Same facts in one sentence, keeping the $2500 and the outreach team.",
+   "from": "old resume",
+   "id": "L33",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Secretary, public-speaking club (university): supervised club correspondence, arranged meeting facilities and promoted club activities.",
+   "why": "Same duties, with his role and club joined by a colon.",
+   "from": "old resume",
+   "id": "L34",
+   "s": "rw"
+  }
+ ]
+}

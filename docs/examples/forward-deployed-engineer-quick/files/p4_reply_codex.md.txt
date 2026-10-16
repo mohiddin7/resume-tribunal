@@ -1,0 +1,111 @@
+**1. Screen decision**
+
+**No.** The decisive reason is that the resume does not demonstrate senior/staff-level ownership of production software delivered in customer environments.
+
+It reads as an **IT operations/support specialist with earlier junior ML engineering experience**, rather than a senior/staff software engineer. The FastAPI deployment is relevant, but the four-month ML role does not establish the depth or sustained ownership this position requires.
+
+**2. First impression**
+
+The opening sections establish a Boston-based technical specialist whose current work centers on device deployment, IT troubleshooting, escalation support and process improvement. Earlier experience includes Python, ML and an API deployed on AWS ECS.
+
+The strongest relevant signals are troubleshooting, automation and some deployed software experience. The following must-haves remain unevidenced in the opening sections—and largely throughout the resume:
+
+- Five or more years shipping production software end to end; time in IT support and research does not automatically establish this.
+- Meaningful embedded work with customers or partner engineering teams, including technical discovery and trust with senior engineers.
+- Design systems, component libraries, tokens and design-to-code workflows.
+- Agentic coding tools, MCP, agent skills, orchestration or evaluated LLM workflows; BERT/CNN experience does not establish these.
+- Debugging unfamiliar application codebases, git workflows and CI environments.
+- Enterprise integration constraints such as SSO, security reviews, access controls and data residency; listing IAM and Active Directory does not establish this work.
+- Turning repeated customer problems into reusable product capabilities and influencing engineering priorities.
+
+Python meets the listed language requirement; missing TypeScript alone is not a disqualifier. The central gap is demonstrated engineering scope.
+
+**3. Claim check**
+
+Assumptions: the original resume is the factual source; `<own_words>` is empty, and no `<not_true>` material was supplied. “Supported” means supported by that source, not independently verified. Because no rendered page was provided, “top third” means the opening summary, skills and current-role material.
+
+**No line clearly warrants MORE THAN THE MATERIAL.** The revised resume largely preserves the original claims, including its ambiguous metrics. The collaborative issue-resolution bullet still credits cross-functional teams, so I would not treat it as claiming sole ownership.
+
+| Line beginning | Supporting words from the candidate’s material | Finding |
+|---|---|---|
+| “Technical Specialist leading…” | “Led and executed IT projects for end-user equipment imaging, deployment, and lifecycle management”; “Provided escalation support”; “Built and deployed a scalable API using FastAPI for real-time predictions, leveraging AWS ECS” | Supported |
+| “Languages and frameworks…” | “Python and MATLAB”; “PowerShell”; “FastAPI” | Supported |
+| “Cloud: AWS…” | “AWS (IAM, ECS, RDS, S3), Microsoft Azure (In Progress)”; “AWS Lambda and DynamoDB”; “Azure Logic Apps” | Supported |
+| “Machine learning: NLP…” | “NLP (BERT) and CV (CNNs)”; “image retrieval system”; “feature extraction” | Supported |
+| “IT systems: Active Directory…” | “Active Directory, SCCM, PowerShell, VMware, Remedy Ticketing system”; “Windows, Linux, macOS” | Supported |
+| “Practices: ITIL…” | “ITIL, Incident Management, Problem Resolution”; “Imaging & Deployment”; “Stakeholder Engagement” | Supported |
+| “Private university, USA” | “Private university, USA” | Supported |
+| “Technical Specialist \| Oct…” | “Technical Specialist”; “October 2023 - Present” | Supported |
+| “Lead IT projects…” | “Led and executed IT projects for end-user equipment imaging, deployment, and lifecycle management, resulting in a 30% improvement in operational efficiency and a 25% increase in service quality” | Supported |
+| “Resolved over 150…” | “Collaborated with cross-functional teams to troubleshoot and resolve over 150 complex IT issues related to hardware and software, reducing issue resolution time by 20%” | Supported |
+| “Provide escalation support…” | “Provided escalation support for technical problems, ensuring 95% of critical systems had minimal downtime (under 2 hours) and fast recovery” | Supported |
+| “Contributed to the design…” | “Contributed to the design and implementation of new IT processes and systems, optimizing workflows that led to a 15% reduction in process inefficiencies and improved service delivery” | Supported |
+| “AI startup, India” | “AI startup, India” | Supported |
+| “Machine Learning Engineer \| May…” | “Machine Learning Engineer”; “May 2023 - August 2023” | Supported |
+| “Built and deployed a scalable…” | “Built and deployed a scalable API using FastAPI for real-time predictions, leveraging AWS ECS, which improved deployment efficiency by 30%” | Supported |
+| “Developed a multi-modal…” | “Developed a multi-modal AI platform using NLP (BERT) and CV (CNNs) to automate document analysis, reducing processing time by 40%” | Supported |
+| “Designed cloud infrastructure…” | “Designed cloud-based infrastructure with AWS Lambda and DynamoDB to process large-scale data in near real-time” | Supported |
+| “Engineering university, Department…” | “Research Assistant, Engineering university”; “Department of Computer Science and Engineering” | Supported |
+| “Research Assistant \| Aug…” | “Research Assistant”; “August 2022 - May 2023” | Supported |
+| “Built an image retrieval…” | “Pioneered an advanced image retrieval system by merging HSV color space with discrete cosine transformation (DCT), generating low-dimensional feature descriptors that improved search accuracy by 20% and processing speed by 50%” | Supported |
+| “Used Python and MATLAB…” | “Utilized Python and MATLAB to manage and process over million images, applying ML algorithms for color quantization and texture analysis” | Supported |
+| “Researched NLP methods…” | “Conducted extensive research in NLP for feature extraction and text analysis” | Supported |
+| “Self-routing IT ticket automation” | “Self-routing IT ticket automation” | Supported |
+| “Developed and deployed an automated…” | “Developed and deployed an automated IT support ticketing system using PowerShell scripts and Azure Logic Apps, improving incident management and reducing response times by 20%” | Supported |
+| “Device imaging and rollout automation” | “Device imaging and rollout automation” | Supported |
+| “Automated end-user device…” | “Implemented a lifecycle management solution for end-user devices, automating the imaging and deployment processes with SCCM and PowerShell scripts, streamlining the onboarding of new employees and reducing deployment times by 30%” | Supported |
+| “Master of Science…” | “Private university, USA August 2023 - May 2025”; “Master of Science in Computer Science GPA - 3.6” | Supported |
+| “Coursework: Image Processing…” | “Coursework - Image Processing, Natural Language Processing, Data Mining, Database Systems” | Supported |
+| “Bachelor of Technology…” | “Engineering university, India August 2019 - May 2023”; “Bachelor of Technology in Computer Science (Major: Machine Learning) GPA - 3.8” | Supported |
+| “Coursework: Machine Learning…” | “Coursework - Machine Learning, Data Structures and Algorithms, Regression Analysis, Data Wrangling” | Supported |
+| “AWS Certified Developer Associate” | “AWS Certified Developer Associate” | Supported |
+| “Microsoft Azure Machine Learning…” | “Microsoft Azure Machine Learning- In progress” | Supported |
+| “Finance Chair, university…” | “Finance Chair - university hackathon club”; “Led event budgets and invoices. Tracked all income and collaborated with the outreach team to obtain sponsorships worth $2500 from the engineering school” | Supported |
+| “Secretary, public-speaking…” | “Secretary - public-speaking club (university)”; “Supervised club correspondence, arranged meeting facilities and promoted club activities” | Supported |
+
+The omitted grading duties, adjectives such as “advanced,” and some repeated benefit language are reasonable compression. I found no material understatement of the candidate’s responsibility, and no conspicuous borrowing of Figma-specific language.
+
+**4. Fixes, in priority order**
+
+These improve clarity and credibility; they cannot supply the missing senior/staff experience.
+
+1. **“Technical Specialist leading end-user equipment imaging, deployment and lifecycle projects and providing escalation support. Earlier built and deployed a FastAPI API for real-time predictions on AWS ECS as a Machine Learning Engineer.”**  
+   Lead with the supported software deployment and automation experience, then identify the current IT role, without implying additional years of software engineering or customer embedding.
+
+2. **“Built and deployed a scalable API with FastAPI for real-time predictions on AWS ECS, which improved deployment efficiency by 30%.”**  
+   Replace “deployment efficiency” with the actual measured quantity and baseline, and substantiate “scalable” with traffic, load testing or deployment architecture if available.
+
+3. **“Lead IT projects for end-user equipment imaging, deployment and lifecycle management, with a 30% improvement in operational efficiency and a 25% increase in service quality.”**  
+   Define the two metrics and their measurement periods, or remove percentages the candidate cannot explain with concrete evidence.
+
+4. **“Provide escalation support for technical problems: 95% of critical systems had minimal downtime (under 2 hours) and fast recovery.”**  
+   Clarify which systems were counted, whether “under 2 hours” means per incident or over a reporting period, and what recovery work the candidate personally performed.
+
+5. **“Contributed to the design and implementation of new IT processes and systems, which cut process inefficiencies by 15% and improved service delivery.”**  
+   Preserve “Contributed” while identifying one actual process change and replacing “process inefficiencies” with the measured outcome, or cut this generic bullet.
+
+6. **“Automated end-user device imaging and deployment with SCCM and PowerShell scripts, which streamlined onboarding of new employees and cut deployment times by 30%.”**  
+   Identify whether this is the same work described under the current role and consolidate it there if so, or add context that establishes it as a separate project.
+
+7. **“Cloud: AWS (IAM, ECS, RDS, S3, Lambda, DynamoDB), Azure Logic Apps, Microsoft Azure (in progress)”**  
+   Keep demonstrated tools and remove the broad “Microsoft Azure (in progress)” entry, which describes learning status rather than a defined skill.
+
+8. **“Microsoft Azure Machine Learning (in progress)”**  
+   As of 15 October 2026, confirm the current status and exact intended credential, retaining “in progress” only if still accurate and removing the entry if it is no longer being pursued.
+
+**5. Claim-defence questions**
+
+- **For the FastAPI service, what did you personally implement, who used it, and what did you own after deployment?**  
+  Tests end-to-end production responsibility, individual contribution and operational depth.
+
+- **What changed to produce the 30% improvement in “deployment efficiency,” and what were the before-and-after measurements?**  
+  Tests whether the metric is defined, reproducible and attributable to the work.
+
+- **Walk through one of the 150 complex issues: what was unfamiliar, how did you isolate the cause, and what permanent fix followed?**  
+  Tests debugging depth and whether the work extended beyond routine support.
+
+- **For the multimodal document platform, how did BERT and the CNNs interact, and how was the 40% processing-time reduction measured while checking output quality?**  
+  Tests architectural understanding, evaluation discipline and the candidate’s actual implementation role.
+
+- **Who defined the requirements for the ticket-routing automation, how did you handle exceptions and access permissions, and could another team adopt it without your ongoing help?**  
+  Tests stakeholder discovery, deployment judgment and the ability to turn a local solution into something reusable.
