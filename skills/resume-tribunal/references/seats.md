@@ -11,11 +11,11 @@ Use the first mode that works, in this order.
 | **Platform** | Your platform can send one prompt to models from several companies and return each answer separately | None, or one click to switch the feature on |
 | **Terminal** | `python3 scripts/seats.py detect --exclude <your maker: anthropic, openai or google>` lists other seats | None after a one-time login per tool |
 | **Browser** | You can control a browser where the user is logged in to other AI apps | None; offer it and get their go-ahead first |
-| **Manual** | None of the above | Copy and paste, one round per seat step |
+| **Manual** | None of the above | Copy and paste for each seat step |
 | **Solo** | The user declines other companies, or none is available | None; weaker review |
 
 - Quick review needs one other seat. Full council needs two. With only one automatic seat, offer the choice: add one manual seat, or run a quick review.
-- If an automatic seat fails (not installed, not signed in, over its limit, timed out, or a reply that is not what the prompt asked for), say what happened in a line and ask before switching it to manual. `detect` shows only that a tool is installed; the first `run` shows whether it is signed in.
+- A seat can fail at setup or at any later step; SKILL.md, "When a seat drops out", says what to do. `detect` shows only that a tool is installed; the first `run` shows whether it is signed in.
 - "Platform", "terminal" and "manual" are how a seat is reached. "Quick review" and "full council" are how much work is done. Any mix is possible.
 
 ## Recommending a faster setup
@@ -37,9 +37,9 @@ A much weaker seat lowers the quality of the review, so match tiers.
 1. Name your own model and its tier: flagship, mid or fast. Judge each model by its company's own description of it (Codex and Antigravity list one), not by its version number.
 2. For each seat, pick **that seat's own company's** model at the same tier, and a similar effort level. Some tools also offer other companies' models (Antigravity lists Claude and GPT models); choosing one would quietly undo the independence.
 3. Find the names with `python3 scripts/seats.py models <seat>`. Where a tool cannot list them, use its documented names; Claude Code accepts `opus`, `sonnet` and `haiku`.
-4. Pass them with `--model` and `--effort` on `seats.py run`. Where the model name already carries an effort level (such as a name ending in `-high`), leave out `--effort`.
+4. Pass them with `--model` and `--effort` on `seats.py run`. For the effort, use the level the user has set for you, or your own if you can tell it; otherwise `high`. Where the model name already carries an effort level (such as a name ending in `-high`), leave out `--effort`.
 5. In the consent message, say in plain words what will run: the company and the model name as the tool lists it. The user can change it.
-6. If no seat offers your tier, use the strongest model each seat lists (and make quick review the default, see SKILL.md Stop 1), preferring one its company calls balanced or flagship over one it calls fast, even when the fast one is newer. Say so in the model line and carry on; offer solo only if the user would rather.
+6. If no seat offers a model near your tier, use the strongest model each seat lists (and make quick review the default, see SKILL.md Stop 1), preferring one its company calls balanced or flagship over one it calls fast, even when the fast one is newer. Say so in the model line and carry on; offer solo only if the user would rather.
 7. When unsure, choose the seat's strongest model. A reviewer stronger than you does no harm; a much weaker one does.
 
 In platform mode, choose comparable models in the platform's picker the same way. In manual mode, suggest the strongest model the user has in each app.
@@ -61,31 +61,22 @@ In platform mode, choose comparable models in the platform's picker the same way
 
 `seats.py` runs every built-in seat read-only in an empty temporary folder, so it finds no drafts or working files around it and cannot change anything if a job posting hides instructions. Claude Code runs with its tools off. Codex and Antigravity can still read a file they are pointed at by path, so the empty folder prevents accidental discovery, not every read: keep `.tribunal/` out of folders a tool's own instructions mention. Built-in seats: Claude Code, Codex and Antigravity. For any other tool use `run custom --cmd`, which runs the command as you wrote it, so add that tool's own read-only flags.
 
-- **Time.** A seat call usually takes under two minutes and can take up to ten. Run it in the background, or with a shell time limit of at least ten minutes. Say it is running in the message you are already sending; it needs no message of its own. In a full council, where drafting and critique take a quarter of an hour, one short progress line when the drafts are in is welcome.
+- **Time.** A seat call can take several minutes, so run it in the background, or with a generous shell time limit (ten minutes or more). Say it is running in the message you are already sending; it needs no message of its own. In a longer run, a short progress line when a round is in is welcome.
 - **Contact details.** `run` refuses a prompt that still holds an email address, phone number or LinkedIn profile link, including one inside the job posting. Replace it with a stand-in and run again.
 - **A user's own global instructions** for a tool, where that tool loads them, are outside this script's control.
-
-## Effort, for the setup message
-
-| | Automatic | Manual |
-|---|---|---|
-| Quick review | About 6 minutes, 1 call | 1 round, about 10 minutes |
-| Full council | About 15 minutes, about 8 calls | About 5 rounds, 20 to 30 minutes |
-| Role research | Adds a minute or two | Adds 1 round |
-| Final blind look | Adds a minute | Adds 1 round per seat |
 
 ## Manual cards
 
 When the user needs to choose apps, list these alphabetically, leaving out your own maker's: ChatGPT, Claude, Copilot, DeepSeek, Gemini, Grok, Le Chat, Perplexity. Then say: "Any of these works, and none is preferred, including me. Pick ones from different companies than me and from each other, and use the strongest model you have."
 
 ```
-### Paste <n> of <total>, for the second AI
-Open a new private or temporary chat in the app you picked.
+### Paste <n>, for <app>
+Open a new private or temporary chat in <app>.
 [the complete prompt, in one code block]
 Use the copy button under the reply, then paste it here.
 ```
 
-When both seats get the same prompt, send one card and say so. Record which reply came from which seat in `.tribunal/state.md`. Show one card at a time.
+Name the app the card is for, so the user knows where it goes. Give cards together when their prompts do not depend on each other, such as the drafts or the critiques of one round, and the next card once the replies it needs are back. When two apps get the same prompt, send one card and say so. Record which reply came from which app in `.tribunal/state.md`.
 
 Private chats matter: memory and shared projects leak context between chats and break the blind review. Providers may still keep the text for a period.
 

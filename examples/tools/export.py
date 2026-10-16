@@ -66,6 +66,7 @@ def parse_resume(text):
     resumes are read by shape: an all-caps line is a heading, a line with ' | ' ending in a year is a role."""
     raw = [l.rstrip() for l in text.splitlines() if l.strip()]
     markdown = bool(raw) and raw[0].startswith("# ")
+    wide = max((len(l) for l in raw), default=0)
     out, i = [], 0
     while i < len(raw):
         s = raw[i].strip()
@@ -100,6 +101,8 @@ def parse_resume(text):
                 out[-1] = {"k": "role", "tx": f"{title} | **{prev['tx']}** | {dates}", "alt": s}
             else:
                 out.append({"k": "role", "tx": s})
+        elif not markdown and out[-1]["k"] == "bul" and len(raw[i - 1]) >= 0.8 * wide:
+            out[-1]["tx"] += " " + s  # a bullet wrapped onto the next line by a PDF copy
         else:
             out.append({"k": "p", "tx": s})
         i += 1
@@ -243,7 +246,8 @@ def build(run, slug, title, extra_facts=(), candidate=None, real=ROOT / "researc
         prev = e["t"]
 
     # The host shows the user where the working files are; on the page that path is relative to the run folder.
-    local = lambda text: text.replace(str(run.resolve()) + "/", "").replace(str(run.resolve()), ".")
+    home = str(pathlib.Path.home())
+    local = lambda text: text.replace(str(run.resolve()) + "/", "").replace(str(run.resolve()), ".").replace(home, "~")
     files, out_events, outstanding, asked = {}, [], {}, {}
     for e, (t, waited) in zip(events, times):
         o = {"t": t, "kind": e["kind"], "text": local(e.get("text", ""))}
@@ -447,7 +451,7 @@ def self_test():
               (140, {"kind": "ask", "seat": "codex", "label": "Draft", "file": "p1.txt", "text": "Write it."}),
               (150, {"kind": "check", "text": "0 errors"}),
               (200, {"kind": "reply", "seat": "codex", "file": "r.md", "text": "It kept the \"Managed $2.4M budget\" line."}),
-              (220, {"kind": "say", "stop": "Stop 2", "text": f"Here it is, at {run.resolve()}/.tribunal/resume.md. True?"}),
+              (220, {"kind": "say", "stop": "Stop 2", "text": f"Here it is, at {run.resolve()}/.tribunal/resume.md. True? Saved in {pathlib.Path.home()}/.resume-tribunal."}),
               (220 + 4000, {"kind": "user", "text": "All true."}),
               (230 + 4000, {"kind": "say", "text": "Done."})]
         (tri / "events.jsonl").write_text("".join(json.dumps({"t": t, **e}) + "\n" for t, e in ev))
@@ -465,6 +469,9 @@ def self_test():
         assert [l["k"] for l in parse_resume("Jo\njo@example.com\nEducation\nBA, 2014\nSkills:\nExcel")] == ["name", "contact", "h2", "p", "h2", "p"]
         pdf = parse_resume("Jo\njo@example.com\nPROFESSIONAL SUMMARY With 4+ years of backend work in Java.\n● Built the claims API")
         assert [(l["k"], l["tx"][:12]) for l in pdf[2:]] == [("h2", "PROFESSIONAL"), ("p", "With 4+ year"), ("bul", "Built the cl")]
+        wrap = parse_resume("Jo\njo@example.com\n• Built the claims API used by every team in the company to\nsettle claims in a day\n"
+                            "Data Analyst | 2020 - 2022")
+        assert [l["k"] for l in wrap[2:]] == ["bul", "role"] and wrap[2]["tx"].endswith("to settle claims in a day")
         assert b["analyst shop 2020 - present"].get("s") is None, "a plain company line + role matches the markdown role"
         assert r["who"]["codex"]["role"].startswith("AI 2, OpenAI") and r["who"]["host"]["role"] == "AI 1, Claude Opus 5.5"
         reply = next(e for e in r["events"] if e["kind"] == "reply")
@@ -474,7 +481,7 @@ def self_test():
         assert ["user", 10, 30, "Stop 1", 1, "Waiting for Jo"] in L
         assert not any(l[0] == "host" and 40 <= l[1] < 100 for l in L), "the host waits while the seat works, even after a check"
         assert ["check", 50, 50, "", 0, ""] in L
-        assert any(e["text"] == "Here it is, at .tribunal/resume.md. True?" for e in r["events"]), "the run folder's path is shown relative"
+        assert any(e["text"] == "Here it is, at .tribunal/resume.md. True? Saved in ~/.resume-tribunal." for e in r["events"]), "the run folder's path is shown relative"
         late = next(e for e in r["events"] if e["text"] == "All true.")
         assert late["waited"] == 4000 and late["t"] == 120 + MAX_WAIT, "a long wait is drawn short and labelled"
         assert r["end"] == 130 + MAX_WAIT and ["user", 120, 120 + MAX_WAIT, "Stop 2", 1, "Waiting for Jo"] in r["lanes"]

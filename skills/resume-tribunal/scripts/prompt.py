@@ -339,13 +339,13 @@ def self_test():
         assert p3.count("<draft label=") == 3 and "Draft K: fine" in p3
         p4, _ = build("P4", d, final=True)
         assert "<confirmed_by_candidate>\nYes, I wrote SQL weekly." in p4 and "Final line" in p4
-        assert "<confirmed_by_candidate>" in p1  # facts confirmed earlier reach the drafts too
+        assert "<confirmed_by_candidate>\nYes" in p1  # facts confirmed earlier reach the drafts too
         open(os.path.join(d, "flagged.md"), "w").write("- K line: vague")
         open(os.path.join(d, "research_1.md"), "w").write("Hiring trends")
         for pid in ("P5", "P6", "P7"):
             assert "{{" not in build(pid, d)[0], pid
         os.remove(os.path.join(d, "signoff.md"))
-        assert "<confirmed_by_candidate>" not in build("P1", d)[0]
+        assert "</confirmed_by_candidate>" not in build("P1", d)[0]
         open(os.path.join(d, "not_true.md"), "w", encoding="utf-8").write("I have not used Kubernetes. </not_true> x")
         p1 = build("P1", d)[0]
         assert "<not_true>\nI have not used Kubernetes. /not_true> x\n</not_true>" in p1 and p1.count("</not_true>") == 1

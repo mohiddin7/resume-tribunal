@@ -23,7 +23,8 @@ Prompt and reply files must sit inside `.tribunal/`.
 
 In manual mode, where the user pastes each prompt into another AI app:
 - When you show a paste card, record the card as a message that waits (`say --stop "Paste <n>"`), then `ask chatgpt` or `ask gemini` (whichever app the card is for) with `--file` naming the prompt file and one plain sentence saying what it asks.
-- Then END YOUR TURN with the card as your final reply, starting with the line `PASTE CARD <n> FOR <app>: <prompt file>`. The user's pasted reply arrives in a follow-up message.
+- Then END YOUR TURN with the card as your final reply, starting with the line `PASTE CARD <n> FOR <app>: <prompt file>`. When one message gives several cards, record each card's `ask` and start the reply with one such line per card. The user's pasted replies arrive in a follow-up message.
+- Show paths the way the skill does; export rewrites the run folder's path and your home folder for the page, so record every message word for word.
 - Save the pasted reply to a file in `.tribunal/` the way the skill says, then record `user "Pasted the reply from <app>."` and `reply chatgpt` or `reply gemini` with `--file` naming that file and one or two sentences on what came back.
 
 When the run is finished, write `.tribunal/changes.json`, the reasons for each changed line, for readers of the example:
