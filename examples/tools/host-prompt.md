@@ -52,7 +52,7 @@ The user's replies are scripted, except the sign-off:
 - At the offer to save the profile: "No thanks."
 - If you need anything else from the user at any point, assume the safest default and carry on.
 
-When the run is finished, reply with a short report:
+When the run is finished, write a short report to `.tribunal/run-report.md` and reply with only its path. The report is for the people running the recording, not part of the run: never record it with record.py, and never send it as a message to the user.
 1. Path of final.md, and the final checker output.
 2. Seat calls made: which seat, which prompt, how long each took.
 3. Anything about recording that was unclear or got in the way.
