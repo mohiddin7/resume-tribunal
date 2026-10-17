@@ -36,7 +36,7 @@ npx skills add mohiddin7/resume-tribunal
 
 **Never used a terminal?** [Start here](#new-to-this-start-here): paste one message into any AI chat app.
 
-[Website](https://tribunal.warmhop.com/) · [How it was made](https://tribunal.warmhop.com/blog/how-resume-tribunal-was-made.html) · [Resume skills compared](https://tribunal.warmhop.com/blog/resume-skills-compared.html)
+[Website](https://warmhop.com/r/wLWYpGNJ?ref=readme-top&utm_source=readme&utm_medium=referral&utm_campaign=resume-tribunal) · [How it was made](https://warmhop.com/r/9R3btCCB?ref=readme-top&utm_source=readme&utm_medium=referral&utm_campaign=resume-tribunal) · [Resume skills compared](https://warmhop.com/r/nHiARynB?ref=readme-top&utm_source=readme&utm_medium=referral&utm_campaign=resume-tribunal)
 
 ## How it works
 
@@ -52,14 +52,14 @@ The second AI can be reached in four ways. The skill picks the first one that wo
 
 | Way | What happens | Your effort |
 |---|---|---|
-| **Automatic**, in a terminal with other AI tools installed ([Claude Code](https://www.npmjs.com/package/@anthropic-ai/claude-code), [Codex](https://www.npmjs.com/package/@openai/codex), [Antigravity CLI](https://antigravity.google)) | The other AIs run by themselves on accounts you are already signed in to. Each runs read-only in an empty folder, so it cannot see or change your files. | A few minutes |
+| **Automatic**, in a terminal with other AI tools installed ([Claude Code](https://www.npmjs.com/package/@anthropic-ai/claude-code), [Codex](https://www.npmjs.com/package/@openai/codex), [Antigravity CLI](https://antigravity.google)) | The other AIs run by themselves on accounts you are already signed in to. Each runs read-only in an empty folder, so it starts with none of your files around it and cannot change any. | A few minutes |
 | **Copy and paste**, anywhere | Your assistant hands you a block of text. You paste it into another AI app (ChatGPT, Claude, Copilot, DeepSeek, Gemini, Grok, Le Chat or Perplexity, none preferred) and paste the reply back. | 1 round for a quick review, about 5 for a full council |
 | **One platform**, where an app can ask several companies' AIs at once | The drafts and reviews run in one place | A few minutes |
 | **One company only**, if you prefer | New chats of your own assistant review blind | A few minutes, and a weaker check |
 
-**Full council** is the default when the other AIs run automatically: three AIs each write a draft, critique each other blind, and the best parts are merged before the check. **Quick review** is the default when you would be copying and pasting: one writer and one checker. Full council makes about eight calls against two and takes about 15 minutes. It sends and receives about five times as much text, spread across your plans: about 30,000 tokens against 6,000 in the worked example, before each model's own reasoning.
+**Full council** is the default when two or more other AIs run automatically: three AIs each write a draft, critique each other blind, and the best parts are merged before the check. **Quick review** is the default when you would be copying and pasting: one writer and one checker. Full council makes about eight calls against two, and took 27 to 37 minutes in the recorded example runs. It sends and receives about five times as much text, spread across your plans: about 30,000 tokens against 6,000 in the worked example, before each model's own reasoning.
 
-Why three? It is the smallest group in which two can outvote one that is wrong. Aircraft flight computers and industrial safety systems run three units with two-out-of-three voting for that reason, and banks and auditors organise risk control as three lines of defence. For AI writing this is a design choice by analogy, and the checks that follow do not rely on it. Each AI runs at a strength similar to your main assistant, so no reviewer is much weaker than the writer.
+Why three? Each draft is then read by two AIs that did not write it, and no single model's habits decide the merge. Aircraft flight computers and industrial safety systems use three units for a similar reason. For AI writing this is a design choice by analogy, not a vote, and the checks that follow do not rely on it. Each AI runs at a strength similar to your main assistant or above where its company offers one; where none does, the skill uses the strongest it has, says so, and defaults to a quick review.
 
 ## Why a second AI
 
@@ -67,10 +67,10 @@ Hiring managers have grown wary of AI-written resumes. In a vendor survey of 1,0
 
 The assistant that wrote a line is badly placed to catch it.
 
-- **AI goes easy on its own work.** On checks with a right answer, model judges were [more than 50% more likely](https://arxiv.org/abs/2604.06996) to pass a failed item when the output was their own (preprint). Used as resume screeners, models favoured summaries they had written over the human originals, with a quality-adjusted bias of 67% to 82% ([Xu, Li and Jiang](https://arxiv.org/abs/2509.00462), preprint).
+- **AI goes easy on its own work.** On checks with a right answer, model judges could be [more than 50% more likely](https://arxiv.org/abs/2604.06996) to pass a failed item when the output was their own (preprint). Used as resume screeners, models favoured summaries they had written over the human originals, with a quality-adjusted bias of 67% to 82% ([Xu, Li and Jiang](https://arxiv.org/abs/2509.00462), preprint).
 - **An outside reviewer does better.** Across 37 models on reasoning tasks, checking by a different model family [beat both self-checking and checking within the same family](https://arxiv.org/abs/2512.02304). Those were maths and logic tasks, so for writing this is evidence by analogy.
 - **Names and order sway AI judges.** Telling a model who wrote a text [changes its verdict](https://www.science.org/doi/10.1126/sciadv.adz2924), and so does [the order of the options](https://arxiv.org/abs/2410.02736). So the reviewer sees no names, and drafts arrive shuffled.
-- **AIs from different companies still share mistakes.** On one benchmark, two models that were both wrong [gave the same wrong answer 60% of the time](https://arxiv.org/abs/2506.07962). So the last two checks do not depend on a model: a script flags every number that is missing from your own material, and you confirm each changed line.
+- **AIs from different companies still share mistakes.** On one benchmark, two models that were both wrong [gave the same wrong answer 60% of the time](https://arxiv.org/abs/2506.07962). So the last two checks do not depend on a model: a script flags numbers and names it cannot find in your own material, and you confirm each changed line.
 
 **What it does not promise.** No study shows that several AIs write a better resume than one strong assistant, and no tool can promise interviews or a result from screening software. You get independent review, and a resume you can defend line by line.
 
@@ -83,10 +83,10 @@ Yes. Resume Tribunal costs nothing and there's no sign-up. It runs inside AI app
 Yes. You paste one message into any AI chat app, like ChatGPT, Gemini or Claude, attach your resume, and answer a couple of questions. There are no commands to type.
 
 **Why can't I just ask ChatGPT to fix my resume?**
-You can, and ChatGPT is fine for a quick tidy-up. The catch is that an AI checking its own writing tends to approve it, made-up numbers included. Resume Tribunal has a second AI, from a different company, check the draft without knowing who wrote it. A script then compares every number to what you actually said.
+You can, and ChatGPT is fine for a quick tidy-up. The catch is that an AI checking its own writing tends to approve it, made-up numbers included. Resume Tribunal has a second AI, from a different company, check the draft without knowing who wrote it. A script then flags any number it can't find in what you said.
 
 **Will Resume Tribunal make stuff up on my resume?**
-No. Every number, tool and job title has to come from you, and a script checks that. If something is missing, Resume Tribunal asks you instead of guessing. You approve each changed line before you get the file.
+It is built not to. Every number, tool and job title has to come from you; a script flags any it cannot find in your words, and the second AI checks each line against them. If something is missing, Resume Tribunal asks you instead of guessing. You approve each changed line before you get the file.
 
 **Will my resume get past the ATS robots?**
 Nobody can honestly promise that. ATS is the software employers use to collect applications, and most of it sorts candidates. It rarely rejects anyone on its own. Resume Tribunal keeps your layout simple enough for that software to read, and checks the PDF's text before you send it. After that, a person reads it.
@@ -127,7 +127,7 @@ A fictional operations coordinator applying for an operations analyst job, in fu
 - Each AI caught something the others missed, such as "half a day" being the previous person's time, or "Carrier management" borrowed from the posting into a Skills list.
 - Enlarged or invented phrases were rejected, such as "driving the rerouting decision" for a move the team made, and an example of what the candidate's SQL looks up, which they never gave.
 - The result is one page at 10.5 pt, with the job's unmet requirements listed for the candidate instead of papered over.
-- You can verify it: the folder includes the candidate's own words, and one command shows that every number and name in the resume traces back to them.
+- You can verify it: the folder includes the candidate's own words, and one command checks that the resume's numbers and names appear in them.
 
 A fresh agent ran the skill from its files alone: 8 calls, about 19 minutes including the candidate's answers, no failures. It is one run on one invented candidate, so it shows how the process works, not how it performs across many resumes.
 
@@ -149,7 +149,7 @@ A quick review takes about 2 minutes of your time. If your app can't open links,
 Install the Resume Tribunal skill (npx skills add mohiddin7/resume-tribunal), then tailor my resume to this job: [paste the job link]
 ```
 
-**Save it as a skill** so you never paste the link again. Download [resume-tribunal.zip](https://github.com/mohiddin7/resume-tribunal/releases/latest/download/resume-tribunal.zip) and upload it once:
+**Save it as a skill** so you never paste the link again. Download [resume-tribunal.zip](https://warmhop.com/r/ank5M2Qe?ref=readme-install&utm_source=readme&utm_medium=referral&utm_campaign=resume-tribunal) and upload it once:
 
 - Gemini: Settings, Skills, Upload (personal accounts, 18 and over).
 - Claude: Customize, Skills, +, Upload a skill. On Pro or Max, skip the download: Customize, Plugins, Add marketplace, `mohiddin7/resume-tribunal`.
@@ -203,7 +203,7 @@ python3 skills/resume-tribunal/scripts/seats.py detect
 - This project runs no server and never receives your resume. The assistants you choose do, under their own terms. Your name and contact details are replaced with stand-ins before anything goes to another AI, and you are asked first. Leave out anything confidential to an employer, and turn off model training in each app.
 - In a terminal, working files are kept in a `.tribunal/` folder. Delete it when you are done, and do not commit or sync it.
 - The skill will not invent facts, add hidden text, or help with assessments or live interviews.
-- Disclosure: when a resume has links, the skill ends with one optional tip for warmhop™, a resume link tracker made by this project's author. The tip says so when it is shown. Nothing is sent to warmhop™, and the skill works the same without it.
+- Disclosure: when a resume has links, the skill ends with one optional tip for warmhop, a resume link tracker made by this project's author. The tip says so when it is shown. Nothing is sent to warmhop, and the skill works the same without it.
 - This is general information, not career or legal advice.
 
 ## Layout
@@ -226,7 +226,7 @@ docs/                        # website and blog; build.py regenerates it
 
 ## Support
 
-Found a problem, or need help? Email [tribunal@warmhop.com](mailto:tribunal@warmhop.com) or [open an issue](https://github.com/mohiddin7/resume-tribunal/issues). Please leave your resume out of the email unless we ask for it.
+Found a problem, or need help? Email [tribunal@warmhop.com](mailto:tribunal@warmhop.com) or [open an issue](https://warmhop.com/r/sdT9x8DB?ref=readme-support&utm_source=readme&utm_medium=referral&utm_campaign=resume-tribunal). Please leave your resume out of the email unless we ask for it.
 
 ## License
 

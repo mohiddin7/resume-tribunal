@@ -25,15 +25,18 @@ import tempfile
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "skills" / "resume-tribunal" / "scripts"))
 from seats import labelled_id  # noqa: E402  the skill's own rule: "Req. ID: 1273383451" is not a phone
-SEAT_NAMES = {"codex": ("Codex", "OpenAI"), "agy": ("Gemini", "Google"), "claude": ("Fresh Claude", "Anthropic"),
+SEAT_NAMES = {"codex": ("Codex", "OpenAI"), "agy": ("Gemini", "Google"), "claude": ("Claude", "Anthropic"),
               "chatgpt": ("ChatGPT", "OpenAI"), "gemini": ("Gemini", "Google")}  # the last two: pasted by hand
 MANUAL = {"chatgpt", "gemini"}
+HOST_COMPANY = (("claude", "Anthropic"), ("opus", "Anthropic"), ("sonnet", "Anthropic"), ("haiku", "Anthropic"),
+                ("gpt", "OpenAI"), ("codex", "OpenAI"), ("gemini", "Google"))  # the host's recorded model names its company
 SOURCES = {"own words", "sign-off", "old resume", "linked page"}
 MAX_WAIT = 300  # seconds of a candidate's wait drawn on the timeline
 EMAIL_RE = re.compile(r"[\w.+-]+@([\w-]+(?:\.[\w-]+)+)")
 SAFE_DOMAIN = re.compile(r"(?:^|\.)(?:example\.(?:com|org|net)|example|test|invalid)$", re.I)
 PHONE_RE = re.compile(r"(?<![\w$])\+?(?:\d[\s().-]*){10,}(?!\w)")
 SAFE_PHONE = re.compile(r"555[\s.-]*01\d\d")
+LOCAL_PHONE = re.compile(r"(?i)\b(?:phone|mobile|cell|tel|telephone|call|whatsapp|fax)\b\W{0,12}(\d{3}[\s.-]\d{4})(?!\d)")  # "Phone: 867-5309"
 
 
 # ---------- resumes ----------
@@ -186,6 +189,7 @@ def unsafe(text, where):
     bad += [f"{where}: local path {m.group(0)}" for m in HOME_RE.finditer(text)]
     bad += [f"{where}: phone {m.group(0).strip()}" for m in PHONE_RE.finditer(text)
             if not SAFE_PHONE.search(m.group(0)) and not labelled_id(text[max(0, m.start() - 40):m.start()])]
+    bad += [f"{where}: phone {m.group(1)}" for m in LOCAL_PHONE.finditer(text) if not SAFE_PHONE.search(m.group(1))]
     return bad
 
 
@@ -198,7 +202,7 @@ def from_real_resume(text, folder):
 
 # ---------- the run ----------
 
-def build(run, slug, title, extra_facts=(), candidate=None, real=ROOT / "research" / "real-resumes", note="", consented=False):
+def build(run, slug, title, extra_facts=(), candidate=None, real=ROOT / "research" / "real-resumes", note="", consented=False, allow=()):
     tri = run / ".tribunal"
     events = [json.loads(l) for l in (tri / "events.jsonl").read_text().splitlines() if l.strip()]
     if not events:
@@ -216,20 +220,31 @@ def build(run, slug, title, extra_facts=(), candidate=None, real=ROOT / "researc
     changes_path = tri / "changes.json"
     changes = json.loads(changes_path.read_text()).get("changes", []) if changes_path.exists() else []
     problems += compare(before, after, changes)
+    # Everything else that is published: the page text and the inputs copied beside the resumes. A real posting's
+    # own public contact (an accommodations email) passes only when named with --allow-contact, and only in job.md.
+    problems += unsafe(json.dumps([title, note, list(extra_facts), changes], ensure_ascii=False), "title, note, facts or changes.json")
+    for name in ("job.md", "own-words.md"):
+        if (run / name).exists():
+            problems += [p for p in unsafe((run / name).read_text(), name) if not (name == "job.md" and p.split()[-1] in allow)]
     cand = candidate or before[0]["tx"].split()[0].title()
 
     t0 = events[0]["t"]
     models = {e["who"]: e["text"] for e in events if e["kind"] == "model"}
     events = [e for e in events if e["kind"] != "model"]
     seats = [s for s in dict.fromkeys(e["seat"] for e in events if e["kind"] == "ask")]
-    numbered = [s for s in seats if s != "claude"]
+    # The host's company, from the model it recorded: a seat of the same company is a fresh session of the host.
+    low = models.get("host", "").lower()
+    host_co = next((c for k, c in HOST_COMPANY if k in low), "Anthropic")
+    fresh = {s for s in seats if s in SEAT_NAMES and SEAT_NAMES[s][1] == host_co}
+    numbered = [s for s in seats if s not in fresh]
     reach = "Manual" if MANUAL & set(seats) else "Auto"
     who = {"user": {"n": cand, "s": cand[0], "role": "the candidate"},
            "host": {"n": "Host", "s": "H", "role": ", ".join(x for x in ("AI 1", models.get("host", "")) if x)}}
     for s in seats:
         name, company = SEAT_NAMES[s]
+        name = "Fresh " + name if s in fresh else name
         parts = (f"AI {numbered.index(s) + 2}", company, models.get(s, "")) if s in numbered else (company, models.get(s, ""), "a fresh session")
-        who[s] = {"n": name, "s": name[0], "role": ", ".join(x for x in parts if x)}
+        who[s] = {"n": name, "s": name[0], "role": ", ".join(x for x in parts if x), **({"fresh": True} if s in fresh else {})}
     if any(e["kind"] == "check" for e in events):
         who["check"] = {"n": "Checker", "s": "✓", "role": "check_resume.py"}
 
@@ -290,15 +305,15 @@ def build(run, slug, title, extra_facts=(), candidate=None, real=ROOT / "researc
 
     end = out_events[-1]["t"]
     steps = [{"n": e["step"], "name": e["text"].split(".")[0][:40], "t": e["t"]} for e in out_events if e["kind"] == "step"]
-    council = len(seats) > 1 or "claude" in seats
+    council = any(st["name"].lower().startswith("council") for st in steps)  # the run says which mode it ran
     def real_answer(e):  # a seat that only sent back an error (no file, or a few words such as a quota message) does not count
         f = e.get("file") and ((tri / e["file"]) if (tri / e["file"]).exists() else (run / e["file"]))
         return bool(f) and f.exists() and len(f.read_text(errors="ignore").split()) >= 100
     answered = [s for s in seats if any(e["kind"] == "reply" and e.get("seat") == s and real_answer(e) for e in events)]
-    companies = {"Anthropic"} | {SEAT_NAMES[s][1] for s in answered}
+    companies = {host_co} | {SEAT_NAMES[s][1] for s in answered}
     who_fact = "Real resume, shared with consent" if consented else "Fictional candidate"
     reach_fact = "Manual mode: pasted into other AI apps" if reach == "Manual" else "Auto mode: the other AIs ran by themselves"
-    facts = [who_fact, reach_fact, f"{len(answered) + 1} AIs from {len(companies)} companies", f"{round(end / 60)} minutes", *extra_facts]
+    facts = [who_fact, reach_fact, f"{len(answered) + 1} AIs from {len(companies)} compan{'y' if len(companies) == 1 else 'ies'}", f"{round(end / 60)} minutes", *extra_facts]
     return {
         "slug": slug, "title": title, "mode": "Full council" if council else "Quick review", "reach": reach, "facts": facts, "note": note,
         "candidate": cand, "end": end, "who": who, "steps": steps, "events": out_events,
@@ -373,6 +388,11 @@ def transcript(r):
     return "\n".join(out).rstrip() + "\n"
 
 
+def who(r):
+    """Who the candidate is, from the first fact, which build() sets from --fictional or --real-with-consent."""
+    return "a real candidate who agreed to publish their de-identified resume" if r["facts"][0].startswith("Real resume") else "a fictional candidate"
+
+
 def readme(r, files):
     rows = [("[before.md](before.md)", "The resume the candidate started with"),
             ("[job.md](job.md)", "The job posting"), ("[own-words.md](own-words.md)", "What the candidate wrote about their work"),
@@ -380,13 +400,13 @@ def readme(r, files):
             ("[files/](files/)", f"The {len(files)} prompts and replies the other AIs saw, names hidden"),
             ("[run.json](run.json)", "Everything above, for the website's viewer")]
     return "\n".join([f"# {r['title']}", "", " · ".join(r["facts"]), "",
-                      "A recorded run of Resume Tribunal on a fictional candidate. "
+                      f"A recorded run of Resume Tribunal on {who(r)}. "
                       + (r["note"] or "Nothing here was edited by hand: [tools/](../tools/) recorded the run and exported this folder."), "",
                       "| File | What it is |", "|---|---|", *(f"| {a} | {b} |" for a, b in rows), ""])
 
 
-def export(run, slug, title, out_root, extra_facts=(), candidate=None, replace=False, real=ROOT / "research" / "real-resumes", note="", consented=False):
-    r, files = build(run, slug, title, extra_facts, candidate, real, note, consented)
+def export(run, slug, title, out_root, extra_facts=(), candidate=None, replace=False, real=ROOT / "research" / "real-resumes", note="", consented=False, allow=()):
+    r, files = build(run, slug, title, extra_facts, candidate, real, note, consented, allow)
     out = out_root / slug
     if out.exists():
         if not replace:
@@ -474,6 +494,7 @@ def self_test():
         assert [l["k"] for l in wrap[2:]] == ["bul", "role"] and wrap[2]["tx"].endswith("to settle claims in a day")
         assert b["analyst shop 2020 - present"].get("s") is None, "a plain company line + role matches the markdown role"
         assert r["who"]["codex"]["role"].startswith("AI 2, OpenAI") and r["who"]["host"]["role"] == "AI 1, Claude Opus 5.5"
+        assert r["mode"] == "Quick review" and r["facts"][2] == "2 AIs from 2 companies" and "fresh" not in r["who"]["codex"]  # no Council step
         reply = next(e for e in r["events"] if e["kind"] == "reply")
         assert reply["d"] == 60 and reply["files"] == ["r.md.txt"] and b["managed $2.4m budget"]["id"] in reply["links"]
         L = r["lanes"]
@@ -517,14 +538,33 @@ def self_test():
             assert "resume-01.md" in str(e)
         r2, _ = build(run, "jo", "Jo", real=real, consented=True)
         assert r2["facts"][0] == "Real resume, shared with consent" and r2["reach"] == "Auto"
+        assert "real candidate" in readme(r2, {}) and "fictional" in readme(build(run, "jo", "Jo", real=pathlib.Path(d) / "none")[0], {})
+        # Every published text is checked: a referee's email in own-words.md, a posting's own contact unless allowed.
+        assert unsafe("Phone: 867-5309", "x") and not unsafe("Phone: 555-0142", "x") and not unsafe("cut tickets 300-1200", "x")
+        (run / "own-words.md").write_text("Ask my referee at sam.lee@gmail.com")
+        try:
+            build(run, "jo", "Jo", real=pathlib.Path(d) / "none")
+            raise AssertionError("an email in own-words.md must stop the export")
+        except SystemExit as e:
+            assert "own-words.md: email sam.lee@gmail.com" in str(e)
+        (run / "own-words.md").write_text("I write SQL.")
+        (run / "job.md").write_text("Accommodations: help@acme-corp.com")
+        try:
+            build(run, "jo", "Jo", real=pathlib.Path(d) / "none")
+            raise AssertionError("a posting's email passes only when allowed")
+        except SystemExit:
+            pass
+        build(run, "jo", "Jo", real=pathlib.Path(d) / "none", allow=["help@acme-corp.com"])
     print("export.py self-test passed")
 
 
 def main():
     if sys.argv[1:] == ["--self-test"]:
         return self_test()
-    if len(sys.argv) in (3, 4) and sys.argv[2] == "--check":  # the host checks its record before finishing
-        build(pathlib.Path(sys.argv[1]), "check", "check", consented=sys.argv[3:] == ["--real-with-consent"])
+    if len(sys.argv) >= 3 and sys.argv[2] == "--check":  # the host checks its record before finishing
+        rest = sys.argv[3:]
+        allow = [rest[i + 1] for i, a in enumerate(rest[:-1]) if a == "--allow-contact"]
+        build(pathlib.Path(sys.argv[1]), "check", "check", consented="--real-with-consent" in rest, allow=allow)
         return print("the record is complete: export.py can turn it into an example")
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("run", type=pathlib.Path)
@@ -539,10 +579,11 @@ def main():
     ap.add_argument("--replace", action="store_true", help="export over an existing example")
     ap.add_argument("--note", default="", help="how the run was recorded, if not by record.py from the start; shown on the page and in the README")
     ap.add_argument("--out", type=pathlib.Path, default=ROOT / "examples")
+    ap.add_argument("--allow-contact", action="append", default=[], help="a real posting's own public contact, such as its accommodations email, allowed in job.md only")
     a = ap.parse_args()
     if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", a.slug):
         sys.exit("the slug is lower-case words joined by hyphens")
-    out, r = export(a.run, a.slug, a.title, a.out, a.fact, a.candidate, a.replace, note=a.note, consented=a.real_with_consent)
+    out, r = export(a.run, a.slug, a.title, a.out, a.fact, a.candidate, a.replace, note=a.note, consented=a.real_with_consent, allow=a.allow_contact)
     print(f"exported {out}: {len(r['events'])} events, {len(r['lanes'])} timeline bars")
 
 

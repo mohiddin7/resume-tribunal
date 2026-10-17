@@ -36,6 +36,14 @@ MODEL_FLAGS = {
     "agy": (1, ["--model", "{m}"], ["--effort", "{e}"]),
 }
 LIST_MODELS = {"agy": ["agy", "models"]}
+# Each seat runs only its own company's models: Antigravity also lists Claude and GPT models, and picking one would
+# send the text to Google while the user was told another company, and quietly undo the independence.
+OWN_MODELS = {"claude": ("claude", "opus", "sonnet", "haiku"), "codex": ("gpt-", "o1", "o3", "o4", "codex"), "agy": ("gemini",)}
+CLAUDE_MODELS = "opus\tAnthropic's most capable model\nsonnet\tAnthropic's balanced model\nhaiku\tAnthropic's fastest model"
+
+
+def own_model(seat, model):
+    return not model or seat not in OWN_MODELS or model.lower().startswith(OWN_MODELS[seat])
 CODEX_MODELS = os.path.expanduser("~/.codex/models_cache.json")  # the models this account can use
 SEATS = {
     # --safe-mode keeps the user's own memory, hooks, plugins and MCP servers out of the seat's context.
@@ -63,18 +71,26 @@ def blocked(reply):
     return text.startswith("jetski: no output produced") and "\n" not in text
 
 
+PHONE_LABEL = re.compile(r"(?i)\b(?:phone|mobile|cell|tel|telephone|whatsapp|fax)(?:\s*(?:no\.?|number|#))?\s*[:.]?\s*$")
+
+
 def contact_details(prompt, keep=()):
     """Emails, profile links and phone numbers that should have been swapped for stand-ins.
     keep: values the user checked are not contact details (a requisition number), from standins.md."""
     found = re.findall(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+|linkedin\.com/in/[\w-]+", prompt)
     for m in re.finditer(r"(?<![$€£¥₹\d])\+?\d[\d ().-]{5,}\d", prompt):  # after a currency sign it is money
         s = m.group(0)
-        if (sum(c.isdigit() for c in s) >= (7 if re.search(r"\D", s) else 10)
+        before = prompt[max(0, m.start() - 30):m.start()]
+        digits = sum(c.isdigit() for c in s)
+        # A number right after a phone label ("Phone: +44 20 2018-2022") is a phone, whatever it looks like.
+        if digits >= 7 and PHONE_LABEL.search(before):
+            found.append(s)
+        elif (digits >= (7 if re.search(r"\D", s) else 10)
                 # A year range inside ("10 2018 - 2022", a GPA scale then dates) means dates, not a phone.
                 and not re.search(r"(?:19|20)\d\d\s*[-–]\s*(?:19|20)\d\d", s)
                 # Dates such as 2026-09-15 or 15.09.2026 (a saved profile dates its entries) are not phones.
                 and not re.fullmatch(r"(?:19|20)\d\d-\d\d-\d\d|\d\d?[.-]\d\d?[.-](?:19|20)\d\d", s)
-                and not labelled_id(prompt[max(0, m.start() - 30):m.start()])):
+                and not labelled_id(before)):
             found.append(s)
     # keep only ever excuses a number; an email or a profile link is always caught.
     keep = {k.lower() for k in keep if not re.search(r"@|linkedin|[a-z]", k.lower())}
@@ -169,6 +185,11 @@ def self_test():
     assert contact_details("call 0161-555-0199") == ["0161-555-0199"]
     assert contact_details("Annual budget $1000000000, £25000000 and €4000000.") == []  # money, not phones
     assert contact_details("call +44 7700 900123") == ["+44 7700 900123"]
+    # A phone label wins over the date-range exemption; a bullet's own dates stay dates.
+    assert contact_details("Phone: +44 20 2018-2022") == ["+44 20 2018-2022"] and contact_details("Tel: 020-2018-2022") == ["020-2018-2022"]
+    assert contact_details("Ran the contact center 2018-2022") == []
+    assert own_model("agy", "gemini-3.8-flash-high") and not own_model("agy", "claude-opus-4-6-thinking")
+    assert own_model("claude", "opus") and own_model("codex", "gpt-6-luna") and not own_model("codex", "opus") and own_model("agy", None)
     print("self-test passed")
 
 
@@ -198,16 +219,21 @@ def main():
         for m in json.load(open(CODEX_MODELS, encoding="utf-8")).get("models", []):
             if m.get("visibility") == "list":
                 print(f"{m['slug']}\t{m.get('description', '')}")
+    elif a.action == "models" and a.seat == "claude":
+        print(CLAUDE_MODELS)  # Claude Code's own names for its current models
     elif a.action == "models":
         if a.seat not in LIST_MODELS:
             sys.exit(f"{a.seat} cannot list its models here; use the names in its documentation")
         r = subprocess.run(LIST_MODELS[a.seat], capture_output=True, text=True, encoding="utf-8")
-        print(r.stdout or r.stderr)
+        mine = [l for l in (r.stdout or "").splitlines() if own_model(a.seat, l.split()[0] if l.split() else "")]
+        print("\n".join(mine) if r.stdout else r.stderr)
     elif a.seat == "custom":
         if not a.cmd:
             p.error("custom needs --cmd")
         run(shlex.split(a.cmd), a.prompt, a.reply, a.timeout, a.allow_contact)
     else:
+        if not own_model(a.seat, a.model):
+            sys.exit(f"{a.seat} runs only its own company's models here, not {a.model}: choose one from seats.py models {a.seat}")
         run(with_model(a.seat, SEATS[a.seat][1], a.model, a.effort), a.prompt, a.reply, a.timeout, a.allow_contact)
 
 

@@ -1,0 +1,78 @@
+# Hiring-manager review: Senior Analyst, Pricing and Business Analytics
+
+## 1. Screen decision
+
+**No.** The resume shows no pricing work at all: no pricing models, pricing tests, discount or promo analysis, or margin work. This role exists to "lead Pricing analytics" and asks for "deep pricing experience."
+
+**Reads as:** a mid-level marketing analyst. They are the sole analyst on a small team, work mostly on email and paid-social reporting, and analyse tests that others design. Their total time in analytics roles since 2019 is unclear because the date they moved from coordinator to analyst isn't given.
+
+## 2. First impression (top third)
+
+**What I know:**
+- They are based in Pittsburgh, which works for a US-remote role.
+- They are the only analyst on a nine-person marketing team at an online home-goods retailer (D2C e-commerce, but not subscription).
+- They write SQL in BigQuery daily.
+- They built Looker dashboards.
+- They analyse A/B test results.
+- They segmented win-back customers by purchase history and spend.
+
+**Must-haves still not evidenced:**
+- **Pricing analytics:** no pricing models or pricing A/B tests.
+- **Advanced SQL including creating tables or schemas:** "writes SQL" doesn't show this.
+- **Presenting to senior executives:** the marketing director reviewing a dashboard is not an executive presentation.
+- **Using AI to speed up or QA analysis, or to build automations:** nothing at all.
+- **Experimentation best practices:** only partly shown, through the traffic check.
+
+The candidate can only close these gaps by adding real experience, not by rewording.
+
+## 3. Claim check
+
+| Line (first words) | Support in candidate's material | Verdict |
+|---|---|---|
+| "Marketing analyst and the only analyst…" | "I'm the only analyst on the marketing team, there are nine of us" | Supported |
+| "Writes SQL in BigQuery most days…" | "Most days I'm in BigQuery writing SQL. I built our Looker dashboards… I also do the analysis on our A/B tests" | Supported |
+| "Segmented win-back customers by purchase history…" | "I wrote the SQL to split them by what they'd bought before and how much they'd spent" | Supported |
+| "SQL, BigQuery, Looker, A/B test analysis…" | BigQuery SQL, Looker, A/B analysis, "split them by…", "cleaning up exports in notebooks with pandas" | Supported |
+| "Online home-goods retailer (about 400 employees)" | Original resume; own words: "the home-goods company" | Supported |
+| "Marketing Coordinator, then Marketing Analyst \| Mar 2019 - Present" | Original resume; "I'm the only analyst" | Supported |
+| "Wrote SQL to split customers who had not bought…" | "I wrote the SQL to split them… <<PERSONAL>> wrote a different email for each group. Conversion on those emails went from 2.1% to 2.5% over the next quarter" | Supported, with credit shared correctly |
+| "Analyze about 12 A/B tests in the last year…" | "We've done about 12 tests in the last year… I check whether we have enough traffic, then I read the results and write up what we found… <<PERSONAL_FIRST>> or the paid social lead decide what to test" | Supported (assuming <<PERSONAL_FIRST>> is the email manager) |
+| "Built Looker dashboards for email and paid social…" | "I built our Looker dashboards for the email and paid social channels, and the marketing director goes through them every Monday" | Supported |
+| "Clean exports in Python notebooks with pandas a few times a month." | "Python I use for cleaning up exports in notebooks with pandas, maybe a few times a month" | **MORE THAN THE MATERIAL**: drops "maybe" |
+| "Portfolio: <<LINK_WEB>> (write-ups of two tests)" | "My portfolio is at <<LINK_WEB>>, it has write-ups of two of the tests" | Supported |
+| "Regional sporting-goods chain" | Original resume; "managed a sporting goods store" | Supported |
+| "Store Manager \| 2014 - 2019" | Original resume; "managed a sporting goods store for five years" | Supported |
+| "Managed about 12 part-time staff." | "about 12 part-time staff" | Supported (correctly narrowed from the original's 15) |
+| "Built scheduling and inventory spreadsheets." | "I built our scheduling and inventory sheets" | Supported |
+| "Consistently exceeded sales targets." | Original resume only; own words: none | Supported by the original resume only |
+| "BA Communications, large public state university, 2014" | Original resume | Supported |
+| "Google Data Analytics Certificate, 2020" | Original resume | Supported |
+
+## 4. Fixes
+
+1. **"Clean exports in Python notebooks with pandas a few times a month."**
+   Restore the candidate's "maybe" before "a few times a month," or drop the frequency and keep "Clean data exports in Python notebooks (pandas)."
+2. **"Analyze about 12 A/B tests in the last year: check whether there is enough traffic, read the results, and write up what we found."**
+   - Put it in past tense and date the period so it doesn't go stale, for example "Analyzed about 12 A/B tests from Oct 2025 to Oct 2026."
+   - Replace "what we found" with "findings."
+3. **"Marketing Coordinator, then Marketing Analyst | Mar 2019 - Present"**
+   Add the month and year of the move to Marketing Analyst so a reader can see how long they've held the analyst title rather than guessing.
+4. **"Portfolio: <<LINK_WEB>> (write-ups of two tests)"**
+   Move the link to the contact line, where it was in the original. A link isn't a job accomplishment, and it's easy to miss buried under one employer.
+5. **"Consistently exceeded sales targets."**
+   This comes only from the old resume and would read the same on anyone's resume. Add how often and by how much if the candidate can stand behind a number; otherwise cut it.
+
+Nothing echoes the job description's wording. The rest of the lines are accurate and would read fine sent to a similar role elsewhere.
+
+## 5. Claim-defence questions
+
+1. **"For the win-back segments, what cut-offs and how many groups did you use, and how do you know the 2.1% to 2.5% rise came from segmentation rather than the new copy or the season? Was there a holdout?"**
+   Tests their own part versus the email manager's, and whether the result was measured with a control.
+2. **"Walk me through how you decide a test has enough traffic: baseline rate, minimum detectable effect, power, significance level. What do you do when a test comes back underpowered?"**
+   Tests whether the traffic check reflects real experimentation practice.
+3. **"Of the roughly 12 tests, pick one where your write-up changed what the team did. What did you recommend, and what happened next?"**
+   Tests whether they drive decisions or only report results. This role expects them to propose tests and next steps.
+4. **"In the Looker work, did you write the LookML and underlying BigQuery tables or views yourself, or build on models someone else set up?"**
+   Tests the advanced-SQL and table-creation requirement behind "builds Looker dashboards."
+5. **"You exceeded sales targets consistently. What were the targets, by how much did you beat them, and in how many of the five years?"**
+   Tests whether an unquantified claim holds up.

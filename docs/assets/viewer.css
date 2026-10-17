@@ -19,14 +19,22 @@ main.rv { max-width: none; padding: 0; font-size: 14px; line-height: 1.5; }
 
 /* title bar */
 .rv-bar { flex: none; border-bottom: 1px solid var(--line); }
-.rv-bar .in { max-width: var(--wide); margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 32px; padding: 18px var(--gutter) 16px; }
-.rv-title { min-width: 0; flex: 1 1 360px; }
-.rv-crumb { font-size: 13px; color: var(--muted); }
-.rv-crumb a { color: var(--muted); }
-.rv-crumb-here { color: var(--ink); }
-.rv-title h1 { font-size: clamp(1.15rem, 2.4vw, 1.5rem); margin: 4px 0 0; letter-spacing: -0.015em; }
-.rv-facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-.rv-fact { border: 1px solid var(--line); border-radius: 999px; padding: 1px 10px; font-size: 12.5px; color: var(--muted); background: var(--surf); white-space: nowrap; }
+.rv-bar .in { max-width: var(--wide); margin: 0 auto; display: grid; gap: 10px; padding: 14px var(--gutter) 18px; }
+/* top row: home, back to the list, then the switcher, the details toggle and the theme */
+.rv-top { display: flex; align-items: center; gap: 12px 16px; }
+.rv-home { display: flex; flex: none; }
+.rv-back { color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none; margin-right: auto; white-space: nowrap; }
+.rv-back::before { content: "\2039"; font-size: 18px; margin-right: 6px; }
+.rv-back:hover { color: var(--brand); }
+.rv-top-r { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.rv-top-r select { min-width: 0; max-width: 24rem; padding: 7px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--surf); }
+.rv-top-r .rv-ghost { white-space: nowrap; min-height: 36px; }
+.rv-top-r .icon { width: 36px; height: 36px; }
+.rv-bar h1 { font-size: clamp(1.25rem, 2.6vw, 1.75rem); margin: 4px 0 0; letter-spacing: -0.015em; }
+.rv-bar.closed .rv-details { display: none; }
+.rv-facts { display: flex; flex-wrap: wrap; gap: 8px; }
+.rv-fact { border: 1px solid var(--line); border-radius: 999px; padding: 2px 12px; font-size: 13px; color: var(--muted); background: var(--surf); white-space: nowrap; }
+@media (max-width: 640px) { .rv-top-r select { max-width: 9.5rem; } }
 /* "How this run was recorded": an i that shows its note on hover, focus or tap */
 .rv-info { position: relative; display: inline-grid; place-items: center; width: 20px; height: 20px; margin-left: 8px; border-radius: 50%; border: 1.5px solid var(--muted); color: var(--muted); font: italic 700 12px/1 Georgia, serif; vertical-align: 3px; cursor: help; letter-spacing: 0; }
 .rv-info:hover, .rv-info:focus-visible { border-color: var(--brand); color: var(--brand); outline: none; }
@@ -34,9 +42,6 @@ main.rv { max-width: none; padding: 0; font-size: 14px; line-height: 1.5; }
 .rv-tip b { font-weight: 700; }
 .rv-info:hover .rv-tip, .rv-info:focus .rv-tip, .rv-info:focus-within .rv-tip { display: block; }
 @media (max-width: 859px) { .rv-tip { left: auto; right: -8px; transform: none; } }
-.rv-pick { display: grid; gap: 2px; min-width: 0; flex: 0 1 22rem; }
-.rv-pick label { font-size: 12.5px; color: var(--muted); }
-.rv-pick select { padding: 7px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--surf); min-width: 0; }
 
 /* timeline */
 .rv-time { flex: none; border-bottom: 1px solid var(--line); background: var(--surf); }
@@ -126,8 +131,9 @@ main.rv { max-width: none; padding: 0; font-size: 14px; line-height: 1.5; }
 .key .ex-why { color: var(--blue); font-size: 12px; font-style: normal; }
 
 /* chat tabs, like browser tabs */
-.ctabs { flex: none; display: flex; align-items: flex-end; gap: 4px; padding: 10px 16px 0; background: var(--bg); border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: thin; }
-.ctab { position: relative; display: inline-flex; align-items: center; gap: 8px; flex: none; max-width: 14rem; padding: 8px 14px; border: 1px solid transparent; border-bottom: 0; border-radius: 10px 10px 0 0; background: transparent; color: var(--muted); font-size: 13px; cursor: pointer; margin-bottom: -1px; white-space: nowrap; }
+/* the strip scrolls sideways only, and only when the tabs overflow; its bottom line is a shadow the open tab covers */
+.ctabs { flex: none; display: flex; align-items: flex-end; gap: 4px; padding: 10px 16px 0; background: var(--bg); box-shadow: inset 0 -1px 0 var(--line); overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; }
+.ctab { position: relative; display: inline-flex; align-items: center; gap: 8px; flex: none; max-width: 14rem; padding: 8px 14px; border: 1px solid transparent; border-bottom: 0; border-radius: 10px 10px 0 0; background: transparent; color: var(--muted); font-size: 13px; cursor: pointer; white-space: nowrap; }
 .ctab:hover { background: color-mix(in srgb, var(--surf) 60%, transparent); color: var(--ink); }
 .ctab[aria-selected="true"] { background: var(--surf); border-color: var(--line); color: var(--ink); font-weight: 600; }
 .ctab .spin { width: 11px; height: 11px; border-radius: 50%; border: 2px solid color-mix(in srgb, var(--c) 30%, transparent); border-top-color: var(--c); animation: spin .8s linear infinite; flex: none; }
@@ -185,12 +191,11 @@ main.rv { max-width: none; padding: 0; font-size: 14px; line-height: 1.5; }
 /* phones and narrow windows */
 @media (max-width: 859px) {
   .rv-panes { grid-template-columns: minmax(0, 1fr); }
-  .rv-divider, .rv-keys, .zoom, .rv-pane-h h2, .rv-facts { display: none; }
+  .rv-divider, .rv-keys, .zoom, .rv-pane-h h2, .rv-facts, #details-toggle { display: none; }
   .rv-panes[data-show="chat"] .rv-pane-resume, .rv-panes[data-show="resume"] .rv-pane-chat { display: none; }
   .mob-tabs { display: inline-flex; }
   .desk { padding: 10px; }
   .rv-bar .in { padding-block: 8px; }
-  .rv-pick { flex-basis: 100%; }
   .rv-pop { left: 0; right: auto; }
 }
 

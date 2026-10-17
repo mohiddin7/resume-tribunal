@@ -132,6 +132,31 @@
       } else { running = true; hiw.classList.remove("hold"); }
     }
 
+    // Blog posts: "On this page" marks the section being read: the last heading in the top third of the screen.
+    var toc = document.querySelector(".toc");
+    if (toc) {
+      var tlinks = Array.prototype.slice.call(toc.querySelectorAll("a"));
+      var heads = tlinks.map(function (a) { return document.getElementById(decodeURIComponent(a.hash.slice(1))); });
+      var mark = function (k) { tlinks.forEach(function (a, i) { a.classList.toggle("on", i === k); if (i === k) a.setAttribute("aria-current", "location"); else a.removeAttribute("aria-current"); }); };
+      var spy = function () {
+        var k = -1, line = innerHeight * 0.3;  // a heading counts once it is in the top third
+        heads.forEach(function (h, i) { if (h && h.getBoundingClientRect().top <= line) k = i; });
+        if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) k = heads.length - 1;  // the last section may be too short to reach the top
+        mark(k);
+      };
+      var ticking = false;
+      addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; spy(); }); } }, { passive: true });
+      tlinks.forEach(function (a, i) { a.addEventListener("click", function () { mark(i); }); });
+      spy();
+    }
+
+    // The homepage run chart plays its sweep once, the first time it is half on screen.
+    var runcard = document.querySelector(".runcard");
+    if (runcard && "IntersectionObserver" in window) {
+      var rio = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { runcard.classList.add("on"); rio.disconnect(); } }, { threshold: 0.5 });
+      rio.observe(runcard);
+    }
+
     var heroCta = document.querySelector(".hero .cta"), start = document.getElementById("start"), mcta = document.querySelector(".mcta");
     if (mcta && heroCta && "IntersectionObserver" in window) {
       // Hidden while the hero button, the How it works hint or the Get started section is on screen.

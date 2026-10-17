@@ -2,52 +2,56 @@
 Seattle, WA | sofia.martinez@example.com | (206) 555-0172
 
 ## Skills
-- Programming languages: Python, SQL, R, SAS, HTML, CSS
-- Cloud and systems: AWS (S3, EC2, QuickSight), GCP, Azure, Linux
-- Data platforms and databases: Snowflake, Databricks, MySQL, MS SQL Server, MongoDB, Hive, Hadoop, HDFS
-- Machine learning: NLP (DeBERTa, RoBERTa, DistilBERT), computer vision (CNN, YOLOv7, ResNet50, VGG16, DenseNet121), MLP and Random Forest classifiers
-- Analytics: Excel, Tableau, Microsoft Power BI, SPSS, Alteryx
+
+- Programming: Python, SQL
+- Cloud: AWS S3, AWS EC2, AWS QuickSight, GCP
+- Machine learning: Natural Language Processing (NLP), CNN, Yolov7, DeBERTa, RoBERTa, DistilBERT
+- Data and reporting: SQL Server, SSMS, Excel, Tableau
+- Systems: Linux
 
 ## Experience
 
 ### University school of public health, USA
 **Graduate Research Assistant** | Nov 2022 - Dec 2023
-- Reduced data entry time by 80% by automating extraction of PDF invoice data into Excel sheets with Python
-- Collaborated with the IT team to implement secure and reliable data management and reporting systems in SQL Server and Tableau, which cut report generation time by 70%
-- Implemented SQL queries to extract and update departments' research expenditures and exported the results from SSMS as Excel sheets; analyzing time fell by 40%
-- Produced monthly expenditure reports and dashboards in Excel and Tableau, contributing to a 20% improvement in resource allocation and budget forecasting accuracy
+
+- Automated PDF invoice data extraction to Excel with Python; data entry time fell by 80%.
+- Extracted and updated departmental research expenditures with SQL queries; exported results from SSMS to Excel and reduced analysis time by 40%.
+- Collaborated with the IT team to implement secure, reliable data management and reporting systems using SQL Server and Tableau; report generation time fell by 70%.
 
 ### Large cloud provider, USA
-**Solutions Architect Intern – Data Science** | May 2023 - Aug 2023
-- Developed real-time basketball video analysis that assessed shooters' shots and posture with 76% accuracy, using object detection and image classification with CNN and YOLOv7 models
-- Designed and tested over 30 ML models on AWS S3 and AWS EC2 to find the best model, which increased accuracy by 14% and decreased runtime by 25%
-- Created AWS QuickSight dashboards to monitor KPIs such as performance metrics, runtime and computational resources
-- Shadowed meetings between Solutions Architects and 4 different customers to learn the company's sales procedures and the tools available to assist customers
+**Solutions Architect Intern - Data Science** | May 2023 - Aug 2023
+
+- Developed and implemented real-time basketball video analysis for shot and posture analysis, with 76% accuracy using object detection and image classification with CNN and Yolov7 models.
+- Designed and tested over 30 ML models using AWS S3 and AWS EC2 to find the best model; accuracy increased by 14% and runtime decreased by 25%.
+- Created AWS QuickSight dashboards to monitor model performance, runtime and computational resources, resulting in a 20% increase in overall model efficiency.
+- Shadowed Solutions Architects' meetings with 4 different customers to learn sales procedures and tools available to assist customers.
 
 ### Policy research nonprofit, India
 **Data Analyst** | Jun 2020 - Jul 2022
-- Saved over 100 hours of manual data collection by automating web scraping in Python for monthly and annual reports
-- Developed and executed 100+ complex SQL queries on Federal and State budget data for departments such as Agriculture, Education and Health, for data-driven reports used in advocating for policy change
-- Designed Tableau dashboards to monitor KPIs and track expenditure, which resulted in improved budget allocation, annual savings of 800K rupees and enhanced stakeholder retention
+
+- Automated Python web scraping for monthly and annual reports; manual data collection time fell by over 100 hours.
+- Developed and executed 100+ complex SQL queries on Federal and State budgets in departments such as Agriculture, Education and Health for reports instrumental in advocating for and facilitating policy change.
+- Designed Tableau dashboards to monitor KPIs and expenditure, resulting in improved budget allocation, annual savings of 800K rupees and enhanced stakeholder retention.
+- Collaborated to publish monthly reports using Excel and analytical writing; publications doubled and donor funds increased by 45%.
 
 ## Projects
 
 ### News authenticity classifier | Python | Apr 2023
-- Classified news as real or fake with an F1-score of 0.9916 using DeBERTa, RoBERTa and DistilBERT; RoBERTa scored highest
-- Trained the models on AWS EC2 and GCP compute engines, which reduced runtime by 80%
+
+- Classified news as real or fake using models such as DeBERTa, RoBERTa and DistilBERT; RoBERTa achieved the highest F1-score of 0.9916.
+- Trained models using AWS EC2 and GCP compute engines; runtime decreased by 80%.
 
 ### Crop leaf disease detector | Python | Dec 2022
-- Predicted diseased plants with 96.8% accuracy by training on 12K images with CNN and pre-trained models (ResNet50, VGG16, DenseNet121)
-- Built an interactive web application to detect diseased cotton plants
 
-### Pandemic impact analysis | SQL & Tableau | May 2023
-- Analyzed 313k records of a COVID-19 dataset with SQL queries to assess mortality, infection, vaccination, hospitalization and economic indicators across multiple countries, and built two interactive Tableau dashboards
+- Predicted diseased plants with 96.8% accuracy using 12K images, CNN and pre-trained Resnet50, VGG16 and Densenet121 models.
+- Built an interactive web application to detect diseased cotton plants, resulting in a 100% increase in user interaction.
 
 ## Education
 
 ### Private university USA, United States
-**Data Science Master's Candidate** (CGPA: 3.95/4) | Dec 2023
-- Relevant coursework: Deep Learning, NLP, Data Mining, Data Warehousing, Data Visualization
+Data Science Masters Candidate (CGPA: 3.95/4) | Dec 2023
+
+Relevant coursework: Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data Visualization
 
 ### Engineering institute, India
-**Bachelor of Engineering, Electronics and Communication** (CGPA: 8.66/10) | May 2020
+Bachelor of Engineering, Electronics and Communication (CGPA: 8.66/10) | May 2020

@@ -1,0 +1,119 @@
+# <<NAME>>
+Seattle, WA | <<EMAIL>> | <<PHONE>>
+
+## Summary
+Data science and machine learning specialist with experience developing predictive models on AWS and GCP, automating data workflows using Python and SQL, and supporting customer engagements alongside Solutions Architects at a large cloud provider. Background includes natural language processing with transformer models, interactive dashboard design, and cross-functional collaboration with IT and research teams.
+
+## Skills
+- **Programming Languages:** Python, SQL, R, SAS, HTML, CSS
+- **Databases & Big Data:** MySQL, MS SQL Server, NoSQL (MongoDB), Hive, Hadoop, HDFS
+- **Cloud & Operating Systems:** AWS, GCP, Azure, Linux
+- **Analytics & BI Tools:** Tableau, Microsoft Power BI, Excel, Databricks, Snowflake, Alteryx, SPSS
+- **Machine Learning & Modeling:** Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data Visualization, CNN, YOLOv7, DeBERTa, RoBERTa, DistilBERT, ResNet50, VGG16, DenseNet121, Random Forest, MLP
+
+## Experience
+### Large cloud provider – USA
+**Solutions Architect Intern – Data Science** | May 2023 – Aug 2023
+- Developed and implemented real-time video analysis of basketball shots to provide shot and posture analysis of the shooter with 76% accuracy using CNN and YOLOv7 models for object detection and image classification
+- Designed and tested over 30 ML models using AWS S3 and AWS EC2 to find the best model, increasing accuracy by 14% and decreasing runtime by 25%
+- Created AWS QuickSight dashboards to closely monitor KPIs, including performance metrics, runtime, and computational resources, resulting in a 20% increase in overall model efficiency
+- Shadowed meetings between Solutions Architects and 4 different customers to learn company sales procedures and customer assistance tools
+
+### University school of public health – USA
+**Graduate Research Assistant** | Nov 2022 – Dec 2023
+- Implemented SQL queries to extract and update departmental research expenditures, exporting results as Excel sheets from SSMS and reducing analysis time by 40%
+- Collaborated with the IT team to implement secure and reliable data management and reporting systems using SQL Server and Tableau, resulting in a 70% reduction in report generation time
+- Produced monthly expenditure reports and dashboards using Excel and Tableau, contributing to a 20% improvement in resource allocation and budget forecasting accuracy
+- Automated data collection by extracting information from PDF invoices and exporting relevant data to Excel sheets using Python, resulting in an 80% reduction in data entry time
+
+### Policy research nonprofit – India
+**Data Analyst** | Jun 2020 – Jul 2022
+- Developed and executed 100+ complex SQL queries to analyze Federal and State budget data across departments such as Agriculture, Education, and Health, creating data-driven reports instrumental in advocating for and facilitating policy change
+- Designed Tableau dashboards to monitor KPIs and track expenditure, resulting in improved budget allocation, annual savings of 800K rupees, and enhanced stakeholder retention
+- Collaborated to publish monthly reports using Excel and analytical writing, resulting in doubled publications, heightened awareness of the organization's research and policy change strategies, and a 45% increase in donor funds
+- Automated web scraping using Python to collect data for monthly and annual reports, resulting in a reduction of over 100 hours in manual data collection time
+
+## Projects
+### News authenticity classifier
+**Python** | Apr 2023
+- Classified news as real or fake with an f1-score of 0.9916 using Natural Language Processing (NLP) algorithms including DeBERTa, RoBERTa, and DistilBERT, with RoBERTa achieving the highest f1-score
+- Trained models using AWS EC2 and GCP compute engines, which reduced runtime by 80%
+
+### Crop leaf disease detector
+**Python** | Dec 2022
+- Predicted diseased plants with 96.8% accuracy by training 12K images with CNN and pre-trained models including ResNet50, VGG16, and DenseNet121
+- Built an interactive web application to detect diseased cotton plants, resulting in a 100% increase in user interaction
+
+### Basketball shot-selection model
+**Python** | Jun 2022
+- Predicted shots on the player's career with 67% accuracy by building MLP classifier and Random Forest classifier
+- Determined strengths and weaknesses from opponent's perspective to strategize against the player in 2 out of 5 final appearances by conducting exploratory data analysis
+
+### Pandemic impact analysis
+**SQL & Tableau** | May 2023
+- Analyzed a 313k-record COVID-19 dataset across multiple countries using SQL queries to examine mortality rates, infection rates, vaccination coverage, hospitalization trends, and economic indicators
+- Created two interactive Tableau dashboards to effectively communicate key insights from the analysis
+
+## Education
+### Private university USA – United States
+**Data Science Masters Candidate** (CGPA: 3.95/4) | Dec 2023
+- Relevant Coursework: Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data visualization
+
+### Engineering institute – India
+**Bachelor of Engineering, Electronics and Communication** (CGPA: 8.66/10) | May 2020
+
+---
+
+### Not shown: requirements in the job description that the candidate's material does not evidence
+
+1. **4+ years of experience as an engineer shipping production systems**:
+   - The candidate's material evidences ~3.5 years of total professional and academic experience (June 2020 – December 2023).
+   - Past titles are Data Analyst, Graduate Research Assistant, and Solutions Architect Intern rather than software/backend engineer roles shipping production systems.
+   - There is an unevidenced gap of nearly three years between December 2023 and the current date (16 October 2026).
+2. **Backend engineering fundamentals & distributed systems**:
+   - No evidence of designing, debugging, or maintaining backend web services, microservices, APIs, RPC/HTTP endpoints, or multi-service data pipelines.
+3. **AI agents, LLM-powered tools, or workflow automation beyond basic prompt engineering**:
+   - The candidate has experience with discriminative/classification NLP (DeBERTa, RoBERTa, DistilBERT) and local script automation (Python scraping, PDF invoice parsing), but no evidenced experience with Large Language Models (LLMs), AI agents, generative AI tools, prompt engineering, or agentic frameworks.
+4. **Proficiency in at least two of Ruby, Node.js, Python, or Next.js**:
+   - The candidate evidences Python proficiency, but contains no mention or evidence of Ruby, Node.js, or Next.js.
+5. **Building internal tools, developer platforms, or production workflow platforms**:
+   - Evidenced automation is limited to single-purpose local Python extraction scripts and BI dashboards, with no evidence of building multi-user internal tools, developer platforms, or extensible frameworks.
+6. **Simultaneous work across multiple codebases**:
+   - The candidate's material covers standalone ML models and analytical scripts, but does not evidence navigating or maintaining multiple complex production codebases simultaneously.
+7. **Hands-on use of AI/LLM development tools in engineering workflows**:
+   - No documented experience using AI-assisted coding tools (e.g., GitHub Copilot, LLM-assisted workflows).
+8. **Independent scoping without traditional product structures**:
+   - Experience is drawn from academic research, structured nonprofit reporting, and an internship with shadowing, rather than autonomous technical scoping in a fast-paced product/engineering organization.
+9. **Preferred qualifications**:
+   - No experience designing extensible low-code frameworks or platforms for non-engineers.
+   - No full-time experience in Solutions Engineering, Sales Engineering, or GTM Engineering (only shadowed meetings during an internship).
+   - No familiarity with Stripe APIs, Stripe products, or fintech/payments infrastructure.
+   - No experience integrating with enterprise third-party platforms (e.g., Salesforce, Gong).
+   - No documented track record of systems adopted org-wide beyond the candidate's immediate team.
+10. **Target location**:
+    - The role is located in Chicago, IL. The candidate's contact details list Seattle, WA, with no documented indication of relocation or local presence.
+
+---
+
+### Open questions: facts that would strengthen the resume if the candidate can supply them
+
+1. **Experience from December 2023 to present (October 2026)**:
+   - What engineering or AI positions have you held since December 2023? (Assumption made: material ends at December 2023; accounting for production software or AI engineering work during this period is essential to meet the 4+ year minimum requirement).
+2. **Second programming language**:
+   - Do you have production or project experience with Ruby, Node.js, or Next.js to pair with Python?
+3. **Backend architecture and APIs**:
+   - Have you built backend services, APIs, or database architectures using frameworks such as FastAPI, Flask, Express, or Django? If so, what was the scale, traffic, or service architecture?
+4. **LLM and AI agent development**:
+   - Have you built or deployed systems using Large Language Models, agent frameworks (e.g., LangChain, LlamaIndex), tool calling, or retrieval-augmented generation (RAG)?
+5. **Master's degree completion**:
+   - Was your Data Science Master's degree conferred in December 2023, and what was the official degree title awarded? (Assumption made: degree requirements concluded in December 2023 as dated).
+6. **Location and work arrangement**:
+   - Are you currently located in or willing to relocate to Chicago, IL for this role?
+7. **Tooling and scale details**:
+   - In the Policy research nonprofit role, which tool was used in the first bullet (the original text ends with an incomplete "using,")?
+   - In the University school of public health role, what was the volume of research expenditures or number of departments supported?
+   - For the Crop leaf disease detector web application, what framework/stack was used to build the interactive web application, where was it hosted, and what was the user base size?
+8. **Customer assets and Solutions Architecture deliverables**:
+   - During your Solutions Architect internship, did you build custom PoCs, demo environments, or technical assets for any of the 4 customer accounts you shadowed?
+9. **Platform integrations and payments experience**:
+   - Have you worked with Stripe APIs, payment systems, or third-party platforms like Salesforce or Gong?

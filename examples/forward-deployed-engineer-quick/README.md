@@ -1,8 +1,8 @@
 # IT specialist and ML engineer applying for a forward deployed engineer role
 
-Real resume, shared with consent · Auto mode: the other AIs ran by themselves · 2 AIs from 2 companies · 8 minutes · Real public job posting
+Real resume, shared with consent · Auto mode: the other AIs ran by themselves · 2 AIs from 2 companies · 6 minutes · Real public job posting
 
-A recorded run of Resume Tribunal on a fictional candidate. Nothing here was edited by hand: [tools/](../tools/) recorded the run and exported this folder.
+A recorded run of Resume Tribunal on a real candidate who agreed to publish their de-identified resume. Recorded by the host as it worked, with the tools in tools/. The host removed a duplicate step line and one note recorded too early from its own record; no message was changed.
 
 | File | What it is |
 |---|---|

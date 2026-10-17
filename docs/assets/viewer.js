@@ -64,12 +64,12 @@
   Object.keys(WHO).forEach(function (k) {
     var w = WHO[k];
     if (k === "user" || k === "host" || k === "check") return;
-    var about = k === "claude" ? "A new Claude session that knows nothing about the host's own draft. Its only job is to merge the drafts."
+    var about = w.fresh ? "A new session of the host's own model that sees only its prompt, nothing of the host's own draft."
       : PASTED[k] ? "The cards the host gave " + CAND + " to paste into " + w.n + ", and the replies " + CAND + " pasted back. " + w.n + " never sees " + CAND + "'s name or who wrote each draft."
       : "What the host sent " + w.n + " and what came back. " + w.n + " never sees " + CAND + "'s name or who wrote each draft.";
     TABS.push({ id: k, who: k, n: w.n, about: about });
   });
-  if (WHO.check) TABS.push({ id: "check", who: "check", n: "Checks", about: "The script that checks every number, name and title against " + CAND + "'s own material." });
+  if (WHO.check) TABS.push({ id: "check", who: "check", n: "Checks", about: "The script that flags numbers, names and titles it cannot find in " + CAND + "'s own material, for the host to settle." });
   TABS.push({ id: "all", who: "all", n: "Everything", about: "Every message, in the order it happened." });
 
   var tabOf = function (e) { return e.kind === "ask" ? e.to : e.kind === "reply" ? e.who : e.kind === "check" ? "check" : "chat"; };
@@ -78,7 +78,7 @@
 
   // ---------- resume ----------
   var FROM = { "own words": "from " + CAND + "'s own words", "sign-off": "confirmed at sign-off", "old resume": "from the old resume", "linked page": "from a linked page" };
-  var ui = { v: "after", diff: false, zoom: "width" };
+  var ui = { v: "after", diff: true, zoom: "page" }, userV = null;  // userV: the version the visitor picked, which playback then leaves alone
   function renderResume() {
     var doc = ui.v === "before" ? R.before : R.after;
     $("#sheet").innerHTML = doc.map(function (l) {
@@ -255,13 +255,17 @@
   function play() {
     if (now >= END) {
       TABS.forEach(function (t) { seen[t.id] = 0; });
+      if (!userV) setVersion("before");  // the run plays from the old resume and ends on the new one
       selected = -1; tab = ""; openTab("chat", true); setNow(0, false); select(0, false);
       holdUntil = performance.now() + holdFor(EV[0]);
     }
     playing = true; last = 0; setPlayButton("Pause", PAUSE);
     raf = requestAnimationFrame(frame);
   }
-  function pause() { playing = false; cancelAnimationFrame(raf); setPlayButton(now >= END ? "Play again" : "Play", PLAY); }
+  function pause() {
+    playing = false; cancelAnimationFrame(raf); setPlayButton(now >= END ? "Play again" : "Play", PLAY);
+    if (now >= END && !userV && ui.v !== "after") setVersion("after");
+  }
   // Picking a moment by hand pauses the run, so it stays on what was picked.
   function jumpTo(i) { if (i < 0) return; if (playing) pause(); holdUntil = 0; setNow(EV[i].t, false); select(i); }
 
@@ -306,15 +310,25 @@
     if (m) { if (playing) pause(); select(+m.dataset.i, false); if (narrow() && (EV[m.dataset.i].links || []).length) showPane("resume"); }
   });
   $("#feed").addEventListener("keydown", function (ev) { if (ev.key === "Enter" && ev.target.matches("[data-i]")) ev.target.click(); });
-  $$("[data-v]").forEach(function (b) { b.onclick = function () { setVersion(b.dataset.v); }; });
+  $$("[data-v]").forEach(function (b) { b.onclick = function () { userV = b.dataset.v; store.set("version", userV); setVersion(userV); }; });
   $("#cutbar").addEventListener("click", function (ev) { var b = ev.target.closest("[data-jump]"); if (b) setVersion(b.dataset.jump); });
-  $("#diff").onchange = function (e) { ui.diff = e.target.checked; renderResume(); };
-  $$("[data-z]").forEach(function (b) { b.onclick = function () { ui.zoom = b.dataset.z; $$("[data-z]").forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); fit(); }; });
+  $("#diff").onchange = function (e) { ui.diff = e.target.checked; store.set("diff", ui.diff ? "1" : "0"); renderResume(); };
+  function setZoom(z) { ui.zoom = z; $$("[data-z]").forEach(function (x) { x.setAttribute("aria-pressed", x.dataset.z === z); }); fit(); }
+  $$("[data-z]").forEach(function (b) { b.onclick = function () { store.set("zoom", b.dataset.z); setZoom(b.dataset.z); }; });
   $$("button[data-show]").forEach(function (b) { b.onclick = function () { showPane(b.dataset.show); }; });
-  $("#lanes-toggle").onclick = function (e) {
-    var closed = $("#timeline").classList.toggle("closed");
-    e.target.textContent = closed ? "Show timeline" : "Hide timeline"; e.target.setAttribute("aria-expanded", String(!closed)); fit();
+  function setDetails(open) {
+    $("#rv-bar").classList.toggle("closed", !open);
+    var b = $("#details-toggle"); b.textContent = open ? "Hide details" : "Show details"; b.setAttribute("aria-expanded", String(open));
+  }
+  $("#details-toggle").onclick = function () {
+    var open = $("#rv-bar").classList.contains("closed"); setDetails(open); store.set("details", open ? "open" : "closed"); sizeToHeader();
   };
+  setDetails(store.get("details") === "open");  // details start folded until the visitor opens them
+  function setLanes(open) {
+    $("#timeline").classList.toggle("closed", !open);
+    var b = $("#lanes-toggle"); b.textContent = open ? "Hide timeline" : "Show timeline"; b.setAttribute("aria-expanded", String(open)); fit();
+  }
+  $("#lanes-toggle").onclick = function () { var open = $("#timeline").classList.contains("closed"); store.set("timeline", open ? "open" : "closed"); setLanes(open); };
   var pick = $("#example");
   if (EX.length) {
     var modes = []; EX.forEach(function (x) { if (modes.indexOf(x.mode) < 0) modes.push(x.mode); });
@@ -325,7 +339,7 @@
     }).join("");
     pick.onchange = function () { location.href = "../" + pick.value + "/"; };
   }
-  function sizeToHeader() { var h = $("header.site"); if (h) document.documentElement.style.setProperty("--hdr", h.offsetHeight + "px"); fit(); }
+  function sizeToHeader() { var h = $("header.site"); document.documentElement.style.setProperty("--hdr", (h ? h.offsetHeight : 0) + "px"); fit(); }
   addEventListener("resize", sizeToHeader);
   document.addEventListener("keydown", function (ev) {
     if (ev.target.closest("input, select, textarea, button, a, [data-i]")) return;
@@ -349,9 +363,13 @@
     d.addEventListener("keydown", function (e) { var cur = +d.getAttribute("aria-valuenow"); if (e.key === "ArrowLeft") set(cur - 3); if (e.key === "ArrowRight") set(cur + 3); });
   })();
 
+  // the visitor's own choices win; otherwise: changes shown, whole page, timeline open, the new resume at rest
+  userV = store.get("version"); ui.v = userV || "after"; ui.diff = store.get("diff") !== "0"; $("#diff").checked = ui.diff;
+  $$("[data-v]").forEach(function (x) { x.setAttribute("aria-pressed", x.dataset.v === ui.v); });
+  setZoom(store.get("zoom") || "page");
   buildLanes(); renderResume(); sizeToHeader();
   TABS.forEach(function (t) { seen[t.id] = visible(t.id, END); }); // at rest the whole run is on show, so nothing counts as new
   setNow(END, false); renderTabs(); showPane("chat");
-  if (narrow()) { $("#timeline").classList.add("closed"); $("#lanes-toggle").textContent = "Show timeline"; $("#lanes-toggle").setAttribute("aria-expanded", "false"); }
+  setLanes(store.get("timeline") !== "closed");
   if ($("#autoplay").checked && !reduce) play(); // starts from the beginning; the page is complete at rest without it
 })();

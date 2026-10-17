@@ -1,0 +1,77 @@
+### 1. Screen Decision
+- **Phone this candidate:** No
+- **The one reason:** The candidate has zero experience in pricing analytics, pricing experimentation, or developing pricing models, which is the primary core competency and explicit prerequisite for this role.
+- **Seniority the resume reads as:** Mid-level Marketing Analyst (promoted to analyst ~4 years ago, executing test readouts designed by others and building channel BI reports without schema ownership or strategic cross-functional scope).
+
+---
+
+### 2. First Impression
+- **What you know after the top third of the page:** The candidate is a mid-level marketing data analyst and the sole analyst on a 9-person marketing team at a 400-person e-commerce retailer (promoted from marketing coordinator in July 2022). Their core day-to-day stack consists of BigQuery SQL, Looker, GA4, Excel, and occasional Python (pandas) for data cleaning, with domain experience focused on marketing channel dashboards, customer segmentation, and marketing A/B test readouts.
+- **Must-have requirements still not evidenced:**
+  1. *2–5 years of strategic and pricing analytics experience (developing pricing models, analyzing pricing A/B tests):* Unmentioned; candidate has exclusively marketing analytics experience.
+  2. *Advanced SQL skills, with an ability to create new tables / schemas on an ad hoc basis:* Not evidenced; mentions writing SQL in BigQuery, but demonstrates no schema architecture or DDL capabilities.
+  3. *Exceptional communication and presentation skills with senior executives:* Not evidenced; mentions only marketing team and marketing director interactions.
+  4. *Maintaining KPI datasets and building automations / AI tooling for self-service reporting:* Not evidenced; mentions only asking ChatGPT for SQL query help.
+  5. *Bachelor's Degree:* Not yet visible (located in the bottom third of the resume).
+
+---
+
+### 3. Claim Check
+
+| Resume Line (First Few Words) | Supporting Material (Quoted) / Evaluation |
+| :--- | :--- |
+| `Marketing Analyst and the only analyst...` | "At the home-goods company I'm the only analyst on the marketing team, there are nine of us. Most days I'm in BigQuery writing SQL. I built our Looker dashboards... I also do the analysis on our A/B tests." |
+| `SQL, BigQuery, Looker, GA4...` | "BigQuery writing SQL", "Looker dashboards", "I use GA4 most days", "Excel is accurate to include", "Python I use for cleaning up exports in notebooks with pandas", "I also do the analysis on our A/B tests", "data-driven customer segmentation", "I sometimes ask ChatGPT to help me fix a SQL query" |
+| `Online home-goods retailer...` | "Online home-goods retailer (about 400 employees)" |
+| `**Marketing Coordinator** \| Mar 2019...` | "Marketing Coordinator, then Marketing Analyst \| Mar 2019 - Present" and "promoted from Marketing Coordinator to Marketing Analyst in July 2022." |
+| `**Marketing Analyst** \| Jul 2022...` | "promoted from Marketing Coordinator to Marketing Analyst in July 2022." |
+| `- Wrote SQL to split customers...` | "Customers who hadn't bought anything in a year were all getting the same email. I wrote the SQL to split them by what they'd bought before and how much they'd spent" |
+| `- Conversion went from 2.1%...` | "our email manager <<PERSONAL>> wrote a different email for each group. Conversion on those emails went from 2.1% to 2.5% over the next quarter." |
+| `- Analyze about 12 A/B tests...` | "<<PERSONAL_FIRST>> or the paid social lead decide what to test, I check whether we have enough traffic, then I read the results and write up what we found. We've done about 12 tests in the last year." |
+| `- Built Looker dashboards...` | "I built our Looker dashboards for the email and paid social channels, and the marketing director goes through them every Monday." |
+| `- The dashboard showed $2.4M...` | "The $2.4M was the email channel's revenue last year in our dashboard, not money I controlled." |
+| `- Created a few saved views...` | "have made a few saved views in BigQuery" |
+| `- Use GA4 most days...` | "I use GA4 most days." and "I sometimes ask ChatGPT to help me fix a SQL query; I have not built any automations." |
+| `- Clean exports in Python notebooks...` | "Python I use for cleaning up exports in notebooks with pandas, maybe a few times a month." |
+| `- Presented to the marketing director...` | "I have only presented to our marketing director and the marketing team." |
+| `- Portfolio: <<LINK_WEB>>...` | "My portfolio is at <<LINK_WEB>>, it has write-ups of two of the tests." |
+| `Regional sporting-goods chain` | "Regional sporting-goods chain" and "managed a sporting goods store for five years" |
+| `**Store Manager** \| 2014 - 2019` | "Store Manager \| 2014 - 2019" and "managed a sporting goods store for five years" |
+| `- Managed about 12 part-time staff.` | "managed a sporting goods store for five years, about 12 part-time staff." |
+| `- Built scheduling and inventory spreadsheets...` | "Built scheduling and inventory spreadsheets in Excel" and "built our scheduling and inventory sheets" |
+| `BA Communications, large public state university...` | "BA Communications, large public state university, 2014" |
+| `Google Data Analytics Certificate, 2020` | "Google Data Analytics Certificate, 2020" |
+
+---
+
+### 4. Fixes
+
+1. `The dashboard showed $2.4M in email-channel revenue last year.`
+   Cut this line entirely, as reporting a passive figure from a dashboard without candidate ownership, budget responsibility, or measurable contribution reads oddly and conveys no personal accomplishment.
+2. `SQL, BigQuery, Looker, GA4, Excel, Python (pandas), A/B test analysis, customer segmentation, ChatGPT for SQL query help`
+   Remove "ChatGPT for SQL query help" from the skills list, as advertising reliance on a chatbot for basic query syntax echoes the job description awkwardly and undermines perceived technical proficiency.
+3. `- Use GA4 most days and sometimes use ChatGPT to help fix a SQL query.`
+   Remove "and sometimes use ChatGPT to help fix a SQL query" and focus the bullet on daily GA4 traffic and performance analysis.
+4. `- Presented to the marketing director and team.`
+   Cut this standalone line or incorporate it into the Looker and A/B testing bullets to describe what insights were shared, as presenting to one's direct manager and peers is an expected baseline that reads awkwardly on its own.
+5. `- Created a few saved views in BigQuery.`
+   Cut this line or combine it with BigQuery query development, as saving a few views is too basic an ad-hoc action to stand alone as an achievement bullet.
+6. `- Portfolio: <<LINK_WEB>> (write-ups of two tests)`
+   Move the portfolio link into the contact header alongside the other links, rather than leaving it as a trailing bullet under employment experience.
+7. `Marketing Analyst and the only analyst on a marketing team of nine. Write SQL in BigQuery most days, build Looker dashboards, and analyze A/B test results.`
+   Rephrase the informal conversational phrasing ("Write SQL in BigQuery most days") into standard professional summary language highlighting analytical domain expertise and technical toolsets.
+8. `- Conversion went from 2.1% to 2.5% over the next quarter; the email manager wrote separate emails for each group.`
+   Combine this bullet with the preceding segmentation bullet into a single, cohesive achievement that connects the SQL customer segmentation directly to the email strategy and the resulting 2.1% to 2.5% conversion lift.
+
+---
+
+### 5. Claim-Defence Questions
+
+1. **"On the approximately 12 A/B tests you analyzed in the past year, how did you calculate sample size and statistical power to verify 'enough traffic', and what decision rules did you use when evaluating statistical significance and trade-offs?"**
+   - *Testing:* Whether the candidate possesses formal statistical experimentation knowledge and analytical independence versus merely reading automated dashboard outputs.
+2. **"For the win-back customer segmentation project, what was the baseline conversion rate and sample size, how did you establish the specific purchase history and spend thresholds in SQL, and was there a randomized control holdout group to measure true incremental lift?"**
+   - *Testing:* Whether the candidate understands incremental attribution, rigorous baseline measurement, and segmentation strategy, or if they are attributing a seasonal re-engagement lift to an uncontrolled send.
+3. **"When building the Looker dashboards for email and paid social, what underlying data modeling or metric definitions did you create, and how did you validate data integrity when reporting figures like the $2.4M channel revenue?"**
+   - *Testing:* The depth of the candidate's BI architecture and data-modeling capabilities (e.g., custom SQL/LookML views versus consuming clean pre-aggregated tables) and data governance rigor.
+4. **"You noted using ChatGPT to troubleshoot SQL queries; could you walk through a complex query or performance issue you encountered, how you diagnosed the logic or performance bottleneck, and how you validated the output?"**
+   - *Testing:* The candidate’s true SQL proficiency, debugging independence, and whether they understand query execution plans or rely on external generative tools as a crutch for basic syntax.

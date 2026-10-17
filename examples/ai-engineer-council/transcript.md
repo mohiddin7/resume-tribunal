@@ -1,25 +1,28 @@
 # Data scientist applying for an AI engineer role
 
-Real resume, shared with consent · Auto mode: the other AIs ran by themselves · 3 AIs from 2 companies · 14 minutes · Real public job posting
+Real resume, shared with consent · Auto mode: the other AIs ran by themselves · 3 AIs from 3 companies · 27 minutes · Real public job posting
 
 Every message of the run in order. Times are minutes and seconds from the start. Prompts and replies are in [files/](files/).
 
-**00:00 Sofia**
+**00:01 Host**
+
+> I’ll read the skill in full, then start the recorded run and follow its council workflow.
+
+**00:02 Sofia**
 
 > I want to apply for this job. My resume is before.md and the posting is job.md. Can you tailor my resume for it?
 
 ## Step 1: Setup
 
-**00:06 Host** (working)
+**00:03 Host** (working)
 
-> Reading the resume and the posting, and hiding her name and contact details
+> Reading its setup rules and the candidate's files
 
 **00:30 Host** (Stop 1)
 
-> Step 1 of 4: Setup
+> Step 1 of 5: Setup
 >
-> ```
-> You give:  your resume, the job posting, a few sentences in your own words
+> You give: your resume, the job posting, a few sentences in your own words
 >    ↓
 > I write a draft, from your facts only
 >    ↓
@@ -28,248 +31,378 @@ Every message of the run in order. Times are minutes and seconds from the start.
 > Automatic checks, then you approve every changed line
 >    ↓
 > Your resume, the job requirements it does not show, and likely interview questions
-> ```
-> It runs by itself; you answer a few questions along the way.
 >
-> What I read from your resume, so a misread file is caught now:
-> - Large cloud provider: Solutions Architect Intern – Data Science, May 2023 - Aug 2023
-> - University school of public health: Graduate Research Assistant, Nov 2022 - Dec 2023
-> - Policy research nonprofit: Data Analyst, Jun 2020 - Jul 2022
-> - Four projects (Jun 2022 to May 2023), a Data Science master's (Dec 2023) and a bachelor's in Electronics and Communication (May 2020)
+> The other AIs run automatically; you answer a few questions along the way. Independent review helps catch mistakes in the writing.
 >
-> The posting gives no level, so I assumed mid level (it asks for 4+ years) in Chicago, United States. Tell me if that's wrong.
+> I read these roles:
+> - Large cloud provider: Solutions Architect Intern - Data Science, May 2023 to Aug 2023.
+> - University school of public health: Graduate Research Assistant, Nov 2022 to Dec 2023.
+> - Policy research nonprofit: Data Analyst, Jun 2020 to Jul 2022.
 >
-> Two questions:
-> 1. Pick two or three things this job asks for that you have really done. For each, tell me one time you did it: what it was, what you did, what changed. Plain sentences; dictating is fine. These details are what set you apart from other applicants.
-> 2. Any links to add: LinkedIn, GitHub, a portfolio, project pages, papers or certificates? Most recruiters look for LinkedIn.
+> Pick two or three things this job asks for that you have really done. For each, tell me one time you did it: what it was, what you did, what changed. Plain sentences; dictating is fine. Please also share any LinkedIn, GitHub, portfolio, project, paper or certification links you want considered.
 >
-> My plan:
-> 1. Quick review: I write the draft and one second AI, from OpenAI, checks it. About 6 minutes, and it runs by itself. Say "full council" for three AIs that each write a draft and check each other's work blind, so two can outvote one that is wrong: about 15 minutes and about five times as much of your AI plans. The Google tool on this computer offers only its fast model, which is why I suggest the quick review.
-> 2. No role research, I polish the final wording, and a plain-text copy while we work, with PDF or Word when it's final.
+> I am treating the target as an experienced AI Engineer role in Chicago, United States. Your resume currently shows machine learning, automation and Solutions Architecture exposure; it does not establish four years shipping production systems.
 >
-> I've hidden your name and contact details. They come back at the end. The other AIs: OpenAI's Codex running GPT-6-astra, and for a full council also Google's Antigravity running Gemini 3.8 Flash (High), plus a fresh copy of me (Claude) that sees only the drafts, to merge them. The working files are in .tribunal. This text, including your employers, job history and the pages your links point to, will go to Codex and Antigravity under their terms and your account settings there. Some keep their own history, and the text can still identify you. Leave out anything confidential to an employer, and check whether this employer allows AI help with applications.
+> Model line: I am OpenAI GPT-6, flagship tier. Available checks use Anthropic opus and Google gemini-3.8-flash-high. The Google option is a fast model, so my default is a quick review. You can choose full council for separate drafts and blind critiques; it takes longer and uses several times as much of your AI plans. I will use no role research, polish the wording, and work in Markdown, a plain-text format, with PDF or Word available at the end.
+>
+> I've hidden your name and contact details. They come back at the end. Working files are in .tribunal/.
+>
+> This text, including your employers, job history and the pages your links point to, will go to Anthropic Claude Code (opus) and Google Antigravity (gemini-3.8-flash-high) under their terms and your account settings there. Some keep their own history, and the text can still identify you. Leave out anything confidential to an employer, and check whether this employer allows AI help with applications.
 >
 > Answer the questions, or say "yes" to take the defaults and go ahead.
 
-**00:30 Sofia**
+**00:59 Sofia**
 
 > Full council, please. Yes to the defaults, go ahead. No links.
 
 ## Step 2: Draft
 
-**00:46 Host**
+**00:59 Host** (working)
+
+> Writing its independent draft from the original resume before reading replies
+
+**01:00 Host**
 
 > Step 2 of 5: Draft
 >
-> Full council it is. Since you have no extra notes or links, I'll use your resume's own wording as your voice. Two other AIs, from OpenAI and Google, are each writing a draft now, and I'm writing a third. This takes a few minutes; nothing needed from you until the sign-off questions.
+> I’ll run the full council you chose and keep your original wording as the voice reference. With no links to add, I’ll work from the two files; most recruiters look for LinkedIn, but it is optional here. Separate drafts are starting now, followed by blind critiques.
+>
+> Next, let the draft and review rounds run; I’ll bring back the factual questions together.
 
-**00:53 Host to Codex**
+**01:07 Host to Claude**
 
-> Write a resume for this AI Engineer job using only the candidate's own material, and list what it does not show and what to ask.
-
-[p1.txt](files/p1.txt)
-
-**00:53 Host to Gemini**
-
-> Write a resume for this AI Engineer job using only the candidate's own material, and list what it does not show and what to ask.
+> Write a tailored resume using only the candidate's facts.
 
 [p1.txt](files/p1.txt)
 
-**01:39 Host** (working)
+**01:08 Host to Gemini**
 
-> Writing its own draft from her resume while the other two AIs draft
+> Write a tailored resume using only the candidate's facts.
 
-**02:15 Codex** (took 82 s)
+[p1.txt](files/p1.txt)
 
-> A full draft in 57 seconds, leading with the graduate research role and keeping her numbers. Its "Not shown" list starts with "4+ years as an engineer shipping production systems" and "Deployed AI agents or LLM-powered tools".
+**01:46 Host** (working)
 
-[p1_reply_codex.md.txt](files/p1_reply_codex.md.txt)
+> Checking its draft's numbers, qualifiers and customer exposure against the original
 
-**02:15 Host** (working)
-
-> Recording that Google's AI hit its usage limit and carrying on with two drafts
-
-**02:15 Host**
+**01:57 Host**
 
 > Step 2 of 5: Draft
 >
-> The Google AI could not take part: its account has reached its usage limit, which resets in about five days. I'll carry on with two drafts, mine and the OpenAI AI's, which is still a blind check of each by an AI that did not write it. If you'd rather add a Google chat by copy and paste, say so; otherwise nothing is needed from you yet.
+> The draft calls are still running. I’ve checked the source claims: customer exposure was meeting shadowing, the reporting work included team contributions, and the degree is listed as a master's candidacy. Those limits will stay visible unless you confirm a change.
+>
+> Next, let the independent drafts finish.
 
-**02:26 Gemini** (took 93 s)
+**02:27 Claude** (took 80 s)
 
-> No draft: the tool answered "Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 117h18m16s."
+> Returned its draft, missing requirements and open questions.
+
+[p1_reply_claude.md.txt](files/p1_reply_claude.md.txt)
+
+**02:50 Host** (working)
+
+> Collecting the returned draft's job gaps and unanswered factual questions
+
+**03:00 Host**
+
+> Step 2 of 5: Draft
+>
+> One draft has returned. It highlights Python automation, cloud model training and the internship, and identifies the same major gap: the files show no production engineering work after December 2023. The other draft is still running.
+>
+> Next, let the remaining draft finish so both can be critiqued blind.
+
+**04:10 Gemini** (took 182 s)
+
+> Returned its draft, missing requirements and open questions.
+
+[p1_reply_agy.md.txt](files/p1_reply_agy.md.txt)
 
 ## Step 3: Council
 
-**02:31 Host to Codex**
+**04:27 Host**
 
-> Read the other draft as the recruiter and hiring manager for this job and report what is wrong with it, quoting each line.
+> Step 3 of 5: Council
+>
+> All three drafts are ready. I’m sending each of the other AIs only the drafts it did not write. A fresh reading will then merge the strongest supported lines, keeping the internship title and team contributions intact.
+>
+> Next, let the blind critiques and merge run.
 
-[p2_codex.txt](files/p2_codex.txt)
+**04:36 Host to Claude**
 
-**04:08 Codex** (took 97 s)
+> Critique the anonymous drafts against the candidate's material and target job.
 
-> Screen decision "No": the draft "does not demonstrate the required four years of engineering experience shipping production systems." It found no unsupported additions; its fixes ask what "overall model efficiency" and the "100% increase in user interaction" measure, and whether the master's was completed.
+[p2_claude.txt](files/p2_claude.txt)
 
-[critique_codex.md.txt](files/critique_codex.md.txt)
+**04:39 Host to Gemini**
 
-**04:13 Host to Fresh Claude**
+> Critique the anonymous drafts against the candidate's material and target job.
 
-> Merge the two anonymous drafts into one resume, applying the critique's findings that hold up against the candidate's material.
+[p2_agy.txt](files/p2_agy.txt)
 
-[p3.txt](files/p3.txt)
+**04:39 Host** (working)
 
-**06:42 Fresh Claude** (took 149 s)
+> Collecting the drafts' factual gaps while the blind critiques run
 
-> A merged resume built on Draft R with the role order and several bullet openings from Draft K. It removed the summary and cut "20% increase in overall model efficiency" and "100% increase in user interaction" because "neither metric is defined", and dropped the donor-funds bullet so the older role has fewer bullets.
+**05:31 Host**
 
-[p3_reply.md.txt](files/p3_reply.md.txt)
+> Step 3 of 5: Council
+>
+> The critiques are running. The drafts agree on the strongest evidence: Python invoice extraction and scraping, SQL reporting, cloud model comparisons, and the internship. I’m keeping questions about production use, recent work and degree completion for your sign-off.
+>
+> Next, let the critiques finish before the merge.
+
+**06:05 Claude** (took 89 s)
+
+> Returned its screen decisions and quoted findings on the drafts.
+
+[critique_claude.md.txt](files/critique_claude.md.txt)
+
+**06:41 Host** (working)
+
+> Reading the returned critique and checking its quoted lines against the source
+
+**06:47 Host**
+
+> Step 3 of 5: Council
+>
+> The first critique caught an overstatement in one summary: shadowing customer meetings had become supporting customer engagements. That wording will go. Questions about the efficiency and interaction percentages will come to you, since a reviewer's doubt cannot settle whether your figures are true.
+>
+> Next, let the remaining critique and merge finish.
+
+**06:51 Gemini** (took 132 s)
+
+> Returned its screen decisions and quoted findings on the drafts.
+
+[critique_agy.md.txt](files/critique_agy.md.txt)
+
+**07:25 Host** (working)
+
+> Merging the anonymous drafts in a fresh context that sees only its prompt
+
+**08:04 Host**
+
+> Step 3 of 5: Council
+>
+> Both critiques are back, and the fresh-context merge is running. The reviewers agree that this is a substantial stretch for the posting's production engineering requirements. I’ll keep that assessment separate from the resume and retain supported facts even where a reviewer questioned a metric.
+>
+> Next, let the merged resume receive its line-by-line review.
 
 ## Step 4: Review and sign-off
 
-**06:55 Checker**
+**09:14 Host** (working)
 
-> 0 errors, 20 warnings (nine line-length, four old-skill groups, three wording, two layout patterns, two trailing clauses)
+> Checking the merged resume and preparing its independent line-by-line review
 
-**06:55 Host**
+**10:05 Checker**
 
-> Step 4 of 5: Review and sign-off
->
-> The two drafts are merged into one, and the automatic checks found no errors. The OpenAI AI is now reading the merged resume as the hiring manager would, without knowing who wrote it. This takes a minute or two; your sign-off questions come next.
+> 0 errors, 24 warnings, 3 working stand-ins; 433 words. Warnings concern wording, estimated line wraps, list patterns and Linux backed only by the original resume.
 
-**06:56 Host to Codex**
-
-> Review the merged resume as the hiring manager: check each claim against her material, suggest fixes, and list likely interview questions.
-
-[p4.txt](files/p4.txt)
-
-**09:09 Codex** (took 133 s)
-
-> Screen decision "No phone screen for this mid-level role", for lack of "four years of engineering experience shipping production systems". The claim check marks no line MORE THAN THE MATERIAL; its fixes ask about work after Dec 2023, whether the master's was completed, moving Linux out of the cloud line, and the baselines behind several numbers.
-
-[p4_reply_codex.md.txt](files/p4_reply_codex.md.txt)
-
-**09:09 Host** (working)
-
-> Applying the review's wording fixes and the checker's, and holding the fixes that need facts from her
-
-**09:39 Checker**
-
-> 0 errors, 13 warnings after two wording passes (six line-length, four old-skill groups, one AI-sounding word she wrote herself, one hyphen, one three-item-list pattern)
-
-**10:07 Host** (Stop 2)
+**10:12 Host**
 
 > Step 4 of 5: Review and sign-off
 >
-> The draft is at .tribunal/resume.md (your name and contact details go back in at the end). The OpenAI AI checked every line against your resume and found none that claims more than your resume says.
+> The merged draft is 433 words and has no checker errors. It keeps all three roles and the two most relevant ML projects; I cut the pandemic and basketball shot-selection projects and one expenditure-reporting bullet for space and focus. A line-by-line independent review is starting now, and I’ll address the wording warnings when it returns.
 >
-> One straight answer first: reading as the hiring manager, it would not phone yet, because the job asks for 4+ years shipping production systems and the page shows two years as an analyst, a research role and an internship. Better wording can't close that gap; only facts you really have can.
->
-> Changed without asking (same facts, new wording): bullets reordered for this job and some reworded with the result first, "Masters" spelled "Master's", the skills regrouped under Cloud and systems, Data platforms and databases, Machine learning and Analytics, and the "Advance knowledge" label dropped. The automatic checks found no errors; what remains are wording notes: a few bullets run just over one line, and "enhanced" and "real-time" are flagged, though "enhanced" is your own word.
->
-> Cut to keep the page on what this job wants: the summary, the monthly-reports bullet (doubled publications, 45% more donor funds), the basketball shot-selection project, and two numbers a reader would not know how to read: "20% increase in overall model efficiency" and "100% increase in user interaction".
->
-> Questions about facts. Are all of these true, and could you explain each in an interview? Tell me any to fix. If you don't know a number, I'll leave it out, so please don't estimate.
-> 1. The skills line calls your CNN and YOLOv7 work "computer vision". Is that fair?
-> 2. These skills appear only in your old skills list, with nothing on the page showing them: R, SAS, HTML, CSS, Azure, Linux, Snowflake, Databricks, Hive, Hadoop, HDFS, Alteryx, Microsoft Power BI and SPSS. Which have you really used, and which should go?
-> 3. Your resume stops at Dec 2023. Have you worked, studied or built anything since then?
-> 4. Was the Data Science master's awarded, and when? If so, I'll show it as a degree instead of "Candidate".
-> 5. The PDF invoice automation: what did you build, and who used it?
-> 6. Is the 14% accuracy gain on the basketball models percentage points or relative, and compared with what? And how was the 0.9916 F1-score tested (which data, and was there a held-out set)?
-> 7. The two numbers I cut: can you say what "overall model efficiency" and "user interaction" measured? If so, they go back in.
-> 8. The job asks for things your resume doesn't show: building or deploying AI agents or LLM tools, Ruby, Node.js or Next.js, deploying and monitoring on the cloud, debugging backend systems, and using AI tools in your own coding. Have you done any of these? Tell me only what you really did.
->
-> Answer what you can in plain sentences; "skip" is fine for any question.
+> Next, let the review finish; then you’ll confirm the facts in one list.
 
-**11:06 Sofia**
+**10:12 Host to Claude**
+
+> Review the tailored resume line by line against the candidate's material and identify unsupported claims.
+
+[p4_review.txt](files/p4_review.txt)
+
+**11:00 Host** (working)
+
+> Comparing the shortened bullets with the original while the review runs
+
+**11:26 Host**
+
+> Step 4 of 5: Review and sign-off
+>
+> The line-by-line review is still running. The draft keeps your reported results and collaborative wording. I’ll shorten repeated sentence patterns afterward, and ask about Linux because it appears only in the original skills list.
+>
+> Next, let the claim check finish.
+
+**12:35 Claude** (took 143 s)
+
+> Returned its line-by-line claim check, suggested fixes and interview questions.
+
+[p4_reply_claude.md.txt](files/p4_reply_claude.md.txt)
+
+**12:39 Host** (working)
+
+> Applying the review's safe wording fixes and holding factual questions for sign-off
+
+**13:46 Checker**
+
+> 0 errors, 15 warnings, 3 working stand-ins; 432 words. Remaining warnings are estimated wraps, original result wording, named tool lists, Linux confirmation and the spelling real-time.
+
+**13:46 Host** (Stop 2)
+
+> SIGN-OFF QUESTIONS
+> Step 4 of 5: Review and sign-off
+>
+> The blind review found support for every factual line in the draft. I shortened sentences, grouped the skills and put automation first. The draft keeps all three roles, the news classifier and the crop detector; the pandemic and basketball shot-selection projects and one expenditure-dashboard bullet were cut for focus.
+>
+> You can read the [working draft](.tribunal/resume.md). Your name and contact details are still hidden there.
+>
+> The checker reports 0 errors and 15 warnings at 432 words. Remaining warnings include estimated line wraps, tool lists and result wording from your original resume, including “enhanced.” “Real-time” is just the hyphenated spelling of your original “real time.” I kept those facts rather than changing their meaning.
+>
+> Please confirm or correct these points:
+>
+> 1. What have you done since December 2023, with titles and dates if there is work to add? Is “Data Science Masters Candidate” still accurate, or was the degree awarded? Was the research assistantship part-time?
+> 2. For the internship, what were the 14% accuracy increase and 25% runtime decrease compared with? What did the 20% “overall model efficiency” improvement measure, how did the dashboards contribute, and what was your own part versus the team's? Customer exposure remains shadowing meetings with 4 customers.
+> 3. What did you personally build in the SQL Server/Tableau work with IT, and how was the 70% reporting-time reduction measured? Who used the Python invoice extraction, and was it deployed or maintained for others?
+> 4. Can you stand behind the nonprofit's annual savings of 800K rupees, enhanced stakeholder retention, doubled publications and 45% increase in donor funds as written? What was your contribution versus the wider team's?
+> 5. For the news classifier, what evaluation data produced the 0.9916 F1-score, and what was the 80% runtime reduction compared with? For the crop detector web app, what was its stack and deployment, and what did the 100% interaction increase compare?
+> 6. Which skills from the old skills list can you still use and explain: Linux, R, SAS, HTML, CSS, MySQL, MongoDB, Hive, Hadoop, HDFS, Microsoft Power BI, SPSS, Azure, Snowflake, Alteryx and Databricks? Linux is in the draft; the others were left out to focus it.
+> 7. Only if true, is there evidence we have missed of four years shipping production systems; backend debugging across services; deployed AI agents or LLM-powered tools; Ruby, Node.js or Next.js alongside Python; cloud deployment or DevOps; AI-assisted development; independent scoping across teams and codebases; or tools adopted beyond your immediate team? Any Stripe/payments or third-party integration work would also help. Give a concrete example for anything to add.
+>
+> Are all of these true, and could you explain each in an interview? Tell me any to fix. If you don't know a number, I'll leave it out, so please don't estimate.
+
+**16:08 Sofia**
 
 > I confirm everything in my original resume is true as written.
+> 1. Nothing new to add. Leave the degree and the assistantship as my resume has them.
+> 2. I don't know more about how those were measured. Leave them as my resume has them.
+> 3. Leave it as my resume has it.
+> 4. Yes, as written.
+> 5. I don't know more. Leave it as my resume has it.
+> 6. Leave them out except Linux.
+> 7. Nothing to add for those.
+
+**16:09 Host**
+
+> Step 4 of 5: Review and sign-off
 >
-> 1. Yes, that's fair.
-> 2. They're all on my original resume and true, so keep the ones that fit.
-> 3. Nothing to add.
-> 4. Leave it as my resume has it.
-> 5. I don't know more than what's on my resume.
-> 6. I don't know, so keep them as my resume has them.
-> 7. No, leave them out.
-> 8. No.
+> I’ll keep your confirmed claims at their original scope, add no measurement details, and retain Linux while leaving the other listed skills out. Your degree and assistantship will stay as stated.
+>
+> Next, I’ll send the confirmed draft for both final blind checks.
 
-**11:07 Host** (working)
+**16:10 Host** (working)
 
-> Writing her sign-off answers into the confirmed facts and the not-true list
+> Recording the candidate's confirmation and preserving the original claims without added detail
 
-**11:19 Checker**
+**16:43 Checker**
 
-> 0 errors, 9 warnings (five line-length, one AI-sounding word she wrote herself, one hyphen, one three-item-list pattern); the old-skill notes cleared by her sign-off
+> 0 errors, 14 warnings, 3 working stand-ins; 432 words. Linux is now confirmed; remaining flags are wording patterns, estimated wraps, tool lists and the real-time spelling.
 
 ## Step 5: Finalise
 
-**11:20 Host**
+**16:53 Host**
 
 > Step 5 of 5: Finalise
 >
-> Thank you. Your answers changed no line on the page: everything stays as your resume has it, the two unclear numbers stay out, and the requirements you said no to go on the list of what the resume does not show. The OpenAI AI is taking one last blind look at the finished version now, with your confirmed answers beside it; about a minute.
+> Your confirmation is recorded. The draft has no checker errors, and Linux is now confirmed. Both final blind checks will receive your answers, including your request to retain the original claims without extra detail.
+>
+> Next, let the final checks finish before you approve the file.
 
-**11:20 Host to Codex**
+**17:06 Host to Claude**
 
-> Take a last look at the signed-off resume as the hiring manager, with her confirmed answers, and check each claim against her material.
+> Check the final resume against the candidate's confirmed account and report any remaining factual or wording issues.
 
 [p4_final.txt](files/p4_final.txt)
 
-**13:26 Codex** (took 126 s)
+**17:09 Host to Gemini**
 
-> Screen decision still "No", for lack of "production software engineering experience"; "no line warrants MORE THAN THE MATERIAL". Seven optional fixes: trim the skills lists, move Skills below Experience, "using AWS S3 and AWS EC2", "analysis time", restore "instrumental in advocating for and facilitating policy change", and cut the pandemic project.
+> Check the final resume against the candidate's confirmed account and report any remaining factual or wording issues.
 
-[p4_final_reply_codex.md.txt](files/p4_final_reply_codex.md.txt)
+[p4_final.txt](files/p4_final.txt)
 
-**13:26 Host** (Stop 3)
+**17:16 Host** (working)
+
+> Writing line-by-line change reasons for readers while the final checks run
+
+**19:47 Host**
 
 > Step 5 of 5: Finalise
 >
-> Your resume, with your name and contact details back in, is at .tribunal/final.md.
+> Both final checks are running. Your answers added no new claims, so the resume still uses the confirmed figures and original degree wording. I’m also documenting the reasons for each changed or removed line for the recorded example.
 >
-> The last blind look found no line that claims more than you told me. It suggested seven optional changes. I dropped one and a half: moving Skills below Experience, which would hide your tools from a quick scan, and changing your "analyzing time" to its own wording. The six that survived:
-> 1. Programming languages: keep only Python and SQL.
-> 2. Databases: put MS SQL Server first and keep only the ones you'd want to discuss in an interview.
-> 3. Analytics: keep Excel and Tableau and cut Power BI, SPSS and Alteryx, so the page reads less like an analytics profile.
-> 4. "Designed and tested over 30 ML models on AWS S3 and AWS EC2": say "using AWS S3 and AWS EC2", as your resume does.
-> 5. The 100+ SQL queries bullet: put back your fuller wording, "reports instrumental in advocating for and facilitating policy change".
-> 6. Cut the pandemic impact analysis project, to give the Python and Solutions Architect work more room.
->
-> Is it final? Tell me which of these to apply, or say it's final as it is, and whether you want a plain-text copy, a PDF or a Word file.
+> Next, let the final reviewers finish.
 
-**13:49 Sofia**
+**20:22 Claude** (took 196 s)
+
+> Returned its final claim check, suggested edits and interview questions.
+
+[p4_final_reply_claude.md.txt](files/p4_final_reply_claude.md.txt)
+
+**20:52 Host** (working)
+
+> Checking the returned final review against the candidate's whole-resume confirmation
+
+**21:13 Gemini** (took 244 s)
+
+> Returned its final claim check, suggested edits and interview questions.
+
+[p4_final_reply_agy.md.txt](files/p4_final_reply_agy.md.txt)
+
+**22:49 Host**
+
+> Step 5 of 5: Finalise
+>
+> Both final checks found support for the factual lines. One caught wording that undersold your original account; I’ll restore “developed and implemented” and the original scope of the department and model lists. Your confirmed metrics, degree wording and customer shadowing will stay, with no added tools or relocation claim.
+>
+> Next, review the completed file at the final approval stop.
+
+**22:55 Host** (working)
+
+> Restoring the original implementation wording and scope qualifiers without adding facts
+
+**23:26 Checker**
+
+> 0 errors, 14 warnings, 3 working stand-ins; 440 words after restoring original wording and scope qualifiers.
+
+**23:27 Host** (Stop 3)
+
+> Step 5 of 5: Finalise
+>
+> Your [completed resume](.tribunal/final.md) has your name and contact details restored. The original implementation wording and list qualifiers are back, and your confirmed figures and degree wording remain.
+>
+> One final review suggested putting the internship above the assistantship; I left the roles ordered by their ending dates. No factual questions remain open. The wording and estimated-wrap warnings remain as explained.
+>
+> Is it final, and would you like Markdown, PDF or Word?
+
+**23:47 Sofia**
 
 > Yes, it's final. Markdown is fine.
 
-**14:07 Checker**
+**24:57 Checker**
 
-> Final: 0 errors, 9 warnings (five line-length, one AI-sounding word she wrote herself, one hyphen, one three-item-list pattern); 508 words, one page
+> 0 errors, 14 warnings, 0 placeholders; 443 words. Remaining warnings are estimated wraps, original result wording and enhanced, named tool lists, and the hyphenated spelling real-time.
 
-**14:07 Host**
+**24:58 Host**
 
 > Step 5 of 5: Finalise
 >
-> Done. Your resume is .tribunal/final.md, a plain-text copy you can paste into Word or Google Docs and give heading styles. It is about 508 words, so it fits one page, and the final check found no errors. None of the optional changes were applied, as you said it's final as it is.
+> Your [final Markdown resume](.tribunal/final.md) is ready. The final checker reports 0 errors, 14 warnings and no placeholders, at 443 words. The warnings are estimated line wraps and the wording patterns already explained; the full output is in [check-final.txt](.tribunal/check-final.txt).
 >
-> What this job asks for that the resume does not show:
-> - 4+ years as an engineer shipping production systems
-> - Building or deploying AI agents or LLM-powered tools (your Python automation counts as workflow automation, but not this)
-> - A second language from Ruby, Node.js or Next.js alongside Python
-> - Backend debugging, tracing issues across services, and working across several codebases at once
-> - Cloud deployment, monitoring and basic DevOps beyond training models on AWS and GCP
-> - Using AI tools in your own coding
-> - Custom demos or proofs of concept for customers, Stripe or payments experience, and Salesforce or Gong integrations
+> This posting remains a substantial stretch. The resume does not show four years shipping production systems, backend debugging across services, deployed agents or LLM tools, a second required programming language, deployment and DevOps ownership, AI-assisted development, simultaneous codebase work, or adoption beyond the immediate team. Independent engineering delivery, Stripe/payments work and third-party integrations are also not established.
 >
-> Questions an interviewer is likely to ask, so you can prepare:
-> 1. For the PDF invoice automation, what did your Python code do, and how was the 80% cut in data entry time measured? (Tests how much you built yourself.)
-> 2. In the SQL Server and Tableau work, what did you do and what did the IT team do? (Tests your own part in a team result.)
-> 3. What did "accuracy" mean in the basketball video analysis, and what produced the 14% gain and the 25% runtime cut? (Tests whether you can explain your numbers.)
-> 4. How was the news classifier's 0.9916 F1-score tested, and how did you rule out duplicate articles between training and test data? (Tests how carefully you evaluate models.)
-> 5. How did the Tableau dashboards lead to annual savings of 800K rupees, and who worked that figure out? (Tests the link between your work and the result.)
+> Likely interview questions to prepare for:
+> - What did “20% overall model efficiency” measure, and how did the dashboards contribute?
+> - How did the invoice extractor handle different PDFs, and who used it?
+> - What was your own contribution to the annual savings and donor-fund growth?
+> - How was the classifier's 0.9916 F1-score evaluated, including checks for data leakage?
 >
-> Save what you told me (your resume, your own words and the facts you confirmed) on this computer, so your next job needs fewer questions? It stays in ~/.resume-tribunal/, goes nowhere else, and you can delete the folder any time. I can also delete the working files in .tribunal/ if you'd like.
+> Would you like me to save your confirmed facts for next time in profile/, or delete the working .tribunal/ folder? Without a request, I’ll keep the working files and save no profile.
 
-**14:07 Sofia**
+**25:26 Sofia**
 
 > No thanks.
+
+**25:27 Host** (working)
+
+> Checking the completed recording, consent and exact changed-line coverage for publication
+
+**27:00 Host** (working)
+
+> Finishing its final message
+
+**27:00 Host**
+
+> Step 5 of 5: Finalise
+>
+> [final.md](.tribunal/final.md) is complete. Final checker: **0 errors, 14 warnings, 0 placeholders; 443 words**. [Full checker output](.tribunal/check-final.txt).
+>
+> No profile was saved; working files remain.

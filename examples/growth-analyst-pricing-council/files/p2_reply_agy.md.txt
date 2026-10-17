@@ -1,0 +1,40 @@
+### Draft K
+
+**Screen decision:** No. The candidate lacks any demonstrated experience in strategic pricing, pricing models, or pricing experimentation, which is the primary core qualification for this role.
+
+**Level:** Mid-level Analyst. While the candidate has over seven years of professional experience, the draft describes task-level execution (running queries, checking traffic, cleaning CSV exports, and scheduling social posts) rather than senior individual contributor qualities such as pricing model ownership, strategic problem-solving, or executive stakeholder influence.
+
+**Findings:**
+
+1. `Marketing Analyst at an online home-goods retailer and the only analyst on a nine-person marketing team. Works in SQL and BigQuery daily, builds Looker dashboards, and analyzes the team's A/B tests from traffic check to write-up.`
+   - **Label:** Fix
+   - This line evidences none of the role's must-have requirements in pricing analytics, pricing models, or AI tooling, positioning the candidate strictly within marketing analytics.
+
+2. `  - Check whether there is enough traffic before a test runs`
+   - **Label:** Fix
+   - This phrasing severely undersells the candidate's experimentation competence by reducing sample size estimation and statistical power analysis to an informal, clerical traffic check.
+
+3. `  - Read the results and write up the findings`
+   - **Label:** Fix
+   - This phrasing trivializes A/B test analysis into passive reporting rather than highlighting statistical rigor, insight generation, and actionable business recommendations.
+
+4. `- Write-ups of two tests are at <<LINK_WEB>>`
+   - **Label:** Fix
+   - Inserting a standalone portfolio URL as an experience bullet is non-standard formatting that clutters the work history and duplicates the link already provided in the header.
+
+5. `- Win-back email conversion rose from 2.1% to 2.5% over the next quarter after the email manager wrote a separate email for each group`
+   - **Label:** Consider
+   - Separating this result from the preceding SQL segmentation bullet breaks the cause-and-effect narrative, while highlighting the email manager's copy unnecessarily deflects credit away from the candidate's data-driven targeting strategy.
+
+6. `- Clean up data exports in Python notebooks with pandas a few times a month`
+   - **Label:** Fix
+   - Emphasizing that Python is only used a few times a month for cleaning data exports highlights infrequency and basic maintenance rather than demonstrating technical depth or analytical automation.
+
+7. `- Coordinated the social media calendar and weekly reporting in Google Analytics`
+   - **Label:** Fix
+   - Retaining administrative social media scheduling from an earlier coordinator role dilutes the candidate's technical profile and detracts from the seniority expected for this position.
+
+**Areas with no material problems:**
+- **Claims a hiring manager would doubt:** No material problems; all claims are realistic, modest, and credible.
+- **Credit inflation or claims not in candidate's material:** No material problems; the draft stays faithful to the candidate's actual experience and openly acknowledges colleagues' contributions rather than claiming solo ownership.
+- **Machine-written tone or job description copying:** No material problems; the text is written in natural, direct language and avoids generic AI phrasing or keyword stuffing.

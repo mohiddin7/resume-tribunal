@@ -1,8 +1,8 @@
 # Biology teacher applying for an instructional designer job
 
-Fictional candidate · Auto mode: the other AIs ran by themselves · 2 AIs from 2 companies · 7 minutes · Invented job posting
+Fictional candidate · Auto mode: the other AIs ran by themselves · 2 AIs from 2 companies · 14 minutes · Invented job posting
 
-A recorded run of Resume Tribunal on a fictional candidate. Nothing here was edited by hand: [tools/](../tools/) recorded the run and exported this folder.
+A recorded run of Resume Tribunal on a fictional candidate. Recorded by the host as it worked, with the tools in tools/. Before its sign-off message was shown, the host changed "40 teachers" to "about 40 teachers", her own words, in the message and in its record.
 
 | File | What it is |
 |---|---|

@@ -1,0 +1,77 @@
+### 1. Screen Decision
+- **Phone screen decision:** No.
+- **The one reason:** The candidate has only 1 year of dedicated Data Engineer experience (and ~2.5 years total professional experience, primarily as a Business Intelligence Analyst), falling far short of the mandatory minimum requirement of 4+ years in a data engineering-focused role.
+- **Seniority the resume reads as:** Junior / Entry-level Data Engineer (currently a full-time Master's student).
+
+---
+
+### 2. First Impression
+- **What is known after the top third of the page:** The candidate is based in Phoenix, AZ, holds an AWS Certified Data Engineer Associate certification, and is currently pursuing a Master of Data Science graduating in December 2026. They position themselves around AWS ETL pipelines (Glue, S3, Redshift) and a 10TB data integration, following an earlier background in Business Intelligence (Tableau, Power BI), with a broad keyword list across languages, cloud, data engineering, and DevOps tools.
+- **Must-have requirements still not evidenced:**
+  - *4+ years experience in a data engineering-focused role* (no tenure duration shown in the summary; total experience is ~2.5 years, with only 1 year in DE).
+  - *BA / MS degree in Computer Science, Statistics, or a related discipline completed* (the MS is incomplete/in-progress, and no BA/BS degree is listed).
+  - *Demonstrated experience in designing data models at scale* ("data modeling" appears only as an uncontextualized keyword).
+  - *Experience with Spark-based data platforms* (e.g., PySpark, SparkSQL in central data lakes; Spark is only keyword-dropped).
+  - *Strong command of at least one data orchestration tool* (Airflow is only listed as a bare keyword; no production orchestration pipelines demonstrated).
+  - *Expertise in working with REST APIs* (REST APIs are completely omitted from the skills and summary).
+  - *Familiarity with software engineering fundamentals and reading backend development code* (no evidence of backend application code or SWE fundamentals).
+
+---
+
+### 3. Claim Check
+
+- `Data Engineer who architected an enterprise...`: Supported by "Architected an enterprise Data Lake using AWS services (S3, Redshift, RDS, Glue)", "Developed and managed Glue ETL pipelines", "integrate over 10TB of data", "Business Intelligence Analyst", "AWS Certified Data Engineer Associate", and "Master of Data Science... Expected Graduation: Dec 2026".
+- `- **Languages:** Python (NumPy, Pandas)...`: Supported by "Python (NumPy, Pandas), R, SQL, PL/SQL, Hive, SAS".
+- `- **Data engineering:** ETL processes...`: Supported by "ETL processes, data pipelines, data modeling, data warehousing, database design, relational databases", "Spark", and "Snowflake, Apache Airflow".
+- `- **Cloud:** AWS (Glue, S3, Redshift...`: Supported by "AWS (Glue, S3, Redshift, EC2, Athena, Dynamo DB, Kinesis Data Streams, IAM), Azure" and "AWS services (S3, Redshift, RDS, Glue)".
+- `- **DevOps and tools:** Git, Jenkins...`: Supported by "HTML, JSON, SOAPUI, JIRA, GIT... Testing, Agile" and "Jenkins and Git".
+- `- **BI and analytics:** Tableau, Power BI...`: Supported by "Tableau, Power BI, Excel, Cognos" and "Regression, Classification, Time Series Analysis, Forecasting".
+- `### Private university, USA`: Supported by "Private university USA".
+- `**Student Technical Support Assistant (IT)** | Oct 2025 - Present`: Supported by "Student Technical Support Assistant (IT) Oct 2025 – Present".
+- `### Large IT services company (client: national pharmacy chain), India`: Supported by "Large IT services company (client: national pharmacy chain) India".
+- `**Data Engineer** | Dec 2023 - Dec 2024`: Supported by "Data Engineer Dec 2023 - Dec 2024".
+- `- Architected an enterprise data lake on AWS...`: Supported by "Architected an enterprise Data Lake using AWS services (S3, Redshift, RDS, Glue) to support diverse use cases, including data storage, processing, analytics, and rapidly changing datasets."
+- `- Built and managed Glue ETL pipelines...`: Supported by "Developed and managed Glue ETL pipelines, creating tables/databases in Glue catalog via Crawlers and processing data using various transformations, then loading results into S3, Redshift, and RDS."
+- `- Wrote complex ETL scripts to clean...`: Supported by "Engineered complex ETL scripts to clean, transform, and integrate over 10TB of data, significantly enhancing data quality for critical business decisions."
+- `- Optimized a large-scale data processing pipeline...`: Supported by "Optimized a large-scale data processing pipeline, consolidating datasets from multiple sources and improving analytics efficiency by 40%."
+- `- Established a data governance framework with data quality...`: Supported by "Established a data governance framework that integrated data quality checks and compliance measures, enhancing data accuracy by 25% and ensuring that 100% of datasets met regulatory requirements across the organization."
+- `- Set up CI/CD pipelines with Jenkins and Git...`: Supported by "Set up CI/CD pipelines using Jenkins and Git for streamlined code development and version control for Python-based Projects."
+- `**Business Intelligence Analyst** | Aug 2022 - Dec 2023`: Supported by "Business Intelligence Analyst Aug 2022 - Dec 2023".
+- `- Architected and implemented business intelligence frameworks...`: Supported by "Architected and implemented comprehensive business intelligence frameworks using Tableau and Power BI to deliver interactive dashboards and reports, enhancing transparency and communication for key stakeholders".
+- `- Those frameworks drove a 30% increase...`: Supported by "and driving a 30% increase in data-driven decision-making across critical business operations."
+- `- Improved organizational efficiency by 25%...`: Supported by "Improved organizational efficiency by 25% by analyzing datasets to identify trends and patterns."
+- `- Led meetings on project progress and adapted...`: Supported by "Boosted client satisfaction by 15% by leading meetings to communicate project progress and adapt solutions based on feedback."
+- `**Airline customer-satisfaction dashboard** | Apr 2026`: Supported by "Airline customer-satisfaction dashboard 04/2026".
+- `- Built a Tableau dashboard for a major airline...`: Supported by "Built a Tableau dashboard for a major airline, transforming customer satisfaction data into actionable insights with interactive visualizations that improved service strategies."
+- `- Reduced analysis time by 30% through streamlined...`: Supported by "Reduced analysis time by 30% through streamlined data presentation, highlighting key performance indicators for faster decision-making."
+- `**Serverless support chatbot** | Dec 2025`: Supported by "Serverless support chatbot 12/2025".
+- `- Developed a serverless chatbot on AWS...`: Supported by "Developed a serverless chatbot using AWS services (Lex, Lambda, DynamoDB, SNS) that handled over 500 user queries daily, improving response efficiency by 40%."
+- `- Implemented AWS VPC for secure data transmission...`: Supported by "Ensured secure data transmission through AWS VPC implementation, resulting in a 25% improvement in network performance."
+- `**Tech-stock price forecasting** | Dec 2025`: Supported by "Tech-stock price forecasting 12/2025".
+- `- Analyzed historical 1980-2022 stock price data...`: Supported by "Conducted a thorough analysis of historical stock price data from 1980 to 2022 for a large tech company to identify key trends and patterns using advanced time series models like ARMA, ARIMA, and SARIMA. improving stock trend forecasting by 15%."
+- `- Cleaned and normalized the data, and used statistical...`: Supported by "Implemented data preprocessing techniques, including cleaning and normalization, to ensure high-quality inputs for analysis, while using statistical tests and model diagnostics to enhance the accuracy and reliability of time series models".
+- `- AWS Certified Data Engineer Associate`: Supported by "AWS Certified Data Engineer Associate".
+- `- Certified Tableau Desktop Specialist`: Supported by "Certified Tableau Desktop Specialist".
+- `**Master of Data Science** | Private university, USA...`: Supported by "Private university USA" and "Master of Data Science | GPA: 3.7/4.0 Expected Graduation: Dec 2026".
+
+---
+
+### 4. Fixes
+1. `### Private university, USA`
+Move this institution header back under Education alongside the Master of Data Science degree, as placing an academic institution at the top of the professional Experience section reads oddly.
+2. `**Student Technical Support Assistant (IT)** | Oct 2025 - Present`
+Move this role back under the Education section (or cut it), because leading the professional Experience section with an unelaborated, non-engineering student campus job reads oddly and deviates from the candidate's instruction to leave it as the original resume had it.
+
+*Note: Beyond moving the student IT job and university header back to Education, there is nothing material to fix; all other claims, figures, and technical skills faithfully reflect the candidate's confirmed source material without unearned inflation or echoes of the target job description.*
+
+---
+
+### 5. Claim-Defence Questions
+1. **Question:** "You state that you architected an enterprise data lake on AWS (S3, Redshift, RDS, Glue) for a national pharmacy client during your 1-year tenure as Data Engineer; what was the existing architecture before you began, what specific design decisions and architecture artifacts were your own responsibility versus the broader engineering team, and what specific role did RDS play in that data lake?"
+   - *Testing:* Probes whether the candidate independently designed the architecture or merely implemented components of a team architecture, while verifying their understanding of core data lake architecture patterns.
+2. **Question:** "In your work optimizing a large-scale data processing pipeline, you note that you improved analytics efficiency by 40%; what was the baseline bottleneck, how specifically did you measure 'analytics efficiency', and what concrete code- or infrastructure-level changes achieved that gain?"
+   - *Testing:* Tests hands-on pipeline performance tuning capabilities and whether the 40% metric is tied to a measurable operational benchmark or is an unverified estimate.
+3. **Question:** "You credit your data governance framework with improving data accuracy by 25% and ensuring 100% regulatory compliance; how did you define and measure baseline data accuracy mathematically, and what automated validation and auditing mechanisms guaranteed full compliance across all organizational datasets?"
+   - *Testing:* Tests the candidate's familiarity with real-world data quality frameworks, compliance tooling, and the validity of their quantitative measurement methodology.
+4. **Question:** "When writing ETL scripts to clean, transform, and integrate over 10TB of data, what specific technical challenges did you encounter regarding partitioning, memory management, data skew, and schema evolution in AWS Glue, and how did you resolve them?"
+   - *Testing:* Tests whether the candidate has genuine, hands-on big-data engineering expertise handling multi-terabyte datasets at scale.

@@ -11,7 +11,7 @@ How a run becomes a folder here and a page on the site, with nothing written by 
      --title "Growth analyst applying for a senior pricing analyst job" --fictional --fact "Real public job posting"
    ```
 
-   This writes `examples/<slug>/`: `run.json` for the site, a `transcript.md` and `README.md` for GitHub, the resumes and inputs, and every prompt and reply the other AIs saw in `files/`. It refuses a run that is not clearly fictional, and lists anything missing from the record. Add `--replace` to export over an earlier version of the same example, for example after a new release.
+   This writes `examples/<slug>/`: `run.json` for the site, a `transcript.md` and `README.md` for GitHub, the resumes and inputs, and every prompt and reply the other AIs saw in `files/`. It refuses a run that is not clearly fictional, and lists anything missing from the record. Add `--replace` to export over an earlier version of the same example, for example after a new release. Every text it publishes is checked for contact details; a real posting's own public contact, such as its accommodations email, passes only when named with `--allow-contact` (job.md only).
 4. **Build the site**: `python3 docs/build.py` turns every `examples/*/run.json` into a page under `docs/examples/`, adds it to the examples index and the sitemap, and copies its files.
 
 To rerun the examples after a release, rerun step 2 with the same inputs and answers, then steps 3 and 4 with `--replace`.

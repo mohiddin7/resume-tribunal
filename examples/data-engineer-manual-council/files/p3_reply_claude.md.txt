@@ -1,27 +1,46 @@
 ## 1. Conflicts
 
-The drafts did not disagree on any employer, title, date, number, tool or credential. They differed only in wording and placement. The original resume decided each case:
+**Facts the drafts disagreed on**
 
-- **Data lake verb:** R says "Built" and M says "Architected". The original says "Architected", so that was kept.
-- **BI frameworks verb:** R shortened this to "implementing". The original says "Architected and implemented", so that was restored.
-- **Cloud skills:** M lists RDS, Lambda, Lex, SNS and VPC, and R does not. All five appear in the original's experience or project lines, so they were kept.
-- **Student role placement:** M places it after the IT company role, and R places it first. It is the current role (Oct 2025 - Present), so it goes first, in reverse-chronological order.
+- **Certification status.** R called the AWS certification "active." The original gives no date or status, so I dropped the word.
+- **Student Technical Support Assistant (IT), Oct 2025 - Present.** Each draft placed this differently:
+  - The original and R put it under Education.
+  - K put it first in Experience.
+  - M put it last in Experience, which breaks date order.
+  - I put it first in Experience. It is the current role, so reverse-chronological order requires that. It costs only one line.
+- **Airline dashboard outcome.** The original says the visualizations "improved service strategies." R softened this to "inform," K dropped it, and M turned it into "insights." I restored the original claim.
+- **Governance scope.** The original says "across the organization." M dropped it. I kept it as given.
+- **BI framework verb.** The original says "Architected and implemented … frameworks." M reduced this to "built dashboards." I used the original's "Implemented business intelligence frameworks."
+- **"Led meetings."** K changed this to "client meetings," which the original does not say. I kept "meetings."
+- **Skills dropped by K.** K removed Hive, SAS, Cognos, JIRA, SOAPUI and HTML. All are in the original, so I kept them. RDS and Jenkins come from the experience bullets.
+- **Years of experience.** The original summary says "3 years." The dates show about 2 years 4 months (Aug 2022 - Dec 2024). I stated no number.
+
+**Critic doubts kept as the candidate gave them, for the candidate to answer**
+
+- "Architected an enterprise data lake": was this the candidate's own design or a team effort?
+- Governance framework: the 25% accuracy gain and "100% of datasets met regulatory requirements across the organization." What was the scope and how was it measured?
+- The "30% increase in data-driven decision-making": how was it measured?
+- The 25% network performance improvement from the AWS VPC: critics called it implausible. What was measured?
+- Spark and Apache Airflow appear in Skills but in no bullet.
+
+**Open questions**
+
+1. Did the Glue jobs use PySpark or SparkSQL? Did any work use Airflow? Both are must-haves for this job and could be shown in a bullet.
+2. Any REST API work? The posting requires it, and it is not in the material.
+3. Is the Student Technical Support Assistant job part-time? What does the work involve? A one-line bullet would help.
+4. Was the airline dashboard for a real client, or an academic project?
+5. Were the projects coursework from the master's program?
 
 ## 2. Change log
 
-1. **Base is Draft M.** It has a better summary for the top third and a fuller, accurate Skills list.
-2. **From Draft R:** the result-first phrasing for the 10TB, 40% and governance bullets, the student role placed first, and the airline project bullet.
-3. **Bullet order:** Data Engineer bullets now run by relevance (pipelines, data lake, 10TB ETL, optimization, data quality, CI/CD). M's two BI bullets about the same dashboards were merged into one.
-4. **Findings 6, 7 and 8 applied.** These claims were moved to Open questions until the candidate can say how they were measured and what their scope was:
-   - "100% of datasets met regulatory requirements across the organization"
-   - "30% increase in data-driven decision-making"
-   - "25% improvement in network performance" (VPC)
-
-   The VPC work itself is kept, without the number.
-5. **Findings 3 and 4 applied in part.** HTML and SOAPUI were cut from Skills. Spark/PySpark, Airflow, REST API and data-model evidence cannot be added without new facts from the candidate, so they are in Open questions.
-6. **Finding 5 moved to Open questions.** Monitoring, freshness and failure-recovery work are not in the material.
-7. **Findings 1 and 2 cannot be fixed by editing.** The candidate has about 2 years 4 months of dated data experience against the 4+ required, and lists no completed degree. The summary gives no year count. The bachelor's degree is in Open questions.
-8. **Style:** serial commas and the "Mon YYYY - Mon YYYY" date format are used throughout. The merged resume is about 470 words.
+1. **Base is M.** Both critics preferred its Summary, Skills, Experience and Education. M's own Fix findings #4 (student role order) and #6 (project order) were applied.
+2. **Projects order comes from R and K** (reverse-chronological: Apr 2026, then Dec 2025). The AWS chatbot comes before forecasting because it is more relevant to data engineering.
+3. **Skills structure comes from M, with additions from K and R.** K added RDS. R contributed "Relational Databases" and a separate DevOps grouping. This resolves K finding #2 (mixed categories).
+4. **Summary applies K finding #1.** It does not spotlight the IT support job. R's "active" claim (from R finding #2) was dropped.
+5. **Restored original wording** in the BI frameworks, airline "service strategies," governance "across the organization," and VPC bullets. M's "a 25% improvement" sentence fragment was fixed (R's finding on M #7).
+6. **Findings dropped as fixes:** "architected," the governance 100% and 25% figures, the 30% figure, and the VPC 25% figure (M #2/#3/#5, K #5/#6/#7, R #6/#7/#8). These are the candidate's facts, so they stay and are listed under Conflicts.
+7. **Findings dropped as not fixable by wording:** the experience shortfall against the 4+ years required, the pending degree, and missing SparkSQL/REST evidence (R #1/#4/#5, M #1/#3/#4 in the second critique). The gaps are routed to Open questions.
+8. **Spark and Airflow** stay in Skills because the candidate listed them (critique findings on M #1, K #3, R #3). Evidence is requested under Open questions.
 
 ## 3. Merged resume
 
@@ -30,72 +49,54 @@ The drafts did not disagree on any employer, title, date, number, tool or creden
 Phoenix, AZ | <<EMAIL>> | <<PHONE>>
 
 ## Summary
-Data Engineer who architected an enterprise data lake and built AWS Glue ETL pipelines on S3, Redshift, and RDS for a national pharmacy chain client. AWS Certified Data Engineer Associate, now completing a Master of Data Science (expected Dec 2026).
+Data Engineer who architected an enterprise data lake on AWS (S3, Redshift, RDS, Glue), built Glue ETL pipelines, and wrote ETL scripts to integrate over 10TB of data. Earlier a Business Intelligence Analyst working in Tableau and Power BI. AWS Certified Data Engineer Associate, completing a Master of Data Science (expected Dec 2026).
 
 ## Skills
 - **Languages:** Python (NumPy, Pandas), SQL, PL/SQL, R, Hive, SAS
-- **Data engineering:** ETL processes, data pipelines, data modeling, data warehousing, database design, Spark, Apache Airflow, Snowflake
-- **Cloud:** AWS (Glue, S3, Redshift, RDS, Athena, EC2, DynamoDB, Kinesis Data Streams, IAM, Lambda, Lex, SNS, VPC), Azure
-- **Development:** Git, Jenkins, JSON, JIRA, testing, Agile
-- **Analytics:** Tableau, Power BI, Excel, Cognos, regression, classification, time series analysis, forecasting
+- **Data engineering:** ETL processes, data pipelines, data modeling, data warehousing, database design, relational databases, Spark, Apache Airflow, Snowflake
+- **Cloud:** AWS (Glue, S3, Redshift, RDS, Athena, EC2, DynamoDB, Kinesis Data Streams, IAM), Azure
+- **DevOps and tools:** Git, Jenkins, JIRA, Agile, testing, JSON, SOAPUI, HTML
+- **BI and analytics:** Tableau, Power BI, Excel, Cognos, regression, classification, time series analysis, forecasting
 
 ## Experience
-
-### Private university | USA
+### Private university, USA
 **Student Technical Support Assistant (IT)** | Oct 2025 - Present
 
-### Large IT services company (client: national pharmacy chain) | India
+### Large IT services company (client: national pharmacy chain), India
 **Data Engineer** | Dec 2023 - Dec 2024
-- Developed and managed AWS Glue ETL pipelines, using Crawlers to create tables and databases in the Glue catalog and loading transformed data into S3, Redshift, and RDS.
-- Architected an enterprise data lake on AWS S3, Redshift, RDS, and Glue to support storage, processing, analytics, and rapidly changing datasets.
-- Cleaned, transformed, and integrated over 10TB of data with complex ETL scripts, improving data quality for critical business decisions.
-- Improved analytics efficiency by 40% by optimizing a large-scale data processing pipeline that consolidated datasets from multiple sources.
-- Improved data accuracy by 25% by establishing a data governance framework with data quality checks and compliance measures.
-- Set up CI/CD pipelines with Jenkins and Git for code development and version control on Python-based projects.
+- Architected an enterprise data lake on AWS (S3, Redshift, RDS, Glue) for data storage, processing, analytics and rapidly changing datasets.
+- Built and managed Glue ETL pipelines: created tables and databases in the Glue catalog with Crawlers, applied transformations, and loaded results into S3, Redshift and RDS.
+- Wrote complex ETL scripts to clean, transform and integrate over 10TB of data, improving data quality for critical business decisions.
+- Optimized a large-scale data processing pipeline that consolidated datasets from multiple sources, improving analytics efficiency by 40%.
+- Established a data governance framework with data quality checks and compliance measures, improving data accuracy by 25% and ensuring 100% of datasets met regulatory requirements across the organization.
+- Set up CI/CD pipelines with Jenkins and Git for Python-based projects.
 
 **Business Intelligence Analyst** | Aug 2022 - Dec 2023
-- Architected and implemented business intelligence frameworks in Tableau and Power BI, delivering interactive dashboards and reports for key stakeholders.
-- Improved organizational efficiency by 25% by analyzing datasets to identify trends and patterns.
-- Boosted client satisfaction by 15% by leading meetings to communicate project progress and adapting solutions based on feedback.
+- Implemented business intelligence frameworks in Tableau and Power BI, delivering interactive dashboards and reports for key stakeholders and driving a 30% increase in data-driven decision-making across critical business operations.
+- Analyzed datasets to identify trends and patterns, improving organizational efficiency by 25%.
+- Led meetings on project progress and adapted solutions to feedback, boosting client satisfaction by 15%.
 
 ## Projects
+**Airline customer-satisfaction dashboard** | Apr 2026
+- Built a Tableau dashboard for a major airline, turning customer satisfaction data into interactive visualizations that improved service strategies.
+- Reduced analysis time by 30% through streamlined presentation of key performance indicators.
 
-### Tech-stock price forecasting | Dec 2025
-- Improved stock trend forecasting by 15% with ARMA, ARIMA, and SARIMA models of a large tech company's historical stock prices from 1980 to 2022.
-- Cleaned and normalized the input data, and used statistical tests and model diagnostics to improve the models' accuracy and reliability.
+**Serverless support chatbot** | Dec 2025
+- Developed a serverless chatbot on AWS (Lex, Lambda, DynamoDB, SNS) that handled over 500 user queries daily, improving response efficiency by 40%.
+- Implemented AWS VPC for secure data transmission, resulting in a 25% improvement in network performance.
 
-### Serverless support chatbot | Dec 2025
-- Developed a serverless chatbot with AWS Lex, Lambda, DynamoDB, and SNS that handled over 500 user queries daily and improved response efficiency by 40%.
-- Implemented an AWS VPC to secure the chatbot's data transmission.
-
-### Airline customer-satisfaction dashboard | Apr 2026
-- Reduced analysis time by 30% by building a Tableau dashboard for a major airline, using interactive visualizations and key performance indicators to inform service strategies.
+**Tech-stock price forecasting** | Dec 2025
+- Analyzed historical stock price data from 1980 to 2022 for a large tech company with time series models (ARMA, ARIMA, SARIMA), improving stock trend forecasting by 15%.
+- Cleaned and normalized the data, and used statistical tests and model diagnostics to improve model accuracy and reliability.
 
 ## Certifications
 - AWS Certified Data Engineer Associate
 - Certified Tableau Desktop Specialist
 
 ## Education
-
-### Private university | USA
-**Master of Data Science** | Expected Dec 2026
-- GPA: 3.7/4.0
+**Master of Data Science** | Private university, USA | GPA 3.7/4.0 | Expected Dec 2026
 ```
 
-## Open questions
+The merged resume is about 520 words, one page.
 
-These are for the candidate and are not part of the resume.
-
-1. **Bachelor's degree:** Do you have a completed bachelor's degree? What field was it in, and which institution and year? The posting requires a BA or MS.
-2. **Spark:** Did your Glue jobs use PySpark or Spark SQL? Where else did you write Spark code, and at what data volume?
-3. **Airflow:** What did you orchestrate with Apache Airflow? How many DAGs, what schedules, and what did they feed?
-4. **REST APIs and backend code:** Did you pull data from REST APIs or read backend application code in any role or project?
-5. **Data modeling:** Which tables or schemas did you design, for example in Redshift or the data lake? At what scale?
-6. **Pipeline reliability:** Did you own monitoring, alerting, data freshness, or failure recovery for the Glue pipelines?
-7. **Removed metrics:** How were these three figures measured? Each can go back on the resume if it can be stated concretely.
-   - "100% of datasets met regulatory requirements across the organization": Which datasets, which regulations, and what was your part?
-   - "30% increase in data-driven decision-making"
-   - "25% improvement in network performance" from the VPC
-8. **Student Technical Support Assistant:** Is this role part-time? Are there any duties you want listed?
-9. **Airline dashboard:** Was this built for the airline as a client, or as coursework on airline data?
-10. **Job changes:** Was the move from Business Intelligence Analyst to Data Engineer a promotion within the same employer? Were both roles full-time?
+All three critiques agree on one point: the dates show about one year as a Data Engineer, and the posting asks for 4+ years plus a completed degree. Wording cannot close that gap. The candidate should weigh it before applying.

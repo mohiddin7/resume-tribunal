@@ -1,0 +1,97 @@
+# Resume review: AI Engineer, Stripe Solutions Architecture (Chicago)
+
+**Assumptions:**
+- Nothing in the candidate's material is dated after December 2023, so I'm treating January 2024 to today as unaccounted for. A recruiter will ask about it.
+- The candidate is in Seattle, and neither draft mentions Chicago or relocation.
+
+**Must-haves neither draft can show, because the material doesn't contain them:**
+- 4+ years shipping production systems. The material has about 2 years as an analyst, a research assistantship and a 3-month internship.
+- Backend engineering or debugging across services.
+- AI agents or LLM tools beyond fine-tuned classifiers.
+- A second language from Ruby, Node.js or Next.js. Only Python is evidenced.
+- Deployment and monitoring of a service.
+
+Rewording won't close these gaps.
+
+---
+
+## Draft K
+
+**Screen decision:** No. There is no production software engineering or LLM/agent work, and the role requires 4+ years of it.
+
+**Level:** Entry-level data analyst or new-grad data scientist.
+
+**Findings:**
+
+1. **Consider:** "Python, SQL; AWS S3, AWS EC2, AWS QuickSight; GCP; SQL Server, SSMS; Excel, Tableau; Natural Language Processing (NLP), CNN, Yolov7"
+   It's a single unbroken string that's hard to scan, and it leaves out Linux and the transformer models, which are the candidate's closest signals to the role.
+
+2. **Fix:** "Classified news using DeBERTa, RoBERTa and DistilBERT; RoBERTa had the highest f1-score of 0.9916."
+   Dropping "as real or fake" hides what the task was, and a near-perfect F1 with no dataset context will make a hiring manager suspect leakage.
+
+3. **Consider:** "Trained models using AWS EC2 and GCP compute engines, reducing runtime by 80%."
+   The 80% has no baseline (versus local training? a CPU?), so it reads as unverifiable.
+
+4. **Fix:** "Created AWS QuickSight dashboards to monitor model performance, runtime and computational resources, resulting in a 20% increase in overall model efficiency."
+   A dashboard doesn't make a model more efficient, so the causal claim invites doubt.
+
+5. **Consider:** "Built an interactive web application to detect diseased cotton plants, resulting in a 100% increase in user interaction."
+   This is the only thing on the page that shows the candidate building an application, yet it names no stack, and "100% increase in user interaction" means little for a personal project.
+
+6. **Consider:** "Learned sales procedures and customer support tools by shadowing meetings between Solutions Architects and 4 different customers."
+   "Customer support tools" shifts the original "tools available to assist customers" toward helpdesk software, which the material doesn't say.
+
+7. **Consider:** "Collaborated on monthly reports using Excel and analytical writing; publications doubled and donor funds increased by 45%."
+   Tying a 45% rise in donor funds to report collaboration is an attribution a hiring manager will question.
+
+8. **Fix:** "Data Science Masters Candidate (CGPA: 3.95/4) | Dec 2023"
+   Nearly three years later, "Candidate" reads as either an unfinished degree or a stale resume, and the material doesn't say which.
+
+**Areas with no material problems:** Bullet order works: automation bullets lead each role. No team work is written as the candidate's alone, and nothing reads as copied from the job description.
+
+---
+
+## Draft R
+
+**Screen decision:** No. There is no production software engineering or LLM/agent work, and the role requires 4+ years of it.
+
+**Level:** Entry-level or junior data scientist. The summary reaches higher than the content supports.
+
+**Findings:**
+
+1. **Not in the candidate's material:** "supporting customer engagements alongside Solutions Architects at a large cloud provider"
+   The material says the candidate shadowed meetings with 4 customers, which is observing, not supporting engagements.
+
+2. **Consider:** "Data science and machine learning specialist with experience developing predictive models on AWS and GCP"
+   It positions the candidate as a data scientist rather than an engineer, and the summary's stacked list of noun phrases ("Background includes…") reads as machine-written.
+
+3. **Fix:** "**Machine Learning & Modeling:** Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data Visualization, CNN, YOLOv7, DeBERTa, RoBERTa, DistilBERT, ResNet50, VGG16, DenseNet121, Random Forest, MLP"
+   Course titles and individual model names are mixed into one keyword dump, and Data Warehousing and Data Visualization aren't ML skills.
+
+4. **Fix:** "Created AWS QuickSight dashboards to closely monitor KPIs, including performance metrics, runtime, and computational resources, resulting in a 20% increase in overall model efficiency"
+   A dashboard doesn't make a model more efficient, so the causal claim invites doubt.
+
+5. **Consider:** "Classified news as real or fake with an f1-score of 0.9916"
+   A near-perfect F1 with no dataset context will make a hiring manager suspect leakage.
+
+6. **Fix:** "Predicted shots on the player's career with 67% accuracy by building MLP classifier and Random Forest classifier"
+   The line is garbled. It and the next bullet ("strategize against the player in 2 out of 5 final appearances") can't be parsed at a glance and add nothing for this role.
+
+7. **Consider:** "Automated data collection by extracting information from PDF invoices and exporting relevant data to Excel sheets using Python, resulting in an 80% reduction in data entry time"
+   This is the strongest workflow-automation evidence in the material, but it sits last under its role. The web-scraping bullet is likewise last under the nonprofit role.
+
+8. **Fix:** "**Data Science Masters Candidate** (CGPA: 3.95/4) | Dec 2023"
+   Nearly three years later, "Candidate" reads as either an unfinished degree or a stale resume, and the material doesn't say which.
+
+**Areas with no material problems:** Apart from finding 1, no team work is written as the candidate's alone, and no line is copied from the job description.
+
+---
+
+## Section by section
+
+- **Header:** Tie. The two are identical, and neither addresses Chicago.
+- **Summary:** K is better. Having no summary beats R's, which overstates the customer work and reads as generic.
+- **Skills:** K is better. It's limited to tools the bullets evidence, while R lists unevidenced tools (Hive, Hadoop, Azure, Alteryx) and course titles.
+- **Experience:** K is better. Its bullets are tighter and lead with the automation work, while R keeps the original long phrasing and buries that work last.
+- **Projects:** K is better. It drops the irrelevant pandemic SQL project and the garbled basketball project, both of which R keeps.
+- **Education:** Tie. Both keep the stale "Masters Candidate | Dec 2023".

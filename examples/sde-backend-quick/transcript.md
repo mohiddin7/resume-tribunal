@@ -1,203 +1,234 @@
 # Backend software engineer applying for a senior backend role
 
-Real resume, shared with consent · Auto mode: the other AIs ran by themselves · 2 AIs from 2 companies · 7 minutes · Real public job posting
+Real resume, shared with consent · Auto mode: the other AIs ran by themselves · 2 AIs from 2 companies · 12 minutes · Real public job posting
 
 Every message of the run in order. Times are minutes and seconds from the start. Prompts and replies are in [files/](files/).
-
-**00:00 Marcus**
-
-> I want to apply for this job. My resume is before.md and the posting is job.md. Can you tailor my resume for it?
 
 ## Step 1: Setup
 
 **00:00 Host** (working)
 
-> Reading the skill's instructions and the seat guide, then looking for other AIs on this computer
+> Reading its setup instructions and detecting the available reviewers
 
-**01:14 Host** (Stop 1)
+**00:00 Host**
 
 > Step 1 of 4: Setup
 >
-> Here is how this works:
+> I'm using the resume-tribunal skill to tailor your resume from your facts and arrange an independent review. I'll read your files and check which reviewers are available before asking for consent.
 >
-> ```
-> You give:  your resume, the job posting, a few sentences in your own words
->    ↓
+> Next, review the setup choices I'll show you.
+
+**00:38 Host** (Stop 1)
+
+> Step 1 of 4: Setup
+>
+> You give: your resume, the job posting, a few sentences in your own words
+> ↓
 > I write a draft, from your facts only
->    ↓
+> ↓
 > A second AI, from a different company, checks it without knowing who wrote it
->    ↓
+> ↓
 > Automatic checks, then you approve every changed line
->    ↓
+> ↓
 > Your resume, the job requirements it does not show, and likely interview questions
-> ```
 >
-> It runs by itself; you answer a few questions along the way.
+> The second AI runs by itself; you answer a few questions along the way. Its independent review helps catch mistakes and unsupported claims.
 >
-> What I read from your resume, so you can catch a misread:
-> - Health insurer (USA), Software Engineer, Aug 2023 - Present
-> - Large retailer's technology division (USA), Software Engineer III, May 2023 - Aug 2023
-> - Enterprise software company (India), Software Engineer, Feb 2021 - Jul 2022
-> - Enterprise software company (India), Software Engineer in Test, Jun 2020 - Feb 2021
-> - MS in Computer Science, May 2024, and a Computer Science degree from an engineering college, May 2020
+> I read these roles:
+> - Health insurer (USA), Software Engineer, Aug 2023 - Present.
+> - Large retailer's technology division (USA), Software Engineer III, May 2023 - Aug 2023.
+> - Enterprise software company (India), Software Engineer, Feb 2021 - Jul 2022.
+> - Enterprise software company (India), Software Engineer in Test, Jun 2020 - Feb 2021.
 >
-> The job is Senior Software Engineer, Backend, in New York. One thing to know now: it asks for 7+ years of backend experience, and your dates add up to about 5 and a half. I won't stretch that; I'll list it with the requirements the resume does not show.
+> The target is Brex's senior backend role in New York, United States. It asks for 7+ years; your resume says 4+, so that gap will remain visible.
 >
-> Two questions:
-> 1. Pick two or three things this job asks for that you have really done (for example building backend systems that scale, or working with SQL or NoSQL databases). For each, tell me one time you did it: what it was, what you did, what changed. Plain sentences; dictating is fine. These details are what set you apart from other applicants. If you skip this, I'll use your resume's wording as your voice.
-> 2. Do you have links to add: LinkedIn, GitHub, a portfolio or project pages, certificate pages? Most recruiters look for LinkedIn.
+> Pick two or three things this job asks for that you have really done. For each, tell me one time you did it: what it was, what you did, what changed. Plain sentences; dictating is fine. You can skip this and I'll use your resume's wording. Do you have LinkedIn, GitHub, portfolio, project, paper or certification links to include? Your college degree title is incomplete; please supply it if you can.
 >
-> My plan, unless you say otherwise:
-> - Quick review: I write the draft and one other AI checks it, about 6 minutes in all. The other choice is a full council, where three AIs each draft and check each other; here one of them only offers its fast models, so I'd keep it to a quick review. A council takes about 15 minutes and five times the AI usage.
-> - No research on hiring trends for this role (say if you want it; it adds a minute or two), I polish the final wording, and you get a plain-text copy while we work, with a PDF or Word file when it's final.
+> My default is a quick review: I write and one other AI checks. A full council adds drafts and reviews, takes longer and uses several times as much of your AI plans. Role research stays off, I'll polish the wording, and we'll work in Markdown, a plain-text format, with PDF or Word available at the end.
 >
-> I've hidden your name and contact details. They come back at the end. The second AI is OpenAI's Codex, running GPT-6 Astra; I'm Anthropic's Claude Opus 5.5. The working files are in .tribunal/ inside this folder. This text, including your employers, job history and the pages your links point to, will go to Codex under OpenAI's terms and your account settings there. Some keep their own history, and the text can still identify you. Leave out anything confidential to an employer, and check whether this employer allows AI help with applications.
+> Model line: I am OpenAI GPT-6, flagship tier; the proposed reviewer is Anthropic's opus, listed as its most capable model, at high effort. Both automatic tools were detected; Google's available models are Flash, so I propose the closer tier match for this quick review.
+>
+> I've hidden your name and contact details. They come back at the end. Working files are in `.tribunal/` inside this run folder.
+>
+> This text, including your employers, job history and the pages your links point to, will go to Anthropic through Claude Code using opus under their terms and your account settings there. Some keep their own history, and the text can still identify you. Leave out anything confidential to an employer, and check whether this employer allows AI help with applications.
 >
 > Answer the questions, or say "yes" to take the defaults and go ahead.
 
-**01:21 Marcus**
+**01:00 Marcus**
 
 > Quick review, please. Yes to the defaults, go ahead. No links.
 
 ## Step 2: Draft
 
-**01:57 Host**
+**01:01 Host** (working)
+
+> Writing its draft from his original resume and keeping the seniority gap visible
+
+**01:05 Host**
 
 > Step 2 of 4: Draft
 >
-> Thanks. Quick review it is, with no links. You didn't add your own sentences, so I'll keep to your resume's wording as your voice. I'm writing the draft now; then the second AI checks it.
+> I'll emphasize Java, Spring Boot, databases, testing and deployment work, while keeping all four roles and their original titles. I'll trim repeated tool lists and less relevant front-end detail to aim for one page. With no links or extra stories, your original resume supplies the facts and voice. Most recruiters look for LinkedIn; I'll respect your choice to leave links out.
+>
+> Next, I'll send the draft for the independent review you approved.
 
-**01:57 Host** (working)
+**01:40 Checker**
 
-> Writing its own draft from Marcus's resume, trimmed to one page for a backend role
-
-**02:32 Checker**
-
-> 0 errors, 10 warnings (four short second lines, one trailing -ing clause, four lines of old skills only the original resume names, one word Marcus never used)
+> 0 errors, 5 warnings (four possible short wraps and the candidate's own word Enhanced), 3 contact placeholders; 426 words
 
 ## Step 3: Review and sign-off
 
-**02:41 Host**
+**01:40 Host**
 
 > Step 3 of 4: Review and sign-off
 >
-> The draft is written: one page, about 490 words, and the automatic checks found no errors. The second AI is reading it now as the hiring manager would, without knowing who wrote it. That usually takes a couple of minutes.
+> The draft is ready for independent review. The automatic check found no errors and five wording or line-length warnings; I'll resolve those alongside the review. Your name and contact details are still hidden.
+>
+> Next, I'll bring you the draft and the factual questions that need your sign-off.
 
-**02:41 Host to Codex**
+**01:46 Host to Claude**
 
-> Review this resume as the hiring manager for the backend job, check every claim against the candidate's resume, and suggest up to eight fixes and some interview questions.
+> Review the resume against the candidate's facts and job requirements, check each claim, and suggest interview questions.
 
-[p4.txt](files/p4.txt)
+[p4-review.txt](files/p4-review.txt)
 
-**04:50 Codex** (took 129 s)
-
-> As the hiring manager it would not phone yet: "the dated experience falls short of the required seven years", and it reads as mid-level. Its claim check marks three lines as more than the material (the summary joining the Kafka and Beam work to claims processing, JUnit for API tests, and "every build"), and it suggests eight fixes, some needing facts only Marcus has.
-
-[p4_reply_codex.md.txt](files/p4_reply_codex.md.txt)
-
-**04:50 Host** (working)
-
-> Applying the review's wording fixes and the checker's warnings, and holding the fixes that need facts from Marcus
-
-**05:06 Checker**
-
-> 0 errors, 7 warnings (two short second lines, one flagged word that is Marcus's own, four lines of old skills only the original resume names)
-
-**05:34 Host** (Stop 2)
+**02:39 Host**
 
 > Step 3 of 4: Review and sign-off
 >
-> The second AI read the draft as the hiring manager would. Its honest view: the work reads as solid mid-level backend engineering, but the job asks for 7+ years and your dates add up to about 5 and a half, so it would not phone yet for this senior opening. Better wording can't close that gap, and I haven't tried to.
+> The independent review is still running. It is checking each claim against your original resume, including the Kafka architecture claim and the incomplete education entry.
 >
-> The draft is one page, about 480 words, in .tribunal/resume.md. Changes I made without asking, since they change no fact:
-> - Shortened the long summary to two lines about your claims-processing work, the Kafka cluster and your AWS certification, and kept it from implying the Kafka and Beam work fed the claims services.
-> - Moved the AWS certification into its own section, and the skills near the top, grouped for a backend job.
-> - Reworded bullets in plain resume style, keeping your verbs ("designed and implemented", "enhanced", "minimized the need for manual testing").
-> - "Every build got quality checks" became your own "continuous quality checks and rapid feedback on builds", and JUnit stays with unit tests, not API tests.
-> - Cut to fit one page: C#, Bootstrap, Eclipse, STS IDE, ServiceNow, Splunk, TCP/IP, AWS EC2 and Agile from the summary and skills, plus the bullets on POJOs and Hibernate mappings, Git, JavaScript form validation, test environments, Agile meetings and JIRA, and the "Environment" lists.
->
-> Now the facts. Are all of these true, and could you explain each in an interview? Tell me any to fix. If you don't know a number, I'll leave it out, so please don't estimate.
-> 1. Skills that only your old skills list or summary mentions, with nothing in your jobs showing them: Python, TypeScript, Node.js, Express, MySQL, SQL Server, MongoDB, Angular, HTML5, CSS3, Kubernetes and AWS. Which do you really use? Python matters most, because the job names it.
-> 2. Your AWS Certified Solutions Architect – Associate: is it still current, and what year did you earn it?
-> 3. Your engineering college degree: what is it called? Your resume says "( in Computer Science)", so the degree name is missing.
-> 4. The Kafka messaging cluster: what was your own part, and do you know its size (for example how many applications or messages a day)? This is the strongest backend line for this job.
-> 5. The line on threads and synchronization: can you name one problem you solved with them? If not, I'll keep the line as it is or cut it, your choice.
-> 6. The job is in New York, three days a week in the office, and your resume says Austin. Should the resume say you are relocating, or leave it out?
->
-> Answer what you can; anything you skip about a new claim comes out.
+> Next, I'll combine its findings with the automatic checks for your sign-off.
 
-**06:21 Marcus**
+**03:47 Claude** (took 121 s)
+
+> The reviewer found every resume claim supported, but would not phone for this senior role because the experience requirement is not shown. It suggested clarifying Kafka scope, the college degree and certification, and supplied five interview questions.
+
+[p4-review-reply.md.txt](files/p4-review-reply.md.txt)
+
+**03:47 Host** (working)
+
+> Applying its review's safe wording fixes and holding factual changes for his sign-off
+
+**04:04 Checker**
+
+> 0 errors, 3 warnings (one short wrap, Enhanced from the original, and the new word supported), 3 contact placeholders; 428 words
+
+**04:04 Checker**
+
+> 0 errors, 2 warnings (one possible short wrap in the Kafka bullet and Enhanced from the original), 3 contact placeholders; 427 words
+
+**04:28 Host** (working)
+
+> Correcting its last recorded word count to 428 words, as the checker printed
+
+**04:28 Host** (Stop 2)
+
+> SIGN-OFF QUESTIONS
+> Step 3 of 4: Review and sign-off
+>
+> Please review every rewritten line in the [draft](.tribunal/resume.md). Your contact details are still hidden.
+>
+> I shortened the summary, moved the AWS credential to its own section, split long bullets and removed repeated environment lists, coursework and less relevant front-end detail. All four roles, titles and dates remain. The draft is 428 words. Two warnings remain: “Enhanced” is your original word, and the Kafka bullet may wrap slightly onto a second line; I kept its meaning intact.
+>
+> The independent review found the claims supported by your resume, but judged the application short of this role's senior experience requirement. I kept your original 4+ years and did not replace it with a calculated total.
+>
+> Please confirm or correct these facts:
+>
+> 1. The draft says you “Designed and implemented a scalable Kafka Messaging Cluster for distributed publishing across business applications.” What was your own part: broker/cluster design and operation, application producers and consumers, or something else? If you know the scale, give only a figure you can verify.
+> 2. Did you create the Apache Beam framework described, and can you explain a concrete use of Threads, Multithreading, Synchronization and the Collection API? If either line overstates your part, tell me the narrower version.
+> 3. Skills listed without a work example need one grouped check: can you stand behind SQL and MongoDB, and is the AWS Certified Solutions Architect – Associate credential accurate as shown? What year was it earned, and is it current? Python is currently omitted; only if you want it included, describe your actual use.
+> 4. What is the exact engineering-college degree title? Were any roles contract, part-time or internships, including the three-month Software Engineer III role? I'll keep the original dates and unnamed employers and schools.
+> 5. Only if true, is there evidence we have missed for 7+ years of professional backend work, owning a feature from concept through production and monitoring, or working directly with Sales or Support on customer needs? You can also add a specific architecture decision, verified result, or New York office availability. Otherwise these remain unshown; no number is required.
+>
+> Are all of these true, and could you explain each in an interview? Tell me any to fix. If you don't know a number, I'll leave it out, so please don't estimate.
+
+**09:28 Marcus** (answered after 16 min)
 
 > I confirm everything in my original resume is true as written.
+> 1. Leave it as my resume has it. I don't know the scale.
+> 2. Leave those as my resume has them.
+> 3. Yes, SQL, MongoDB and the AWS certification are true as my resume has them. Leave Python out.
+> 4. Leave the degree and the roles as my resume has them.
+> 5. Nothing to add for those.
+
+**09:28 Host** (working)
+
+> Recording its candidate's confirmation and keeping the original scope without new numbers
+
+**09:28 Host**
+
+> Step 3 of 4: Review and sign-off
 >
-> 1. They're all on my original resume and they're true, so keep the ones that fit. I don't have more detail on Python than what's there.
-> 2. I don't know the year offhand, so leave the year off.
-> 3. Leave it as my resume has it.
-> 4. I don't know more than what's on my resume.
-> 5. Keep the line as it is.
-> 6. Leave it out.
+> Your original claims stay, with no added scale figures, credential dates or degree title. Python stays out. I'll finish the plain-text copy and leave the unshown requirements in the accompanying notes.
+>
+> Next, review the final file when I show its path.
 
-**06:21 Host** (working)
+**09:36 Checker**
 
-> Writing Marcus's answers into the sign-off and not-true files, then checking the resume against them
-
-**06:28 Checker**
-
-> 0 errors, 3 warnings (two short second lines, one flagged word that is Marcus's own)
+> 0 errors, 2 warnings (one possible short wrap in the Kafka bullet and Enhanced from the original), 3 contact placeholders; 428 words
 
 ## Step 4: Finalise
 
-**06:36 Host** (Stop 3)
+**09:54 Host** (Stop 3)
 
 > Step 4 of 4: Finalise
 >
-> Thanks. Your answers changed nothing on the page: every line already comes from your original resume, which you've confirmed. I left off the certification year and any more detail on the Kafka cluster, said nothing about relocating, and kept the degree and the threads line as they were. The automatic checks find no errors.
+> Your [resume is ready in final.md](.tribunal/final.md), with your name and contact details restored. No new facts were added after your confirmation. The two explained wording and possible wrapping warnings remain.
 >
-> Your resume with your name and contact details back in is at .tribunal/final.md.
->
-> Want one more blind look from the second AI before it's final? About a minute.
->
-> Otherwise, is it final? This computer can't make a PDF or Word file without installing extra software, so you'd get the plain-text copy, which you can paste into Word or Google Docs. Say if you'd rather I install what the PDF needs.
+> Would you like one more independent look? Otherwise, is this final, and is Markdown, the plain-text copy, the format you want?
 
-**06:36 Marcus**
+**10:01 Marcus**
 
 > No thanks.
 
-**06:36 Marcus**
+**10:01 Marcus**
 
 > Yes, it's final. Markdown is fine.
 
-**06:36 Host** (working)
+**10:01 Checker**
 
-> Running the final check on the finished resume
+> 0 errors, 2 warnings (one possible short wrap in the Kafka bullet and Enhanced from the original), 0 placeholders; 430 words
 
-**06:46 Checker**
+**10:01 Host** (working)
 
-> 0 errors, 3 warnings (two short second lines, one flagged word that is Marcus's own); 487 words, one page
+> Writing its line-by-line change reasons and checking the public recording for completeness
 
-**06:46 Host**
+**10:07 Host** (working)
+
+> Correcting its final recorded word count to 431 words, as the checker printed
+
+**11:25 Host**
 
 > Step 4 of 4: Finalise
 >
-> Your resume is done: .tribunal/final.md, one page, 487 words, with no errors in the final check. Three small style notes remain and I've left them: two lines run a few words onto a second line, and "Enhanced" is a word AI tools overuse, but it's your own.
+> Your [final Markdown resume](.tribunal/final.md) is ready. The final check found 0 errors, 2 explained warnings and no placeholders, at 431 words. The warnings are the possible Kafka line wrap and your original word “Enhanced.”
 >
-> What the job asks for that this resume does not show:
-> - 7+ years of backend experience: your dates add up to about 5 and a half, about 8 months of it in testing.
-> - Working with Sales or Support teams to understand customers.
-> - Owning a feature through launch and the numbers that follow it.
-> - Examples of communication, or of holding a team to high standards.
-> - Kotlin (Java and Python are there).
-> - Living near New York for three office days a week.
+> The application still does not show 7+ years of backend experience, direct Sales or Support collaboration, or ownership from concept through ongoing production outcomes. New York office availability and measured scale remain unspecified. Your original architecture claims remain intact.
 >
-> Questions an interviewer is likely to ask about it:
-> 1. For the Kafka cluster, what did you design and build yourself, and what decided how you set it up? (Your own part, and real design choices.)
-> 2. Walk through one claims-processing feature from request to production. (What you owned from start to finish.)
-> 3. What made the Apache Beam framework user-friendly, and who used it? (Whether it solved a real problem for people.)
-> 4. For the digital asset management microservices, how did you split the services, and what went wrong later? (Design judgment and production experience.)
-> 5. What ran in the Jenkins pipeline, and how did it cut manual testing? (How far the automation went.)
+> Prepare to explain:
+> - Which Kafka design and implementation decisions were yours?
+> - How does a claim move through your services, and what happens when a step fails?
+> - What existed before the microservices architecture, and why were those design choices made?
 >
-> Want me to save what you told me (your resume and the facts you confirmed) on this computer, so your next job needs fewer questions? It stays in ~/.resume-tribunal/, goes nowhere else, and you can delete the folder any time. I can also delete the working files in .tribunal/ now if you'd like; otherwise I'll leave them.
+> The [notes](.tribunal/notes.md) preserve these gaps and interview prompts. The recording completeness check passed.
+>
+> I can delete the working folder after you keep your final resume; otherwise I'll retain this recording. Save what you told me on this computer so your next job needs fewer questions? It would stay in `.resume-profile/` inside this run folder, go nowhere else, and you could delete it any time.
 
-**06:46 Marcus**
+**11:48 Marcus**
 
 > No thanks.
+
+**12:05 Host**
+
+> Step 4 of 4: Finalise
+>
+> Final file: [final.md](.tribunal/final.md). Final checker output:
+>
+> ```text
+> WARN  line 19: short-second-line: about 1.01 lines; tighten it to one line if you can
+> WARN  line 33: ai-marker-word: "Enhanced"
+> 0 error(s), 2 warning(s), 0 placeholder(s) to fill; 431 words (about 650 fit one page)
+> ```
+>
+> No profile saved.

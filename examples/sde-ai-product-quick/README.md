@@ -1,8 +1,8 @@
 # Deep-learning engineer applying for an AI product software engineer role
 
-Real resume, shared with consent · Auto mode: the other AIs ran by themselves · 2 AIs from 2 companies · 6 minutes · Real public job posting
+Real resume, shared with consent · Auto mode: the other AIs ran by themselves · 2 AIs from 2 companies · 37 minutes · Real public job posting
 
-A recorded run of Resume Tribunal on a fictional candidate. Nothing here was edited by hand: [tools/](../tools/) recorded the run and exported this folder.
+A recorded run of Resume Tribunal on a real candidate who agreed to publish their de-identified resume. Recorded by the host as it worked, with the tools in tools/. The host was OpenAI's gpt-6-luna, a fast model, through Codex; it recorded its own model as GPT-6 Codex. Its last message was trimmed before publishing: the parts written for the recording (seat timings, recording checks and notes on the skill's wording, with local file paths) were removed, and the lines for the candidate kept.
 
 | File | What it is |
 |---|---|

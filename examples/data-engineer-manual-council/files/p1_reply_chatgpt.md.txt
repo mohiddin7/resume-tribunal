@@ -1,14 +1,14 @@
-Assumption: employer and university descriptions are retained as supplied.
-
 # <<NAME>>
 Phoenix, AZ | <<EMAIL>> | <<PHONE>>
 
+## Summary
+Data Engineer with experience building AWS data lakes, developing ETL pipelines, and processing over 10TB of data. AWS Certified Data Engineer Associate with Python, SQL, and business intelligence experience. Currently a Student Technical Support Assistant (IT), pursuing a Master of Data Science.
+
 ## Skills
-- **Programming:** Python (NumPy, Pandas), SQL, PL/SQL, R.
-- **Data engineering:** ETL processes, data pipelines, data modeling, database design, data warehousing, Spark, Apache Airflow.
-- **Cloud:** AWS (S3, Glue, Redshift, RDS, Athena, EC2, DynamoDB, Kinesis Data Streams, IAM), Azure.
-- **Development:** Git, Jenkins, JSON, testing, Agile.
-- **Analytics:** Tableau, Power BI, time series analysis, forecasting.
+- **Programming and data:** Python (NumPy, Pandas), SQL, PL/SQL, R, data modeling, database design, data warehousing, ETL processes
+- **Cloud and big data:** AWS (S3, Glue, Redshift, RDS, Athena, EC2, DynamoDB, Kinesis Data Streams, IAM), Azure, Spark, Snowflake
+- **Orchestration and development:** Apache Airflow, Git, Jenkins, JSON, testing, Agile
+- **Analytics:** Tableau, Power BI, Excel, time series analysis, forecasting, regression, classification
 
 ## Experience
 
@@ -17,32 +17,31 @@ Phoenix, AZ | <<EMAIL>> | <<PHONE>>
 
 ### Large IT services company (client: national pharmacy chain) | India
 **Data Engineer** | Dec 2023 - Dec 2024
-
-- Cleaned, transformed, and integrated over 10TB of data through complex ETL scripts, enhancing data quality for critical business decisions.
-- Built an enterprise data lake using AWS S3, Redshift, RDS, and Glue to support storage, processing, analytics, and rapidly changing datasets.
-- Developed and managed Glue ETL pipelines, using Crawlers to create tables and databases in the Glue catalog and loading transformed data into S3, Redshift, and RDS.
-- Improved analytics efficiency by 40% by optimizing a large-scale data processing pipeline and consolidating datasets from multiple sources.
-- Enhanced data accuracy by 25% through a data governance framework with quality checks and compliance measures, ensuring 100% of datasets met regulatory requirements across the organization.
-- Set up CI/CD pipelines using Jenkins and Git to streamline code development and version control for Python-based projects.
+- Architected an enterprise data lake using AWS S3, Redshift, RDS, and Glue to support data storage, processing, analytics, and rapidly changing datasets.
+- Developed and managed Glue ETL pipelines, using Crawlers to create tables and databases in the Glue catalog, transforming data, and loading results into S3, Redshift, and RDS.
+- Optimized a large-scale data processing pipeline by consolidating datasets from multiple sources, improving analytics efficiency by 40%.
+- Engineered complex ETL scripts to clean, transform, and integrate over 10TB of data, enhancing data quality for critical business decisions.
+- Established a data governance framework with data quality checks and compliance measures, enhancing data accuracy by 25% and ensuring that 100% of datasets met regulatory requirements across the organization.
+- Set up CI/CD pipelines using Jenkins and Git for Python-based projects.
 
 **Business Intelligence Analyst** | Aug 2022 - Dec 2023
-
-- Increased data-driven decision-making by 30% across critical business operations by implementing Tableau and Power BI frameworks with interactive dashboards and stakeholder reports.
-- Improved organizational efficiency by 25% by analyzing datasets to identify trends and patterns.
-- Boosted client satisfaction by 15% by leading meetings to communicate project progress and adapt solutions based on feedback.
+- Built business intelligence frameworks using Tableau and Power BI, delivering interactive dashboards and reports that drove a 30% increase in data-driven decision-making across critical business operations.
+- Analyzed datasets to identify trends and patterns, improving organizational efficiency by 25%.
+- Led client meetings to communicate project progress and adapt solutions based on feedback, boosting client satisfaction by 15%.
 
 ## Projects
 
+### Airline customer-satisfaction dashboard | Apr 2026
+- Built a Tableau dashboard for a major airline, highlighting customer satisfaction indicators through interactive visualizations.
+- Reduced analysis time by 30% through streamlined data presentation.
+
 ### Tech-stock price forecasting | Dec 2025
-- Improved stock trend forecasting by 15% by analyzing a large tech company’s historical stock prices from 1980 to 2022 using ARMA, ARIMA, and SARIMA models.
-- Cleaned and normalized data for analysis, using statistical tests and model diagnostics to enhance time series model accuracy and reliability.
+- Analyzed historical stock price data from 1980 to 2022 for a large tech company using ARMA, ARIMA, and SARIMA models, improving stock trend forecasting by 15%.
+- Cleaned and normalized data for analysis; used statistical tests and model diagnostics to improve model accuracy and reliability.
 
 ### Serverless support chatbot | Dec 2025
-- Developed a serverless chatbot using AWS Lex, Lambda, DynamoDB, and SNS that handled over 500 user queries daily and improved response efficiency by 40%.
-- Secured data transmission through AWS VPC implementation, improving network performance by 25%.
-
-### Airline customer-satisfaction dashboard | Apr 2026
-- Reduced analysis time by 30% by building a Tableau dashboard for a major airline, using interactive visualizations and key performance indicators to inform service strategies.
+- Developed a serverless chatbot using AWS Lex, Lambda, DynamoDB, and SNS that handled over 500 user queries daily, improving response efficiency by 40%.
+- Implemented AWS VPC for secure data transmission, improving network performance by 25%.
 
 ## Certifications
 - AWS Certified Data Engineer Associate
@@ -53,32 +52,31 @@ Phoenix, AZ | <<EMAIL>> | <<PHONE>>
 Master of Data Science | Expected Dec 2026  
 GPA: 3.7/4.0
 
-## Not shown
+---
 
+## Not shown
 The supplied material does not establish:
 
-- Four or more years in a data engineering-focused role.
-- A completed qualifying degree; the master’s degree is in progress.
-- Specific examples of designing data models at scale.
-- Hands-on Spark pipeline development or proficiency in SparkSQL and PySpark; Spark appears only in Skills.
-- Strong command of an orchestration tool; Apache Airflow appears only in Skills.
-- REST API integration or reading backend development code.
-- Pipeline uptime commitments, reliability practices, or customer-facing dataset delivery.
-- External dataset integration with internal data.
-- IoT sensor, video, audio, late-arriving data, ML output, or client-side signal processing.
-- Databricks, Delta Lakes, or Dagster.
-- First-party product data modeling or collaboration with Data Science and AI/ML teams on causal inference or model-training datasets.
+- Four or more years in data engineering-focused roles.
+- A completed qualifying degree; the listed master’s degree is in progress.
+- Data model design at scale beyond a listed data modeling skill.
+- Applied Spark or Apache Airflow experience demonstrating proficiency; both appear only in Skills.
+- SparkSQL, PySpark, REST APIs, or reading backend development code.
+- Pipeline uptime targets, reliability commitments, or customer-facing datasets.
+- IoT sensor data, video/audio processing, late-arriving data, or integration of external datasets with internal data.
+- Collaboration with Data Science, Analytics, or AI/ML teams on causal inference or model-training datasets.
+- Databricks, Delta Lakes, Dagster, first-party product data models, ML outputs, or client-side signals.
 
 ## Open questions
+Assumption: The three projects are presented as standalone projects because their employment or academic context was not supplied. No duties were inferred for the current university role.
 
-Facts that would strengthen or clarify the resume:
+Facts that would strengthen the resume, if available:
 
-- Actual employer and university names, university location, and any contract or part-time employment labels.
-- Responsibilities, tools, and measurable contributions in the current technical support role.
-- Any completed undergraduate degree, including institution and graduation date.
-- Any additional data engineering employment, with exact dates; the supplied dates do not substantiate the original summary’s three-year claim.
-- Specific Spark, Apache Airflow, SQL, Python, and data modeling work, including personal ownership and production scale.
-- Data lake size, pipeline count and frequency, processing times, and measurable effects of the CI/CD work.
-- Baselines, measurement periods, and methods behind the reported percentages, including the scope of the regulatory compliance claim.
-- Project context, data sources, individual versus team contributions, and whether the chatbot’s daily query volume reflects production use or testing.
-- Certification dates and any candidate-provided credential, GitHub, portfolio, or project links.
+- Current technical support responsibilities, tools, and measurable contributions.
+- Any additional data engineering employment and completed degrees, with dates.
+- Specific Spark, PySpark, SparkSQL, and Apache Airflow work, including what was built and operated.
+- Data model structures, table counts, processing frequency, and pipeline runtimes.
+- Reliability measures, monitoring, failure recovery, and data quality validation methods.
+- REST API integrations, backend code contributions, and cross-functional collaboration.
+- Project context, individual contribution, and how the reported improvements were measured.
+- Baselines and measurement methods for the employment metrics, particularly analytics efficiency, data accuracy, and regulatory coverage.

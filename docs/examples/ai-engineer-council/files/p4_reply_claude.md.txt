@@ -1,0 +1,74 @@
+## 1. Screen decision
+
+**No.** The resume shows no engineering role shipping production systems. The role requires 4+ years of that. What the page shows is about 2 years as a data analyst, a graduate research assistantship, a 3-month internship, and class projects. The most recent date on the page is Dec 2023, so the last ~34 months are unaccounted for.
+
+**Reads as:** entry-level data analyst or new-grad data scientist.
+
+## 2. First impression (top third)
+
+From the top third, the candidate is in Seattle and works mainly in Python and SQL. They have trained CNN and transformer classifiers and used S3, EC2 and GCP compute. Their latest role is a graduate research assistantship writing SQL against SSMS and automating PDF-to-Excel extraction. The profile reads as data analytics and ML coursework, not backend or AI engineering. There is also no mention of Chicago or relocation.
+
+**Must-haves still not evidenced:**
+- 4+ years as an engineer shipping production systems.
+- Backend fundamentals: debugging failing systems, tracing across services, data flows.
+- AI agents, LLM-powered tools or workflow automation beyond prompting. The classifiers are model training, not LLM tooling.
+- Two of Ruby, Node.js, Python or Next.js. Only Python is listed.
+- Cloud deployment, monitoring and DevOps. EC2 and GCP appear only as places to train models.
+- Working across multiple codebases and stacks.
+- AI-assisted development in their own workflow.
+- Internal tools or platforms adopted by others. The automation scripts are the closest match, but no users or adoption are stated.
+
+## 3. Claim check
+
+| Line (first words) | Support in candidate material | Verdict |
+|---|---|---|
+| Programming: Python, SQL | "Programming languages: Python, SQL, R, SAS…" | Supported |
+| Cloud: AWS S3, AWS EC2, AWS QuickSight, GCP | "AWS S3, AWS EC2"; "AWS QuickSight dashboards"; "GCP compute engines" | Supported |
+| Machine learning: NLP, CNN, Yolov7… | "CNN, Yolov7 models"; "NLP… DeBERTa, RoBERTa, DistilBERT" | Supported |
+| Data and reporting: SQL Server, SSMS… | "SQL Server and Tableau"; "from SSMS"; "Excel" | Supported |
+| Operating systems: Linux | "Advance knowledge: … Linux" | Supported |
+| University school of public health, USA / Graduate Research Assistant, Nov 2022 – Dec 2023 | "University school of public health – Graduate Research Assistant; USA Nov 2022 – Dec 2023" | Supported |
+| Automated extraction of PDF invoice data… 80% | "extracting information from PDF invoices… using Python, resulting in an 80% reduction in data entry time" | Supported |
+| Wrote SQL queries to extract and update… 40% | "Implemented SQL queries to extract and update research expenditures… reduced analyzing time by 40%" | Supported |
+| Collaborated with the IT team… 70% | "Collaborated with the IT team to implement secure and reliable… 70% reduction in report generation time" | Supported |
+| Large cloud provider, USA / Solutions Architect Intern – Data Science, May–Aug 2023 | "Solutions Architect Intern – Data Science; USA May 2023 – Aug 2023" | Supported |
+| Developed real-time basketball video analysis… 76% | "real time video analysis of basketball shot… accuracy of 76%… CNN, Yolov7" | Supported |
+| Designed and tested over 30 ML models… 14%… 25% | "over 30 ML models using AWS S3, AWS EC2 to find the best model… 14%… 25%" | Supported. "to find the best model" was dropped, which blurs where the gain came from. |
+| Created AWS QuickSight dashboards… 20% | "QuickSight dashboards to closely monitor KPIs… 20% increase in overall model efficiency" | Supported |
+| Shadowed meetings… 4 different customers | "shadowing meetings between Solutions Architects and 4 different customers" | Supported |
+| Policy research nonprofit, India / Data Analyst, Jun 2020 – Jul 2022 | "Data Analyst; India Jun 2020 - Jul 2022" | Supported |
+| Automated web scraping… over 100 hours | "Automated web scraping using Python… reduction of over 100 hours" | Supported |
+| Developed and executed 100+ complex SQL queries… | "100+ complex SQL queries… Agriculture, Education, Health… reports instrumental in advocating" | Supported, and narrower than the original |
+| Designed Tableau dashboards… 800K rupees… | "annual savings of 800K rupees, and enhanced stakeholder retention" | Supported |
+| Collaborated to publish monthly reports… 45% | "Collaborated to publish monthly reports… doubled publications… 45% increase in donor funds" | Supported |
+| News authenticity classifier, Python, Apr 2023 | "News authenticity classifier \| Python Apr 2023" | Supported |
+| Classified news as real or fake… 0.9916 | "f1-score of 0.9916… RoBERTa having highest f1-score" | Supported |
+| Trained models using AWS EC2 and GCP… 80% | "AWS EC2 and GCP compute engines which reduced the runtime by 80%" | Supported |
+| Crop leaf disease detector, Python, Dec 2022 | "Crop leaf disease detector \| Python Dec 2022" | Supported |
+| Predicted diseased plants with 96.8%… | "96.8% accuracy by training 12K images… Resnet50, VGG16, Densenet121" | Supported |
+| Built an interactive web application… 100% | "interactive web application… 100% increase in user interaction" | Supported |
+| Private university USA, United States | "Private university USA, United States" | Supported |
+| Data Science Masters Candidate (CGPA 3.95/4), Dec 2023 | "Data Science Masters Candidate (CGPA: 3.95/4) Dec 2023" | Supported |
+| Relevant coursework: Deep Learning… | "Relevant Coursework: Deep Learning, NLP, Data Mining…" | Supported |
+| Engineering institute, India / B.E. Electronics and Communication, CGPA 8.66/10, May 2020 | "Bachelor of Engineering, Electronics and Communication (CGPA: 8.66/10) May 2020" | Supported |
+
+No line claims more than the material supports. The one issue is fidelity: the 30-models line lost its qualifier.
+
+## 4. Fixes
+
+1. **"Data Science Masters Candidate (CGPA: 3.95/4) | Dec 2023"**: Dec 2023 is nearly three years ago, so say whether the degree was conferred (e.g. "M.S., Data Science, Dec 2023"). "Candidate" reads as unfinished.
+2. **"**Graduate Research Assistant** | Nov 2022 - Dec 2023"**: This is the latest date on the page. Add any work, contract or project since Jan 2024 above it. If there was none, add a one-line note on how the time was spent, because an unexplained gap of almost three years will end the screen.
+3. **"Seattle, WA | <<EMAIL>> | <<PHONE>>"**: The role is in Chicago. If the candidate is willing to relocate, say so on this line.
+4. **"Designed and tested over 30 ML models using AWS S3 and AWS EC2; increased accuracy by 14% and decreased runtime by 25%."**: Restore "to find the best model" and name the baseline the 14% and 25% are measured against. Without it, the line implies building 30 models caused the gain.
+5. **"Created AWS QuickSight dashboards to monitor model performance, runtime and computational resources, resulting in a 20% increase in overall model efficiency."**: Dashboards don't make models more efficient by themselves. Say what was changed based on what they showed and what "efficiency" measured, or drop the 20%.
+6. **"Built an interactive web application to detect diseased cotton plants, resulting in a 100% increase in user interaction."**: A personal project has no baseline for a "100% increase." Replace the metric with the app's stack and how it was deployed, if the candidate can state that truthfully. This is the only line hinting at shipping software.
+7. **"Collaborated with the IT team to implement secure, reliable data management and reporting systems using SQL Server and Tableau, reducing report generation time by 70%."**: Name the candidate's own part, such as the schema, the jobs or the dashboards they built, as distinct from IT's. This is the closest thing on the page to backend systems work.
+8. **"Designed Tableau dashboards to monitor KPIs and expenditure, resulting in improved budget allocation, annual savings of 800K rupees and enhanced stakeholder retention."**: Cut "enhanced stakeholder retention," which is unmeasured. Say whose savings the 800K rupees were and how they were traced to the dashboards.
+
+## 5. Claim-defence questions
+
+1. **"The QuickSight dashboards gave a 20% increase in model efficiency. What metric was that, and what did you change after seeing the dashboards?"** Tests whether there is a real causal link between monitoring and the result.
+2. **"Across the 30 models, what was the starting model, and was the 14% accuracy gain just picking the best one? Was this your project alone or a team's?"** Tests the baseline, the measurement and the candidate's own share of an intern project.
+3. **"The PDF invoice automation: how many invoices, what library, how did you handle malformed PDFs, and who ran it after you left?"** Tests whether this was a durable tool others relied on or a one-off script. That distinction is central to this role.
+4. **"On the SQL Server and Tableau reporting system with IT, what did you build and what did IT build? How was the 70% measured?"** Tests the candidate's own part and the measurement.
+5. **"How did you attribute the 800K rupees in savings and the 45% rise in donor funds to your dashboards and reports?"** Tests whether the candidate claims outcomes they can actually trace to their own work.

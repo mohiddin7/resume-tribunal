@@ -1,0 +1,44 @@
+## Draft M
+
+- **Screen decision:** No; the candidate has only one year of data engineering experience and is currently a student, falling well short of the minimum requirement of 4+ years in a data engineering-focused role.
+- **Level:** Junior (reads as an Associate / Junior Data Engineer).
+- **Findings:**
+  1. `- **Data engineering:** ETL, data pipelines, Spark, Apache Airflow, Snowflake, data modeling, data warehousing, database design` — **Consider** — Listing Spark and Airflow claims competency in core job requirements that are never evidenced anywhere in the candidate's actual work experience or projects.
+  2. `- Architected an enterprise data lake on AWS (S3, Redshift, RDS, Glue) for data storage, processing, analytics and rapidly changing datasets.` — **Consider** — Claiming to have architected an enterprise data lake overstates an engineer's scope after only one year in the role and will be doubted by hiring managers as claiming team achievements as their own.
+  3. `- Established a data governance framework with data quality checks and compliance measures, improving data accuracy by 25%. 100% of datasets met regulatory requirements.` — **Consider** — Claiming sole credit for establishing an enterprise-wide governance framework and achieving 100% compliance attributes broad organizational initiatives to a single junior contractor.
+  4. `**Student Technical Support Assistant (IT)** | Oct 2025 - Present` — **Fix** — This entry breaks reverse-chronological order by appearing below older 2022–2024 roles and provides no bullet points explaining its scope or technical relevance.
+  5. `- Secured data transmission with AWS VPC, a 25% improvement in network performance.` — **Fix** — Attributing a 25% network performance improvement to implementing an AWS VPC is technically implausible and undermines technical credibility.
+  6. `**Airline customer-satisfaction dashboard** | Apr 2026` — **Fix** — Listing this April 2026 project at the very bottom of the section after December 2025 projects breaks reverse-chronological order.
+- **Areas with no material problems:**
+  - Lines that undersell what the candidate's material shows: No material problems found.
+  - Lines that sound machine-written or copied from the job description: No material problems found.
+  - Content not in the candidate's material: No material problems found.
+
+---
+
+## Draft K
+
+- **Screen decision:** No; the candidate has only one year of data engineering experience and ~2.4 years of total professional experience, failing to satisfy the mandatory 4+ years of data engineering experience.
+- **Level:** Junior (reads as an Entry-to-Junior Data Engineer).
+- **Findings:**
+  1. `Currently a Student Technical Support Assistant (IT), pursuing a Master of Data Science.` — **Fix** — Highlighting a campus IT support assistant job in the professional summary severely undersells the candidate by anchoring their profile to helpdesk support rather than data engineering.
+  2. `- **Programming and data:** Python (NumPy, Pandas), SQL, PL/SQL, R, data modeling, database design, data warehousing, ETL processes` — **Fix** — This line mixes specific programming languages with broad engineering processes and architecture concepts, making technical proficiencies difficult to scan at a glance.
+  3. `- **Cloud and big data:** AWS (S3, Glue, Redshift, RDS, Athena, EC2, DynamoDB, Kinesis Data Streams, IAM), Azure, Spark, Snowflake` — **Consider** — Listing Spark claims familiarity with a primary job requirement that is nowhere demonstrated in the candidate's actual work history or projects.
+  4. `**Student Technical Support Assistant (IT)** | Oct 2025 - Present` — **Fix** — Placing an empty campus IT support title at the top of the experience section leads with an irrelevant role and pushes core engineering experience downward.
+  5. `- Architected an enterprise data lake using AWS S3, Redshift, RDS, and Glue to support data storage, processing, analytics, and rapidly changing datasets.` — **Consider** — Claiming to have architected an enterprise data lake overstates individual ownership for a candidate with only one year of data engineering experience and invites hiring manager skepticism.
+  6. `- Established a data governance framework with data quality checks and compliance measures, enhancing data accuracy by 25% and ensuring that 100% of datasets met regulatory requirements across the organization.` — **Consider** — Claiming sole responsibility for establishing an organization-wide data governance framework and ensuring 100% compliance gives the candidate unrealistic credit for team-wide outcomes.
+  7. `- Implemented AWS VPC for secure data transmission, improving network performance by 25%.` — **Fix** — Asserting that configuring an AWS VPC improved network performance by 25% is technically nonsensical and damages technical credibility.
+- **Areas with no material problems:**
+  - Lines that sound machine-written or copied from the job description: No material problems found.
+  - Content not in the candidate's material: No material problems found.
+
+---
+
+## Section Comparison
+
+- **Summary:** Draft M handles this section better because it focuses on relevant data engineering experience and upcoming degree completion without spotlighting an irrelevant campus IT helpdesk role.
+- **Skills:** Draft M handles this section better because its categories cleanly separate languages, data engineering tools, cloud platforms, and analytics rather than mixing languages with architectural methodologies.
+- **Experience:** Draft M handles this section better because it leads directly with substantive Data Engineer client work rather than placing an empty student IT support title at the very top of the section.
+- **Projects:** Draft K handles this section better because it organizes projects in proper reverse-chronological order (April 2026 before December 2025) with clear, distinct subheadings.
+- **Certifications:** Draft M handles this section better because its concise bulleted list integrates cleanly into the page hierarchy without excess vertical spacing.
+- **Education:** Draft M handles this section better because it presents the degree, institution, GPA, and graduation date cleanly on a single line instead of fragmenting them across an unnecessary subsection.

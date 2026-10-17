@@ -1,0 +1,101 @@
+# Hiring-manager review: Senior Analyst, Pricing and Business Analytics
+
+## 1. Screen decision
+
+**No.** The resume shows no pricing work at all: no pricing models, no pricing experiments, no Finance or Product analysis. Pricing is the core of this role and the first listed qualification.
+
+**Seniority:** a mid-level marketing analyst, about four years in an analyst title. They are the sole analyst on a small team, they analyze tests other people choose, and they present to one director. It does not read as a senior individual contributor who leads an area or presents to executives.
+
+## 2. First impression (top third)
+
+**What I know:**
+- They are the only analyst on a nine-person marketing team.
+- They write SQL in BigQuery daily, build Looker dashboards and analyze A/B tests.
+- They use GA4, Excel, pandas, and ChatGPT for SQL help.
+- They are based in Pittsburgh, so remote US works.
+
+**Must-haves still not evidenced:**
+- 2–5 years of pricing analytics, including pricing models and pricing A/B tests
+- Creating tables or schemas ad hoc (only saved views)
+- Presenting to senior executives (only the marketing director and team)
+- AI used to QA analysis or build automations (only occasional query fixing)
+- Partnership with Product or Finance, and KPI reporting beyond marketing channels
+
+**Evidenced:** A/B test analysis, Looker, SQL (depth unclear), and a Bachelor's degree.
+
+No edit can close the pricing gap. Pricing language should not be added.
+
+## 3. Claim check
+
+| Line (first words) | Support in candidate material | Verdict |
+|---|---|---|
+| "Marketing Analyst and the only analyst…" | "I'm the only analyst on the marketing team, there are nine of us"; promoted to Marketing Analyst July 2022 | Supported |
+| "Write SQL in BigQuery most days…" | "Most days I'm in BigQuery writing SQL. I built our Looker dashboards"; "I also do the analysis on our A/B tests" | Supported |
+| Skills: "SQL, BigQuery, Looker, GA4, Excel…" | BigQuery/SQL and Looker as above; "I use GA4 most days"; "Excel is accurate to include"; "cleaning up exports in notebooks with pandas"; "split them by what they'd bought before and how much they'd spent"; "I sometimes ask ChatGPT to help me fix a SQL query" | Supported |
+| "Online home-goods retailer (about 400 employees)" | Original resume; "At the home-goods company" | Supported |
+| "Marketing Coordinator \| Mar 2019 - Jun 2022" | Original "Mar 2019 - Present"; "promoted… to Marketing Analyst in July 2022" | Supported |
+| "Marketing Analyst \| Jul 2022 - Present" | "promoted… in July 2022" | Supported |
+| "Wrote SQL to split customers who hadn't bought…" | "I wrote the SQL to split them by what they'd bought before and how much they'd spent" | Supported |
+| "Conversion went from 2.1% to 2.5%…" | "Conversion on those emails went from 2.1% to 2.5% over the next quarter"; "win-back email conversion" | **MORE THAN THE MATERIAL.** It drops "on those emails"/"win-back", so it reads as overall conversion. |
+| "Analyze about 12 A/B tests in the last year…" | "We've done about 12 tests in the last year… I check whether we have enough traffic, then I read the results and write up what we found"; "or the paid social lead decide what to test" | Supported |
+| "Built Looker dashboards for email and paid social…" | "I built our Looker dashboards for the email and paid social channels, and the marketing director goes through them every Monday" | Supported |
+| "The dashboard showed $2.4M…" | "The $2.4M was the email channel's revenue last year in our dashboard" | Supported |
+| "Created a few saved views in BigQuery." | "have made a few saved views in BigQuery" | Supported |
+| "Use GA4 most days and sometimes use ChatGPT…" | "I use GA4 most days"; "I sometimes ask ChatGPT to help me fix a SQL query" | Supported |
+| "Clean exports in Python notebooks…" | "cleaning up exports in notebooks with pandas, maybe a few times a month" | Supported |
+| "Presented to the marketing director and team." | "I have only presented to our marketing director and the marketing team" | Supported |
+| "Portfolio: … (write-ups of two tests)" | "it has write-ups of two of the tests" | Supported |
+| "Regional sporting-goods chain" | Original resume | Supported |
+| "Store Manager \| 2014 - 2019" | Original resume; "managed a sporting goods store for five years" | Supported |
+| "Managed about 12 part-time staff." | "about 12 part-time staff" | Supported |
+| "Built scheduling and inventory spreadsheets in Excel." | "I built our scheduling and inventory sheets"; Excel confirmed | Supported |
+| "BA Communications… 2014" | Original resume | Supported |
+| "Google Data Analytics Certificate, 2020" | Original resume; "Tableau was only in the certificate course" | Supported |
+
+## 4. Fixes
+
+1. **"Conversion went from 2.1% to 2.5% over the next quarter; the email manager wrote separate emails for each group."**
+   - Restore the scope: write "win-back email conversion went from 2.1% to 2.5% over the next quarter."
+   - Merge it with the SQL line above so the result sits next to the work. Keep the credit to the email manager for the copy.
+
+2. **"Wrote SQL to split customers who hadn't bought in a year by what they'd bought and how much they'd spent."**
+   - Add the starting point: these lapsed customers had all been getting the same win-back email.
+   - Without that, the reader doesn't know what the segmentation was for.
+
+3. **"Analyze about 12 A/B tests in the last year: check for enough traffic, read results, and write up findings. The email manager or paid social lead chooses what to test."**
+   - Replace "in the last year" with a dated span, e.g. "Oct 2025 – Oct 2026", so it doesn't go stale. Keep "about".
+   - Make the tense consistent with the other bullets.
+
+4. **"The dashboard showed $2.4M in email-channel revenue last year."**
+   - On its own line it states no contribution and invites a "did you own that budget?" question.
+   - Either fold it into the Looker line as scope, e.g. "email (about $2.4M revenue last year)", or cut it.
+
+5. **"Presented to the marketing director and team."**
+   - If what was presented was the test write-ups, merge it into the A/B line. Otherwise cut it.
+   - As a standalone bullet it reads thin and highlights the audience gap.
+
+6. **"Use GA4 most days and sometimes use ChatGPT to help fix a SQL query."** and **"Clean exports in Python notebooks with pandas, maybe a few times a month."**
+   - Both repeat the Skills line. Combine them into one tools bullet with the qualifiers kept, or rely on Skills alone.
+
+7. **"Created a few saved views in BigQuery."**
+   - Fold it into a SQL bullet (e.g. alongside the segmentation work) rather than leaving it as a near-empty line.
+
+8. **"Portfolio: <<LINK_WEB>> (write-ups of two tests)"**
+   - Move the link back to the contact line, where the original had it. A hiring manager looks for links there, not in the last bullet of a job.
+
+## 5. Claim-defence questions
+
+1. **"The win-back emails went from 2.1% to 2.5%. What was the baseline period and audience, and was there a holdout? How do you separate your segmentation's effect from the new copy?"**
+   Tests measurement rigor and whether the candidate claims only their own part.
+
+2. **"Walk me through how you check whether a test has enough traffic. What inputs do you use, and how do you pick a minimum detectable effect?"**
+   Tests real experimentation knowledge, which is the closest bridge to pricing A/B tests.
+
+3. **"Pick one of the ~12 tests that was inconclusive or surprised you. What did you write up, and what did you recommend?"**
+   Tests whether they synthesize and recommend, or only report results on tests others designed.
+
+4. **"What's behind the Looker dashboards the director reviews on Mondays? Did you write LookML or explores, or build on existing ones?"**
+   Tests the depth of the BI build versus assembling tiles.
+
+5. **"Show me the most complex query behind the segmentation. Have you ever needed a table you couldn't create, and what did you do?"**
+   Tests whether "advanced SQL" holds up, and the gap on creating tables and schemas.

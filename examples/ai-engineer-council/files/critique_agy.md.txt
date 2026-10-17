@@ -1,0 +1,48 @@
+### Assumption
+The candidate's resume history ends in December 2023, while today is 16 October 2026. In the absence of any listed experience after December 2023, it is assumed the candidate has had no professional engineering employment between January 2024 and October 2026.
+
+---
+
+### Draft K
+
+- **Screen decision:** No. The candidate does not meet the non-negotiable minimum requirement of 4+ years of experience as an engineer shipping production systems, holding only academic research, data analysis, and a 3-month summer internship with no documented employment since December 2023.
+- **Level:** Entry-level / Junior (New Graduate).
+- **Findings:**
+  1. `Data Science Masters Candidate (CGPA: 3.95/4) | Dec 2023` — **Fix:** As of October 2026, presenting oneself as a "Masters Candidate" for a degree dating to December 2023 misrepresents graduation status and accentuates an unexplained three-year gap.
+  2. `Python, SQL; AWS S3, AWS EC2, AWS QuickSight; GCP; SQL Server, SSMS; Excel, Tableau; Natural Language Processing (NLP), CNN, Yolov7` — **Fix:** This line demonstrates only Python among the target languages, failing to satisfy the mandatory requirement of proficiency in at least two of Ruby, Node.js, Python, or Next.js, while the dense semicolon-separated string is difficult to scan quickly.
+  3. `- Created AWS QuickSight dashboards to monitor model performance, runtime and computational resources, resulting in a 20% increase in overall model efficiency.` — **Consider:** Attributing a 20% increase in machine learning model efficiency directly to creating monitoring dashboards claims an unconvincing causal link that a hiring manager will doubt.
+  4. `- Learned sales procedures and customer support tools by shadowing meetings between Solutions Architects and 4 different customers.` — **Consider:** Highlighting passive observation rather than tangible engineering contributions signals a trainee mindset and undersells technical ownership.
+  5. `- Collaborated on monthly reports using Excel and analytical writing; publications doubled and donor funds increased by 45%.` — **Consider:** Claiming that writing monthly reports in Excel caused a 45% increase in organizational donor funds is an improbable causal attribution that reviewers will discount.
+  6. `- Built an interactive web application to detect diseased cotton plants, resulting in a 100% increase in user interaction.` — **Consider:** Citing a 100% increase in user interaction for a student project web application lacks a baseline and reads as an unsubstantiated vanity metric.
+- **Areas without material problems:**
+  - *Not in the candidate's material / team attribution:* No material problems; all statements reflect the source material, and collaborative qualifiers ("Collaborated") are accurately maintained.
+  - *Job description copying / machine-written phrasing:* No material problems; the descriptions avoid buzzword stuffing and do not lift language from the job description.
+
+---
+
+### Draft M
+
+- **Screen decision:** No. The candidate lacks the mandatory 4+ years of production software engineering experience, offering only data analyst, graduate assistant, and intern experience with no engineering work shown for the past three years.
+- **Level:** Entry-level / Junior (New Graduate).
+- **Findings:**
+  1. `Data Science master's candidate (CGPA 3.95/4) with a Solutions Architect internship at a large cloud provider and earlier work as a Data Analyst. Builds Python automation that removes manual data work, and trains and compares NLP and computer-vision models on AWS and GCP. Shadowed Solutions Architects in meetings with 4 customers to learn how the company supports them.` — **Fix:** Styling oneself in the present tense as an active master's candidate in October 2026 advertises a junior academic profile, while featuring passive shadowing in an executive summary undersells technical depth.
+  2. `- **Programming languages:** Python, SQL, R, SAS, HTML, CSS` — **Fix:** The draft does not evidence the core requirement of proficiency in at least two of Ruby, Node.js, Python, or Next.js, listing only Python from that group.
+  3. `- Used object detection and image classification with CNN and YOLOv7 models.` — **Fix:** Isolating the tools into a standalone sentence fragment disconnects them from the business accomplishment and creates an awkward bullet to read.
+  4. `- Created AWS QuickSight dashboards to monitor KPIs, including performance metrics, runtime and computational resources, resulting in a 20% increase in overall model efficiency.` — **Consider:** Claiming that monitoring dashboards directly produced a 20% increase in model efficiency is a doubtful causal claim that technical interviewers will challenge.
+  5. `- Shadowed meetings between Solutions Architects and 4 different customers to learn the company's sales procedures and the tools available to assist customers.` — **Consider:** Listing passive meeting shadowing as a primary bullet point highlights an intern training exercise rather than engineering execution or autonomy.
+  6. `- Collaborated on monthly reports using Excel and analytical writing, resulting in doubled publications and a 45% increase in donor funds.` — **Consider:** Attributing a 45% increase in institutional donor funding to contributing to Excel reports is an exaggerated causal claim that invites skepticism.
+  7. `- Built an interactive web application to detect diseased cotton plants, resulting in a 100% increase in user interaction.` — **Consider:** Reporting a 100% increase in user interaction on an academic class project lacks context and reads as an unverified vanity metric.
+  8. `Data Science Masters Candidate (CGPA: 3.95/4) | Dec 2023` — **Fix:** Using the label "Candidate" alongside an end date of December 2023 leaves degree completion ambiguous and ignores the subsequent three years leading to 2026.
+- **Areas without material problems:**
+  - *Not in the candidate's material / team attribution:* No material problems; the draft remains faithful to the candidate's background and appropriately credits team efforts.
+  - *Job description copying / machine-written phrasing:* No material problems; phrasing reads naturally and does not mirror the job posting text.
+
+---
+
+### Section Comparison
+
+- **Summary:** Draft K handles this section better by omitting it, as Draft M's summary reinforces an entry-level student identity and draws unnecessary attention to passive shadowing.
+- **Skills:** Draft M handles this section better because its categorized, bolded taxonomy is far more legible and easier to scan than Draft K's dense semicolon string.
+- **Experience:** Draft K handles this section better because it keeps tools, actions, and metrics unified within single bullets rather than splitting them into disjointed sentence fragments like Draft M.
+- **Projects:** Draft M handles this section better because it retains all four projects from the candidate's source profile, showing broader technical breadth than Draft K's truncated two-project list.
+- **Education:** Draft K handles this section better because its layout is cleaner and avoids the redundant bolding tags used across Draft M.

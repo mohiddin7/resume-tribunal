@@ -1,0 +1,93 @@
+# <<NAME>>
+Seattle, WA | <<EMAIL>> | <<PHONE>>
+
+## Summary
+Data Science master's candidate (CGPA 3.95/4) with a Solutions Architect internship at a large cloud provider and earlier work as a Data Analyst. Builds Python automation that removes manual data work, and trains and compares NLP and computer-vision models on AWS and GCP. Shadowed Solutions Architects in meetings with 4 customers to learn how the company supports them.
+
+## Skills
+- **Programming languages:** Python, SQL, R, SAS, HTML, CSS
+- **Cloud:** AWS (S3, EC2, QuickSight), GCP (Compute Engine), Azure
+- **Machine learning and NLP:** DeBERTa, RoBERTa, DistilBERT, CNN, YOLOv7, ResNet50, VGG16, DenseNet121, MLP and Random Forest classifiers
+- **Databases:** MySQL, MS SQL Server (SSMS), MongoDB, Hive, Hadoop, HDFS
+- **Data and analytics tools:** Excel, Tableau, Microsoft Power BI, SPSS, Snowflake, Alteryx, Databricks, Linux
+
+## Experience
+### Large cloud provider, USA
+**Solutions Architect Intern – Data Science** | May 2023 - Aug 2023
+- Developed real-time video analysis of basketball shots that gave shot and posture analysis of the shooter at 76% accuracy.
+- Used object detection and image classification with CNN and YOLOv7 models.
+- Designed and tested over 30 ML models on AWS S3 and AWS EC2 to find the best one, which raised accuracy by 14% and cut runtime by 25%.
+- Created AWS QuickSight dashboards to monitor KPIs, including performance metrics, runtime and computational resources, resulting in a 20% increase in overall model efficiency.
+- Shadowed meetings between Solutions Architects and 4 different customers to learn the company's sales procedures and the tools available to assist customers.
+
+### University school of public health, USA
+**Graduate Research Assistant** | Nov 2022 - Dec 2023
+- Automated data collection with Python by extracting information from PDF invoices into Excel sheets, cutting data entry time by 80%.
+- Wrote SQL queries to extract and update departments' research expenditures and exported the results to Excel from SSMS, reducing analysis time by 40%.
+- Collaborated with the IT team to implement secure, reliable data management and reporting systems using SQL Server and Tableau, resulting in a 70% reduction in report generation time.
+- Produced monthly expenditure reports and dashboards in Excel and Tableau, contributing to a 20% improvement in resource allocation and budget forecasting accuracy.
+
+### Policy research nonprofit, India
+**Data Analyst** | Jun 2020 - Jul 2022
+- Automated web scraping in Python to collect data for monthly and annual reports, saving over 100 hours of manual data collection.
+- Developed and ran 100+ complex SQL queries on Federal and State budget data for departments including Agriculture, Education and Health to build data-driven reports used in policy advocacy.
+- Designed Tableau dashboards to monitor KPIs and track expenditure, resulting in improved budget allocation, annual savings of 800K rupees and better stakeholder retention.
+- Collaborated on monthly reports using Excel and analytical writing, resulting in doubled publications and a 45% increase in donor funds.
+
+## Projects
+**News authenticity classifier | Python** | Apr 2023
+- Classified news as real or fake with an F1-score of 0.9916 using NLP models DeBERTa, RoBERTa and DistilBERT; RoBERTa scored highest.
+- Trained the models on AWS EC2 and GCP Compute Engine, which reduced runtime by 80%.
+
+**Crop leaf disease detector | Python** | Dec 2022
+- Predicted diseased plants with 96.8% accuracy by training on 12K images with a CNN and pre-trained models (ResNet50, VGG16, DenseNet121).
+- Built an interactive web application to detect diseased cotton plants, resulting in a 100% increase in user interaction.
+
+**Pandemic impact analysis | SQL & Tableau** | May 2023
+- Analyzed 313k records of a COVID-19 dataset with SQL, examining mortality, infection, vaccination, hospitalization and economic indicators across multiple countries.
+- Created two interactive Tableau dashboards to communicate the key findings.
+
+**Basketball shot-selection model | Python** | Jun 2022
+- Predicted shots across a player's career with 67% accuracy using MLP and Random Forest classifiers.
+- Used EDA to identify the player's strengths and weaknesses from an opponent's point of view, covering 2 of the player's 5 final appearances.
+
+## Education
+**Private university USA, United States**
+Data Science Masters Candidate (CGPA: 3.95/4) | Dec 2023
+Relevant coursework: Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data Visualization
+
+**Engineering institute, India**
+Bachelor of Engineering, Electronics and Communication (CGPA: 8.66/10) | May 2020
+
+---
+
+## Not shown
+The candidate's material does not evidence these requirements:
+- **Experience:** 4+ years as an engineer shipping production systems. The dates show about two years as a Data Analyst plus a graduate assistantship and an internship, and nothing after Dec 2023.
+- **Backend work:** backend engineering, such as debugging failing systems or tracing issues across services.
+- **AI tooling:** building or deploying AI agents, LLM-powered tools, or LLM-based workflow automation. The NLP work is model training and classification.
+- **Languages:** proficiency in a second language from Ruby, Node.js, Python or Next.js. Only Python is shown.
+- **Infrastructure:** cloud deployment and DevOps. AWS and GCP appear only for training and dashboards, not for deploying or operating services.
+- **Internal tools:** building internal tools or developer platforms. The reporting systems were built with the IT team.
+- **Multiple stacks:** working across several codebases or technology stacks at once.
+- **AI-assisted development:** using AI/LLM tools in an engineering workflow.
+- **Ways of working:** scoping and delivering work with little oversight in a cross-functional engineering setting.
+- **Preferred qualifications:**
+  - Platforms or template systems that non-engineers extend
+  - Solutions, sales or GTM engineering beyond shadowing
+  - Stripe, payments or fintech experience
+  - Salesforce or Gong integrations
+  - Tools adopted beyond the immediate team
+  - Consulting or professional services
+
+## Open questions
+1. **Work since Dec 2023:** What has the candidate done since then (role, employer, dates)? Without it, the resume shows a gap of almost three years and no current role.
+2. **Degree:** Was the master's conferred, and what is its exact name (for example, MS in Data Science)? I kept "Masters Candidate" because completion isn't confirmed.
+3. **Employer names:** Should "Large cloud provider", "University school of public health", "Policy research nonprofit" and "Private university USA" be replaced with real names?
+4. **Assistantship hours:** Was the Graduate Research Assistant role part-time? If so, it should be labelled.
+5. **LLM experience:** Has the candidate built anything with LLMs, agents, or LLM APIs, including personal projects? This is a core requirement.
+6. **JavaScript:** Has the candidate used JavaScript, Node.js, Next.js or Ruby? For example, what was the crop disease web app built with, and where was it deployed?
+7. **Internship deployment:** Was the basketball video analysis deployed or demoed to customers or internal teams? If so, it would show demo and proof-of-concept work.
+8. **Users:** Who used the Tableau and QuickSight dashboards, and how many people? This would show adoption beyond the immediate team.
+9. **Links:** Are there GitHub repositories, demos or write-ups for the projects that could be added next to them?
+10. **Location:** Is the candidate relocating to Chicago, or open to it? The resume keeps Seattle, WA.

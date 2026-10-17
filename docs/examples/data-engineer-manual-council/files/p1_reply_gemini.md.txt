@@ -1,1 +1,90 @@
-Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 117h9m0s.
+### Assumptions
+- **Student Technical Support Assistant (IT)**: Kept under the `Education` section alongside the Master of Data Science degree as structured in the candidate's original resume, as no job duties, bullet points, or scope details were provided.
+- **Years of Experience**: Excluded an explicit "years of experience" claim in the Summary because the posting requires 4+ years of data engineering experience, while the candidate's verified history supports 1 year of data engineering (and ~2.5 years total professional experience).
+- **Date Formatting**: Standardized all dates to `Mon YYYY` format across experience, projects, and education for consistency.
+
+***
+
+# <<NAME>>
+Phoenix, AZ | <<EMAIL>> | <<PHONE>>
+
+## Summary
+Data Engineer with hands-on experience designing cloud data lakes, building Glue ETL pipelines, and implementing data governance frameworks on AWS. Proficient in Python, SQL, Spark, and data modeling, with active AWS Certified Data Engineer Associate certification.
+
+## Skills
+- **Programming Languages**: Python (NumPy, Pandas), SQL, PL/SQL, R, Hive, SAS
+- **Cloud & Big Data**: AWS (Glue, S3, Redshift, Athena, EC2, DynamoDB, Kinesis Data Streams, IAM), Spark, Azure, Snowflake
+- **Data Engineering & Methodologies**: Data Pipelines, ETL processes, Data Modeling, Database design, Data Warehousing, Relational Databases
+- **Orchestration & DevOps**: Apache Airflow, Git, Jenkins, JIRA, Agile
+- **BI & Visualization**: Tableau, Power BI, Excel, Cognos
+- **Data Analysis & Machine Learning**: Time Series Analysis, Forecasting, Regression, Classification
+- **Web & Formats**: JSON, HTML, SOAPUI
+
+## Certifications
+- AWS Certified Data Engineer Associate
+- Certified Tableau Desktop Specialist
+
+## Experience
+### Large IT services company (client: national pharmacy chain) – India
+**Data Engineer** | Dec 2023 – Dec 2024
+- Architected an enterprise Data Lake using AWS services (S3, Redshift, RDS, Glue) to support data storage, processing, analytics, and rapidly changing datasets.
+- Developed and managed Glue ETL pipelines, creating tables and databases in Glue catalog via Crawlers, applying transformations, and loading results into S3, Redshift, and RDS.
+- Optimized a large-scale data processing pipeline, consolidating datasets from multiple sources and improving analytics efficiency by 40%.
+- Engineered ETL scripts to clean, transform, and integrate over 10TB of data, enhancing data quality for critical business decisions.
+- Established a data governance framework integrating data quality checks and compliance measures, enhancing data accuracy by 25% and ensuring 100% of datasets met regulatory requirements across the organization.
+- Set up CI/CD pipelines using Jenkins and Git for streamlined code development and version control for Python-based projects.
+
+**Business Intelligence Analyst** | Aug 2022 – Dec 2023
+- Implemented business intelligence frameworks using Tableau and Power BI to deliver interactive dashboards and reports, driving a 30% increase in data-driven decision-making across critical business operations.
+- Analyzed datasets to identify trends and patterns, improving organizational efficiency by 25%.
+- Led meetings to communicate project progress and adapt solutions based on feedback, boosting client satisfaction by 15%.
+
+## Projects
+### Airline Customer-Satisfaction Dashboard | Apr 2026
+- Built a Tableau dashboard for a major airline, transforming customer satisfaction data into interactive visualizations to inform service strategies.
+- Reduced analysis time by 30% through streamlined data presentation, highlighting key performance indicators for faster decision-making.
+
+### Tech-Stock Price Forecasting | Dec 2025
+- Analyzed historical stock price data from 1980 to 2022 for a large tech company using time series models (ARMA, ARIMA, SARIMA), improving stock trend forecasting by 15%.
+- Implemented data preprocessing techniques, including cleaning and normalization, using statistical tests and model diagnostics to enhance model accuracy and reliability.
+
+### Serverless Support Chatbot | Dec 2025
+- Developed a serverless chatbot using AWS services (Lex, Lambda, DynamoDB, SNS) that handled over 500 user queries daily, improving response efficiency by 40%.
+- Implemented AWS VPC to ensure secure data transmission, resulting in a 25% improvement in network performance.
+
+## Education
+### Private university – USA
+**Master of Data Science** | Expected Graduation: Dec 2026
+- GPA: 3.7/4.0
+**Student Technical Support Assistant (IT)** | Oct 2025 – Present
+
+***
+
+### Not Shown: Requirements in the Job Description That the Candidate's Material Does Not Evidence
+
+1. **4+ years experience in a data engineering-focused role**: The candidate documents 1 year as a Data Engineer (Dec 2023 – Dec 2024) and ~1.4 years as a Business Intelligence Analyst (Aug 2022 – Dec 2023), totaling ~2.5 years of industry experience.
+2. **Undergraduate Degree (BA / BS)**: The candidate lists a Master of Data Science (in progress, expected Dec 2026), but no undergraduate degree (BA/BS in Computer Science, Statistics, or related discipline) is provided.
+3. **PySpark and SparkSQL**: While the candidate lists "Spark", "SQL", and "Python", there is no explicit mention or production evidence of PySpark or SparkSQL pipelines.
+4. **Hands-on Spark in Production / Spark-based Data Platforms**: "Spark" is listed under skills, but none of the experience bullets describe building or maintaining Spark-based data pipelines, nor using platforms like Databricks or EMR.
+5. **REST APIs**: The posting requires "working with REST APIs." The candidate lists SOAPUI, JSON, and HTML, but not REST APIs or RESTful data ingestion.
+6. **Data Orchestration Tool Hands-on Implementation**: "Apache Airflow" is listed under tools, but there are no bullets demonstrating authoring, scheduling, or managing DAGs in production (nor Dagster or Prefect).
+7. **Unstructured Data (Audio/Video) and IoT / Sensor Data**: The candidate has not demonstrated ingesting or computing tables from sensor feeds, IoT hardware, or unstructured media (video/audio).
+8. **Reading Backend Development Code**: Familiarity with backend application source code (e.g., Go, Java) is not evidenced.
+9. **Late-Arriving Data**: While the candidate has time series analysis project experience, handling late-arriving data in streaming/batch pipelines is not demonstrated.
+10. **Databricks, Delta Lake, and Dagster**: None of these specific technologies are mentioned in the candidate's material.
+11. **First-Party Product Data & Client-Side Signals**: Experience is with client pharmacy retail data and academic/independent projects, not IoT product telemetry or client-side event streams.
+12. **High Uptime / Customer-Facing Dataset Deliveries**: Meeting strict uptime SLAs or managing customer-facing data tables is not evidenced.
+
+***
+
+### Open Questions: Facts That Would Strengthen the Resume If the Candidate Can Supply Them
+
+1. **Undergraduate Education**: What was the candidate's bachelor's degree major, university, and graduation year? (Required to meet the BA/BS requirement).
+2. **Prior Work Experience**: Did the candidate hold any software engineering, data, or technical roles prior to August 2022 that could help demonstrate 4+ years of data engineering experience?
+3. **Spark, PySpark, and SparkSQL Applications**: Did the candidate use Spark, PySpark, or SparkSQL during their Data Engineer role or projects? What were the cluster environments, transformation logic, and data scale?
+4. **Airflow Orchestration**: How was Apache Airflow used in practice? Did the candidate build automated DAGs, custom operators, or manage pipeline dependencies?
+5. **REST API Ingestion**: Has the candidate built ETL pipelines or Python scripts that consumed data from external or internal REST APIs?
+6. **Streaming & IoT/Sensor Data**: Did the candidate utilize Kinesis Data Streams (listed in skills) or other streaming technologies for sensor, telemetry, or late-arriving data?
+7. **Databricks / Delta Lake**: Does the candidate have experience with Delta Lake tables, Lakehouse architectures, or Databricks workspaces?
+8. **Student Technical Support Assistant (IT) Responsibilities**: What were the candidate's primary tasks, tools used, and accomplishments in this current role at Private university USA?
+9. **Cross-functional Collaboration**: Did the candidate collaborate directly with Data Scientists or Machine Learning engineers to prepare feature tables or training datasets?

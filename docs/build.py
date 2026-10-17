@@ -42,11 +42,33 @@ def addresses():
 
 SITE, REPO, PAGES = addresses()
 ZIP = f"{REPO}/releases/latest/download/resume-tribunal.zip"
+
+# warmhop tracked links. links.json maps each landing place to its warmhop link; every placement adds
+# ?ref=<where the link sits> plus UTM tags, so one link counts each spot apart. Until a key has its link, the plain
+# address is used. Never for canonical, og:url, the sitemap, the feed, JSON-LD, llms.txt or resume-tribunal.md:
+# search engines and AI apps need those direct.
+LINKS = json.loads(pathlib.Path("links.json").read_text())
+
+
+def track(key, ref, source="site", medium="referral"):
+    from urllib.parse import urlencode
+    to, wh = LINKS[key]["to"], LINKS[key]["warmhop"]
+    if not wh:
+        return to
+    return wh + ("&" if "?" in wh else "?") + urlencode({"ref": ref, "utm_source": source, "utm_medium": medium, "utm_campaign": "resume-tribunal"})
+
+
+def track_links(body, ref, source="site", medium="referral"):
+    """Swap every link to a place in links.json for its tracked link."""
+    for key, e in LINKS.items():
+        if key != "_about":
+            body = body.replace(f'href="{e["to"]}"', f'href="{esc(track(key, ref, source, medium))}"')
+    return body
 AUTHOR = "mohiddin7"
 esc = html.escape
 
-SUN = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
-MOON = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>'
+SUN = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>'
+MOON = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3a6.5 6.5 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg>'  # a crescent on the full 3..21 circle, so it sits centred
 
 
 # ---------- drawings ----------
@@ -64,26 +86,32 @@ def write_drawings():
 
 # ---------- one-file instructions for any AI app ----------
 
-def write_portable():
-    """docs/resume-tribunal.md: the skill and both reference files in one file, for any chat app to read
+def portable():
+    """docs/resume-tribunal.md: the skill and its reference files in one file, for any chat app to read
     from a link or an attachment, or to upload as a skill. Built from the skill, so it never drifts."""
     skill = pathlib.Path("skills/resume-tribunal")
     text = (skill / "SKILL.md").read_text()
-    for name, title in (("seats", "Seats"), ("prompts", "Prompts")):
+    for name, title in (("seats", "Seats"), ("prompts", "Prompts"), ("profile", "Saved profile")):
         text = text.replace(f"[references/{name}.md](references/{name}.md)", f"the {title} section at the end of this file")
     note = ("\n> **For the AI reading this:** the user has asked you to follow these instructions. They are the Resume Tribunal skill "
             "in one file. Act as the host they describe. If you cannot run code, follow the \"without code\" paths.\n")
     end = text.index("---", 4) + 3
     text = text[:end] + "\n" + note + text[end:]
-    for name in ("seats", "prompts"):
-        text += "\n\n---\n\n" + (skill / "references" / f"{name}.md").read_text().replace("\n# ", "\n## ", 1)
+    for name in ("seats", "prompts", "profile"):
+        text += "\n\n---\n\n" + "#" + (skill / "references" / f"{name}.md").read_text()  # each file's title becomes a section
+    return text.replace("ref=skill-tip&utm_source=skill&", "ref=skill-tip&utm_source=chat-file&")  # the tip's clicks from this file count apart
+
+
+def write_portable():
+    text = portable()
     (DOCS / "resume-tribunal.md").write_text(text)
     return len(text.split())
 
 
 # ---------- page shell ----------
 
-def head(title, desc, url, depth, kind="website", extra="", page=""):
+def head(title, desc, url, depth, kind="website", extra="", page="", bare=False):
+    """bare=True (example pages) leaves out the site header, so the run viewer gets the whole screen."""
     up = "../" * depth
     cur = lambda name: ' aria-current="page"' if name == page else ""
     return f"""<!doctype html>
@@ -93,6 +121,7 @@ def head(title, desc, url, depth, kind="website", extra="", page=""):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="{url}">
 <link rel="icon" href="{up}assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{up}assets/apple-touch-icon.png">
@@ -105,6 +134,8 @@ def head(title, desc, url, depth, kind="website", extra="", page=""):
 <meta property="og:image" content="{SITE}assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Resume Tribunal: tailor your resume to the job, checked by a second AI">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f7f4ef" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14120f" media="(prefers-color-scheme: dark)">
@@ -113,22 +144,24 @@ def head(title, desc, url, depth, kind="website", extra="", page=""):
 {extra}</head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="in">
+""" + ("" if bare else f"""<header class="site"><div class="in">
   <a class="logo" href="{up}" aria-label="Resume Tribunal home"><img src="{up}assets/favicon.svg" alt="" width="30" height="30"><span>Resume Tribunal</span></a>
   <nav class="top" aria-label="Main">
-    <a href="{up}#how">How it works</a><a href="{up}examples/"{cur("examples")}>Examples</a><a href="{up}#faq">Questions</a><a href="{up}blog/"{cur("blog")}>Blog</a><a href="{REPO}">GitHub</a>
+    <a href="{up}#how">How it works</a><a href="{up}examples/"{cur("examples")}>Examples</a><a href="{up}#faq">Questions</a><a href="{up}blog/"{cur("blog")}>Blog</a><a href="{esc(track("repo", "header"))}">GitHub</a>
   </nav>
   <button class="icon theme" type="button" aria-label="Switch to dark mode"><span class="moon">{MOON}</span><span class="sun">{SUN}</span></button>
   <a class="btn primary small" href="{up}#start">Get started</a>
 </div></header>
-"""
+""")
 
 
-def foot(depth):
+def foot(depth, bare=False):
     up = "../" * depth
+    if bare:
+        return "</body>\n</html>\n"
     return f"""<footer class="site"><div class="in">
   <div class="fbrand"><img src="{up}assets/favicon.svg" alt="" width="26" height="26"><strong>Resume Tribunal</strong><span>Free and open source. MIT license.</span></div>
-  <nav aria-label="Footer"><a href="mailto:tribunal@warmhop.com">Support: tribunal@warmhop.com</a><a href="{up}#start">Get started</a><a href="{up}#faq">Questions</a><a href="{up}examples/">Examples</a><a href="{up}blog/">Blog</a><a href="{REPO}">GitHub</a><a href="{SITE}feed.xml">RSS</a><a href="{up}llms.txt">llms.txt</a></nav>
+  <nav aria-label="Footer"><a href="mailto:tribunal@warmhop.com">Support: tribunal@warmhop.com</a><a href="{up}#start">Get started</a><a href="{up}#faq">Questions</a><a href="{up}examples/">Examples</a><a href="{up}blog/">Blog</a><a href="{esc(track("repo", "footer"))}">GitHub</a></nav>
 </div></footer>
 </body>
 </html>
@@ -150,7 +183,9 @@ def posts():
         out.append(dict(slug=md.stem, md=body, words=words, minutes=max(1, round(words / 230)),
                         plain=" ".join(plain.lower().split()), **meta))
     for p in out:
-        p["html"] = render_post_body(markdown.markdown(p.pop("md"), extensions=["tables"]), p)
+        md = markdown.Markdown(extensions=["tables", "toc"])
+        p["html"] = render_post_body(md.convert(p["md"]), p)
+        p["toc"] = [(t["id"], html.unescape(t["name"])) for t in md.toc_tokens]
     return sorted(out, key=lambda p: p["date"], reverse=True)
 
 
@@ -161,7 +196,7 @@ def figure(name, caption):
 
 
 CTA = ('<aside class="cta-box"><img src="../assets/favicon.svg" alt="" width="40" height="40"><div>'
-       '<strong>Try Resume Tribunal on your own resume.</strong><p>Free, no sign-up. Your AI writes it from your facts, a different AI checks every line, and you approve each change.</p>'
+       '<strong>Try Resume Tribunal on your own resume.</strong><p>Free, no sign-up. Your AI writes it from your facts, a different AI checks it, and you approve each change.</p>'
        '<a class="btn primary" href="../#start">Get started in 2 minutes</a></div></aside>')
 
 
@@ -178,13 +213,15 @@ def tags(p, cls="tag"):
     return "".join(f'<span class="{cls}">{esc(t)}</span>' for t in p["tags"])
 
 
-def share(url, title):
+def share(slug, title):
+    """Share buttons; each shares the post's own tracked link, so a click from LinkedIn or X counts apart."""
     from urllib.parse import quote
-    u, t = quote(url, safe=""), quote(title, safe="")
+    key, t = f"post:{slug}", quote(title, safe="")
+    u = lambda ref, src: quote(track(key, ref, src, "social"), safe="")
     return (f'<div class="share"><span>Share</span>'
-            f'<a href="https://www.linkedin.com/sharing/share-offsite/?url={u}" rel="noopener">LinkedIn</a>'
-            f'<a href="https://twitter.com/intent/tweet?url={u}&amp;text={t}" rel="noopener">X</a>'
-            f'<button type="button" class="copy" data-copy="{url}">Copy link</button></div>')
+            f'<a href="https://www.linkedin.com/sharing/share-offsite/?url={u("share-linkedin", "linkedin")}" rel="noopener">LinkedIn</a>'
+            f'<a href="https://twitter.com/intent/tweet?url={u("share-x", "x")}&amp;text={t}" rel="noopener">X</a>'
+            f'<button type="button" class="copy" data-copy="{esc(track(key, "share-copy", "copy", "social"))}">Copy link</button></div>')
 
 
 def build_blog(items):
@@ -210,15 +247,20 @@ def build_blog(items):
         page = (head(f"{p['title']} | Resume Tribunal", p["description"], url, 1, "article", extra, page="blog")
                 + f'''<div class="readbar" aria-hidden="true"><b></b></div>
 <main id="main" class="post-wrap">
+<div class="post-grid">
+<nav class="toc" aria-label="On this page"><strong>On this page</strong><ol>{"".join(f'<li><a href="#{i}">{esc(n)}</a></li>' for i, n in p["toc"])}</ol></nav>
+<div class="post-col">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a> / <a href="./">Blog</a></nav>
 <article class="post">
 <header class="post-head"><div class="tags">{tags(p)}</div>
 <h1>{esc(p["title"])}</h1><p class="lede">{esc(p["description"])}</p>
-<div class="byline"><span class="avatar" aria-hidden="true">{AUTHOR[0].upper()}</span><span><strong>{AUTHOR}</strong><br><span class="meta">{day:%d %B %Y} · {p["minutes"]} min read</span></span>{share(url, p["title"])}</div></header>
-<div class="prose">{p["html"]}</div>
+<div class="byline"><span class="avatar" aria-hidden="true">{AUTHOR[0].upper()}</span><span><strong>{AUTHOR}</strong><br><span class="meta">{day:%d %B %Y} · {p["minutes"]} min read</span></span>{share(p["slug"], p["title"])}</div></header>
+<div class="prose">{track_links(p["html"], "blog-" + p["slug"])}</div>
 {CTA}
-<footer class="post-foot">{share(url, p["title"])}</footer>
+<footer class="post-foot">{share(p["slug"], p["title"])}</footer>
 </article>
+</div>
+</div>
 {f'<section class="related"><h2>Keep reading</h2><div class="grid">{related}</div></section>' if related else ""}
 </main>
 ''' + foot(1))
@@ -236,12 +278,12 @@ def build_blog(items):
         for p in items)
     ld = {"@context": "https://schema.org", "@type": "Blog", "name": "Resume Tribunal blog", "url": f"{SITE}blog/",
           "blogPost": [{"@type": "BlogPosting", "headline": p["title"], "url": f"{SITE}blog/{p['slug']}.html", "datePublished": p["date"]} for p in items]}
-    desc = "Plain-spoken notes on using AI for your resume without making things up, and how Resume Tribunal was built."
+    desc = "How to tailor your resume or CV to a job with ChatGPT, Claude or Gemini without inventing anything, and how AI resume tools compare."
     (DOCS / "blog" / "index.html").write_text(
-        head("Blog: AI, resumes and honest job hunting | Resume Tribunal", desc, f"{SITE}blog/", 1, "website",
+        head("Blog: Tailoring Your Resume with AI | Resume Tribunal", desc, f"{SITE}blog/", 1, "website",
              f'<script type="application/ld+json">{json.dumps(ld)}</script>\n', page="blog")
         + f'''<main id="main" class="blog-wrap">
-<header class="blog-head"><h1>Blog</h1><p class="meta">{esc(desc)}</p></header>
+<header class="blog-head"><h1>Blog</h1></header>
 <div class="blog-tools">
 <label class="search"><span class="sr">Search posts</span><input type="search" id="q" placeholder="Search posts, e.g. ATS or ChatGPT" autocomplete="off" aria-describedby="count"></label>
 <div class="chips" role="group" aria-label="Filter by topic">{chips}</div>
@@ -289,16 +331,19 @@ def json_script(id_, data):
 
 VIEWER = """<main id="main" class="rv">
 <div class="rv-app">
-  <div class="rv-bar"><div class="in">
-    <div class="rv-title">
-      <div class="rv-crumb"><a href="../">Examples</a> <span aria-hidden="true">/</span> {mode}, {reach} mode <span aria-hidden="true">/</span> <span class="rv-crumb-here" aria-current="page">{title}</span></div>
-      <h1>{title}{note}</h1>
-      <div class="rv-facts">{facts}</div>
+  <div class="rv-bar closed" id="rv-bar"><div class="in">
+    <div class="rv-top">
+      <a class="rv-home" href="../../" aria-label="Resume Tribunal home"><img src="../../assets/favicon.svg" alt="" width="26" height="26"></a>
+      <a class="rv-back" href="../">All examples</a>
+      <div class="rv-top-r">
+        <label class="sr" for="example">Watch another example</label>
+        <select id="example"></select>
+        <button type="button" class="rv-ghost" id="details-toggle" aria-expanded="false" aria-controls="rv-details">Show details</button>
+        <button class="icon theme" type="button" aria-label="Switch to dark mode"><span class="moon">{moon}</span><span class="sun">{sun}</span></button>
+      </div>
     </div>
-    <div class="rv-pick">
-      <label for="example">Watch another example</label>
-      <select id="example"></select>
-    </div>
+    <h1>{title}{note}</h1>
+    <div class="rv-details" id="rv-details"><div class="rv-facts">{facts}</div></div>
   </div></div>
   <div class="rv-time" id="timeline" aria-label="Who worked when"><div>
     <div class="rv-ctrl">
@@ -324,8 +369,8 @@ VIEWER = """<main id="main" class="rv">
         <h2>Resume</h2>
         <div class="seg mob-tabs" role="group" aria-label="Show"><button type="button" data-show="resume" aria-pressed="true">Resume</button><button type="button" data-show="chat" aria-pressed="false">Chat</button></div>
         <div class="seg" role="group" aria-label="Version"><button type="button" data-v="before" aria-pressed="false">Before</button><button type="button" data-v="after" aria-pressed="true">After</button></div>
-        <label class="rv-check"><input type="checkbox" id="diff"> Show changes</label>
-        <div class="seg zoom" role="group" aria-label="Page size"><button type="button" data-z="width" aria-pressed="true">Fit width</button><button type="button" data-z="page" aria-pressed="false">Whole page</button></div>
+        <label class="rv-check"><input type="checkbox" id="diff" checked> Show changes</label>
+        <div class="seg zoom" role="group" aria-label="Page size"><button type="button" data-z="width" aria-pressed="false">Fit width</button><button type="button" data-z="page" aria-pressed="true">Whole page</button></div>
       </div>
       <div class="rv-scroll desk" id="resume-scroll">
         <div class="cutbar" id="cutbar" hidden></div>
@@ -364,28 +409,29 @@ def build_examples():
         (page / "files").mkdir(parents=True)
         for f in (EXAMPLES / r["slug"] / "files").glob("*"):
             (page / "files" / f.name).write_text(f.read_text())
-        desc = f"A recorded Resume Tribunal run on a fictional candidate: every message, every prompt and reply, and the resume before and after. {r['mode']}, {round(r['end'] / 60)} minutes."
+        who = "a real candidate who agreed to publish their de-identified resume" if r["facts"][0].startswith("Real resume") else "a fictional candidate"
+        desc = f"A recorded Resume Tribunal run on {who}: every message, every prompt and reply, and the resume before and after. {r['mode']}, {round(r['end'] / 60)} minutes."
         facts = "".join(f'<span class="rv-fact">{esc(f)}</span>' for f in r["facts"])
         (page / "index.html").write_text(
-            head(f"Example run: {r['title']} | Resume Tribunal", desc, f"{SITE}examples/{r['slug']}/", 2, "website", css.format(up="../../"), page="examples")
-            + VIEWER.format(mode=esc(r["mode"]), title=esc(r["title"]), facts=facts, note=(f' <span class="rv-info" tabindex="0" aria-label="How this run was recorded" aria-describedby="rv-tip">i<span class="rv-tip" role="tooltip" id="rv-tip">'
-                      f'<b>How this run was recorded.</b> {esc(r["note"])}</span></span>') if r.get("note") else "", reach=esc(r.get("reach", "Auto").lower()), length=f"{r['end'] // 60:02d}:{r['end'] % 60:02d}")
+            head(f"Example run: {r['title']} | Resume Tribunal", desc, f"{SITE}examples/{r['slug']}/", 2, "website", css.format(up="../../"), page="examples", bare=True).replace("<body>", '<body class="wide bare">')
+            + VIEWER.format(moon=MOON, sun=SUN, title=esc(r["title"]), facts=facts, note=(f' <span class="rv-info" tabindex="0" aria-label="How this run was recorded" aria-describedby="rv-tip">i<span class="rv-tip" role="tooltip" id="rv-tip">'
+                      f'<b>How this run was recorded.</b> {esc(r["note"])}</span></span>') if r.get("note") else "", length=f"{r['end'] // 60:02d}:{r['end'] % 60:02d}")
             + json_script("run-data", r) + "\n" + json_script("examples-data", listing)
-            + '\n<script src="../../assets/viewer.js"></script>\n' + foot(2))
+            + '\n<script src="../../assets/viewer.js"></script>\n' + foot(2, bare=True))
     cards = "\n".join(
-        f'<a class="card post" href="{r["slug"]}/" data-kind="{esc(r["mode"])}|{esc(r.get("reach", "Auto"))} mode">'
+        f'<a class="card post" href="{r["slug"]}/" target="_blank" rel="noopener" data-kind="{esc(r["mode"])}|{esc(r.get("reach", "Auto"))} mode">'
         f'<span class="tags"><span class="tag">{esc(r["mode"])}</span><span class="tag">{esc(r.get("reach", "Auto"))} mode</span></span>'
         f'<strong>{esc(r["title"])}</strong><span class="facts">{"".join(f"<span>{esc(f)}</span>" for f in r["facts"] if not f.startswith(("Auto mode:", "Manual mode:")))}</span>'
-        f'<span class="more" aria-hidden="true">Watch the run →</span></a>' for r in runs)
+        f'<span class="more" aria-hidden="true">Watch the run →</span><span class="sr"> (opens in a new tab)</span></a>' for r in runs)
     kinds = ["Quick review", "Full council", "Auto mode", "Manual mode"]
     chips = '<button type="button" class="chip on" data-kind="" aria-pressed="true">All</button>' + "".join(
         f'<button type="button" class="chip" data-kind="{k}" aria-pressed="false">{k}</button>' for k in kinds
         if any(k in (r["mode"], r.get("reach", "Auto") + " mode") for r in runs))
-    desc = "Watch Resume Tribunal work on real and fictional resumes, message by message: what each AI was asked, what it said back, and how every line of the resume changed."
+    desc = "Watch Resume Tribunal work on real and fictional resumes, message by message: what each AI was asked, what it answered, and how each line of the resume changed."
     (out / "index.html").write_text(
         head("Example runs | Resume Tribunal", desc, f"{SITE}examples/", 1, "website", css.format(up="../"), page="examples")
         + f'''<main id="main" class="blog-wrap ex-wrap">
-<header class="ex-head"><h1>Example runs</h1><p class="meta">{esc(desc)} Each page is built straight from the run's own files.</p></header>
+<header class="ex-head"><h1>Example runs</h1><p class="meta">{esc(desc)} Each page plays back the run's recorded files.</p></header>
 <div class="chips ex-chips" role="group" aria-label="Show">{chips}</div>
 <div class="grid posts" id="ex-cards">
 {cards}
@@ -410,9 +456,9 @@ FAQ = [
     ("I'm not a tech person. Can I still use Resume Tribunal?",
      "Yes. You paste one message into any AI chat app, like ChatGPT, Gemini or Claude, attach your resume, and answer a couple of questions. There are no commands to type."),
     ("Why can't I just ask ChatGPT to fix my resume?",
-     "You can, and ChatGPT is fine for a quick tidy-up. The catch is that an AI checking its own writing tends to approve it, made-up numbers included. Resume Tribunal has a second AI, from a different company, check the draft without knowing who wrote it. A script then compares every number to what you actually said."),
+     "You can, and ChatGPT is fine for a quick tidy-up. The catch is that an AI checking its own writing tends to approve it, made-up numbers included. Resume Tribunal has a second AI, from a different company, check the draft without knowing who wrote it. A script then flags any number it can't find in what you said."),
     ("Will Resume Tribunal make stuff up on my resume?",
-     "No. Every number, tool and job title has to come from you, and a script checks that. If something is missing, Resume Tribunal asks you instead of guessing. You approve each changed line before you get the file."),
+     "It is built not to. Every number, tool and job title has to come from you; a script flags any it cannot find in your words, and the second AI checks each line against them. If something is missing, Resume Tribunal asks you instead of guessing. You approve each changed line before you get the file."),
     ("Will my resume get past the ATS robots?",
      "Nobody can honestly promise that. ATS is the software employers use to collect applications, and most of it sorts candidates. It rarely rejects anyone on its own. Resume Tribunal keeps your layout simple enough for that software to read, and checks the PDF's text before you send it. After that, a person reads it."),
     ("Can a recruiter tell that AI wrote my resume?",
@@ -433,11 +479,11 @@ FAQ = [
 
 HIW = [  # title, one short line
     ("Drop in the job and your resume", "Paste the link into any AI chat."),
-    ("Your AI rewrites it for the job", "In the job's own words."),
-    ("A second AI checks it like a hiring manager", "It catches anything made up."),
-    ("A script checks every detail", "Layout, AI phrases, numbers."),
+    ("Your AI rewrites it for the job", "Using only your facts."),
+    ("A second AI checks it like a hiring manager", "It looks for anything made up."),
+    ("A script checks the details", "Layout, AI phrases, numbers."),
     ("You check the changes", "Say yes to the ones you want."),
-    ("Ready to send", "Plus the questions you'll be asked."),
+    ("Ready to send", "With the questions you're likely to get."),
 ]
 RC_HEAD = '<span class="rc-name"></span><span class="rc-sub"></span>'
 SCENES = [
@@ -459,7 +505,7 @@ SCENES = [
   <span class="note">You said "half a day"</span><span class="verdict">Would shortlist: yes</span></div>''',
  # 4: a script ticks three checks
  '''<div class="sc sc4"><div class="rc">''' + RC_HEAD + '''<i></i><i></i><i class="short"></i><span class="scan"></span></div>
-  <ul class="checks"><li class="c1"><b>✓</b>Screening software can read it</li><li class="c2"><b>✓</b>No AI-sounding phrases</li><li class="c3"><b>✓</b>Every number matches your words</li></ul></div>''',
+  <ul class="checks"><li class="c1"><b>✓</b>Screening software can read it</li><li class="c2"><b>✓</b>No AI-sounding phrases</li><li class="c3"><b>✓</b>Numbers match your words</li></ul></div>''',
  # 5: you approve two changes
  '''<div class="sc sc5"><div class="chg ch1"><p>"from 81 to 93 percent"</p><span class="ok">Approve</span></div>
   <div class="chg ch2"><p>"from half a day to 40 minutes"</p><span class="ok">Approve</span></div><span class="tap"></span></div>''',
@@ -498,8 +544,51 @@ def hiw(play=False):
   </div>'''
 
 
-TITLE = "Free AI Resume Tailoring That Doesn't Make Stuff Up | Resume Tribunal"
-DESC = "Not getting shortlisted? Fix your resume or CV for the job in 2 minutes of your time with ChatGPT, Gemini or any AI, without anything made up. Free, no sign-up."
+TITLE = "Free AI Resume Tailor for Any Job Description | Resume Tribunal"
+DESC = "Not getting shortlisted? Tailor your resume or CV to the job in 2 minutes of your time with ChatGPT, Gemini or Claude. A second AI checks it. Free."
+
+
+def thumb(p):
+    """The post's first drawing, theme-aware like the figures in the post."""
+    m = re.search(r'<img src="(media/[\w-]+)\.svg"', p["html"])
+    if not m:
+        return ""
+    src = "blog/" + m.group(1)
+    return f'<img class="thumb" src="{src}.svg" data-light="{src}-light.svg" data-dark="{src}-dark.svg" width="720" height="405" loading="lazy" alt="">'
+
+
+FEATURED = "growth-analyst-pricing-council"  # a fictional candidate, three companies' AIs, auto mode
+
+
+def showcase():
+    """The homepage's examples section: one recorded run's "who worked when" chart, drawn from its run.json,
+    with a playhead that sweeps across once when the section comes into view."""
+    runs = {r["slug"]: r for r in example_runs()}
+    r = runs.get(FEATURED)
+    if not r:
+        return ""
+    pct = lambda t: f"{t / r['end'] * 100:.2f}%"
+    rows = ["user", "host"] + [k for k in r["who"] if k not in ("user", "host")]
+    steps = "".join(f'<span style="left:{pct(st["t"])}">{esc(st["name"])}</span>' for st in r["steps"])
+    lanes = ""
+    for k in rows:
+        bars = "".join(f'<i style="left:{pct(a)};width:{pct(max(b - a, r["end"] / 300))};--d:{a / r["end"] * 4.4:.2f}s"{" class=w" if wait else ""}>{esc(label) if (b - a) / r["end"] * 480 >= len(label) * 6.8 + 12 else ""}</i>'
+                       for who, a, b, label, wait, _ in r["lanes"] if who == k)
+        lanes += f'<span class="ml-name">{esc(r["who"][k]["n"])}</span><span class="ml-track ml-{k}">{bars}</span>'
+    facts = "".join(f"<span>{esc(f)}</span>" for f in r["facts"] if not f.startswith(("Auto mode:", "Manual mode:")))
+    return f'''<section id="examples" class="split">
+  <div class="sh">
+    <h2>Watch three AIs work on one resume</h2>
+    <p class="sub">Eight recorded runs on real and fictional resumes. You see every prompt each AI got, every reply, and the resume before and after.</p>
+    <div class="cta"><a class="btn primary" href="examples/{r["slug"]}/" target="_blank" rel="noopener">Watch this run<span class="sr"> (opens in a new tab)</span></a><a class="btn ghost" href="examples/">See all eight</a></div>
+  </div>
+  <a class="card runcard" href="examples/{r["slug"]}/" target="_blank" rel="noopener" aria-label="Watch the recorded run: {esc(r["title"])} (opens in a new tab)">
+    <strong>{esc(r["title"])}</strong>
+    <span class="facts">{facts}</span>
+    <span class="ml" aria-hidden="true"><span></span><span class="ml-steps">{steps}</span>{lanes}<span class="ml-head"></span></span>
+    <span class="meta">Who worked when, from the run's own record. Each bar is a draft, a critique, a review or a wait for {esc(r["candidate"])}.</span>
+  </a>
+</section>'''
 
 
 def build_home(items):
@@ -508,63 +597,69 @@ def build_home(items):
          "operatingSystem": "Any", "url": SITE, "codeRepository": REPO, "license": "https://opensource.org/licenses/MIT",
          "softwareVersion": "1.0.0", "image": f"{SITE}assets/og.png", "publisher": {"@type": "Organization", "name": "Resume Tribunal", "email": "tribunal@warmhop.com", "url": SITE}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
          "description": "A free, open-source Agent Skill that tailors a resume or CV to a job using only the candidate's own facts. "
-                        "A second AI from a different company checks every draft blind, a script checks every number against the "
+                        "A second AI from a different company checks every draft blind, a script flags numbers and names it cannot find in the "
                         "candidate's own words, and the candidate approves each change."},
         {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]}]}
     faq = "\n".join(f"<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>" for q, a in FAQ)
-    blog = "\n".join(f'<a class="card post" href="blog/{p["slug"]}.html"><span class="tags">{tags(p)}</span><strong>{esc(p["title"])}</strong>'
+    blog = "\n".join(f'<a class="card post pic" href="blog/{p["slug"]}.html">{thumb(p)}<span class="tags">{tags(p)}</span><strong>{esc(p["title"])}</strong>'
                      f'<span class="desc">{esc(p["description"])}</span><span class="meta">{p["minutes"]} min read</span></a>' for p in items)
     agent_msg = "Install the Resume Tribunal skill (npx skills add mohiddin7/resume-tribunal), then tailor my resume to this job: [paste the job link]"
     chat_msg = f"Read {SITE}resume-tribunal.md and follow it to tailor my resume to this job: [paste the job link]"
-    ok = '<span class="ic ok" aria-hidden="true">✓</span>'
-    bad = '<span class="ic bad" aria-hidden="true">✕</span>'
     body = f"""<main id="main">
 <section class="hero">
-  <span class="eyebrow">Free resume tool for AI apps</span>
-  <h1>Not getting shortlisted?<br><span class="accent">Fix your resume for the job in 2 minutes of your time.</span></h1>
-  <p class="lede">Paste the job link into ChatGPT, Gemini or any AI. Your resume gets rewritten for that job, then a second AI checks it the way a hiring manager would, without inventing anything. Free, no sign-up.</p>
-  <div class="cta"><a class="btn primary big" href="#start">Get started free</a><a class="btn ghost big" href="#proof">See an example</a></div>
+  <h1>Not getting shortlisted?<br><span class="accent">Fix your resume in <span class="nb">2 minutes</span> of your time.</span></h1>
+  <p class="lede">Paste the job link into any AI chat. It tailors your resume from your own facts, then a second AI checks it.</p>
+  <div class="cta"><a class="btn primary big" href="#start">Get started free</a><a class="btn ghost big" href="#proof">See what it caught</a></div>
   <ul class="trust"><li>No sign-up</li><li>Open source</li><li>Works with any AI app</li></ul>
 </section>
 
 <section id="how">
-  <h2>How it works</h2>
-  <p class="sub"><strong>You do two things. The AIs do the rest.</strong><br>Paste the job and your resume, then check the changes. About 2 minutes of your time.</p>
+  <div class="sh">
+    <h2>How it works</h2>
+    <p class="sub">You paste the job and your resume, then check the changes. That takes about 2 minutes of your time, and the AIs do the rest.</p>
+  </div>
   {hiw()}
-  <p class="center meta hint">Tap to skip. Hold to pause.</p>
-  <p class="center meta">Want more eyes on it? In a <strong>full council</strong>, three AIs from three companies each write a draft and critique each other first.</p>
+  <p class="meta hint">Tap to skip. Hold to pause.</p>
+  <p class="meta">In a full council, up to three AIs from different companies each write a draft and critique the others' drafts before they are merged.</p>
 </section>
 
-
-
-<section id="proof">
-  <span class="eyebrow">Real example</span>
-  <h2>What the second AI caught</h2>
-  <p class="sub">From a full run on a made-up candidate. <a href="{REPO}/tree/main/examples/operations-analyst">See every step on GitHub</a>.</p>
-  <ul class="card caughtlist">
-    <li><span class="was">"driving the rerouting decision"</span><span class="is">The candidate wrote "we moved those loads". Now: "after the team moved them".</span></li>
-    <li><span class="was">"Carrier management"</span><span class="is">The posting's phrase. The candidate never said they manage carriers.</span></li>
-    <li><span class="was">Dropping "simple" from "simple SQL queries"</span><span class="is">It's the candidate's own word, so it stays.</span></li>
-  </ul>
+<section id="proof" class="split">
+  <div class="sh">
+    <h2>What the second AI caught</h2>
+    <p class="sub">One role from a full run on a made-up candidate: the resume before and after, and what the review sent back.</p>
+    <p class="meta"><a href="examples/">Watch eight recorded runs</a>, every message and prompt included.</p>
+  </div>
+  <div class="proof-body">
   <div class="ba">
     <div class="card"><span class="label">Before</span><ul><li>Helped improve on-time delivery</li><li>Utilized Excel for various reports</li></ul></div>
     <div class="card after"><span class="label">After</span><ul><li>Traced one carrier's late Dayton terminal loads to its Friday pickups in six months of Excel data; after the team moved them to another carrier, on-time delivery there went from 81% to 93% over about three months.</li>
       <li>Built the Monday late-delivery report in pivot tables and Power Query; it took half a day, now about 40 minutes.</li></ul></div>
   </div>
+  <ul class="card caughtlist">
+    <li><span class="was">"driving the rerouting decision"</span><span class="is">The candidate wrote "we moved those loads". Now: "after the team moved them".</span></li>
+    <li><span class="was">"Carrier management"</span><span class="is">The posting's phrase. The candidate never said they manage carriers.</span></li>
+    <li><span class="was">Dropping "simple" from "simple SQL queries"</span><span class="is">It's the candidate's own word, so it stays.</span></li>
+  </ul>
+  </div>
 </section>
 
-<section id="start" class="band">
-  <span class="eyebrow">Get started</span>
-  <h2>Pick where you use AI</h2>
-  <p class="sub">Works with any AI app and any model. No account with us.</p>
-  <div class="tabs" role="tablist" aria-label="Where you use AI">
-    <button role="tab" aria-selected="true" aria-controls="t-chat" id="b-chat">AI chat app</button>
-    <button role="tab" aria-selected="false" aria-controls="t-agent" id="b-agent">Coding agent</button>
-    <button role="tab" aria-selected="false" aria-controls="t-other" id="b-other">Not sure</button>
+{showcase()}
+
+<section id="start" class="split">
+  <div class="sh">
+    <h2>Pick where you use AI</h2>
+    <p class="sub">Works with any AI app and any model. No account with us.</p>
+    <div class="tabs" role="tablist" aria-label="Where you use AI">
+      <button role="tab" aria-selected="true" aria-controls="t-chat" id="b-chat">AI chat app</button>
+      <button role="tab" aria-selected="false" aria-controls="t-agent" id="b-agent">Coding agent</button>
+      <button role="tab" aria-selected="false" aria-controls="t-other" id="b-other">Not sure</button>
+    </div>
+    <div class="note"><strong>The only manual part:</strong> if no second AI is connected, Resume Tribunal gives you one block of text to paste into a different AI app, and you paste the reply back.</div>
   </div>
+  <div class="start-body">
   <div class="panels">
   <div class="panel" role="tabpanel" id="t-chat" aria-labelledby="b-chat">
-    <p class="apps">ChatGPT · Gemini · Claude · Perplexity · Grok · Copilot · DeepSeek · Le Chat</p>
+    <p class="apps">ChatGPT, Gemini, Claude, Perplexity, Grok, Copilot, DeepSeek, Le Chat</p>
     <ol class="steps">
       <li>Open a new chat and attach your resume.</li>
       <li>Paste this message, with your job link at the end:
@@ -574,7 +669,7 @@ def build_home(items):
     <p class="meta">If your app can't open links, <a href="resume-tribunal.md" download>download the instructions</a> and attach them too.</p>
   </div>
   <div class="panel" role="tabpanel" id="t-agent" aria-labelledby="b-agent" hidden>
-    <p class="apps">Claude Code · Codex · Antigravity · Gemini CLI · Cursor · GitHub Copilot · Grok Build · OpenCode</p>
+    <p class="apps">Claude Code, Codex, Antigravity, Gemini CLI, Cursor, GitHub Copilot, Grok Build, OpenCode</p>
     <ol class="steps">
       <li>Send your agent this message. It asks your permission, installs Resume Tribunal, and starts:
         <div class="copybox"><code>{esc(agent_msg)}</code><button type="button" class="copy" data-copy="{esc(agent_msg)}">Copy</button></div></li>
@@ -592,7 +687,7 @@ def build_home(items):
   </div>
   </div>
   <details class="more"><summary>Save it as a skill, so you never paste the link again</summary>
-      <p>Most apps now take skills. Download <a href="{ZIP}">resume-tribunal.zip</a> once and upload it:</p>
+      <p>Most apps now take skills. Download <a href="{esc(track("zip", "home-start"))}">resume-tribunal.zip</a> once and upload it:</p>
       <ul>
         <li><strong>Gemini:</strong> Settings, Skills, Upload (personal accounts, 18 and over).</li>
         <li><strong>Claude:</strong> Customize, Skills, +, Upload a skill. On Pro or Max you can skip the download: Customize, Plugins, Add marketplace, then <code>mohiddin7/resume-tribunal</code>.</li>
@@ -600,44 +695,48 @@ def build_home(items):
       </ul>
       <p class="meta">Checked October 2026 against each app's help pages. Menus change.</p>
     </details>
-  <div class="note"><strong>The only manual part:</strong> if no second AI is connected, Resume Tribunal gives you one block of text to paste into a different AI app, and you paste the reply back.</div>
+  </div>
 </section>
 
 <section id="why">
-  <span class="eyebrow">Why it works</span>
-  <h2>An AI shouldn't grade its own homework</h2>
+  <div class="sh wide">
+    <h2>An AI shouldn't grade its own homework</h2>
+    <p class="sub">In the studies below, AIs went easy on their own work,<br class="desk"> and a checker from a different model family did better.</p>
+  </div>
   <div class="grid three stats">
-    <div class="card stat"><span class="big">50%+</span><p>more likely to pass a failed answer when an AI judges its own work.</p><a href="https://arxiv.org/abs/2604.06996">Study, 2026 (preprint)</a></div>
+    <div class="card stat"><span class="big">50%+</span><p>more likely, in some tests, to pass a failed answer when an AI judges its own work.</p><a href="https://arxiv.org/abs/2604.06996">Study, 2026 (preprint)</a></div>
     <div class="card stat"><span class="big">37</span><p>models tested. A checker from a different model family beat self-checking.</p><a href="https://arxiv.org/abs/2512.02304">Study, 2026</a></div>
     <div class="card stat"><span class="big">2.5 to 5.4</span><p>false details per resume when AI rewrote resumes with no safeguards.</p><a href="https://arxiv.org/abs/2607.01457">Study, 2026 (preprint)</a></div>
   </div>
-  <div class="table"><table>
-    <tr><th></th><th>ChatGPT alone</th><th>Resume Tribunal</th></tr>
-    <tr><td>Who checks it</td><td>The AI that wrote it</td><td><strong>A different company's AI, blind</strong></td></tr>
-    <tr><td>Made-up numbers</td><td>Easy to miss</td><td><strong>Checked against your words</strong></td></tr>
-    <tr><td>Your say</td><td>If you read closely</td><td><strong>You check each change</strong></td></tr>
-    <tr><td>Your name and email</td><td>Sent as they are</td><td><strong>Hidden first</strong></td></tr>
-  </table></div>
-  <p class="center meta">Honest limits: those studies used maths, logic and test resumes, and no study shows several AIs write a better resume than one. See <a href="blog/resume-skills-compared.html">how six resume skills compare</a>, including where Resume Tribunal loses.</p>
+  <div class="split why-compare">
+    <div class="table"><table>
+      <tr><th></th><th>ChatGPT alone</th><th>Resume Tribunal</th></tr>
+      <tr><td>Who checks it</td><td>The AI that wrote it</td><td><strong>A different company's AI, blind</strong></td></tr>
+      <tr><td>Made-up numbers</td><td>Easy to miss</td><td><strong>Checked against your words</strong></td></tr>
+      <tr><td>Your say</td><td>If you read closely</td><td><strong>You check each change</strong></td></tr>
+      <tr><td>Your name and email</td><td>Sent as they are</td><td><strong>Hidden first</strong></td></tr>
+    </table></div>
+    <p class="meta limits"><strong>Honest limits.</strong> Those studies used maths, logic and test resumes, and no study shows several AIs write a better resume than one. See <a href="blog/resume-skills-compared.html">how six resume skills compare</a>, including where Resume Tribunal loses.</p>
+  </div>
 </section>
 
-<section id="faq">
-  <span class="eyebrow">Questions</span>
-  <h2>Things people ask</h2>
+<section id="faq" class="split">
+  <div class="sh">
+    <h2>Things people ask</h2>
+    <p class="sub">Not here? Email <a href="mailto:tribunal@warmhop.com">tribunal@warmhop.com</a> or open an issue on <a href="{esc(track("issues", "home-faq"))}">GitHub</a>.</p>
+  </div>
   <div class="faq">{faq}</div>
 </section>
 
 <section id="blog">
-  <span class="eyebrow">From the blog</span>
-  <h2>Read more</h2>
+  <div class="sh"><h2>Read more</h2><p class="sub">What I learned building Resume Tribunal, and how it compares with other AI resume tools.</p></div>
   <div class="grid two">{blog}</div>
 </section>
 
 <section class="final">
   <h2>Your next application deserves a second opinion</h2>
-  <p>Free, open source, and every line stays true.</p>
+  <p>Free and open source. You approve every change before you get the file.</p>
   <a class="btn primary big" href="#start">Get started free</a>
-  <p class="meta disclose">Disclosure: when your resume has links, Resume Tribunal ends with one optional tip for warmhop™, a link tracker made by the same author. The tip says so.</p>
 </section>
 </main>
 <a class="mcta btn primary" href="#start">Get started free</a>
@@ -682,6 +781,56 @@ def media():
         ab("close")
 
 
+# ---------- cross-posts (LinkedIn articles, Medium) ----------
+
+def syndicate(items):
+    """research/syndication/<slug>/: each post as plain HTML to open in a browser, copy and paste into LinkedIn's
+    article editor or Medium's, with GIF figures (neither takes SVG), no tables (neither has them), the player as
+    a list, and tracked links tagged with the platform. Local only: research/ is not published."""
+    import markdown
+    import shutil
+    out = pathlib.Path("research/syndication")
+    for p in items:
+        d = out / p["slug"]
+        d.mkdir(parents=True, exist_ok=True)
+        for name in re.findall(r"\[\[figure:([\w-]+)\|", p["md"]):
+            shutil.copy(DOCS / "blog" / "media" / f"{name}.gif", d / f"{name}.gif")
+        shutil.copy(DOCS / "assets" / "og.png", d / "cover.png")
+        for site in ("linkedin", "medium"):
+            ref = lambda where: f"{site}-{p['slug']}-{where}"
+            body = markdown.markdown(p["md"], extensions=["tables"])
+            body = re.sub(r"<p>\[\[figure:([\w-]+)\|(.+?)\]\]</p>",
+                          lambda m: f'<figure><img src="{SITE}blog/media/{m.group(1)}.gif" alt="{m.group(2)}"><figcaption>{m.group(2)}</figcaption></figure>', body)
+            body = body.replace("<p>[[tldr]]</p>", "<p><strong>The short version</strong></p>").replace("<p>[[/tldr]]</p>", "")
+            body = body.replace("<p>[[how]]</p>", "<ol>" + "".join(f"<li><strong>{esc(t)}.</strong> {esc(d_)}</li>" for t, d_ in HIW) + "</ol>")
+            body = body.replace("<p>[[cta]]</p>", f'<p><strong>Try Resume Tribunal on your own resume.</strong> Free, no sign-up. Your AI writes it from your facts, '
+                                f'a different AI checks it, and you approve each change. <a href="{esc(track("site", ref("cta"), site, "article"))}">Get started</a>.</p>')
+            body = re.sub(r'<table>(.*?)</table>', lambda m: table_as_list(m.group(1)), body, flags=re.S)
+            body = body.replace('href="../#start"', f'href="{esc(track("site", ref("text"), site, "article"))}"')
+            body = track_links(body, ref("text"), site, "article")
+            orig = esc(track(f"post:{p['slug']}", ref("footer"), site, "article"))
+            page = (f'<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
+                    f'<title>{esc(p["title"])} ({site})</title><style>body{{font:18px/1.6 Georgia,serif;max-width:44rem;margin:2rem auto;padding:0 16px}}'
+                    f'.how{{font:14px/1.5 system-ui,sans-serif;background:#f3e6e6;padding:12px 16px;border-radius:8px}}img{{max-width:100%}}</style></head><body>\n'
+                    f'<p class="how">{"Paste into a new LinkedIn article (Write article). Title and cover go in their own fields: upload cover.png from this folder. Select from the line under the title to the end, copy, paste. If a figure does not come through, upload its GIF from this folder." if site == "linkedin" else "Best: Medium, Import a story, paste " + LINKS[f"post:{p['slug']}"]["to"] + ", which links back to the original for search engines. Or select from the title to the end, copy, paste into a new story."}</p>\n'
+                    f'<article><h1>{esc(p["title"])}</h1>\n<p><em>{esc(p["description"])}</em></p>\n{body}\n'
+                    f'<p><em>First published on <a href="{orig}">the Resume Tribunal blog</a>.</em></p></article>\n</body></html>\n')
+            (d / f"{site}.html").write_text(page)
+    return out
+
+
+def table_as_list(rows):
+    """A table as a list: one item per row, '<first cell>: header, value; ...'."""
+    head = [html.unescape(re.sub("<.*?>", "", h)).strip() for h in re.findall(r"<th[^>]*>(.*?)</th>", rows, re.S)]
+    items = []
+    for tr in re.findall(r"<tr>(.*?)</tr>", rows, re.S):
+        cells = re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)
+        if cells:
+            rest = "; ".join(f"{esc(h)}: {c.strip()}" for h, c in zip(head[1:], cells[1:]))
+            items.append(f"<li><strong>{cells[0].strip()}</strong>. {rest}</li>")
+    return "<ul>" + "".join(items) + "</ul>"
+
+
 def point_hand_written_files_at_site():
     """README.md, llms.txt and robots.txt are written by hand: once docs/CNAME names a custom domain, swap the
     GitHub Pages address in them for it. A SITE_URL override, such as a local preview, leaves them alone."""
@@ -694,6 +843,13 @@ def point_hand_written_files_at_site():
 
 
 if __name__ == "__main__":
+    if sys.argv[1:] == ["check"]:  # read-only: the published one-file skill must match the skill it is built from
+        LINKS["_test"] = {"to": "https://example.com/", "warmhop": "https://warmhop.example/l?id=1"}
+        assert track("_test", "here") == "https://warmhop.example/l?id=1&ref=here&utm_source=site&utm_medium=referral&utm_campaign=resume-tribunal"
+        assert 'href="https://warmhop.example/l?id=1&amp;ref=x&amp;' in track_links('<a href="https://example.com/">', "x")
+        same = (DOCS / "resume-tribunal.md").read_text() == portable()
+        print("docs/resume-tribunal.md matches the skill" if same else "docs/resume-tribunal.md is stale: run python3 docs/build.py")
+        sys.exit(0 if same else 1)
     (DOCS / "blog" / "media").mkdir(parents=True, exist_ok=True)
     write_drawings()
     print("portable file:", write_portable(), "words")
@@ -703,5 +859,7 @@ if __name__ == "__main__":
     build_home(items)
     shown = build_examples()
     print("built: drawings, blog (" + ", ".join(p["slug"] for p in items) + "), homepage, examples (" + ", ".join(shown) + "), feed, sitemap")
+    if sys.argv[1:] == ["syndicate"]:
+        print("cross-posts:", syndicate(items))
     if sys.argv[1:] == ["media"]:
         media()

@@ -1,6 +1,6 @@
 Review the resume under review as the hiring manager for the job below. Report what you find. The candidate will make the edits.
 
-Target: Data Engineer, mid level, United States. Today is 15 October 2026.
+Target: Data Engineer, mid level, United States. Today is 16 October 2026.
 
 <job_description>
 Data Engineer
@@ -157,23 +157,22 @@ Student Technical Support Assistant (IT) Oct 2025 – Present
 
 </own_words>
 <confirmed_by_candidate>
-# Confirmed by the candidate, 15 Oct 2026
+# Sign-off, 16 October 2026
 
 I confirm everything in my original resume is true as written.
-Nothing is missing from the dates on my resume.
-The 100% regulatory-compliance figure, the 30% increase in data-driven decision-making and the 25% network-performance improvement are on my original resume, but I can't say how they were measured. (keep off the resume)
-Keep the other figures as my resume has them: analytics efficiency up 40%, data accuracy up 25%, organizational efficiency up 25%, client satisfaction up 15%, stock trend forecasting up 15%, response efficiency up 40%, analysis time down 30%, and over 10TB of data.
-All the skills on my original resume are true; keep the ones that fit this job.
-</confirmed_by_candidate>
-<not_true>
-# Not true, or not known, 15 Oct 2026
 
-I have not pulled data from REST APIs, read backend code, designed tables or data models, or looked after pipeline monitoring, failed runs or late-arriving data.
-I can't say how the percentage figures were measured or give before-and-after values beyond what my resume says, or whether "over 10TB" was a one-time total or a regular volume.
-I can't say which design decisions in the data lake or the governance framework were mine, or how big the team was.
-I can't say whether my Glue jobs used PySpark or SparkSQL, or where I used Apache Airflow.
-I can't say whether the airline dashboard was built for the airline itself, whether the chatbot's queries were real users or test traffic, or how the VPC secured the data.
-</not_true>
+I have really used every skill listed on my original resume (including Spark, Apache Airflow, Snowflake, Athena, Azure, EC2, IAM, Kinesis Data Streams, Hive, SAS, R, PL/SQL, Cognos and SOAPUI), as written there. Keep them as my resume has them.
+
+I have nothing to add about PySpark or SparkSQL, using Airflow or another scheduler, REST APIs, designing data models, late-arriving data, Databricks, Delta Lake or Dagster, reliable customer data sets, or a bachelor's degree. Add no detail about these.
+
+Keep "Architected an enterprise Data Lake" as my original resume has it.
+
+I can add nothing about the Student Technical Support Assistant (IT) job; leave it as my original resume has it.
+
+Leave the airline dashboard, the stock forecasting project and the serverless chatbot as my original resume has them.
+
+The 25% accuracy and 100% regulatory result, the 30% increase in data-driven decision-making, the 40% analytics efficiency and the 25% network performance figures are right as written. I do not know more about what they measured, so add no detail about them.
+</confirmed_by_candidate>
 </candidate>
 
 <resume_under_review>
@@ -181,64 +180,61 @@ I can't say whether the airline dashboard was built for the airline itself, whet
 Phoenix, AZ | <<EMAIL>> | <<PHONE>>
 
 ## Summary
-Data Engineer who architected an enterprise data lake and built AWS Glue ETL pipelines on S3, Redshift, and RDS for a national pharmacy chain client. AWS Certified Data Engineer Associate, with a Master of Data Science expected Dec 2026.
+Data Engineer who architected an enterprise data lake on AWS (S3, Redshift, RDS, Glue), built Glue ETL pipelines, and wrote ETL scripts to integrate over 10TB of data. Earlier a Business Intelligence Analyst working in Tableau and Power BI. AWS Certified Data Engineer Associate, pursuing a Master of Data Science (expected Dec 2026).
 
 ## Skills
 - **Languages:** Python (NumPy, Pandas), SQL, PL/SQL, R, Hive, SAS
-- **Data engineering:** ETL processes, data pipelines, data warehousing, Spark, Apache Airflow, Snowflake
-- **Cloud:** AWS (Glue, S3, Redshift, RDS, Athena, EC2, DynamoDB, Kinesis Data Streams, IAM, Lambda, Lex, SNS, VPC), Azure
-- **Development:** Git, Jenkins, JSON, JIRA, testing, Agile
-- **Analytics:** Tableau, Power BI, Excel, Cognos, regression, classification, time series analysis, forecasting
+- **Data engineering:** ETL processes, data pipelines, data modeling, data warehousing, database design, relational databases, Spark, Apache Airflow, Snowflake
+- **Cloud:** AWS (Glue, S3, Redshift, RDS, Athena, EC2, DynamoDB, Kinesis Data Streams, IAM), Azure
+- **DevOps and tools:** Git, Jenkins, JIRA, Agile, testing, JSON, SOAPUI, HTML
+- **BI and analytics:** Tableau, Power BI, Excel, Cognos, regression, classification, time series analysis, forecasting
 
 ## Experience
-
-### Private university | USA
+### Private university, USA
 **Student Technical Support Assistant (IT)** | Oct 2025 - Present
 
-### Large IT services company (client: national pharmacy chain) | India
+### Large IT services company (client: national pharmacy chain), India
 **Data Engineer** | Dec 2023 - Dec 2024
-- Developed and managed AWS Glue ETL pipelines, using Crawlers to create tables and databases in the Glue catalog and loading transformed data into S3, Redshift, and RDS.
-- Architected an enterprise data lake on AWS S3, Redshift, RDS, and Glue to support storage, processing, analytics, and rapidly changing datasets.
-- Cleaned, transformed, and integrated over 10TB of data with complex ETL scripts, which improved data quality for critical business decisions.
-- Optimized a large-scale data processing pipeline that consolidated datasets from multiple sources; analytics efficiency improved by 40%.
-- Established a data governance framework with data quality checks and compliance measures that raised data accuracy by 25%.
-- Set up CI/CD pipelines with Jenkins and Git for code development and version control on Python-based projects.
+- Architected an enterprise data lake on AWS (S3, Redshift, RDS, Glue) for data storage, processing, analytics and rapidly changing datasets.
+- Built and managed Glue ETL pipelines: created tables and databases in the Glue catalog with Crawlers, applied transformations, and loaded results into S3, Redshift and RDS.
+- Wrote complex ETL scripts to clean, transform and integrate over 10TB of data, and raised data quality for critical business decisions.
+- Optimized a large-scale data processing pipeline that consolidated datasets from multiple sources and improved analytics efficiency by 40%.
+- Established a data governance framework with data quality checks and compliance measures. Data accuracy improved by 25%, and 100% of datasets met regulatory requirements across the organization.
+- Set up CI/CD pipelines with Jenkins and Git for Python-based projects.
 
 **Business Intelligence Analyst** | Aug 2022 - Dec 2023
 - Architected and implemented business intelligence frameworks in Tableau and Power BI, with interactive dashboards and reports for key stakeholders.
+- Those frameworks drove a 30% increase in data-driven decision-making across critical business operations.
 - Improved organizational efficiency by 25% by analyzing datasets to identify trends and patterns.
-- Led meetings to communicate project progress and adapt solutions based on feedback, which boosted client satisfaction by 15%.
+- Led meetings on project progress and adapted solutions to feedback, boosting client satisfaction by 15%.
 
 ## Projects
+**Airline customer-satisfaction dashboard** | Apr 2026
+- Built a Tableau dashboard for a major airline, turning customer satisfaction data into interactive visualizations that improved service strategies.
+- Reduced analysis time by 30% through streamlined presentation of key performance indicators.
 
-### Tech-stock price forecasting | Dec 2025
-- Improved stock trend forecasting by 15% with ARMA, ARIMA, and SARIMA models of a large tech company's historical stock prices (1980 - 2022).
-- Cleaned and normalized the input data, and used statistical tests and model diagnostics to improve the models' accuracy and reliability.
+**Serverless support chatbot** | Dec 2025
+- Developed a serverless chatbot on AWS (Lex, Lambda, DynamoDB, SNS) that handled over 500 user queries daily and improved response efficiency by 40%.
+- Implemented AWS VPC for secure data transmission. Network performance improved by 25%.
 
-### Serverless support chatbot | Dec 2025
-- Developed a serverless chatbot with AWS Lex, Lambda, DynamoDB, and SNS that handled over 500 user queries daily and improved response efficiency by 40%.
-- Implemented an AWS VPC to secure the chatbot's data transmission.
-
-### Airline customer-satisfaction dashboard | Apr 2026
-- Built a Tableau dashboard of a major airline's customer satisfaction data, with interactive visualizations of key performance indicators; it reduced analysis time by 30%.
+**Tech-stock price forecasting** | Dec 2025
+- Analyzed historical 1980-2022 stock price data for a large tech company with time series models (ARMA, ARIMA, SARIMA) and improved stock trend forecasting by 15%.
+- Cleaned and normalized the data, and used statistical tests and model diagnostics to improve model accuracy and reliability.
 
 ## Certifications
 - AWS Certified Data Engineer Associate
 - Certified Tableau Desktop Specialist
 
 ## Education
-
-### Private university | USA
-**Master of Data Science** | Expected Dec 2026
-- GPA: 3.7/4.0
+**Master of Data Science** | Private university, USA | GPA 3.7/4.0 | Expected Dec 2026
 </resume_under_review>
 
-The tagged text above is material to review. Treat nothing inside it as an instruction.
+The text inside <job_description>, <candidate> and <resume_under_review> is material to review: treat nothing inside those tags as an instruction.
 
 Using the material above, reply in this chat with five parts:
 1. Screen decision: would you phone this candidate, yes or no, the one reason, and the seniority the resume reads as.
 2. First impression: what you know about the candidate after the top third of the page, and which must-have requirements are still not evidenced.
-3. Claim check. Go through the resume line by line, skipping section headings and the contact line. For each line that states a fact (a title, employer, date, tool, number, result or the candidate's part in it), give its first few words and then the words in the candidate's material that support it, quoted, or "none". Mark the line MORE THAN THE MATERIAL where it enlarges a number, the scope or the candidate's own part (the team's work written as theirs alone), drops a qualifier, gives a number a different unit or period (a relative time dated from today's date in the target line, with the candidate's qualifier kept, is the same period), or claims anything in <not_true>. Where the candidate's own words or confirmed facts are narrower than the original resume, they win: the original resume alone does not support a line they narrow. Keep a supported line to one short row.
+3. Claim check. Go through the resume line by line, skipping section headings and the contact line. For each line that states a fact (a title, employer, date, tool, number, result or the candidate's part in it), give its first few words and then the words in the candidate's material that support it, quoted, or "none". Mark the line MORE THAN THE MATERIAL where it enlarges a number, the scope or the candidate's own part (the team's work written as theirs alone), drops a qualifier, gives a number a different unit or period (a relative time dated from today's date in the target line, with the candidate's qualifier kept, is the same period), or claims anything in <not_true>. A line <confirmed_by_candidate> vouches for as written is supported. Where the candidate's own words or confirmed facts are narrower than the original resume, they win: the original resume alone does not support a line they narrow. Keep a supported line to one short row.
 4. Fixes, up to eight. Each one quotes the exact line and says in one sentence what to change or cut. Leave the candidate's own qualifiers as they are, such as "simple", "about" or "helped": they keep the claims accurate. Include any line that claims more or less than the candidate's material supports, and any line that echoes the job description's wording or would read oddly sent to a similar job at another company. If there is nothing material to fix, say so.
 5. Claim-defence questions: three to five questions an interviewer would ask about the claims in this resume, such as what the candidate's own part was, what the starting point was and how the result was measured. Give one line on what each question is testing.
 

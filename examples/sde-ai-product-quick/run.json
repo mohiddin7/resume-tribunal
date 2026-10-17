@@ -7,12 +7,12 @@
   "Real resume, shared with consent",
   "Auto mode: the other AIs ran by themselves",
   "2 AIs from 2 companies",
-  "6 minutes",
+  "37 minutes",
   "Real public job posting"
  ],
- "note": "",
+ "note": "Recorded by the host as it worked, with the tools in tools/. The host was OpenAI's gpt-6-luna, a fast model, through Codex; it recorded its own model as GPT-6 Codex. Its last message was trimmed before publishing: the parts written for the recording (seat timings, recording checks and notes on the skill's wording, with local file paths) were removed, and the lines for the candidate kept.",
  "candidate": "Priya",
- "end": 361,
+ "end": 2224,
  "who": {
   "user": {
    "n": "Priya",
@@ -22,12 +22,12 @@
   "host": {
    "n": "Host",
    "s": "H",
-   "role": "AI 1, Claude Opus 5.5"
+   "role": "AI 1, GPT-6 Codex"
   },
-  "codex": {
-   "n": "Codex",
+  "claude": {
+   "n": "Claude",
    "s": "C",
-   "role": "AI 2, OpenAI, gpt-6-astra"
+   "role": "AI 2, Anthropic, opus"
   },
   "check": {
    "n": "Checker",
@@ -39,34 +39,44 @@
   {
    "n": 1,
    "name": "Setup",
-   "t": 0
+   "t": 15
   },
   {
    "n": 2,
    "name": "Draft",
-   "t": 74
-  },
-  {
-   "n": 3,
-   "name": "Review and sign-off",
-   "t": 150
+   "t": 97
   },
   {
    "n": 4,
    "name": "Finalise",
-   "t": 340
+   "t": 1537
   }
  ],
  "events": [
   {
    "t": 0,
+   "kind": "say",
+   "text": "I’m reading the skill instructions first, then I’ll start the recorded run.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 0,
+   "kind": "note",
+   "text": "Reading the seat instructions and detecting available reviewers",
+   "who": "host",
+   "label": "Setup",
+   "links": []
+  },
+  {
+   "t": 15,
    "kind": "user",
    "text": "I want to apply for this job. My resume is before.md and the posting is job.md. Can you tailor my resume for it?",
    "who": "user",
    "links": []
   },
   {
-   "t": 0,
+   "t": 15,
    "kind": "step",
    "text": "Setup",
    "who": "host",
@@ -74,38 +84,38 @@
    "links": []
   },
   {
-   "t": 0,
+   "t": 15,
    "kind": "note",
-   "text": "Reading the seat guide and checking which other AIs are installed",
+   "text": "Reading the resume and job posting to identify the role and history",
    "who": "host",
-   "label": "Seats",
+   "label": "Setup",
    "links": []
   },
   {
-   "t": 18,
+   "t": 29,
    "kind": "note",
-   "text": "Hiding her name and contact details behind stand-ins before anything is sent",
+   "text": "Setting up working files with stand-ins for contact details",
    "who": "host",
-   "label": "Stand-ins",
+   "label": "Setup",
    "links": []
   },
   {
-   "t": 37,
+   "t": 50,
    "kind": "say",
-   "text": "Step 1 of 4: Setup\n\nHere is how this works:\n\n```\nYou give:  your resume, the job posting, a few sentences in your own words\n   ↓\nI write a draft, from your facts only\n   ↓\nA second AI, from a different company, checks it without knowing who wrote it\n   ↓\nAutomatic checks, then you approve every changed line\n   ↓\nYour resume, the job requirements it does not show, and likely interview questions\n```\n\nIt runs by itself; you answer a few questions along the way.\n\n**What I read from your resume** (tell me if anything is wrong):\n- Public university, USA: Graduate Research Assistant, Jan 2024 to May 2025\n- Public university, USA: Graduate Student Assistant, Sep 2023 to May 2025\n- Large IT services company: System Engineer, Deep Learning Engineer, May 2022 to Aug 2023\n- Large IT services company: Software Engineer Intern, Jan 2022 to May 2022\n- Nonprofit: Analytics Software Developer, Jun 2019 to Dec 2021\n- Education: MS in Computer Science (Aug 2023 to May 2025) and BTech in Information Technology (Jul 2018 to May 2022)\n\n**The job:** Software Engineer, AI Product, in the United States. The posting names no level; since it asks for 5+ years of software engineering with 1+ in generative AI, I've assumed senior. Your resume shows less time than that, and I won't stretch it; I'll make the most of what you have done and list what it doesn't show.\n\n**Two questions, if you have time:**\n1. Pick two or three things this job asks for that you have really done (for example, building an AI model from idea to production, or using AI coding tools like Copilot or ChatGPT). For each, tell me one time you did it: what it was, what you did, what changed. Plain sentences; dictating is fine. These details are what set you apart from other applicants. If you skip this, I'll use your resume's wording as your voice.\n2. Do you have links to add: LinkedIn, GitHub, a portfolio, the paper, or certificate pages? Most recruiters look for LinkedIn.\n\n**Plan:** a quick review: I write the draft and one second AI checks it, about 6 minutes, one call to that AI. Say \"council\" for three AIs that each draft and check each other instead: about 15 minutes and about five times as much of your AI plans, and the third AI only has a fast model available. Role research off, final wording polished by me, and a plain-text copy while we work, with PDF or Word when it's final.\n\n**Consent.** I've hidden your name and contact details. They come back at the end. The second AI is OpenAI's Codex, running gpt-6-astra (a council would add Google's Antigravity, running gemini-3.8-flash-high). The working files are in research/eval-2026-10-13/runs10/sde-ai-auto-quick/.tribunal/. This text, including your employers, job history and the pages your links point to, will go to OpenAI's Codex under its terms and your account settings there. Some keep their own history, and the text can still identify you. Leave out anything confidential to an employer, and check whether this employer allows AI help with applications.\n\nAnswer the questions, or say \"yes\" to take the defaults and go ahead.",
+   "text": "Step 1 of 4: Setup\n\nYou give: your resume, the job posting, a few sentences in your own words  \n↓  \nI write a draft, from your facts only  \n↓  \nA second AI from another company checks it without knowing who wrote it  \n↓  \nAutomatic checks, then you approve every changed line  \n↓  \nYour resume, the job requirements it does not show, and likely interview questions\n\nThe second AI runs by itself; you answer a few questions along the way.\n\nI read these roles and dates:\n\n- Public University, USA: Graduate Research Assistant, Jan 2024–May 2025\n- Public University, USA: Graduate Student Assistant, Sep 2023–May 2025\n- Large IT Services Company: System Engineer – Deep Learning Engineer, May 2022–Aug 2023\n- Large IT Services Company: Software Engineer Intern, Jan 2022–May 2022\n- Nonprofit: Analytics Software Developer, Jun 2019–Dec 2021\n\nI’m treating the target as an experienced Software Engineer – AI Product role in the United States. Correct me if you meant a different level or country.\n\nA few things to confirm: tell me two or three things from the job you have really done, with one example each; share any LinkedIn, GitHub, portfolio, project, paper, or certification links, or say “no links.”\n\nMy plan is a quick review: I write the draft and Claude Code, using Anthropic’s Opus model, checks it. Role research stays off because you supplied the posting; I’ll polish the final wording, work in a plain-text copy, and deliver Markdown unless you choose PDF or Word.\n\nI’ve hidden your name and contact details. They come back at the end. The working files are in `.tribunal/`.\n\nThis text, including your employers, job history and the pages your links point to, will go to Anthropic’s Claude Code under its terms and your account settings there. Some tools keep their own history, and the text can still identify you. Leave out anything confidential to an employer, and check whether this employer allows AI help with applications.\n\nPlease answer the questions, then say “yes” to take the defaults and go ahead.",
    "who": "host",
    "stop": "Stop 1",
    "links": []
   },
   {
-   "t": 37,
+   "t": 97,
    "kind": "user",
    "text": "Quick review, please. Yes to the defaults, go ahead. No links.",
    "who": "user",
    "links": []
   },
   {
-   "t": 74,
+   "t": 97,
    "kind": "step",
    "text": "Draft",
    "who": "host",
@@ -113,124 +123,139 @@
    "links": []
   },
   {
-   "t": 74,
-   "kind": "say",
-   "text": "Step 2 of 4: Draft\n\nThanks. Quick review it is, with no links, and I'll use your resume's wording as your voice. I'm writing the draft now from your resume only; nothing goes to the second AI until the draft is ready.",
-   "who": "host",
-   "links": []
-  },
-  {
-   "t": 74,
+   "t": 97,
    "kind": "note",
-   "text": "Writing the draft from her resume only, cut to one page",
+   "text": "Recording consent and the no-links choice, then preparing the draft",
    "who": "host",
    "label": "Draft",
    "links": []
   },
   {
-   "t": 142,
+   "t": 132,
+   "kind": "say",
+   "text": "Step 2 of 4: Draft\n\nThe draft is in place. The first check flagged two tool names that need to match your source exactly, along with older skills that need your confirmation. Next I’m correcting the wording and sending it for an independent review.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 132,
    "kind": "check",
-   "text": "0 errors, 16 warnings (old skills only in the original resume, Streamlined, three-item lists, short second lines), 627 words",
+   "text": "2 errors, 17 warnings, 3 placeholders; 610 words (about 650 fit one page)",
    "who": "check",
    "links": []
   },
   {
-   "t": 150,
-   "kind": "step",
-   "text": "Review and sign-off",
-   "who": "host",
-   "step": 3,
+   "t": 143,
+   "kind": "check",
+   "text": "0 errors, 15 warnings, 3 placeholders; 604 words (about 650 fit one page)",
+   "who": "check",
    "links": []
   },
   {
-   "t": 150,
+   "t": 143,
    "kind": "say",
-   "text": "Step 3 of 4: Review and sign-off\n\nThe draft is ready and passes the automatic checks with no errors (627 words, one page). The second AI is now reading it blind, as the hiring manager for this job would; this usually takes a few minutes. I'll come back with its findings and your questions.",
+   "text": "Step 3 of 4: Review and sign-off\n\nThe draft checker reports 0 errors and 15 warnings. Claude Code with Opus is now checking the resume for unsupported claims, missing job evidence, and interview questions. Next I’ll bring you the changed claims and any questions to settle.",
    "who": "host",
    "links": []
   },
   {
-   "t": 151,
-   "kind": "ask",
-   "text": "Review this resume as the hiring manager for the job, check every claim against her material, and list fixes and likely interview questions.",
+   "t": 143,
+   "kind": "note",
+   "text": "Building the blind review prompt and preparing the checker call",
    "who": "host",
-   "to": "codex",
    "label": "Review",
+   "links": []
+  },
+  {
+   "t": 143,
+   "kind": "ask",
+   "text": "Review the resume for fit, supported claims, specific fixes, and interview questions.",
+   "who": "host",
+   "to": "claude",
+   "label": "Blind review",
    "files": [
     "p4.txt"
    ],
    "links": []
   },
   {
-   "t": 260,
+   "t": 240,
    "kind": "reply",
-   "text": "It would not phone her for this senior role: \"the absence of demonstrated generative AI product development\". Its claim check marks one line MORE THAN THE MATERIAL, the summary, which \"attaches the 95% result to detection and tracking together\", and its eight fixes ask about the two 50% results, US number formatting, the order of roles, the paper's \"top 100\" and the \"premier project\" award.",
-   "who": "codex",
-   "d": 109,
+   "text": "The review provides a screen decision, line-by-line claim checks, suggested fixes, and questions an interviewer may ask.",
+   "who": "claude",
+   "d": 97,
    "files": [
-    "p4_reply_codex.md.txt"
+    "p4_reply_claude.md.txt"
    ],
-   "links": [
-    "L12",
-    "L14",
-    "L15",
-    "L26"
-   ]
-  },
-  {
-   "t": 260,
-   "kind": "note",
-   "text": "Applying the review's fixes that need no new facts and holding the rest for her questions",
-   "who": "host",
-   "label": "Fixes",
    "links": []
   },
   {
-   "t": 275,
+   "t": 257,
+   "kind": "say",
+   "text": "Step 3 of 4: Review and sign-off\n\nThe independent review is still running. Next I’ll apply only evidence-based fixes and ask you to confirm the claims that changed.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 1234,
+   "kind": "note",
+   "text": "Working through the reviewer findings and restoring claims to the candidate's precise wording",
+   "who": "host",
+   "label": "Review",
+   "links": []
+  },
+  {
+   "t": 1245,
    "kind": "check",
-   "text": "0 errors, 16 warnings (old skills only in the original resume, Streamlined, three-item lists, short second lines), 631 words",
+   "text": "1 error, 15 warnings, 3 placeholders; checker flagged US-formatted 100,000 against source spelling 1,00,000",
    "who": "check",
    "links": []
   },
   {
-   "t": 292,
+   "t": 1292,
+   "kind": "check",
+   "text": "0 errors, 13 warnings, 3 placeholders; 583 words (about 650 fit one page)",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 1292,
    "kind": "say",
-   "text": "Step 3 of 4: Review and sign-off\n\nThe second AI read your draft blind, as this job's hiring manager would. It said it would not phone you yet for this senior role, because the resume shows no generative AI product work, and it found one line that claimed more than your resume: the summary tied your 95% precision and recall to tracking as well as detection. I fixed that.\n\n**What I changed without asking** (wording only, no new facts):\n- Cut it to one page (633 words): a short summary, the skills grouped into five lines, and fewer, plainer bullets.\n- Put your university roles above the older IT services role, so the newest work comes first.\n- Left out: the public-speaking club role and its award, the graph-search scraper project (your research job shows the same scraping skills), the \"100% database reliability\" claim, and several general bullets (the third-party libraries, the Visual Studio Code and IntelliJ workflow, the web app's UX). From the skills, I left out .Net, Vb.Net, PL/SQL, Unix, Windows, Linux, Mac OS, XML, JSON, NodeJS, Django, DBMS, Eclipse, NetBeans, EBS, DNS, Data Structures and Algorithms.\n\nThe draft is at research/eval-2026-10-13/runs10/sde-ai-auto-quick/.tribunal/resume.md.\n\n**Questions about facts.** Are all of these true, and could you explain each in an interview? Tell me any to fix. If you don't know a number, I'll leave it out, so please don't estimate.\n\n1. **Skills only your old resume lists.** Nothing else on the page shows these: RNN, LSTM, GRU, unsupervised learning, NLP, Prompt Engineering, MLOps, Generative AI, LLMs, NumPy, C, C++, C#, EC2, S3, PostgreSQL, SQL Server, Git, Power BI. Keep all, or which should go?\n2. **\"MOT model\":** does MOT mean multi-object tracking? If so, I'll spell it out.\n3. **Annotation:** you wrote \"semi/self-supervised learning\". Did you use both semi-supervised and self-supervised learning?\n4. **The two 50% results:** are \"cut labeling time by 50%\" (image clustering) and \"streamlined ground truth annotation by 50%\" two different results, or the same one?\n5. **The extraction tool:** does \"1,00,000 records\" mean 100,000? And is the 66% faster extraction the same result as 3 hours down to 1 hour, or two different ones?\n6. **95% precision and recall:** was that each of them at 95%, and for which model?\n7. **The paper's \"top 100\":** was it ranked among the top 100, or is that the number accepted?\n8. **\"Premier project in its category\"** for the exam builder: who gave that recognition? Without it, I'll drop that clause.\n9. **Since May 2025:** your resume ends there. Have you worked, studied or built anything since?\n10. **The nonprofit role** (Jun 2019 to Dec 2021, during your bachelor's): was it full time, part time or volunteer?\n11. **Anything the job asks for that you have done but your resume leaves out:** a generative AI or LLM project, coding with tools such as GitHub Copilot or ChatGPT, or mentoring others?\n\n**Warnings that remain** from the automatic check: \"Streamlined\" (a word AI tools overuse, but it is yours, so I kept it), a few lists of three tool names, and some bullets that run just past one line.\n\nAnswer what you can; anything new you don't confirm comes out.",
+   "text": "Step 3 of 4: Review and sign-off\n\nThe reviewer and checker found two points to settle: the annotation result says “50%” but does not name what was measured, and the publication’s “top 100” does not say whether the workshop or conference made the selection. I’ve kept both claims narrowly worded. Next I’ll ask you to confirm the changed claims and any additional evidence.",
    "who": "host",
-   "stop": "Stop 2",
    "links": [
-    "L4",
-    "B11",
-    "B12",
-    "B13"
+    "L20",
+    "L23",
+    "L41"
    ]
   },
   {
-   "t": 334,
-   "kind": "user",
-   "text": "I confirm everything in my original resume is true as written.\n\n1. They're all on my original resume and true, so keep the ones that fit the job.\n2. Yes, multi-object tracking.\n3. Keep it as my resume has it.\n4. I don't know, so keep them as my resume has them.\n5. Yes, 1,00,000 is 100,000. I don't know whether the 66% and the 3 hours to 1 hour are the same result, so keep them as written.\n6. I don't know more than what's on my resume.\n7. I don't know, keep it as written.\n8. Drop that clause.\n9. Nothing to add.\n10. I don't know, leave it as it is.\n11. No.",
-   "who": "user",
-   "links": [
-    "L4"
-   ]
-  },
-  {
-   "t": 334,
+   "t": 1292,
    "kind": "note",
-   "text": "Writing her answers into the confirmed facts and working them into the resume",
+   "text": "Preparing the sign-off with changed claims, open questions, and the cuts",
    "who": "host",
    "label": "Sign-off",
    "links": []
   },
   {
-   "t": 340,
-   "kind": "check",
-   "text": "0 errors, 11 warnings (Streamlined, three-item lists, short second lines), 624 words",
-   "who": "check",
+   "t": 1536,
+   "kind": "user",
+   "text": "I confirm everything in my original resume is true as written.\n1. I don't know more about the 50% figures. Leave them as my resume has them.\n2. Leave those as my resume has them.\n3. I don't know more. Leave it as my resume has it.\n4. No, nothing new.\n5. Nothing to add for those.\n6. Yes, they're on my resume and true as written.",
+   "who": "user",
+   "links": [
+    "L20",
+    "L23"
+   ]
+  },
+  {
+   "t": 1537,
+   "kind": "say",
+   "text": "Step 4 of 4: Finalise\n\nI’ve recorded your confirmations. I’m restoring the original wording for the annotation and publication claims, then I’ll run the final check and prepare the Markdown for your last review.",
+   "who": "host",
    "links": []
   },
   {
-   "t": 340,
+   "t": 1537,
    "kind": "step",
    "text": "Finalise",
    "who": "host",
@@ -238,64 +263,147 @@
    "links": []
   },
   {
-   "t": 350,
+   "t": 1538,
+   "kind": "note",
+   "text": "Applying the sign-off and preparing the final plain-text resume",
+   "who": "host",
+   "label": "Finalise",
+   "links": []
+  },
+  {
+   "t": 1545,
+   "kind": "check",
+   "text": "0 errors, 10 warnings, 3 placeholders; 583 words (about 650 fit one page)",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 1545,
+   "kind": "note",
+   "text": "Running the restored-resume final check and reviewing delivery instructions",
+   "who": "host",
+   "label": "Final check",
+   "links": []
+  },
+  {
+   "t": 1549,
+   "kind": "check",
+   "text": "0 errors, 10 warnings, 0 placeholders; 586 words (about 650 fit one page)",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 1584,
+   "kind": "note",
+   "text": "Correcting a sentence and rebuilding the final copy after sign-off",
+   "who": "host",
+   "label": "Final check",
+   "links": []
+  },
+  {
+   "t": 1618,
+   "kind": "note",
+   "text": "Keeping the paper recognition and percentage claims as close as possible to the confirmed original",
+   "who": "host",
+   "label": "Finalise",
+   "links": []
+  },
+  {
+   "t": 1634,
+   "kind": "check",
+   "text": "0 errors, 9 warnings, 0 placeholders; 592 words (about 650 fit one page)",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 1635,
    "kind": "say",
-   "text": "Step 4 of 4: Finalise\n\nYour answers are in. What changed:\n- \"MOT model\" now reads \"multi-object tracking (MOT) model\", in the summary and in the bullet.\n- \"1,00,000 records\" now reads \"100,000 records\".\n- The \"premier project in its category\" clause is gone.\n- From the skills, I dropped C and C#, which this job doesn't use; everything else stays.\n- Everything you didn't know more about stays exactly as your resume had it.\n\nIt passes the automatic checks with no errors, at 624 words, one page. Your resume, with your name and contact details back in, is at research/eval-2026-10-13/runs10/sde-ai-auto-quick/.tribunal/final.md.\n\nWant one more blind look before it's final? About a minute.\n\nIs it final? Say \"it's final\", or tell me what to change. I can give you a plain-text copy, or a Word file.",
+   "text": "Step 4 of 4: Finalise\n\nYour confirmed version is [final.md](.tribunal/final.md). The final checker reports 0 errors, 9 warnings, no placeholders, and 592 words. The warnings are the original words “Streamlined” and “leveraging,” six short-line estimates, and repeated three-item lists; I kept the wording and details you confirmed.\n\nThe resume still does not show the job’s 5+ years of software engineering, 1+ year building generative AI products, early-stage AI product delivery, AI-assisted coding, product and business knowledge, or leadership, mentoring, hiring, and roadmap experience. You confirmed there is nothing to add. Would you like one more blind look from the second AI before I ask whether the resume is final? Next: reply “yes” or “No thanks.”",
    "who": "host",
    "stop": "Stop 3",
    "links": [
-    "L4",
-    "L13",
-    "L26",
-    "A2"
+    "L15",
+    "L17",
+    "L20"
    ]
   },
   {
-   "t": 350,
+   "t": 1747,
    "kind": "user",
    "text": "No thanks.",
    "who": "user",
    "links": []
   },
   {
-   "t": 350,
+   "t": 1747,
+   "kind": "say",
+   "text": "Step 4 of 4: Finalise\n\nNo extra blind look. Your resume is ready in Markdown at [final.md](.tribunal/final.md). I have no remaining wording fixes for you to consider. The missing job evidence is still as noted: 5+ years of software engineering, generative AI product development, early-stage AI product delivery, AI-assisted coding, product and business knowledge, and the listed leadership and roadmap experience.\n\nIs it final? Reply “Yes, it’s final” if you approve it. The Markdown format is set as requested.",
+   "who": "host",
+   "stop": "Stop 3",
+   "links": []
+  },
+  {
+   "t": 1943,
    "kind": "user",
    "text": "Yes, it's final. Markdown is fine.",
    "who": "user",
    "links": []
   },
   {
-   "t": 350,
-   "kind": "note",
-   "text": "Running the final check on the finished resume",
-   "who": "host",
-   "label": "Final check",
-   "links": []
-  },
-  {
-   "t": 361,
-   "kind": "check",
-   "text": "Final: 0 errors, 11 warnings (Streamlined, three-item lists, short second lines), 627 words, one page",
-   "who": "check",
-   "links": []
-  },
-  {
-   "t": 361,
+   "t": 1943,
    "kind": "say",
-   "text": "Step 4 of 4: Finalise\n\nDone. Your resume is at research/eval-2026-10-13/runs10/sde-ai-auto-quick/.tribunal/final.md, a plain-text copy you can paste into Word or Google Docs and give heading styles. The final check found no errors; it is 627 words, which fits one page.\n\n**What this job asks for that your resume still does not show:**\n- 5+ years of software engineering (your resume shows about a year and a quarter full time, plus an internship, two graduate roles and the nonprofit role)\n- 1+ years building generative AI products; generative AI appears only in your skills and certifications\n- Taking an early-stage AI system from choosing the model through production and maintenance\n- Prototyping that led to successful new products, and tying modeling work to business value\n- Using AI coding tools such as GitHub Copilot or ChatGPT\n- Mentoring, hiring, leading engineers, or planning a multi-year roadmap\n- AI search and retrieval, or personalization\n\n**Questions an interviewer is likely to ask:**\n1. Which object detector reached 95% precision and recall, on what test data, and what did you change yourself? (Tests whether you know how the result was measured and what your part was.)\n2. Are the two 50% gains in labeling and annotation separate results, and how was the time saved measured? (Tests whether the two claims are distinct.)\n3. What did the dynamic AI model selection do, which models did you compare, and what happened after one was chosen? (Tests technical depth and how far you took a model.)\n4. What made the extraction tool \"universal\", and were the 3-hour and 1-hour runs on the same 100,000 records? (Tests the scope of the claim and whether the comparison was fair.)\n5. How were the nonprofit's 20% efficiency gain and 25% stakeholder engagement rise measured, and what tied them to your work? (Tests how you measure impact.)\n\nSave what you told me (your resume, your own words and the facts you confirmed) on this computer, so your next job needs fewer questions? It stays in ~/.resume-tribunal/, goes nowhere else, and you can delete the folder any time. I can also delete the working files in .tribunal/ if you'd like.",
+   "text": "Step 4 of 4: Finalise\n\nYou’ve confirmed the resume is final and Markdown is the right format. I’m recording the line-by-line change reasons and running the consented example export check. Next I’ll report the export result and deliver the file.",
    "who": "host",
+   "links": []
+  },
+  {
+   "t": 1943,
+   "kind": "note",
+   "text": "Writing the example change log and running its public-export check",
+   "who": "host",
+   "label": "Export",
+   "links": []
+  },
+  {
+   "t": 2064,
+   "kind": "say",
+   "text": "Step 4 of 4: Finalise\n\nThe export check passed, and the change log is in `.tribunal/changes.json`. I’m preparing the delivery with the remaining job gaps and interview questions. Next I’ll offer to keep the reusable facts in the run folder or delete the run files.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 2064,
+   "kind": "note",
+   "text": "Completing delivery after the export validator passed",
+   "who": "host",
+   "label": "Complete",
+   "links": []
+  },
+  {
+   "t": 2076,
+   "kind": "say",
+   "text": "Step 4 of 4: Finalise\n\nYour final Markdown resume is [final.md](.tribunal/final.md). The example change log is in `.tribunal/changes.json`, and the requested example export check passed.\n\nThe resume does not evidence the job's 5+ years of software engineering, 1+ year of generative AI product development, successful 0-to-1 work, full early-stage AI lifecycle, product and business knowledge, or use of AI-assisted coding tools. It also does not show the optional indexing, retrieval or personalization experience, multi-year roadmap, mentoring, or hiring work. You confirmed there is no additional evidence to add.\n\nThe reviewer’s interview questions to prepare for are:\n\n- Are the 66% extraction-time reduction and the 3-hours-to-1-hour result the same work, and how were they measured?\n- What did the 50% annotation result measure, and how was it evaluated? What was distinct about the 50% labeling-time reduction?\n- For the 95% precision and recall result, what dataset, classes, and baseline were used?\n- What was your part in the paper written with a team of six, and what organization recognized it among its top 100 accepted papers?\n- The resume lists generative AI and LLMs but no product work. What can you truthfully say about your experience with them?\n\nI can delete `.tribunal/` if you want; otherwise I’ll leave the run files here. Would you like me to save the reusable facts as a profile inside `.tribunal/profile/` in this run folder? It will stay here and go nowhere else. Without a yes, I’ll keep the current files and save nothing.",
+   "who": "host",
+   "stop": "Save profile",
    "links": [
-    "L4",
-    "L12",
-    "L14",
-    "L15"
+    "L7",
+    "L20",
+    "L22",
+    "L23"
    ]
   },
   {
-   "t": 361,
+   "t": 2187,
    "kind": "user",
    "text": "No thanks.",
    "who": "user",
+   "links": []
+  },
+  {
+   "t": 2224,
+   "kind": "say",
+   "text": "## Final resume\n\n[final.md](.tribunal/final.md)\n\nFinal checker: `0 error(s), 9 warning(s), 0 placeholder(s) to fill; 592 words (about 650 fit one page)`.",
+   "who": "host",
    "links": []
   }
  ],
@@ -303,146 +411,242 @@
   [
    "host",
    0,
-   18,
-   "Seats",
+   15,
+   "Setup",
    0,
    "The host is working"
   ],
   [
    "host",
-   18,
-   37,
-   "Stand-ins",
+   15,
+   29,
+   "Setup",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   29,
+   50,
+   "Setup",
    0,
    "The host is working"
   ],
   [
    "user",
-   37,
-   37,
+   50,
+   97,
    "Stop 1",
    1,
    "Waiting for Priya"
   ],
   [
    "host",
-   37,
-   74,
-   "",
-   0,
-   "The host is working"
-  ],
-  [
-   "host",
-   74,
-   142,
+   97,
+   132,
    "Draft",
    0,
    "The host is working"
   ],
   [
    "check",
-   142,
-   142,
+   132,
+   132,
    "",
    0,
    ""
   ],
   [
    "host",
-   142,
-   151,
+   132,
+   143,
    "",
-   0,
-   "The host is working"
-  ],
-  [
-   "codex",
-   151,
-   260,
-   "Review",
-   0,
-   "Codex is working on the review"
-  ],
-  [
-   "host",
-   260,
-   275,
-   "Fixes",
    0,
    "The host is working"
   ],
   [
    "check",
-   275,
-   275,
+   143,
+   143,
+   "",
+   0,
+   ""
+  ],
+  [
+   "claude",
+   143,
+   240,
+   "Blind review",
+   0,
+   "Claude is working on the blind review"
+  ],
+  [
+   "host",
+   240,
+   1234,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   1234,
+   1245,
+   "Review",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   1245,
+   1245,
    "",
    0,
    ""
   ],
   [
    "host",
-   275,
-   292,
+   1245,
+   1292,
    "",
    0,
    "The host is working"
   ],
   [
-   "user",
-   292,
-   334,
-   "Stop 2",
-   1,
-   "Waiting for Priya"
+   "check",
+   1292,
+   1292,
+   "",
+   0,
+   ""
   ],
   [
    "host",
-   334,
-   340,
+   1292,
+   1538,
    "Sign-off",
    0,
    "The host is working"
   ],
   [
+   "host",
+   1538,
+   1545,
+   "Finalise",
+   0,
+   "The host is working"
+  ],
+  [
    "check",
-   340,
-   340,
+   1545,
+   1545,
    "",
    0,
    ""
   ],
   [
    "host",
-   340,
-   350,
-   "",
-   0,
-   "The host is working"
-  ],
-  [
-   "user",
-   350,
-   350,
-   "Stop 3",
-   1,
-   "Waiting for Priya"
-  ],
-  [
-   "host",
-   350,
-   361,
+   1545,
+   1549,
    "Final check",
    0,
    "The host is working"
   ],
   [
    "check",
-   361,
-   361,
+   1549,
+   1549,
    "",
    0,
    ""
+  ],
+  [
+   "host",
+   1549,
+   1584,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   1584,
+   1618,
+   "Final check",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   1618,
+   1634,
+   "Finalise",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   1634,
+   1634,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   1634,
+   1635,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   1635,
+   1747,
+   "Stop 3",
+   1,
+   "Waiting for Priya"
+  ],
+  [
+   "user",
+   1747,
+   1943,
+   "Stop 3",
+   1,
+   "Waiting for Priya"
+  ],
+  [
+   "host",
+   1943,
+   2064,
+   "Export",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   2064,
+   2076,
+   "Complete",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   2076,
+   2187,
+   "Save profile",
+   1,
+   "Waiting for Priya"
+  ],
+  [
+   "host",
+   2187,
+   2224,
+   "",
+   0,
+   "The host is working"
   ]
  ],
  "before": [
@@ -453,7 +657,9 @@
   {
    "k": "contact",
    "tx": "Dallas, TX (Open to Relocation) | priya.nair@example.com | (214) 555-0163",
-   "id": "L29"
+   "why": "Priya's location and contact details stay the same in a cleaner contact line.",
+   "id": "L1",
+   "s": "rw"
   },
   {
    "k": "h2",
@@ -462,8 +668,8 @@
   {
    "k": "p",
    "tx": "Public university, USA Aug 2023 – May 2025 Master of Science in Computer Science, GPA: 4.00/4.00 Engineering college, India Jul 2018 – May 2022 Bachelor of Technology in Information Technology, GPA: 3.78/4.00",
-   "why": "The education line was split into one line per degree and moved to the end, since the job values her work experience first.",
-   "id": "L1",
+   "why": "Priya's bachelor's degree, school stand-in, dates, and GPA are laid out on one education line.",
+   "id": "L39",
    "s": "rw"
   },
   {
@@ -473,9 +679,9 @@
   {
    "k": "p",
    "tx": "Programming Languages & Operating System: Python, Java, C, C++, C#, .Net, Vb.Net, SQL, PL/SQL, Unix, Windows, Linux, Mac OS Web Technologies & Frameworks: HTML, CSS, JavaScript, XML, CSS Bootstrap, JSON, NodeJS, Django Database & IDE: DBMS, MySQL, Oracle, SQL Server, PostgreSQL, MongoDB, Eclipse, IntelliJ, NetBeans, Visual Studio Code Cloud Technologies & AWS Skills: AWS, Azure, EC2, S3, EBS, GIT, DNS, SageMaker Core Competencies & Data Science Methodologies: Deep Learning (CNN, RNN, LSTM, GRU), Machine Learning (Supervised, Unsupervised), Generative AI - LLMs, Prompt Engineering, NLP, Data Structures, Algorithms, TensorFlow, PyTorch, Sci-Kit Learn, Pandas, Numpy, PowerBI, Tableau, MLOps",
-   "why": "The long skills paragraph became five short groups that put her machine learning skills first; Priya confirmed all her skills were true and asked to keep the ones that fit the job, so C, C# and the operating systems were left out.",
-   "id": "L2",
-   "s": "rw"
+   "why": "Priya's original list also included operating systems, IDEs, DNS, Visual Basic, DBMS, PowerBI, data structures, and algorithms, which were cut to keep the skills section focused.",
+   "s": "rw",
+   "id": "L5"
   },
   {
    "k": "h2",
@@ -484,170 +690,169 @@
   {
    "k": "p",
    "tx": "PUBLIC UNIVERSITY, USA Jan 2024 – May 2025 Graduate Research Assistant",
-   "why": "The title and dates were split off the employer name so a screening system reads them cleanly.",
-   "id": "L3",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Leveraged Python and Selenium to Crafted a universal data extraction tool, reducing extraction time by 66% for 1,00,000 records.",
-   "why": "Rewritten in plain words, and the record count changed from the Indian style 1,00,000 to 100,000, which Priya confirmed is the same number.",
-   "id": "L4",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Optimized web scraping efficiency with BeautifulSoup , HTML , and CSS , reducing data extraction time from 3 hours to 1 hour .",
-   "why": "Shortened to the tool and the result she gave, with the JavaScript work from another bullet joined on.",
-   "id": "L5",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Engineered scalable data solutions using MongoDB and SQL , increasing storage capabilities and project versatility.",
-   "why": "Her MongoDB and SQL work joined with her Jupyter and Colab analysis, without the vague claims about storage and versatility.",
+   "why": "Priya's employer, title, and dates are preserved in a clearer ATS-friendly hierarchy.",
    "id": "L6",
    "s": "rw"
   },
   {
    "k": "bul",
-   "tx": "Utilized Jupyter Notebook and Colab for data analysis and visualization , streamlining the research process for academic excellence.",
-   "why": "Folded into the line about her data storage and analysis.",
-   "s": "cut",
-   "id": "B8"
-  },
-  {
-   "k": "bul",
-   "tx": "Incorporated JavaScript techniques in web scraping , enabling dynamic data extraction and broadening research applicability. Graduate Student Assistant Sep 2023 – May 2025",
-   "why": "This line held both a JavaScript bullet and her second university title; the title now stands on its own and the JavaScript work joined the web scraping bullet.",
+   "tx": "Leveraged Python and Selenium to Crafted a universal data extraction tool, reducing extraction time by 66% for 1,00,000 records.",
+   "why": "Priya's tool, languages, record count, and reduction are retained while the sentence is made grammatical.",
    "id": "L7",
    "s": "rw"
   },
   {
    "k": "bul",
-   "tx": "Delivered robust database solutions using SQL and MySQL , enhancing operations and user satisfaction.",
-   "why": "Her SQL and MySQL work joined with her documentation of database procedures, without the vague claims about user satisfaction.",
+   "tx": "Optimized web scraping efficiency with BeautifulSoup , HTML , and CSS , reducing data extraction time from 3 hours to 1 hour .",
+   "why": "Priya's original tools and time comparison are retained in a shorter sentence.",
    "id": "L8",
    "s": "rw"
   },
   {
    "k": "bul",
-   "tx": "Streamlined database maintenance and optimization processes, significantly improving system reliability and performance.",
-   "why": "Cut to fit one page; it repeated the database work with only the vague word significantly as its result.",
-   "s": "cut",
-   "id": "B11"
-  },
-  {
-   "k": "bul",
-   "tx": "Conducted thorough testing and debugging , ensuring 100% database reliability and optimal performance metrics.",
-   "why": "Cut because a claim of 100% reliability is hard to defend in an interview, and the page needed the space.",
-   "s": "cut",
-   "id": "B12"
-  },
-  {
-   "k": "bul",
-   "tx": "Documented critical database procedures, facilitating knowledge transfer and streamlined troubleshooting processes.",
-   "why": "Folded into the line about her database solutions.",
-   "s": "cut",
-   "id": "B13"
-  },
-  {
-   "k": "bul",
-   "tx": "Elevated database proficiency, through comprehensive technical support and training sessions.",
-   "why": "Shortened to what she did: technical support and training sessions.",
+   "tx": "Engineered scalable data solutions using MongoDB and SQL , increasing storage capabilities and project versatility.",
+   "why": "Priya's database tools and stated outcomes remain without adding details the source does not provide.",
    "id": "L9",
    "s": "rw"
   },
   {
    "k": "bul",
-   "tx": "Employed Visual Studio Code for efficient database development , bolstering database infrastructure and service quality. LARGE IT SERVICES COMPANY May 2022 – Aug 2023 System Engineer – Deep Learning Engineer",
-   "why": "This line ended with her deep learning title; the title now stands on its own, and the Visual Studio Code bullet was cut to save space.",
+   "tx": "Utilized Jupyter Notebook and Colab for data analysis and visualization , streamlining the research process for academic excellence.",
+   "why": "Priya's tools and analysis tasks remain while the vague closing phrase is removed.",
    "id": "L10",
    "s": "rw"
   },
   {
    "k": "bul",
-   "tx": "Upgraded database structures for the company's autonomous-driving platform using SQL , achieving efficient data processing and accelerating autonomous vehicle solutions with AI models .",
-   "why": "Shortened, keeping the platform, the tool and what it sped up.",
-   "id": "L11",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Streamlined ground truth data annotation by 50% using AWS Sagemaker and Supervisely , leveraging semi/self-supervised learning for accuracy in data curation.",
-   "why": "Kept her own verb and the 50% result, with her wording semi/self-supervised kept as she asked.",
+   "tx": "Incorporated JavaScript techniques in web scraping , enabling dynamic data extraction and broadening research applicability. Graduate Student Assistant Sep 2023 – May 2025",
+   "why": "Priya's assistant title and dates are separated from the preceding job's bullets.",
    "id": "L12",
    "s": "rw"
   },
   {
    "k": "bul",
-   "tx": "Developed a MOT model with Faster R-CNN and Graph Neural Networks , improving self-driving application accuracy and automating quality checks for precision.",
-   "why": "MOT spelled out as multi-object tracking, which Priya confirmed is what it means.",
+   "tx": "Delivered robust database solutions using SQL and MySQL , enhancing operations and user satisfaction.",
+   "why": "Priya's database work is combined with her listed support and training duties.",
    "id": "L13",
    "s": "rw"
   },
   {
    "k": "bul",
-   "tx": "Developed and optimized object detection algorithms using OpenCV, YOLO, Faster R-CNN , achieving a 95% precision and recall rate.",
-   "why": "Kept as she wrote it and moved to the top of the role, since it is her strongest result for an AI job.",
-   "id": "L14",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Pioneered an image clustering method for segmentation with TensorFlow and Pytorch , reducing labeling time by 50% and minimizing costs through SageMaker .",
-   "why": "Pioneered became created, a plainer verb, with the 50% labeling result kept.",
+   "tx": "Streamlined database maintenance and optimization processes, significantly improving system reliability and performance.",
+   "why": "Priya's maintenance work remains in a shorter combined bullet; the vague reliability outcome is cut.",
    "id": "L15",
    "s": "rw"
   },
   {
    "k": "bul",
+   "tx": "Conducted thorough testing and debugging , ensuring 100% database reliability and optimal performance metrics.",
+   "why": "Priya's testing and debugging work remains, while the unsupported absolute reliability claim is omitted.",
+   "id": "L16",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Documented critical database procedures, facilitating knowledge transfer and streamlined troubleshooting processes.",
+   "why": "Priya's documentation work stays without the broad knowledge-transfer and troubleshooting outcomes.",
+   "id": "L17",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Elevated database proficiency, through comprehensive technical support and training sessions.",
+   "why": "Priya's technical support and training are combined with her database work in one concise bullet.",
+   "id": "L14",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Employed Visual Studio Code for efficient database development , bolstering database infrastructure and service quality. LARGE IT SERVICES COMPANY May 2022 – Aug 2023 System Engineer – Deep Learning Engineer",
+   "why": "Priya's employer, title, and dates are preserved in a clearer ATS-friendly hierarchy.",
+   "s": "rw",
+   "id": "L18"
+  },
+  {
+   "k": "bul",
+   "tx": "Upgraded database structures for the company's autonomous-driving platform using SQL , achieving efficient data processing and accelerating autonomous vehicle solutions with AI models .",
+   "why": "Priya's database work and platform stay, while the broad impact claims are removed.",
+   "id": "L19",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Streamlined ground truth data annotation by 50% using AWS Sagemaker and Supervisely , leveraging semi/self-supervised learning for accuracy in data curation.",
+   "why": "Priya's original 50% claim and method remain without assigning the metric a unit she could not confirm.",
+   "id": "L20"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed a MOT model with Faster R-CNN and Graph Neural Networks , improving self-driving application accuracy and automating quality checks for precision.",
+   "why": "Priya's model, tools, application, accuracy result, and quality checks are retained; MOT stays unexpanded because the source does not spell it out.",
+   "id": "L21",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed and optimized object detection algorithms using OpenCV, YOLO, Faster R-CNN , achieving a 95% precision and recall rate.",
+   "why": "Priya's algorithms, tools, and stated result remain with punctuation cleaned up.",
+   "id": "L22",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Pioneered an image clustering method for segmentation with TensorFlow and Pytorch , reducing labeling time by 50% and minimizing costs through SageMaker .",
+   "why": "Priya's method, tools, labeling-time reduction, and cost claim remain in shorter sentences.",
+   "id": "L23",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
    "tx": "Enhanced project workflow and data management through Visual Studio Code and Intellij , utilizing AWS and Azure for scalable cloud integration and data handling.",
-   "why": "Cut to fit one page; it named tools without a result.",
+   "why": "Priya's IDE and cloud workflow detail was cut because the resume already lists those tools and the bullet adds no specific outcome.",
    "s": "cut",
    "id": "B21"
   },
   {
    "k": "bul",
    "tx": "Applied advanced Deep Learning and Machine Learning techniques including Pytorch and TensorFlow , for dynamic AI model selection, ensuring top-tier performance in detection and segmentation tasks. LARGE IT SERVICES COMPANY Jan 2022 – May 2022 Software Engineer Intern",
-   "why": "Shortened to what she did with PyTorch and TensorFlow; her intern title at the end of this line now has its own line.",
-   "id": "L16",
+   "why": "Priya's employer, title, and dates are preserved in a clearer ATS-friendly hierarchy.",
+   "id": "L25",
    "s": "rw"
   },
   {
    "k": "bul",
    "tx": "Optimized data processing algorithms in a complex software environment, lowering execution time by 30% , which enhanced system efficiency and performance.",
-   "why": "Shortened, keeping the 30% result.",
-   "id": "L17",
+   "why": "Priya's algorithm work and 30% result remain without the general efficiency claim.",
+   "id": "L26",
    "s": "rw"
   },
   {
    "k": "bul",
    "tx": "Designed and deployed innovative features in a web application with JavaScript, HTML , and CSS , significantly boosting UX via intuitive design and functionality.",
-   "why": "Her web application work joined with her unit testing and bug fixing, without the claims about UX that had no measure.",
-   "id": "L18",
+   "why": "Priya's web application work and tools remain without the broad user-experience claim.",
+   "id": "L27",
    "s": "rw"
   },
   {
    "k": "bul",
    "tx": "Built a real-time monitoring system using Java and Visual Studio Code , enabling proactive issue detection and resolution, which markedly improved system reliability.",
-   "why": "Shortened to the system, the language and its purpose.",
-   "id": "L19",
+   "why": "Priya's Java monitoring system remains; the IDE and unmeasured reliability outcome are cut.",
+   "id": "L28",
    "s": "rw"
   },
   {
    "k": "bul",
    "tx": "Enhanced system integration by incorporating third-party libraries, which bolstered system functionality and reliability, utilizing Intellij for seamless implementation.",
-   "why": "Cut to fit one page; it had no specific result.",
-   "s": "cut",
-   "id": "B26"
+   "why": "Priya's integration work is retained with her testing duties; the IDE and broad impact claims are omitted.",
+   "id": "L29",
+   "s": "rw"
   },
   {
    "k": "bul",
    "tx": "Executed comprehensive unit testing and bug fixing , leveraging unit testing techniques , to ensure delivery of high-quality software deliverables, underpinning robust software development practices.",
-   "why": "Folded into the web application line.",
-   "s": "cut",
-   "id": "B27"
+   "why": "Priya's testing and debugging work remains in one concise bullet with her integration work.",
+   "id": "L30",
+   "s": "rw"
   },
   {
    "k": "h2",
@@ -656,43 +861,43 @@
   {
    "k": "p",
    "tx": "NONPROFIT June 2019 – Dec 2021 Analytics Software Developer",
-   "why": "The title and dates were split off the employer name, with one date style.",
-   "id": "L20",
+   "why": "Priya's nonprofit job is moved out from under the misplaced education heading, with its title and dates preserved.",
+   "id": "L31",
    "s": "rw"
   },
   {
    "k": "bul",
    "tx": "Collected, organized, and analyzed data related to children and volunteers using Python and SQL , enhancing program effectiveness and operational efficiency by 20% .",
-   "why": "Leads with the 20% result she gave, in plainer words.",
-   "id": "L21",
+   "why": "Priya's data topics, tools, and 20% result remain in a shorter sentence.",
+   "id": "L32",
    "s": "rw"
   },
   {
    "k": "bul",
    "tx": "Managed databases of volunteer information, including demographics, engagement levels, and performance metrics, ensuring data accuracy and improving volunteer retention.",
-   "why": "Cut to fit one page; her analysis and predictive models show the job's skills better.",
+   "why": "Priya's volunteer database details were cut to prioritize her modeling and analysis evidence for this job.",
    "s": "cut",
    "id": "B30"
   },
   {
    "k": "bul",
    "tx": "Analyzed children's progress using regression models and clustering techniques to identify trends and areas for improvement, informing program strategies.",
-   "why": "Shortened, keeping the regression models and clustering.",
-   "id": "L22",
+   "why": "Priya's methods and use of the analysis remain without the extra wording.",
+   "id": "L33",
    "s": "rw"
   },
   {
    "k": "bul",
    "tx": "Created detailed reports and visualizations using Tableau and Matplotlib , which increased stakeholder engagement by 25% .",
-   "why": "Shortened, keeping the tools and the 25% result.",
-   "id": "L23",
+   "why": "Priya's tools and 25% result remain in a shorter sentence.",
+   "id": "L34",
    "s": "rw"
   },
   {
    "k": "bul",
    "tx": "Developed predictive models with Scikit-learn to forecast volunteer engagement and retention, improving resource planning.",
-   "why": "Moved to the top of the role, since predictive models matter most for an AI job.",
-   "id": "L24",
+   "why": "Priya's predictive model and forecast remain; the general resource-planning outcome is cut.",
+   "id": "L35",
    "s": "rw"
   },
   {
@@ -702,29 +907,29 @@
   {
    "k": "p",
    "tx": "Triplet-loss face matching model",
-   "id": "L31",
+   "id": "L43",
    "s": "rw"
   },
   {
    "k": "bul",
    "tx": "Developed a face recognition system using triplet loss to improve the accuracy and robustness of facial feature embeddings. Implemented a deep learning model that learns to distinguish between similar and dissimilar faces by minimizing the triplet loss function. The project involved data preprocessing, model training , and evaluation on a large dataset of facial images. Web exam builder with instant scoring",
-   "why": "Shortened to one sentence, keeping triplet loss and the steps she covered; the next project's name at the end of the line now has its own line.",
-   "id": "L25",
-   "s": "rw"
+   "why": "Priya's web exam project was cut to keep the projects section focused on machine learning and data extraction.",
+   "s": "rw",
+   "id": "L36"
   },
   {
    "k": "bul",
    "tx": "Created an innovative online examination platform, utilizing PHP, HTML, CSS, Bootstrap , and SQL , enabling educators to construct exams and students to seamlessly take tests with immediate scoring, recognized as the premier project in its category for user-friendly design and functionality. Graph-search web scraper for data analysis",
-   "why": "The premier project claim was dropped at Priya's request, since she could not say who gave it.",
-   "id": "L26",
-   "s": "rw"
+   "why": "Priya's web exam builder bullet was removed with its project because it is less relevant to this AI product role.",
+   "s": "cut",
+   "id": "B36"
   },
   {
    "k": "bul",
    "tx": "Crafted an advanced web scraper for data analysis, integrating BeautifulSoup and Python with BFS and DFS algorithms for effective website navigation, and employed pandas for insightful data analysis and visualization, expanding data extraction and interpretation proficiency.",
-   "why": "Cut to save space, since her research job shows the same web scraping skills.",
-   "s": "cut",
-   "id": "B37"
+   "why": "Priya's scraper, navigation algorithms, and analysis tools remain while promotional wording is removed.",
+   "id": "L37",
+   "s": "rw"
   },
   {
    "k": "h2",
@@ -733,14 +938,15 @@
   {
    "k": "p",
    "tx": "Position paper on a data-cleaning tool",
-   "id": "L30",
+   "why": "Priya's publication title is retained and its supplied year is shown beside it.",
+   "id": "L40",
    "s": "rw"
   },
   {
    "k": "bul",
    "tx": "Published a Positional paper with a team of 6 at a 2022 workshop on data-centric AI at a major machine-learning conference, and recognized among its top 100 accepted papers.",
-   "why": "Positional paper became position paper; the team size and the top 100 note are kept as she wrote them.",
-   "id": "L27",
+   "why": "Priya's paper, team size, workshop, and ambiguous recognition wording stay as in her confirmed resume; only the spelling and layout are cleaned up.",
+   "id": "L41",
    "s": "rw"
   },
   {
@@ -750,14 +956,14 @@
   {
    "k": "p",
    "tx": "PUBLIC-SPEAKING CLUB Dec 2020 – May 2021 Sergeant At Arms",
-   "why": "Her public-speaking club role was cut to fit one page; it is less relevant to this job.",
+   "why": "Priya's speaking-club role was cut to prioritize experience tied to this engineering job.",
    "s": "cut",
    "id": "B40"
   },
   {
    "k": "bul",
    "tx": "Worked among 7 Executive committee officers for club growth and Managed Club Venue, Logistics, club events.",
-   "why": "Cut along with the club role.",
+   "why": "Priya's speaking-club duties were cut with the less relevant club role.",
    "s": "cut",
    "id": "B41"
   },
@@ -768,8 +974,8 @@
   {
    "k": "p",
    "tx": "Coursera: Machine Learning, Deep Learning, TensorFlow Specialist, Generative AI with LLMs. Oracle: Oracle Cloud Infrastructure Generative AI Certified Professional. National online course: Python. IT services company: Technology Training Diploma. Public-speaking club: Positive Contributor Award.",
-   "why": "The certifications line was split into one line per issuer, and the club award was left out to fit one page.",
-   "id": "L28",
+   "why": "Priya's certifications and award remain, grouped into a single readable line.",
+   "id": "L42",
    "s": "rw"
   }
  ],
@@ -780,64 +986,47 @@
   },
   {
    "k": "contact",
-   "tx": "Dallas, TX (Open to Relocation) | priya.nair@example.com | (214) 555-0163",
-   "id": "L29"
-  },
-  {
-   "k": "h2",
-   "tx": "Summary"
-  },
-  {
-   "k": "p",
-   "tx": "Deep learning engineer on an autonomous-driving platform: developed object detection algorithms that reached 95% precision and recall, and a multi-object tracking (MOT) model with Graph Neural Networks. MS in Computer Science (GPA 4.00/4.00) and Oracle Cloud Infrastructure Generative AI Certified Professional.",
-   "why": "A short summary that opens with Priya's strongest evidence for an AI role, her detection and tracking work, taken from her resume; the reviewer caught that an earlier version tied the 95% result to tracking too, so it now sits with detection only.",
+   "tx": "Dallas, TX | Open to relocation | priya.nair@example.com | (214) 555-0163",
+   "why": "Priya's location and contact details stay the same in a cleaner contact line.",
    "from": "old resume",
-   "s": "new",
-   "id": "A2"
+   "id": "L1",
+   "s": "rw"
   },
   {
    "k": "h2",
    "tx": "Skills"
   },
   {
-   "k": "bul",
-   "tx": "**Machine learning and AI:** Deep Learning (CNN, RNN, LSTM, GRU), Machine Learning (Supervised, Unsupervised), Generative AI, LLMs, Prompt Engineering, NLP, MLOps",
-   "why": "The long skills paragraph became five short groups that put her machine learning skills first; Priya confirmed all her skills were true and asked to keep the ones that fit the job, so C, C# and the operating systems were left out.",
-   "from": "sign-off",
+   "k": "p",
+   "tx": "**Machine learning:** Deep learning, machine learning, computer vision, CNN, RNN, LSTM, GRU, TensorFlow, PyTorch, Scikit-learn, OpenCV, YOLO, Faster R-CNN, Graph Neural Networks, Generative AI - LLMs, prompt engineering, NLP, MLOps",
+   "why": "Priya's model and computer vision skills are grouped together, with computer vision supported by her recognition and detection work.",
+   "from": "old resume",
    "id": "L2",
    "s": "rw"
   },
   {
-   "k": "bul",
-   "tx": "**Libraries:** PyTorch, TensorFlow, Scikit-learn, OpenCV, YOLO, Pandas, NumPy, Selenium, BeautifulSoup",
-   "why": "One of the skills groups, built from her old skills paragraph and kept after she confirmed the skills were true.",
-   "from": "sign-off",
-   "s": "new",
-   "id": "A4"
+   "k": "p",
+   "tx": "**Programming and data:** Python, Java, C, C++, C#, .Net, SQL, PL/SQL, MySQL, Oracle, SQL Server, PostgreSQL, MongoDB",
+   "why": "Priya's programming languages and databases are grouped together, preserving the relevant names from her original skills list.",
+   "from": "old resume",
+   "id": "L3",
+   "s": "rw"
   },
   {
-   "k": "bul",
-   "tx": "**Languages:** Python, Java, C++, SQL, JavaScript, HTML, CSS",
-   "why": "One of the skills groups, built from her old skills paragraph and kept after she confirmed the skills were true.",
-   "from": "sign-off",
-   "s": "new",
-   "id": "A5"
+   "k": "p",
+   "tx": "**Cloud and tools:** AWS, SageMaker, Azure, EC2, S3, EBS, GIT, Selenium, BeautifulSoup, Supervisely, Jupyter Notebook, Colab, Tableau, Matplotlib",
+   "why": "Priya's cloud platforms and analysis tools are grouped together using tools named in her original skills and experience.",
+   "from": "old resume",
+   "id": "L4",
+   "s": "rw"
   },
   {
-   "k": "bul",
-   "tx": "**Cloud and data:** AWS (SageMaker, EC2, S3), Azure, MySQL, PostgreSQL, MongoDB, Oracle, SQL Server, Git",
-   "why": "One of the skills groups, built from her old skills paragraph and kept after she confirmed the skills were true.",
-   "from": "sign-off",
-   "s": "new",
-   "id": "A6"
-  },
-  {
-   "k": "bul",
-   "tx": "**Tools:** Tableau, PowerBI, Matplotlib, Jupyter Notebook, Colab, Visual Studio Code, IntelliJ, Supervisely",
-   "why": "One of the skills groups, built from her old skills paragraph and kept after she confirmed the skills were true.",
-   "from": "sign-off",
-   "s": "new",
-   "id": "A7"
+   "k": "p",
+   "tx": "**Web:** JavaScript, HTML, CSS, Bootstrap, XML, JSON, NodeJS, Django",
+   "why": "Priya's web technologies are separated from the programming and data skills for faster scanning.",
+   "from": "old resume",
+   "id": "L5",
+   "s": "rw"
   },
   {
    "k": "h2",
@@ -845,186 +1034,209 @@
   },
   {
    "k": "role",
-   "tx": "Graduate Research Assistant | **Public university, USA** | Jan 2024 - May 2025",
-   "why": "The title and dates were split off the employer name so a screening system reads them cleanly.",
-   "from": "old resume",
-   "id": "L3",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Built a universal data extraction tool with Python and Selenium that reduced extraction time by 66% for 100,000 records.",
-   "why": "Rewritten in plain words, and the record count changed from the Indian style 1,00,000 to 100,000, which Priya confirmed is the same number.",
-   "from": "sign-off",
-   "id": "L4",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Optimized web scraping with BeautifulSoup so data extraction took 1 hour instead of 3 hours, and used JavaScript techniques for dynamic data extraction.",
-   "why": "Shortened to the tool and the result she gave, with the JavaScript work from another bullet joined on.",
-   "from": "old resume",
-   "id": "L5",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Built data storage with MongoDB and SQL, and analyzed and visualized research data in Jupyter Notebook and Colab.",
-   "why": "Her MongoDB and SQL work joined with her Jupyter and Colab analysis, without the vague claims about storage and versatility.",
+   "tx": "Graduate Research Assistant | **Public University, USA** | Jan 2024 - May 2025",
+   "why": "Priya's employer, title, and dates are preserved in a clearer ATS-friendly hierarchy.",
    "from": "old resume",
    "id": "L6",
    "s": "rw"
   },
   {
-   "k": "role",
-   "tx": "**Graduate Student Assistant** | Sep 2023 - May 2025",
-   "why": "This line held both a JavaScript bullet and her second university title; the title now stands on its own and the JavaScript work joined the web scraping bullet.",
+   "k": "bul",
+   "tx": "Built a data extraction tool with Python and Selenium. It reduced extraction time by 66% for 1,00,000 records.",
+   "why": "Priya's tool, languages, record count, and reduction are retained while the sentence is made grammatical.",
    "from": "old resume",
    "id": "L7",
    "s": "rw"
   },
   {
    "k": "bul",
-   "tx": "Delivered database solutions with SQL and MySQL and documented database procedures for troubleshooting.",
-   "why": "Her SQL and MySQL work joined with her documentation of database procedures, without the vague claims about user satisfaction.",
+   "tx": "Reduced web scraping time from 3 hours to 1 hour using BeautifulSoup, HTML, and CSS.",
+   "why": "Priya's original tools and time comparison are retained in a shorter sentence.",
    "from": "old resume",
    "id": "L8",
    "s": "rw"
   },
   {
    "k": "bul",
-   "tx": "Gave technical support and training sessions on databases.",
-   "why": "Shortened to what she did: technical support and training sessions.",
+   "tx": "Used MongoDB and SQL to build data solutions that increased storage capabilities and project versatility.",
+   "why": "Priya's database tools and stated outcomes remain without adding details the source does not provide.",
    "from": "old resume",
    "id": "L9",
    "s": "rw"
   },
   {
-   "k": "role",
-   "tx": "System Engineer - Deep Learning Engineer | **Large IT services company** | May 2022 - Aug 2023",
-   "why": "This line ended with her deep learning title; the title now stands on its own, and the Visual Studio Code bullet was cut to save space.",
+   "k": "bul",
+   "tx": "Used Jupyter Notebook and Colab for data analysis and visualization.",
+   "why": "Priya's tools and analysis tasks remain while the vague closing phrase is removed.",
    "from": "old resume",
    "id": "L10",
    "s": "rw"
   },
   {
    "k": "bul",
-   "tx": "Developed and optimized object detection algorithms with OpenCV, YOLO and Faster R-CNN, achieving 95% precision and recall.",
-   "why": "Kept as she wrote it and moved to the top of the role, since it is her strongest result for an AI job.",
-   "from": "old resume",
-   "id": "L14",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Developed a multi-object tracking (MOT) model with Faster R-CNN and Graph Neural Networks for a self-driving application, which improved its accuracy and automated quality checks.",
-   "why": "MOT spelled out as multi-object tracking, which Priya confirmed is what it means.",
-   "from": "sign-off",
-   "id": "L13",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Created an image clustering method for segmentation with TensorFlow and PyTorch that cut labeling time by 50% and lowered costs through SageMaker.",
-   "why": "Pioneered became created, a plainer verb, with the 50% labeling result kept.",
-   "from": "old resume",
-   "id": "L15",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Streamlined ground truth data annotation by 50% using AWS SageMaker and Supervisely, with semi/self-supervised learning for data curation.",
-   "why": "Kept her own verb and the 50% result, with her wording semi/self-supervised kept as she asked.",
-   "from": "old resume",
-   "id": "L12",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Applied PyTorch and TensorFlow to dynamic AI model selection for detection and segmentation tasks.",
-   "why": "Shortened to what she did with PyTorch and TensorFlow; her intern title at the end of this line now has its own line.",
-   "from": "old resume",
-   "id": "L16",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Upgraded database structures for the company's autonomous-driving platform using SQL to speed up data processing for its AI models.",
-   "why": "Shortened, keeping the platform, the tool and what it sped up.",
+   "tx": "Used JavaScript for web scraping and dynamic data extraction.",
+   "why": "Priya's language and dynamic extraction work remain without the broad, unsupported closing claim.",
    "from": "old resume",
    "id": "L11",
    "s": "rw"
   },
   {
    "k": "role",
-   "tx": "**Software Engineer Intern** | Jan 2022 - May 2022",
-   "why": "Her intern title and dates, split off the end of a bullet in her old resume.",
+   "tx": "**Graduate Student Assistant** | Sep 2023 - May 2025",
+   "why": "Priya's assistant title and dates are separated from the preceding job's bullets.",
    "from": "old resume",
-   "s": "new",
-   "id": "A22"
+   "id": "L12",
+   "s": "rw"
   },
   {
    "k": "bul",
-   "tx": "Optimized data processing algorithms, lowering execution time by 30%.",
-   "why": "Shortened, keeping the 30% result.",
+   "tx": "Delivered database solutions using SQL and MySQL, and provided technical support and training.",
+   "why": "Priya's technical support and training are combined with her database work in one concise bullet.",
+   "from": "old resume",
+   "id": "L14",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Documented database procedures and supported database maintenance, testing, and debugging.",
+   "why": "Priya's documentation work stays without the broad knowledge-transfer and troubleshooting outcomes.",
    "from": "old resume",
    "id": "L17",
    "s": "rw"
   },
   {
+   "k": "role",
+   "tx": "System Engineer – Deep Learning Engineer | **Large IT Services Company** | May 2022 - Aug 2023",
+   "why": "Priya's employer, title, and dates are preserved in a clearer ATS-friendly hierarchy.",
+   "from": "old resume",
+   "id": "L18",
+   "s": "rw"
+  },
+  {
    "k": "bul",
-   "tx": "Built a real-time monitoring system in Java for early issue detection.",
-   "why": "Shortened to the system, the language and its purpose.",
+   "tx": "Updated SQL database structures for the company's autonomous-driving platform.",
+   "why": "Priya's database work and platform stay, while the broad impact claims are removed.",
    "from": "old resume",
    "id": "L19",
    "s": "rw"
   },
   {
    "k": "bul",
-   "tx": "Designed and deployed web application features with JavaScript, HTML and CSS, and ran unit testing and bug fixing.",
-   "why": "Her web application work joined with her unit testing and bug fixing, without the claims about UX that had no measure.",
+   "tx": "Streamlined ground truth data annotation by 50% using AWS SageMaker and Supervisely, leveraging semi/self-supervised learning for accuracy in data curation.",
+   "why": "Priya's original 50% claim and method remain without assigning the metric a unit she could not confirm.",
    "from": "old resume",
-   "id": "L18",
-   "s": "rw"
-  },
-  {
-   "k": "role",
-   "tx": "Analytics Software Developer | **Nonprofit** | Jun 2019 - Dec 2021",
-   "why": "The title and dates were split off the employer name, with one date style.",
-   "from": "old resume",
-   "id": "L20",
-   "s": "rw"
+   "id": "L20"
   },
   {
    "k": "bul",
-   "tx": "Developed predictive models with Scikit-learn to forecast volunteer engagement and retention for resource planning.",
-   "why": "Moved to the top of the role, since predictive models matter most for an AI job.",
-   "from": "old resume",
-   "id": "L24",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Analyzed children's progress with regression models and clustering to find trends that informed program strategies.",
-   "why": "Shortened, keeping the regression models and clustering.",
-   "from": "old resume",
-   "id": "L22",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Raised program effectiveness and operational efficiency by 20% with Python and SQL analysis of data collected on children and volunteers.",
-   "why": "Leads with the 20% result she gave, in plainer words.",
+   "tx": "Developed a MOT model with Faster R-CNN and Graph Neural Networks for a self-driving application. It improved self-driving application accuracy and automated quality checks.",
+   "why": "Priya's model, tools, application, accuracy result, and quality checks are retained; MOT stays unexpanded because the source does not spell it out.",
    "from": "old resume",
    "id": "L21",
    "s": "rw"
   },
   {
    "k": "bul",
-   "tx": "Created reports and visualizations in Tableau and Matplotlib that increased stakeholder engagement by 25%.",
-   "why": "Shortened, keeping the tools and the 25% result.",
+   "tx": "Developed and optimized object detection algorithms with OpenCV, YOLO, and Faster R-CNN, achieving a 95% precision and recall rate.",
+   "why": "Priya's algorithms, tools, and stated result remain with punctuation cleaned up.",
+   "from": "old resume",
+   "id": "L22",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed an image clustering method for segmentation with TensorFlow and PyTorch. It reduced labeling time by 50% and minimized costs through SageMaker.",
+   "why": "Priya's method, tools, labeling-time reduction, and cost claim remain in shorter sentences.",
    "from": "old resume",
    "id": "L23",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Used PyTorch and TensorFlow for machine learning and deep learning model selection in detection and segmentation tasks.",
+   "why": "Priya's model-selection work and tools remain, while the unmeasured top-tier performance claim is removed.",
+   "from": "old resume",
+   "id": "L24",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "**Software Engineer Intern** | Jan 2022 - May 2022",
+   "why": "Priya's employer, title, and dates are preserved in a clearer ATS-friendly hierarchy.",
+   "from": "old resume",
+   "id": "L25",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Optimized data processing algorithms, lowering execution time by 30%.",
+   "why": "Priya's algorithm work and 30% result remain without the general efficiency claim.",
+   "from": "old resume",
+   "id": "L26",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed web application features with JavaScript, HTML, and CSS.",
+   "why": "Priya's web application work and tools remain without the broad user-experience claim.",
+   "from": "old resume",
+   "id": "L27",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Built a real-time monitoring system using Java.",
+   "why": "Priya's Java monitoring system remains; the IDE and unmeasured reliability outcome are cut.",
+   "from": "old resume",
+   "id": "L28",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Integrated third-party libraries and performed unit testing and bug fixes.",
+   "why": "Priya's testing and debugging work remains in one concise bullet with her integration work.",
+   "from": "old resume",
+   "id": "L30",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Analytics Software Developer | **Nonprofit** | Jun 2019 - Dec 2021",
+   "why": "Priya's nonprofit job is moved out from under the misplaced education heading, with its title and dates preserved.",
+   "from": "old resume",
+   "id": "L31",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Analyzed data about children and volunteers with Python and SQL; the work improved program effectiveness and operational efficiency by 20%.",
+   "why": "Priya's data topics, tools, and 20% result remain in a shorter sentence.",
+   "from": "old resume",
+   "id": "L32",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Used regression and clustering to analyze children's progress and inform program strategies.",
+   "why": "Priya's methods and use of the analysis remain without the extra wording.",
+   "from": "old resume",
+   "id": "L33",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Created reports and visualizations with Tableau and Matplotlib. This increased stakeholder engagement by 25%.",
+   "why": "Priya's tools and 25% result remain in a shorter sentence.",
+   "from": "old resume",
+   "id": "L34",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Built predictive models with Scikit-learn to forecast volunteer engagement and retention.",
+   "why": "Priya's predictive model and forecast remain; the general resource-planning outcome is cut.",
+   "from": "old resume",
+   "id": "L35",
    "s": "rw"
   },
   {
@@ -1034,47 +1246,29 @@
   {
    "k": "p",
    "tx": "**Triplet-loss face matching model**",
-   "id": "L31",
+   "id": "L43",
    "s": "rw"
   },
   {
    "k": "bul",
-   "tx": "Developed a face recognition system with a deep learning model trained on triplet loss to tell similar and dissimilar faces apart, covering data preprocessing, model training and evaluation on a large dataset of facial images.",
-   "why": "Shortened to one sentence, keeping triplet loss and the steps she covered; the next project's name at the end of the line now has its own line.",
+   "tx": "Built a face recognition system using triplet loss to distinguish similar and dissimilar faces; worked on data preprocessing, model training, and evaluation on a large dataset of facial images.",
+   "why": "Priya's model type, task, and work on data and evaluation remain; broader embedding and training explanations are shortened.",
    "from": "old resume",
-   "id": "L25",
+   "id": "L36",
    "s": "rw"
   },
   {
    "k": "p",
-   "tx": "**Web exam builder with instant scoring**",
-   "id": "A33",
+   "tx": "**Graph-search web scraper for data analysis**",
+   "id": "A34",
    "s": "new"
   },
   {
    "k": "bul",
-   "tx": "Created an online examination platform with PHP, HTML, CSS, Bootstrap and SQL where educators build exams and students get immediate scores.",
-   "why": "The premier project claim was dropped at Priya's request, since she could not say who gave it.",
-   "from": "sign-off",
-   "id": "L26",
-   "s": "rw"
-  },
-  {
-   "k": "h2",
-   "tx": "Publications"
-  },
-  {
-   "k": "p",
-   "tx": "**Position paper on a data-cleaning tool**",
-   "id": "L30",
-   "s": "rw"
-  },
-  {
-   "k": "bul",
-   "tx": "Published a position paper with a team of 6 at a 2022 workshop on data-centric AI at a major machine-learning conference; recognized among its top 100 accepted papers.",
-   "why": "Positional paper became position paper; the team size and the top 100 note are kept as she wrote them.",
+   "tx": "Built a web scraper with Python, BeautifulSoup, BFS, and DFS for website navigation, then used pandas for data analysis and visualization.",
+   "why": "Priya's scraper, navigation algorithms, and analysis tools remain while promotional wording is removed.",
    "from": "old resume",
-   "id": "L27",
+   "id": "L37",
    "s": "rw"
   },
   {
@@ -1083,47 +1277,51 @@
   },
   {
    "k": "role",
-   "tx": "**Master of Science in Computer Science**, Public university, USA | Aug 2023 - May 2025 | GPA: 4.00/4.00",
-   "why": "The education line was split into one line per degree and moved to the end, since the job values her work experience first.",
+   "tx": "**Master of Science in Computer Science**, Public University, USA | Aug 2023 - May 2025 | GPA: 4.00/4.00",
+   "why": "Priya's master's degree, school stand-in, dates, and GPA are laid out on one education line.",
    "from": "old resume",
-   "id": "L1",
+   "id": "L38",
    "s": "rw"
   },
   {
    "k": "role",
-   "tx": "**Bachelor of Technology in Information Technology**, Engineering college, India | Jul 2018 - May 2022 | GPA: 3.78/4.00",
-   "why": "Her bachelor's degree, from the same education line of her old resume, now on a line of its own.",
+   "tx": "**Bachelor of Technology in Information Technology**, Engineering College, India | Jul 2018 - May 2022 | GPA: 3.78/4.00",
+   "why": "Priya's bachelor's degree, school stand-in, dates, and GPA are laid out on one education line.",
    "from": "old resume",
-   "s": "new",
-   "id": "A38"
+   "id": "L39",
+   "s": "rw"
   },
   {
    "k": "h2",
-   "tx": "Certifications"
+   "tx": "Research Publication"
   },
   {
-   "k": "bul",
-   "tx": "Coursera: Machine Learning, Deep Learning, TensorFlow Specialist, Generative AI with LLMs",
-   "why": "The certifications line was split into one line per issuer, and the club award was left out to fit one page.",
+   "k": "role",
+   "tx": "**Position paper on a data-cleaning tool** | 2022",
+   "why": "Priya's publication title is retained and its supplied year is shown beside it.",
    "from": "old resume",
-   "id": "L28",
+   "id": "L40",
    "s": "rw"
   },
   {
    "k": "bul",
-   "tx": "Oracle: Oracle Cloud Infrastructure Generative AI Certified Professional",
-   "why": "Her Oracle certification, split out of her old certifications line.",
+   "tx": "Published a position paper with a team of 6 at a 2022 workshop on data-centric AI at a major machine-learning conference, and recognized among its top 100 accepted papers.",
+   "why": "Priya's paper, team size, workshop, and ambiguous recognition wording stay as in her confirmed resume; only the spelling and layout are cleaned up.",
    "from": "old resume",
-   "s": "new",
-   "id": "A40"
+   "id": "L41",
+   "s": "rw"
   },
   {
-   "k": "bul",
-   "tx": "National online course: Python; IT services company: Technology Training Diploma",
-   "why": "Her Python course and training diploma, split out of her old certifications line.",
+   "k": "h2",
+   "tx": "Certifications and Award"
+  },
+  {
+   "k": "p",
+   "tx": "Oracle Cloud Infrastructure Generative AI Certified Professional; Coursera: Machine Learning, Deep Learning, TensorFlow Specialist, Generative AI with LLMs; National online course: Python; IT services company: Technology Training Diploma; Public-speaking club: Positive Contributor Award.",
+   "why": "Priya's certifications and award remain, grouped into a single readable line.",
    "from": "old resume",
-   "s": "new",
-   "id": "A41"
+   "id": "L42",
+   "s": "rw"
   }
  ]
 }

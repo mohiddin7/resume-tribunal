@@ -1,65 +1,61 @@
 # Priya Nair
-Dallas, TX (Open to Relocation) | priya.nair@example.com | (214) 555-0163
-
-## Summary
-Deep learning engineer on an autonomous-driving platform: developed object detection algorithms that reached 95% precision and recall, and a multi-object tracking (MOT) model with Graph Neural Networks. MS in Computer Science (GPA 4.00/4.00) and Oracle Cloud Infrastructure Generative AI Certified Professional.
+Dallas, TX | Open to relocation | priya.nair@example.com | (214) 555-0163
 
 ## Skills
-- **Machine learning and AI:** Deep Learning (CNN, RNN, LSTM, GRU), Machine Learning (Supervised, Unsupervised), Generative AI, LLMs, Prompt Engineering, NLP, MLOps
-- **Libraries:** PyTorch, TensorFlow, Scikit-learn, OpenCV, YOLO, Pandas, NumPy, Selenium, BeautifulSoup
-- **Languages:** Python, Java, C++, SQL, JavaScript, HTML, CSS
-- **Cloud and data:** AWS (SageMaker, EC2, S3), Azure, MySQL, PostgreSQL, MongoDB, Oracle, SQL Server, Git
-- **Tools:** Tableau, PowerBI, Matplotlib, Jupyter Notebook, Colab, Visual Studio Code, IntelliJ, Supervisely
+**Machine learning:** Deep learning, machine learning, computer vision, CNN, RNN, LSTM, GRU, TensorFlow, PyTorch, Scikit-learn, OpenCV, YOLO, Faster R-CNN, Graph Neural Networks, Generative AI - LLMs, prompt engineering, NLP, MLOps
+**Programming and data:** Python, Java, C, C++, C#, .Net, SQL, PL/SQL, MySQL, Oracle, SQL Server, PostgreSQL, MongoDB
+**Cloud and tools:** AWS, SageMaker, Azure, EC2, S3, EBS, GIT, Selenium, BeautifulSoup, Supervisely, Jupyter Notebook, Colab, Tableau, Matplotlib
+**Web:** JavaScript, HTML, CSS, Bootstrap, XML, JSON, NodeJS, Django
 
 ## Experience
-
-### Public university, USA
+### Public University, USA
 **Graduate Research Assistant** | Jan 2024 - May 2025
-- Built a universal data extraction tool with Python and Selenium that reduced extraction time by 66% for 100,000 records.
-- Optimized web scraping with BeautifulSoup so data extraction took 1 hour instead of 3 hours, and used JavaScript techniques for dynamic data extraction.
-- Built data storage with MongoDB and SQL, and analyzed and visualized research data in Jupyter Notebook and Colab.
+- Built a data extraction tool with Python and Selenium. It reduced extraction time by 66% for 1,00,000 records.
+- Reduced web scraping time from 3 hours to 1 hour using BeautifulSoup, HTML, and CSS.
+- Used MongoDB and SQL to build data solutions that increased storage capabilities and project versatility.
+- Used Jupyter Notebook and Colab for data analysis and visualization.
+- Used JavaScript for web scraping and dynamic data extraction.
 
 **Graduate Student Assistant** | Sep 2023 - May 2025
-- Delivered database solutions with SQL and MySQL and documented database procedures for troubleshooting.
-- Gave technical support and training sessions on databases.
+- Delivered database solutions using SQL and MySQL, and provided technical support and training.
+- Documented database procedures and supported database maintenance, testing, and debugging.
 
-### Large IT services company
-**System Engineer - Deep Learning Engineer** | May 2022 - Aug 2023
-- Developed and optimized object detection algorithms with OpenCV, YOLO and Faster R-CNN, achieving 95% precision and recall.
-- Developed a multi-object tracking (MOT) model with Faster R-CNN and Graph Neural Networks for a self-driving application, which improved its accuracy and automated quality checks.
-- Created an image clustering method for segmentation with TensorFlow and PyTorch that cut labeling time by 50% and lowered costs through SageMaker.
-- Streamlined ground truth data annotation by 50% using AWS SageMaker and Supervisely, with semi/self-supervised learning for data curation.
-- Applied PyTorch and TensorFlow to dynamic AI model selection for detection and segmentation tasks.
-- Upgraded database structures for the company's autonomous-driving platform using SQL to speed up data processing for its AI models.
+### Large IT Services Company
+**System Engineer – Deep Learning Engineer** | May 2022 - Aug 2023
+- Updated SQL database structures for the company's autonomous-driving platform.
+- Streamlined ground truth data annotation by 50% using AWS SageMaker and Supervisely, leveraging semi/self-supervised learning for accuracy in data curation.
+- Developed a MOT model with Faster R-CNN and Graph Neural Networks for a self-driving application. It improved self-driving application accuracy and automated quality checks.
+- Developed and optimized object detection algorithms with OpenCV, YOLO, and Faster R-CNN, achieving a 95% precision and recall rate.
+- Developed an image clustering method for segmentation with TensorFlow and PyTorch. It reduced labeling time by 50% and minimized costs through SageMaker.
+- Used PyTorch and TensorFlow for machine learning and deep learning model selection in detection and segmentation tasks.
 
 **Software Engineer Intern** | Jan 2022 - May 2022
 - Optimized data processing algorithms, lowering execution time by 30%.
-- Built a real-time monitoring system in Java for early issue detection.
-- Designed and deployed web application features with JavaScript, HTML and CSS, and ran unit testing and bug fixing.
+- Developed web application features with JavaScript, HTML, and CSS.
+- Built a real-time monitoring system using Java.
+- Integrated third-party libraries and performed unit testing and bug fixes.
 
 ### Nonprofit
 **Analytics Software Developer** | Jun 2019 - Dec 2021
-- Developed predictive models with Scikit-learn to forecast volunteer engagement and retention for resource planning.
-- Analyzed children's progress with regression models and clustering to find trends that informed program strategies.
-- Raised program effectiveness and operational efficiency by 20% with Python and SQL analysis of data collected on children and volunteers.
-- Created reports and visualizations in Tableau and Matplotlib that increased stakeholder engagement by 25%.
+- Analyzed data about children and volunteers with Python and SQL; the work improved program effectiveness and operational efficiency by 20%.
+- Used regression and clustering to analyze children's progress and inform program strategies.
+- Created reports and visualizations with Tableau and Matplotlib. This increased stakeholder engagement by 25%.
+- Built predictive models with Scikit-learn to forecast volunteer engagement and retention.
 
 ## Projects
 **Triplet-loss face matching model**
-- Developed a face recognition system with a deep learning model trained on triplet loss to tell similar and dissimilar faces apart, covering data preprocessing, model training and evaluation on a large dataset of facial images.
+- Built a face recognition system using triplet loss to distinguish similar and dissimilar faces; worked on data preprocessing, model training, and evaluation on a large dataset of facial images.
 
-**Web exam builder with instant scoring**
-- Created an online examination platform with PHP, HTML, CSS, Bootstrap and SQL where educators build exams and students get immediate scores.
-
-## Publications
-**Position paper on a data-cleaning tool**
-- Published a position paper with a team of 6 at a 2022 workshop on data-centric AI at a major machine-learning conference; recognized among its top 100 accepted papers.
+**Graph-search web scraper for data analysis**
+- Built a web scraper with Python, BeautifulSoup, BFS, and DFS for website navigation, then used pandas for data analysis and visualization.
 
 ## Education
-**Master of Science in Computer Science**, Public university, USA | Aug 2023 - May 2025 | GPA: 4.00/4.00
-**Bachelor of Technology in Information Technology**, Engineering college, India | Jul 2018 - May 2022 | GPA: 3.78/4.00
+**Master of Science in Computer Science**, Public University, USA | Aug 2023 - May 2025 | GPA: 4.00/4.00
+**Bachelor of Technology in Information Technology**, Engineering College, India | Jul 2018 - May 2022 | GPA: 3.78/4.00
 
-## Certifications
-- Coursera: Machine Learning, Deep Learning, TensorFlow Specialist, Generative AI with LLMs
-- Oracle: Oracle Cloud Infrastructure Generative AI Certified Professional
-- National online course: Python; IT services company: Technology Training Diploma
+## Research Publication
+**Position paper on a data-cleaning tool** | 2022
+- Published a position paper with a team of 6 at a 2022 workshop on data-centric AI at a major machine-learning conference, and recognized among its top 100 accepted papers.
+
+## Certifications and Award
+Oracle Cloud Infrastructure Generative AI Certified Professional; Coursera: Machine Learning, Deep Learning, TensorFlow Specialist, Generative AI with LLMs; National online course: Python; IT services company: Technology Training Diploma; Public-speaking club: Positive Contributor Award.

@@ -1,0 +1,39 @@
+{
+  "_about": "Each key is one place people land. Paste its warmhop link into \"warmhop\"; docs/build.py then adds ?ref=<where the link sits> and UTM tags to every placement. Empty means the plain address is used.",
+  "site": {
+    "to": "https://tribunal.warmhop.com/",
+    "warmhop": "https://warmhop.com/r/wLWYpGNJ"
+  },
+  "examples": {
+    "to": "https://tribunal.warmhop.com/examples/",
+    "warmhop": "https://warmhop.com/r/mQSvf2z3"
+  },
+  "post:how-resume-tribunal-was-made": {
+    "to": "https://tribunal.warmhop.com/blog/how-resume-tribunal-was-made.html",
+    "warmhop": "https://warmhop.com/r/9R3btCCB"
+  },
+  "post:resume-skills-compared": {
+    "to": "https://tribunal.warmhop.com/blog/resume-skills-compared.html",
+    "warmhop": "https://warmhop.com/r/nHiARynB"
+  },
+  "repo": {
+    "to": "https://github.com/mohiddin7/resume-tribunal",
+    "warmhop": "https://warmhop.com/r/JK3uggBN"
+  },
+  "issues": {
+    "to": "https://github.com/mohiddin7/resume-tribunal/issues",
+    "warmhop": "https://warmhop.com/r/sdT9x8DB"
+  },
+  "zip": {
+    "to": "https://github.com/mohiddin7/resume-tribunal/releases/latest/download/resume-tribunal.zip",
+    "warmhop": "https://warmhop.com/r/ank5M2Qe"
+  },
+  "ops-run": {
+    "to": "https://github.com/mohiddin7/resume-tribunal/tree/main/examples/operations-analyst/first-run",
+    "warmhop": "https://warmhop.com/r/EGvSSGLX"
+  },
+  "warmhop": {
+    "to": "https://warmhop.com/",
+    "warmhop": "https://warmhop.com/r/bMKe8wRK"
+  }
+}

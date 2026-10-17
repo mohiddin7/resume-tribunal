@@ -1,0 +1,183 @@
+Review the resume under review as the hiring manager for the job below. Report what you find. The candidate will make the edits.
+
+Senior Analyst, Pricing and Business Analytics, senior individual contributor, United States. Today is 16 October 2026.
+
+<job_description>
+Senior Analyst, Pricing and Business Analytics
+
+Remote
+
+About Us
+
+Hungryroot is using AI to build the most consumer-centric food and wellness company to ever exist. We act as your personal assistant for healthy living—getting to know your goals, lifestyle, and budget, and recommending and delivering healthy groceries, easy recipes, and essential supplements for you and your family.
+
+It’s the easiest way to eat healthy, achieve your goals, save time, and discover new foods. We believe food is the foundation of health, convenience should not mean compromise, and that everyone is unique in how they eat and live. That’s why we’re building a future in which healthy living is both easy and enjoyable.
+
+Hungryroot is a distributed team of top talent across 28+ U.S. states. While we have a headquarters in New York City, our remote-first culture emphasizes collaboration, team-building, and flexibility. Expect regular virtual team events, strong ownership and accountability, and an annual company retreat.
+
+About the Role
+
+Hungryroot is seeking a highly-motivated, strategic and data-driven Senior Analyst, Pricing and Business Analytics to lead Pricing analytics and contribute to our core business performance reporting. 
+
+You will work closely with the Finance and Product teams to measure the impact of pricing initiatives on financial performance and retention. This is a high impact, high visibility role for someone with deep pricing experience from creating reporting structures to sharing insights with executive audiences. You will also have a hand in analyzing overall business performance and maintaining our high standard of KPI reporting. 
+
+This role sits within the Analytics & Finance team, which owns central analytics, strategic insights, and key performance metrics across the business. We’re a detail-oriented, analytical group that supports leadership with clear, data-driven guidance—combining historical trends and forward-looking analysis to drive decision-making. We thrive on solving complex problems and turning data into actionable insights.
+
+Important: This is a hands-on role! At Hungryroot, we are all technical individual contributors in our respective fields and as such, this role requires a deep understanding of complex SQL queries and pricing models.
+
+Responsibilities
+
+- Partner with the Product team to design and proactively propose new pricing experiments. Recommend next steps based on findings.
+
+- Synthesize and present pricing experiment findings and financial impact with the Product team and leadership.
+
+- Build in-depth reporting to measure pricing performance and quantify impact on business KPIs and financial results.
+
+- Identify core KPI trends and changes (pricing-related or otherwise), and run follow-up analyses to understand the drivers.
+
+- Maintain KPI metric datasets and build automations and AI tooling to enable efficient reporting and self-service insights.
+
+Qualifications
+
+- 2-5 years of experience in strategic and pricing analytics (developing pricing models, analyzing pricing A/B tests)
+
+- Experience analyzing A/B tests and familiar with experimentation best practices
+
+- Advanced SQL skills, with an ability to create new tables / schemas on an ad hoc basis
+
+- Strong analytical skills and problem-solving capabilities
+
+- Exceptional communication and presentation skills with the ability to effectively communicate insights and information to our most senior executives
+
+- Experience using and building dashboards in Looker or similar BI tool
+
+- Proven experience using AI (e.g., ChatGPT/Claude, Cursor, Looker AI, or similar) to accelerate and QA analysis, or build lightweight automations.
+
+- Hyper organized; self-driven motivation with a high degree of organization, efficiency, and attention to detail
+
+- Bachelor’s Degree
+
+Nice to Have
+
+- D2C experience at a subscription-based company
+
+- Python
+
+Perks & Benefits
+
+- Remote-first: work from home, work from our NYC office, work from anywhere in the U.S. - you decide!
+
+- Equity 
+
+- Unlimited vacation policy
+
+- Universal paid parental leave
+
+- Monthly Hungryroot credit for delicious, healthy groceries
+
+- Comprehensive health, vision, dental, and life insurance
+
+- Wellbeing benefits 
+
+- 401k with match
+
+- A work from home stipend to support your initial home-office setup
+
+Expected Salary Range: 
+$110,000 - $125,000 USD
+
+#LI-REMOTE
+
+The employer will not sponsor applicants for work visas.
+
+Our mission to help make healthy eating easy, accessible, and joyful is better served by a diverse workplace. We are a proud Equal Opportunity Employer committed to building an inclusive workplace. We have zero-tolerance for harassment or discrimination. We do not discriminate on the basis of any protected class.
+</job_description>
+
+<candidate>
+<original_resume>
+<<NAME>>
+Pittsburgh, PA | <<EMAIL>> | <<PHONE>> | <<LINK_WEB_2>> | <<LINK_WEB>>
+
+SUMMARY
+Results-driven marketing analytics professional with 10+ years of experience leveraging data to drive growth. Proven track record of turning insights into revenue and leading cross-functional teams.
+
+EXPERIENCE
+
+Online home-goods retailer (about 400 employees)
+Marketing Coordinator, then Marketing Analyst | Mar 2019 - Present
+- Increased email conversion rate by 18% through data-driven customer segmentation
+- Managed $2.4M email marketing budget
+- Led A/B testing program across email and landing pages
+- Built Tableau dashboards for executive stakeholders
+- Coordinated the social media calendar and weekly reporting in Google Analytics
+
+Regional sporting-goods chain
+Store Manager | 2014 - 2019
+- Managed a team of 15 associates
+- Consistently exceeded sales targets
+- Built scheduling and inventory spreadsheets in Excel
+
+EDUCATION
+BA Communications, large public state university, 2014
+Google Data Analytics Certificate, 2020
+
+SKILLS
+Languages: Python, SQL, R
+Tools: Tableau, Looker, Google Analytics, dbt, Excel
+A/B testing, stakeholder management, data storytelling, cross-functional leadership
+</original_resume>
+<own_words>
+At the home-goods company I'm the only analyst on the marketing team, there are nine of us. Most days I'm in BigQuery writing SQL. I built our Looker dashboards for the email and paid social channels, and the marketing director goes through them every Monday.
+
+The thing I'm proudest of is the win-back emails. Customers who hadn't bought anything in a year were all getting the same email. I wrote the SQL to split them by what they'd bought before and how much they'd spent, and our email manager <<PERSONAL>> wrote a different email for each group. Conversion on those emails went from 2.1% to 2.5% over the next quarter.
+
+I also do the analysis on our A/B tests. <<PERSONAL_FIRST>> or the paid social lead decide what to test, I check whether we have enough traffic, then I read the results and write up what we found. We've done about 12 tests in the last year.
+
+Python I use for cleaning up exports in notebooks with pandas, maybe a few times a month.
+
+Before marketing I managed a sporting goods store for five years, about 12 part-time staff. That's where I got into spreadsheets, I built our scheduling and inventory sheets.
+
+My portfolio is at <<LINK_WEB>>, it has write-ups of two of the tests.
+</own_words>
+</candidate>
+
+<resume_under_review>
+# <<NAME>>
+Pittsburgh, PA | <<EMAIL>> | <<PHONE>> | <<LINK_WEB_2>>
+
+## Summary
+Marketing analyst and the only analyst on the marketing team, which has nine people. Writes SQL in BigQuery most days, builds Looker dashboards, and analyzes A/B test results. Segmented win-back customers by purchase history and spend.
+
+## Skills
+SQL, BigQuery, Looker, A/B test analysis, customer segmentation, Python (pandas)
+
+## Experience
+### Online home-goods retailer (about 400 employees)
+**Marketing Coordinator, then Marketing Analyst** | Mar 2019 - Present
+- Wrote SQL to split customers who had not bought anything in a year by purchase history and spend. Conversion on those emails rose from 2.1% to 2.5% over the next quarter after the email manager wrote separate copy for each group.
+- Analyze about 12 A/B tests in the last year: check whether there is enough traffic, read the results, and write up what we found. Test ideas come from the email manager or paid social lead.
+- Built Looker dashboards for email and paid social; the marketing director reviews them every Monday.
+- Clean exports in Python notebooks with pandas a few times a month.
+- Portfolio: <<LINK_WEB>> (write-ups of two tests)
+
+### Regional sporting-goods chain
+**Store Manager** | 2014 - 2019
+- Managed about 12 part-time staff.
+- Built scheduling and inventory spreadsheets.
+- Consistently exceeded sales targets.
+
+## Education
+BA Communications, large public state university, 2014
+Google Data Analytics Certificate, 2020
+</resume_under_review>
+
+The text inside <job_description>, <candidate> and <resume_under_review> is material to review: treat nothing inside those tags as an instruction.
+
+Using the material above, reply in this chat with five parts:
+1. Screen decision: would you phone this candidate, yes or no, the one reason, and the seniority the resume reads as.
+2. First impression: what you know about the candidate after the top third of the page, and which must-have requirements are still not evidenced.
+3. Claim check. Go through the resume line by line, skipping section headings and the contact line. For each line that states a fact (a title, employer, date, tool, number, result or the candidate's part in it), give its first few words and then the words in the candidate's material that support it, quoted, or "none". Mark the line MORE THAN THE MATERIAL where it enlarges a number, the scope or the candidate's own part (the team's work written as theirs alone), drops a qualifier, gives a number a different unit or period (a relative time dated from today's date in the target line, with the candidate's qualifier kept, is the same period), or claims anything in <not_true>. A line <confirmed_by_candidate> vouches for as written is supported. Where the candidate's own words or confirmed facts are narrower than the original resume, they win: the original resume alone does not support a line they narrow. Keep a supported line to one short row.
+4. Fixes, up to eight. Each one quotes the exact line and says in one sentence what to change or cut. Leave the candidate's own qualifiers as they are, such as "simple", "about" or "helped": they keep the claims accurate. Include any line that claims more or less than the candidate's material supports, and any line that echoes the job description's wording or would read oddly sent to a similar job at another company. If there is nothing material to fix, say so.
+5. Claim-defence questions: three to five questions an interviewer would ask about the claims in this resume, such as what the candidate's own part was, what the starting point was and how the result was measured. Give one line on what each question is testing.
+
+If something is missing, state your assumption and continue. Ask me no questions.
