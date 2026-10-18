@@ -40,6 +40,8 @@ npx skills add mohiddin7/resume-tribunal
 
 ## How it works
 
+You paste the job and your resume, then check the changes. That takes about 2 minutes of your time, and the AIs do the rest.
+
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/assets/how-it-works-dark.svg">
@@ -47,6 +49,15 @@ npx skills add mohiddin7/resume-tribunal
     <img src="docs/assets/how-it-works.svg" width="620" alt="How Resume Tribunal works, in six steps: share the job and your resume; your AI rewrites it for the job; a second AI from a different company reads it like the hiring manager; a script checks the details; you approve the changes; your resume is ready to send.">
   </picture>
 </p>
+
+1. Drop in the job and your resume: paste the link into any AI chat.
+2. Your AI rewrites it for the job, using only your facts.
+3. A second AI, from a different company, checks it like a hiring manager, looking for anything made up.
+4. A script checks the details: layout, AI phrases and numbers.
+5. You check the changes and say yes to the ones you want.
+6. It's ready to send, with the interview questions you're likely to get.
+
+In a full council, up to three AIs from different companies each write a draft and critique the others' drafts before they are merged.
 
 The second AI can be reached in four ways. The skill picks the first one that works for you and tells you which.
 
