@@ -1,4 +1,4 @@
-"""Drawings for the site and README: logo, the how-it-works flow, and the animated blog figures.
+"""Drawings for the site and README: the logo, the og card and the animated blog figures.
 
 Every drawing is an SVG with colour tokens. variant=True follows the viewer's light or dark setting,
 False is always dark, None is always light (used for GIF exports and GitHub's theme switch).
@@ -102,68 +102,6 @@ def og():
 <text x="245" y="549" text-anchor="middle" font-size="26" font-weight="700" fill="#fff">Free and open source</text>
 </svg>
 '''
-
-
-# The six steps, shared by the README drawing and the website (tag, colour, title, line).
-STEPS = [
-    ("YOU", "green", "Share the job and your resume", "Paste the job link, attach your resume, and add a few words about what you really did."),
-    ("AI 1 · YOUR AI", "blue", "It rewrites your resume for this job", "Uses the job's own words for the skills you really have, so you read like a match."),
-    ("AI 2 · A DIFFERENT COMPANY", "brand", "A second AI reads it like the hiring manager", "Would they shortlist you? What's missing? It isn't told who wrote the draft."),
-    ("AUTOMATIC CHECK", "purple", "A script checks the details", "A layout screening software can read, no AI-sounding phrases, no numbers you never gave."),
-    ("YOU", "green", "You approve the changes", "Say yes to each one. Nothing goes in that you couldn't explain in an interview."),
-    ("RESULT", "brand", "Your resume, ready to send", "Plus what the job asks for that you don't show yet, and the questions to expect."),
-]
-STEP_S, HOLD_S = 1.6, 2.4
-
-
-def wrap(text, n):
-    words, lines, cur = text.split(), [], ""
-    for w in words:
-        if len(cur) + len(w) + 1 > n:
-            lines.append(cur); cur = w
-        else:
-            cur = (cur + " " + w).strip()
-    return lines + [cur]
-
-
-def how_it_works(variant):
-    """README drawing: six cards light up one after another, a dot runs down each arrow, then it loops."""
-    cycle = STEP_S * len(STEPS) + HOLD_S
-    a, W, X, BW, GAP, y, out = Anim(round(cycle, 1)), 680, 40, 600, 30, 84, []
-    end = STEP_S * len(STEPS) + HOLD_S * .7
-    for i, (tag, col, title, line) in enumerate(STEPS):
-        body = wrap(line, 66)
-        h = 66 + 22 * len(body) + (46 if i == 2 else 0)
-        t0 = i * STEP_S
-        lit = a.at(f"l{i}", [(0, "opacity:0"), (t0, "opacity:0"), (t0 + .3, "opacity:1"), (end, "opacity:1"), (end + .5, "opacity:0"), (cycle, "opacity:0")])
-        out.append(f'<rect x="{X}" y="{y}" width="{BW}" height="{h}" rx="14" fill="var(--surf)" stroke="var(--line)" stroke-width="1.5"/>'
-                   f'<rect {lit} x="{X}" y="{y}" width="{BW}" height="{h}" rx="14" fill="var(--{col})" fill-opacity=".07" stroke="var(--{col})" stroke-width="2.5"/>'
-                   f'<rect x="{X}" y="{y + 14}" width="5" height="{h - 28}" rx="2.5" fill="var(--{col})"/>'
-                   f'<text x="{X + 24}" y="{y + 26}" font-size="12" font-weight="700" letter-spacing="1.2" fill="var(--{col})">{tag}</text>'
-                   f'<text x="{X + 24}" y="{y + 50}" font-size="19" font-weight="800" fill="var(--ink)">{title}</text>'
-                   + "".join(f'<text x="{X + 24}" y="{y + 73 + 22 * k}" font-size="15" fill="var(--muted)">{l}</text>' for k, l in enumerate(body)))
-        if i == 2:
-            cy, chips = y + 66 + 22 * len(body) + 2, ""
-            for k, (label, dx) in enumerate([("Draft K", 368), ("Draft M", 0), ("Draft R", -368)]):
-                mv = a.at(f"sw{k}", [(0, "transform:translateX(0)"), (t0 + .4, "transform:translateX(0)"), (t0 + 1.2, f"transform:translateX({dx}px)"),
-                                     (end, f"transform:translateX({dx}px)"), (end + .6, "transform:translateX(0)"), (cycle, "transform:translateX(0)")]) if dx else ""
-                cx = X + 24 + k * 184
-                chips += (f'<g {mv}><rect x="{cx}" y="{cy}" width="168" height="26" rx="13" fill="var(--bg)" stroke="var(--line)"/>'
-                          f'<text x="{cx + 84}" y="{cy + 17}" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">{label}</text></g>')
-            out.append(chips)
-        y += h
-        if i < len(STEPS) - 1:
-            dot = a.at(f"d{i}", [(0, "opacity:0;transform:translateY(0)"), (t0 + .8, "opacity:0;transform:translateY(0)"), (t0 + .9, "opacity:1;transform:translateY(0)"),
-                                 (t0 + 1.5, f"opacity:1;transform:translateY({GAP - 12}px)"), (t0 + 1.6, f"opacity:0;transform:translateY({GAP - 12}px)"), (cycle, "opacity:0")])
-            out.append(f'<path d="M{W / 2} {y + 5}V{y + GAP - 7}" stroke="var(--line)" stroke-width="2" stroke-linecap="round"/>'
-                       f'<path d="M{W / 2 - 6} {y + GAP - 13}l6 7 6-7" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
-                       f'<circle {dot} cx="{W / 2}" cy="{y + 6}" r="5" fill="var(--{STEPS[i + 1][1]})"/>')
-            y += GAP
-    H = y + 30
-    head = (f'<text x="{X}" y="44" font-size="23" font-weight="800" fill="var(--ink)">How Resume Tribunal works</text>'
-            f'<text x="{X}" y="66" font-size="14" fill="var(--muted)">About 2 minutes of your time. Each step lights up in turn.</text>')
-    desc = " ".join(f"Step {n}: {t}. {l}" for n, (_, _, t, l) in enumerate(STEPS, 1))
-    return svg(W, H, variant, "How Resume Tribunal works", desc, head + "".join(out), a.style())
 
 
 # Blog figures, 720 x 405 (16:9, the shape Medium and LinkedIn show best).

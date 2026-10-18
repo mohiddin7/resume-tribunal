@@ -44,9 +44,8 @@ You paste the job and your resume, then check the changes. That takes about 2 mi
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/how-it-works-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="docs/assets/how-it-works-light.svg">
-    <img src="docs/assets/how-it-works.svg" width="620" alt="How Resume Tribunal works, in six steps: share the job and your resume; your AI rewrites it for the job; a second AI from a different company reads it like the hiring manager; a script checks the details; you approve the changes; your resume is ready to send.">
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/how-it-works-dark.gif">
+    <img src="docs/assets/how-it-works-light.gif" width="760" alt="The How it works player from the website, step by step: the job link and resume go into a chat; your AI rewrites two lines and slips in a made-up &quot;4 hours&quot;; a second AI, not told who wrote it, catches it and restores &quot;half a day&quot;; a script ticks off layout, AI phrases and numbers; you approve the two changes; your resume is ready, with five interview questions.">
   </picture>
 </p>
 

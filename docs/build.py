@@ -1,9 +1,9 @@
 """Builds the website. Run from the repo root.
 
   python3 docs/build.py         drawings, blog pages, blog index, homepage, example run pages, feed.xml, sitemap.xml
-  python3 docs/build.py media   also renders og.png, apple-touch-icon.png and a GIF of every blog figure
-                                (for Medium and LinkedIn, which take GIFs but not SVGs); needs Chrome,
-                                agent-browser and Pillow
+  python3 docs/build.py media   also renders og.png, apple-touch-icon.png, a GIF of every blog figure
+                                (for Medium and LinkedIn, which take GIFs but not SVGs) and the README's
+                                How it works GIFs; needs Chrome, agent-browser and Pillow
 
 Edit docs/blog/*.md, docs/art.py and the text in this file; never the generated HTML. Blog posts take
 front matter (title, description, date, tags) and two shortcodes on their own line:
@@ -76,7 +76,6 @@ MOON = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill=
 def write_drawings():
     a = DOCS / "assets"
     for variant, suffix in ((True, ""), (None, "-light"), (False, "-dark")):
-        (a / f"how-it-works{suffix}.svg").write_text(art.how_it_works(variant))
         (a / f"logo{suffix}.svg").write_text(art.logo(variant))
         for name, (fn, _) in art.FIGURES.items():
             (DOCS / "blog" / "media" / f"{name}{suffix}.svg").write_text(fn(variant))
@@ -767,7 +766,8 @@ def build_home(items):
 # ---------- media (PNG and GIF) ----------
 
 def media():
-    """og.png, apple-touch-icon.png, and one GIF per blog figure, rendered in a real browser."""
+    """og.png, apple-touch-icon.png, one GIF per blog figure, and the homepage's How it works player as GIFs
+    for the README, rendered in a real browser."""
     import glob
     import os
     import subprocess
@@ -796,6 +796,26 @@ def media():
             frames[0].save(DOCS / "blog" / "media" / f"{name}.gif", save_all=True, append_images=frames[1:],
                            duration=int(step * 1000), loop=0, optimize=True)
             print("gif:", name, len(frames), "frames")
+        # The README's How it works: the homepage player, frame by frame, in light and dark.
+        ab("open", f"file://{(DOCS / 'index.html').resolve()}")
+        ab("set", "viewport", "1040", "800")
+        for theme in ("light", "dark"):
+            js = (f'document.documentElement.dataset.theme = "{theme}"; document.documentElement.style.scrollBehavior = "auto";'
+                  'document.querySelector(".hiw .pause").style.visibility = "hidden";'
+                  'document.querySelector(".hiw").scrollIntoView({block: "center"});'
+                  'var r = document.querySelector(".hiw").getBoundingClientRect(); JSON.stringify([r.left, r.top, r.right, r.bottom])')
+            box = [round(v) for v in json.loads(json.loads(ab("eval", js).stdout.strip().splitlines()[-1]))]
+            frames = []
+            for n in range(len(HIW)):
+                for i in range(22):  # 22 frames of 200 ms: the player's 4.4 s per step, stopping short of the step's end
+                    click = f'document.querySelectorAll(".hiw .st")[{n}].click();' if i == 0 else ""
+                    ab("eval", click + f"document.getAnimations().forEach(a => {{ a.pause(); a.currentTime = {i * 200}; }})")
+                    f = pathlib.Path(d) / f"hiw-{theme}-{n}-{i:02}.png"
+                    ab("screenshot", str(f))
+                    frames.append(Image.open(f).convert("RGB").crop(box))
+            frames[0].save(DOCS / "assets" / f"how-it-works-{theme}.gif", save_all=True, append_images=frames[1:],
+                           duration=200, loop=0, optimize=True)
+            print("gif: how-it-works", theme, len(frames), "frames")
         ab("close")
 
 
