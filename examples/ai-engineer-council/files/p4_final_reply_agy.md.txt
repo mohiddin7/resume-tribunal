@@ -1,0 +1,110 @@
+### 1. Screen Decision
+
+- **Phone this candidate:** No.
+- **The one reason:** The candidate does not meet the minimum requirement of 4+ years of experience shipping production software systems; their background consists of data analysis, graduate research assistant scripting, and an intern-level machine learning project, with zero production backend engineering experience and no listed professional activity since 2023.
+- **Seniority the resume reads as:** Entry-level / Junior (New Graduate / Junior Data Analyst).
+
+---
+
+### 2. First Impression
+
+- **What you know about the candidate after the top third of the page:** The candidate is located in Seattle, WA (rather than Chicago). Their technical footprint is centered on data analysis, basic Python scripting, SQL reporting, and tabular dashboards (SQL Server, SSMS, Excel, Tableau, AWS QuickSight), supplemented by standard academic machine learning keyword tags (CNN, Yolov7, BERT variants). Their primary professional experience shown is a graduate research assistantship involving administrative invoice extraction and departmental budget query automation.
+- **Must-have requirements still not evidenced:**
+  1. *4+ years of experience as an engineer shipping production systems:* None evidenced (only an academic assistantship).
+  2. *Strong backend engineering fundamentals (debugging failing distributed systems, tracing issues across services, reasoning about data flows):* Not evidenced.
+  3. *Experience building and deploying AI agents, LLM-powered tools, or workflow automation beyond basic prompt engineering:* Not evidenced (lists pre-trained NLP/CV model names, but no LLM agents or production tool integration).
+  4. *Proficiency in at least two of Ruby, Node.js, Python, or Next.js:* Only Python is shown; Ruby, Node.js, and Next.js are completely absent.
+  5. *Cloud infrastructure & DevOps (deployment, monitoring pipelines, production infrastructure on AWS/GCP):* Only keyword mentions of S3, EC2, QuickSight, and GCP; no CI/CD, container orchestration, monitoring, or deployment engineering shown.
+  6. *Experience building internal tools, developer platforms, or workflow automation:* Only basic local script automation (PDF parsing to Excel); no developer platforms or shared internal tooling.
+  7. *Working across multiple codebases and technology stacks simultaneously:* Not evidenced.
+  8. *Comfort with ambiguity and shipping iteratively without specs:* Not evidenced in an engineering or business context.
+
+---
+
+### 3. Claim Check
+
+- `- Programming: Python, SQL` — `"Programming languages: Python, SQL"`
+- `- Cloud: AWS S3, AWS EC2, AWS QuickSight, GCP` — `"AWS S3, AWS EC2"`, `"AWS QuickSight"`, `"GCP"`
+- `- Machine learning: Natural Language Processing (NLP), CNN, Yolov7, DeBERTa, RoBERTa, DistilBERT` — `"Natural Language Processing (NLP)"`, `"CNN, Yolov7 models"`, `"DeBERTa, RoBERTa, DistilBERT"`
+- `- Data and reporting: SQL Server, SSMS, Excel, Tableau` — `"SSMS"`, `"SQL Server and Tableau"`, `"Excel and Tableau"`
+- `- Systems: Linux` — `"Linux"`, `"Keep Linux."`
+- `### University school of public health, USA` — `"University school of public health – Graduate Research Assistant; USA"`
+- `**Graduate Research Assistant** | Nov 2022 - Dec 2023` — `"Graduate Research Assistant; USA Nov 2022 – Dec 2023"`
+- `- Automated PDF invoice data extraction to Excel with Python; data entry time fell by 80%.` — `"Automated data collection by extracting information from PDF invoices and exporting relevant data to Excel sheets using Python, resulting in an 80% reduction in data entry time"`
+- `- Extracted and updated departmental research expenditures with SQL queries; exported results from SSMS to Excel and reduced analysis time by 40%.` — `"Implemented SQL queries to extract and update research expenditures of departments, exported the results as Excel sheets from SSMS, which reduced analyzing time by 40%"`
+- `- Collaborated with the IT team to implement secure, reliable data management and reporting systems using SQL Server and Tableau; report generation time fell by 70%.` — `"Collaborated with the IT team to implement secure and reliable data management and reporting systems using SQL Server and Tableau, resulting in a 70% reduction in report generation time"`
+- `### Large cloud provider, USA` — `"Large cloud provider... USA"`
+- `**Solutions Architect Intern - Data Science** | May 2023 - Aug 2023` — `"Solutions Architect Intern – Data Science; USA May 2023 – Aug 2023"`
+- `- Developed real-time basketball video analysis for shot and posture analysis, with 76% accuracy using object detection and image classification with CNN and Yolov7 models.` — `"Developed and implemented real time video analysis of basketball shot to provide shot and posture analysis of the shooter with accuracy of 76% by object detection and image classification using CNN, Yolov7 models"`
+- `- Designed and tested over 30 ML models using AWS S3 and AWS EC2 to find the best model; accuracy increased by 14% and runtime decreased by 25%.` — `"Designed and tested over 30 ML models using AWS S3, AWS EC2 to find the best model, resulted in increasing the accuracy by 14% and decreasing the runtime by 25%"`
+- `- Created AWS QuickSight dashboards to monitor model performance, runtime and computational resources, resulting in a 20% increase in overall model efficiency.` — `"Created AWS QuickSight dashboards to closely monitor KPIs, including performance metrics, runtime and computational resources, resulting in a 20% increase in overall model efficiency"`
+- `- Shadowed Solutions Architects' meetings with 4 different customers to learn sales procedures and tools available to assist customers.` — `"Learned the company's sales procedures and tools available to assist customers by shadowing meetings between Solutions Architects and 4 different customers"`
+- `### Policy research nonprofit, India` — `"Policy research nonprofit - Data Analyst; India"`
+- `**Data Analyst** | Jun 2020 - Jul 2022` — `"Data Analyst; India Jun 2020 - Jul 2022"`
+- `- Automated Python web scraping for monthly and annual reports; manual data collection time fell by over 100 hours.` — `"Automated web scraping using Python to collect data for monthly and annual reports, resulting in reduction of over 100 hours in manual data collection time"`
+- `- Developed and executed 100+ complex SQL queries on Federal and State budgets in Agriculture, Education and Health for reports used to advocate for and facilitate policy change.` — `"Developed and executed 100+ complex SQL queries to analyze Federal and State budgets data in departments such as Agriculture, Education, Health using, to create data-driven reports instrumental in advocating for and facilitating policy change"`
+- `- Designed Tableau dashboards to monitor KPIs and expenditure, resulting in improved budget allocation, annual savings of 800K rupees and enhanced stakeholder retention.` — `"Designed Tableau dashboards to monitor KPIs and track expenditure, resulting in improved budget allocation, annual savings of 800K rupees, and enhanced stakeholder retention"`
+- `- Collaborated to publish monthly reports using Excel and analytical writing; publications doubled and donor funds increased by 45%.` — `"Collaborated to publish monthly reports using Excel and analytical writing, resulted in doubled publications... and a 45% increase in donor funds"`
+- `### News authenticity classifier | Python | Apr 2023` — `"News authenticity classifier | Python Apr 2023"`
+- `- Classified news as real or fake using DeBERTa, RoBERTa and DistilBERT; RoBERTa achieved the highest F1-score of 0.9916.` — `"Classified news as real or fake with an f1-score of 0.9916 using Natural Language Processing (NLP) algorithms such as DeBERTa, RoBERTa, DistilBERT, with RoBERTa having highest f1-score"`
+- `- Trained models using AWS EC2 and GCP compute engines; runtime decreased by 80%.` — `"Trained the models using AWS EC2 and GCP compute engines which reduced the runtime by 80%"`
+- `### Crop leaf disease detector | Python | Dec 2022` — `"Crop leaf disease detector | Python Dec 2022"`
+- `- Predicted diseased plants with 96.8% accuracy using 12K images, CNN and pre-trained Resnet50, VGG16 and Densenet121 models.` — `"Predicted diseased plants with 96.8% accuracy by training 12K images with CNN and pre-trained models (Resnet50, VGG16, Densenet121)"`
+- `- Built an interactive web application to detect diseased cotton plants, resulting in a 100% increase in user interaction.` — `"Built an interactive web application to detect diseased cotton plants, resulting in 100% increase in user interaction"`
+- `### Private university USA, United States` — `"Private university USA, United States"`
+- `Data Science Masters Candidate (CGPA: 3.95/4) | Dec 2023` — `"Data Science Masters Candidate (CGPA: 3.95/4) Dec 2023"`
+- `Relevant coursework: Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data Visualization` — `"Relevant Coursework: Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data visualization"`
+- `### Engineering institute, India` — `"Engineering institute, India"`
+- `Bachelor of Engineering, Electronics and Communication (CGPA: 8.66/10) | May 2020` — `"Bachelor of Engineering, Electronics and Communication (CGPA: 8.66/10) May 2020"`
+
+---
+
+### 4. Fixes
+
+1. `Data Science Masters Candidate (CGPA: 3.95/4) | Dec 2023`
+Change "Masters Candidate" to the actual degree awarded (e.g., "Master of Science in Data Science"), as listing candidacy with a December 2023 date nearly three years later in October 2026 implies an unfinished degree or an abandoned program.
+
+2. `- Built an interactive web application to detect diseased cotton plants, resulting in a 100% increase in user interaction.`
+Cut "resulting in a 100% increase in user interaction" and specify the web framework or deployment architecture instead, as a doubling metric on a personal student project lacks baseline context and sounds artificial.
+
+3. `- Created AWS QuickSight dashboards to monitor model performance, runtime and computational resources, resulting in a 20% increase in overall model efficiency.`
+Clarify that dashboard insights guided specific model or infrastructure adjustments that yielded the 20% gain, as creating a dashboard does not directly optimize model efficiency on its own.
+
+4. `- Shadowed Solutions Architects' meetings with 4 different customers to learn sales procedures and tools available to assist customers.`
+Cut this bullet or reframe it around specific technical assets or proof-of-concept deliverables produced during the internship, as passive shadowing reads as training observation rather than engineering impact.
+
+5. `- Designed Tableau dashboards to monitor KPIs and expenditure, resulting in improved budget allocation, annual savings of 800K rupees and enhanced stakeholder retention.`
+Rephrase to show that dashboards provided operational visibility that aided decision-makers, rather than attributing direct monetary savings and external stakeholder retention solely to dashboard creation.
+
+6. `Seattle, WA | <<EMAIL>> | <<PHONE>>`
+Add "Open to relocate to Chicago, IL" alongside the location to avoid immediate filtering on a role requiring presence in Chicago.
+
+7. `- Machine learning: Natural Language Processing (NLP), CNN, Yolov7, DeBERTa, RoBERTa, DistilBERT`
+Replace individual academic model checkpoints (Yolov7, DeBERTa, RoBERTa, DistilBERT) with foundational frameworks and systems engineering skills (e.g., PyTorch, model serving, REST APIs) to present as a software engineer rather than a student model evaluator.
+
+8. `### University school of public health, USA`
+Move this academic assistantship below the industry internship at Large cloud provider to keep commercial experience at the top of the section.
+
+---
+
+### 5. Claim-Defence Questions
+
+1. **Claim:** `- Created AWS QuickSight dashboards to monitor model performance, runtime and computational resources, resulting in a 20% increase in overall model efficiency.`
+   - **Question:** "How did you define and measure 'overall model efficiency', what was the baseline metric prior to the dashboard, and what specific technical modifications were made to the models or compute resources to produce that 20% improvement?"
+   - *Tests:* Evaluates whether the candidate can substantiate performance metrics with engineering changes versus conflating telemetry monitoring with system optimization.
+
+2. **Claim:** `- Built an interactive web application to detect diseased cotton plants, resulting in a 100% increase in user interaction.`
+   - **Question:** "What was the baseline interaction volume before the application was deployed, how was 'user interaction' defined and instrumented, and how many active users did that percentage represent?"
+   - *Tests:* Assesses data measurement rigor and tests whether the candidate relies on vanity percentages for unmeasured side projects.
+
+3. **Claim:** `- Designed Tableau dashboards to monitor KPIs and expenditure, resulting in improved budget allocation, annual savings of 800K rupees and enhanced stakeholder retention.`
+   - **Question:** "What was your specific personal contribution versus the operational leadership team's actions in realizing the 800K rupees in savings, and what causal link tied donor/stakeholder retention directly to your dashboard implementation?"
+   - *Tests:* Distinguishes the candidate's actual individual engineering/reporting contribution from broad organizational business outcomes.
+
+4. **Claim:** `- Automated PDF invoice data extraction to Excel with Python; data entry time fell by 80%.`
+   - **Question:** "What libraries and parsing strategies did your Python automation use to handle schema variances or unformatted PDFs, and how was the 80% time reduction formally calculated across the team?"
+   - *Tests:* Tests edge-case error handling, pipeline robustness, and measurement validity in workflow automation scripts.
+
+5. **Claim:** `- Designed and tested over 30 ML models using AWS S3 and AWS EC2 to find the best model; accuracy increased by 14% and runtime decreased by 25%.`
+   - **Question:** "What model families and hyperparameter search architectures did you evaluate across those 30 iterations, what baseline model were you comparing against, and how did you profile runtime on EC2?"
+   - *Tests:* Probes empirical experimentation discipline, understanding of system trade-offs between compute latency and model accuracy, and hands-on depth during the internship.

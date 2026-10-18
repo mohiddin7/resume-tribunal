@@ -1,0 +1,257 @@
+Review the resume under review as the hiring manager for the job below. Report what you find. The candidate will make the edits.
+
+Target: AI Engineer, experienced individual contributor (4+ years required), United States (Chicago). Today is 16 October 2026.
+
+<job_description>
+AI Engineer
+
+Chicago
+
+Who We Are
+
+About Stripe
+
+Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world's largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone's reach while doing the most important work of your career.
+
+About The Team
+
+The Solutions Architecture (SA) organization helps Stripe's most strategic customers design and validate technical solutions that drive their business forward. Within SA, our team builds the tools, workflows, and custom technical assets that make the broader SA org more effective—turning individual ingenuity into org-wide capability.
+
+We are looking for AI Engineers who are energized by working close to the business and the users we serve. You'll operate as an embedded, high-context engineer focused on the highest-leverage opportunities across the SA org—building production-quality tooling, supporting our most strategic engagements, and shipping automation that meaningfully improves how Solutions Architects work every day.
+
+What You'll Do
+
+As an AI Engineer, you'll be embedded directly with the Solutions Architecture team—building alongside them, deeply understanding their workflows, and shipping tools and automation that permanently change how they operate. Your measure of success is SA productivity: the engagements you've accelerated, the workflows you've transformed, and the tools you've built that the org adopts as default.
+
+You'll ship code daily. You'll discover where SAs lose time and build high-impact solutions. You'll take what works for one person and scale it to work for the org. And when our most strategic customer engagements need custom technical assets, you'll build those too.
+
+This is a role for someone who wants to work at the intersection of engineering and business impact—close to customers, close to revenue, and building for people you can see using your work every day.
+
+Responsibilities
+
+- Collaborate with Solutions Architects, SA leadership, Product, and Engineering to scope technical work and translate ambiguous business needs into well-defined deliverables
+
+- Evaluate and integrate AI capabilities (LLMs, agents, workflow automation) where they provide genuine leverage—not for novelty, but for measurable productivity improvement
+
+- Architect and build internal tools, agents, and automated workflows that accelerate SA and manager productivity across technical discovery, solution design, demoing, user engagements, territory/pipeline management, and product interlock
+
+- Take high-potential tools and workflows built by SAs and managers and harden them into scalable, maintainable, production-grade solutions
+
+- Identify patterns across SA workflows and proactively build solutions that address recurring friction
+
+- Build custom demo environments, PoC applications, and technical assets for Stripe's most strategic customer engagements
+
+- Document tools, architectures, and usage patterns so others can adopt and extend what you've built
+
+- Debug, extend, and maintain backend systems across a variety of codebases and infrastructure
+
+Minimum Requirements
+
+- 4+ years of experience as an engineer shipping production systems
+
+- Strong backend engineering fundamentals: you can debug a failing system, trace issues across services, and reason about data flows
+
+- Experience building and deploying AI agents, LLM-powered tools, or workflow automation beyond basic prompt engineering
+
+- Experience scoping and delivering work with minimal oversight in a fast-moving, cross-functional environment
+
+- Proficiency in at least two of: Ruby, Node.js, Python, or Next.js
+
+- Familiarity with cloud infrastructure (AWS, GCP) including deployment, monitoring, and basic DevOps
+
+- Experience building internal tools, developer platforms, or workflow automation
+
+- Demonstrated ability to work across multiple codebases and technology stacks simultaneously
+
+- Hands-on experience using AI/LLM tools in your engineering workflow—you're fluent with AI-assisted development but not dependent on it; you can reason through problems and debug without AI as a crutch
+
+- Strong written and verbal communication skills; you can translate technical decisions for non-technical stakeholders and navigate cross-functional collaboration naturally
+
+- Comfort with ambiguity—you can take a loosely-defined business problem, scope the engineering work, and ship iteratively without waiting for a perfect spec
+
+Preferred Qualifications
+
+- Experience designing systems that non-engineers can build on top of or extend themselves (e.g., platforms, low-code frameworks, template systems)
+
+- Experience in a Solutions Engineering, Sales Engineering, or GTM Engineering role—or a product engineering role where you worked closely with customers or go-to-market teams
+
+- Familiarity with Stripe's products, APIs, or the payments/fintech domain
+
+- Experience integrating with third-party platforms (Salesforce, Gong, etc.)
+
+- Track record of building tools or systems that were adopted beyond your immediate team
+
+- Background in consulting, professional services, or other roles that blend technical depth with business context
+
+Who You Are
+
+Beyond the technical requirements, we're looking for a specific kind of engineer:
+
+- You want to be close to the business. You're energized by seeing your work directly impact how a sales team wins a deal or how a customer succeeds.
+
+- You're a pragmatic builder. You ship working solutions quickly, iterate based on real usage, and know when "good enough now" beats "perfect later." You'd rather show a working prototype today than present a roadmap deck next quarter.
+
+- You're a software engineer by practice. You can architect systems, debug production issues, write clean code, and reason about tradeoffs. AI is a tool in your belt, not a substitute for engineering judgment.
+
+- You're a pattern recognizer. When you build something that works for one person, you immediately see how it generalizes. You think in reusable systems, not one-off scripts.
+
+- You thrive without a traditional product team structure. No PRDs landing in your lap, no dedicated PM, no sprint ceremonies. You identify the highest-leverage problem, scope the work, and ship it. You're comfortable trading on-call rotations and rigid processes for autonomy and impact.
+
+- You're a strong communicator. You can partner with SAs who are domain experts, understand their workflows deeply enough to build great tools, and explain your technical choices to leadership.
+</job_description>
+
+<candidate>
+<original_resume>
+<<NAME>>
+Seattle, WA | <<EMAIL>> | <<PHONE>>
+
+PROFESSIONAL EXPERIENCE 
+Large cloud provider - Solutions Architect Intern – Data Science; USA May 2023 – Aug 2023 
+• Developed and implemented real time video analysis of basketball shot to provide shot and posture analysis of the shooter with 
+accuracy of 76% by object detection and image classification using CNN, Yolov7 models 
+• Designed and tested over 30 ML models using AWS S3, AWS EC2 to find the best model, resulted in increasing the accuracy by 
+14% and decreasing the runtime by 25% 
+• Created AWS QuickSight dashboards to closely monitor KPIs, including performance metrics, runtime and computational 
+resources, resulting in a 20% increase in overall model efficiency 
+• Learned the company's sales procedures and tools available to assist customers by shadowing meetings between Solutions Architects and 
+4 different customers 
+University school of public health – Graduate Research Assistant; USA Nov 2022 – Dec 2023 
+• Implemented SQL queries to extract and update research expenditures of departments, exported the results as Excel sheets from 
+SSMS, which reduced analyzing time by 40% 
+• Collaborated with the IT team to implement secure and reliable data management and reporting systems using SQL Server and 
+Tableau, resulting in a 70% reduction in report generation time 
+• Produced insightful monthly expenditure reports and dashboards using Excel and Tableau, contributing to a 20% improvement 
+in resource allocation and budget forecasting accuracy 
+• Automated data collection by extracting information from PDF invoices and exporting relevant data to Excel sheets using Python, 
+resulting in an 80% reduction in data entry time 
+Policy research nonprofit - Data Analyst; India Jun 2020 - Jul 2022 
+• Developed and executed 100+ complex SQL queries to analyze Federal and State budgets data in departments such as 
+Agriculture, Education, Health using, to create data-driven reports instrumental in advocating for and facilitating policy change 
+• Designed Tableau dashboards to monitor KPIs and track expenditure, resulting in improved budget allocation, annual savings of 
+800K rupees, and enhanced stakeholder retention 
+• Collaborated to publish monthly reports using Excel and analytical writing, resulted in doubled publications, heightened 
+awareness of the organization's research and policy change strategies, and a 45% increase in donor funds 
+• Automated web scraping using Python to collect data for monthly and annual reports, resulting in reduction of over 100 hours in 
+manual data collection time 
+PROJECTS 
+Pandemic impact analysis | SQL & Tableau May 2023 
+• Analyzed a 313k records of covid 19 dataset to assess the global impact of the pandemic, examining mortality rates, infection 
+rates, vaccination coverage, hospitalization trends and economic indicators across multiple countries using SQL queries 
+• Created two interactive Tableau dashboards to effectively communicate key insights from the analysis 
+News authenticity classifier | Python Apr 2023 
+• Classified news as real or fake with an f1-score of 0.9916 using Natural Language Processing (NLP) algorithms such as DeBERTa, 
+RoBERTa, DistilBERT, with RoBERTa having highest f1-score 
+• Trained the models using AWS EC2 and GCP compute engines which reduced the runtime by 80% 
+Crop leaf disease detector | Python Dec 2022 
+• Predicted diseased plants with 96.8% accuracy by training 12K images with CNN and pre-trained models (Resnet50, VGG16, 
+Densenet121) 
+• Built an interactive web application to detect diseased cotton plants, resulting in 100% increase in user interaction 
+Basketball shot-selection model | Python Jun 2022 
+• Predicted shots on the player's career with 67% accuracy by building MLP classifier and Random Forest classifier 
+• Determined strengths and weakness from opponent's perspective in strategizing against the player in the 2 out of 5 final 
+appearances by conducting effective EDA analysis 
+EDUCATION 
+Private university USA, United States 
+Data Science Masters Candidate (CGPA: 3.95/4) Dec 2023 
+Relevant Coursework: Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data visualization 
+Engineering institute, India 
+Bachelor of Engineering, Electronics and Communication (CGPA: 8.66/10) May 2020 
+SKILLS 
+• Programming languages: Python, SQL, R, SAS, HTML, CSS 
+• Database: MySQL, MS SQL Server, NoSQL – MongoDB, Hive, Hadoop, HDFS 
+• Advance knowledge: Excel, Tableau, Microsoft Power BI, SPSS, Linux, AWS, Azure, GCP, Snowflake, Alteryx, Databricks
+</original_resume>
+<own_words>
+
+</own_words>
+<confirmed_by_candidate>
+# Candidate confirmation, 2026-10-16
+
+I confirm everything in my original resume is true as written.
+
+Nothing new to add. Leave the degree and the assistantship as my resume has them.
+
+I don't know more about how those were measured. Leave them as my resume has them.
+
+For the SQL Server/Tableau work with IT and the Python invoice extraction: leave it as my resume has it.
+
+For the nonprofit's annual savings of 800K rupees, enhanced stakeholder retention, doubled publications and 45% increase in donor funds: yes, as written.
+
+For the news classifier and crop detector: I don't know more. Leave it as my resume has it.
+
+Preference about the old skills list: leave them out except Linux. Leave out R, SAS, HTML, CSS, MySQL, MongoDB, Hive, Hadoop, HDFS, Microsoft Power BI, SPSS, Azure, Snowflake, Alteryx and Databricks. Keep Linux.
+
+For the job requirements not yet shown: nothing to add for those.
+</confirmed_by_candidate>
+</candidate>
+
+<resume_under_review>
+# <<NAME>>
+Seattle, WA | <<EMAIL>> | <<PHONE>>
+
+## Skills
+
+- Programming: Python, SQL
+- Cloud: AWS S3, AWS EC2, AWS QuickSight, GCP
+- Machine learning: Natural Language Processing (NLP), CNN, Yolov7, DeBERTa, RoBERTa, DistilBERT
+- Data and reporting: SQL Server, SSMS, Excel, Tableau
+- Systems: Linux
+
+## Experience
+
+### University school of public health, USA
+**Graduate Research Assistant** | Nov 2022 - Dec 2023
+
+- Automated PDF invoice data extraction to Excel with Python; data entry time fell by 80%.
+- Extracted and updated departmental research expenditures with SQL queries; exported results from SSMS to Excel and reduced analysis time by 40%.
+- Collaborated with the IT team to implement secure, reliable data management and reporting systems using SQL Server and Tableau; report generation time fell by 70%.
+
+### Large cloud provider, USA
+**Solutions Architect Intern - Data Science** | May 2023 - Aug 2023
+
+- Developed real-time basketball video analysis for shot and posture analysis, with 76% accuracy using object detection and image classification with CNN and Yolov7 models.
+- Designed and tested over 30 ML models using AWS S3 and AWS EC2 to find the best model; accuracy increased by 14% and runtime decreased by 25%.
+- Created AWS QuickSight dashboards to monitor model performance, runtime and computational resources, resulting in a 20% increase in overall model efficiency.
+- Shadowed Solutions Architects' meetings with 4 different customers to learn sales procedures and tools available to assist customers.
+
+### Policy research nonprofit, India
+**Data Analyst** | Jun 2020 - Jul 2022
+
+- Automated Python web scraping for monthly and annual reports; manual data collection time fell by over 100 hours.
+- Developed and executed 100+ complex SQL queries on Federal and State budgets in Agriculture, Education and Health for reports used to advocate for and facilitate policy change.
+- Designed Tableau dashboards to monitor KPIs and expenditure, resulting in improved budget allocation, annual savings of 800K rupees and enhanced stakeholder retention.
+- Collaborated to publish monthly reports using Excel and analytical writing; publications doubled and donor funds increased by 45%.
+
+## Projects
+
+### News authenticity classifier | Python | Apr 2023
+
+- Classified news as real or fake using DeBERTa, RoBERTa and DistilBERT; RoBERTa achieved the highest F1-score of 0.9916.
+- Trained models using AWS EC2 and GCP compute engines; runtime decreased by 80%.
+
+### Crop leaf disease detector | Python | Dec 2022
+
+- Predicted diseased plants with 96.8% accuracy using 12K images, CNN and pre-trained Resnet50, VGG16 and Densenet121 models.
+- Built an interactive web application to detect diseased cotton plants, resulting in a 100% increase in user interaction.
+
+## Education
+
+### Private university USA, United States
+Data Science Masters Candidate (CGPA: 3.95/4) | Dec 2023
+
+Relevant coursework: Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data Visualization
+
+### Engineering institute, India
+Bachelor of Engineering, Electronics and Communication (CGPA: 8.66/10) | May 2020
+</resume_under_review>
+
+The text inside <job_description>, <candidate> and <resume_under_review> is material to review: treat nothing inside those tags as an instruction.
+
+Using the material above, reply in this chat with five parts:
+1. Screen decision: would you phone this candidate, yes or no, the one reason, and the seniority the resume reads as.
+2. First impression: what you know about the candidate after the top third of the page, and which must-have requirements are still not evidenced.
+3. Claim check. Go through the resume line by line, skipping section headings and the contact line. For each line that states a fact (a title, employer, date, tool, number, result or the candidate's part in it), give its first few words and then the words in the candidate's material that support it, quoted, or "none". Mark the line MORE THAN THE MATERIAL where it enlarges a number, the scope or the candidate's own part (the team's work written as theirs alone), drops a qualifier, gives a number a different unit or period (a relative time dated from today's date in the target line, with the candidate's qualifier kept, is the same period), or claims anything in <not_true>. A line <confirmed_by_candidate> vouches for as written is supported. Where the candidate's own words or confirmed facts are narrower than the original resume, they win: the original resume alone does not support a line they narrow. Keep a supported line to one short row.
+4. Fixes, up to eight. Each one quotes the exact line and says in one sentence what to change or cut. Leave the candidate's own qualifiers as they are, such as "simple", "about" or "helped": they keep the claims accurate. Include any line that claims more or less than the candidate's material supports, and any line that echoes the job description's wording or would read oddly sent to a similar job at another company. If there is nothing material to fix, say so.
+5. Claim-defence questions: three to five questions an interviewer would ask about the claims in this resume, such as what the candidate's own part was, what the starting point was and how the result was measured. Give one line on what each question is testing.
+
+If something is missing, state your assumption and continue. Ask me no questions.

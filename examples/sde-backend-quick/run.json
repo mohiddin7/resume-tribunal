@@ -1,0 +1,1113 @@
+{
+ "slug": "sde-backend-quick",
+ "title": "Backend software engineer applying for a senior backend role",
+ "mode": "Quick review",
+ "reach": "Auto",
+ "facts": [
+  "Real resume, shared with consent",
+  "Auto mode: the other AIs ran by themselves",
+  "2 AIs from 2 companies",
+  "12 minutes",
+  "Real public job posting"
+ ],
+ "note": "Recorded by the host as it worked, with the tools in tools/. The host was OpenAI's gpt-6.1-sol, through Codex; it recorded its own model as GPT-6. Its last message was trimmed before publishing: the parts written for the recording (seat timings, recording checks and notes on the skill's wording, with local file paths) were removed, and the lines for the candidate kept.",
+ "candidate": "Marcus",
+ "end": 725,
+ "who": {
+  "user": {
+   "n": "Marcus",
+   "s": "M",
+   "role": "the candidate"
+  },
+  "host": {
+   "n": "Host",
+   "s": "H",
+   "role": "AI 1, GPT-6"
+  },
+  "claude": {
+   "n": "Claude",
+   "s": "C",
+   "role": "AI 2, Anthropic, opus (high effort)"
+  },
+  "check": {
+   "n": "Checker",
+   "s": "✓",
+   "role": "check_resume.py"
+  }
+ },
+ "steps": [
+  {
+   "n": 1,
+   "name": "Setup",
+   "t": 0
+  },
+  {
+   "n": 2,
+   "name": "Draft",
+   "t": 61
+  },
+  {
+   "n": 3,
+   "name": "Review and sign-off",
+   "t": 100
+  },
+  {
+   "n": 4,
+   "name": "Finalise",
+   "t": 594
+  }
+ ],
+ "events": [
+  {
+   "t": 0,
+   "kind": "step",
+   "text": "Setup",
+   "who": "host",
+   "step": 1,
+   "links": []
+  },
+  {
+   "t": 0,
+   "kind": "note",
+   "text": "Reading its setup instructions and detecting the available reviewers",
+   "who": "host",
+   "label": "Setup",
+   "links": []
+  },
+  {
+   "t": 0,
+   "kind": "say",
+   "text": "Step 1 of 4: Setup\n\nI'm using the resume-tribunal skill to tailor your resume from your facts and arrange an independent review. I'll read your files and check which reviewers are available before asking for consent.\n\nNext, review the setup choices I'll show you.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 38,
+   "kind": "say",
+   "text": "Step 1 of 4: Setup\n\nYou give: your resume, the job posting, a few sentences in your own words\n↓\nI write a draft, from your facts only\n↓\nA second AI, from a different company, checks it without knowing who wrote it\n↓\nAutomatic checks, then you approve every changed line\n↓\nYour resume, the job requirements it does not show, and likely interview questions\n\nThe second AI runs by itself; you answer a few questions along the way. Its independent review helps catch mistakes and unsupported claims.\n\nI read these roles:\n- Health insurer (USA), Software Engineer, Aug 2023 - Present.\n- Large retailer's technology division (USA), Software Engineer III, May 2023 - Aug 2023.\n- Enterprise software company (India), Software Engineer, Feb 2021 - Jul 2022.\n- Enterprise software company (India), Software Engineer in Test, Jun 2020 - Feb 2021.\n\nThe target is Brex's senior backend role in New York, United States. It asks for 7+ years; your resume says 4+, so that gap will remain visible.\n\nPick two or three things this job asks for that you have really done. For each, tell me one time you did it: what it was, what you did, what changed. Plain sentences; dictating is fine. You can skip this and I'll use your resume's wording. Do you have LinkedIn, GitHub, portfolio, project, paper or certification links to include? Your college degree title is incomplete; please supply it if you can.\n\nMy default is a quick review: I write and one other AI checks. A full council adds drafts and reviews, takes longer and uses several times as much of your AI plans. Role research stays off, I'll polish the wording, and we'll work in Markdown, a plain-text format, with PDF or Word available at the end.\n\nModel line: I am OpenAI GPT-6, flagship tier; the proposed reviewer is Anthropic's opus, listed as its most capable model, at high effort. Both automatic tools were detected; Google's available models are Flash, so I propose the closer tier match for this quick review.\n\nI've hidden your name and contact details. They come back at the end. Working files are in `.tribunal/` inside this run folder.\n\nThis text, including your employers, job history and the pages your links point to, will go to Anthropic through Claude Code using opus under their terms and your account settings there. Some keep their own history, and the text can still identify you. Leave out anything confidential to an employer, and check whether this employer allows AI help with applications.\n\nAnswer the questions, or say \"yes\" to take the defaults and go ahead.",
+   "who": "host",
+   "stop": "Stop 1",
+   "links": [
+    "L2",
+    "L1"
+   ]
+  },
+  {
+   "t": 60,
+   "kind": "user",
+   "text": "Quick review, please. Yes to the defaults, go ahead. No links.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 61,
+   "kind": "step",
+   "text": "Draft",
+   "who": "host",
+   "step": 2,
+   "links": []
+  },
+  {
+   "t": 61,
+   "kind": "note",
+   "text": "Writing its draft from his original resume and keeping the seniority gap visible",
+   "who": "host",
+   "label": "Drafting",
+   "links": []
+  },
+  {
+   "t": 65,
+   "kind": "say",
+   "text": "Step 2 of 4: Draft\n\nI'll emphasize Java, Spring Boot, databases, testing and deployment work, while keeping all four roles and their original titles. I'll trim repeated tool lists and less relevant front-end detail to aim for one page. With no links or extra stories, your original resume supplies the facts and voice. Most recruiters look for LinkedIn; I'll respect your choice to leave links out.\n\nNext, I'll send the draft for the independent review you approved.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 100,
+   "kind": "check",
+   "text": "0 errors, 5 warnings (four possible short wraps and the candidate's own word Enhanced), 3 contact placeholders; 426 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 100,
+   "kind": "step",
+   "text": "Review and sign-off",
+   "who": "host",
+   "step": 3,
+   "links": []
+  },
+  {
+   "t": 100,
+   "kind": "say",
+   "text": "Step 3 of 4: Review and sign-off\n\nThe draft is ready for independent review. The automatic check found no errors and five wording or line-length warnings; I'll resolve those alongside the review. Your name and contact details are still hidden.\n\nNext, I'll bring you the draft and the factual questions that need your sign-off.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 106,
+   "kind": "ask",
+   "text": "Review the resume against the candidate's facts and job requirements, check each claim, and suggest interview questions.",
+   "who": "host",
+   "to": "claude",
+   "label": "Blind review",
+   "files": [
+    "p4-review.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 159,
+   "kind": "say",
+   "text": "Step 3 of 4: Review and sign-off\n\nThe independent review is still running. It is checking each claim against your original resume, including the Kafka architecture claim and the incomplete education entry.\n\nNext, I'll combine its findings with the automatic checks for your sign-off.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 227,
+   "kind": "reply",
+   "text": "The reviewer found every resume claim supported, but would not phone for this senior role because the experience requirement is not shown. It suggested clarifying Kafka scope, the college degree and certification, and supplied five interview questions.",
+   "who": "claude",
+   "d": 121,
+   "files": [
+    "p4-review-reply.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 227,
+   "kind": "note",
+   "text": "Applying its review's safe wording fixes and holding factual changes for his sign-off",
+   "who": "host",
+   "label": "Applying review",
+   "links": []
+  },
+  {
+   "t": 244,
+   "kind": "check",
+   "text": "0 errors, 3 warnings (one short wrap, Enhanced from the original, and the new word supported), 3 contact placeholders; 428 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 244,
+   "kind": "check",
+   "text": "0 errors, 2 warnings (one possible short wrap in the Kafka bullet and Enhanced from the original), 3 contact placeholders; 427 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 268,
+   "kind": "note",
+   "text": "Correcting its last recorded word count to 428 words, as the checker printed",
+   "who": "host",
+   "label": "Record correction",
+   "links": []
+  },
+  {
+   "t": 268,
+   "kind": "say",
+   "text": "SIGN-OFF QUESTIONS\nStep 3 of 4: Review and sign-off\n\nPlease review every rewritten line in the [draft](.tribunal/resume.md). Your contact details are still hidden.\n\nI shortened the summary, moved the AWS credential to its own section, split long bullets and removed repeated environment lists, coursework and less relevant front-end detail. All four roles, titles and dates remain. The draft is 428 words. Two warnings remain: “Enhanced” is your original word, and the Kafka bullet may wrap slightly onto a second line; I kept its meaning intact.\n\nThe independent review found the claims supported by your resume, but judged the application short of this role's senior experience requirement. I kept your original 4+ years and did not replace it with a calculated total.\n\nPlease confirm or correct these facts:\n\n1. The draft says you “Designed and implemented a scalable Kafka Messaging Cluster for distributed publishing across business applications.” What was your own part: broker/cluster design and operation, application producers and consumers, or something else? If you know the scale, give only a figure you can verify.\n2. Did you create the Apache Beam framework described, and can you explain a concrete use of Threads, Multithreading, Synchronization and the Collection API? If either line overstates your part, tell me the narrower version.\n3. Skills listed without a work example need one grouped check: can you stand behind SQL and MongoDB, and is the AWS Certified Solutions Architect – Associate credential accurate as shown? What year was it earned, and is it current? Python is currently omitted; only if you want it included, describe your actual use.\n4. What is the exact engineering-college degree title? Were any roles contract, part-time or internships, including the three-month Software Engineer III role? I'll keep the original dates and unnamed employers and schools.\n5. Only if true, is there evidence we have missed for 7+ years of professional backend work, owning a feature from concept through production and monitoring, or working directly with Sales or Support on customer needs? You can also add a specific architecture decision, verified result, or New York office availability. Otherwise these remain unshown; no number is required.\n\nAre all of these true, and could you explain each in an interview? Tell me any to fix. If you don't know a number, I'll leave it out, so please don't estimate.",
+   "who": "host",
+   "stop": "Stop 2",
+   "links": [
+    "L2",
+    "L23",
+    "L1"
+   ]
+  },
+  {
+   "t": 568,
+   "kind": "user",
+   "text": "I confirm everything in my original resume is true as written.\n1. Leave it as my resume has it. I don't know the scale.\n2. Leave those as my resume has them.\n3. Yes, SQL, MongoDB and the AWS certification are true as my resume has them. Leave Python out.\n4. Leave the degree and the roles as my resume has them.\n5. Nothing to add for those.",
+   "waited": 967,
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 568,
+   "kind": "note",
+   "text": "Recording its candidate's confirmation and keeping the original scope without new numbers",
+   "who": "host",
+   "label": "Sign-off",
+   "links": []
+  },
+  {
+   "t": 568,
+   "kind": "say",
+   "text": "Step 3 of 4: Review and sign-off\n\nYour original claims stay, with no added scale figures, credential dates or degree title. Python stays out. I'll finish the plain-text copy and leave the unshown requirements in the accompanying notes.\n\nNext, review the final file when I show its path.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 576,
+   "kind": "check",
+   "text": "0 errors, 2 warnings (one possible short wrap in the Kafka bullet and Enhanced from the original), 3 contact placeholders; 428 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 594,
+   "kind": "step",
+   "text": "Finalise",
+   "who": "host",
+   "step": 4,
+   "links": []
+  },
+  {
+   "t": 594,
+   "kind": "say",
+   "text": "Step 4 of 4: Finalise\n\nYour [resume is ready in final.md](.tribunal/final.md), with your name and contact details restored. No new facts were added after your confirmation. The two explained wording and possible wrapping warnings remain.\n\nWould you like one more independent look? Otherwise, is this final, and is Markdown, the plain-text copy, the format you want?",
+   "who": "host",
+   "stop": "Stop 3",
+   "links": []
+  },
+  {
+   "t": 601,
+   "kind": "user",
+   "text": "No thanks.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 601,
+   "kind": "user",
+   "text": "Yes, it's final. Markdown is fine.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 601,
+   "kind": "check",
+   "text": "0 errors, 2 warnings (one possible short wrap in the Kafka bullet and Enhanced from the original), 0 placeholders; 430 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 601,
+   "kind": "note",
+   "text": "Writing its line-by-line change reasons and checking the public recording for completeness",
+   "who": "host",
+   "label": "Recording check",
+   "links": []
+  },
+  {
+   "t": 607,
+   "kind": "note",
+   "text": "Correcting its final recorded word count to 431 words, as the checker printed",
+   "who": "host",
+   "label": "Record correction",
+   "links": []
+  },
+  {
+   "t": 685,
+   "kind": "say",
+   "text": "Step 4 of 4: Finalise\n\nYour [final Markdown resume](.tribunal/final.md) is ready. The final check found 0 errors, 2 explained warnings and no placeholders, at 431 words. The warnings are the possible Kafka line wrap and your original word “Enhanced.”\n\nThe application still does not show 7+ years of backend experience, direct Sales or Support collaboration, or ownership from concept through ongoing production outcomes. New York office availability and measured scale remain unspecified. Your original architecture claims remain intact.\n\nPrepare to explain:\n- Which Kafka design and implementation decisions were yours?\n- How does a claim move through your services, and what happens when a step fails?\n- What existed before the microservices architecture, and why were those design choices made?\n\nThe [notes](.tribunal/notes.md) preserve these gaps and interview prompts. The recording completeness check passed.\n\nI can delete the working folder after you keep your final resume; otherwise I'll retain this recording. Save what you told me on this computer so your next job needs fewer questions? It would stay in `.resume-profile/` inside this run folder, go nowhere else, and you could delete it any time.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 708,
+   "kind": "user",
+   "text": "No thanks.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 725,
+   "kind": "say",
+   "text": "Step 4 of 4: Finalise\n\nFinal file: [final.md](.tribunal/final.md). Final checker output:\n\n```text\nWARN  line 19: short-second-line: about 1.01 lines; tighten it to one line if you can\nWARN  line 33: ai-marker-word: \"Enhanced\"\n0 error(s), 2 warning(s), 0 placeholder(s) to fill; 431 words (about 650 fit one page)\n```\n\nNo profile saved.",
+   "who": "host",
+   "links": [
+    "L23"
+   ]
+  }
+ ],
+ "lanes": [
+  [
+   "host",
+   0,
+   38,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   38,
+   60,
+   "Stop 1",
+   1,
+   "Waiting for Marcus"
+  ],
+  [
+   "host",
+   60,
+   61,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   61,
+   100,
+   "Drafting",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   100,
+   100,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   100,
+   106,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "claude",
+   106,
+   227,
+   "Blind review",
+   0,
+   "Claude is working on the blind review"
+  ],
+  [
+   "host",
+   227,
+   244,
+   "Applying review",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   244,
+   244,
+   "",
+   0,
+   ""
+  ],
+  [
+   "check",
+   244,
+   244,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   244,
+   268,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   268,
+   568,
+   "Stop 2",
+   1,
+   "Waiting for Marcus"
+  ],
+  [
+   "host",
+   568,
+   576,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   576,
+   576,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   576,
+   594,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   594,
+   601,
+   "Stop 3",
+   1,
+   "Waiting for Marcus"
+  ],
+  [
+   "check",
+   601,
+   601,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   601,
+   607,
+   "Recording check",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   607,
+   725,
+   "Record correction",
+   0,
+   "The host is working"
+  ]
+ ],
+ "before": [
+  {
+   "k": "name",
+   "tx": "Marcus Bennett"
+  },
+  {
+   "k": "contact",
+   "tx": "Austin, TX | marcus.bennett@example.com | (512) 555-0148",
+   "id": "L43"
+  },
+  {
+   "k": "h2",
+   "tx": "PROFESSIONAL SUMMARY"
+  },
+  {
+   "k": "p",
+   "tx": "With 4+ years of experience in software engineering, I am an AWS Certified Solutions Architect – Associate with a comprehensive background in the full software development and testing life cycle. My expertise includes backend development using Java and Spring Boot to create scalable applications and microservices, alongside dynamic front-end development with Angular and React. I am proficient in both SQL and NoSQL database management, like Oracle and MongoDB, and follow CI/CD best practices with Jenkins, incorporating containerization with Docker and understanding Kubernetes orchestration. My experience extends to cloud computing services such as AWS EC2, messaging services like Apache Kafka, and a solid understanding of networking protocols, including TCP/IP. Proficient in development tools and system monitoring with Splunk and Grafana, my approach is rooted in Agile methodologies, emphasizing efficient project management and collaboration using tools like JIRA and Confluence.",
+   "why": "Gives Marcus's original AWS credential its own section without inventing a date or adding status details.",
+   "id": "L2",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "PROFESSIONAL EXPERIENCE"
+  },
+  {
+   "k": "p",
+   "tx": "Health insurer (USA) Software Engineer Aug 2023 - Present",
+   "why": "Separates Marcus's original job title and dates from the employer name.",
+   "id": "L8",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed microservices using Spring Boot for Claims Processing, focusing on high software quality through both automated and manual testing.",
+   "why": "Shortens Marcus's claims-processing bullet while retaining both automated and manual testing.",
+   "id": "L12",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Extensively worked with Spring Data JPA, Hibernate ORM, and JDBC. Designed RESTful Web services using the Spring Boot.",
+   "why": "Reorders Marcus's API and database work into a direct sentence.",
+   "id": "L13",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Expertise in data processing with Apache Beam DataFlows, creating a user-friendly framework for batch and parallel stream processing.",
+   "why": "States Marcus's original framework work directly and retains the batch and parallel stream processing scope.",
+   "id": "L15",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Designed and implemented a scalable Kafka Messaging Cluster for efficient distributed publishing across business applications.",
+   "why": "Keeps Marcus's confirmed Kafka design and implementation claim without adding an unknown scale figure.",
+   "id": "L14",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Crafted POJOs for data modeling and integrated Hibernate mappings to link Java objects with relational database tables.",
+   "why": "Cuts a repeated description of Marcus's Hibernate mappings, which remain under the earlier engineering role.",
+   "s": "cut",
+   "id": "B8"
+  },
+  {
+   "k": "bul",
+   "tx": "Specialized in containerization and orchestration using Docker, enhancing continuous delivery environments and Jenkins CI/CD pipelines integration.",
+   "why": "Makes Marcus's Docker and Jenkins integration work easier to read.",
+   "id": "L16",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Enforced backend security through Spring Security configurations, managing user roles and access permissions.",
+   "why": "Combines Marcus's security configuration and API testing in a shorter bullet.",
+   "id": "L17",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Leveraged GIT for version control, facilitating code storage and continuous integration with Jenkins for deployment processes.",
+   "why": "Cuts Marcus's repeated Git and Jenkins description because those tools and delivery work remain elsewhere.",
+   "s": "cut",
+   "id": "B11"
+  },
+  {
+   "k": "bul",
+   "tx": "Utilized Postman for RESTful API testing, ensuring robust HTTP request handling.",
+   "why": "Combines Marcus's Postman testing with the adjacent security work without adding a result.",
+   "id": "L18",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Demonstrated proficiency in concurrent programming, employing Threads, Multithreading, Synchronization, and the Collection API for efficient application performance. Environment: Java, SpringBoot, RESTful APIs, Apache Kafka, Hibernate, JDBC, JUnit, Git, GitHub, Apache Beam, Spring Batch, Jenkins, Docker, Postman, Agile Scrum.",
+   "why": "Keeps Marcus's confirmed concurrency tools and removes the repeated environment list.",
+   "id": "L19",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Large retailer's technology division (USA) Software Engineer III May 2023 - Aug 2023",
+   "why": "Keeps Marcus's Software Engineer III title and dates intact on a separate line.",
+   "id": "L9",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed a debugging tool for the sourcing-engine team, employing Spring Boot and React to simplify and enhance API testing.",
+   "why": "Keeps the purpose and technologies of Marcus's debugging tool in a shorter sentence.",
+   "id": "L20",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Integrated Spring Boot's RestTemplate for calling external APIs, alongside JSON parsing libraries for efficient data manipulation and response handling.",
+   "why": "Keeps Marcus's external API calls and JSON response handling without general efficiency claims.",
+   "id": "L21",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Conducted comprehensive testing, including JUnit for backend validation and Postman for API endpoint testing, ensuring high software quality and reliability.",
+   "why": "States Marcus's backend and API testing with the original tools.",
+   "id": "L22",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Managed code with GIT for a tech stack that includes Java, JavaScript, HTML, CSS, and React.",
+   "why": "Cuts Marcus's generic code-management and front-end tool list to give backend work more room.",
+   "s": "cut",
+   "id": "B18"
+  },
+  {
+   "k": "bul",
+   "tx": "Implemented form validation and API communication strategies using JavaScript, improving user interaction. Environment: HTML, CSS, Java, JavaScript, Spring Boot, RestTemplate, React, JUnit, Git, Postman.",
+   "why": "Cuts Marcus's less relevant form-validation detail and repeated environment list.",
+   "s": "cut",
+   "id": "B19"
+  },
+  {
+   "k": "p",
+   "tx": "Enterprise software company (India) Software Engineer Feb 2021 - Jul 2022",
+   "why": "Keeps Marcus's Software Engineer title and dates intact on a separate line.",
+   "id": "L10",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Significantly enhanced the company's digital asset management product, focusing on advanced search functionalities, workflow automation, and version control systems.",
+   "why": "Keeps the three areas of Marcus's product work and removes vague praise.",
+   "id": "L23",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Designed and implemented a microservices architecture using Java and Spring Boot, creating scalable and efficient backend services.",
+   "why": "States Marcus's Java and Spring Boot architecture work without extra adjectives.",
+   "id": "L24",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed and managed RESTful APIs for efficient integration with the company's products and external systems, enhancing data exchange capabilities.",
+   "why": "Keeps the original product and external-system integration scope of Marcus's APIs.",
+   "id": "L25",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Implemented the business layer of the application using Spring MVC and handled exceptions using Spring AOP.",
+   "why": "Cuts Marcus's implementation detail for space while retaining Spring MVC and Spring AOP in Skills.",
+   "s": "cut",
+   "id": "B24"
+  },
+  {
+   "k": "bul",
+   "tx": "Employed the company's cloud storage for digital asset storage and Oracle Database for storing asset metadata.",
+   "why": "Keeps Marcus's distinct storage uses for assets and metadata.",
+   "id": "L26",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Crafted data models using POJOs and integrated Hibernate mappings to link Java objects with relational database tables.",
+   "why": "Keeps Marcus's object-to-table mapping work in plain words.",
+   "id": "L27",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Implemented security protocols, including OAuth 2.0 and SSL/TLS, for authentication and data encryption, securing digital assets and user information.",
+   "why": "Keeps Marcus's authentication and encryption protocols without a general security outcome claim.",
+   "id": "L28",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Utilized Spring Batch for developing batch processing capabilities to manage large data collections from databases.",
+   "why": "Combines Marcus's batch processing and testing tools to save space.",
+   "id": "L29",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed test codes using JUnit for unit testing and used Maven for generating system builds.",
+   "why": "Combines Marcus's unit tests and Maven builds with the batch-processing bullet.",
+   "id": "L30",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Worked on application metrics, publishing logs to Kibana and metrics to the Grafana dashboard for real-time monitoring.",
+   "why": "States where Marcus published logs and metrics while retaining real-time monitoring.",
+   "id": "L31",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Used Jenkins for continuous deployment and integration, streamlining build and release processes.",
+   "why": "Keeps Marcus's deployment and integration work without a vague process-improvement claim.",
+   "id": "L32",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Used Git for version control and managed the project workflow and bug tracking using JIRA. Environment: Java, Spring Boot, Spring MVC, Spring AOP, Spring Batch, Hibernate, RESTful APIs, OAuth 2.0, Oracle Database, JUnit, Maven, Kibana, Grafana, Jenkins, JIRA Enterprise software company (India) Software Engineer in Test Jun 2020 - Feb 2021",
+   "why": "Separates Marcus's test role from the preceding tool list while keeping its title and dates.",
+   "id": "L11",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Played a key role in the testing and quality assurance of the company's digital asset management product, with a focus on high-level testing strategies including integration, system, and user acceptance testing.",
+   "why": "Keeps Marcus's original testing types in a combined test-role bullet.",
+   "id": "L35",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed and maintained automated test suites using Selenium, significantly enhancing testing efficiency and coverage, while minimizing the need for manual testing.",
+   "why": "Combines Marcus's Selenium suites with their Jenkins integration without adding a measured result.",
+   "id": "L33",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Integrated testing processes within the continuous integration and deployment pipeline using Jenkins, ensuring continuous quality checks and rapid feedback on software builds.",
+   "why": "Keeps Marcus's test integration in the same bullet as the automated suites.",
+   "id": "L34",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Managed diverse testing environments, ensuring consistency and reliability in test results through careful configuration and maintenance.",
+   "why": "Cuts Marcus's general testing-environment statement to prioritize named testing work.",
+   "s": "cut",
+   "id": "B36"
+  },
+  {
+   "k": "bul",
+   "tx": "Participated actively in Agile development processes, including sprint planning, daily stand-ups, and retrospectives, contributing to effective team communication and project management.",
+   "why": "Cuts the ceremony list while retaining Marcus's Agile Scrum experience in Skills.",
+   "s": "cut",
+   "id": "B37"
+  },
+  {
+   "k": "bul",
+   "tx": "Conducted comprehensive performance testing using tools like LoadRunner to identify and address performance bottlenecks, ensuring system scalability and reliability.",
+   "why": "Keeps Marcus's LoadRunner performance testing without an unsupported scale figure.",
+   "id": "L36",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Collaborated closely with the development team in defect tracking and resolution, utilizing JIRA for efficient issue management and communication.",
+   "why": "Retains Marcus's collaboration with developers on defects in JIRA.",
+   "id": "L37",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Employed TestNG for managing broader test suites and complex testing scenarios, maintaining a high standard of software quality and user satisfaction. Environment: Java, Selenium, TestNG, Jenkins, LoadRunner, Agile methodologies, JIRA.",
+   "why": "Keeps Marcus's TestNG work while removing the repeated environment list.",
+   "id": "L38",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "TECHNICAL SKILLS"
+  },
+  {
+   "k": "p",
+   "tx": "Programming Languages: Java, Python, JavaScript, TypeScript, SQL, HTML5, CSS3, C# Technologies: Spring Boot, Spring Batch, Spring MVC, Spring Security, Spring Data JPA, Hibernate, Express, Node.js, React, Angular, Bootstrap Database and Cloud: Oracle, MySQL, SQL Server, MongoDB, Apache Kafka, AWS, Docker, Kubernetes Software & Tools: Eclipse, STS IDE, JIRA, Confluence, Git, GitHub, Maven, Jenkins, Kibana, Grafana, ServiceNow",
+   "why": "Keeps Marcus's monitoring and collaboration tools while trimming the long general tool list.",
+   "id": "L7",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "EDUCATION"
+  },
+  {
+   "k": "p",
+   "tx": "Private university (MS in Computer Science) GPA: 3.5/4.0; Dean’s List May 2024 Relevant Coursework: Software Engineering; Design and Analysis of Algorithms ENGINEERING COLLEGE ( in Computer Science) GPA: 8.8/10.0 May 2020 Relevant Coursework: Database Management Systems; Cloud Computing; Java Programming",
+   "why": "Keeps Marcus's original college GPA on a separate line.",
+   "id": "L42",
+   "s": "rw"
+  }
+ ],
+ "after": [
+  {
+   "k": "name",
+   "tx": "Marcus Bennett"
+  },
+  {
+   "k": "contact",
+   "tx": "Austin, TX | marcus.bennett@example.com | (512) 555-0148",
+   "id": "L43"
+  },
+  {
+   "k": "h2",
+   "tx": "Summary"
+  },
+  {
+   "k": "p",
+   "tx": "Software Engineer with 4+ years of experience. Developed Java and Spring Boot microservices for Claims Processing and digital asset management, with work in testing and CI/CD.",
+   "why": "Replaces Marcus's long introduction with the original experience figure and backend work shown in the role descriptions.",
+   "from": "old resume",
+   "id": "L1",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Technical Skills"
+  },
+  {
+   "k": "p",
+   "tx": "Languages: Java, SQL, JavaScript",
+   "why": "Groups Marcus's relevant languages and leaves Python out as requested at sign-off.",
+   "from": "old resume",
+   "id": "L3",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Backend: Spring Boot, Spring Data JPA, Hibernate, JDBC, Spring MVC, Spring AOP, Spring Batch, Spring Security, RESTful APIs",
+   "why": "Groups Marcus's backend frameworks and API tools for easier scanning.",
+   "from": "old resume",
+   "id": "L4",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Data and messaging: Oracle, MongoDB, Apache Kafka, Apache Beam",
+   "why": "Keeps Marcus's database, messaging and data-processing tools together.",
+   "from": "old resume",
+   "id": "L5",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Delivery and testing: Docker, Jenkins, Git, Maven, JUnit, Postman, Selenium, TestNG, LoadRunner",
+   "why": "Groups Marcus's delivery and testing tools using the original skills list and role descriptions.",
+   "from": "old resume",
+   "id": "L6",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Monitoring and collaboration: Kibana, Grafana, JIRA, Agile Scrum",
+   "why": "Keeps Marcus's monitoring and collaboration tools while trimming the long general tool list.",
+   "from": "old resume",
+   "id": "L7",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Professional Experience"
+  },
+  {
+   "k": "role",
+   "tx": "Software Engineer | **Health insurer (USA)** | Aug 2023 - Present",
+   "why": "Separates Marcus's original job title and dates from the employer name.",
+   "from": "old resume",
+   "id": "L8",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed Spring Boot microservices for Claims Processing, with automated and manual testing.",
+   "why": "Shortens Marcus's claims-processing bullet while retaining both automated and manual testing.",
+   "from": "old resume",
+   "id": "L12",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Designed RESTful Web services using Spring Boot and worked with Spring Data JPA, Hibernate ORM and JDBC.",
+   "why": "Reorders Marcus's API and database work into a direct sentence.",
+   "from": "old resume",
+   "id": "L13",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Designed and implemented a scalable Kafka Messaging Cluster for distributed publishing across business applications.",
+   "why": "Keeps Marcus's confirmed Kafka design and implementation claim without adding an unknown scale figure.",
+   "from": "old resume",
+   "id": "L14",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Created an Apache Beam DataFlows framework for batch and parallel stream processing.",
+   "why": "States Marcus's original framework work directly and retains the batch and parallel stream processing scope.",
+   "from": "old resume",
+   "id": "L15",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Integrated Docker containerization with Jenkins CI/CD pipelines for continuous delivery.",
+   "why": "Makes Marcus's Docker and Jenkins integration work easier to read.",
+   "from": "old resume",
+   "id": "L16",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Configured Spring Security to manage user roles and access permissions; tested RESTful APIs with Postman.",
+   "why": "Combines Marcus's Postman testing with the adjacent security work without adding a result.",
+   "from": "old resume",
+   "id": "L18",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Used Threads, Multithreading, Synchronization and the Collection API for application performance.",
+   "why": "Keeps Marcus's confirmed concurrency tools and removes the repeated environment list.",
+   "from": "old resume",
+   "id": "L19",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Software Engineer III | **Large retailer's technology division (USA)** | May 2023 - Aug 2023",
+   "why": "Keeps Marcus's Software Engineer III title and dates intact on a separate line.",
+   "from": "old resume",
+   "id": "L9",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed a Spring Boot and React debugging tool for the sourcing-engine team to simplify API testing.",
+   "why": "Keeps the purpose and technologies of Marcus's debugging tool in a shorter sentence.",
+   "from": "old resume",
+   "id": "L20",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Used RestTemplate to call external APIs and JSON parsing libraries to handle data and responses.",
+   "why": "Keeps Marcus's external API calls and JSON response handling without general efficiency claims.",
+   "from": "old resume",
+   "id": "L21",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Tested the backend with JUnit and API endpoints with Postman.",
+   "why": "States Marcus's backend and API testing with the original tools.",
+   "from": "old resume",
+   "id": "L22",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Software Engineer | **Enterprise software company (India)** | Feb 2021 - Jul 2022",
+   "why": "Keeps Marcus's Software Engineer title and dates intact on a separate line.",
+   "from": "old resume",
+   "id": "L10",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Enhanced the digital asset management product's search, workflow automation and version control features.",
+   "why": "Keeps the three areas of Marcus's product work and removes vague praise.",
+   "from": "old resume",
+   "id": "L23",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Designed and implemented a microservices architecture using Java and Spring Boot.",
+   "why": "States Marcus's Java and Spring Boot architecture work without extra adjectives.",
+   "from": "old resume",
+   "id": "L24",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed RESTful APIs for integration with company products and external systems.",
+   "why": "Keeps the original product and external-system integration scope of Marcus's APIs.",
+   "from": "old resume",
+   "id": "L25",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Used Oracle Database for asset metadata and the company's cloud storage for digital assets.",
+   "why": "Keeps Marcus's distinct storage uses for assets and metadata.",
+   "from": "old resume",
+   "id": "L26",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Linked Java objects to relational database tables through Hibernate mappings.",
+   "why": "Keeps Marcus's object-to-table mapping work in plain words.",
+   "from": "old resume",
+   "id": "L27",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Implemented OAuth 2.0 and SSL/TLS for authentication and data encryption.",
+   "why": "Keeps Marcus's authentication and encryption protocols without a general security outcome claim.",
+   "from": "old resume",
+   "id": "L28",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Built batch processing capabilities with Spring Batch; used JUnit for unit testing and Maven for builds.",
+   "why": "Combines Marcus's unit tests and Maven builds with the batch-processing bullet.",
+   "from": "old resume",
+   "id": "L30",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Published logs to Kibana and application metrics to Grafana for real-time monitoring.",
+   "why": "States where Marcus published logs and metrics while retaining real-time monitoring.",
+   "from": "old resume",
+   "id": "L31",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Used Jenkins for continuous deployment and integration.",
+   "why": "Keeps Marcus's deployment and integration work without a vague process-improvement claim.",
+   "from": "old resume",
+   "id": "L32",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "**Software Engineer in Test** | Jun 2020 - Feb 2021",
+   "why": "Separates Marcus's test role from the preceding tool list while keeping its title and dates.",
+   "from": "old resume",
+   "id": "L11",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed and maintained Selenium automated test suites and integrated testing into Jenkins CI/CD pipelines.",
+   "why": "Keeps Marcus's test integration in the same bullet as the automated suites.",
+   "from": "old resume",
+   "id": "L34",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Performed integration, system, user acceptance and LoadRunner performance testing. Used TestNG for test suites and worked with developers on defect tracking and resolution in JIRA.",
+   "why": "Keeps Marcus's TestNG work while removing the repeated environment list.",
+   "from": "old resume",
+   "id": "L38",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Certifications"
+  },
+  {
+   "k": "p",
+   "tx": "AWS Certified Solutions Architect – Associate",
+   "why": "Gives Marcus's original AWS credential its own section without inventing a date or adding status details.",
+   "from": "old resume",
+   "id": "L2",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Education"
+  },
+  {
+   "k": "p",
+   "tx": "Private university | MS in Computer Science | May 2024",
+   "why": "Separates Marcus's original master's degree and completion date from the combined education line.",
+   "from": "old resume",
+   "id": "L39",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "GPA: 3.5/4.0; Dean’s List",
+   "why": "Keeps Marcus's original master's GPA and Dean’s List distinction on a separate line.",
+   "from": "old resume",
+   "id": "L40",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "ENGINEERING COLLEGE | Computer Science | May 2020",
+   "why": "Keeps Marcus's college, subject and date without inventing the missing degree title.",
+   "from": "old resume",
+   "id": "L41",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "GPA: 8.8/10.0",
+   "why": "Keeps Marcus's original college GPA on a separate line.",
+   "from": "old resume",
+   "id": "L42",
+   "s": "rw"
+  }
+ ]
+}

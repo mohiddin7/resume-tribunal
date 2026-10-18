@@ -1,0 +1,92 @@
+**1. Screen decision**
+
+**No—for this mid-level opening.** The decisive reason is the experience requirement: the resume establishes roughly one year in a Data Engineer role against the required four-plus years of data engineering experience.
+
+The resume reads as **junior/early-career Data Engineer with prior BI experience**. The scale of the AWS work is promising, but the BI role and current IT support position do not establish additional years of data engineering work.
+
+**2. First impression**
+
+Assuming the top third includes the summary, skills and opening experience entries, I see a Phoenix-based candidate with AWS Glue ETL experience, an enterprise data lake claim, work involving over 10TB of data, an AWS certification and a master’s degree expected in December 2026. The strongest evidence concerns AWS batch data processing. Spark and Airflow appear as skills, without examples showing how they were used.
+
+The following minimum requirements remain unestablished or insufficiently evidenced:
+
+| Requirement | What is missing |
+|---|---|
+| Four-plus years of data engineering experience | Approximately one year is explicitly documented. |
+| Completed qualifying degree | The master’s is still in progress as of 16 October 2026; no completed undergraduate degree is shown. |
+| Designing data models at scale | Data modeling is listed, but no model, grain, relationships or design decisions are described. Building a data lake does not by itself establish this. |
+| Spark-based platform experience | Spark is listed and candidate-confirmed, but its application is not described. Glue alone does not establish PySpark or SparkSQL use. |
+| Strong command of an orchestration tool | Airflow is listed and candidate-confirmed, but orchestration responsibilities are not shown. |
+| Expertise in SQL, Python and REST APIs | SQL and Python are supported as skills, with some Python delivery evidence; REST API experience is absent. |
+| Software engineering fundamentals and reading backend code | Git/Jenkins CI/CD provides partial evidence; backend code experience is not shown. |
+
+Large-volume ETL and Git usage are directly evidenced. Phoenix supports the US location requirement; it does not establish work authorization.
+
+**3. Claim check**
+
+The quotations below come from the original resume. The candidate’s blanket confirmation also supports those original statements. **All 33 factual lines are supported; none warrants MORE THAN THE MATERIAL.** Support here means consistency with the supplied material, not independent verification or sufficient detail for an interview.
+
+| Resume line, opening words | Supporting words from the candidate’s material |
+|---|---|
+| “Data Engineer who architected…” | “Architected an enterprise Data Lake using AWS services (S3, Redshift, RDS, Glue)”; “Developed and managed Glue ETL pipelines”; “Engineered complex ETL scripts… integrate over 10TB of data”; “Business Intelligence Analyst Aug 2022 - Dec 2023”; “using Tableau and Power BI”; “AWS Certified Data Engineer Associate”; “Master of Data Science… Expected Graduation: Dec 2026”. |
+| “Languages: Python…” | “Python (NumPy, Pandas), R, SQL, PL/SQL, Hive, SAS”. |
+| “Data engineering: ETL…” | “ETL processes”; “Data Pipelines”; “Data Modeling”; “Data Warehousing, Relational Database”; “Database design”; “Spark”; “Snowflake, Apache Airflow”. |
+| “Cloud: AWS…” | “AWS (Glue, S3, Redshift, EC2, Athena, Dynamo DB, Kinesis Data Streams, IAM), Azure”; “AWS services (S3, Redshift, RDS, Glue)”. |
+| “DevOps and tools…” | “Jenkins and Git”; “HTML, JSON, SOAPUI, JIRA, GIT”; “Testing, Agile”. |
+| “BI and analytics…” | “Tableau, Power BI, Excel, Cognos”; “Regression, Classification, Time Series Analysis, Forecasting”. |
+| “Private university, USA” | “Private university USA”, immediately followed in the original education entry by the degree and student employment. |
+| “Student Technical Support Assistant…” | “Student Technical Support Assistant (IT) Oct 2025 – Present”. |
+| “Large IT services company…” | “Large IT services company (client: national pharmacy chain) India”. |
+| “Data Engineer \| Dec…” | “Data Engineer Dec 2023 - Dec 2024”. |
+| “Architected an enterprise data lake…” | “Architected an enterprise Data Lake using AWS services (S3, Redshift, RDS, Glue)… including data storage, processing, analytics, and rapidly changing datasets.” |
+| “Built and managed Glue…” | “Developed and managed Glue ETL pipelines, creating tables/databases in Glue catalog via Crawlers and processing data using various transformations, then loading results into S3, Redshift, and RDS.” |
+| “Wrote complex ETL scripts…” | “Engineered complex ETL scripts to clean, transform, and integrate over 10TB of data, significantly enhancing data quality for critical business decisions.” |
+| “Optimized a large-scale…” | “Optimized a large-scale data processing pipeline, consolidating datasets from multiple sources and improving analytics efficiency by 40%.” |
+| “Established a data governance…” | “Established a data governance framework that integrated data quality checks and compliance measures, enhancing data accuracy by 25% and ensuring that 100% of datasets met regulatory requirements across the organization.” |
+| “Set up CI/CD…” | “Set up CI/CD pipelines using Jenkins and Git for streamlined code development and version control for Python-based Projects.” |
+| “Business Intelligence Analyst…” | “Business Intelligence Analyst Aug 2022 - Dec 2023”. |
+| “Architected and implemented business…” | “Architected and implemented comprehensive business intelligence frameworks using Tableau and Power BI to deliver interactive dashboards and reports… for key stakeholders”. |
+| “Those frameworks drove…” | “driving a 30% increase in data-driven decision-making across critical business operations”. |
+| “Improved organizational efficiency…” | “Improved organizational efficiency by 25% by analyzing datasets to identify trends and patterns.” |
+| “Led meetings on…” | “Boosted client satisfaction by 15% by leading meetings to communicate project progress and adapt solutions based on feedback.” |
+| “Airline customer-satisfaction dashboard…” | “Airline customer-satisfaction dashboard 04/2026”. |
+| “Built a Tableau dashboard…” | “Built a Tableau dashboard for a major airline, transforming customer satisfaction data into actionable insights with interactive visualizations that improved service strategies.” |
+| “Reduced analysis time…” | “Reduced analysis time by 30% through streamlined data presentation, highlighting key performance indicators for faster decision-making.” |
+| “Serverless support chatbot…” | “Serverless support chatbot 12/2025”. |
+| “Developed a serverless chatbot…” | “Developed a serverless chatbot using AWS services (Lex, Lambda, DynamoDB, SNS) that handled over 500 user queries daily, improving response efficiency by 40%.” |
+| “Implemented AWS VPC…” | “Ensured secure data transmission through AWS VPC implementation, resulting in a 25% improvement in network performance.” |
+| “Tech-stock price forecasting…” | “Tech-stock price forecasting 12/2025”. |
+| “Analyzed historical 1980-2022…” | “historical stock price data from 1980 to 2022 for a large tech company”; “time series models like ARMA, ARIMA, and SARIMA”; “improving stock trend forecasting by 15%”. |
+| “Cleaned and normalized…” | “data preprocessing techniques, including cleaning and normalization”; “using statistical tests and model diagnostics to enhance the accuracy and reliability of time series models”. |
+| “AWS Certified Data Engineer Associate” | “AWS Certified Data Engineer Associate”. |
+| “Certified Tableau Desktop Specialist” | “Certified Tableau Desktop Specialist”. |
+| “Master of Data Science…” | “Private university USA”; “Master of Data Science \| GPA: 3.7/4.0 Expected Graduation: Dec 2026”. |
+
+The revised summary appropriately avoids repeating “3 years of experience”: the dated DE and BI positions establish approximately two years and four months combined, and the later IT support role has no duties showing data engineering work.
+
+**4. Fixes**
+
+There are no material factual overclaims or underclaims to correct, and no conspicuous Samsara-specific language copied into the resume. Three presentation changes would help:
+
+- **“Student Technical Support Assistant (IT) | Oct 2025 - Present”** — Move this unchanged entry into an Additional Experience section after the relevant DE/BI experience so the first employment entry demonstrates the target work.
+- **“Those frameworks drove a 30% increase in data-driven decision-making across critical business operations.”** — Combine this with the preceding BI-framework bullet so the result has its context in the same bullet.
+- **“Implemented AWS VPC for secure data transmission. Network performance improved by 25%.”** — Consider cutting this bullet because the unspecified performance measure and unexplained connection to VPC implementation weaken its persuasive value despite the candidate’s confirmation.
+
+The main screening gaps cannot be repaired through wording using the supplied facts. Adding PySpark, SparkSQL, REST APIs, production reliability responsibilities or a completed degree would be unsupported.
+
+**5. Claim-defence questions**
+
+1. **For the enterprise data lake, which architecture decisions and implementation components did you personally own, and which belonged to other team members?**  
+   Tests whether “architected” accurately conveys the candidate’s responsibility and technical depth.
+
+2. **What did “over 10TB” represent—source volume, a migration, stored data or recurring processing—and how did the pipeline handle that scale?**  
+   Tests the meaning of the volume claim and the engineering decisions behind it.
+
+3. **How did you use Spark and Airflow, and what happened when a task failed or needed to be rerun?**  
+   Tests whether the listed skills demonstrate the practical command required by this role.
+
+4. **What was measured to establish the 40% analytics-efficiency improvement and the 25% data-accuracy improvement, and what were the baselines?**  
+   Tests whether the percentages have reproducible definitions and whether the candidate can explain their contribution.
+
+5. **What datasets and regulatory requirements were covered by the “100%” compliance result, and who validated that conclusion?**  
+   Tests the scope and evidence behind an absolute, organization-wide claim.

@@ -1,0 +1,33 @@
+# Review: Draft M
+
+**Screen decision: No.** The role leads pricing analytics and asks for 2–5 years developing pricing models and analyzing pricing A/B tests, and nothing in this draft or in the candidate's material shows any pricing work.
+
+**Level:** Mid-level analyst. It reads as a strong single-team marketing analyst, not a Senior Analyst. The promotion from Coordinator to Analyst is undated, so a reader can't tell how many of the 7+ years are actually analytics.
+
+## Findings
+
+1. **Fix:** "Marketing Analyst and sole analyst on a nine-person marketing team, writing SQL in BigQuery daily, building Looker dashboards, and analyzing A/B tests." The core must-have, pricing analytics, goes unaddressed. The nearest real evidence is the spend-based segmentation and conversion-impact work, and it isn't surfaced here.
+
+2. **Fix:** "**Tools:** BigQuery, Looker, Tableau, Google Analytics, dbt, Excel". The posting lists proven AI use (ChatGPT/Claude, Cursor, Looker AI) as a qualification, and the draft has no evidence of it. The candidate's material doesn't mention it either, so the author needs to ask rather than add it.
+
+3. **Fix:** "Evaluated traffic sufficiency, analyzed results, and documented findings for about 12 A/B tests across email and landing pages over the past year (October 2025 - October 2026), evaluating test concepts selected by <<PERSONAL_FIRST>> or the paid social lead". This is too long to read at a glance. It also names a colleague, and "evaluating test concepts" misstates the role, since the candidate says others choose the tests and they run the power check and the readout.
+
+4. **Consider:** "Wrote SQL to segment lapsed customers inactive for one year by purchase history and spend; collaborated with email manager <<PERSONAL>> who wrote targeted copy for each segment, increasing email conversion rate from 2.1% to 2.5% over the following quarter". The credit is shared fairly, but the line names a colleague, buries the result at the end, and says "email conversion rate" when the gain was on the win-back emails specifically.
+
+5. **Consider:** "Managed $2.4M email marketing budget". This appears only in the original resume, not in the candidate's own account. A hiring manager would question a sole analyst owning a $2.4M budget, so confirm the candidate actually controlled this spend.
+
+6. **Consider:** "Built Tableau dashboards for executive stakeholders". The candidate's own account describes Looker dashboards reviewed by the marketing director, not Tableau for executives. Executive communication is a must-have, so this line needs to be accurate and specific or it will get probed.
+
+7. **Fix:** "cross-functional leadership". The candidate's material shows partnering with the email manager and paid social lead, not leading anyone cross-functionally. Read next to an IC role description, this looks like padding.
+
+8. **Not in the candidate's material:** "Clean export data in Jupyter notebooks using Python and pandas several times a month". The candidate said "notebooks" and "maybe a few times a month". "Jupyter" is an assumption, and "several" overstates their own qualifier.
+
+## Other areas
+
+- **SQL depth:** "writing SQL queries in BigQuery daily" undersells what the posting asks for, which is advanced SQL including building tables and schemas. dbt is listed in Skills but no experience line backs it. Not counted above, but worth asking the candidate about.
+- **No material problems:** header, education, the sole-analyst framing, the Looker dashboard bullet, and the store-manager headcount (correctly "about 12 part-time staff"). The store section's "Consistently exceeded sales targets" is vague but low-stakes.
+- **Machine-written or copied from the JD:** nothing copied from the job description. The skills line "data storytelling, stakeholder management" reads as generic filler.
+
+## Section comparison
+
+Only one draft was provided, so there is no section-by-section comparison.

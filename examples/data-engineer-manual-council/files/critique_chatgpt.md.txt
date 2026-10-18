@@ -1,0 +1,107 @@
+I treat the original resume as the factual baseline and assume no unlisted experience or completed degree. As of 16 October 2026, all project dates are in the past; the master’s degree is still pending.
+
+**Draft R**
+
+**Screen decision: No.** The documented experience falls short of the required four years in data engineering: approximately one year as a Data Engineer, preceded by approximately sixteen months in BI.
+
+**Level:** Early-career Data Engineer with prior BI experience; the architectural language does not establish mid-level engineering depth.
+
+1. **Fix**
+   > **Data Engineer** | Dec 2023 – Dec 2024
+
+   This documents approximately one year of dedicated data engineering experience, and even including the BI role does not establish the required four years.
+
+2. **Not in the candidate's material**
+   > Data Engineer with hands-on experience designing cloud data lakes, building Glue ETL pipelines, and implementing data governance frameworks on AWS. Proficient in Python, SQL, Spark, and data modeling, with active AWS Certified Data Engineer Associate certification.
+
+   The original lists the certification but provides no dates or other evidence supporting the added claim that it is currently “active.”
+
+3. **Fix**
+   > - **Data Engineering & Methodologies**: Data Pipelines, ETL processes, Data Modeling, Database design, Data Warehousing, Relational Databases
+   > - **Orchestration & DevOps**: Apache Airflow, Git, Jenkins, JIRA, Agile
+
+   These lists name data modeling and Airflow, but the experience provides neither concrete model-design decisions at scale nor evidence of the required strong command of an orchestration tool.
+
+4. **Fix**
+   > - Developed and managed Glue ETL pipelines, creating tables and databases in Glue catalog via Crawlers, applying transformations, and loading results into S3, Redshift, and RDS.
+
+   This establishes relevant ETL work, but the draft never establishes production SparkSQL/PySpark use, substantive SQL implementation, REST API integration, or familiarity with backend code.
+
+5. **Fix**
+   > **Master of Data Science** | Expected Graduation: Dec 2026
+
+   The only listed degree remains unfinished on the review date, so the required completed qualifying degree cannot be confirmed.
+
+6. **Fix**
+   > - Established a data governance framework integrating data quality checks and compliance measures, enhancing data accuracy by 25% and ensuring 100% of datasets met regulatory requirements across the organization.
+
+   The organization-wide compliance guarantee and accuracy improvement lack a defined dataset scope, measurement method, or explanation of the candidate’s authority to establish that outcome.
+
+7. **Fix**
+   > - Implemented business intelligence frameworks using Tableau and Power BI to deliver interactive dashboards and reports, driving a 30% increase in data-driven decision-making across critical business operations.
+
+   “Data-driven decision-making” has no defined measurement here, making the precise percentage and broad causal claim sound formulaic and difficult to substantiate.
+
+8. **Fix**
+   > - Implemented AWS VPC to ensure secure data transmission, resulting in a 25% improvement in network performance.
+
+   A VPC alone does not establish secure transmission, and neither the security controls nor the performance metric and causal mechanism are explained.
+
+**Draft M**
+
+**Screen decision: No.** The same documented experience falls short of the required four years in data engineering.
+
+**Level:** Early-career Data Engineer transitioning from BI, with a clearer presentation of current student employment.
+
+1. **Fix**
+   > **Data Engineer** | Dec 2023 - Dec 2024
+
+   This documents approximately one year of dedicated data engineering experience, and the earlier BI role does not bring the candidate to the four-year requirement.
+
+2. **Fix**
+   > - **Data engineering:** ETL, data pipelines, Spark, Apache Airflow, Snowflake, data modeling, data warehousing, database design
+
+   Spark, Airflow, and data modeling appear as keywords without examples demonstrating production Spark work, orchestration ownership, or model design at scale.
+
+3. **Fix**
+   > - Built and managed Glue ETL pipelines: created tables and databases in the Glue catalog with Crawlers, applied transformations, and loaded the results into S3, Redshift and RDS.
+
+   This describes relevant ETL activity, but the draft does not establish SparkSQL/PySpark implementation, substantive SQL work, REST API integration, or familiarity with backend code.
+
+4. **Fix**
+   > **Master of Data Science** | Private university, USA | GPA 3.7/4.0 | Expected Dec 2026
+
+   The degree is still pending and no completed qualifying degree is listed, leaving the education minimum unconfirmed.
+
+5. **Fix**
+   > - Established a data governance framework with data quality checks and compliance measures, improving data accuracy by 25%. 100% of datasets met regulatory requirements.
+
+   Although narrower than R’s wording, the absolute compliance claim and accuracy percentage still lack a defined scope, applicable requirements, and measurement basis.
+
+6. **Fix**
+   > - Built Tableau and Power BI dashboards and reports for key stakeholders, driving a 30% increase in data-driven decision-making across critical business operations.
+
+   The concrete dashboard work is credible, but the undefined “30% increase in data-driven decision-making” weakens it with an unsubstantiated outcome.
+
+7. **Fix**
+   > - Secured data transmission with AWS VPC, a 25% improvement in network performance.
+
+   The sentence conflates security with performance, leaves the percentage grammatically disconnected, and supplies no controls or measurements supporting either claim.
+
+**Findings common to both**
+
+The strongest relevant evidence is AWS ETL work involving more than 10TB, multiple destinations, data-quality checks, and Git/Jenkins CI/CD. Those are useful foundations, but neither draft demonstrates pipeline uptime ownership, failure recovery, freshness expectations, or customer-facing dataset reliability.
+
+The forecasting project supplies some time-series exposure; it does not establish late-arriving event handling. Databricks, Delta Lake, Dagster, first-party product modeling, and video/audio or ML-output pipelines are not evidenced. These are preferred-fit gaps, not additional mandatory disqualifiers.
+
+Neither draft materially omits a documented engineering accomplishment, obviously copies the job description, or adds a new claim of sole ownership. The expansive “architected” and “established” claims originate in the candidate’s material; they warrant interview scrutiny rather than an assumption that either draft invented them. M has no clear factual addition comparable to R’s “active” certification claim.
+
+**Section comparison**
+
+- **Header/contact — Tie:** Identical, readable, and establishes a US location.
+- **Summary — M:** More concrete about the employment trajectory and avoids an unverified certification-status claim.
+- **Skills — M:** More compact, although both rely heavily on unsupported skill listings.
+- **Experience — M:** Places the 10TB work earlier and correctly separates current university employment from education.
+- **Projects — R:** Uses reverse chronological order and more readable sentences; M’s VPC sentence introduces a clarity problem.
+- **Certifications — Tie:** The section entries contain the same information.
+- **Education — M:** Cleanly separates the degree from the university job.

@@ -1,0 +1,80 @@
+# Hiring-manager review: AI Engineer, Stripe SA (Chicago)
+
+## 1. Screen decision
+
+**No.** The resume shows no work shipping production engineering systems, and the 4+ years requirement isn't met. It has about two years as a data analyst, a 4-month internship and a graduate assistantship. Nothing is dated after Dec 2023.
+
+**Reads as:** an entry-level data analyst or new-grad data scientist, not an experienced AI engineer.
+
+## 2. First impression (top third)
+
+**What I know:**
+- Seattle-based, not Chicago.
+- Python and SQL, with AWS S3/EC2/QuickSight and GCP.
+- Classic ML and NLP models: CNN, YOLOv7 and the BERT family.
+- SQL Server and Tableau reporting.
+- The most recent role is a graduate research assistantship that ended Dec 2023, almost three years before today, and nothing follows it.
+- "Masters Candidate … Dec 2023" leaves open whether the degree was finished. The candidate chose to keep this wording, but a reader in Oct 2026 will notice it.
+
+**Must-haves still not evidenced:**
+- 4+ years shipping production systems.
+- Backend fundamentals: debugging failing systems, tracing issues across services, reasoning about data flows.
+- Building or deploying AI agents, LLM tools or workflow automation beyond prompting. The models here are classifiers, not LLM tooling.
+- Two of Ruby, Node.js, Python or Next.js. Only Python is shown.
+- Cloud deployment, monitoring and DevOps. EC2 and S3 appear for training, not deploying.
+- Internal tools or developer platforms. The invoice script is the closest thing.
+- Working across multiple codebases at once.
+- AI-assisted development in their own workflow.
+- Scoping and delivering with minimal oversight.
+- Partly shown: written communication (reports, analytical writing) and some GTM exposure (shadowing SAs).
+
+## 3. Claim check
+
+| Line | Support in candidate material | Verdict |
+|---|---|---|
+| Programming: Python, SQL | "Python, SQL, R, SAS, HTML, CSS" + confirmed omissions | Supported |
+| Cloud: AWS S3, AWS EC2, AWS QuickSight, GCP | "AWS S3, AWS EC2"; "AWS QuickSight dashboards"; "GCP compute engines" | Supported |
+| Machine learning: NLP, CNN, Yolov7… | "CNN, Yolov7 models"; "DeBERTa, RoBERTa, DistilBERT"; "Natural Language Processing (NLP)" | Supported |
+| Data and reporting: SQL Server, SSMS, Excel, Tableau | "MS SQL Server"; "from SSMS"; "Excel, Tableau" | Supported |
+| Systems: Linux | "Linux"; confirmed "Keep Linux" | Supported |
+| Graduate Research Assistant, Nov 2022 – Dec 2023 | "Graduate Research Assistant; USA Nov 2022 – Dec 2023"; confirmed leave as is | Supported |
+| Automated PDF invoice data extraction… 80% | "extracting information from PDF invoices… using Python, resulting in an 80% reduction in data entry time"; confirmed | Supported |
+| Extracted and updated departmental research expenditures… 40% | "SQL queries to extract and update research expenditures of departments… from SSMS, which reduced analyzing time by 40%" | Supported |
+| Collaborated with the IT team… 70% | "Collaborated with the IT team… SQL Server and Tableau, resulting in a 70% reduction"; confirmed | Supported |
+| Solutions Architect Intern – Data Science, May–Aug 2023 | "Solutions Architect Intern – Data Science; USA May 2023 – Aug 2023" | Supported |
+| Developed real-time basketball video analysis… 76% | "Developed and implemented real time video analysis… accuracy of 76%… CNN, Yolov7" | Supported (drops "and implemented") |
+| Designed and tested over 30 ML models… 14%… 25% | "Designed and tested over 30 ML models using AWS S3, AWS EC2… 14%… 25%" | Supported |
+| Created AWS QuickSight dashboards… 20% | "QuickSight dashboards to closely monitor KPIs, including performance metrics, runtime and computational resources… 20%" | Supported |
+| Shadowed Solutions Architects' meetings with 4… | "shadowing meetings between Solutions Architects and 4 different customers" | Supported |
+| Data Analyst, Jun 2020 – Jul 2022 | "Data Analyst; India Jun 2020 - Jul 2022" | Supported |
+| Automated Python web scraping… over 100 hours | "Automated web scraping using Python… reduction of over 100 hours" | Supported (no period in either version) |
+| Developed and executed 100+ complex SQL queries… | "100+ complex SQL queries… departments such as Agriculture, Education, Health… instrumental in advocating" | Supported (drops "such as" and "instrumental"; narrower) |
+| Designed Tableau dashboards… 800K rupees… | "annual savings of 800K rupees, and enhanced stakeholder retention"; confirmed "yes, as written" | Supported |
+| Collaborated to publish monthly reports… 45% | "doubled publications… 45% increase in donor funds"; confirmed | Supported |
+| News authenticity classifier, Python, Apr 2023 | "News authenticity classifier \| Python Apr 2023" | Supported |
+| Classified news… F1-score of 0.9916 | "f1-score of 0.9916… algorithms such as DeBERTa, RoBERTa, DistilBERT, with RoBERTa having highest" | Supported (drops "such as") |
+| Trained models using AWS EC2 and GCP… 80% | "Trained the models using AWS EC2 and GCP compute engines which reduced the runtime by 80%" | Supported |
+| Crop leaf disease detector, Python, Dec 2022 | "Crop leaf disease detector \| Python Dec 2022" | Supported |
+| Predicted diseased plants with 96.8%… | "96.8% accuracy by training 12K images with CNN and pre-trained models (Resnet50, VGG16, Densenet121)" | Supported |
+| Built an interactive web application… 100% | "interactive web application… 100% increase in user interaction"; confirmed | Supported |
+| Data Science Masters Candidate (3.95/4), Dec 2023 | Same text; confirmed "Leave the degree… as my resume has them" | Supported |
+| Relevant coursework… | "Deep Learning, NLP, Data Mining, Data Warehousing, Data visualization" | Supported |
+| Bachelor of Engineering… (8.66/10), May 2020 | Same text | Supported |
+
+No line is MORE THAN THE MATERIAL. A few lines claim slightly *less* than the material; Fixes covers them.
+
+## 4. Fixes
+
+1. "Developed real-time basketball video analysis for shot and posture analysis, with 76% accuracy using object detection and image classification with CNN and Yolov7 models." Restore "Developed and implemented." The original claims implementation, and that is the closest this resume comes to shipping something.
+2. "Developed and executed 100+ complex SQL queries on Federal and State budgets in Agriculture, Education and Health for reports used to advocate for and facilitate policy change." Restore "departments such as" and "instrumental in." As written, it narrows the scope to three departments and weakens the candidate's stated impact.
+3. "Classified news as real or fake using DeBERTa, RoBERTa and DistilBERT; RoBERTa achieved the highest F1-score of 0.9916." Restore "models such as" so it doesn't imply these were the only three tried.
+
+Beyond these, nothing material needs fixing in the wording. No line echoes the job description, and every line would read the same sent to another company. The gap is substance: no production engineering, no LLM or agent work, no second required language, and nothing after Dec 2023. The candidate confirmed nothing more to add, so editing can't close it.
+
+## 5. Claim-defence questions
+
+1. **"The basketball analysis was 'real time' at 76% accuracy. Accuracy of what, on what held-out data, and did it run anywhere beyond a notebook or demo?"** Tests whether "implemented" means deployed and whether the metric is well defined.
+2. **"How did a QuickSight dashboard produce a 20% increase in model efficiency? What was efficiency, and what was the baseline?"** Tests the causal link between monitoring and the result, and how it was measured.
+3. **"Walk me through the PDF invoice extractor: libraries, how you handled varying layouts, error rate, and who used it after you."** Tests engineering depth and whether it became a tool others adopted, which is the core of this role.
+4. **"The 800K-rupee savings and the 45% rise in donor funds: what was your part versus the team's, and how were those attributed to your dashboards and reports?"** Tests ownership and attribution of business outcomes.
+5. **"An F1 of 0.9916 on fake-news classification is very high. How did you rule out leakage or dataset artefacts?"** Tests ML rigour and willingness to question an overly good result.

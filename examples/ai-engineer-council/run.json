@@ -1,0 +1,1418 @@
+{
+ "slug": "ai-engineer-council",
+ "title": "Data scientist applying for an AI engineer role",
+ "mode": "Full council",
+ "reach": "Auto",
+ "facts": [
+  "Real resume, shared with consent",
+  "Auto mode: the other AIs ran by themselves",
+  "3 AIs from 3 companies",
+  "27 minutes",
+  "Real public job posting"
+ ],
+ "note": "Recorded by the host as it worked, with the tools in tools/. The host was OpenAI's gpt-6.1-sol, through Codex; it recorded its own model as GPT-6. It also wrote a draft, so the merge ran in a Codex sub-agent that started with none of the host's conversation and read only the merge prompt. Its last message was trimmed before publishing: the parts written for the recording (seat timings, recording checks and notes on the skill's wording, with local file paths) were removed, and the lines for the candidate kept.",
+ "candidate": "Sofia",
+ "end": 1620,
+ "who": {
+  "user": {
+   "n": "Sofia",
+   "s": "S",
+   "role": "the candidate"
+  },
+  "host": {
+   "n": "Host",
+   "s": "H",
+   "role": "AI 1, GPT-6"
+  },
+  "claude": {
+   "n": "Claude",
+   "s": "C",
+   "role": "AI 2, Anthropic, opus"
+  },
+  "agy": {
+   "n": "Gemini",
+   "s": "G",
+   "role": "AI 3, Google, gemini-3.8-flash-high"
+  },
+  "check": {
+   "n": "Checker",
+   "s": "✓",
+   "role": "check_resume.py"
+  }
+ },
+ "steps": [
+  {
+   "n": 1,
+   "name": "Setup",
+   "t": 2
+  },
+  {
+   "n": 2,
+   "name": "Draft",
+   "t": 59
+  },
+  {
+   "n": 3,
+   "name": "Council",
+   "t": 267
+  },
+  {
+   "n": 4,
+   "name": "Review and sign-off",
+   "t": 554
+  },
+  {
+   "n": 5,
+   "name": "Finalise",
+   "t": 1005
+  }
+ ],
+ "events": [
+  {
+   "t": 1,
+   "kind": "say",
+   "text": "I’ll read the skill in full, then start the recorded run and follow its council workflow.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 2,
+   "kind": "user",
+   "text": "I want to apply for this job. My resume is before.md and the posting is job.md. Can you tailor my resume for it?",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 2,
+   "kind": "step",
+   "text": "Setup",
+   "who": "host",
+   "step": 1,
+   "links": []
+  },
+  {
+   "t": 3,
+   "kind": "note",
+   "text": "Reading its setup rules and the candidate's files",
+   "who": "host",
+   "label": "Setup",
+   "links": []
+  },
+  {
+   "t": 30,
+   "kind": "say",
+   "text": "Step 1 of 5: Setup\n\nYou give: your resume, the job posting, a few sentences in your own words\n   ↓\nI write a draft, from your facts only\n   ↓\nA second AI, from a different company, checks it without knowing who wrote it\n   ↓\nAutomatic checks, then you approve every changed line\n   ↓\nYour resume, the job requirements it does not show, and likely interview questions\n\nThe other AIs run automatically; you answer a few questions along the way. Independent review helps catch mistakes in the writing.\n\nI read these roles:\n- Large cloud provider: Solutions Architect Intern - Data Science, May 2023 to Aug 2023.\n- University school of public health: Graduate Research Assistant, Nov 2022 to Dec 2023.\n- Policy research nonprofit: Data Analyst, Jun 2020 to Jul 2022.\n\nPick two or three things this job asks for that you have really done. For each, tell me one time you did it: what it was, what you did, what changed. Plain sentences; dictating is fine. Please also share any LinkedIn, GitHub, portfolio, project, paper or certification links you want considered.\n\nI am treating the target as an experienced AI Engineer role in Chicago, United States. Your resume currently shows machine learning, automation and Solutions Architecture exposure; it does not establish four years shipping production systems.\n\nModel line: I am OpenAI GPT-6, flagship tier. Available checks use Anthropic opus and Google gemini-3.8-flash-high. The Google option is a fast model, so my default is a quick review. You can choose full council for separate drafts and blind critiques; it takes longer and uses several times as much of your AI plans. I will use no role research, polish the wording, and work in Markdown, a plain-text format, with PDF or Word available at the end.\n\nI've hidden your name and contact details. They come back at the end. Working files are in .tribunal/.\n\nThis text, including your employers, job history and the pages your links point to, will go to Anthropic Claude Code (opus) and Google Antigravity (gemini-3.8-flash-high) under their terms and your account settings there. Some keep their own history, and the text can still identify you. Leave out anything confidential to an employer, and check whether this employer allows AI help with applications.\n\nAnswer the questions, or say \"yes\" to take the defaults and go ahead.",
+   "who": "host",
+   "stop": "Stop 1",
+   "links": []
+  },
+  {
+   "t": 59,
+   "kind": "user",
+   "text": "Full council, please. Yes to the defaults, go ahead. No links.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 59,
+   "kind": "step",
+   "text": "Draft",
+   "who": "host",
+   "step": 2,
+   "links": []
+  },
+  {
+   "t": 59,
+   "kind": "note",
+   "text": "Writing its independent draft from the original resume before reading replies",
+   "who": "host",
+   "label": "Drafting",
+   "links": []
+  },
+  {
+   "t": 60,
+   "kind": "say",
+   "text": "Step 2 of 5: Draft\n\nI’ll run the full council you chose and keep your original wording as the voice reference. With no links to add, I’ll work from the two files; most recruiters look for LinkedIn, but it is optional here. Separate drafts are starting now, followed by blind critiques.\n\nNext, let the draft and review rounds run; I’ll bring back the factual questions together.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 67,
+   "kind": "ask",
+   "text": "Write a tailored resume using only the candidate's facts.",
+   "who": "host",
+   "to": "claude",
+   "label": "Draft",
+   "files": [
+    "p1.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 68,
+   "kind": "ask",
+   "text": "Write a tailored resume using only the candidate's facts.",
+   "who": "host",
+   "to": "agy",
+   "label": "Draft",
+   "files": [
+    "p1.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 106,
+   "kind": "note",
+   "text": "Checking its draft's numbers, qualifiers and customer exposure against the original",
+   "who": "host",
+   "label": "Fact audit",
+   "links": []
+  },
+  {
+   "t": 117,
+   "kind": "say",
+   "text": "Step 2 of 5: Draft\n\nThe draft calls are still running. I’ve checked the source claims: customer exposure was meeting shadowing, the reporting work included team contributions, and the degree is listed as a master's candidacy. Those limits will stay visible unless you confirm a change.\n\nNext, let the independent drafts finish.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 147,
+   "kind": "reply",
+   "text": "Returned its draft, missing requirements and open questions.",
+   "who": "claude",
+   "d": 80,
+   "files": [
+    "p1_reply_claude.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 170,
+   "kind": "note",
+   "text": "Collecting the returned draft's job gaps and unanswered factual questions",
+   "who": "host",
+   "label": "Draft notes",
+   "links": []
+  },
+  {
+   "t": 180,
+   "kind": "say",
+   "text": "Step 2 of 5: Draft\n\nOne draft has returned. It highlights Python automation, cloud model training and the internship, and identifies the same major gap: the files show no production engineering work after December 2023. The other draft is still running.\n\nNext, let the remaining draft finish so both can be critiqued blind.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 250,
+   "kind": "reply",
+   "text": "Returned its draft, missing requirements and open questions.",
+   "who": "agy",
+   "d": 182,
+   "files": [
+    "p1_reply_agy.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 267,
+   "kind": "step",
+   "text": "Council",
+   "who": "host",
+   "step": 3,
+   "links": []
+  },
+  {
+   "t": 267,
+   "kind": "say",
+   "text": "Step 3 of 5: Council\n\nAll three drafts are ready. I’m sending each of the other AIs only the drafts it did not write. A fresh reading will then merge the strongest supported lines, keeping the internship title and team contributions intact.\n\nNext, let the blind critiques and merge run.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 276,
+   "kind": "ask",
+   "text": "Critique the anonymous drafts against the candidate's material and target job.",
+   "who": "host",
+   "to": "claude",
+   "label": "Critique",
+   "files": [
+    "p2_claude.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 279,
+   "kind": "ask",
+   "text": "Critique the anonymous drafts against the candidate's material and target job.",
+   "who": "host",
+   "to": "agy",
+   "label": "Critique",
+   "files": [
+    "p2_agy.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 279,
+   "kind": "note",
+   "text": "Collecting the drafts' factual gaps while the blind critiques run",
+   "who": "host",
+   "label": "Council notes",
+   "links": []
+  },
+  {
+   "t": 331,
+   "kind": "say",
+   "text": "Step 3 of 5: Council\n\nThe critiques are running. The drafts agree on the strongest evidence: Python invoice extraction and scraping, SQL reporting, cloud model comparisons, and the internship. I’m keeping questions about production use, recent work and degree completion for your sign-off.\n\nNext, let the critiques finish before the merge.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 365,
+   "kind": "reply",
+   "text": "Returned its screen decisions and quoted findings on the drafts.",
+   "who": "claude",
+   "d": 89,
+   "files": [
+    "critique_claude.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 401,
+   "kind": "note",
+   "text": "Reading the returned critique and checking its quoted lines against the source",
+   "who": "host",
+   "label": "Claim review",
+   "links": []
+  },
+  {
+   "t": 407,
+   "kind": "say",
+   "text": "Step 3 of 5: Council\n\nThe first critique caught an overstatement in one summary: shadowing customer meetings had become supporting customer engagements. That wording will go. Questions about the efficiency and interaction percentages will come to you, since a reviewer's doubt cannot settle whether your figures are true.\n\nNext, let the remaining critique and merge finish.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 411,
+   "kind": "reply",
+   "text": "Returned its screen decisions and quoted findings on the drafts.",
+   "who": "agy",
+   "d": 132,
+   "files": [
+    "critique_agy.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 445,
+   "kind": "note",
+   "text": "Merging the anonymous drafts in a fresh context that sees only its prompt",
+   "who": "host",
+   "label": "Merge",
+   "links": []
+  },
+  {
+   "t": 484,
+   "kind": "say",
+   "text": "Step 3 of 5: Council\n\nBoth critiques are back, and the fresh-context merge is running. The reviewers agree that this is a substantial stretch for the posting's production engineering requirements. I’ll keep that assessment separate from the resume and retain supported facts even where a reviewer questioned a metric.\n\nNext, let the merged resume receive its line-by-line review.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 554,
+   "kind": "step",
+   "text": "Review and sign-off",
+   "who": "host",
+   "step": 4,
+   "links": []
+  },
+  {
+   "t": 554,
+   "kind": "note",
+   "text": "Checking the merged resume and preparing its independent line-by-line review",
+   "who": "host",
+   "label": "Review",
+   "links": []
+  },
+  {
+   "t": 605,
+   "kind": "check",
+   "text": "0 errors, 24 warnings, 3 working stand-ins; 433 words. Warnings concern wording, estimated line wraps, list patterns and Linux backed only by the original resume.",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 612,
+   "kind": "say",
+   "text": "Step 4 of 5: Review and sign-off\n\nThe merged draft is 433 words and has no checker errors. It keeps all three roles and the two most relevant ML projects; I cut the pandemic and basketball shot-selection projects and one expenditure-reporting bullet for space and focus. A line-by-line independent review is starting now, and I’ll address the wording warnings when it returns.\n\nNext, let the review finish; then you’ll confirm the facts in one list.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 612,
+   "kind": "ask",
+   "text": "Review the tailored resume line by line against the candidate's material and identify unsupported claims.",
+   "who": "host",
+   "to": "claude",
+   "label": "Review",
+   "files": [
+    "p4_review.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 660,
+   "kind": "note",
+   "text": "Comparing the shortened bullets with the original while the review runs",
+   "who": "host",
+   "label": "Source check",
+   "links": []
+  },
+  {
+   "t": 686,
+   "kind": "say",
+   "text": "Step 4 of 5: Review and sign-off\n\nThe line-by-line review is still running. The draft keeps your reported results and collaborative wording. I’ll shorten repeated sentence patterns afterward, and ask about Linux because it appears only in the original skills list.\n\nNext, let the claim check finish.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 755,
+   "kind": "reply",
+   "text": "Returned its line-by-line claim check, suggested fixes and interview questions.",
+   "who": "claude",
+   "d": 143,
+   "files": [
+    "p4_reply_claude.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 759,
+   "kind": "note",
+   "text": "Applying the review's safe wording fixes and holding factual questions for sign-off",
+   "who": "host",
+   "label": "Voice edit",
+   "links": []
+  },
+  {
+   "t": 826,
+   "kind": "check",
+   "text": "0 errors, 15 warnings, 3 working stand-ins; 432 words. Remaining warnings are estimated wraps, original result wording, named tool lists, Linux confirmation and the spelling real-time.",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 826,
+   "kind": "say",
+   "text": "SIGN-OFF QUESTIONS\nStep 4 of 5: Review and sign-off\n\nThe blind review found support for every factual line in the draft. I shortened sentences, grouped the skills and put automation first. The draft keeps all three roles, the news classifier and the crop detector; the pandemic and basketball shot-selection projects and one expenditure-dashboard bullet were cut for focus.\n\nYou can read the [working draft](.tribunal/resume.md). Your name and contact details are still hidden there.\n\nThe checker reports 0 errors and 15 warnings at 432 words. Remaining warnings include estimated line wraps, tool lists and result wording from your original resume, including “enhanced.” “Real-time” is just the hyphenated spelling of your original “real time.” I kept those facts rather than changing their meaning.\n\nPlease confirm or correct these points:\n\n1. What have you done since December 2023, with titles and dates if there is work to add? Is “Data Science Masters Candidate” still accurate, or was the degree awarded? Was the research assistantship part-time?\n2. For the internship, what were the 14% accuracy increase and 25% runtime decrease compared with? What did the 20% “overall model efficiency” improvement measure, how did the dashboards contribute, and what was your own part versus the team's? Customer exposure remains shadowing meetings with 4 customers.\n3. What did you personally build in the SQL Server/Tableau work with IT, and how was the 70% reporting-time reduction measured? Who used the Python invoice extraction, and was it deployed or maintained for others?\n4. Can you stand behind the nonprofit's annual savings of 800K rupees, enhanced stakeholder retention, doubled publications and 45% increase in donor funds as written? What was your contribution versus the wider team's?\n5. For the news classifier, what evaluation data produced the 0.9916 F1-score, and what was the 80% runtime reduction compared with? For the crop detector web app, what was its stack and deployment, and what did the 100% interaction increase compare?\n6. Which skills from the old skills list can you still use and explain: Linux, R, SAS, HTML, CSS, MySQL, MongoDB, Hive, Hadoop, HDFS, Microsoft Power BI, SPSS, Azure, Snowflake, Alteryx and Databricks? Linux is in the draft; the others were left out to focus it.\n7. Only if true, is there evidence we have missed of four years shipping production systems; backend debugging across services; deployed AI agents or LLM-powered tools; Ruby, Node.js or Next.js alongside Python; cloud deployment or DevOps; AI-assisted development; independent scoping across teams and codebases; or tools adopted beyond your immediate team? Any Stripe/payments or third-party integration work would also help. Give a concrete example for anything to add.\n\nAre all of these true, and could you explain each in an interview? Tell me any to fix. If you don't know a number, I'll leave it out, so please don't estimate.",
+   "who": "host",
+   "stop": "Stop 2",
+   "links": [
+    "L3",
+    "L4",
+    "L8",
+    "B10"
+   ]
+  },
+  {
+   "t": 968,
+   "kind": "user",
+   "text": "I confirm everything in my original resume is true as written.\n1. Nothing new to add. Leave the degree and the assistantship as my resume has them.\n2. I don't know more about how those were measured. Leave them as my resume has them.\n3. Leave it as my resume has it.\n4. Yes, as written.\n5. I don't know more. Leave it as my resume has it.\n6. Leave them out except Linux.\n7. Nothing to add for those.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 969,
+   "kind": "say",
+   "text": "Step 4 of 5: Review and sign-off\n\nI’ll keep your confirmed claims at their original scope, add no measurement details, and retain Linux while leaving the other listed skills out. Your degree and assistantship will stay as stated.\n\nNext, I’ll send the confirmed draft for both final blind checks.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 970,
+   "kind": "note",
+   "text": "Recording the candidate's confirmation and preserving the original claims without added detail",
+   "who": "host",
+   "label": "Sign-off",
+   "links": []
+  },
+  {
+   "t": 1003,
+   "kind": "check",
+   "text": "0 errors, 14 warnings, 3 working stand-ins; 432 words. Linux is now confirmed; remaining flags are wording patterns, estimated wraps, tool lists and the real-time spelling.",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 1005,
+   "kind": "step",
+   "text": "Finalise",
+   "who": "host",
+   "step": 5,
+   "links": []
+  },
+  {
+   "t": 1013,
+   "kind": "say",
+   "text": "Step 5 of 5: Finalise\n\nYour confirmation is recorded. The draft has no checker errors, and Linux is now confirmed. Both final blind checks will receive your answers, including your request to retain the original claims without extra detail.\n\nNext, let the final checks finish before you approve the file.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 1026,
+   "kind": "ask",
+   "text": "Check the final resume against the candidate's confirmed account and report any remaining factual or wording issues.",
+   "who": "host",
+   "to": "claude",
+   "label": "Final look",
+   "files": [
+    "p4_final.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 1029,
+   "kind": "ask",
+   "text": "Check the final resume against the candidate's confirmed account and report any remaining factual or wording issues.",
+   "who": "host",
+   "to": "agy",
+   "label": "Final look",
+   "files": [
+    "p4_final.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 1036,
+   "kind": "note",
+   "text": "Writing line-by-line change reasons for readers while the final checks run",
+   "who": "host",
+   "label": "Change reasons",
+   "links": []
+  },
+  {
+   "t": 1187,
+   "kind": "say",
+   "text": "Step 5 of 5: Finalise\n\nBoth final checks are running. Your answers added no new claims, so the resume still uses the confirmed figures and original degree wording. I’m also documenting the reasons for each changed or removed line for the recorded example.\n\nNext, let the final reviewers finish.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 1222,
+   "kind": "reply",
+   "text": "Returned its final claim check, suggested edits and interview questions.",
+   "who": "claude",
+   "d": 196,
+   "files": [
+    "p4_final_reply_claude.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 1252,
+   "kind": "note",
+   "text": "Checking the returned final review against the candidate's whole-resume confirmation",
+   "who": "host",
+   "label": "Final review",
+   "links": []
+  },
+  {
+   "t": 1273,
+   "kind": "reply",
+   "text": "Returned its final claim check, suggested edits and interview questions.",
+   "who": "agy",
+   "d": 244,
+   "files": [
+    "p4_final_reply_agy.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 1369,
+   "kind": "say",
+   "text": "Step 5 of 5: Finalise\n\nBoth final checks found support for the factual lines. One caught wording that undersold your original account; I’ll restore “developed and implemented” and the original scope of the department and model lists. Your confirmed metrics, degree wording and customer shadowing will stay, with no added tools or relocation claim.\n\nNext, review the completed file at the final approval stop.",
+   "who": "host",
+   "links": [
+    "L2"
+   ]
+  },
+  {
+   "t": 1375,
+   "kind": "note",
+   "text": "Restoring the original implementation wording and scope qualifiers without adding facts",
+   "who": "host",
+   "label": "Final wording",
+   "links": []
+  },
+  {
+   "t": 1406,
+   "kind": "check",
+   "text": "0 errors, 14 warnings, 3 working stand-ins; 440 words after restoring original wording and scope qualifiers.",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 1407,
+   "kind": "say",
+   "text": "Step 5 of 5: Finalise\n\nYour [completed resume](.tribunal/final.md) has your name and contact details restored. The original implementation wording and list qualifiers are back, and your confirmed figures and degree wording remain.\n\nOne final review suggested putting the internship above the assistantship; I left the roles ordered by their ending dates. No factual questions remain open. The wording and estimated-wrap warnings remain as explained.\n\nIs it final, and would you like Markdown, PDF or Word?",
+   "who": "host",
+   "stop": "Stop 3",
+   "links": []
+  },
+  {
+   "t": 1427,
+   "kind": "user",
+   "text": "Yes, it's final. Markdown is fine.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 1497,
+   "kind": "check",
+   "text": "0 errors, 14 warnings, 0 placeholders; 443 words. Remaining warnings are estimated wraps, original result wording and enhanced, named tool lists, and the hyphenated spelling real-time.",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 1498,
+   "kind": "say",
+   "text": "Step 5 of 5: Finalise\n\nYour [final Markdown resume](.tribunal/final.md) is ready. The final checker reports 0 errors, 14 warnings and no placeholders, at 443 words. The warnings are estimated line wraps and the wording patterns already explained; the full output is in [check-final.txt](.tribunal/check-final.txt).\n\nThis posting remains a substantial stretch. The resume does not show four years shipping production systems, backend debugging across services, deployed agents or LLM tools, a second required programming language, deployment and DevOps ownership, AI-assisted development, simultaneous codebase work, or adoption beyond the immediate team. Independent engineering delivery, Stripe/payments work and third-party integrations are also not established.\n\nLikely interview questions to prepare for:\n- What did “20% overall model efficiency” measure, and how did the dashboards contribute?\n- How did the invoice extractor handle different PDFs, and who used it?\n- What was your own contribution to the annual savings and donor-fund growth?\n- How was the classifier's 0.9916 F1-score evaluated, including checks for data leakage?\n\nWould you like me to save your confirmed facts for next time in profile/, or delete the working .tribunal/ folder? Without a request, I’ll keep the working files and save no profile.",
+   "who": "host",
+   "links": [
+    "L4",
+    "B10"
+   ]
+  },
+  {
+   "t": 1526,
+   "kind": "user",
+   "text": "No thanks.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 1527,
+   "kind": "note",
+   "text": "Checking the completed recording, consent and exact changed-line coverage for publication",
+   "who": "host",
+   "label": "Export check",
+   "links": []
+  },
+  {
+   "t": 1620,
+   "kind": "note",
+   "text": "Finishing its final message",
+   "who": "host",
+   "label": "Run report",
+   "links": []
+  },
+  {
+   "t": 1620,
+   "kind": "say",
+   "text": "Step 5 of 5: Finalise\n\n[final.md](.tribunal/final.md) is complete. Final checker: **0 errors, 14 warnings, 0 placeholders; 443 words**. [Full checker output](.tribunal/check-final.txt).\n\nNo profile was saved; working files remain.",
+   "who": "host",
+   "links": []
+  }
+ ],
+ "lanes": [
+  [
+   "host",
+   1,
+   3,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   3,
+   30,
+   "Setup",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   30,
+   59,
+   "Stop 1",
+   1,
+   "Waiting for Sofia"
+  ],
+  [
+   "host",
+   59,
+   67,
+   "Drafting",
+   0,
+   "The host is working"
+  ],
+  [
+   "claude",
+   67,
+   147,
+   "Draft",
+   0,
+   "Claude is working on the draft"
+  ],
+  [
+   "agy",
+   68,
+   250,
+   "Draft",
+   0,
+   "Gemini is working on the draft"
+  ],
+  [
+   "host",
+   250,
+   276,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "claude",
+   276,
+   365,
+   "Critique",
+   0,
+   "Claude is working on the critique"
+  ],
+  [
+   "agy",
+   279,
+   411,
+   "Critique",
+   0,
+   "Gemini is working on the critique"
+  ],
+  [
+   "host",
+   411,
+   445,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   445,
+   554,
+   "Merge",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   554,
+   605,
+   "Review",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   605,
+   605,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   605,
+   612,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "claude",
+   612,
+   755,
+   "Review",
+   0,
+   "Claude is working on the review"
+  ],
+  [
+   "host",
+   755,
+   759,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   759,
+   826,
+   "Voice edit",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   826,
+   826,
+   "",
+   0,
+   ""
+  ],
+  [
+   "user",
+   826,
+   968,
+   "Stop 2",
+   1,
+   "Waiting for Sofia"
+  ],
+  [
+   "host",
+   968,
+   970,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   970,
+   1003,
+   "Sign-off",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   1003,
+   1003,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   1003,
+   1026,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "claude",
+   1026,
+   1222,
+   "Final look",
+   0,
+   "Claude is working on the final look"
+  ],
+  [
+   "agy",
+   1029,
+   1273,
+   "Final look",
+   0,
+   "Gemini is working on the final look"
+  ],
+  [
+   "host",
+   1273,
+   1375,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   1375,
+   1406,
+   "Final wording",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   1406,
+   1406,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   1406,
+   1407,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   1407,
+   1427,
+   "Stop 3",
+   1,
+   "Waiting for Sofia"
+  ],
+  [
+   "host",
+   1427,
+   1497,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   1497,
+   1497,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   1497,
+   1527,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   1527,
+   1620,
+   "Export check",
+   0,
+   "The host is working"
+  ]
+ ],
+ "before": [
+  {
+   "k": "name",
+   "tx": "Sofia Martinez"
+  },
+  {
+   "k": "contact",
+   "tx": "Seattle, WA | sofia.martinez@example.com | (206) 555-0172",
+   "id": "L29"
+  },
+  {
+   "k": "h2",
+   "tx": "PROFESSIONAL EXPERIENCE"
+  },
+  {
+   "k": "p",
+   "tx": "Large cloud provider - Solutions Architect Intern – Data Science; USA May 2023 – Aug 2023",
+   "why": "Sofia's internship title, country and dates are separated into readable lines while the intern level stays explicit.",
+   "id": "L1",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed and implemented real time video analysis of basketball shot to provide shot and posture analysis of the shooter with accuracy of 76% by object detection and image classification using CNN, Yolov7 models",
+   "why": "Sofia's basketball video work keeps development and implementation, its 76% accuracy and the named models in one bullet.",
+   "id": "L2",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Designed and tested over 30 ML models using AWS S3, AWS EC2 to find the best model, resulted in increasing the accuracy by 14% and decreasing the runtime by 25%",
+   "why": "Sofia's model comparison keeps over 30 models, its stated purpose and both reported improvements without adding a baseline.",
+   "id": "L3",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Created AWS QuickSight dashboards to closely monitor KPIs, including performance metrics, runtime and computational resources, resulting in a 20% increase in overall model efficiency",
+   "why": "Sofia's dashboard bullet keeps the monitored resources and the confirmed 20% overall model efficiency result.",
+   "id": "L4",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Learned the company's sales procedures and tools available to assist customers by shadowing meetings between Solutions Architects and 4 different customers",
+   "why": "Sofia's customer exposure is described as shadowing meetings with four customers rather than owning customer engagements.",
+   "id": "L5",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "University school of public health – Graduate Research Assistant; USA Nov 2022 – Dec 2023",
+   "why": "Sofia's assistantship title and dates are placed under the employer without guessing part-time status.",
+   "id": "L6",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Implemented SQL queries to extract and update research expenditures of departments, exported the results as Excel sheets from SSMS, which reduced analyzing time by 40%",
+   "why": "Sofia's SQL extraction and Excel export are easier to scan while the SSMS tool and 40% reduction stay attached.",
+   "id": "L7",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Collaborated with the IT team to implement secure and reliable data management and reporting systems using SQL Server and Tableau, resulting in a 70% reduction in report generation time",
+   "why": "Sofia's reporting work retains the IT collaboration and the 70% result without assigning the whole system to Sofia.",
+   "id": "L8",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Produced insightful monthly expenditure reports and dashboards using Excel and Tableau, contributing to a 20% improvement in resource allocation and budget forecasting accuracy",
+   "why": "Sofia's expenditure dashboard bullet is cut to make room for Python automation and SQL systems work that better match this job.",
+   "s": "cut",
+   "id": "B10"
+  },
+  {
+   "k": "bul",
+   "tx": "Automated data collection by extracting information from PDF invoices and exporting relevant data to Excel sheets using Python, resulting in an 80% reduction in data entry time",
+   "why": "Sofia's Python invoice automation moves first under the assistantship and keeps the 80% data entry time reduction.",
+   "id": "L9",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Policy research nonprofit - Data Analyst; India Jun 2020 - Jul 2022",
+   "why": "Sofia's analyst title and dates are separated from the employer and use the same date style as the other roles.",
+   "id": "L10",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed and executed 100+ complex SQL queries to analyze Federal and State budgets data in departments such as Agriculture, Education, Health using, to create data-driven reports instrumental in advocating for and facilitating policy change",
+   "why": "Sofia's SQL budget analysis loses the broken wording while retaining 100+ queries, example departments and the stated role in policy change.",
+   "id": "L11",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Designed Tableau dashboards to monitor KPIs and track expenditure, resulting in improved budget allocation, annual savings of 800K rupees, and enhanced stakeholder retention",
+   "why": "Sofia's dashboard bullet keeps annual savings in rupees and the confirmed retention claim without adding attribution details.",
+   "id": "L12",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Collaborated to publish monthly reports using Excel and analytical writing, resulted in doubled publications, heightened awareness of the organization's research and policy change strategies, and a 45% increase in donor funds",
+   "why": "Sofia's publication work is shortened around the collaborative contribution, doubled publications and 45% donor fund increase.",
+   "id": "L13",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Automated web scraping using Python to collect data for monthly and annual reports, resulting in reduction of over 100 hours in manual data collection time",
+   "why": "Sofia's web scraping moves first under the analyst role and keeps over 100 hours without inventing a monthly or yearly period.",
+   "id": "L14",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "PROJECTS"
+  },
+  {
+   "k": "role",
+   "tx": "Pandemic impact analysis | SQL & Tableau May 2023",
+   "why": "Sofia's pandemic project is cut because the retained ML projects are closer to this AI engineering job.",
+   "s": "cut",
+   "id": "B17"
+  },
+  {
+   "k": "bul",
+   "tx": "Analyzed a 313k records of covid 19 dataset to assess the global impact of the pandemic, examining mortality rates, infection rates, vaccination coverage, hospitalization trends and economic indicators across multiple countries using SQL queries",
+   "why": "Sofia's pandemic dataset analysis is cut with the project to keep the resume focused.",
+   "s": "cut",
+   "id": "B18"
+  },
+  {
+   "k": "bul",
+   "tx": "Created two interactive Tableau dashboards to effectively communicate key insights from the analysis",
+   "why": "Sofia's pandemic dashboards are cut with the project because professional reporting work already shows Tableau.",
+   "s": "cut",
+   "id": "B19"
+  },
+  {
+   "k": "role",
+   "tx": "News authenticity classifier | Python Apr 2023",
+   "why": "Sofia's classifier title, Python language and date are put on one consistent project line.",
+   "id": "L15",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Classified news as real or fake with an f1-score of 0.9916 using Natural Language Processing (NLP) algorithms such as DeBERTa, RoBERTa, DistilBERT, with RoBERTa having highest f1-score",
+   "why": "Sofia's NLP and transformer experience is brought into the skills section together with CNN and Yolov7 from the internship.",
+   "id": "L26",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Trained the models using AWS EC2 and GCP compute engines which reduced the runtime by 80%",
+   "why": "Sofia's cloud training result is made shorter while retaining both cloud platforms and the 80% runtime reduction.",
+   "id": "L17",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Crop leaf disease detector | Python Dec 2022",
+   "why": "Sofia's crop detector title, language and date use the same project layout as the classifier.",
+   "id": "L18",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Predicted diseased plants with 96.8% accuracy by training 12K images with CNN and pre-trained models (Resnet50, VGG16, Densenet121)",
+   "why": "Sofia's crop model bullet keeps the 96.8% accuracy, 12K images and named pre-trained models in one readable line.",
+   "id": "L19",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Built an interactive web application to detect diseased cotton plants, resulting in 100% increase in user interaction",
+   "why": "Sofia's web application and confirmed 100% interaction increase stay without guessed users, framework or deployment.",
+   "id": "L20",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Basketball shot-selection model | Python Jun 2022",
+   "why": "Sofia's older basketball shot-selection project is cut because the internship already shows basketball ML work.",
+   "s": "cut",
+   "id": "B26"
+  },
+  {
+   "k": "bul",
+   "tx": "Predicted shots on the player's career with 67% accuracy by building MLP classifier and Random Forest classifier",
+   "why": "Sofia's older classifier result is cut with the basketball project to give the more relevant projects room.",
+   "s": "cut",
+   "id": "B27"
+  },
+  {
+   "k": "bul",
+   "tx": "Determined strengths and weakness from opponent's perspective in strategizing against the player in the 2 out of 5 final appearances by conducting effective EDA analysis",
+   "why": "Sofia's opponent analysis is cut with the basketball project because it adds less evidence for this role.",
+   "s": "cut",
+   "id": "B28"
+  },
+  {
+   "k": "h2",
+   "tx": "EDUCATION"
+  },
+  {
+   "k": "p",
+   "tx": "Private university USA, United States",
+   "id": "B29",
+   "s": "cut"
+  },
+  {
+   "k": "p",
+   "tx": "Data Science Masters Candidate (CGPA: 3.95/4) Dec 2023",
+   "why": "Sofia's degree candidacy, CGPA and date remain as confirmed, with only a date separator added.",
+   "id": "L21"
+  },
+  {
+   "k": "p",
+   "tx": "Relevant Coursework: Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data visualization",
+   "why": "Sofia's coursework line gets consistent capitalization while retaining every listed subject.",
+   "id": "L22"
+  },
+  {
+   "k": "p",
+   "tx": "Engineering institute, India",
+   "id": "B32",
+   "s": "cut"
+  },
+  {
+   "k": "p",
+   "tx": "Bachelor of Engineering, Electronics and Communication (CGPA: 8.66/10) May 2020",
+   "why": "Sofia's bachelor's credential, CGPA and date remain intact with a consistent date separator.",
+   "id": "L23"
+  },
+  {
+   "k": "h2",
+   "tx": "SKILLS"
+  },
+  {
+   "k": "bul",
+   "tx": "Programming languages: Python, SQL, R, SAS, HTML, CSS",
+   "why": "Sofia's programming skills focus on Python and SQL, following the request to leave the other listed languages out.",
+   "id": "L24",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Database: MySQL, MS SQL Server, NoSQL – MongoDB, Hive, Hadoop, HDFS",
+   "why": "Sofia's data tools focus on SQL Server, SSMS, Excel and Tableau from the work instead of the broader old database list.",
+   "id": "L27",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Advance knowledge: Excel, Tableau, Microsoft Power BI, SPSS, Linux, AWS, Azure, GCP, Snowflake, Alteryx, Databricks",
+   "why": "Sofia explicitly asked to keep Linux while leaving the other questioned skills out.",
+   "id": "L28",
+   "s": "rw"
+  }
+ ],
+ "after": [
+  {
+   "k": "name",
+   "tx": "Sofia Martinez"
+  },
+  {
+   "k": "contact",
+   "tx": "Seattle, WA | sofia.martinez@example.com | (206) 555-0172",
+   "id": "L29"
+  },
+  {
+   "k": "h2",
+   "tx": "Skills"
+  },
+  {
+   "k": "bul",
+   "tx": "Programming: Python, SQL",
+   "why": "Sofia's programming skills focus on Python and SQL, following the request to leave the other listed languages out.",
+   "from": "sign-off",
+   "id": "L24",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Cloud: AWS S3, AWS EC2, AWS QuickSight, GCP",
+   "why": "Sofia's cloud skills show AWS services evidenced in the work and GCP while Azure and the other declined tools stay out.",
+   "from": "old resume",
+   "id": "L25",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Machine learning: Natural Language Processing (NLP), CNN, Yolov7, DeBERTa, RoBERTa, DistilBERT",
+   "why": "Sofia's NLP and transformer experience is brought into the skills section together with CNN and Yolov7 from the internship.",
+   "from": "old resume",
+   "id": "L26",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Data and reporting: SQL Server, SSMS, Excel, Tableau",
+   "why": "Sofia's data tools focus on SQL Server, SSMS, Excel and Tableau from the work instead of the broader old database list.",
+   "from": "old resume",
+   "id": "L27",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Systems: Linux",
+   "why": "Sofia explicitly asked to keep Linux while leaving the other questioned skills out.",
+   "from": "sign-off",
+   "id": "L28",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Experience"
+  },
+  {
+   "k": "role",
+   "tx": "Graduate Research Assistant | **University school of public health, USA** | Nov 2022 - Dec 2023",
+   "why": "Sofia's assistantship title and dates are placed under the employer without guessing part-time status.",
+   "from": "old resume",
+   "id": "L6",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Automated PDF invoice data extraction to Excel with Python; data entry time fell by 80%.",
+   "why": "Sofia's Python invoice automation moves first under the assistantship and keeps the 80% data entry time reduction.",
+   "from": "old resume",
+   "id": "L9",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Extracted and updated departmental research expenditures with SQL queries; exported results from SSMS to Excel and reduced analysis time by 40%.",
+   "why": "Sofia's SQL extraction and Excel export are easier to scan while the SSMS tool and 40% reduction stay attached.",
+   "from": "old resume",
+   "id": "L7",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Collaborated with the IT team to implement secure, reliable data management and reporting systems using SQL Server and Tableau; report generation time fell by 70%.",
+   "why": "Sofia's reporting work retains the IT collaboration and the 70% result without assigning the whole system to Sofia.",
+   "from": "old resume",
+   "id": "L8",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Solutions Architect Intern - Data Science | **Large cloud provider, USA** | May 2023 - Aug 2023",
+   "why": "Sofia's internship title, country and dates are separated into readable lines while the intern level stays explicit.",
+   "from": "old resume",
+   "id": "L1",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed and implemented real-time basketball video analysis for shot and posture analysis, with 76% accuracy using object detection and image classification with CNN and Yolov7 models.",
+   "why": "Sofia's basketball video work keeps development and implementation, its 76% accuracy and the named models in one bullet.",
+   "from": "old resume",
+   "id": "L2",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Designed and tested over 30 ML models using AWS S3 and AWS EC2 to find the best model; accuracy increased by 14% and runtime decreased by 25%.",
+   "why": "Sofia's model comparison keeps over 30 models, its stated purpose and both reported improvements without adding a baseline.",
+   "from": "old resume",
+   "id": "L3",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Created AWS QuickSight dashboards to monitor model performance, runtime and computational resources, resulting in a 20% increase in overall model efficiency.",
+   "why": "Sofia's dashboard bullet keeps the monitored resources and the confirmed 20% overall model efficiency result.",
+   "from": "old resume",
+   "id": "L4",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Shadowed Solutions Architects' meetings with 4 different customers to learn sales procedures and tools available to assist customers.",
+   "why": "Sofia's customer exposure is described as shadowing meetings with four customers rather than owning customer engagements.",
+   "from": "old resume",
+   "id": "L5",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Data Analyst | **Policy research nonprofit, India** | Jun 2020 - Jul 2022",
+   "why": "Sofia's analyst title and dates are separated from the employer and use the same date style as the other roles.",
+   "from": "old resume",
+   "id": "L10",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Automated Python web scraping for monthly and annual reports; manual data collection time fell by over 100 hours.",
+   "why": "Sofia's web scraping moves first under the analyst role and keeps over 100 hours without inventing a monthly or yearly period.",
+   "from": "old resume",
+   "id": "L14",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed and executed 100+ complex SQL queries on Federal and State budgets in departments such as Agriculture, Education and Health for reports instrumental in advocating for and facilitating policy change.",
+   "why": "Sofia's SQL budget analysis loses the broken wording while retaining 100+ queries, example departments and the stated role in policy change.",
+   "from": "old resume",
+   "id": "L11",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Designed Tableau dashboards to monitor KPIs and expenditure, resulting in improved budget allocation, annual savings of 800K rupees and enhanced stakeholder retention.",
+   "why": "Sofia's dashboard bullet keeps annual savings in rupees and the confirmed retention claim without adding attribution details.",
+   "from": "old resume",
+   "id": "L12",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Collaborated to publish monthly reports using Excel and analytical writing; publications doubled and donor funds increased by 45%.",
+   "why": "Sofia's publication work is shortened around the collaborative contribution, doubled publications and 45% donor fund increase.",
+   "from": "old resume",
+   "id": "L13",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Projects"
+  },
+  {
+   "k": "role",
+   "tx": "**News authenticity classifier | Python | Apr 2023**",
+   "why": "Sofia's classifier title, Python language and date are put on one consistent project line.",
+   "from": "old resume",
+   "id": "L15",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Classified news as real or fake using models such as DeBERTa, RoBERTa and DistilBERT; RoBERTa achieved the highest F1-score of 0.9916.",
+   "why": "Sofia's news classification result keeps F1 as the metric, identifies RoBERTa as the highest scoring model and preserves the list as examples.",
+   "from": "old resume",
+   "id": "L16",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Trained models using AWS EC2 and GCP compute engines; runtime decreased by 80%.",
+   "why": "Sofia's cloud training result is made shorter while retaining both cloud platforms and the 80% runtime reduction.",
+   "from": "old resume",
+   "id": "L17",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "**Crop leaf disease detector | Python | Dec 2022**",
+   "why": "Sofia's crop detector title, language and date use the same project layout as the classifier.",
+   "from": "old resume",
+   "id": "L18",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Predicted diseased plants with 96.8% accuracy using 12K images, CNN and pre-trained Resnet50, VGG16 and Densenet121 models.",
+   "why": "Sofia's crop model bullet keeps the 96.8% accuracy, 12K images and named pre-trained models in one readable line.",
+   "from": "old resume",
+   "id": "L19",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Built an interactive web application to detect diseased cotton plants, resulting in a 100% increase in user interaction.",
+   "why": "Sofia's web application and confirmed 100% interaction increase stay without guessed users, framework or deployment.",
+   "from": "old resume",
+   "id": "L20",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Education"
+  },
+  {
+   "k": "role",
+   "tx": "**Private university USA, United States**",
+   "id": "A27",
+   "s": "new"
+  },
+  {
+   "k": "p",
+   "tx": "Data Science Masters Candidate (CGPA: 3.95/4) | Dec 2023",
+   "why": "Sofia's degree candidacy, CGPA and date remain as confirmed, with only a date separator added.",
+   "from": "old resume",
+   "id": "L21"
+  },
+  {
+   "k": "p",
+   "tx": "Relevant coursework: Deep Learning, Natural Language Processing (NLP), Data Mining, Data Warehousing, Data Visualization",
+   "why": "Sofia's coursework line gets consistent capitalization while retaining every listed subject.",
+   "from": "old resume",
+   "id": "L22"
+  },
+  {
+   "k": "role",
+   "tx": "**Engineering institute, India**",
+   "id": "A30",
+   "s": "new"
+  },
+  {
+   "k": "p",
+   "tx": "Bachelor of Engineering, Electronics and Communication (CGPA: 8.66/10) | May 2020",
+   "why": "Sofia's bachelor's credential, CGPA and date remain intact with a consistent date separator.",
+   "from": "old resume",
+   "id": "L23"
+  }
+ ]
+}

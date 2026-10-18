@@ -2,8 +2,8 @@
   "name": "resume-tribunal",
   "version": "1.0.0",
   "description": "Tailor a resume or CV to a job with blind review by AI assistants from different companies. ATS-safe output built from your own facts and wording.",
-  "author": { "name": "mohiddin7" },
-  "homepage": "https://github.com/mohiddin7/resume-tribunal",
+  "author": { "name": "mohiddin7", "email": "tribunal@warmhop.com" },
+  "homepage": "https://tribunal.warmhop.com/",
   "repository": "https://github.com/mohiddin7/resume-tribunal",
   "license": "MIT",
   "keywords": ["resume", "cv", "ats", "job-search", "resume-review", "agent-skills"]

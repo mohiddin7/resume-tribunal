@@ -1,0 +1,696 @@
+{
+ "slug": "teacher-instructional-designer-quick",
+ "title": "Biology teacher applying for an instructional designer job",
+ "mode": "Quick review",
+ "reach": "Auto",
+ "facts": [
+  "Fictional candidate",
+  "Auto mode: the other AIs ran by themselves",
+  "2 AIs from 2 companies",
+  "14 minutes",
+  "Invented job posting"
+ ],
+ "note": "Recorded by the host as it worked, with the tools in tools/. Before its sign-off message was shown, the host changed \"40 teachers\" to \"about 40 teachers\", her own words, in the message and in its record.",
+ "candidate": "Dana",
+ "end": 814,
+ "who": {
+  "user": {
+   "n": "Dana",
+   "s": "D",
+   "role": "the candidate"
+  },
+  "host": {
+   "n": "Host",
+   "s": "H",
+   "role": "AI 1, Claude Opus 5.5"
+  },
+  "codex": {
+   "n": "Codex",
+   "s": "C",
+   "role": "AI 2, OpenAI, gpt-6-astra"
+  },
+  "check": {
+   "n": "Checker",
+   "s": "✓",
+   "role": "check_resume.py"
+  }
+ },
+ "steps": [
+  {
+   "n": 1,
+   "name": "Setup",
+   "t": 0
+  },
+  {
+   "n": 2,
+   "name": "Draft",
+   "t": 518
+  },
+  {
+   "n": 3,
+   "name": "Review and sign-off",
+   "t": 573
+  },
+  {
+   "n": 4,
+   "name": "Finalise",
+   "t": 783
+  }
+ ],
+ "events": [
+  {
+   "t": 0,
+   "kind": "step",
+   "text": "Setup",
+   "who": "host",
+   "step": 1,
+   "links": []
+  },
+  {
+   "t": 504,
+   "kind": "say",
+   "text": "Step 1 of 4: Setup\n\nHere is how this works:\n\n```\nYou give:  your resume, the job posting, a few sentences in your own words\n   ↓\nI write a draft, from your facts only\n   ↓\nA second AI, from a different company, checks it without knowing who wrote it\n   ↓\nAutomatic checks, then you approve every changed line\n   ↓\nYour resume, the job requirements it does not show, and likely interview questions\n```\n\nIt runs by itself; you answer a few questions along the way.\n\n**What I read from your resume:**\n- Biology Teacher, Public High School, August 2019 to Present\n- Student Teacher, Public Middle School, January 2019 to May 2019\n- Education: M.Ed. Curriculum and Instruction (2022), B.S. Biology (2018), Certificate in Instructional Design (2026)\n\nIf any of that is misread, tell me.\n\n**One question:** the posting asks for a portfolio of work samples. Do you have a link to one (for example where your hand hygiene Rise course lives), or a LinkedIn profile you'd like on the resume? If not, that's fine; most recruiters do look for LinkedIn, though.\n\nThe posting doesn't state a level, so I'm assuming an entry to mid level Instructional Designer role in the United States (hybrid, Charlotte, NC). Correct me if that's off.\n\n**My plan:**\n- **Quick review:** I write the draft, and one second AI from another company checks it blind. The other AI I could add only offers a faster, lighter model than mine, so a full council (three AIs drafting and critiquing each other) wouldn't be a fair match here. It would also take longer and use several times as much of your AI plans. Solo (copies of me checking myself) is a weaker option.\n- No role research (the posting already says what they want), I polish the final wording (or you can), and a plain-text copy while we work, with PDF or Word when it's final.\n\n**Consent:**\nI've hidden your name and contact details. They come back at the end.\n\nThe second AI is OpenAI's Codex, running the model gpt-6-astra. Your working files are in the `.tribunal` folder inside ..\n\nThis text, including your employers, job history and the pages your links point to, will go to Codex under its terms and your account settings there. Some keep their own history, and the text can still identify you. Leave out anything confidential to an employer, and check whether this employer allows AI help with applications.\n\nAnswer the question above, or say \"yes\" to take the defaults and go ahead.",
+   "who": "host",
+   "stop": "Stop 1",
+   "links": []
+  },
+  {
+   "t": 504,
+   "kind": "user",
+   "text": "Quick review, please. Yes to the defaults, go ahead. No other links.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 518,
+   "kind": "step",
+   "text": "Draft",
+   "who": "host",
+   "step": 2,
+   "links": []
+  },
+  {
+   "t": 557,
+   "kind": "note",
+   "text": "Reading the prompt rules and writing its own draft from Dana's resume and own words",
+   "who": "host",
+   "label": "Drafting",
+   "links": []
+  },
+  {
+   "t": 572,
+   "kind": "check",
+   "text": "0 errors, 4 warnings (old-resume skills: Articulate Rise, Google Workspace, lesson planning, classroom management, differentiated instruction)",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 573,
+   "kind": "step",
+   "text": "Review and sign-off",
+   "who": "host",
+   "step": 3,
+   "links": []
+  },
+  {
+   "t": 581,
+   "kind": "say",
+   "text": "Step 3 of 4: Review and sign-off\n\nMy draft is written, from your resume and your own words only. The automatic check found nothing wrong, just a few skills that only your old resume mentions, which I'll ask you about. The second AI is now reading it blind, as the hiring manager would. This takes a few minutes; nothing for you to do yet.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 582,
+   "kind": "ask",
+   "text": "Review this resume as the hiring manager for the instructional designer job, check every claim against the candidate's material, and suggest fixes and likely interview questions.",
+   "who": "host",
+   "to": "codex",
+   "label": "Review",
+   "files": [
+    "p4.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 685,
+   "kind": "reply",
+   "text": "It would not phone yet: \"the lack of hands-on Storyline experience, which this job explicitly requires\". It marked three lines as more than the material (the summary's Rise claim, \"Had a nurse check the content\" and \"Raised\" on the pass rate) and suggested eight fixes, among them moving the lab safety training up and cutting classroom management.",
+   "who": "codex",
+   "d": 103,
+   "files": [
+    "p4_reply_codex.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 685,
+   "kind": "note",
+   "text": "Weighing the review's eight fixes and three claim marks against Dana's own words",
+   "who": "host",
+   "label": "Applying",
+   "links": []
+  },
+  {
+   "t": 714,
+   "kind": "check",
+   "text": "0 errors, 4 warnings (old-resume skills to ask about: Articulate Rise, Google Workspace, lesson planning, differentiated instruction)",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 714,
+   "kind": "say",
+   "text": "Step 3 of 4: Review and sign-off\n\nThe second AI's review is back. As a hiring manager it said it would not phone you yet, for one reason: the posting requires Storyline and you've only watched demos. Nothing in the resume can honestly fix that, so I've left it as a gap you should know about. It read the resume as an entry-level instructional designer with a lot of teaching experience.\n\n**What I changed without asking (wording only, no facts changed):**\n- The summary now says you built one portfolio course in Rise, so it doesn't sound like you build Rise courses regularly.\n- \"Had a nurse check the content\" is now \"Asked a nurse friend to check the content\", your own words.\n- \"Raised the AP Biology pass rate\" is now \"pass rate went from 58% in 2022 to 71% in 2025\", right above the line on your weekly practice quizzes, so the reader sees both without the resume claiming one caused the other.\n- Moved the lab safety training for about 40 teachers up, since it's your clearest example of teaching adults.\n- Took \"classroom management\" out of the skills; it matters less for this job.\n- I kept the Science Olympiad line and your video lessons as two short lines; the page has plenty of room (about 300 words).\n\nThe working resume is at .tribunal/resume.md.\n\n**Questions about facts:**\n1. Your old resume says \"Articulate Rise\". I wrote \"Articulate Rise 360\", the name the posting uses. Is the Rise you used Rise 360 (the web version inside Articulate 360)?\n2. Did your nurse friend actually check the module, and did you change anything because of what she said? If so, one sentence on what changed would help.\n3. For the 2023 lab safety training: did you design the workshop yourself (objectives, materials, activities), deliver one someone else wrote, or both?\n4. These skills come only from your old resume: lesson planning, differentiated instruction, Google Workspace. Are they still current, and true as written?\n5. Only if true, since the posting asks for them and the resume doesn't show them yet: have you ever done any of these?\n   - published or maintained courses in Cornerstone, or any LMS besides Canvas\n   - accessibility work, such as captions on your videos, alt text, or checking against WCAG\n   - job aids (quick reference sheets, checklists)\n   - measured whether a training worked, beyond grades (feedback forms, surveys, a follow-up check)\n\nAre all of these true, and could you explain each in an interview? Tell me any to fix. If you don't know a number, I'll leave it out, so please don't estimate.\n\nPlease answer the questions above, by number is fine.",
+   "who": "host",
+   "stop": "Stop 2",
+   "links": [
+    "L8",
+    "A2",
+    "A4",
+    "A11"
+   ]
+  },
+  {
+   "t": 777,
+   "kind": "user",
+   "text": "1. Yes, it's Rise 360, the same tool.\n2. Yes, she reviewed the hand hygiene module content for accuracy. You could call her a subject matter expert for that one module. I don't remember changing anything specific.\n3. I put it together myself from the district's safety rules and ran it, in person, in August 2023. No formal feedback.\n4. Lesson planning and Google Workspace, yes, every week. Leave differentiated instruction off.\n5. No Cornerstone, only Canvas. I add captions to all my Camtasia videos and alt text in Canvas, but I don't know WCAG formally. No job aids. I've never measured a training beyond grades.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 777,
+   "kind": "note",
+   "text": "Recording Dana's answers by meaning and working them into the resume",
+   "who": "host",
+   "label": "Sign-off",
+   "links": []
+  },
+  {
+   "t": 783,
+   "kind": "check",
+   "text": "0 errors, 0 warnings",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 783,
+   "kind": "step",
+   "text": "Finalise",
+   "who": "host",
+   "step": 4,
+   "links": []
+  },
+  {
+   "t": 796,
+   "kind": "say",
+   "text": "Step 4 of 4: Finalise\n\nThanks, all of that is in. What changed from your answers:\n- The nurse line now says she reviewed the content for accuracy as subject matter expert for the module.\n- The lab safety training is now two lines: you put it together from the district's safety rules, and ran it in person in August 2023 for about 40 teachers. I added no feedback or results, since there were none.\n- New line: you add captions to all your Camtasia videos and alt text in Canvas. I didn't write \"WCAG\", since you don't know it formally.\n- Differentiated instruction is off; lesson planning moved into the instructional design skills.\n- Cornerstone, job aids and measuring training stay off the resume.\n\nThe automatic check now finds nothing to fix. The resume is about 330 words, well within one page.\n\nYour resume, with your name and contact details back in, is at .tribunal/final.md.\n\nTwo things before we finish:\n- I can send it to the second AI for one more blind look at the final version. It takes a few minutes and is optional.\n- For the file, you'll get it as a plain-text copy (Markdown) that you can paste into Word or Google Docs. Making a PDF here would need an extra tool installed first.\n\nIs it final? Say \"it's final\", or tell me what to change, and whether you'd like that one more look.",
+   "who": "host",
+   "stop": "Stop 3",
+   "links": []
+  },
+  {
+   "t": 796,
+   "kind": "user",
+   "text": "No thanks. Yes, it's final. Markdown is fine.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 814,
+   "kind": "check",
+   "text": "final check: 0 errors, 0 warnings, 329 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 814,
+   "kind": "say",
+   "text": "Step 4 of 4: Finalise\n\nYour resume is done: .tribunal/final.md. The last automatic check found nothing to fix. To send it, paste it into Word or Google Docs, apply heading styles, and save it as a PDF or Word file.\n\n**What this job asks for that the resume does not show:**\n- Articulate Storyline 360. It's a required qualification, and the hiring manager review named it as the reason it wouldn't phone yet. Even a small practice project in a free trial would give you something true to list.\n- A portfolio link. The posting asks for work samples; if you can put the hand hygiene module online, add the link next to the project.\n- Cornerstone, or any LMS besides Canvas.\n- Accessibility to WCAG 2.1 AA. The resume shows your captions and alt text, but not the standard itself.\n- Measuring training effectiveness. You learned the Kirkpatrick model, but haven't used it on a training yet.\n- Job aids.\n- Working with subject matter experts at work. The resume shows one nurse reviewing one module.\n- A healthcare background. Your biology background counts as science, which the posting also names.\n\n**Questions your resume will invite in an interview:**\n- \"What did you build in the hand hygiene course yourself, and what did the nurse check?\" This tests how much of the course was yours and how you work with an expert.\n- \"How were the 58% and 71% pass rates counted, and what else changed between those years?\" This tests whether you can talk about a result honestly, without claiming the weekly practice caused all of it.\n- \"How did you turn the district's safety rules into a two-hour workshop?\" This tests your design decisions for adult learners.\n- \"In the cells unit rewrite, which part was yours, and how did the three of you match lessons to objectives and quiz items?\" This tests collaboration and how you line up objectives with assessment.\n- \"How would you use ADDIE or Kirkpatrick on a real project?\" This tests whether you can turn what you learned in the certificate into practice.\n\nThe working files are in the .tribunal folder, and I'll keep them unless you'd like them deleted.\n\nSave what you told me (your resume, your own words and the facts you confirmed) on this computer, so your next job needs fewer questions? It stays in ~/.resume-tribunal/, goes nowhere else, and you can delete the folder any time.",
+   "who": "host",
+   "links": [
+    "A11"
+   ]
+  },
+  {
+   "t": 814,
+   "kind": "user",
+   "text": "No thanks.",
+   "who": "user",
+   "links": []
+  }
+ ],
+ "lanes": [
+  [
+   "host",
+   0,
+   504,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   504,
+   504,
+   "Stop 1",
+   1,
+   "Waiting for Dana"
+  ],
+  [
+   "host",
+   504,
+   557,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   557,
+   572,
+   "Drafting",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   572,
+   572,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   572,
+   582,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "codex",
+   582,
+   685,
+   "Review",
+   0,
+   "Codex is working on the review"
+  ],
+  [
+   "host",
+   685,
+   714,
+   "Applying",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   714,
+   714,
+   "",
+   0,
+   ""
+  ],
+  [
+   "user",
+   714,
+   777,
+   "Stop 2",
+   1,
+   "Waiting for Dana"
+  ],
+  [
+   "host",
+   777,
+   783,
+   "Sign-off",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   783,
+   783,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   783,
+   796,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   796,
+   796,
+   "Stop 3",
+   1,
+   "Waiting for Dana"
+  ],
+  [
+   "host",
+   796,
+   814,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   814,
+   814,
+   "",
+   0,
+   ""
+  ]
+ ],
+ "before": [
+  {
+   "k": "name",
+   "tx": "Dana Whitfield"
+  },
+  {
+   "k": "contact",
+   "tx": "Charlotte, NC • dana.whitfield.ed@example.com • 704-555-0127",
+   "id": "L9"
+  },
+  {
+   "k": "role",
+   "tx": "Biology Teacher | Public High School | August 2019 – Present",
+   "why": "The employer moved to its own heading and the dates now use one short style throughout.",
+   "id": "L1",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Taught Biology and AP Biology to grades 9-12",
+   "why": "Present tense for a current job, and her own words add how long she has taught AP Biology.",
+   "id": "L2",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Developed engaging lesson plans aligned with state standards",
+   "why": "Present tense for current work, and \"engaging\" was a word a reader cannot check.",
+   "id": "L5",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Used Canvas LMS for assignments and grading",
+   "why": "Her own words show she builds whole courses in the LMS, which is closer to this job than assignments and grading.",
+   "id": "L3",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Served on the science department curriculum committee",
+   "why": "Her own words say what the committee work was, which shows writing learning objectives, and keep the credit shared with two other teachers.",
+   "id": "L4",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Sponsored the Science Olympiad club",
+   "why": "Present tense, since she still does it at her current job.",
+   "id": "L6",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Student Teacher | Public Middle School | Jan 2019 – May 2019",
+   "why": "The school moved to its own heading and the dates match the style used throughout.",
+   "id": "L7",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Taught 7th grade life science under a mentor teacher",
+   "id": "L10"
+  },
+  {
+   "k": "h2",
+   "tx": "Education"
+  },
+  {
+   "k": "p",
+   "tx": "M.Ed. Curriculum and Instruction, public state university, 2022",
+   "id": "L11"
+  },
+  {
+   "k": "p",
+   "tx": "B.S. Biology, public state university, 2018",
+   "id": "L12"
+  },
+  {
+   "k": "p",
+   "tx": "Certificate in Instructional Design, university continuing education program, 2026",
+   "id": "L13"
+  },
+  {
+   "k": "h2",
+   "tx": "Certifications"
+  },
+  {
+   "k": "p",
+   "tx": "North Carolina Professional Educator License, Biology 9-12",
+   "id": "L14"
+  },
+  {
+   "k": "h2",
+   "tx": "Skills"
+  },
+  {
+   "k": "p",
+   "tx": "Lesson planning, classroom management, differentiated instruction, Canvas, Google Workspace, Camtasia, Articulate Rise",
+   "why": "Skills are grouped for this job; ADDIE and Kirkpatrick are marked as learned in her certificate, classroom management was cut as less relevant, and differentiated instruction is left off at her request.",
+   "id": "L8",
+   "s": "rw"
+  }
+ ],
+ "after": [
+  {
+   "k": "name",
+   "tx": "Dana Whitfield"
+  },
+  {
+   "k": "contact",
+   "tx": "Charlotte, NC • dana.whitfield.ed@example.com • 704-555-0127",
+   "id": "L9"
+  },
+  {
+   "k": "h2",
+   "tx": "Summary"
+  },
+  {
+   "k": "p",
+   "tx": "Biology teacher of seven years moving into instructional design. Finished an online Certificate in Instructional Design in June 2026, covering ADDIE and the Kirkpatrick model, and holds an M.Ed. in Curriculum and Instruction. Builds courses in Canvas and video lessons in Camtasia, and built a portfolio course in Articulate Rise 360.",
+   "why": "A short summary tells the reader up front that Dana is a career changer with the certificate, the master's degree and the tools this job names; it says she built one Rise course, since that is all she has built.",
+   "from": "own words",
+   "s": "new",
+   "id": "A2"
+  },
+  {
+   "k": "h2",
+   "tx": "Projects"
+  },
+  {
+   "k": "role",
+   "tx": "**Hand Hygiene eLearning Module | Certificate portfolio**",
+   "why": "Her only eLearning sample gets its own Projects entry, because the job asks for Rise and a portfolio.",
+   "from": "own words",
+   "s": "new",
+   "id": "A3"
+  },
+  {
+   "k": "bul",
+   "tx": "Built a 20-minute Articulate Rise 360 course on hand hygiene",
+   "why": "Dana described this module in her own words; she confirmed at the sign-off that her Rise is Rise 360, the name the posting uses.",
+   "from": "sign-off",
+   "s": "new",
+   "id": "A4"
+  },
+  {
+   "k": "bul",
+   "tx": "Had a nurse friend review the content for accuracy as subject matter expert",
+   "why": "The job asks for work with subject matter experts; Dana confirmed her nurse friend reviewed the content for accuracy and can be called the expert for that one module.",
+   "from": "sign-off",
+   "s": "new",
+   "id": "A5"
+  },
+  {
+   "k": "h2",
+   "tx": "Experience"
+  },
+  {
+   "k": "role",
+   "tx": "Biology Teacher | **Public High School** | Aug 2019 - Present",
+   "why": "The employer moved to its own heading and the dates now use one short style throughout.",
+   "from": "old resume",
+   "id": "L1",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Teach Biology to grades 9-12, and AP Biology for the last four years",
+   "why": "Present tense for a current job, and her own words add how long she has taught AP Biology.",
+   "from": "own words",
+   "id": "L2",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Put together the district's two-hour lab safety training for new science teachers from its safety rules",
+   "why": "This is her clearest work designing training for adults; at the sign-off she said she put it together herself from the district's safety rules.",
+   "from": "sign-off",
+   "s": "new",
+   "id": "A8"
+  },
+  {
+   "k": "bul",
+   "tx": "Ran it in person in Aug 2023; about 40 teachers came",
+   "why": "Her own words give the year and the head count, and the sign-off added that it ran in person in August 2023; no feedback is claimed because there was none.",
+   "from": "sign-off",
+   "s": "new",
+   "id": "A9"
+  },
+  {
+   "k": "bul",
+   "tx": "Build all courses in Canvas, with modules, quizzes and rubrics, for about 150 students a year",
+   "why": "Her own words show she builds whole courses in the LMS, which is closer to this job than assignments and grading.",
+   "from": "own words",
+   "id": "L3",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "AP Biology pass rate went from 58% in 2022 to 71% in 2025",
+   "why": "Dana gave these numbers herself; the reviewer pointed out that \"Raised\" claimed she caused the change, so the line now states the result plainly.",
+   "from": "own words",
+   "s": "new",
+   "id": "A11"
+  },
+  {
+   "k": "bul",
+   "tx": "Replaced one big review at the end with weekly practice questions in Canvas quizzes, with feedback",
+   "why": "Her own words describe what she changed, placed next to the pass rate so a reader sees both.",
+   "from": "own words",
+   "s": "new",
+   "id": "A12"
+  },
+  {
+   "k": "bul",
+   "tx": "Recorded about 60 Camtasia video lessons of five to ten minutes, starting in 2020",
+   "why": "The posting prefers video editing in Camtasia, and Dana described these videos in her own words.",
+   "from": "own words",
+   "s": "new",
+   "id": "A13"
+  },
+  {
+   "k": "bul",
+   "tx": "Still use the videos for flipped lessons",
+   "why": "From her own words; kept as its own short line so the video bullet stays on one line.",
+   "from": "own words",
+   "s": "new",
+   "id": "A14"
+  },
+  {
+   "k": "bul",
+   "tx": "Add captions to all Camtasia videos and alt text in Canvas",
+   "why": "The job asks for accessible courses; Dana confirmed this at the sign-off but does not know WCAG formally, so the standard is not named.",
+   "from": "sign-off",
+   "s": "new",
+   "id": "A15"
+  },
+  {
+   "k": "bul",
+   "tx": "Rewrote the 9th grade biology unit on cells with two other teachers on the science department curriculum committee, mapping every lesson to a learning objective and a quiz item",
+   "why": "Her own words say what the committee work was, which shows writing learning objectives, and keep the credit shared with two other teachers.",
+   "from": "own words",
+   "id": "L4",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Develop lesson plans aligned with state standards",
+   "why": "Present tense for current work, and \"engaging\" was a word a reader cannot check.",
+   "from": "old resume",
+   "id": "L5",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Sponsor the Science Olympiad club",
+   "why": "Present tense, since she still does it at her current job.",
+   "from": "old resume",
+   "id": "L6",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Student Teacher | **Public Middle School** | Jan 2019 - May 2019",
+   "why": "The school moved to its own heading and the dates match the style used throughout.",
+   "from": "old resume",
+   "id": "L7",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Taught 7th grade life science under a mentor teacher",
+   "id": "L10"
+  },
+  {
+   "k": "h2",
+   "tx": "Skills"
+  },
+  {
+   "k": "bul",
+   "tx": "Instructional design: ADDIE and Kirkpatrick model (from the certificate), learning objectives, lesson planning",
+   "why": "Skills are grouped for this job; ADDIE and Kirkpatrick are marked as learned in her certificate, classroom management was cut as less relevant, and differentiated instruction is left off at her request.",
+   "from": "sign-off",
+   "id": "L8",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Tools: Articulate Rise 360, Canvas LMS, Camtasia, Google Workspace",
+   "why": "Her tools in one line, with Rise under the posting's name, which she confirmed, and Google Workspace, which she confirmed she uses every week.",
+   "from": "sign-off",
+   "s": "new",
+   "id": "A22"
+  },
+  {
+   "k": "h2",
+   "tx": "Education"
+  },
+  {
+   "k": "bul",
+   "tx": "Certificate in Instructional Design, university continuing education program, 2026",
+   "id": "L13"
+  },
+  {
+   "k": "bul",
+   "tx": "M.Ed. Curriculum and Instruction, public state university, 2022",
+   "id": "L11"
+  },
+  {
+   "k": "bul",
+   "tx": "B.S. Biology, public state university, 2018",
+   "id": "L12"
+  },
+  {
+   "k": "h2",
+   "tx": "Certifications"
+  },
+  {
+   "k": "bul",
+   "tx": "North Carolina Professional Educator License, Biology 9-12",
+   "id": "L14"
+  }
+ ]
+}

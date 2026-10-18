@@ -1,0 +1,63 @@
+## 1. Resume
+
+# <<NAME>>
+Pittsburgh, PA | <<EMAIL>> | <<PHONE>> | <<LINK_WEB_2>> | <<LINK_WEB>>
+
+## Summary
+Marketing Analyst and sole analyst on a nine-person marketing team, writing SQL in BigQuery daily, building Looker dashboards, and analyzing A/B tests.
+
+## Skills
+- **Languages:** SQL, Python (pandas), R
+- **Tools:** BigQuery, Looker, Tableau, Google Analytics, dbt, Excel
+- **Methodologies & Practices:** A/B testing analysis, customer segmentation, data storytelling, stakeholder management, cross-functional leadership
+
+## Experience
+
+### Online home-goods retailer (about 400 employees)
+**Marketing Coordinator, then Marketing Analyst** | Mar 2019 - Present
+- Serve as the sole analyst on a nine-person marketing team, writing SQL queries in BigQuery daily
+- Built and maintain Looker dashboards for email and paid social channels, reviewed weekly by the marketing director
+- Built Tableau dashboards for executive stakeholders
+- Evaluated traffic sufficiency, analyzed results, and documented findings for about 12 A/B tests across email and landing pages over the past year (October 2025 - October 2026), evaluating test concepts selected by <<PERSONAL_FIRST>> or the paid social lead
+- Published write-ups of two A/B test analyses in portfolio at <<LINK_WEB>>
+- Wrote SQL to segment lapsed customers inactive for one year by purchase history and spend; collaborated with email manager <<PERSONAL>> who wrote targeted copy for each segment, increasing email conversion rate from 2.1% to 2.5% over the following quarter
+- Managed $2.4M email marketing budget
+- Clean export data in Jupyter notebooks using Python and pandas several times a month
+- Coordinated the social media calendar and weekly reporting in Google Analytics
+
+### Regional sporting-goods chain
+**Store Manager** | 2014 - 2019
+- Managed store operations and a team of about 12 part-time staff
+- Consistently exceeded sales targets
+- Built scheduling and inventory spreadsheets in Excel
+
+## Education
+- BA Communications, large public state university, 2014
+- Google Data Analytics Certificate, 2020
+
+---
+
+## 2. Not Shown: Requirements in the Job Description Not Evidenced by Candidate Material
+
+- **Strategic & Pricing Analytics Experience:** 2–5 years developing pricing models, analyzing pricing structures, or executing pricing-specific A/B tests (candidate's analytics experience is focused on marketing channels: email, paid social, and landing pages).
+- **Pricing Experimentation & Financial Impact:** Proactively designing pricing experiments, measuring the financial impact of pricing initiatives on revenue and customer retention, and presenting pricing recommendations to Product and Finance leadership.
+- **Pricing & Business KPI Reporting:** Designing and maintaining dedicated reporting structures to track pricing performance, unit economics, or core subscription financial KPIs.
+- **Pricing Models:** Deep technical understanding or practical application of pricing models, elasticity analysis, or dynamic pricing algorithms.
+- **Ad Hoc Database Schema & Table Creation:** Advanced SQL capability specifically demonstrated through designing and creating new schemas/tables on an ad hoc data engineering basis (candidate writes queries in BigQuery and lists dbt, but schema creation scope is unstated).
+- **Executive Presentation of Strategic Insights:** Direct experience presenting strategic recommendations and business performance insights to senior C-suite leadership.
+- **AI Tooling & Automations:** Experience using AI tools (e.g., ChatGPT, Claude, Cursor, Looker AI) to accelerate analysis, perform QA, or build reporting automations.
+- **Subscription / D2C Wellness Model (Nice to Have):** Direct experience in a direct-to-consumer (D2C) subscription-based business model (candidate's background is an online home-goods retailer and brick-and-mortar retail).
+
+---
+
+## 3. Open Questions: Facts That Would Strengthen the Resume
+
+1. **Promotion Dates:** On what specific date (month and year) were you promoted from Marketing Coordinator to Marketing Analyst at the online home-goods retailer?
+2. **Pricing & Promotion Initiatives:** Did any of the ~12 A/B tests, email campaigns, or segmentation models involve pricing, promotional discounts, shipping thresholds, or gross margin impact?
+3. **AI Tools & Automation:** Have you used AI tools (such as ChatGPT, Claude, Cursor, GitHub Copilot, or Looker AI) to draft or QA SQL queries, automate data transformations, or accelerate reporting workflows?
+4. **SQL & Schema Creation:** Have you built new production tables, custom data schemas, or dbt models from scratch in BigQuery?
+5. **Subscription / Retention Metrics:** Did the online home-goods retailer offer subscription programs, replenishment ordering, or membership tiers, and did your segmentation work analyze retention or churn?
+6. **Executive Presentations:** Have you presented findings, quarterly business reviews, or analytical decks directly to executive leadership (e.g., VP, C-level), beyond dashboard reviews with the marketing director?
+7. **Cross-Functional Collaboration with Product & Finance:** Have you partnered with Product managers, engineers, or Finance teams on growth modeling, budget forecasting, or business performance tracking?
+8. **Budget & Portfolio Metrics:** What measurable business outcomes or ROI resulted from managing the $2.4M email marketing budget, and what were the baseline and post-test metrics for the two portfolio test write-ups at <<LINK_WEB>>?
+9. **Staff Count:** Did your team at the regional sporting-goods chain consist of 15 associates or about 12 part-time staff (to reconcile the resume bullet with your spoken notes)?

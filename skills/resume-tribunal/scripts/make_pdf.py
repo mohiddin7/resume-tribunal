@@ -13,7 +13,12 @@ The report lists the page count, then every paragraph that wraps:
   OK       the second line is about half full or more; leave it
 """
 import argparse
+import difflib
+from collections import Counter
+import html
 import re
+import shutil
+import subprocess
 import sys
 
 try:
@@ -29,8 +34,7 @@ LINK = "#1a4fa0"
 MIN_FONT = 10
 
 
-def esc(text):
-    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+esc = html.escape
 
 
 def inline(text):
@@ -38,8 +42,12 @@ def inline(text):
     out, pos = [], 0
     for m in re.finditer(r"\[([^\]]+)\]\(([^)\s]+)\)|\*\*([^*]+)\*\*", text):
         out.append(esc(text[pos:m.start()]))
-        out.append(f'<a href="{esc(m.group(2))}" color="{LINK}">{esc(m.group(1))}</a>' if m.group(1)
-                   else f"<b>{esc(m.group(3))}</b>")
+        if m.group(3):
+            out.append(f"<b>{esc(m.group(3))}</b>")
+        elif m.group(2).startswith(("https://", "http://", "mailto:")):
+            out.append(f'<a href="{esc(m.group(2))}" color="{LINK}">{esc(m.group(1))}</a>')
+        else:  # any other scheme stays visible as plain text
+            out.append(esc(m.group(0)))
         pos = m.end()
     out.append(esc(text[pos:]))
     return "".join(out)
@@ -110,6 +118,10 @@ def main():
         md = open(a.resume, encoding="utf-8-sig").read()
     except (OSError, UnicodeDecodeError) as e:
         sys.exit(f"cannot read {a.resume}: {e}")
+    # Limit: built-in Helvetica covers Western European text only; register a TTF font if this warning bites.
+    odd = sorted({c for c in md if not c.encode("cp1252", "ignore")})
+    if odd:
+        print(f"warning: these characters will not print in the built-in font: {' '.join(odd[:20])}", file=sys.stderr)
 
     paper = letter if a.paper == "letter" else A4
     margin_x, margin_y = 0.5 * inch, 0.45 * inch
@@ -133,7 +145,38 @@ def main():
         full = 1 - extra / avail
         verdict = "SHORTEN" if full < 0.35 else "OK"
         print(f"line {n:>3}: {len(lines)} lines, last line {full:4.0%} full  {verdict}")
+    print(text_check(md, a.pdf))
 
+
+
+def read_back(pdf):
+    """The PDF's text layer, as screening software would read it: pypdf if installed, else pdftotext."""
+    try:
+        from pypdf import PdfReader
+        return "\n".join(page.extract_text() or "" for page in PdfReader(pdf).pages)
+    except ImportError:
+        pass
+    if shutil.which("pdftotext"):
+        return subprocess.run(["pdftotext", "-layout", pdf, "-"], capture_output=True, text=True).stdout
+    return None
+
+
+def text_check(md, pdf):
+    """Every word of the resume comes back out of the PDF, in nearly the same order.
+    The PDF joins each company and job title on one line, so a few words move by design."""
+    text = read_back(pdf)
+    if text is None:
+        return "text check: skipped; pip install pypdf to confirm screening software can read the PDF"
+    tokens = lambda t: re.findall(r"\w+", t.lower())
+    want = tokens(re.sub(r"\]\([^)]*\)", "]", md))  # link targets are not printed
+    got = tokens(text)
+    missing = sorted((Counter(want) - Counter(got)).elements())
+    in_order = sum(b.size for b in difflib.SequenceMatcher(None, want, got, autojunk=False).get_matching_blocks())
+    share = in_order / max(len(want), 1)
+    ok = not missing and share >= 0.9
+    return (f"text check: {len(want) - len(missing)} of {len(want)} words read back, {share:.0%} in order  "
+            + ("OK" if ok else "PROBLEM: screening software may misread this PDF")
+            + (f"; missing: {' '.join(missing[:10])}" if missing else ""))
 
 if __name__ == "__main__":
     main()

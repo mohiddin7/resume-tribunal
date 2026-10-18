@@ -1,0 +1,30 @@
+# On a pushed version tag (v1.0.0): check the version matches, zip the skill, publish the release.
+name: Release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tag matches the version in SKILL.md and the plugin files
+        run: |
+          v="${GITHUB_REF_NAME#v}"
+          grep -q "version: \"$v\"" skills/resume-tribunal/SKILL.md
+          for f in plugin.json .claude-plugin/plugin.json .claude-plugin/marketplace.json; do
+            grep -q "\"version\": \"$v\"" "$f" || { echo "$f is not at $v"; exit 1; }
+          done
+      - name: Release notes exist for this tag
+        run: test -s ".github/release-notes/$GITHUB_REF_NAME.md"
+      - name: Zip the skill
+        run: cd skills && zip -r ../resume-tribunal.zip resume-tribunal -x '*/__pycache__/*'
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >
+          gh release create "$GITHUB_REF_NAME" resume-tribunal.zip
+          --title "Resume Tribunal ${GITHUB_REF_NAME#v}"
+          --notes-file ".github/release-notes/$GITHUB_REF_NAME.md"

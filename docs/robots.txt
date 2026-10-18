@@ -19,4 +19,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://mohiddin7.github.io/resume-tribunal/sitemap.xml
+Sitemap: https://tribunal.warmhop.com/sitemap.xml

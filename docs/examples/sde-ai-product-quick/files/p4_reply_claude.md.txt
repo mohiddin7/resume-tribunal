@@ -1,0 +1,97 @@
+# Hiring-manager review: Software Engineer, AI Product (Figma)
+
+Assumptions: there are no `<own_words>`, `<confirmed_by_candidate>` or `<not_true>` entries, so the original resume is the only source material. Today is 16 Oct 2026.
+
+## 1. Screen decision
+
+**No.** The role requires 5+ years of software engineering with 1+ year building generative AI products. This resume shows about 15 months of full-time engineering (May 2022 to Aug 2023), and none of it is generative AI product work. "Generative AI and LLMs" appears only in Skills and Certifications.
+
+**Reads as:** entry-level or junior. That is a new MS graduate with one short industry role in computer vision, plus graduate assistantships and undergrad-era analytics work. Nothing on the page covers May 2025 to today, a gap of about 17 months.
+
+## 2. First impression (top third)
+
+From the header, Summary and Skills I learn four things:
+- They are a recent CS master's graduate in Dallas who is open to relocating.
+- Their background is deep learning, computer vision, data extraction and databases.
+- They list a broad keyword set that includes LLMs, prompt engineering, NLP and MLOps.
+- The summary is generic. It names no product, no scale and no shipped system.
+
+**Must-haves still not evidenced:**
+- 5+ years of software engineering experience
+- 1+ year building generative AI products
+- Prototyping that led to successful 0→1 projects
+- The full lifecycle of an early-phase AI system, from choosing models through production and maintenance
+- Product and business knowledge that ties modeling work to business value
+- Use of AI-assisted development tools (Copilot, ChatGPT, Claude). These are not mentioned anywhere.
+
+## 3. Claim check
+
+| Line (first words) | Support in candidate's material | Verdict |
+|---|---|---|
+| Computer science master's graduate with experience… | "Master of Science in Computer Science"; DL/CV/DB bullets | Supported |
+| Built and optimized models and data tools… | "Developed and optimized object detection algorithms"; "Crafted a universal data extraction tool"; "Developed predictive models" | Supported |
+| **AI and machine learning:** Generative AI and LLMs… | "Generative AI - LLMs, Prompt Engineering, NLP… TensorFlow, PyTorch, Sci-Kit Learn, Pandas, Numpy… MLOps" | Supported (skills list only; no work bullet) |
+| **Programming and data:** Python, Java… | "Python, Java, C, C++, C#, .Net… SQL, PL/SQL"; "MySQL, Oracle, SQL Server, PostgreSQL, MongoDB" | Supported |
+| **Cloud and tools:** AWS, SageMaker… | "AWS, Azure, EC2, S3, EBS, GIT… SageMaker"; Selenium, BeautifulSoup, OpenCV, YOLO, Supervisely, Jupyter, Colab, Tableau, Matplotlib in bullets | Supported |
+| **Web:** JavaScript, HTML… | "HTML, CSS, JavaScript, XML, CSS Bootstrap, JSON, NodeJS, Django" | Supported |
+| Public University, USA | "PUBLIC UNIVERSITY, USA" | Supported |
+| Graduate Research Assistant \| Jan 2024 - May 2025 | "Jan 2024 – May 2025 Graduate Research Assistant" | Supported |
+| Built a data extraction tool with Python and Selenium… | "Leveraged Python and Selenium to Crafted a universal data extraction tool, reducing extraction time by 66% for 1,00,000 records" | Supported |
+| Reduced web scraping time from 3 hours to 1 hour… | "reducing data extraction time from 3 hours to 1 hour" | Supported |
+| Built data solutions with MongoDB and SQL… | "Engineered scalable data solutions using MongoDB and SQL, increasing storage capabilities and project versatility" | Supported |
+| Used Jupyter Notebook and Colab… | "Utilized Jupyter Notebook and Colab for data analysis and visualization" | Supported |
+| Used JavaScript for web scraping… | "Incorporated JavaScript techniques in web scraping, enabling dynamic data extraction" | Supported |
+| Graduate Student Assistant \| Sep 2023 - May 2025 | "Graduate Student Assistant Sep 2023 – May 2025" | Supported |
+| Delivered database solutions using SQL and MySQL… | "Delivered robust database solutions using SQL and MySQL"; "comprehensive technical support and training sessions" | Supported |
+| Documented database procedures and supported… | "Documented critical database procedures"; "database maintenance"; "testing and debugging" | Supported |
+| Large IT Services Company | "LARGE IT SERVICES COMPANY" | Supported |
+| System Engineer – Deep Learning Engineer \| May 2022 - Aug 2023 | "May 2022 – Aug 2023 System Engineer – Deep Learning Engineer" | Supported |
+| Updated SQL database structures… | "Upgraded database structures for the company's autonomous-driving platform using SQL" | Supported |
+| Reduced ground truth data annotation time by 50%… | "Streamlined ground truth data annotation by 50%". The material does not say the 50% was time. | **MORE THAN THE MATERIAL** (adds a unit) |
+| Developed a MOT model with Faster R-CNN… | "Developed a MOT model with Faster R-CNN and Graph Neural Networks, improving self-driving application accuracy" | Supported |
+| Developed and optimized object detection algorithms… | "achieving a 95% precision and recall rate" | Supported |
+| Developed an image clustering method… | "reducing labeling time by 50% and minimizing costs through SageMaker" | Supported |
+| Used PyTorch and TensorFlow for… model selection | "Pytorch and TensorFlow, for dynamic AI model selection… detection and segmentation tasks" | Supported |
+| Software Engineer Intern \| Jan 2022 - May 2022 | "Jan 2022 – May 2022 Software Engineer Intern" | Supported |
+| Optimized data processing algorithms… 30% | "lowering execution time by 30%" | Supported |
+| Developed web application features… | "Designed and deployed innovative features in a web application with JavaScript, HTML, and CSS" | Supported |
+| Built a real-time monitoring system using Java | "Built a real-time monitoring system using Java" | Supported |
+| Integrated third-party libraries and performed unit testing… | "incorporating third-party libraries"; "comprehensive unit testing and bug fixing" | Supported |
+| Nonprofit | "NONPROFIT" (placed under an "EDUCATION" heading in the original) | Supported. Assumption: paid or volunteer status is unclear. |
+| Analytics Software Developer \| Jun 2019 - Dec 2021 | "June 2019 – Dec 2021 Analytics Software Developer" | Supported |
+| Analyzed data about children and volunteers… 20% | "enhancing program effectiveness and operational efficiency by 20%" | Supported |
+| Used regression and clustering… | "regression models and clustering techniques… informing program strategies" | Supported |
+| Created reports and visualizations… 25% | "increased stakeholder engagement by 25%" | Supported |
+| Built predictive models with scikit-learn… | "Developed predictive models with Scikit-learn to forecast volunteer engagement and retention" | Supported |
+| Triplet-loss face matching model | "Triplet-loss face matching model" | Supported |
+| Built a face recognition system using triplet loss… | "Developed a face recognition system using triplet loss… data preprocessing, model training, and evaluation on a large dataset" | Supported |
+| Graph-search web scraper for data analysis | "Graph-search web scraper for data analysis" | Supported |
+| Built a web scraper with Python, BeautifulSoup, BFS, and DFS… | "integrating BeautifulSoup and Python with BFS and DFS… employed pandas" | Supported |
+| Master of Science in Computer Science… 4.00 | "Aug 2023 – May 2025 Master of Science in Computer Science, GPA: 4.00/4.00" | Supported |
+| Bachelor of Technology in Information Technology… 3.78 | "Jul 2018 – May 2022 Bachelor of Technology in Information Technology, GPA: 3.78/4.00" | Supported |
+| Position paper on a data-cleaning tool \| 2022 | "Position paper on a data-cleaning tool"; "a 2022 workshop" | Supported |
+| Published a position paper with a team of 6… the conference's top 100 | "recognized among its top 100 accepted papers". In the original, "its" plausibly means the workshop. | **MORE THAN THE MATERIAL** (enlarges scope from workshop to conference) |
+| Oracle Cloud Infrastructure Generative AI… | "Oracle Cloud Infrastructure Generative AI Certified Professional" | Supported |
+| Coursera: Machine Learning, Deep Learning… | "Coursera: Machine Learning, Deep Learning, TensorFlow Specialist, Generative AI with LLMs" | Supported |
+| Python course, national online course | "National online course: Python" | Supported |
+| Technology Training Diploma, IT services company | "IT services company: Technology Training Diploma" | Supported |
+| Positive Contributor Award, public-speaking club | "Public-speaking club: Positive Contributor Award" | Supported |
+
+## 4. Fixes
+
+1. **"…it was recognized among the conference's top 100 accepted papers."** Change "the conference's" back to whichever venue actually ranked it, almost certainly the workshop, because a workshop paper in a main conference's top 100 will draw scrutiny.
+2. **"Reduced ground truth data annotation time by 50% using AWS SageMaker and Supervisely…"** Name the metric that actually fell by 50% (time, cost or manual effort) and keep "time" only if that is what was measured.
+3. **"Built a data extraction tool with Python and Selenium, reducing extraction time by 66% for 1,00,000 records."** Write "100,000" for a US reader, and if the 3-hour-to-1-hour bullet below is the same 66% result, merge the two into one bullet.
+4. **"Built data solutions with MongoDB and SQL, increasing storage capabilities and project versatility."** Replace "storage capabilities and project versatility" with what was stored, at what volume and for whom, or cut the bullet.
+5. **"Used Jupyter Notebook and Colab for data analysis and visualization."** Cut it, along with "Used JavaScript for web scraping and dynamic data extraction.": both are tool mentions with no outcome, and the tools already appear in Skills.
+6. **"Developed a MOT model with Faster R-CNN and Graph Neural Networks for a self-driving application."** Spell out MOT (presumably multi-object tracking) and, if it was measured, add the accuracy gain the original mentions.
+7. **"Computer science master's graduate with experience in deep learning, machine learning, data extraction, computer vision, and database development."** Lead with the 15 months as a deep learning engineer on a production autonomous-driving platform, and account for what they have been doing since May 2025, because a hiring manager will notice the gap.
+8. **"Generative AI and LLMs, prompt engineering, NLP, deep learning…"** Listed first, these are the skills this role screens on, and no work bullet supports them. Either add a bullet for real LLM work they did, or reorder so the computer-vision skills they can defend come first. Add AI-assisted coding tools only if they actually use them.
+
+## 5. Claim-defence questions
+
+1. **"The 66% extraction-time cut and the 3-hours-to-1-hour scraping cut: are those the same project? What was the baseline, and how did you time it?"** Tests whether one result is counted twice and whether the candidate actually measured it.
+2. **"You list a 50% annotation improvement and a 50% labeling-time reduction. What did each pipeline look like before, which parts did you build yourself, and are they the same system?"** Tests their own part versus the team's, and possible double-counting.
+3. **"95% precision and recall: on which dataset and classes, at what IoU threshold, and compared with what baseline?"** Tests evaluation rigor and whether the number holds up outside a cherry-picked split.
+4. **"Generative AI and LLMs is first in your skills. Walk me through something you built with an LLM: how you picked the model, how you evaluated it, and whether it reached users."** Tests the role's core must-have, which the resume does not evidence.
+5. **"On the position paper with six authors, what did you write or build? And was the top-100 recognition from the workshop or the main conference?"** Tests their own contribution and the scope of the recognition.

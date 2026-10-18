@@ -1,0 +1,1397 @@
+{
+ "slug": "growth-analyst-pricing-council",
+ "title": "Growth analyst applying for a senior pricing analyst job",
+ "mode": "Full council",
+ "reach": "Auto",
+ "facts": [
+  "Fictional candidate",
+  "Auto mode: the other AIs ran by themselves",
+  "3 AIs from 3 companies",
+  "27 minutes",
+  "Real public job posting"
+ ],
+ "note": "Recorded by the host as it worked, with the tools in tools/. The host was OpenAI's gpt-6-luna, a fast model, through Codex; it recorded its own model as GPT-6. It did not draft, so the other two AIs wrote the drafts and it merged them. Its last message was trimmed before publishing: the parts written for the recording (seat timings, recording checks and notes on the skill's wording, with local file paths) were removed, and the lines for the candidate kept.",
+ "candidate": "Dana",
+ "end": 1639,
+ "who": {
+  "user": {
+   "n": "Dana",
+   "s": "D",
+   "role": "the candidate"
+  },
+  "host": {
+   "n": "Host",
+   "s": "H",
+   "role": "AI 1, GPT-6"
+  },
+  "claude": {
+   "n": "Claude",
+   "s": "C",
+   "role": "AI 2, Anthropic, opus"
+  },
+  "agy": {
+   "n": "Gemini",
+   "s": "G",
+   "role": "AI 3, Google, gemini-3.8-flash-high"
+  },
+  "check": {
+   "n": "Checker",
+   "s": "✓",
+   "role": "check_resume.py"
+  }
+ },
+ "steps": [
+  {
+   "n": 1,
+   "name": "Setup",
+   "t": 18
+  },
+  {
+   "n": 2,
+   "name": "Draft",
+   "t": 167
+  },
+  {
+   "n": 3,
+   "name": "Council",
+   "t": 524
+  },
+  {
+   "n": 4,
+   "name": "Review and sign-off",
+   "t": 689
+  }
+ ],
+ "events": [
+  {
+   "t": 0,
+   "kind": "say",
+   "text": "I’m reading the skill and its required references first, then I’ll follow its workflow and record the run as it happens.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 0,
+   "kind": "note",
+   "text": "Reading the skill instructions in full",
+   "who": "host",
+   "label": "Skill",
+   "links": []
+  },
+  {
+   "t": 18,
+   "kind": "step",
+   "text": "Setup",
+   "who": "host",
+   "step": 1,
+   "links": []
+  },
+  {
+   "t": 18,
+   "kind": "note",
+   "text": "Reading seat options and the supplied application files",
+   "who": "host",
+   "label": "Setup",
+   "links": []
+  },
+  {
+   "t": 134,
+   "kind": "note",
+   "text": "Checking the hidden files and removing another person's name",
+   "who": "host",
+   "label": "Privacy",
+   "links": []
+  },
+  {
+   "t": 148,
+   "kind": "say",
+   "text": "You give: your resume, the job posting, and a few sentences in your own words\n   ↓\nI write a draft from your facts only\n   ↓\nA second AI from another company checks it without knowing who wrote it\n   ↓\nAutomatic checks, then you approve every changed line\n   ↓\nYour resume, the job requirements it does not show, and likely interview questions\n\nThe other AIs run automatically; you answer a few questions along the way.\n\nI read these roles: Online home-goods retailer, Marketing Coordinator then Marketing Analyst, Mar 2019 to Present; regional sporting-goods chain, Store Manager, 2014 to 2019. I’m treating the target as a senior individual contributor role in the United States, based on the posting.\n\nI’ll use the full council you requested: Claude Opus and Google Gemini 3.8 Flash (High) each draft and review the others’ drafts blind. Google lists only its fast model here, so that seat is a weaker match to my model tier. A full council takes longer and uses several times as much of your AI plans as a quick review. I’ll keep role research off, polish the final wording myself, and work in a plain-text copy, then deliver Markdown. I won’t open any linked pages, following your “No links” preference.\n\nI’ve hidden your name and contact details. They come back at the end. The working files are in .tribunal/. The text, including your employers, job history and any pages your links point to, will go to Anthropic Claude Opus and Google Gemini 3.8 Flash (High) under their terms and your account settings there. Some keep their own history, and the text can still identify you. Leave out anything confidential to an employer, and check whether this employer allows AI help with applications.\n\nPlease answer the setup questions, or say “yes” to take the defaults and go ahead.",
+   "who": "host",
+   "stop": "Stop 1",
+   "links": []
+  },
+  {
+   "t": 166,
+   "kind": "user",
+   "text": "Full council, please. Yes to the defaults, go ahead. No links.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 167,
+   "kind": "step",
+   "text": "Draft",
+   "who": "host",
+   "step": 2,
+   "links": []
+  },
+  {
+   "t": 168,
+   "kind": "note",
+   "text": "Reading the drafting and review prompts",
+   "who": "host",
+   "label": "Prompts",
+   "links": []
+  },
+  {
+   "t": 186,
+   "kind": "ask",
+   "text": "Draft a truthful, ATS-safe resume from the candidate's files, and list what is not shown and open questions.",
+   "who": "host",
+   "to": "claude",
+   "label": "Draft K",
+   "files": [
+    "p1.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 186,
+   "kind": "ask",
+   "text": "Draft a truthful, ATS-safe resume from the candidate's files, and list what is not shown and open questions.",
+   "who": "host",
+   "to": "agy",
+   "label": "Draft M",
+   "files": [
+    "p1.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 239,
+   "kind": "say",
+   "text": "Step 2 of 5: Draft. Both independent draft requests are running; I’ll merge only their resume text and carry their open questions forward. Next, I’ll compare the returned drafts.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 296,
+   "kind": "reply",
+   "text": "The draft emphasized the SQL-driven win-back segmentation, Looker reporting, and A/B test analysis; it listed pricing models, financial impact reporting, and AI tooling as not shown.",
+   "who": "claude",
+   "d": 110,
+   "files": [
+    "p1_reply_claude.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 296,
+   "kind": "reply",
+   "text": "The first call failed because it started before the prompt file existed, so no draft came back.",
+   "who": "agy",
+   "d": 110,
+   "files": [
+    "p1_reply_agy.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 296,
+   "kind": "ask",
+   "text": "Draft a truthful, ATS-safe resume from the candidate's files, and list what is not shown and open questions.",
+   "who": "host",
+   "to": "agy",
+   "label": "Draft M retry",
+   "files": [
+    "p1.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 401,
+   "kind": "say",
+   "text": "Step 2 of 5: Draft. Claude’s draft is back; the first Google call started before the prompt file existed, so I’m retrying it once as the workflow allows. Next, I’ll finish the draft comparison.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 516,
+   "kind": "reply",
+   "text": "The draft foregrounded BigQuery, Looker, and test analysis. It included older resume claims about Tableau and budget ownership, and listed pricing, pricing experiments, AI use, schema creation, and executive presentation as not shown.",
+   "who": "agy",
+   "d": 220,
+   "files": [
+    "p1_reply_agy.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 524,
+   "kind": "step",
+   "text": "Council",
+   "who": "host",
+   "step": 3,
+   "links": []
+  },
+  {
+   "t": 524,
+   "kind": "note",
+   "text": "Labeling drafts and comparing their shared evidence",
+   "who": "host",
+   "label": "Council",
+   "links": []
+  },
+  {
+   "t": 530,
+   "kind": "ask",
+   "text": "Review Draft M for job fit, factual support, omitted must-haves, and wording problems.",
+   "who": "host",
+   "to": "claude",
+   "label": "Critique of M",
+   "files": [
+    "p2_claude.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 530,
+   "kind": "ask",
+   "text": "Review Draft K for job fit, factual support, omitted must-haves, and wording problems.",
+   "who": "host",
+   "to": "agy",
+   "label": "Critique of K",
+   "files": [
+    "p2_agy.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 600,
+   "kind": "say",
+   "text": "Step 3 of 5: Council. Each reviewer has the other writer’s draft only. I’m waiting for those blind critiques before combining the evidence. Next, I’ll review the critiques alongside the candidate’s files.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 639,
+   "kind": "reply",
+   "text": "The review screened Draft M no because the candidate's material shows no pricing analytics. It flagged the daily SQL claim, undated title progression, test-bullet wording, old budget and Tableau claims, cross-functional leadership, and the assumed Jupyter detail.",
+   "who": "claude",
+   "d": 109,
+   "files": [
+    "p2_reply_claude.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 658,
+   "kind": "reply",
+   "text": "The review screened Draft K no because pricing evidence is missing. It urged clearer test-analysis wording, removing standalone link and older social-calendar work, while also suggesting unsupported claims about power analysis and actionable recommendations.",
+   "who": "agy",
+   "d": 128,
+   "files": [
+    "p2_reply_agy.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 683,
+   "kind": "note",
+   "text": "Merging the candidate's evidence and the blind critiques into a single resume",
+   "who": "host",
+   "label": "Merge",
+   "links": []
+  },
+  {
+   "t": 689,
+   "kind": "step",
+   "text": "Review and sign-off",
+   "who": "host",
+   "step": 4,
+   "links": []
+  },
+  {
+   "t": 689,
+   "kind": "note",
+   "text": "Checking the merged resume and reviewing the remaining old claims",
+   "who": "host",
+   "label": "Review",
+   "links": []
+  },
+  {
+   "t": 700,
+   "kind": "check",
+   "text": "0 errors, 4 warnings (old skills: dbt, Excel, Google Analytics, R, Tableau), 5 placeholders; 214 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 706,
+   "kind": "check",
+   "text": "0 errors, 0 warnings, 5 placeholders; 212 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 707,
+   "kind": "note",
+   "text": "Building the blind review prompt for the merged resume",
+   "who": "host",
+   "label": "Blind review",
+   "links": []
+  },
+  {
+   "t": 707,
+   "kind": "ask",
+   "text": "Review the merged resume line by line for truthful support, job fit, clarity, and likely interview questions.",
+   "who": "host",
+   "to": "claude",
+   "label": "Blind review",
+   "files": [
+    "p4_review.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 774,
+   "kind": "say",
+   "text": "Step 4 of 5: Review and sign-off. The merged draft now has no checker warnings, and a blind line by line review is running. I’m holding the text steady until that review returns. Next, I’ll resolve its findings and ask you to sign off on the remaining claims.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 815,
+   "kind": "reply",
+   "text": "The review found no pricing evidence and flagged the missing qualification evidence. Its claim check supported the resume except for dropping the candidate's qualifier ‘maybe’ from Python frequency; it also suggested querying the promotion date and old sales-target claim.",
+   "who": "claude",
+   "d": 108,
+   "files": [
+    "p4_reply_claude.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 815,
+   "kind": "note",
+   "text": "Applying the one factual fix from the blind review and preserving the candidate's qualifiers",
+   "who": "host",
+   "label": "Voice",
+   "links": []
+  },
+  {
+   "t": 835,
+   "kind": "check",
+   "text": "1 error (win-back bullet too long), 0 warnings, 5 placeholders; 212 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 835,
+   "kind": "check",
+   "text": "0 errors, 2 warnings (short second line, unused synonym purchases), 5 placeholders; 210 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 853,
+   "kind": "check",
+   "text": "0 errors, 2 short-second-line warnings, 5 placeholders; 216 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 860,
+   "kind": "check",
+   "text": "0 errors, 1 short-second-line warning, 5 placeholders; 213 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 864,
+   "kind": "check",
+   "text": "0 errors, 1 short-second-line warning (about 1.02 lines), 5 placeholders; 210 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 886,
+   "kind": "check",
+   "text": "0 errors, 0 warnings, 5 placeholders; 210 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 887,
+   "kind": "say",
+   "text": "SIGN-OFF QUESTIONS\nStep 4 of 5: Review and sign-off\n\nI merged the two drafts, kept the measured win-back result and your role in the A/B tests, and removed the old budget, Tableau-executive, and generic leadership claims that your own account did not confirm. I also changed the old 15-person headcount to about 12 part-time staff, and restored “maybe” in the Python frequency. The long win-back and test bullets are now shorter. Your portfolio link stays beside the test evidence.\n\nPlease confirm or correct these points:\n- The old resume says conversion rose 18%; your account says win-back email conversion went from 2.1% to 2.5%. Are these the same result, and which wording is right?\n- When did your title change from Marketing Coordinator to Marketing Analyst? Give month and year only if you know it.\n- Were the old $2.4M email-budget and Tableau dashboards for executive stakeholders accurate? If so, what was your role with the budget and who reviewed the Tableau dashboards?\n- Are R, dbt, Tableau, Google Analytics, Excel, stakeholder management, data storytelling, and cross-functional leadership still accurate skills to show?\n- Only if true, have you worked on pricing or pricing tests, pricing-related financial impact, Product or Finance analysis, broader business KPI reporting, creating BigQuery tables or schemas, AI-assisted analysis or automation, direct executive presentations, or D2C subscriptions? Tell me which and what you did.\n\nThe resume still does not show pricing work, pricing models or tests, creating tables or schemas, AI tooling or automation, direct executive presentations, or subscription D2C experience. A reviewer also suggested interview questions about how you measured the win-back change, how you assess whether a test has enough traffic, and whether you have built the underlying tables behind your Looker dashboards. I’ll keep “about 12 tests in the last year” as you wrote it rather than guess exact dates.\n\nAre all of these true, and could you explain each in an interview? Tell me any to fix. If you don't know a number, I'll leave it out, so please don't estimate.",
+   "who": "host",
+   "stop": "Stop 2",
+   "links": [
+    "L4",
+    "B5",
+    "A8",
+    "A12"
+   ]
+  },
+  {
+   "t": 1003,
+   "kind": "say",
+   "text": "Step 4 of 5: Review and sign-off. I’m recording your answers now, then I’ll update the resume to reflect the July 2022 promotion, correct the budget and Tableau claims, and add the confirmed SQL, GA4, and ChatGPT details.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 1003,
+   "kind": "user",
+   "text": "- The 18%: I don't know where that number came from. The numbers I know are 2.1% to 2.5%.\n- I was promoted from Marketing Coordinator to Marketing Analyst in July 2022.\n- I never managed a budget. $2.4M was the email channel's revenue last year in our dashboard, nothing I controlled. Tableau: only in the certificate course, not at work.\n- R: one course, I wouldn't put it on. dbt: I've read the dbt models our data engineer wrote, I've never written one. Tableau: only the certificate course. Google Analytics: yes, I use GA4 most days. Excel: yes. Stakeholder management, data storytelling and cross-functional leadership were filler, take them off.\n- I've never worked on pricing or built a pricing model. I sometimes ask ChatGPT to help me fix a SQL query; I haven't built any automations. I've only presented to our marketing director and the marketing team. I write queries; I've made a few saved views in BigQuery, never schemas. No Product or Finance analysis, no broader KPI datasets, no subscriptions.",
+   "who": "user",
+   "links": [
+    "L4",
+    "B5",
+    "A8"
+   ]
+  },
+  {
+   "t": 1003,
+   "kind": "note",
+   "text": "Recording the candidate's confirmations, corrections, and preferences",
+   "who": "host",
+   "label": "Sign-off",
+   "links": []
+  },
+  {
+   "t": 1055,
+   "kind": "check",
+   "text": "0 errors, 3 warnings (short second line, old-only Google Analytics spelling, nine-person phrasing), 5 placeholders; 250 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 1074,
+   "kind": "check",
+   "text": "0 errors, 0 warnings, 5 placeholders; 241 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 1074,
+   "kind": "note",
+   "text": "Building the final blind look from the signed-off facts",
+   "who": "host",
+   "label": "Final review",
+   "links": []
+  },
+  {
+   "t": 1074,
+   "kind": "ask",
+   "text": "Review the signed-off resume line by line for factual support, job fit, clarity, and likely interview questions.",
+   "who": "host",
+   "to": "claude",
+   "label": "Final look",
+   "files": [
+    "p4_final.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 1075,
+   "kind": "ask",
+   "text": "Review the signed-off resume line by line for factual support, job fit, clarity, and likely interview questions.",
+   "who": "host",
+   "to": "agy",
+   "label": "Final look",
+   "files": [
+    "p4_final.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 1147,
+   "kind": "say",
+   "text": "Step 5 of 5: Finalise. Claude and Google are checking the updated, signed-off resume blind. I’ll resolve any remaining supported edits before showing the final copy. Next, I’ll ask whether it’s final.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 1203,
+   "kind": "reply",
+   "text": "The review screened no because pricing is absent. It supported the signed-off facts but said the conversion line needs to say win-back email conversion, and suggested preserving the same-email starting point, consolidating tool bullets, and folding revenue into the dashboard line.",
+   "who": "claude",
+   "d": 129,
+   "files": [
+    "p4_final_reply_claude.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 1265,
+   "kind": "reply",
+   "text": "The review supported the signed-off facts and found no pricing experience. It recommended folding saved views into the SQL line, retaining the win-back starting point and attribution, moving the test link, and cutting unsupported or low-value standalone details such as the passive revenue figure and generic presentation line.",
+   "who": "agy",
+   "d": 190,
+   "files": [
+    "p4_final_reply_agy.md.txt"
+   ],
+   "links": []
+  },
+  {
+   "t": 1265,
+   "kind": "note",
+   "text": "Applying the final review's supported wording fixes and preserving the limits the candidate confirmed",
+   "who": "host",
+   "label": "Final edits",
+   "links": []
+  },
+  {
+   "t": 1297,
+   "kind": "check",
+   "text": "0 errors, 3 short-second-line warnings (win-back segmentation, result, combined tools), 5 placeholders; 237 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 1333,
+   "kind": "check",
+   "text": "0 errors, 2 short-second-line warnings (win-back story and tool use), 5 placeholders; 231 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 1362,
+   "kind": "check",
+   "text": "0 errors, 2 short-second-line warnings (win-back segmentation and result), 5 placeholders; 230 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 1378,
+   "kind": "check",
+   "text": "0 errors, 2 short-second-line warnings (win-back segmentation and result), 5 placeholders; 230 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 1411,
+   "kind": "check",
+   "text": "0 errors, 2 short-second-line warnings (win-back SQL and result bullets), 5 placeholders; 233 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 1421,
+   "kind": "say",
+   "text": "Step 5 of 5: Finalise\n\nYour resume is at `.tribunal/final.md`. Here is the current Markdown:\n\n```markdown\n# Dana Whitfield\nPittsburgh, PA | dana.whitfield@example.com | (412) 555-0147 | linktr.ee/danawhit | Portfolio: danawhitfield.design/work (two test write-ups)\n\n## Summary\nMarketing Analyst and the only analyst on a marketing team of nine. Writes SQL in BigQuery most days, builds Looker dashboards, and analyzes A/B test results.\n\n## Skills\nSQL, BigQuery, Looker, GA4, Excel, Python (pandas), A/B test analysis, customer segmentation\n\n## Experience\n### Online home-goods retailer (about 400 employees)\n**Marketing Coordinator** | Mar 2019 - Jun 2022\n**Marketing Analyst** | Jul 2022 - Present\n- Write SQL in BigQuery most days and create a few saved views; sometimes ask ChatGPT for help fixing a SQL query.\n- Wrote SQL to split customers who hadn't bought in a year, all getting the same email, by what they'd bought and how much they'd spent.\n- Win-back email conversion went from 2.1% to 2.5% over the next quarter; the email manager wrote a different email for each group.\n- Analyze about 12 A/B tests in the last year: check whether there is enough traffic, read results, and write up findings. The email manager or paid social lead chooses what to test.\n- Built Looker dashboards for email and paid social; the marketing director reviews them every Monday.\n- Use GA4 most days.\n- Clean exports in Python notebooks with pandas, maybe a few times a month.\n\n### Regional sporting-goods chain\n**Store Manager** | 2014 - 2019\n- Managed about 12 part-time staff.\n- Built scheduling and inventory spreadsheets in Excel.\n\n## Education\nBA Communications, large public state university, 2014\nGoogle Data Analytics Certificate, 2020\n```\n\nI split the coordinator and analyst titles at July 2022. Duties that did not have separate dates sit under Marketing Analyst. The final blind reviews found no pricing experience and agreed with the confirmed facts. Their supported correction to the win-back result's scope is in place. I removed the dashboard's $2.4M revenue figure from the resume because it was not a result you controlled, and left out the presentation line because it named only the director and team without saying what you presented.\n\nWhat the job asks for that the resume still does not show: pricing models or tests, pricing-related financial analysis, Product or Finance work, broader KPI datasets, table or schema creation, AI quality checks or automations, senior-executive presentations, or subscription experience. Your ChatGPT use is described only as help fixing SQL queries. The checker has no errors; it flags two bullets as slightly long wraps. I kept their details and attribution intact.\n\nLikely interview questions are how the 2.1% to 2.5% win-back change was measured and separated from the new email copy, how you decide a test has enough traffic, and what is behind the Looker dashboards.\n\nIs this final? Markdown is ready at `.tribunal/final.md`; tell me if you want Word or PDF instead.",
+   "who": "host",
+   "stop": "Stop 3",
+   "links": [
+    "B5",
+    "A8"
+   ]
+  },
+  {
+   "t": 1492,
+   "kind": "user",
+   "text": "Yes, it's final. Markdown is fine.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 1492,
+   "kind": "note",
+   "text": "Running the final claim and writing-habit check on the restored resume",
+   "who": "host",
+   "label": "Final check",
+   "links": []
+  },
+  {
+   "t": 1518,
+   "kind": "check",
+   "text": "0 errors, 2 warnings (short wraps at lines 15 and 16), 0 placeholders; 236 words",
+   "who": "check",
+   "links": []
+  },
+  {
+   "t": 1525,
+   "kind": "note",
+   "text": "Writing the required line-by-line explanation for every resume change",
+   "who": "host",
+   "label": "Change log",
+   "links": []
+  },
+  {
+   "t": 1545,
+   "kind": "note",
+   "text": "Marking the final document delivered and the workflow complete",
+   "who": "host",
+   "label": "Finalise",
+   "links": []
+  },
+  {
+   "t": 1564,
+   "kind": "say",
+   "text": "Would you like me to save your resume, own words, and the facts you confirmed on this computer for your next application? The profile would be in `~/.resume-tribunal/`, would stay here, and you could delete it any time.\n\nOne optional tip, from the person who made this skill and also makes the product: warmhop™ is a resume link tracker that shows when a recruiter opens your links. Your resume works the same without it.",
+   "who": "host",
+   "links": []
+  },
+  {
+   "t": 1604,
+   "kind": "user",
+   "text": "No thanks.",
+   "who": "user",
+   "links": []
+  },
+  {
+   "t": 1618,
+   "kind": "note",
+   "text": "Correcting the change log provenance and adding the formatted name and store title",
+   "who": "host",
+   "label": "Change log",
+   "links": []
+  },
+  {
+   "t": 1639,
+   "kind": "say",
+   "text": "[final.md](.tribunal/final.md)\n\nFinal checker: **0 errors, 2 warnings** (short wraps at lines 15 and 16), 0 placeholders; 236 words (about 650 fit one page).\n\nThe profile was not saved, per “No thanks.”",
+   "who": "host",
+   "links": []
+  }
+ ],
+ "lanes": [
+  [
+   "host",
+   0,
+   18,
+   "Skill",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   18,
+   134,
+   "Setup",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   134,
+   148,
+   "Privacy",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   148,
+   166,
+   "Stop 1",
+   1,
+   "Waiting for Dana"
+  ],
+  [
+   "host",
+   166,
+   168,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   168,
+   186,
+   "Prompts",
+   0,
+   "The host is working"
+  ],
+  [
+   "claude",
+   186,
+   296,
+   "Draft K",
+   0,
+   "Claude is working on the draft k"
+  ],
+  [
+   "agy",
+   186,
+   296,
+   "Draft M",
+   0,
+   "Gemini is working on the draft m"
+  ],
+  [
+   "agy",
+   296,
+   516,
+   "Draft M retry",
+   0,
+   "Gemini is working on the draft m retry"
+  ],
+  [
+   "host",
+   516,
+   524,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   524,
+   530,
+   "Council",
+   0,
+   "The host is working"
+  ],
+  [
+   "claude",
+   530,
+   639,
+   "Critique of M",
+   0,
+   "Claude is working on the critique of m"
+  ],
+  [
+   "agy",
+   530,
+   658,
+   "Critique of K",
+   0,
+   "Gemini is working on the critique of k"
+  ],
+  [
+   "host",
+   658,
+   683,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   683,
+   689,
+   "Merge",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   689,
+   700,
+   "Review",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   700,
+   700,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   700,
+   706,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   706,
+   706,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   706,
+   707,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "claude",
+   707,
+   815,
+   "Blind review",
+   0,
+   "Claude is working on the blind review"
+  ],
+  [
+   "host",
+   815,
+   835,
+   "Voice",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   835,
+   835,
+   "",
+   0,
+   ""
+  ],
+  [
+   "check",
+   835,
+   835,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   835,
+   853,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   853,
+   853,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   853,
+   860,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   860,
+   860,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   860,
+   864,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   864,
+   864,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   864,
+   886,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   886,
+   886,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   886,
+   887,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   887,
+   1003,
+   "Stop 2",
+   1,
+   "Waiting for Dana"
+  ],
+  [
+   "host",
+   1003,
+   1055,
+   "Sign-off",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   1055,
+   1055,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   1055,
+   1074,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   1074,
+   1074,
+   "",
+   0,
+   ""
+  ],
+  [
+   "claude",
+   1074,
+   1203,
+   "Final look",
+   0,
+   "Claude is working on the final look"
+  ],
+  [
+   "agy",
+   1075,
+   1265,
+   "Final look",
+   0,
+   "Gemini is working on the final look"
+  ],
+  [
+   "host",
+   1265,
+   1297,
+   "Final edits",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   1297,
+   1297,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   1297,
+   1333,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   1333,
+   1333,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   1333,
+   1362,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   1362,
+   1362,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   1362,
+   1378,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   1378,
+   1378,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   1378,
+   1411,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   1411,
+   1411,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   1411,
+   1421,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "user",
+   1421,
+   1492,
+   "Stop 3",
+   1,
+   "Waiting for Dana"
+  ],
+  [
+   "host",
+   1492,
+   1518,
+   "Final check",
+   0,
+   "The host is working"
+  ],
+  [
+   "check",
+   1518,
+   1518,
+   "",
+   0,
+   ""
+  ],
+  [
+   "host",
+   1518,
+   1525,
+   "",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   1525,
+   1545,
+   "Change log",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   1545,
+   1618,
+   "Finalise",
+   0,
+   "The host is working"
+  ],
+  [
+   "host",
+   1618,
+   1639,
+   "Change log",
+   0,
+   "The host is working"
+  ]
+ ],
+ "before": [
+  {
+   "k": "name",
+   "tx": "DANA WHITFIELD"
+  },
+  {
+   "k": "contact",
+   "tx": "Pittsburgh, PA | dana.whitfield@example.com | (412) 555-0147 | linktr.ee/danawhit | danawhitfield.design/work",
+   "why": "Dana identifies the portfolio as two test write-ups, so the link now says what evidence it supports.",
+   "id": "L1",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "SUMMARY"
+  },
+  {
+   "k": "p",
+   "tx": "Results-driven marketing analytics professional with 10+ years of experience leveraging data to drive growth. Proven track record of turning insights into revenue and leading cross-functional teams.",
+   "id": "B2",
+   "s": "cut"
+  },
+  {
+   "k": "h2",
+   "tx": "EXPERIENCE"
+  },
+  {
+   "k": "role",
+   "tx": "Marketing Coordinator, then Marketing Analyst | **Online home-goods retailer (about 400 employees)** | Mar 2019 - Present",
+   "why": "Dana says she was promoted in July 2022, which separates the coordinator period from the analyst role.",
+   "id": "L3",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Increased email conversion rate by 18% through data-driven customer segmentation",
+   "why": "Dana cannot verify the old 18% claim and says she wrote a query to segment the prior win-back audience by purchase history and spend.",
+   "id": "L4",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Managed $2.4M email marketing budget",
+   "why": "Dana says the $2.4M was channel revenue in a dashboard and that she controlled no budget.",
+   "s": "cut",
+   "id": "B5"
+  },
+  {
+   "k": "bul",
+   "tx": "Led A/B testing program across email and landing pages",
+   "why": "Dana analyzes about 12 tests, checks traffic and reports findings, while the email manager or paid social lead chooses them.",
+   "id": "L5",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Built Tableau dashboards for executive stakeholders",
+   "why": "Dana says she used Tableau only in a certificate course and builds work dashboards in Looker for the marketing director.",
+   "s": "cut",
+   "id": "B7"
+  },
+  {
+   "k": "bul",
+   "tx": "Coordinated the social media calendar and weekly reporting in Google Analytics",
+   "why": "Dana describes building Looker dashboards for email and paid social that the marketing director reviews weekly.",
+   "id": "L6",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "Store Manager | **Regional sporting-goods chain** | 2014 - 2019",
+   "why": "Dana's store manager title and dates remain the same, with Markdown emphasis used for the job title.",
+   "id": "L8"
+  },
+  {
+   "k": "bul",
+   "tx": "Managed a team of 15 associates",
+   "why": "Dana's account gives the accurate team size and identifies the workers as part-time.",
+   "id": "L7",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Consistently exceeded sales targets",
+   "why": "Dana supplied no sales-target result to support this claim.",
+   "s": "cut",
+   "id": "B11"
+  },
+  {
+   "k": "bul",
+   "tx": "Built scheduling and inventory spreadsheets in Excel",
+   "id": "L9"
+  },
+  {
+   "k": "h2",
+   "tx": "EDUCATION"
+  },
+  {
+   "k": "p",
+   "tx": "BA Communications, large public state university, 2014",
+   "id": "L10"
+  },
+  {
+   "k": "p",
+   "tx": "Google Data Analytics Certificate, 2020",
+   "id": "L11"
+  },
+  {
+   "k": "h2",
+   "tx": "SKILLS"
+  },
+  {
+   "k": "p",
+   "tx": "Languages: Python, SQL, R",
+   "why": "Dana confirms daily GA4 and Excel use, describes her SQL, BigQuery, Looker, Python and test work, and leaves out R after one course.",
+   "id": "L2",
+   "s": "rw"
+  },
+  {
+   "k": "p",
+   "tx": "Tools: Tableau, Looker, Google Analytics, dbt, Excel",
+   "why": "Dana confirms Tableau was coursework only and that she has read dbt models but not written them, so those tools are omitted; GA4 and Excel are represented in the skills line.",
+   "s": "cut",
+   "id": "B16"
+  },
+  {
+   "k": "p",
+   "tx": "A/B testing, stakeholder management, data storytelling, cross-functional leadership",
+   "why": "Dana calls stakeholder management, data storytelling and cross-functional leadership filler, while her confirmed A/B test work is described in the skills line.",
+   "s": "cut",
+   "id": "B17"
+  }
+ ],
+ "after": [
+  {
+   "k": "name",
+   "tx": "Dana Whitfield"
+  },
+  {
+   "k": "contact",
+   "tx": "Pittsburgh, PA | dana.whitfield@example.com | (412) 555-0147 | linktr.ee/danawhit | Portfolio: danawhitfield.design/work (two test write-ups)",
+   "why": "Dana identifies the portfolio as two test write-ups, so the link now says what evidence it supports.",
+   "from": "own words",
+   "id": "L1",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Summary"
+  },
+  {
+   "k": "p",
+   "tx": "Marketing Analyst and the only analyst on a marketing team of nine. Writes SQL in BigQuery most days, builds Looker dashboards, and analyzes A/B test results.",
+   "why": "Dana describes herself as the team's only analyst and names the work she does most often.",
+   "from": "own words",
+   "s": "new",
+   "id": "A2"
+  },
+  {
+   "k": "h2",
+   "tx": "Skills"
+  },
+  {
+   "k": "p",
+   "tx": "SQL, BigQuery, Looker, GA4, Excel, Python (pandas), A/B test analysis, customer segmentation",
+   "why": "Dana confirms daily GA4 and Excel use, describes her SQL, BigQuery, Looker, Python and test work, and leaves out R after one course.",
+   "from": "sign-off",
+   "id": "L2",
+   "s": "rw"
+  },
+  {
+   "k": "h2",
+   "tx": "Experience"
+  },
+  {
+   "k": "role",
+   "tx": "Marketing Coordinator | **Online home-goods retailer (about 400 employees)** | Mar 2019 - Jun 2022",
+   "why": "Dana says she was promoted in July 2022, which separates the coordinator period from the analyst role.",
+   "from": "sign-off",
+   "id": "L3",
+   "s": "rw"
+  },
+  {
+   "k": "role",
+   "tx": "**Marketing Analyst** | Jul 2022 - Present",
+   "why": "Dana confirms her promotion to Marketing Analyst in July 2022.",
+   "from": "sign-off",
+   "s": "new",
+   "id": "A5"
+  },
+  {
+   "k": "bul",
+   "tx": "Write SQL in BigQuery most days and create a few saved views; sometimes ask ChatGPT for help fixing a SQL query.",
+   "why": "Dana writes queries, has made a few saved views and sometimes uses ChatGPT to debug SQL, but has not built automations or schemas.",
+   "from": "sign-off",
+   "s": "new",
+   "id": "A6"
+  },
+  {
+   "k": "bul",
+   "tx": "Wrote SQL to split customers who hadn't bought in a year, all getting the same email, by what they'd bought and how much they'd spent.",
+   "why": "Dana cannot verify the old 18% claim and says she wrote a query to segment the prior win-back audience by purchase history and spend.",
+   "from": "own words",
+   "id": "L4",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Win-back email conversion went from 2.1% to 2.5% over the next quarter; the email manager wrote a different email for each group.",
+   "why": "Dana confirms these are the known conversion figures and credits the email manager with writing each group's email.",
+   "from": "sign-off",
+   "s": "new",
+   "id": "A8"
+  },
+  {
+   "k": "bul",
+   "tx": "Analyze about 12 A/B tests in the last year: check whether there is enough traffic, read results, and write up findings. The email manager or paid social lead chooses what to test.",
+   "why": "Dana analyzes about 12 tests, checks traffic and reports findings, while the email manager or paid social lead chooses them.",
+   "from": "own words",
+   "id": "L5",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Built Looker dashboards for email and paid social; the marketing director reviews them every Monday.",
+   "why": "Dana describes building Looker dashboards for email and paid social that the marketing director reviews weekly.",
+   "from": "own words",
+   "id": "L6",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Use GA4 most days.",
+   "why": "Dana says she uses GA4 most days.",
+   "from": "sign-off",
+   "s": "new",
+   "id": "A11"
+  },
+  {
+   "k": "bul",
+   "tx": "Clean exports in Python notebooks with pandas, maybe a few times a month.",
+   "why": "Dana says she cleans exports with pandas in notebooks a few times a month and keeps the frequency approximate.",
+   "from": "own words",
+   "s": "new",
+   "id": "A12"
+  },
+  {
+   "k": "role",
+   "tx": "Store Manager | **Regional sporting-goods chain** | 2014 - 2019",
+   "why": "Dana's store manager title and dates remain the same, with Markdown emphasis used for the job title.",
+   "from": "old resume",
+   "id": "L8"
+  },
+  {
+   "k": "bul",
+   "tx": "Managed about 12 part-time staff.",
+   "why": "Dana's account gives the accurate team size and identifies the workers as part-time.",
+   "from": "own words",
+   "id": "L7",
+   "s": "rw"
+  },
+  {
+   "k": "bul",
+   "tx": "Built scheduling and inventory spreadsheets in Excel.",
+   "id": "L9"
+  },
+  {
+   "k": "h2",
+   "tx": "Education"
+  },
+  {
+   "k": "p",
+   "tx": "BA Communications, large public state university, 2014",
+   "id": "L10"
+  },
+  {
+   "k": "p",
+   "tx": "Google Data Analytics Certificate, 2020",
+   "id": "L11"
+  }
+ ]
+}
