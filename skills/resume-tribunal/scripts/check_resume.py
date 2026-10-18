@@ -336,10 +336,10 @@ def check(md, line_chars=115, source=None, final=False, vocab="", max_words=650,
             raw = md_lines[n - 1]
             if n not in sections and not (n <= 3 and contact(n, raw)):
                 body = PLACEHOLDER_RE.sub(" ", LINK_TARGET_RE.sub(" ", text))
-                # ponytail: a capital letter marks a name. The first word of a sentence is skipped,
+                # A capital letter marks a name. The first word of a sentence is skipped,
                 # except on title and date lines ("Senior Analyst | 2021"), where every word is a claim.
                 # Every word counts on title and date lines and in Skills, and after a colon ("Languages: Tableau, SQL").
-                # ponytail: a tool name opening a bullet or sentence elsewhere still passes; checking those would flag every new verb.
+                # Known gap: a tool name opening a bullet or sentence elsewhere still passes; checking those would flag every new verb.
                 if n in skills:  # the label of a Skills line ("Languages:") is a heading, not a claim
                     body = re.sub(r"^\s*[^:]{1,60}:\s", "", body)
                 start = r"\b" if "|" in body or n in skills or n in headings or (n <= 3 and not re.match(r"\s*(?:[-*•]|\d+[.)])\s", raw)) else r"(?<![.]\s)(?<!^)\b"
@@ -518,7 +518,7 @@ def self_test():
     assert facts(head + "## Skills\nSQL, R", source="I use SQL. Columbus, OH", old="## Skills\nSQL, R") == {"only-in-old-resume"}
     this = datetime.date.today().year
     assert facts(head + f"- About 12 tests in the year to Oct {this}", source="about 12 tests in the last year. Columbus, OH") == set()
-    # ponytail: a word checker cannot read meaning. These still pass, so the host's line-by-line check and the user's sign-off stay.
+    # Known gaps: a word checker cannot read meaning. These still pass, so the host's line-by-line check and the user's sign-off stay.
     assert facts(head + "- Led a team of 30.", source="I did not lead a team of 30. Columbus, OH") == set()
     print("self-test passed")
 

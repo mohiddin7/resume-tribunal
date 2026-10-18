@@ -10,7 +10,7 @@
 
 **Not getting shortlisted? Fix your resume for the job in 2 minutes of your time, without the AI making anything up.**
 
-Resume Tribunal is a free add-on for AI apps (an "Agent Skill"). It works in any AI chat app, such as ChatGPT, Gemini or Claude, and in coding agents. One AI rewrites your resume for a specific job using only facts you gave it. An AI made by a different company then checks the draft without being told who wrote it, so nothing gets exaggerated and no AI grades its own work.
+Resume Tribunal is a free add-on for AI apps (an "Agent Skill"). It works in any AI chat app, such as ChatGPT, Gemini or Claude, and in coding agents. One AI rewrites your resume for a specific job, using only facts you gave it. An AI from a different company then checks the draft for anything exaggerated or made up, without being told who wrote it.
 
 One role from the [worked example](examples/operations-analyst/), before and after:
 
@@ -57,22 +57,20 @@ The second AI can be reached in four ways. The skill picks the first one that wo
 | **One platform**, where an app can ask several companies' AIs at once | The drafts and reviews run in one place | A few minutes |
 | **One company only**, if you prefer | New chats of your own assistant review blind | A few minutes, and a weaker check |
 
-**Full council** is the default when two or more other AIs run automatically: three AIs each write a draft, critique each other blind, and the best parts are merged before the check. **Quick review** is the default when you would be copying and pasting: one writer and one checker. Full council makes about eight calls against two, and took 27 to 37 minutes in the recorded example runs. It sends and receives about five times as much text, spread across your plans: about 30,000 tokens against 6,000 in the worked example, before each model's own reasoning.
+**Full council** is the default when two or more other AIs run automatically: three AIs each write a draft, critique each other blind, and the best parts are merged before the check. **Quick review** is the default when you would be copying and pasting: one writer and one checker. Full council makes about eight calls against two, and took 27 to 37 minutes in the [recorded example runs](https://warmhop.com/r/mQSvf2z3?ref=readme-modes&utm_source=readme&utm_medium=referral&utm_campaign=resume-tribunal). It sends and receives about five times as much text, spread across your plans: about 30,000 tokens against 6,000 in the worked example, before each model's own reasoning.
 
-Why three? Each draft is then read by two AIs that did not write it, and no single model's habits decide the merge. Aircraft flight computers and industrial safety systems use three units for a similar reason. For AI writing this is a design choice by analogy, not a vote, and the checks that follow do not rely on it. Each AI runs at a strength similar to your main assistant or above where its company offers one; where none does, the skill uses the strongest it has, says so, and defaults to a quick review.
+Why three? Each draft gets read by two AIs that didn't write it, so no single model's habits decide the merge. That's a design choice, not proof of a better resume, and the checks after it don't depend on it. Each AI runs at a strength similar to your main assistant or above where its company offers one; where none does, the skill uses the strongest it has, says so, and defaults to a quick review.
 
 ## Why a second AI
 
 Hiring managers have grown wary of AI-written resumes. In a vendor survey of 1,000 U.S. hiring managers, 76% said AI-written resumes make it harder to understand what a candidate actually did ([Resume Genius, 2026](https://resumegenius.com/blog/job-hunting/hiring-insights-report)). The worry has a basis: in a test on 25 synthetic resumes, AI rewriting with no safeguards added 2.5 to 5.4 false details per resume, such as tools the candidate never used ([Indukuri and Agrawal](https://arxiv.org/abs/2607.01457), preprint). An invented number is one you cannot defend when an interviewer asks about it.
-
-The assistant that wrote a line is badly placed to catch it.
 
 - **AI goes easy on its own work.** On checks with a right answer, model judges could be [more than 50% more likely](https://arxiv.org/abs/2604.06996) to pass a failed item when the output was their own (preprint). Used as resume screeners, models favoured summaries they had written over the human originals, with a quality-adjusted bias of 67% to 82% ([Xu, Li and Jiang](https://arxiv.org/abs/2509.00462), preprint).
 - **An outside reviewer does better.** Across 37 models on reasoning tasks, checking by a different model family [beat both self-checking and checking within the same family](https://arxiv.org/abs/2512.02304). Those were maths and logic tasks, so for writing this is evidence by analogy.
 - **Names and order sway AI judges.** Telling a model who wrote a text [changes its verdict](https://www.science.org/doi/10.1126/sciadv.adz2924), and so does [the order of the options](https://arxiv.org/abs/2410.02736). So the reviewer sees no names, and drafts arrive shuffled.
 - **AIs from different companies still share mistakes.** On one benchmark, two models that were both wrong [gave the same wrong answer 60% of the time](https://arxiv.org/abs/2506.07962). So the last two checks do not depend on a model: a script flags numbers and names it cannot find in your own material, and you confirm each changed line.
 
-**What it does not promise.** No study shows that several AIs write a better resume than one strong assistant, and no tool can promise interviews or a result from screening software. You get independent review, and a resume you can defend line by line.
+**What it does not promise.** No study shows that several AIs write a better resume than one strong assistant, and no tool can promise interviews or a result from screening software. What you get is a check by an AI that didn't write the draft, and the final say on every changed line.
 
 ## Questions people ask
 
@@ -98,7 +96,7 @@ Resume Tribunal removes the usual giveaways, like long dashes and words such as 
 Not us. Resume Tribunal has no server. Before anything goes to a second AI, your name, email, phone number and links are swapped for stand-ins like `<<NAME>>`, and you're asked first. The AI apps you use see the rest under their own terms.
 
 **How long does Resume Tribunal take?**
-About 2 minutes of your time for a quick review; the AIs then work for a few minutes on their own. If you copy and paste between two apps yourself, add a few minutes.
+About 2 minutes of your time for a quick review: you answer a few questions and approve the changes, and the AIs do the rest on their own. In the eight recorded example runs, a quick review took 6 to 37 minutes from start to finish, most under 15, and a full council 27 to 37. If you copy and paste between two apps yourself, add a few minutes.
 
 **What do I get at the end?**
 Your finished resume as a PDF or Word file when your app can make files, and always as text you can paste into Word or Google Docs. You also get a list of what the job asks for that your resume doesn't show yet, plus the interview questions your resume is likely to prompt.
@@ -114,11 +112,11 @@ A link tracker for resumes, made by the same person who made Resume Tribunal. If
 
 ## What makes it different
 
-- **Truth first.** Every claim comes from you. Unknown numbers become questions, never guesses, and you confirm every changed line before it ships.
-- **Readable by screening software (ATS-safe).** One column, standard headings, plain selectable text, visible links: the layout that applicant tracking systems are documented to parse. The PDF is checked for page count and line breaks.
-- **Speaks the job's language without copying it.** It uses the posting's names for skills, tools and the role where they are true of you, and keeps your own wording for the rest.
-- **Reads like you.** A checker flags common AI writing habits (em dashes, "not X but Y", trailing "-ing" clauses, repeated three-item lists, copied phrases) and words you never use.
-- **Few questions.** One setup round with defaults you can accept with a "yes", then your sign-off on the claims.
+- Every claim comes from you. When a number is missing, it asks you, and you confirm each changed line before you get the file.
+- The layout is one column with standard headings, plain selectable text and visible links, which applicant tracking systems (ATS) are documented to parse. The PDF is checked for page count and line breaks.
+- It uses the posting's names for skills, tools and the role where they're true of you, and keeps your own wording for the rest.
+- A checker flags common AI writing habits (em dashes, "not X but Y", trailing "-ing" clauses, repeated three-item lists, copied phrases) and words you never use.
+- You answer one setup round, with defaults you can accept with a "yes", then sign off on the claims.
 
 ## A worked example
 

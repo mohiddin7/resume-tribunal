@@ -1,19 +1,19 @@
 ---
 title: I let three AIs argue over my resume. Here's what they caught.
-description: It started as sixteen prompts and three browser tabs. It became a free tool where a second AI, from a different company, checks the first one's work.
+description: How sixteen prompts across three browser tabs turned into a free tool where an AI from a different company checks the first AI's work.
 date: 2026-10-11
 tags: Behind the scenes, AI review, Building in public
 ---
 
 [[tldr]]
 
-- An AI that writes your resume will also tell you it's great. It's biased, and the research agrees.
+- An AI that writes your resume will usually tell you it's great. Research shows AI judges go easier on their own work.
 - So I made a second AI, from a different company, check the first one's work without knowing who wrote it.
 - That became Resume Tribunal: free, works in ChatGPT, Gemini, Claude or any AI, and a quick review takes about 2 minutes of your time.
 
 [[/tldr]]
 
-## The AI that loved its own homework
+## Asking the same AI to check its work
 
 Earlier this year I was job hunting and doing what everyone does: paste the resume, paste the job, ask the AI to make me shine.
 
@@ -21,9 +21,7 @@ It made me shine a little too brightly. It used words I never use, like "spearhe
 
 Then I asked the same AI to check its work. It said the draft was strong.
 
-> Which is a bit like asking a chef to rate their own soup.
-
-[[figure:self-grade|Same draft, two graders. Guess which one wrote it.]]
+[[figure:self-grade|The same draft, graded by the AI that wrote it and by a different one.]]
 
 Researchers have measured this. In one 2026 study, AI judges could be [more than 50% more likely to pass a failed answer](https://arxiv.org/abs/2604.06996) when the answer was their own.
 
@@ -54,11 +52,11 @@ Before anything goes to a second AI, your name and contact details are swapped f
 
 [[cta]]
 
-## The test that hurt
+## Testing the page on someone who isn't technical
 
-I asked AI reviewers to tear the project apart, each playing a different kind of expert. The one that hurt most was the simplest: someone whose whole AI experience is typing a question into ChatGPT.
+I asked AI reviewers to pick the project apart, each playing a different kind of reader. The most useful one played someone whose whole AI experience is typing a question into ChatGPT.
 
-They closed the tab in 30 seconds, because the first thing on my page was a terminal command. They were right, so I rebuilt the page around one message you paste into any AI chat.
+That reader gave up within 30 seconds, because the first thing on my page was a terminal command. So I rebuilt the page around one message you paste into any AI chat.
 
 ## What the second AI caught
 
@@ -74,10 +72,10 @@ All of them were turned down, because the candidate's own words decide. You can 
 
 ## Three things I'd tell anyone using AI for a resume
 
-1. **Get a second opinion from a different AI.** The one that wrote it is the worst judge of it.
+1. **Get a second opinion from a different AI.** The one that wrote it tends to approve it.
 2. **Never keep a number you didn't give it.** If you can't explain it in an interview, it can hurt you.
-3. **Keep your own words.** Words like "spearheaded" are what readers notice first, and they don't sound like you.
+3. **Keep your own words.** Words like "spearheaded" stand out to readers, and they're probably not words you use.
 
-[[figure:buzzwords|Resume Tribunal flags the words people spot first, and keeps yours.]]
+[[figure:buzzwords|Resume Tribunal flags buzzwords like these and keeps your own wording.]]
 
 Resume Tribunal is free and open source. [Try it in your AI app](../#start), and tell me what broke.

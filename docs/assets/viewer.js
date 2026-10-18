@@ -369,7 +369,8 @@
   setZoom(store.get("zoom") || "page");
   buildLanes(); renderResume(); sizeToHeader();
   TABS.forEach(function (t) { seen[t.id] = visible(t.id, END); }); // at rest the whole run is on show, so nothing counts as new
-  setNow(END, false); renderTabs(); showPane("chat");
+  showPane("chat");
   setLanes(store.get("timeline") !== "closed");
-  if ($("#autoplay").checked && !reduce) play(); // starts from the beginning; the page is complete at rest without it
+  // Autoplay starts from the beginning, so the whole run is drawn only when it stays at rest.
+  if ($("#autoplay").checked && !reduce) play(); else { setNow(END, false); renderTabs(); }
 })();

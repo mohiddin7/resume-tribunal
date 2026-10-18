@@ -118,7 +118,7 @@ def main():
         md = open(a.resume, encoding="utf-8-sig").read()
     except (OSError, UnicodeDecodeError) as e:
         sys.exit(f"cannot read {a.resume}: {e}")
-    # ponytail: built-in Helvetica covers Western European text only; register a TTF font if this warning bites.
+    # Limit: built-in Helvetica covers Western European text only; register a TTF font if this warning bites.
     odd = sorted({c for c in md if not c.encode("cp1252", "ignore")})
     if odd:
         print(f"warning: these characters will not print in the built-in font: {' '.join(odd[:20])}", file=sys.stderr)

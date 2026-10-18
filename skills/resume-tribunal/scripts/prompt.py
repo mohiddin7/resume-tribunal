@@ -139,7 +139,7 @@ def build(pid, d, labels=(), final=False):
 
 
 # A bare domain ("linktr.ee/jane") is any lower-case ending except a code file's, so "Node.js/Express" and
-# "ASP.NET/C#" stay skills. ponytail: hiding a lower-case "socket.io/redis" too is the safe side to err on.
+# "ASP.NET/C#" stay skills. Hiding a lower-case "socket.io/redis" too is the safe side to err on.
 CODE_ENDINGS = r"(?:js|ts|jsx|tsx|py|rb|md|json|ya?ml|txt|csv|cpp|cs|h)"
 PLATFORMS = r"(?i)(?:^|\.)(?:github|gitlab|linkedin|medium|kaggle|huggingface|behance|dribbble|twitter|x|youtube|substack|notion|linktr|bitbucket|orcid|scholar\.google|researchgate|credly)\.\w+$"
 PROFILE_RE = r"(?i)(?:github|gitlab|medium|kaggle|huggingface|behance|dribbble|twitter|x|bitbucket|linktr)\.(?:com|co|net|ee|org)/@?([\w.-]+)"

@@ -24,7 +24,7 @@
 4. A script flags numbers and names the candidate never gave, layout problems, hidden text and common AI writing habits.
 5. The candidate approves every changed line. Output is plain text, then PDF or Word. The PDF's text layer is read back to confirm it parses.
 
-Quick review takes about 2 minutes of the user's time and 6 to 14 minutes in all in the recorded example runs; full council took 27 to 37 minutes and uses roughly five times as much AI. Other assistants run automatically when their command-line tools are installed, or by copy and paste otherwise. Names, emails, phone numbers and links are replaced with placeholders before any text goes to another assistant.
+Quick review takes about 2 minutes of the user's time. In the eight recorded example runs it took 6 to 37 minutes in all, most under 15; full council took 27 to 37 minutes and uses roughly five times as much AI. Other assistants run automatically when their command-line tools are installed, or by copy and paste otherwise. Names, emails, phone numbers and links are replaced with placeholders before any text goes to another assistant.
 
 ## Install
 
@@ -44,6 +44,7 @@ Quick review takes about 2 minutes of the user's time and 6 to 14 minutes in all
 - [Source code](https://github.com/mohiddin7/resume-tribunal): MIT license
 - [Skill instructions](https://github.com/mohiddin7/resume-tribunal/blob/main/skills/resume-tribunal/SKILL.md)
 - [Prompts](https://github.com/mohiddin7/resume-tribunal/blob/main/skills/resume-tribunal/references/prompts.md)
+- [Example runs](https://tribunal.warmhop.com/examples/): eight recorded runs on real (de-identified, shared with consent) and fictional resumes, with every prompt, reply and resume change
 - [Worked example](https://github.com/mohiddin7/resume-tribunal/tree/main/examples/operations-analyst): a full run on a fictional candidate, checkable with one command
 - [How it was made](https://tribunal.warmhop.com/blog/how-resume-tribunal-was-made.html)
 - [Resume skills compared](https://tribunal.warmhop.com/blog/resume-skills-compared.html): six resume skills, including this one, compared honestly

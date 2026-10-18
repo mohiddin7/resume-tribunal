@@ -139,6 +139,8 @@ def head(title, desc, url, depth, kind="website", extra="", page="", bare=False)
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f7f4ef" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14120f" media="(prefers-color-scheme: dark)">
+<link rel="preload" href="{up}assets/fonts/ibm-plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{up}assets/fonts/ibm-plex-sans-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{up}assets/site.css">
 <script src="{up}assets/site.js"></script>
 {extra}</head>
@@ -170,6 +172,13 @@ def foot(depth, bare=False):
 
 # ---------- blog ----------
 
+def changed(*paths):
+    """The day these files last changed: today while any has uncommitted edits, else the last commit's date."""
+    if subprocess.run(["git", "status", "--porcelain", "--", *paths], capture_output=True, text=True).stdout.strip():
+        return datetime.date.today().isoformat()
+    return subprocess.run(["git", "log", "-1", "--format=%cs", "--", *paths], capture_output=True, text=True).stdout.strip()
+
+
 def posts():
     import markdown  # only the blog needs it
     out = []
@@ -180,7 +189,7 @@ def posts():
         words = len(re.sub(r"\[\[.*?\]\]", "", body).split())
         plain = re.sub(r"\[\[[^\]]*\]\]|[#*>|`_\[\]()-]", " ", body)
         plain = re.sub(r"https?://\S+", " ", plain)
-        out.append(dict(slug=md.stem, md=body, words=words, minutes=max(1, round(words / 230)),
+        out.append(dict(slug=md.stem, md=body, words=words, modified=max(changed(str(md)), meta["date"]), minutes=max(1, round(words / 230)),
                         plain=" ".join(plain.lower().split()), **meta))
     for p in out:
         md = markdown.Markdown(extensions=["tables", "toc"])
@@ -206,7 +215,7 @@ def render_post_body(body, p):
     body = body.replace("<p>[[how]]</p>", hiw(play=True) + '<p class="center meta hint">Your turn at steps 1 and 5. The AIs do the rest.</p>')
     body = body.replace("<p>[[tldr]]</p>", '<aside class="tldr"><strong>The short version</strong>').replace("<p>[[/tldr]]</p>", "</aside>")
     body = body.replace("<table>", '<div class="table"><table>').replace("</table>", "</table></div>")
-    return body
+    return re.sub(r"<tr>\s*<td>(.*?)</td>", r'<tr>\n<th scope="row">\1</th>', body)  # the first cell names the row
 
 
 def tags(p, cls="tag"):
@@ -230,7 +239,7 @@ def build_blog(items):
         day = datetime.date.fromisoformat(p["date"])
         ld = {"@context": "https://schema.org", "@graph": [
             {"@type": "BlogPosting", "headline": p["title"], "description": p["description"], "datePublished": p["date"],
-             "dateModified": p["date"], "keywords": p["tags"], "wordCount": p["words"], "image": f"{SITE}assets/og.png",
+             "dateModified": p["modified"], "keywords": p["tags"], "wordCount": p["words"], "image": f"{SITE}assets/og.png",
              "author": {"@type": "Person", "name": AUTHOR, "url": "https://github.com/mohiddin7"},
              "publisher": {"@type": "Organization", "name": "Resume Tribunal", "logo": f"{SITE}assets/apple-touch-icon.png"},
              "mainEntityOfPage": url},
@@ -244,7 +253,7 @@ def build_blog(items):
         others = [o for o in items if o["slug"] != p["slug"]]
         related = "".join(f'<a class="card post" href="{o["slug"]}.html"><span class="tags">{tags(o)}</span><strong>{esc(o["title"])}</strong>'
                           f'<p>{esc(o["description"])}</p><span class="meta">{o["minutes"]} min read</span><span class="more" aria-hidden="true">Read the post →</span></a>' for o in others)
-        page = (head(f"{p['title']} | Resume Tribunal", p["description"], url, 1, "article", extra, page="blog")
+        page = (head(p["title"], p["description"], url, 1, "article", extra, page="blog")
                 + f'''<div class="readbar" aria-hidden="true"><b></b></div>
 <main id="main" class="post-wrap">
 <div class="post-grid">
@@ -287,7 +296,7 @@ def build_blog(items):
 <div class="blog-tools">
 <label class="search"><span class="sr">Search posts</span><input type="search" id="q" placeholder="Search posts, e.g. ATS or ChatGPT" autocomplete="off" aria-describedby="count"></label>
 <div class="chips" role="group" aria-label="Filter by topic">{chips}</div>
-<p class="meta" id="count" aria-live="polite"></p>
+<p class="meta" id="count" aria-live="polite">{len(items)} posts</p>
 </div>
 <div class="grid posts" id="posts">
 {cards}
@@ -304,12 +313,15 @@ def build_blog(items):
     (DOCS / "feed.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Resume Tribunal blog</title>'
         f"<link>{SITE}blog/</link><description>{esc(desc)}</description>\n{rss}\n</channel></rss>\n")
-    latest = max(p["date"] for p in items)
-    urls = (["", "blog/", "llms.txt", "resume-tribunal.md"] + [f"blog/{p['slug']}.html" for p in items]
-            + (["examples/"] + [f"examples/{r['slug']}/" for r in example_runs()] if example_runs() else []))
+    site = changed("docs/build.py", "docs/art.py", "docs/assets")
+    runs = example_runs()
+    urls = ([("", max(site, *(p["modified"] for p in items))), ("blog/", max(site, *(p["modified"] for p in items))),
+             ("llms.txt", changed("docs/llms.txt")), ("resume-tribunal.md", changed("skills/resume-tribunal"))]
+            + [(f"blog/{p['slug']}.html", max(site, p["modified"])) for p in items]
+            + ([("examples/", max(site, changed("examples")))] + [(f"examples/{r['slug']}/", max(site, changed(f"examples/{r['slug']}"))) for r in runs] if runs else []))
     (DOCS / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "".join(f"  <url><loc>{SITE}{u}</loc><lastmod>{latest}</lastmod></url>\n" for u in urls) + "</urlset>\n")
+        + "".join(f"  <url><loc>{SITE}{u}</loc><lastmod>{day}</lastmod></url>\n" for u, day in urls) + "</urlset>\n")
 
 
 # ---------- example runs ----------
@@ -409,11 +421,17 @@ def build_examples():
         (page / "files").mkdir(parents=True)
         for f in (EXAMPLES / r["slug"] / "files").glob("*"):
             (page / "files" / f.name).write_text(f.read_text())
-        who = "a real candidate who agreed to publish their de-identified resume" if r["facts"][0].startswith("Real resume") else "a fictional candidate"
-        desc = f"A recorded Resume Tribunal run on {who}: every message, every prompt and reply, and the resume before and after. {r['mode']}, {round(r['end'] / 60)} minutes."
+        who = "a real, de-identified resume shared with consent" if r["facts"][0].startswith("Real resume") else "a fictional candidate"
+        desc = f"Recorded Resume Tribunal run ({r['mode'].lower()}, {round(r['end'] / 60)} min) on {who}: every prompt, reply and resume change."
+        url = f"{SITE}examples/{r['slug']}/"
+        crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE},
+            {"@type": "ListItem", "position": 2, "name": "Example runs", "item": f"{SITE}examples/"},
+            {"@type": "ListItem", "position": 3, "name": r["title"], "item": url}]}
         facts = "".join(f'<span class="rv-fact">{esc(f)}</span>' for f in r["facts"])
         (page / "index.html").write_text(
-            head(f"Example run: {r['title']} | Resume Tribunal", desc, f"{SITE}examples/{r['slug']}/", 2, "website", css.format(up="../../"), page="examples", bare=True).replace("<body>", '<body class="wide bare">')
+            head(f"{r['title']} | Resume Tribunal", desc, url, 2, "website",
+                 css.format(up="../../") + f'<script type="application/ld+json">{json.dumps(crumbs)}</script>\n', page="examples", bare=True).replace("<body>", '<body class="wide bare">')
             + VIEWER.format(moon=MOON, sun=SUN, title=esc(r["title"]), facts=facts, note=(f' <span class="rv-info" tabindex="0" aria-label="How this run was recorded" aria-describedby="rv-tip">i<span class="rv-tip" role="tooltip" id="rv-tip">'
                       f'<b>How this run was recorded.</b> {esc(r["note"])}</span></span>') if r.get("note") else "", length=f"{r['end'] // 60:02d}:{r['end'] % 60:02d}")
             + json_script("run-data", r) + "\n" + json_script("examples-data", listing)
@@ -466,7 +484,7 @@ FAQ = [
     ("Who gets to see my resume?",
      "Not us. Resume Tribunal has no server. Before anything goes to a second AI, your name, email, phone number and links are swapped for stand-ins like <<NAME>>, and you're asked first. The AI apps you use see the rest under their own terms."),
     ("How long does Resume Tribunal take?",
-     "About 2 minutes of your time for a quick review: you answer a few questions and approve the changes. The AIs work for a few more minutes on their own. If you copy and paste between two apps yourself, add a few minutes."),
+     "About 2 minutes of your time for a quick review: you answer a few questions and approve the changes, and the AIs do the rest on their own. In the eight recorded example runs, a quick review took 6 to 37 minutes from start to finish, most under 15, and a full council 27 to 37. If you copy and paste between two apps yourself, add a few minutes."),
     ("What do I get at the end?",
      "Your finished resume as a PDF or Word file when your app can make files, and always as text you can paste into Word or Google Docs. You also get a list of what the job asks for that your resume doesn't show yet, plus the interview questions your resume is likely to prompt."),
     ("Does Resume Tribunal work with Word files, or on my phone?",
@@ -582,11 +600,11 @@ def showcase():
     <p class="sub">Eight recorded runs on real and fictional resumes. You see every prompt each AI got, every reply, and the resume before and after.</p>
     <div class="cta"><a class="btn primary" href="examples/{r["slug"]}/" target="_blank" rel="noopener">Watch this run<span class="sr"> (opens in a new tab)</span></a><a class="btn ghost" href="examples/">See all eight</a></div>
   </div>
-  <a class="card runcard" href="examples/{r["slug"]}/" target="_blank" rel="noopener" aria-label="Watch the recorded run: {esc(r["title"])} (opens in a new tab)">
+  <a class="card runcard" href="examples/{r["slug"]}/" target="_blank" rel="noopener">
     <strong>{esc(r["title"])}</strong>
     <span class="facts">{facts}</span>
     <span class="ml" aria-hidden="true"><span></span><span class="ml-steps">{steps}</span>{lanes}<span class="ml-head"></span></span>
-    <span class="meta">Who worked when, from the run's own record. Each bar is a draft, a critique, a review or a wait for {esc(r["candidate"])}.</span>
+    <span class="meta">Who worked when, from the run's own record. Each bar is a draft, a critique, a review or a wait for {esc(r["candidate"])}.</span><span class="sr"> (opens in a new tab)</span>
   </a>
 </section>'''
 
@@ -594,7 +612,7 @@ def showcase():
 def build_home(items):
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "SoftwareApplication", "name": "Resume Tribunal", "applicationCategory": "BusinessApplication",
-         "operatingSystem": "Any", "url": SITE, "codeRepository": REPO, "license": "https://opensource.org/licenses/MIT",
+         "operatingSystem": "Any", "url": SITE, "sameAs": REPO, "license": "https://opensource.org/licenses/MIT",
          "softwareVersion": "1.0.0", "image": f"{SITE}assets/og.png", "publisher": {"@type": "Organization", "name": "Resume Tribunal", "email": "tribunal@warmhop.com", "url": SITE}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
          "description": "A free, open-source Agent Skill that tailors a resume or CV to a job using only the candidate's own facts. "
                         "A second AI from a different company checks every draft blind, a script flags numbers and names it cannot find in the "
@@ -700,7 +718,7 @@ def build_home(items):
 
 <section id="why">
   <div class="sh wide">
-    <h2>An AI shouldn't grade its own homework</h2>
+    <h2>Why a second AI checks the first</h2>
     <p class="sub">In the studies below, AIs went easy on their own work,<br class="desk"> and a checker from a different model family did better.</p>
   </div>
   <div class="grid three stats">
@@ -711,12 +729,12 @@ def build_home(items):
   <div class="split why-compare">
     <div class="table"><table>
       <tr><th></th><th>ChatGPT alone</th><th>Resume Tribunal</th></tr>
-      <tr><td>Who checks it</td><td>The AI that wrote it</td><td><strong>A different company's AI, blind</strong></td></tr>
-      <tr><td>Made-up numbers</td><td>Easy to miss</td><td><strong>Checked against your words</strong></td></tr>
-      <tr><td>Your say</td><td>If you read closely</td><td><strong>You check each change</strong></td></tr>
-      <tr><td>Your name and email</td><td>Sent as they are</td><td><strong>Hidden first</strong></td></tr>
+      <tr><th scope="row">Who checks it</th><td>The AI that wrote it</td><td><strong>A different company's AI, blind</strong></td></tr>
+      <tr><th scope="row">Made-up numbers</th><td>Easy to miss</td><td><strong>Checked against your words</strong></td></tr>
+      <tr><th scope="row">Your say</th><td>If you read closely</td><td><strong>You check each change</strong></td></tr>
+      <tr><th scope="row">Your name and email</th><td>Sent as they are</td><td><strong>Hidden from the second AI</strong></td></tr>
     </table></div>
-    <p class="meta limits"><strong>Honest limits.</strong> Those studies used maths, logic and test resumes, and no study shows several AIs write a better resume than one. See <a href="blog/resume-skills-compared.html">how six resume skills compare</a>, including where Resume Tribunal loses.</p>
+    <p class="meta limits"><strong>What the studies don't show.</strong> Those studies used maths, logic and test resumes, and no study shows several AIs write a better resume than one. See <a href="blog/resume-skills-compared.html">how six resume skills compare</a>, including where Resume Tribunal loses.</p>
   </div>
 </section>
 
@@ -734,7 +752,7 @@ def build_home(items):
 </section>
 
 <section class="final">
-  <h2>Your next application deserves a second opinion</h2>
+  <h2>Get a second opinion on your next application</h2>
   <p>Free and open source. You approve every change before you get the file.</p>
   <a class="btn primary big" href="#start">Get started free</a>
 </section>

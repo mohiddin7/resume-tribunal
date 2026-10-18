@@ -24,7 +24,7 @@ You don't always need one. To reword one bullet, a normal prompt is fine. A skil
 
 ## The two traps every resume tool can fall into
 
-**Trap one: making things up.** AI loves a round number. "Half a day" quietly becomes "4 hours". A tool that adds keywords "to match the job" can slip in a skill you've never used, and then the interviewer asks about it.
+**Trap one: making things up.** AI tends to round vague amounts into exact ones: "half a day" becomes "4 hours". A tool that adds keywords "to match the job" can slip in a skill you've never used, and then the interviewer asks about it.
 
 [[figure:interview|Every line on your resume has to survive this question.]]
 
@@ -62,8 +62,6 @@ Every other skill here has one AI write and grade. AI judges go [noticeably easi
 - A script flags any number or name it can't find in what you told it, and you settle each one.
 - Facts you confirm can be saved for your next job, on your computer or as a block you paste.
 - A quick review takes about 2 minutes of your time. A full council, with up to three AIs from different companies, takes longer: 27 to 37 minutes in the recorded example runs.
-
-> If you can't explain a line in an interview, it shouldn't be on your resume.
 
 [[cta]]
 

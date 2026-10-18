@@ -63,7 +63,7 @@ def svg(w, h, variant, title, desc, body, css=""):
             f'<rect width="{w}" height="{h}" rx="18" fill="var(--bg)"/>{body}</svg>\n')
 
 
-# The mark: a fanned pile of resumes, with yours lifted out of it and on top. Standing out, picked.
+# The mark: a fanned pile of resumes, with yours lifted out of it and on top.
 def mark(x=0, y=0, s=1.0, tile=True):
     # The tile is always clay rose with white cards, in light and dark alike, like an app icon.
     c, t = ("#ffffff", "#a8515c") if tile else ("var(--brand)", "var(--bg)")
@@ -91,13 +91,13 @@ def logo(variant):
 def og():
     t = LIGHT
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
-<style>{embedded_font(">Resume Tribunal Not getting shortlisted? Fix your resume for the job in 5 minutes. Works with ChatGPT, Gemini or any AI. Nothing made up. Free, no sign-up. Free and open source<")}{theme(None)}text{{font-family:{FONT}}}</style>
+<style>{embedded_font(">Resume Tribunal Not getting shortlisted? Fix your resume for the job in 2 minutes of your time. Works with ChatGPT, Gemini or any AI. A second AI checks it. Free, no sign-up. Free and open source<")}{theme(None)}text{{font-family:{FONT}}}</style>
 <rect width="1200" height="630" fill="{t['bg']}"/>
 {mark(80, 72, 1.9)}<text x="158" y="118" font-size="36" font-weight="800" fill="{t['ink']}">Resume Tribunal</text>
 <text x="80" y="250" font-size="64" font-weight="800" letter-spacing="-2" fill="{t['ink']}">Not getting shortlisted?</text>
 <text x="80" y="330" font-size="58" font-weight="800" letter-spacing="-2" fill="{t['brand']}">Fix your resume for the job</text>
-<text x="80" y="398" font-size="58" font-weight="800" letter-spacing="-2" fill="{t['brand']}">in 5 minutes.</text>
-<text x="80" y="462" font-size="28" fill="{t['muted']}">Works with ChatGPT, Gemini or any AI. Nothing made up. Free, no sign-up.</text>
+<text x="80" y="398" font-size="58" font-weight="800" letter-spacing="-2" fill="{t['brand']}">in 2 minutes of your time.</text>
+<text x="80" y="462" font-size="28" fill="{t['muted']}">Works with ChatGPT, Gemini or any AI. A second AI checks it. Free, no sign-up.</text>
 <rect x="80" y="510" width="330" height="60" rx="30" fill="{t['brand']}"/>
 <text x="245" y="549" text-anchor="middle" font-size="26" font-weight="700" fill="#fff">Free and open source</text>
 </svg>
@@ -161,7 +161,7 @@ def how_it_works(variant):
             y += GAP
     H = y + 30
     head = (f'<text x="{X}" y="44" font-size="23" font-weight="800" fill="var(--ink)">How Resume Tribunal works</text>'
-            f'<text x="{X}" y="66" font-size="14" fill="var(--muted)">About 5 minutes. Each step lights up in turn.</text>')
+            f'<text x="{X}" y="66" font-size="14" fill="var(--muted)">About 2 minutes of your time. Each step lights up in turn.</text>')
     desc = " ".join(f"Step {n}: {t}. {l}" for n, (_, _, t, l) in enumerate(STEPS, 1))
     return svg(W, H, variant, "How Resume Tribunal works", desc, head + "".join(out), a.style())
 

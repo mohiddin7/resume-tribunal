@@ -7,7 +7,7 @@
 /* Resume Tribunal. Colours from the warmhop palette. Light and dark follow the device; the toggle overrides. Phone first. */
 :root {
   --bg: #f7f4ef; --surf: #fffdf9; --ink: #221e19; --muted: #5f574d; --line: #ddd5c8; --tint: #f3e6e6;
-  --brand: #a8515c; --onbrand: #fff; --blue: #35619a; --green: #2f6c36; --danger: #a14126;
+  --brand: #a8515c; --tagink: #9c4a55; --onbrand: #fff; --blue: #35619a; --green: #2f6c36; --danger: #a14126;
   --shadow: 0 1px 2px rgba(34,30,25,.06), 0 8px 24px rgba(34,30,25,.07);
   color-scheme: light;
   /* header and footer span the wide column, so they line up with the full-width example viewer */
@@ -16,13 +16,13 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #14120f; --surf: #221e19; --ink: #f3ede4; --muted: #b5ab9e; --line: #3a332b; --tint: #2b1e1d;
-    --brand: #d67a84; --onbrand: #14120f; --blue: #4e88d3; --green: #479650; --danger: #db6141;
+    --brand: #d67a84; --tagink: #d67a84; --onbrand: #14120f; --blue: #4e88d3; --green: #479650; --danger: #db6141;
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25); color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #14120f; --surf: #221e19; --ink: #f3ede4; --muted: #b5ab9e; --line: #3a332b; --tint: #2b1e1d;
-  --brand: #d67a84; --onbrand: #14120f; --blue: #4e88d3; --green: #479650; --danger: #db6141;
+  --brand: #d67a84; --tagink: #d67a84; --onbrand: #14120f; --blue: #4e88d3; --green: #479650; --danger: #db6141;
   --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25); color-scheme: dark;
 }
 
@@ -119,8 +119,9 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
 .table { overflow-x: auto; margin: 24px auto; max-width: 52rem; border: 1px solid var(--line); border-radius: 14px; background: var(--bg); }
 table { border-collapse: collapse; width: 100%; font-size: 15px; text-align: left; }
 th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
-tr:last-child td { border-bottom: 0; }
+tr:last-child td, tr:last-child th { border-bottom: 0; }
 th { font-size: 14px; color: var(--muted); }
+th[scope=row] { font-size: inherit; color: var(--ink); }
 .faq { max-width: 46rem; margin: 24px auto 0; text-align: left; }
 details { border: 1px solid var(--line); background: var(--surf); border-radius: 14px; margin: 10px 0; padding: 0 18px; }
 summary { cursor: pointer; font-weight: 700; padding: 16px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
@@ -143,7 +144,7 @@ details p { margin: 0 0 16px; color: var(--muted); }
 .card.post .desc { color: var(--muted); font-size: 15px; }
 .card.post .more { color: var(--brand); font-weight: 700; font-size: 15px; margin-top: auto; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.tag { font-size: 12px; font-weight: 700; color: var(--brand); background: var(--tint); padding: 2px 9px; border-radius: 999px; }
+.tag { font-size: 12px; font-weight: 700; color: var(--tagink); background: var(--tint); padding: 2px 9px; border-radius: 999px; }
 
 /* blog index */
 .blog-wrap { max-width: var(--page); }  /* index pages use the page width, so they line up with the header */
@@ -218,11 +219,12 @@ h1, h2 { text-wrap: balance; }
 :root[data-theme="dark"] { --purple: #9177cf; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --purple: #9177cf; } }
 
-/* how it works: story player. One resume card is the main character; motion tells the story. */
+/* how it works: a step list beside a stage that plays one short scene per step */
 .hiw { display: grid; gap: 14px; max-width: 60rem; margin: 24px auto 8px; text-align: left; }
 .steps6 { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
 .st { width: 100%; border: 0; background: none; padding: 6px 0; cursor: pointer; font: inherit; color: inherit; text-align: left; }
-.st .stt, .st .sts { display: none; }
+.st .sts { display: none; }
+.st .stt { position: absolute; left: -9999px; } /* phones show bars only; the title still names the button */
 .bar { display: block; height: 4px; border-radius: 4px; background: color-mix(in srgb, var(--ink) 14%, transparent); overflow: hidden; }
 .bar b { display: block; height: 100%; width: 0; background: var(--brand); border-radius: 4px; }
 .st.done .bar b { width: 100%; }
@@ -240,7 +242,7 @@ h1, h2 { text-wrap: balance; }
   .stage { grid-column: 1; grid-row: 1; height: 420px; }
   .steps6 { grid-column: 2; grid-row: 1; grid-template-columns: 1fr; gap: 4px; }
   .st { padding: 10px 14px 12px; border-radius: 14px; }
-  .st .stt { display: block; font-weight: 750; font-size: 1.02rem; margin-top: 8px; color: var(--muted); }
+  .st .stt { position: static; display: block; font-weight: 750; font-size: 1.02rem; margin-top: 8px; color: var(--muted); }
   .st .sts { display: none; color: var(--muted); font-size: 14px; }
   .st.now { background: var(--surf); box-shadow: var(--shadow); }
   .st.now .stt { color: var(--ink); } .st.now .sts { display: block; }
@@ -368,7 +370,7 @@ h1, h2 { text-wrap: balance; }
 body.show-mcta .mcta { transform: none; opacity: 1; pointer-events: auto; }
 @media (prefers-reduced-motion: reduce) { .mcta { transition: none; } }
 
-/* checklist pass: 44px tap targets, calmer section rhythm, the player sits right under the hero */
+/* 44px tap targets, section spacing, and the player right under the hero */
 .icon { width: 44px; height: 44px; }
 .stage .pause { width: 40px; height: 40px; }
 .copy { min-height: 40px; padding: 8px 14px; }
@@ -378,7 +380,7 @@ body.show-mcta .mcta { transform: none; opacity: 1; pointer-events: auto; }
 #how h2 { font-size: clamp(1.4rem, 5vw, 2rem); }
 .hint { margin-top: 10px; }
 
-/* skim pass: compact proof list, stat rows, short comparison */
+/* proof list, stat rows and the comparison table, kept short for skimming */
 .caughtlist { list-style: none; margin: 20px auto; padding: 6px 18px; max-width: 46rem; }
 .caughtlist li { display: grid; gap: 2px; padding: 12px 0; border-bottom: 1px solid var(--line); }
 .caughtlist li:last-child { border-bottom: 0; }

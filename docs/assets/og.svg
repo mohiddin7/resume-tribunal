@@ -4,8 +4,8 @@
 <g transform="translate(80 72) scale(1.9)"><rect width="32" height="32" rx="8" fill="#a8515c"/><g transform="translate(3.5 4.5) scale(.75)"><rect x="5" y="9" width="14" height="18" rx="2.6" fill="#ffffff" opacity=".3" transform="rotate(-14 12 18)"/><rect x="7" y="9" width="14" height="18" rx="2.6" fill="#ffffff" opacity=".55" transform="rotate(-6 14 18)"/><rect x="13" y="3.5" width="15" height="20" rx="2.6" fill="#ffffff" stroke="#a8515c" stroke-width="1.6"/><path d="M16.5 9h8M16.5 12.5h8M16.5 16h5" stroke="#a8515c" stroke-width="1.8" stroke-linecap="round"/></g></g><text x="158" y="118" font-size="36" font-weight="800" fill="#221e19">Resume Tribunal</text>
 <text x="80" y="250" font-size="64" font-weight="800" letter-spacing="-2" fill="#221e19">Not getting shortlisted?</text>
 <text x="80" y="330" font-size="58" font-weight="800" letter-spacing="-2" fill="#a8515c">Fix your resume for the job</text>
-<text x="80" y="398" font-size="58" font-weight="800" letter-spacing="-2" fill="#a8515c">in 5 minutes.</text>
-<text x="80" y="462" font-size="28" fill="#5f574d">Works with ChatGPT, Gemini or any AI. Nothing made up. Free, no sign-up.</text>
+<text x="80" y="398" font-size="58" font-weight="800" letter-spacing="-2" fill="#a8515c">in 2 minutes of your time.</text>
+<text x="80" y="462" font-size="28" fill="#5f574d">Works with ChatGPT, Gemini or any AI. A second AI checks it. Free, no sign-up.</text>
 <rect x="80" y="510" width="330" height="60" rx="30" fill="#a8515c"/>
 <text x="245" y="549" text-anchor="middle" font-size="26" font-weight="700" fill="#fff">Free and open source</text>
 </svg>
